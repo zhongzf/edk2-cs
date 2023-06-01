@@ -120,11 +120,11 @@ public unsafe struct EFI_MAC_ADDRESS
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct EFI_IP_ADDRESS
 {
-  [FieldOffset(0)] 
+  [FieldOffset(0)]
   public fixed uint Addr[4];
-  [FieldOffset(0)] 
+  [FieldOffset(0)]
   public EFI_IPv4_ADDRESS v4;
-  [FieldOffset(0)] 
+  [FieldOffset(0)]
   public EFI_IPv6_ADDRESS v6;
 }
 
