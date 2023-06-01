@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Uefi;
 
 namespace Uefi;
 /** @file
@@ -50,81 +51,84 @@ public enum EFI_ALLOCATE_TYPE
   MaxAllocateType
 }
 
-//
-// Bit definitions for EFI_TIME.Daylight
-//
-public const ulong EFI_TIME_ADJUST_DAYLIGHT = 0x01;
-public const ulong EFI_TIME_IN_DAYLIGHT = 0x02;
+public unsafe partial class EFI
+{
+  //
+  // Bit definitions for EFI_TIME.Daylight
+  //
+  public const ulong EFI_TIME_ADJUST_DAYLIGHT = 0x01;
+  public const ulong EFI_TIME_IN_DAYLIGHT = 0x02;
 
-///
-/// Value definition for EFI_TIME.TimeZone.
-///
-public const ulong EFI_UNSPECIFIED_TIMEZONE = 0x07FF;
+  ///
+  /// Value definition for EFI_TIME.TimeZone.
+  ///
+  public const ulong EFI_UNSPECIFIED_TIMEZONE = 0x07FF;
 
-//
-// Memory cacheability attributes
-//
-public const ulong EFI_MEMORY_UC = 0x0000000000000001;
-public const ulong EFI_MEMORY_WC = 0x0000000000000002;
-public const ulong EFI_MEMORY_WT = 0x0000000000000004;
-public const ulong EFI_MEMORY_WB = 0x0000000000000008;
-public const ulong EFI_MEMORY_UCE = 0x0000000000000010;
-//
-// Physical memory protection attributes
-//
-// Note: UEFI spec 2.5 and following: use EFI_MEMORY_RO as write-protected physical memory
-// protection attribute. Also, EFI_MEMORY_WP means cacheability attribute.
-//
-public const ulong EFI_MEMORY_WP = 0x0000000000001000;
-public const ulong EFI_MEMORY_RP = 0x0000000000002000;
-public const ulong EFI_MEMORY_XP = 0x0000000000004000;
-public const ulong EFI_MEMORY_RO = 0x0000000000020000;
-//
-// Physical memory persistence attribute.
-// The memory region supports byte-addressable non-volatility.
-//
-public const ulong EFI_MEMORY_NV = 0x0000000000008000;
-//
-// The memory region provides higher reliability relative to other memory in the system.
-// If all memory has the same reliability, then this bit is not used.
-//
-public const ulong EFI_MEMORY_MORE_RELIABLE = 0x0000000000010000;
+  //
+  // Memory cacheability attributes
+  //
+  public const ulong EFI_MEMORY_UC = 0x0000000000000001;
+  public const ulong EFI_MEMORY_WC = 0x0000000000000002;
+  public const ulong EFI_MEMORY_WT = 0x0000000000000004;
+  public const ulong EFI_MEMORY_WB = 0x0000000000000008;
+  public const ulong EFI_MEMORY_UCE = 0x0000000000000010;
+  //
+  // Physical memory protection attributes
+  //
+  // Note: UEFI spec 2.5 and following: use EFI_MEMORY_RO as write-protected physical memory
+  // protection attribute. Also, EFI_MEMORY_WP means cacheability attribute.
+  //
+  public const ulong EFI_MEMORY_WP = 0x0000000000001000;
+  public const ulong EFI_MEMORY_RP = 0x0000000000002000;
+  public const ulong EFI_MEMORY_XP = 0x0000000000004000;
+  public const ulong EFI_MEMORY_RO = 0x0000000000020000;
+  //
+  // Physical memory persistence attribute.
+  // The memory region supports byte-addressable non-volatility.
+  //
+  public const ulong EFI_MEMORY_NV = 0x0000000000008000;
+  //
+  // The memory region provides higher reliability relative to other memory in the system.
+  // If all memory has the same reliability, then this bit is not used.
+  //
+  public const ulong EFI_MEMORY_MORE_RELIABLE = 0x0000000000010000;
 
-//
-// Note: UEFI spec 2.8 and following:
-//
-// Specific-purpose memory (SPM). The memory is earmarked for
-// specific purposes such as for specific device drivers or applications.
-// The SPM attribute serves as a hint to the OS to avoid allocating this
-// memory for core OS data or code that can not be relocated.
-//
-public const ulong EFI_MEMORY_SP = 0x0000000000040000;
-//
-// If this flag is set, the memory region is capable of being
-// protected with the CPU's memory cryptographic
-// capabilities. If this flag is clear, the memory region is not
-// capable of being protected with the CPU's memory
-// cryptographic capabilities or the CPU does not support CPU
-// memory cryptographic capabilities.
-//
-public const ulong EFI_MEMORY_CPU_CRYPTO = 0x0000000000080000;
+  //
+  // Note: UEFI spec 2.8 and following:
+  //
+  // Specific-purpose memory (SPM). The memory is earmarked for
+  // specific purposes such as for specific device drivers or applications.
+  // The SPM attribute serves as a hint to the OS to avoid allocating this
+  // memory for core OS data or code that can not be relocated.
+  //
+  public const ulong EFI_MEMORY_SP = 0x0000000000040000;
+  //
+  // If this flag is set, the memory region is capable of being
+  // protected with the CPU's memory cryptographic
+  // capabilities. If this flag is clear, the memory region is not
+  // capable of being protected with the CPU's memory
+  // cryptographic capabilities or the CPU does not support CPU
+  // memory cryptographic capabilities.
+  //
+  public const ulong EFI_MEMORY_CPU_CRYPTO = 0x0000000000080000;
 
-//
-// Runtime memory attribute
-//
-public const ulong EFI_MEMORY_RUNTIME = 0x8000000000000000;
+  //
+  // Runtime memory attribute
+  //
+  public const ulong EFI_MEMORY_RUNTIME = 0x8000000000000000;
 
-//
-// Attributes bitmasks, grouped by type
-//
-public const ulong EFI_CACHE_ATTRIBUTE_MASK = (EFI_MEMORY_UC | EFI_MEMORY_WC | EFI_MEMORY_WT | EFI_MEMORY_WB | EFI_MEMORY_UCE | EFI_MEMORY_WP);
-public const ulong EFI_MEMORY_ACCESS_MASK = (EFI_MEMORY_RP | EFI_MEMORY_XP | EFI_MEMORY_RO);
-public const ulong EFI_MEMORY_ATTRIBUTE_MASK = (EFI_MEMORY_ACCESS_MASK | EFI_MEMORY_SP | EFI_MEMORY_CPU_CRYPTO);
+  //
+  // Attributes bitmasks, grouped by type
+  //
+  public const ulong EFI_CACHE_ATTRIBUTE_MASK = (EFI_MEMORY_UC | EFI_MEMORY_WC | EFI_MEMORY_WT | EFI_MEMORY_WB | EFI_MEMORY_UCE | EFI_MEMORY_WP);
+  public const ulong EFI_MEMORY_ACCESS_MASK = (EFI_MEMORY_RP | EFI_MEMORY_XP | EFI_MEMORY_RO);
+  public const ulong EFI_MEMORY_ATTRIBUTE_MASK = (EFI_MEMORY_ACCESS_MASK | EFI_MEMORY_SP | EFI_MEMORY_CPU_CRYPTO);
 
-///
-/// Memory descriptor version number.
-///
-public const ulong EFI_MEMORY_DESCRIPTOR_VERSION = 1;
+  ///
+  /// Memory descriptor version number.
+  ///
+  public const ulong EFI_MEMORY_DESCRIPTOR_VERSION = 1;
+}
 
 ///
 /// Definition of an EFI memory descriptor.
@@ -166,345 +170,33 @@ public unsafe struct EFI_MEMORY_DESCRIPTOR
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// ConvertPointer DebugDisposition type.
-//
-public const ulong EFI_OPTIONAL_PTR = 0x00000001;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// These types can be ORed together as needed - for example,
-// EVT_TIMER might be Ored with EVT_NOTIFY_WAIT or
-// EVT_NOTIFY_SIGNAL.
-//
-public const ulong EVT_TIMER = 0x80000000;
-public const ulong EVT_RUNTIME = 0x40000000;
-public const ulong EVT_NOTIFY_WAIT = 0x00000100;
-public const ulong EVT_NOTIFY_SIGNAL = 0x00000200;
-
-public const ulong EVT_SIGNAL_EXIT_BOOT_SERVICES = 0x00000201;
-public const ulong EVT_SIGNAL_VIRTUAL_ADDRESS_CHANGE = 0x60000202;
-
-//
-// The event's NotifyContext pointer points to a runtime memory
-// address.
-// The event is deprecated in UEFI2.0 and later specifications.
-//
-public const ulong EVT_RUNTIME_CONTEXT = 0x20000000;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  //
+  // ConvertPointer DebugDisposition type.
+  //
+  public const ulong EFI_OPTIONAL_PTR = 0x00000001;
+
+  //
+  // These types can be ORed together as needed - for example,
+  // EVT_TIMER might be Ored with EVT_NOTIFY_WAIT or
+  // EVT_NOTIFY_SIGNAL.
+  //
+  public const ulong EVT_TIMER = 0x80000000;
+  public const ulong EVT_RUNTIME = 0x40000000;
+  public const ulong EVT_NOTIFY_WAIT = 0x00000100;
+  public const ulong EVT_NOTIFY_SIGNAL = 0x00000200;
+
+  public const ulong EVT_SIGNAL_EXIT_BOOT_SERVICES = 0x00000201;
+  public const ulong EVT_SIGNAL_VIRTUAL_ADDRESS_CHANGE = 0x60000202;
+
+  //
+  // The event's NotifyContext pointer points to a runtime memory
+  // address.
+  // The event is deprecated in UEFI2.0 and later specifications.
+  //
+  public const ulong EVT_RUNTIME_CONTEXT = 0x20000000;
+}
 
 ///
 /// Timer delay types
@@ -525,241 +217,16 @@ public enum EFI_TIMER_DELAY
   TimerRelative
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Task priority level
-//
-public const ulong TPL_APPLICATION = 4;
-public const ulong TPL_CALLBACK = 8;
-public const ulong TPL_NOTIFY = 16;
-public const ulong TPL_HIGH_LEVEL = 31;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  //
+  // Task priority level
+  //
+  public const ulong TPL_APPLICATION = 4;
+  public const ulong TPL_CALLBACK = 8;
+  public const ulong TPL_NOTIFY = 16;
+  public const ulong TPL_HIGH_LEVEL = 31;
+}
 
 ///
 /// This provides the capabilities of the
@@ -792,361 +259,6 @@ public unsafe struct EFI_TIME_CAPABILITIES
   public bool SetsToZero;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// Enumeration of EFI Interface Types
 ///
@@ -1158,225 +270,15 @@ public enum EFI_INTERFACE_TYPE
   EFI_NATIVE_INTERFACE
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public const ulong EFI_OPEN_PROTOCOL_BY_HANDLE_PROTOCOL = 0x00000001;
-public const ulong EFI_OPEN_PROTOCOL_GET_PROTOCOL = 0x00000002;
-public const ulong EFI_OPEN_PROTOCOL_TEST_PROTOCOL = 0x00000004;
-public const ulong EFI_OPEN_PROTOCOL_BY_CHILD_CONTROLLER = 0x00000008;
-public const ulong EFI_OPEN_PROTOCOL_BY_DRIVER = 0x00000010;
-public const ulong EFI_OPEN_PROTOCOL_EXCLUSIVE = 0x00000020;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_OPEN_PROTOCOL_BY_HANDLE_PROTOCOL = 0x00000001;
+  public const ulong EFI_OPEN_PROTOCOL_GET_PROTOCOL = 0x00000002;
+  public const ulong EFI_OPEN_PROTOCOL_TEST_PROTOCOL = 0x00000004;
+  public const ulong EFI_OPEN_PROTOCOL_BY_CHILD_CONTROLLER = 0x00000008;
+  public const ulong EFI_OPEN_PROTOCOL_BY_DRIVER = 0x00000010;
+  public const ulong EFI_OPEN_PROTOCOL_EXCLUSIVE = 0x00000020;
+}
 
 ///
 /// EFI Oprn Protocol Information Entry
@@ -1389,82 +291,6 @@ public unsafe struct EFI_OPEN_PROTOCOL_INFORMATION_ENTRY
   public uint Attributes;
   public uint OpenCount;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Enumeration of EFI Locate Search Types
@@ -1486,161 +312,32 @@ public enum EFI_LOCATE_SEARCH_TYPE
   ByProtocol
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// EFI Capsule Block Descriptor
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Union
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct EFI_CAPSULE_BLOCK_DESCRIPTOR
 {
   ///
   /// Length in bytes of the data pointed to by DataBlock/ContinuationPointer.
   ///
+  [FieldOffset(0)]
   public ulong Length;
-  union {
-    ///
-    /// Physical address of the data block. This member of the union is
-    /// used if Length is not equal to zero.
-    ///
-   public EFI_PHYSICAL_ADDRESS DataBlock;
+  ///
+  /// Physical address of the data block. This member of the union is
+  /// used if Length is not equal to zero.
+  ///
+  [FieldOffset(8)]
+  public EFI_PHYSICAL_ADDRESS DataBlock;
   ///
   /// Physical address of another block of
   /// EFI_CAPSULE_BLOCK_DESCRIPTOR structures. This
   /// member of the union is used if Length is equal to zero. If
   /// ContinuationPointer is zero this entry represents the end of the list.
   ///
+  [FieldOffset(8)]
   public EFI_PHYSICAL_ADDRESS ContinuationPointer;
 }
-} EFI_CAPSULE_BLOCK_DESCRIPTOR;
 
 ///
 /// EFI Capsule Header.
@@ -1685,146 +382,48 @@ public unsafe struct EFI_CAPSULE_TABLE
   ///
   /// Point to an array of capsules that contain the same CapsuleGuid value.
   ///
-  void* CapsulePtr[1];
+  public void* CapsulePtr;
 }
 
-public const ulong CAPSULE_FLAGS_PERSIST_ACROSS_RESET = 0x00010000;
-public const ulong CAPSULE_FLAGS_POPULATE_SYSTEM_TABLE = 0x00020000;
-public const ulong CAPSULE_FLAGS_INITIATE_RESET = 0x00040000;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Firmware should stop at a firmware user interface on next boot
-//
-public const ulong EFI_OS_INDICATIONS_BOOT_TO_FW_UI = 0x0000000000000001;
-public const ulong EFI_OS_INDICATIONS_TIMESTAMP_REVOCATION = 0x0000000000000002;
-public const ulong EFI_OS_INDICATIONS_FILE_CAPSULE_DELIVERY_SUPPORTED = 0x0000000000000004;
-public const ulong EFI_OS_INDICATIONS_FMP_CAPSULE_SUPPORTED = 0x0000000000000008;
-public const ulong EFI_OS_INDICATIONS_CAPSULE_RESULT_VAR_SUPPORTED = 0x0000000000000010;
-public const ulong EFI_OS_INDICATIONS_START_PLATFORM_RECOVERY = 0x0000000000000040;
-public const ulong EFI_OS_INDICATIONS_JSON_CONFIG_DATA_REFRESH = 0x0000000000000080;
-
-//
-// EFI Runtime Services Table
-//
-public const ulong EFI_SYSTEM_TABLE_SIGNATURE = SIGNATURE_64('I', 'B', 'I', ' ', 'S', 'Y', 'S', 'T');
-public const ulong EFI_2_80_SYSTEM_TABLE_REVISION = ((2 << 16) | (80));
-public const ulong EFI_2_70_SYSTEM_TABLE_REVISION = ((2 << 16) | (70));
-public const ulong EFI_2_60_SYSTEM_TABLE_REVISION = ((2 << 16) | (60));
-public const ulong EFI_2_50_SYSTEM_TABLE_REVISION = ((2 << 16) | (50));
-public const ulong EFI_2_40_SYSTEM_TABLE_REVISION = ((2 << 16) | (40));
-public const ulong EFI_2_31_SYSTEM_TABLE_REVISION = ((2 << 16) | (31));
-public const ulong EFI_2_30_SYSTEM_TABLE_REVISION = ((2 << 16) | (30));
-public const ulong EFI_2_20_SYSTEM_TABLE_REVISION = ((2 << 16) | (20));
-public const ulong EFI_2_10_SYSTEM_TABLE_REVISION = ((2 << 16) | (10));
-public const ulong EFI_2_00_SYSTEM_TABLE_REVISION = ((2 << 16) | (00));
-public const ulong EFI_1_10_SYSTEM_TABLE_REVISION = ((1 << 16) | (10));
-public const ulong EFI_1_02_SYSTEM_TABLE_REVISION = ((1 << 16) | (02));
-public const ulong EFI_SYSTEM_TABLE_REVISION = EFI_2_70_SYSTEM_TABLE_REVISION;
-public const ulong EFI_SPECIFICATION_VERSION = EFI_SYSTEM_TABLE_REVISION;
-
-public const ulong EFI_RUNTIME_SERVICES_SIGNATURE = SIGNATURE_64('R', 'U', 'N', 'T', 'S', 'E', 'R', 'V');
-public const ulong EFI_RUNTIME_SERVICES_REVISION = EFI_SPECIFICATION_VERSION;
+public unsafe partial class EFI
+{
+  public const ulong CAPSULE_FLAGS_PERSIST_ACROSS_RESET = 0x00010000;
+  public const ulong CAPSULE_FLAGS_POPULATE_SYSTEM_TABLE = 0x00020000;
+  public const ulong CAPSULE_FLAGS_INITIATE_RESET = 0x00040000;
+
+  //
+  // Firmware should stop at a firmware user interface on next boot
+  //
+  public const ulong EFI_OS_INDICATIONS_BOOT_TO_FW_UI = 0x0000000000000001;
+  public const ulong EFI_OS_INDICATIONS_TIMESTAMP_REVOCATION = 0x0000000000000002;
+  public const ulong EFI_OS_INDICATIONS_FILE_CAPSULE_DELIVERY_SUPPORTED = 0x0000000000000004;
+  public const ulong EFI_OS_INDICATIONS_FMP_CAPSULE_SUPPORTED = 0x0000000000000008;
+  public const ulong EFI_OS_INDICATIONS_CAPSULE_RESULT_VAR_SUPPORTED = 0x0000000000000010;
+  public const ulong EFI_OS_INDICATIONS_START_PLATFORM_RECOVERY = 0x0000000000000040;
+  public const ulong EFI_OS_INDICATIONS_JSON_CONFIG_DATA_REFRESH = 0x0000000000000080;
+
+  //
+  // EFI Runtime Services Table
+  //
+  //public const ulong EFI_SYSTEM_TABLE_SIGNATURE = SIGNATURE_64('I', 'B', 'I', ' ', 'S', 'Y', 'S', 'T');
+  public const ulong EFI_2_80_SYSTEM_TABLE_REVISION = ((2 << 16) | (80));
+  public const ulong EFI_2_70_SYSTEM_TABLE_REVISION = ((2 << 16) | (70));
+  public const ulong EFI_2_60_SYSTEM_TABLE_REVISION = ((2 << 16) | (60));
+  public const ulong EFI_2_50_SYSTEM_TABLE_REVISION = ((2 << 16) | (50));
+  public const ulong EFI_2_40_SYSTEM_TABLE_REVISION = ((2 << 16) | (40));
+  public const ulong EFI_2_31_SYSTEM_TABLE_REVISION = ((2 << 16) | (31));
+  public const ulong EFI_2_30_SYSTEM_TABLE_REVISION = ((2 << 16) | (30));
+  public const ulong EFI_2_20_SYSTEM_TABLE_REVISION = ((2 << 16) | (20));
+  public const ulong EFI_2_10_SYSTEM_TABLE_REVISION = ((2 << 16) | (10));
+  public const ulong EFI_2_00_SYSTEM_TABLE_REVISION = ((2 << 16) | (00));
+  public const ulong EFI_1_10_SYSTEM_TABLE_REVISION = ((1 << 16) | (10));
+  public const ulong EFI_1_02_SYSTEM_TABLE_REVISION = ((1 << 16) | (02));
+  public const ulong EFI_SYSTEM_TABLE_REVISION = EFI_2_70_SYSTEM_TABLE_REVISION;
+  public const ulong EFI_SPECIFICATION_VERSION = EFI_SYSTEM_TABLE_REVISION;
+
+  //public const ulong EFI_RUNTIME_SERVICES_SIGNATURE = SIGNATURE_64('R', 'U', 'N', 'T', 'S', 'E', 'R', 'V');
+  public const ulong EFI_RUNTIME_SERVICES_REVISION = EFI_SPECIFICATION_VERSION;
+}
 
 ///
 /// EFI Runtime Services Table.
@@ -2146,8 +745,11 @@ public unsafe struct EFI_RUNTIME_SERVICES
   public readonly delegate* unmanaged<uint, ulong*, ulong*, ulong*, EFI_STATUS> QueryVariableInfo;
 }
 
-public const ulong EFI_BOOT_SERVICES_SIGNATURE = SIGNATURE_64('B', 'O', 'O', 'T', 'S', 'E', 'R', 'V');
-public const ulong EFI_BOOT_SERVICES_REVISION = EFI_SPECIFICATION_VERSION;
+public unsafe partial class EFI
+{
+  //public const ulong EFI_BOOT_SERVICES_SIGNATURE = SIGNATURE_64('B', 'O', 'O', 'T', 'S', 'E', 'R', 'V');
+  public const ulong EFI_BOOT_SERVICES_REVISION = EFI_SPECIFICATION_VERSION;
+}
 
 ///
 /// EFI Boot Services Table.
@@ -3020,12 +1622,12 @@ public unsafe struct EFI_SYSTEM_TABLE
   @retval EFI_SUCCESS           The operation completed successfully.
   @retval Others                An unexpected error occurred.
 **/
-typedef
-EFI_STATUS
-(EFIAPI * EFI_IMAGE_ENTRY_POINT)(
-  IN  EFI_HANDLE                   ImageHandle,
-  IN  EFI_SYSTEM_TABLE * SystemTable
-  );
+//typedef
+//EFI_STATUS
+//(EFIAPI * EFI_IMAGE_ENTRY_POINT)(
+//  IN  EFI_HANDLE                   ImageHandle,
+//  IN  EFI_SYSTEM_TABLE * SystemTable
+//  );
 
 //
 // EFI Load Option. This data structure describes format of UEFI boot option variables.
@@ -3078,67 +1680,79 @@ public unsafe struct EFI_LOAD_OPTION
 }
 // #pragma pack()
 
-//
-// EFI Load Options Attributes
-//
-public const ulong LOAD_OPTION_ACTIVE = 0x00000001;
-public const ulong LOAD_OPTION_FORCE_RECONNECT = 0x00000002;
-public const ulong LOAD_OPTION_HIDDEN = 0x00000008;
-public const ulong LOAD_OPTION_CATEGORY = 0x00001F00;
+public unsafe partial class EFI
+{
+  //
+  // EFI Load Options Attributes
+  //
+  public const ulong LOAD_OPTION_ACTIVE = 0x00000001;
+  public const ulong LOAD_OPTION_FORCE_RECONNECT = 0x00000002;
+  public const ulong LOAD_OPTION_HIDDEN = 0x00000008;
+  public const ulong LOAD_OPTION_CATEGORY = 0x00001F00;
 
-public const ulong LOAD_OPTION_CATEGORY_BOOT = 0x00000000;
-public const ulong LOAD_OPTION_CATEGORY_APP = 0x00000100;
+  public const ulong LOAD_OPTION_CATEGORY_BOOT = 0x00000000;
+  public const ulong LOAD_OPTION_CATEGORY_APP = 0x00000100;
 
-public const ulong EFI_BOOT_OPTION_SUPPORT_KEY = 0x00000001;
-public const ulong EFI_BOOT_OPTION_SUPPORT_APP = 0x00000002;
-public const ulong EFI_BOOT_OPTION_SUPPORT_SYSPREP = 0x00000010;
-public const ulong EFI_BOOT_OPTION_SUPPORT_COUNT = 0x00000300;
+  public const ulong EFI_BOOT_OPTION_SUPPORT_KEY = 0x00000001;
+  public const ulong EFI_BOOT_OPTION_SUPPORT_APP = 0x00000002;
+  public const ulong EFI_BOOT_OPTION_SUPPORT_SYSPREP = 0x00000010;
+  public const ulong EFI_BOOT_OPTION_SUPPORT_COUNT = 0x00000300;
+}
 
 ///
 /// EFI Boot Key Data
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Options
+public unsafe struct EFI_BOOT_KEY_DATA
 {
-  struct {
-    ///
-    /// Indicates the revision of the EFI_KEY_OPTION structure. This revision level should be 0.
-    ///
-   [FieldOffset(0)] public uint Revision = 8;
+  ///
+  /// Indicates the revision of the EFI_KEY_OPTION structure. This revision level should be 0.
+  ///
+  [FieldOffset(0)]
+  public uint Revision = 8;
   ///
   /// Either the left or right Shift keys must be pressed (1) or must not be pressed (0).
   ///
-  [FieldOffset(0)] public uint ShiftPressed = 1;
+  [FieldOffset(0)]
+  public uint ShiftPressed = 1;
   ///
   /// Either the left or right Control keys must be pressed (1) or must not be pressed (0).
   ///
-  [FieldOffset(0)] public uint ControlPressed = 1;
+  [FieldOffset(0)]
+  public uint ControlPressed = 1;
   ///
   /// Either the left or right Alt keys must be pressed (1) or must not be pressed (0).
   ///
-  [FieldOffset(0)] public uint AltPressed = 1;
+  [FieldOffset(0)]
+  public uint AltPressed = 1;
   ///
   /// Either the left or right Logo keys must be pressed (1) or must not be pressed (0).
   ///
-  [FieldOffset(0)] public uint LogoPressed = 1;
+  [FieldOffset(0)]
+  public uint LogoPressed = 1;
   ///
   /// The Menu key must be pressed (1) or must not be pressed (0).
   ///
-  [FieldOffset(0)] public uint MenuPressed = 1;
+  [FieldOffset(0)]
+  public uint MenuPressed = 1;
   ///
   /// The SysReq key must be pressed (1) or must not be pressed (0).
   ///
-  [FieldOffset(0)] public uint SysReqPressed = 1;
-  [FieldOffset(0)] public uint Reserved = 16;
+  [FieldOffset(0)]
+  public uint SysReqPressed = 1;
+  [FieldOffset(0)]
+  public uint Reserved = 16;
   ///
   /// Specifies the actual number of entries in EFI_KEY_OPTION.Keys, from 0-3. If
   /// zero, then only the shift state is considered. If more than one, then the boot option will
   /// only be launched if all of the specified keys are pressed with the same shift state.
   ///
-  [FieldOffset(0)] public uint InputKeyCount = 2;
+  [FieldOffset(0)]
+  public uint InputKeyCount = 2;
+
+  [FieldOffset(4)]
+  public uint PackedValue;
 }
-uint PackedValue;
-} EFI_BOOT_KEY_DATA;
 
 ///
 /// EFI Key Option.
@@ -3171,40 +1785,46 @@ public unsafe struct EFI_KEY_OPTION
 }
 // #pragma pack()
 
-//
-// EFI File location to boot from on removable media devices
-//
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_IA32 = "\\EFI\\BOOT\\BOOTIA32.EFI";
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_IA64 = "\\EFI\\BOOT\\BOOTIA64.EFI";
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_X64 = "\\EFI\\BOOT\\BOOTX64.EFI";
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_ARM = "\\EFI\\BOOT\\BOOTARM.EFI";
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_AARCH64 = "\\EFI\\BOOT\\BOOTAA64.EFI";
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64 = "\\EFI\\BOOT\\BOOTRISCV64.EFI";
-public const string EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64 = "\\EFI\\BOOT\\BOOTLOONGARCH64.EFI";
+public unsafe partial class EFI
+{
+  //
+  // EFI File location to boot from on removable media devices
+  //
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_IA32 = "\\EFI\\BOOT\\BOOTIA32.EFI";
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_IA64 = "\\EFI\\BOOT\\BOOTIA64.EFI";
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_X64 = "\\EFI\\BOOT\\BOOTX64.EFI";
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_ARM = "\\EFI\\BOOT\\BOOTARM.EFI";
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_AARCH64 = "\\EFI\\BOOT\\BOOTAA64.EFI";
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64 = "\\EFI\\BOOT\\BOOTRISCV64.EFI";
+  public const string EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64 = "\\EFI\\BOOT\\BOOTLOONGARCH64.EFI";
+}
 
-#if !defined (EFI_REMOVABLE_MEDIA_FILE_NAME)
-#if defined (MDE_CPU_IA32)
-public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_IA32;
-#elif defined (MDE_CPU_X64)
-public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_X64;
-#elif defined (MDE_CPU_EBC)
-#elif defined (MDE_CPU_ARM)
-public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_ARM;
-#elif defined (MDE_CPU_AARCH64)
-public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_AARCH64;
-#elif defined (MDE_CPU_RISCV64)
-public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64;
-#elif defined (MDE_CPU_LOONGARCH64)
-public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64;
-#else
-#error Unknown Processor Type
-#endif
+//#if !defined (EFI_REMOVABLE_MEDIA_FILE_NAME)
+//#if defined (MDE_CPU_IA32)
+//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_IA32;
+//#elif defined (MDE_CPU_X64)
+//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_X64;
+//#elif defined (MDE_CPU_EBC)
+//#elif defined (MDE_CPU_ARM)
+//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_ARM;
+//#elif defined (MDE_CPU_AARCH64)
+//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_AARCH64;
+//#elif defined (MDE_CPU_RISCV64)
+//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64;
+//#elif defined (MDE_CPU_LOONGARCH64)
+//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64;
+//#else
+//#error Unknown Processor Type
+//#endif
 // #endif
 
-//
-// The directory within the active EFI System Partition defined for delivery of capsule to firmware
-//
-public const string EFI_CAPSULE_FILE_DIRECTORY = "\\EFI\\UpdateCapsule\\";
+public unsafe partial class EFI
+{
+  //
+  // The directory within the active EFI System Partition defined for delivery of capsule to firmware
+  //
+  public const string EFI_CAPSULE_FILE_DIRECTORY = "\\EFI\\UpdateCapsule\\";
+}
 
 // #include <Uefi/UefiPxe.h>
 // #include <Uefi/UefiGpt.h>
