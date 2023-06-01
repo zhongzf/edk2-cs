@@ -1,0 +1,300 @@
+namespace Uefi;
+/** @file
+  EFI IPSEC Protocol Definition
+  The EFI_IPSEC_PROTOCOL is used to abstract the ability to deal with the individual
+  packets sent and received by the host and provide packet-level security for IP
+  datagram.
+  The EFI_IPSEC2_PROTOCOL is used to abstract the ability to deal with the individual
+  packets sent and received by the host and provide packet-level security for IP
+  datagram. In addition, it supports the Option (extension header) processing in
+  IPsec which doesn't support in EFI_IPSEC_PROTOCOL. It is also recommended to
+  use EFI_IPSEC2_PROTOCOL instead of EFI_IPSEC_PROTOCOL especially for IPsec Tunnel
+  Mode.
+
+  Copyright (c) 2009 - 2018, Intel Corporation. All rights reserved.<BR>
+  SPDX-License-Identifier: BSD-2-Clause-Patent
+
+  @par Revision Reference:
+  The EFI_IPSEC2_PROTOCOL is introduced in UEFI Specification 2.3D.
+
+**/
+
+// #ifndef __EFI_IPSEC_PROTOCOL_H__
+// #define __EFI_IPSEC_PROTOCOL_H__
+
+// #include <Protocol/IpSecConfig.h>
+
+public static EFI_GUID EFI_IPSEC_PROTOCOL_GUID = new GUID( 
+    0xdfb386f7, 0xe100, 0x43ad, new byte[] {0x9c, 0x9a, 0xed, 0x90, 0xd0, 0x8a, 0x5e, 0x12 });
+
+public static EFI_GUID EFI_IPSEC2_PROTOCOL_GUID = new GUID( 
+    0xa3979e64, 0xace8, 0x4ddc, new byte[] {0xbc, 0x7, 0x4d, 0x66, 0xb8, 0xfd, 0x9, 0x77 });
+
+typedef struct _EFI_IPSEC_PROTOCOL   EFI_IPSEC_PROTOCOL;
+typedef struct _EFI_IPSEC2_PROTOCOL  EFI_IPSEC2_PROTOCOL;
+
+///
+/// EFI_IPSEC_FRAGMENT_DATA
+/// defines the instances of packet fragments.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_IPSEC_FRAGMENT_DATA {
+ public uint    FragmentLength;
+ public void      *FragmentBuffer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
+/// EFI_IPSEC_PROTOCOL
+/// provides the ability for  securing IP communications by authenticating
+/// and/or encrypting each IP packet in a data stream.
+//  EFI_IPSEC_PROTOCOL can be consumed by both the IPv4 and IPv6 stack.
+//  A user can employ this protocol for IPsec package handling in both IPv4
+//  and IPv6 environment.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_IPSEC_PROTOCOL {
+ public EFI_IPSEC_PROCESS    Process;             ///< Handle the IPsec message.
+ public EFI_EVENT            DisabledEvent;       ///< Event signaled when the interface is disabled.
+ public bool              DisabledFlag;        ///< State of the interface.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
+/// EFI_IPSEC2_PROTOCOL
+/// supports the Option (extension header) processing in IPsec which doesn't support
+/// in EFI_IPSEC_PROTOCOL. It is also recommended to use EFI_IPSEC2_PROTOCOL instead
+/// of EFI_IPSEC_PROTOCOL especially for IPsec Tunnel Mode.
+/// provides the ability for securing IP communications by authenticating and/or
+/// encrypting each IP packet in a data stream.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_IPSEC2_PROTOCOL {
+/**
+  Handles IPsec processing for both inbound and outbound IP packets. Compare with
+  Process() in EFI_IPSEC_PROTOCOL, this interface has the capability to process
+  Option(Extension Header).
+
+  The EFI_IPSEC2_PROCESS process routine handles each inbound or outbound packet.
+  The behavior is that it can perform one of the following actions:
+  bypass the packet, discard the packet, or protect the packet.
+
+  @param[in]       This               Pointer to the EFI_IPSEC2_PROTOCOL instance.
+  @param[in]       NicHandle          Instance of the network interface.
+  @param[in]       IpVer              IP version.IPv4 or IPv6.
+  @param[in, out]  IpHead             Pointer to the IP Header it is either
+                                      the EFI_IP4_HEADER or EFI_IP6_HEADER.
+                                      On input, it contains the IP header.
+                                      On output, 1) in tunnel mode and the
+                                      traffic direction is inbound, the buffer
+                                      will be reset to zero by IPsec; 2) in
+                                      tunnel mode and the traffic direction
+                                      is outbound, the buffer will reset to
+                                      be the tunnel IP header.3) in transport
+                                      mode, the related fielders (like payload
+                                      length, Next header) in IP header will
+                                      be modified according to the condition.
+  @param[in, out]  LastHead           For IP4, it is the next protocol in IP
+                                      header. For IP6 it is the Next Header
+                                      of the last extension header.
+  @param[in, out]  OptionsBuffer      On input, it contains the options
+                                      (extensions header) to be processed by
+                                      IPsec. On output, 1) in tunnel mode and
+                                      the traffic direction is outbound, it
+                                      will be set to NULL, and that means this
+                                      contents was wrapped after inner header
+                                      and should not be concatenated after
+                                      tunnel header again; 2) in transport
+                                      mode and the traffic direction is inbound,
+                                      if there are IP options (extension headers)
+                                      protected by IPsec, IPsec will concatenate
+                                      the those options after the input options
+                                      (extension headers); 3) on other situations,
+                                      the output of contents of OptionsBuffer
+                                      might be same with input's. The caller
+                                      should take the responsibility to free
+                                      the buffer both on input and on output.
+  @param[in, out]  OptionsLength      On input, the input length of the options
+                                      buffer. On output, the output length of
+                                      the options buffer.
+  @param[in, out]  FragmentTable      Pointer to a list of fragments. On input,
+                                      these fragments contain the IP payload.
+                                      On output, 1) in tunnel mode and the traffic
+                                      direction is inbound, the fragments contain
+                                      the whole IP payload which is from the
+                                      IP inner header to the last byte of the
+                                      packet; 2) in tunnel mode and the traffic
+                                      direction is the outbound, the fragments
+                                      contains the whole encapsulated payload
+                                      which encapsulates the whole IP payload
+                                      between the encapsulated header and
+                                      encapsulated trailer fields. 3) in transport
+                                      mode and the traffic direction is inbound,
+                                      the fragments contains the IP payload
+                                      which is from the next layer protocol to
+                                      the last byte of the packet; 4) in transport
+                                      mode and the traffic direction is outbound,
+                                      the fragments contains the whole encapsulated
+                                      payload which encapsulates the next layer
+                                      protocol information between the encapsulated
+                                      header and encapsulated trailer fields.
+  @param[in, out]  FragmentCount      Number of fragments.
+  @param[in]       TrafficDirection   Traffic direction.
+  @param[out]      RecycleSignal      Event for recycling of resources.
+
+  @retval      EFI_SUCCESS           The packet was processed by IPsec successfully.
+  @retval      EFI_ACCESS_DENIED     The packet was discarded.
+  @retval      EFI_NOT_READY         The IKE negotiation is invoked and the packet
+                                     was discarded.
+  @retval      EFI_INVALID_PARAMETER One or more of following are TRUE:
+                                     If OptionsBuffer is NULL;
+                                     If OptionsLength is NULL;
+                                     If FragmentTable is NULL;
+                                     If FragmentCount is NULL.
+
+**/
+public readonly delegate* unmanaged<EFI_IPSEC2_PROTOCOL*,EFI_HANDLE,byte,void*,byte*,void**,uint*,EFI_IPSEC_FRAGMENT_DATA**,uint*,EFI_IPSEC_TRAFFIC_DIR,EFI_EVENT*, EFI_STATUS> ProcessExt;
+ public EFI_EVENT               DisabledEvent;
+ public bool                 DisabledFlag;
+}
+
+// extern EFI_GUID  gEfiIpSecProtocolGuid;
+// extern EFI_GUID  gEfiIpSec2ProtocolGuid;
+// #endif

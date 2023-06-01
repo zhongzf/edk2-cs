@@ -1,0 +1,551 @@
+namespace Uefi;
+/** @file
+  EFI EAP Management Protocol Definition
+  The EFI EAP Management Protocol is designed to provide ease of management and
+  ease of test for EAPOL state machine. It is intended for the supplicant side.
+  It conforms to IEEE 802.1x specification.
+  The definitions in this file are defined in UEFI Specification 2.2, which have
+  not been verified by one implementation yet.
+
+  Copyright (c) 2009 - 2018, Intel Corporation. All rights reserved.<BR>
+  SPDX-License-Identifier: BSD-2-Clause-Patent
+
+  @par Revision Reference:
+  This Protocol is introduced in UEFI Specification 2.2
+
+**/
+
+// #ifndef __EFI_EAP_MANAGEMENT_PROTOCOL_H__
+// #define __EFI_EAP_MANAGEMENT_PROTOCOL_H__
+
+// #include <Protocol/Eap.h>
+
+public static EFI_GUID EFI_EAP_MANAGEMENT_PROTOCOL_GUID = new GUID( 
+    0xbb62e663, 0x625d, 0x40b2, new byte[] {0xa0, 0x88, 0xbb, 0xe8, 0x36, 0x23, 0xa2, 0x45 });
+
+// typedef struct _EFI_EAP_MANAGEMENT_PROTOCOL EFI_EAP_MANAGEMENT_PROTOCOL;
+
+///
+/// PAE Capabilities
+///
+///@{
+public static ulong PAE_SUPPORT_AUTHENTICATOR = 0x01;
+public static ulong PAE_SUPPORT_SUPPLICANT = 0x02;
+///@}
+
+///
+/// EFI_EAPOL_PORT_INFO
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_EAPOL_PORT_INFO {
+  ///
+  /// The identification number assigned to the Port by the System in
+  /// which the Port resides.
+  ///
+ public EFI_PORT_HANDLE    PortNumber;
+  ///
+  /// The protocol version number of the EAPOL implementation
+  /// supported by the Port.
+  ///
+ public byte              ProtocolVersion;
+  ///
+  /// The capabilities of the PAE associated with the Port. This field
+  /// indicates whether Authenticator functionality, Supplicant
+  /// functionality, both, or neither, is supported by the Port's PAE.
+  ///
+ public byte              PaeCapabilities;
+}
+
+///
+/// Supplicant PAE state machine (IEEE Std 802.1X Section 8.5.10)
+///
+typedef enum _EFI_EAPOL_SUPPLICANT_PAE_STATE {
+  Logoff,
+  Disconnected,
+  Connecting,
+  Acquired,
+  Authenticating,
+  Held,
+  Authenticated,
+  MaxSupplicantPaeState
+} EFI_EAPOL_SUPPLICANT_PAE_STATE;
+
+///
+/// Definitions for ValidFieldMask
+///
+///@{
+public static ulong AUTH_PERIOD_FIELD_VALID = 0x01;
+public static ulong HELD_PERIOD_FIELD_VALID = 0x02;
+public static ulong START_PERIOD_FIELD_VALID = 0x04;
+public static ulong MAX_START_FIELD_VALID = 0x08;
+///@}
+
+///
+/// EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION {
+  ///
+  /// Indicates which of the following fields are valid.
+  ///
+ public byte    ValidFieldMask;
+  ///
+  /// The initial value for the authWhile timer. Its default value is 30s.
+  ///
+ public ulong    AuthPeriod;
+  ///
+  /// The initial value for the heldWhile timer. Its default value is 60s.
+  ///
+ public ulong    HeldPeriod;
+  ///
+  /// The initial value for the startWhen timer. Its default value is 30s.
+  ///
+ public ulong    StartPeriod;
+  ///
+  /// The maximum number of successive EAPOL-Start messages will
+  /// be sent before the Supplicant assumes that there is no
+  /// Authenticator present. Its default value is 3.
+  ///
+ public ulong    MaxStart;
+}
+
+///
+/// Supplicant Statistics (IEEE Std 802.1X Section 9.5.2)
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_EAPOL_SUPPLICANT_PAE_STATISTICS {
+  ///
+  /// The number of EAPOL frames of any type that have been received by this Supplican.
+  ///
+ public ulong    EapolFramesReceived;
+  ///
+  /// The number of EAPOL frames of any type that have been transmitted by this Supplicant.
+  ///
+ public ulong    EapolFramesTransmitted;
+  ///
+  /// The number of EAPOL Start frames that have been transmitted by this Supplicant.
+  ///
+ public ulong    EapolStartFramesTransmitted;
+  ///
+  /// The number of EAPOL Logoff frames that have been transmitted by this Supplicant.
+  ///
+ public ulong    EapolLogoffFramesTransmitted;
+  ///
+  /// The number of EAP Resp/Id frames that have been transmitted by this Supplicant.
+  ///
+ public ulong    EapRespIdFramesTransmitted;
+  ///
+  /// The number of valid EAP Response frames (other than Resp/Id frames) that have been
+  /// transmitted by this Supplicant.
+  ///
+ public ulong    EapResponseFramesTransmitted;
+  ///
+  /// The number of EAP Req/Id frames that have been received by this Supplicant.
+  ///
+ public ulong    EapReqIdFramesReceived;
+  ///
+  /// The number of EAP Request frames (other than Rq/Id frames) that have been received
+  /// by this Supplicant.
+  ///
+ public ulong    EapRequestFramesReceived;
+  ///
+  /// The number of EAPOL frames that have been received by this Supplicant in which the
+  /// frame type is not recognized.
+  ///
+ public ulong    InvalidEapolFramesReceived;
+  ///
+  /// The number of EAPOL frames that have been received by this Supplicant in which the
+  /// Packet Body Length field (7.5.5) is invalid.
+  ///
+ public ulong    EapLengthErrorFramesReceived;
+  ///
+  /// The protocol version number carried in the most recently received EAPOL frame.
+  ///
+ public ulong    LastEapolFrameVersion;
+  ///
+  /// The source MAC address carried in the most recently received EAPOL frame.
+  ///
+ public ulong    LastEapolFrameSource;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
+/// EFI_EAP_MANAGEMENT_PROTOCOL
+/// is used to control, configure and monitor EAPOL state machine on
+/// a Port. EAPOL state machine is built on a per-Port basis. Herein,
+/// a Port means a NIC. For the details of EAPOL, please refer to
+/// IEEE 802.1x specification.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_EAP_MANAGEMENT_PROTOCOL {
+/**
+  Read the system configuration information associated with the Port.
+
+  The GetSystemConfiguration() function reads the system configuration
+  information associated with the Port, including the value of the
+  SystemAuthControl parameter of the System is returned in SystemAuthControl
+  and the Port's information is returned in the buffer pointed to by PortInfo.
+  The Port's information is optional.
+  If PortInfo is NULL, then reading the Port's information is ignored.
+
+  If SystemAuthControl is NULL, then EFI_INVALID_PARAMETER is returned.
+
+  @param[in]  This               A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+  @param[out] SystemAuthControl  Returns the value of the SystemAuthControl
+                                 parameter of the System.
+                                 TRUE means Enabled. FALSE means Disabled.
+  @param[out] PortInfo           Returns EFI_EAPOL_PORT_INFO structure to describe
+                                 the Port's information. This parameter can be NULL
+                                 to ignore reading the Port's information.
+
+  @retval EFI_SUCCESS            The system configuration information of the
+                                 Port is read successfully.
+  @retval EFI_INVALID_PARAMETER  SystemAuthControl is NULL.
+
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*,bool*,EFI_EAPOL_PORT_INFO*, EFI_STATUS> GetSystemConfiguration;
+/**
+  Set the system configuration information associated with the Port.
+
+  The SetSystemConfiguration() function sets the value of the SystemAuthControl
+  parameter of the System to SystemAuthControl.
+
+  @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+  @param[in] SystemAuthControl   The desired value of the SystemAuthControl
+                                 parameter of the System.
+                                 TRUE means Enabled. FALSE means Disabled.
+
+  @retval EFI_SUCCESS            The system configuration information of the
+                                 Port is set successfully.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*,bool, EFI_STATUS> SetSystemConfiguration;
+/**
+  Cause the EAPOL state machines for the Port to be initialized.
+
+  The InitializePort() function causes the EAPOL state machines for the Port.
+
+  @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+
+  @retval EFI_SUCCESS            The Port is initialized successfully.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_STATUS> InitializePort;
+/**
+  Notify the EAPOL state machines for the Port that the user of the System has
+  logged on.
+
+  The UserLogon() function notifies the EAPOL state machines for the Port.
+
+  @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+
+  @retval EFI_SUCCESS            The Port is notified successfully.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_STATUS> UserLogon;
+/**
+  Notify the EAPOL state machines for the Port that the user of the System has
+  logged off.
+
+  The UserLogoff() function notifies the EAPOL state machines for the Port.
+
+  @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+
+  @retval EFI_SUCCESS            The Port is notified successfully.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_STATUS> UserLogoff;
+/**
+  Read the status of the Supplicant PAE state machine for the Port, including the
+  current state and the configuration of the operational parameters.
+
+  The GetSupplicantStatus() function reads the status of the Supplicant PAE state
+  machine for the Port, including the current state CurrentState  and the configuration
+  of the operational parameters Configuration. The configuration of the operational
+  parameters is optional. If Configuration is NULL, then reading the configuration
+  is ignored. The operational parameters in Configuration to be read can also be
+  specified by Configuration.ValidFieldMask.
+
+  If CurrentState is NULL, then EFI_INVALID_PARAMETER is returned.
+
+  @param[in]      This           A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+  @param[out]     CurrentState   Returns the current state of the Supplicant PAE
+                                 state machine for the Port.
+  @param[in, out] Configuration  Returns the configuration of the operational
+                                 parameters of the Supplicant PAE state machine
+                                 for the Port as required. This parameter can be
+                                 NULL to ignore reading the configuration.
+                                 On input, Configuration.ValidFieldMask specifies the
+                                 operational parameters to be read.
+                                 On output, Configuration returns the configuration
+                                 of the required operational parameters.
+
+  @retval EFI_SUCCESS            The configuration of the operational parameter
+                                 of the Supplicant PAE state machine for the Port
+                                 is set successfully.
+  @retval EFI_INVALID_PARAMETER  CurrentState is NULL.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*,EFI_EAPOL_SUPPLICANT_PAE_STATE*,EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION*, EFI_STATUS> GetSupplicantStatus;
+/**
+  Set the configuration of the operational parameter of the Supplicant PAE
+  state machine for the Port.
+
+  The SetSupplicantConfiguration() function sets the configuration of the
+  operational Parameter of the Supplicant PAE state machine for the Port to
+  Configuration. The operational parameters in Configuration to be set can be
+  specified by Configuration.ValidFieldMask.
+
+  If Configuration is NULL, then EFI_INVALID_PARAMETER is returned.
+
+  @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+  @param[in] Configuration       The desired configuration of the operational
+                                 parameters of the Supplicant PAE state machine
+                                 for the Port as required.
+
+  @retval EFI_SUCCESS            The configuration of the operational parameter
+                                 of the Supplicant PAE state machine for the Port
+                                 is set successfully.
+  @retval EFI_INVALID_PARAMETER  Configuration is NULL.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*,EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION*, EFI_STATUS> SetSupplicantConfiguration;
+/**
+  Read the statistical information regarding the operation of the Supplicant
+  associated with the Port.
+
+  The GetSupplicantStatistics() function reads the statistical information
+  Statistics regarding the operation of the Supplicant associated with the Port.
+
+  If Statistics is NULL, then EFI_INVALID_PARAMETER is returned.
+
+  @param[in]  This               A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+                                 instance that indicates the calling context.
+  @param[out] Statistics         Returns the statistical information regarding the
+                                 operation of the Supplicant for the Port.
+
+  @retval EFI_SUCCESS            The statistical information regarding the operation
+                                 of the Supplicant for the Port is read successfully.
+  @retval EFI_INVALID_PARAMETER  Statistics is NULL.
+
+**/
+public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*,EFI_EAPOL_SUPPLICANT_PAE_STATISTICS*, EFI_STATUS> GetSupplicantStatistics;
+}
+
+// extern EFI_GUID  gEfiEapManagementProtocolGuid;
+
+// #endif

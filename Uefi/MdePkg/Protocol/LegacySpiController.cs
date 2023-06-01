@@ -1,0 +1,387 @@
+namespace Uefi;
+/** @file
+  This file defines the Legacy SPI Controller Protocol.
+
+  Copyright (c) 2017, Intel Corporation. All rights reserved.<BR>
+  SPDX-License-Identifier: BSD-2-Clause-Patent
+
+  @par Revision Reference:
+    This Protocol was introduced in UEFI PI Specification 1.6.
+
+**/
+
+// #ifndef __LEGACY_SPI_CONTROLLER_PROTOCOL_H__
+// #define __LEGACY_SPI_CONTROLLER_PROTOCOL_H__
+
+///
+/// Note: The UEFI PI 1.6 specification uses the character 'l' in the GUID
+///       definition. This definition assumes it was supposed to be '1'.
+///
+/// Global ID for the Legacy SPI Controller Protocol
+///
+public static EFI_GUID EFI_LEGACY_SPI_CONTROLLER_GUID = new GUID( 0x39136fc7, 0x1a11, 0x49de,         
+    { 0xbf, 0x35, 0x0e, 0x78, 0xdd, 0xb5, 0x24, 0xfc });
+
+typedef
+  struct _EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
+EFI_LEGACY_SPI_CONTROLLER_PROTOCOL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///
+/// Support the extra features of the legacy SPI flash controller.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_LEGACY_SPI_CONTROLLER_PROTOCOL {
+  ///
+  /// Maximum offset from the BIOS base address that is able to be protected.
+  ///
+ public uint                                                    MaximumOffset;
+
+  ///
+  /// Maximum number of bytes that can be protected by one range register.
+  ///
+ public uint                                                    MaximumRangeBytes;
+
+  ///
+  /// The number of registers available for protecting the BIOS.
+  ///
+ public uint                                                    RangeRegisterCount;
+
+  ///
+  /// Set the erase block opcode.
+  ///
+/**
+  Set the erase block opcode.
+
+  This routine must be called at or below TPL_NOTIFY.
+  The menu table contains SPI transaction opcodes which are accessible after
+  the legacy SPI flash controller's configuration is locked. The board layer
+  specifies the erase block size for the SPI NOR flash part. The SPI NOR flash
+  peripheral driver selects the erase block opcode which matches the erase
+  block size and uses this API to load the opcode into the opcode menu table.
+
+  @param[in] This              Pointer to an EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
+                               structure.
+  @param[in] EraseBlockOpcode  Erase block opcode to be placed into the opcode
+                               menu table.
+
+  @retval EFI_SUCCESS       The opcode menu table was updated
+  @retval EFI_ACCESS_ERROR  The SPI controller is locked
+
+**/
+public readonly delegate* unmanaged<byte, EFI_STATUS> EraseBlockOpcode;
+
+  ///
+  /// Set the write status prefix opcode.
+  ///
+/**
+  Set the write status prefix opcode.
+
+  This routine must be called at or below TPL_NOTIFY.
+  The prefix table contains SPI transaction write prefix opcodes which are
+  accessible after the legacy SPI flash controller's configuration is locked.
+  The board layer specifies the write status prefix opcode for the SPI NOR
+  flash part. The SPI NOR flash peripheral driver uses this API to load the
+  opcode into the prefix table.
+
+  @param[in] This               Pointer to an
+                                EFI_LEGACY_SPI_CONTROLLER_PROTOCOL structure.
+  @param[in] WriteStatusPrefix  Prefix opcode for the write status command.
+
+  @retval EFI_SUCCESS       The prefix table was updated
+  @retval EFI_ACCESS_ERROR  The SPI controller is locked
+
+**/
+public readonly delegate* unmanaged<CONST,byte, EFI_STATUS> WriteStatusPrefix;
+
+  ///
+  /// Set the BIOS base address.
+  ///
+/**
+  Set the BIOS base address.
+
+  This routine must be called at or below TPL_NOTIFY.
+  The BIOS base address works with the protect range registers to protect
+  portions of the SPI NOR flash from erase and write operat ions. The BIOS
+  calls this API prior to passing control to the OS loader.
+
+  @param[in] This             Pointer to an EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
+                              structure.
+  @param[in] BiosBaseAddress  The BIOS base address.
+
+  @retval EFI_SUCCESS            The BIOS base address was properly set
+  @retval EFI_ACCESS_ERROR       The SPI controller is locked
+  @retval EFI_INVALID_PARAMETER  The BIOS base address is greater than
+                                 This->Maxi.mumOffset
+  @retval EFI_UNSUPPORTED        The BIOS base address was already set
+
+**/
+public readonly delegate* unmanaged<uint, EFI_STATUS> BiosBaseAddress;
+
+  ///
+  /// Clear the SPI protect range registers.
+  ///
+/**
+  Clear the SPI protect range registers.
+
+  This routine must be called at or below TPL_NOTIFY.
+  The BIOS uses this routine to set an initial condition on the SPI protect
+  range registers.
+
+  @param[in] This  Pointer to an EFI_LEGACY_SPI_CONTROLLER_PROTOCOL structure.
+
+  @retval EFI_SUCCESS       The registers were successfully cleared
+  @retval EFI_ACCESS_ERROR  The SPI controller is locked
+
+**/
+public readonly delegate* unmanaged<CONST, EFI_STATUS> ClearSpiProtect;
+
+  ///
+  /// Determine if the SPI range is protected.
+  ///
+/**
+  Determine if the SPI range is protected.
+
+  This routine must be called at or below TPL_NOTIFY.
+  The BIOS uses this routine to verify a range in the SPI is protected.
+
+  @param[in] This            Pointer to an EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
+                             structure.
+  @param[in] BiosAddress     Address within a 4 KiB block to start protecting.
+  @param[in] BytesToProtect  The number of 4 KiB blocks to protect.
+
+  @retval TRUE   The range is protected
+  @retval FALSE  The range is not protected
+
+**/
+public readonly delegate* unmanaged<CONST,uint,uint, EFI_STATUS> IsRangeProtected;
+
+  ///
+  /// Set the next protect range register.
+  ///
+/**
+  Set the next protect range register.
+
+  This routine must be called at or below TPL_NOTIFY.
+  The BIOS sets the protect range register to prevent write and erase
+  operations to a portion of the SPI NOR flash device.
+
+  @param[in] This             Pointer to an EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
+                              structure.
+  @param[in] BiosAddress      Address within a 4 KiB block to start protecting.
+  @param[in] BlocksToProtect  The number of 4 KiB blocks to protect.
+
+  @retval EFI_SUCCESS            The register was successfully updated
+  @retval EFI_ACCESS_ERROR       The SPI controller is locked
+  @retval EFI_INVALID_PARAMETER  BiosAddress < This->BiosBaseAddress, or
+                                 BlocksToProtect * 4 KiB
+                                   > This->MaximumRangeBytes, or
+                                 BiosAddress - This->BiosBaseAddress
+                                   + (BlocksToProtect * 4 KiB)
+                                     > This->MaximumRangeBytes
+  @retval EFI_OUT_OF_RESOURCES  No protect range register available
+  @retval EFI_UNSUPPORTED       Call This->SetBaseAddress because the BIOS base
+                                address is not set
+
+**/
+public readonly delegate* unmanaged<CONST,uint,uint, EFI_STATUS> ProtectNextRange;
+
+  ///
+  /// Lock the SPI controller configuration.
+  ///
+/**
+  Lock the SPI controller configuration.
+
+  This routine must be called at or below TPL_NOTIFY.
+  This routine locks the SPI controller's configuration so that the software
+  is no longer able to update:
+  * Prefix table
+  * Opcode menu
+  * Opcode type table
+  * BIOS base address
+  * Protect range registers
+
+  @param[in] This  Pointer to an EFI_LEGACY_SPI_CONTROLLER_PROTOCOL structure.
+
+  @retval EFI_SUCCESS          The SPI controller was successfully locked
+  @retval EFI_ALREADY_STARTED  The SPI controller was already locked
+
+**/
+public readonly delegate* unmanaged<, EFI_STATUS> LockController;
+}
+
+// extern EFI_GUID  gEfiLegacySpiControllerProtocolGuid;
+
+// #endif // __LEGACY_SPI_CONTROLLER_PROTOCOL_H__
