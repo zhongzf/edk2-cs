@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI ARP Protocol Definition
@@ -19,11 +21,14 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_ARP_PROTOCOL_H__
 // #define __EFI_ARP_PROTOCOL_H__
 
-public static EFI_GUID EFI_ARP_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_ARP_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
     0xf44c00ee, 0x1f2c, 0x4a00, new byte[] { 0xaa, 0x9, 0x1c, 0x9f, 0x3e, 0x8, 0x0, 0xa3 });
 
-public static EFI_GUID EFI_ARP_PROTOCOL_GUID = new GUID(
-    0xf4b427bb, 0xba21, 0x4f16, new byte[] { 0xbc, 0x4e, 0x43, 0xe4, 0x16, 0xab, 0x61, 0x9c });
+  public static EFI_GUID EFI_ARP_PROTOCOL_GUID = new GUID(
+      0xf4b427bb, 0xba21, 0x4f16, new byte[] { 0xbc, 0x4e, 0x43, 0xe4, 0x16, 0xab, 0x61, 0x9c });
+}
 
 // typedef struct _EFI_ARP_PROTOCOL EFI_ARP_PROTOCOL;
 

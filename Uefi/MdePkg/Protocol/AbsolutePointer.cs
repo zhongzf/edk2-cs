@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The file provides services that allow information about an
@@ -14,7 +16,10 @@ namespace Uefi;
 // #ifndef __ABSOLUTE_POINTER_H__
 // #define __ABSOLUTE_POINTER_H__
 
-public static EFI_GUID EFI_ABSOLUTE_POINTER_PROTOCOL_GUID = new GUID(0x8D59D32B, 0xC655, 0x4AE9, new byte[] { 0x9B, 0x15, 0xF2, 0x59, 0x04, 0x99, 0x2A, 0x43 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_ABSOLUTE_POINTER_PROTOCOL_GUID = new GUID(0x8D59D32B, 0xC655, 0x4AE9, new byte[] { 0x9B, 0x15, 0xF2, 0x59, 0x04, 0x99, 0x2A, 0x43 });
+}
 
 // typedef struct _EFI_ABSOLUTE_POINTER_PROTOCOL EFI_ABSOLUTE_POINTER_PROTOCOL;
 
@@ -44,16 +49,18 @@ public unsafe struct EFI_ABSOLUTE_POINTER_MODE
                             ///< and should be 0
 }
 
-///
-/// If set, indicates this device supports an alternate button input.
-///
-public const ulong EFI_ABSP_SupportsAltActive = 0x00000001;
+public unsafe partial class EFI
+{
+  ///
+  /// If set, indicates this device supports an alternate button input.
+  ///
+  public const ulong EFI_ABSP_SupportsAltActive = 0x00000001;
 
-///
-/// If set, indicates this device returns pressure data in parameter CurrentZ.
-///
-public const ulong EFI_ABSP_SupportsPressureAsZ = 0x00000002;
-
+  ///
+  /// If set, indicates this device returns pressure data in parameter CurrentZ.
+  ///
+  public const ulong EFI_ABSP_SupportsPressureAsZ = 0x00000002;
+}
 
 
 

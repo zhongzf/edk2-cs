@@ -15,29 +15,39 @@ namespace Uefi;
 // #ifndef __ACPI_SYSTEM_DESCRIPTION_TABLE_H___
 // #define __ACPI_SYSTEM_DESCRIPTION_TABLE_H___
 
-public static EFI_GUID EFI_ACPI_SDT_PROTOCOL_GUID = new GUID(0xeb97088e, 0xcfdf, 0x49c6, new byte[] { 0xbe, 0x4b, 0xd9, 0x6, 0xa5, 0xb2, 0xe, 0x86 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_ACPI_SDT_PROTOCOL_GUID = new GUID(0xeb97088e, 0xcfdf, 0x49c6, new byte[] { 0xbe, 0x4b, 0xd9, 0x6, 0xa5, 0xb2, 0xe, 0x86 });
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_TABLE_VERSION { uint Value; public static implicit operator EFI_ACPI_TABLE_VERSION(uint value) => new EFI_ACPI_TABLE_VERSION() { Value = value }; public static implicit operator uint(EFI_ACPI_TABLE_VERSION value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_HANDLE { void* Value; public static implicit operator EFI_ACPI_HANDLE(void* value) => new EFI_ACPI_HANDLE() { Value = value }; public static implicit operator void*(EFI_ACPI_HANDLE value) => value.Value; }
 
-public const ulong EFI_ACPI_TABLE_VERSION_NONE = (1 << 0);
-public const ulong EFI_ACPI_TABLE_VERSION_1_0B = (1 << 1);
-public const ulong EFI_ACPI_TABLE_VERSION_2_0 = (1 << 2);
-public const ulong EFI_ACPI_TABLE_VERSION_3_0 = (1 << 3);
-public const ulong EFI_ACPI_TABLE_VERSION_4_0 = (1 << 4);
-public const ulong EFI_ACPI_TABLE_VERSION_5_0 = (1 << 5);
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_TABLE_VERSION_NONE = (1 << 0);
+  public const ulong EFI_ACPI_TABLE_VERSION_1_0B = (1 << 1);
+  public const ulong EFI_ACPI_TABLE_VERSION_2_0 = (1 << 2);
+  public const ulong EFI_ACPI_TABLE_VERSION_3_0 = (1 << 3);
+  public const ulong EFI_ACPI_TABLE_VERSION_4_0 = (1 << 4);
+  public const ulong EFI_ACPI_TABLE_VERSION_5_0 = (1 << 5);
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_DATA_TYPE { uint Value; public static implicit operator EFI_ACPI_DATA_TYPE(uint value) => new EFI_ACPI_DATA_TYPE() { Value = value }; public static implicit operator uint(EFI_ACPI_DATA_TYPE value) => value.Value; }
-public const ulong EFI_ACPI_DATA_TYPE_NONE = 0;
-public const ulong EFI_ACPI_DATA_TYPE_OPCODE = 1;
-public const ulong EFI_ACPI_DATA_TYPE_NAME_STRING = 2;
-public const ulong EFI_ACPI_DATA_TYPE_OP = 3;
-public const ulong EFI_ACPI_DATA_TYPE_UINT = 4;
-public const ulong EFI_ACPI_DATA_TYPE_STRING = 5;
-public const ulong EFI_ACPI_DATA_TYPE_CHILD = 6;
+
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_DATA_TYPE_NONE = 0;
+  public const ulong EFI_ACPI_DATA_TYPE_OPCODE = 1;
+  public const ulong EFI_ACPI_DATA_TYPE_NAME_STRING = 2;
+  public const ulong EFI_ACPI_DATA_TYPE_OP = 3;
+  public const ulong EFI_ACPI_DATA_TYPE_UINT = 4;
+  public const ulong EFI_ACPI_DATA_TYPE_STRING = 5;
+  public const ulong EFI_ACPI_DATA_TYPE_CHILD = 6;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_SDT_HEADER

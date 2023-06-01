@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_AUTHENTICATION_INFO_PROTOCOL as defined in UEFI 2.0.
@@ -12,14 +14,17 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __AUTHENTICATION_INFO_H__
 // #define __AUTHENTICATION_INFO_H__
 
-public static EFI_GUID EFI_AUTHENTICATION_INFO_PROTOCOL_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_AUTHENTICATION_INFO_PROTOCOL_GUID = new GUID(
     0x7671d9d0, 0x53db, 0x4173, new byte[] { 0xaa, 0x69, 0x23, 0x27, 0xf2, 0x1f, 0x0b, 0xc7 });
 
-public static EFI_GUID EFI_AUTHENTICATION_CHAP_RADIUS_GUID = new GUID(
-    0xd6062b50, 0x15ca, 0x11da, new byte[] { 0x92, 0x19, 0x00, 0x10, 0x83, 0xff, 0xca, 0x4d });
+  public static EFI_GUID EFI_AUTHENTICATION_CHAP_RADIUS_GUID = new GUID(
+      0xd6062b50, 0x15ca, 0x11da, new byte[] { 0x92, 0x19, 0x00, 0x10, 0x83, 0xff, 0xca, 0x4d });
 
-public static EFI_GUID EFI_AUTHENTICATION_CHAP_LOCAL_GUID = new GUID(
-    0xc280c73e, 0x15ca, 0x11da, new byte[] { 0xb0, 0xca, 0x00, 0x10, 0x83, 0xff, 0xca, 0x4d });
+  public static EFI_GUID EFI_AUTHENTICATION_CHAP_LOCAL_GUID = new GUID(
+      0xc280c73e, 0x15ca, 0x11da, new byte[] { 0xb0, 0xca, 0x00, 0x10, 0x83, 0xff, 0xca, 0x4d });
+}
 
 // typedef struct _EFI_AUTHENTICATION_INFO_PROTOCOL EFI_AUTHENTICATION_INFO_PROTOCOL;
 

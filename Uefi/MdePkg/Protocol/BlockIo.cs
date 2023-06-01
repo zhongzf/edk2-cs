@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Block IO protocol as defined in the UEFI 2.0 specification.
@@ -13,15 +15,18 @@ namespace Uefi;
 // #ifndef __BLOCK_IO_H__
 // #define __BLOCK_IO_H__
 
-public static EFI_GUID EFI_BLOCK_IO_PROTOCOL_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BLOCK_IO_PROTOCOL_GUID = new GUID(
     0x964e5b21, 0x6459, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+}
 
 // typedef struct _EFI_BLOCK_IO_PROTOCOL EFI_BLOCK_IO_PROTOCOL;
 
-///
-/// Protocol GUID name defined in EFI1.1.
-///
-public const ulong BLOCK_IO_PROTOCOL = EFI_BLOCK_IO_PROTOCOL_GUID;
+/////
+///// Protocol GUID name defined in EFI1.1.
+/////
+//public const ulong BLOCK_IO_PROTOCOL = EFI_BLOCK_IO_PROTOCOL_GUID;
 
 ///
 /// Protocol defined in EFI1.1.

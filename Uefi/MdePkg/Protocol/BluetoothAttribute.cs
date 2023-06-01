@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Bluetooth Attribute Protocol as defined in UEFI 2.7.
@@ -15,11 +17,14 @@ namespace Uefi;
 // #ifndef __EFI_BLUETOOTH_ATTRIBUTE_H__
 // #define __EFI_BLUETOOTH_ATTRIBUTE_H__
 
-public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
     0x5639867a, 0x8c8e, 0x408d, new byte[] { 0xac, 0x2f, 0x4b, 0x61, 0xbd, 0xc0, 0xbb, 0xbb });
 
-public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL_GUID = new GUID(
-    0x898890e9, 0x84b2, 0x4f3a, new byte[] { 0x8c, 0x58, 0xd8, 0x57, 0x78, 0x13, 0xe0, 0xac });
+  public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL_GUID = new GUID(
+      0x898890e9, 0x84b2, 0x4f3a, new byte[] { 0x8c, 0x58, 0xd8, 0x57, 0x78, 0x13, 0xe0, 0xac });
+}
 
 // typedef struct _EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL;
 
@@ -39,11 +44,14 @@ public unsafe struct Data
 }
 } EFI_BLUETOOTH_UUID;
 
-public const ulong UUID_16BIT_TYPE_LEN = 2;
-public const ulong UUID_32BIT_TYPE_LEN = 4;
-public const ulong UUID_128BIT_TYPE_LEN = 16;
+public unsafe partial class EFI
+{
+  public const ulong UUID_16BIT_TYPE_LEN = 2;
+  public const ulong UUID_32BIT_TYPE_LEN = 4;
+  public const ulong UUID_128BIT_TYPE_LEN = 16;
+}
 
-public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
+//public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
 
 //
 // Bluetooth Attribute Permission

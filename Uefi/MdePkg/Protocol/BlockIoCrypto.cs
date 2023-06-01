@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The UEFI Inline Cryptographic Interface protocol provides services to abstract
@@ -16,8 +18,11 @@ namespace Uefi;
 
 // #include <Protocol/BlockIo.h>
 
-public static EFI_GUID EFI_BLOCK_IO_CRYPTO_PROTOCOL_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BLOCK_IO_CRYPTO_PROTOCOL_GUID = new GUID(
       0xa00490ba, 0x3f1a, 0x4b4c, new byte[] { 0xab, 0x90, 0x4f, 0xa9, 0x97, 0x26, 0xa1, 0xe8 });
+}
 
 // typedef struct _EFI_BLOCK_IO_CRYPTO_PROTOCOL EFI_BLOCK_IO_CRYPTO_PROTOCOL;
 
@@ -71,8 +76,11 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_IV_INPUT
   public ulong InputSize;
 }
 
-public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
       0x2f87ba6a, 0x5c04, 0x4385, new byte[] { 0xa7, 0x80, 0xf3, 0xbf, 0x78, 0xa9, 0x7b, 0xec });
+}
 
 // extern EFI_GUID  gEfiBlockIoCryptoAlgoAesXtsGuid;
 
@@ -84,8 +92,11 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_IV_INPUT_AES_XTS
   public ulong CryptoBlockByteSize;
 }
 
-public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
       0x689e4c62, 0x70bf, 0x4cf3, new byte[] { 0x88, 0xbb, 0x33, 0xb3, 0x18, 0x26, 0x86, 0x70 });
+}
 
 // extern EFI_GUID  gEfiBlockIoCryptoAlgoAesCbcMsBitlockerGuid;
 
@@ -97,7 +108,10 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_IV_INPUT_AES_CBC_MICROSOFT_BITLOCKER
   public ulong CryptoBlockByteSize;
 }
 
-public const ulong EFI_BLOCK_IO_CRYPTO_INDEX_ANY = 0xFFFFFFFFFFFFFFFF;
+public unsafe partial class EFI
+{
+  public const ulong EFI_BLOCK_IO_CRYPTO_INDEX_ANY = 0xFFFFFFFFFFFFFFFF;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLOCK_IO_CRYPTO_CAPABILITIES
