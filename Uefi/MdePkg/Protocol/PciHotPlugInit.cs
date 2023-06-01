@@ -56,8 +56,8 @@ namespace Uefi;
 ///
 /// Global ID for the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
 ///
-public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID( 
-    0xaa0e8bc1, 0xdabc, 0x46b0, new byte[] {0xa8, 0x44, 0x37, 0xb8, 0x16, 0x9b, 0x2b, 0xea });
+public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID(
+    0xaa0e8bc1, 0xdabc, 0x46b0, new byte[] { 0xa8, 0x44, 0x37, 0xb8, 0x16, 0x9b, 0x2b, 0xea });
 
 ///
 /// Forward declaration for EFI_PCI_HOT_PLUG_INIT_PROTOCOL
@@ -68,7 +68,7 @@ public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID(
 /// Describes the current state of an HPC
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HPC_STATE { ushort Value; public static implicit operator EFI_HPC_STATE(ushort value) => new EFI_HPC_STATE() { Value = value }; public static implicit operator ushort(EFI_HPC_STATE value) => value.Value;}
+public unsafe struct EFI_HPC_STATE { ushort Value; public static implicit operator EFI_HPC_STATE(ushort value) => new EFI_HPC_STATE() { Value = value }; public static implicit operator ushort(EFI_HPC_STATE value) => value.Value; }
 
 ///
 /// The HPC initialization function was called and the HPC completed
@@ -88,7 +88,8 @@ public static ulong EFI_HPC_STATE_ENABLED = 0x02;
 /// Location definition for PCI Hot Plug Controller
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HPC_LOCATION {
+public unsafe struct EFI_HPC_LOCATION
+{
   ///
   ///
   /// The device path to the root HPC. An HPC cannot control its parent buses.
@@ -96,7 +97,7 @@ public unsafe struct EFI_HPC_LOCATION {
   /// correct HpcPciAddress to the InitializeRootHpc() and GetResourcePadding()
   /// functions.
   ///
- public EFI_DEVICE_PATH_PROTOCOL    *HpcDevicePath;
+  public EFI_DEVICE_PATH_PROTOCOL* HpcDevicePath;
   ///
   /// The device path to the Hot Plug Bus (HPB) that is controlled by the root
   /// HPC. The PCI bus driver uses this information to check if a particular PCI
@@ -104,13 +105,14 @@ public unsafe struct EFI_HPC_LOCATION {
   /// device path of its parent. For Standard(PCI) Hot Plug Controllers (SHPCs)
   /// and PCI Express*, HpbDevicePath is the same as HpcDevicePath.
   ///
- public EFI_DEVICE_PATH_PROTOCOL    *HpbDevicePath;
+  public EFI_DEVICE_PATH_PROTOCOL* HpbDevicePath;
 }
 
 ///
 /// Describes how resource padding should be applied
 ///
-public enum EFI_HPC_PADDING_ATTRIBUTES {
+public enum EFI_HPC_PADDING_ATTRIBUTES
+{
   ///
   /// Apply the padding at a PCI bus level. In other words, the resources
   /// that are allocated to the bus containing hot-plug slots are padded by
@@ -252,107 +254,108 @@ public enum EFI_HPC_PADDING_ATTRIBUTES {
 /// also provides information regarding resource padding.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PCI_HOT_PLUG_INIT_PROTOCOL {
+public unsafe struct EFI_PCI_HOT_PLUG_INIT_PROTOCOL
+{
   ///
   /// Returns a list of root HPCs and the buses that they control.
   ///
-/**
-  Returns a list of root Hot Plug Controllers (HPCs) that require initialization
-  during the boot process.
+  /**
+    Returns a list of root Hot Plug Controllers (HPCs) that require initialization
+    during the boot process.
 
-  This procedure returns a list of root HPCs. The PCI bus driver must initialize
-  these controllers during the boot process. The PCI bus driver may or may not be
-  able to detect these HPCs. If the platform includes a PCI-to-CardBus bridge, it
-  can be included in this list if it requires initialization.  The HpcList must be
-  self consistent. An HPC cannot control any of its parent buses. Only one HPC can
-  control a PCI bus. Because this list includes only root HPCs, no HPC in the list
-  can be a child of another HPC. This policy must be enforced by the
-  EFI_PCI_HOT_PLUG_INIT_PROTOCOL.   The PCI bus driver may not check for such
-  invalid conditions.  The callee allocates the buffer HpcList
+    This procedure returns a list of root HPCs. The PCI bus driver must initialize
+    these controllers during the boot process. The PCI bus driver may or may not be
+    able to detect these HPCs. If the platform includes a PCI-to-CardBus bridge, it
+    can be included in this list if it requires initialization.  The HpcList must be
+    self consistent. An HPC cannot control any of its parent buses. Only one HPC can
+    control a PCI bus. Because this list includes only root HPCs, no HPC in the list
+    can be a child of another HPC. This policy must be enforced by the
+    EFI_PCI_HOT_PLUG_INIT_PROTOCOL.   The PCI bus driver may not check for such
+    invalid conditions.  The callee allocates the buffer HpcList
 
-  @param[in]  This       Pointer to the EFI_PCI_HOT_PLUG_INIT_PROTOCOL instance.
-  @param[out] HpcCount   The number of root HPCs that were returned.
-  @param[out] HpcList    The list of root HPCs. HpcCount defines the number of
-                         elements in this list.
+    @param[in]  This       Pointer to the EFI_PCI_HOT_PLUG_INIT_PROTOCOL instance.
+    @param[out] HpcCount   The number of root HPCs that were returned.
+    @param[out] HpcList    The list of root HPCs. HpcCount defines the number of
+                           elements in this list.
 
-  @retval EFI_SUCCESS             HpcList was returned.
-  @retval EFI_OUT_OF_RESOURCES    HpcList was not returned due to insufficient
-                                  resources.
-  @retval EFI_INVALID_PARAMETER   HpcCount is NULL or HpcList is NULL.
+    @retval EFI_SUCCESS             HpcList was returned.
+    @retval EFI_OUT_OF_RESOURCES    HpcList was not returned due to insufficient
+                                    resources.
+    @retval EFI_INVALID_PARAMETER   HpcCount is NULL or HpcList is NULL.
 
-**/
-public readonly delegate* unmanaged<EFI_PCI_HOT_PLUG_INIT_PROTOCOL*,ulong*,EFI_HPC_LOCATION**, EFI_STATUS> GetRootHpcList;
+  **/
+  public readonly delegate* unmanaged<EFI_PCI_HOT_PLUG_INIT_PROTOCOL*, ulong*, EFI_HPC_LOCATION**, EFI_STATUS> GetRootHpcList;
 
   ///
   /// Initializes the specified root HPC.
   ///
-/**
-  Initializes one root Hot Plug Controller (HPC). This process may causes
-  initialization of its subordinate buses.
+  /**
+    Initializes one root Hot Plug Controller (HPC). This process may causes
+    initialization of its subordinate buses.
 
-  This function initializes the specified HPC. At the end of initialization,
-  the hot-plug slots or sockets (controlled by this HPC) are powered and are
-  connected to the bus. All the necessary registers in the HPC are set up. For
-  a Standard (PCI) Hot Plug Controller (SHPC), the registers that must be set
-  up are defined in the PCI Standard Hot Plug Controller and Subsystem
-  Specification.
+    This function initializes the specified HPC. At the end of initialization,
+    the hot-plug slots or sockets (controlled by this HPC) are powered and are
+    connected to the bus. All the necessary registers in the HPC are set up. For
+    a Standard (PCI) Hot Plug Controller (SHPC), the registers that must be set
+    up are defined in the PCI Standard Hot Plug Controller and Subsystem
+    Specification.
 
-  @param[in]  This            Pointer to the EFI_PCI_HOT_PLUG_INIT_PROTOCOL instance.
-  @param[in]  HpcDevicePath   The device path to the HPC that is being initialized.
-  @param[in]  HpcPciAddress   The address of the HPC function on the PCI bus.
-  @param[in]  Event           The event that should be signaled when the HPC
-                              initialization is complete.  Set to NULL if the
-                              caller wants to wait until the entire initialization
-                              process is complete.
-  @param[out] HpcState        The state of the HPC hardware. The state is
-                              EFI_HPC_STATE_INITIALIZED or EFI_HPC_STATE_ENABLED.
+    @param[in]  This            Pointer to the EFI_PCI_HOT_PLUG_INIT_PROTOCOL instance.
+    @param[in]  HpcDevicePath   The device path to the HPC that is being initialized.
+    @param[in]  HpcPciAddress   The address of the HPC function on the PCI bus.
+    @param[in]  Event           The event that should be signaled when the HPC
+                                initialization is complete.  Set to NULL if the
+                                caller wants to wait until the entire initialization
+                                process is complete.
+    @param[out] HpcState        The state of the HPC hardware. The state is
+                                EFI_HPC_STATE_INITIALIZED or EFI_HPC_STATE_ENABLED.
 
-  @retval EFI_SUCCESS             If Event is NULL, the specific HPC was successfully
-                                  initialized. If Event is not NULL, Event will be
-                                  signaled at a later time when initialization is complete.
-  @retval EFI_UNSUPPORTED         This instance of EFI_PCI_HOT_PLUG_INIT_PROTOCOL
-                                  does not support the specified HPC.
-  @retval EFI_OUT_OF_RESOURCES    Initialization failed due to insufficient
-                                  resources.
-  @retval EFI_INVALID_PARAMETER   HpcState is NULL.
+    @retval EFI_SUCCESS             If Event is NULL, the specific HPC was successfully
+                                    initialized. If Event is not NULL, Event will be
+                                    signaled at a later time when initialization is complete.
+    @retval EFI_UNSUPPORTED         This instance of EFI_PCI_HOT_PLUG_INIT_PROTOCOL
+                                    does not support the specified HPC.
+    @retval EFI_OUT_OF_RESOURCES    Initialization failed due to insufficient
+                                    resources.
+    @retval EFI_INVALID_PARAMETER   HpcState is NULL.
 
-**/
-public readonly delegate* unmanaged<EFI_PCI_HOT_PLUG_INIT_PROTOCOL*,EFI_DEVICE_PATH_PROTOCOL*,ulong,EFI_EVENT,EFI_HPC_STATE*, EFI_STATUS> InitializeRootHpc;
+  **/
+  public readonly delegate* unmanaged<EFI_PCI_HOT_PLUG_INIT_PROTOCOL*, EFI_DEVICE_PATH_PROTOCOL*, ulong, EFI_EVENT, EFI_HPC_STATE*, EFI_STATUS> InitializeRootHpc;
 
   ///
   /// Returns the resource padding that is required by the HPC.
   ///
-/**
-  Returns the resource padding that is required by the PCI bus that is controlled
-  by the specified Hot Plug Controller (HPC).
+  /**
+    Returns the resource padding that is required by the PCI bus that is controlled
+    by the specified Hot Plug Controller (HPC).
 
-  This function returns the resource padding that is required by the PCI bus that
-  is controlled by the specified HPC. This member function is called for all the
-  root HPCs and nonroot HPCs that are detected by the PCI bus enumerator. This
-  function will be called before PCI resource allocation is completed. This function
-  must be called after all the root HPCs, with the possible exception of a
-  PCI-to-CardBus bridge, have completed initialization.
+    This function returns the resource padding that is required by the PCI bus that
+    is controlled by the specified HPC. This member function is called for all the
+    root HPCs and nonroot HPCs that are detected by the PCI bus enumerator. This
+    function will be called before PCI resource allocation is completed. This function
+    must be called after all the root HPCs, with the possible exception of a
+    PCI-to-CardBus bridge, have completed initialization.
 
-  @param[in]  This            Pointer to the EFI_PCI_HOT_PLUG_INIT_PROTOCOL instance.
-  @param[in]  HpcDevicePath   The device path to the HPC.
-  @param[in]  HpcPciAddress   The address of the HPC function on the PCI bus.
-  @param[in]  HpcState        The state of the HPC hardware.
-  @param[out] Padding         The amount of resource padding that is required by the
-                              PCI bus under the control of the specified HPC.
-  @param[out] Attributes      Describes how padding is accounted for. The padding
-                              is returned in the form of ACPI 2.0 resource descriptors.
+    @param[in]  This            Pointer to the EFI_PCI_HOT_PLUG_INIT_PROTOCOL instance.
+    @param[in]  HpcDevicePath   The device path to the HPC.
+    @param[in]  HpcPciAddress   The address of the HPC function on the PCI bus.
+    @param[in]  HpcState        The state of the HPC hardware.
+    @param[out] Padding         The amount of resource padding that is required by the
+                                PCI bus under the control of the specified HPC.
+    @param[out] Attributes      Describes how padding is accounted for. The padding
+                                is returned in the form of ACPI 2.0 resource descriptors.
 
-  @retval EFI_SUCCESS             The resource padding was successfully returned.
-  @retval EFI_UNSUPPORTED         This instance of the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
-                                  does not support the specified HPC.
-  @retval EFI_NOT_READY           This function was called before HPC initialization
-                                  is complete.
-  @retval EFI_INVALID_PARAMETER   HpcState or Padding or Attributes is NULL.
-  @retval EFI_OUT_OF_RESOURCES    ACPI 2.0 resource descriptors for Padding
-                                  cannot be allocated due to insufficient resources.
+    @retval EFI_SUCCESS             The resource padding was successfully returned.
+    @retval EFI_UNSUPPORTED         This instance of the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
+                                    does not support the specified HPC.
+    @retval EFI_NOT_READY           This function was called before HPC initialization
+                                    is complete.
+    @retval EFI_INVALID_PARAMETER   HpcState or Padding or Attributes is NULL.
+    @retval EFI_OUT_OF_RESOURCES    ACPI 2.0 resource descriptors for Padding
+                                    cannot be allocated due to insufficient resources.
 
-**/
-public readonly delegate* unmanaged<EFI_PCI_HOT_PLUG_INIT_PROTOCOL*,EFI_DEVICE_PATH_PROTOCOL*,ulong,EFI_HPC_STATE*,void**,EFI_HPC_PADDING_ATTRIBUTES*, EFI_STATUS> GetResourcePadding;
+  **/
+  public readonly delegate* unmanaged<EFI_PCI_HOT_PLUG_INIT_PROTOCOL*, EFI_DEVICE_PATH_PROTOCOL*, ulong, EFI_HPC_STATE*, void**, EFI_HPC_PADDING_ATTRIBUTES*, EFI_STATUS> GetResourcePadding;
 }
 
 // extern EFI_GUID  gEfiPciHotPlugInitProtocolGuid;

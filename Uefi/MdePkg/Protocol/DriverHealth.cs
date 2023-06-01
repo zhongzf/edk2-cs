@@ -33,7 +33,7 @@ namespace Uefi;
 // #ifndef __EFI_DRIVER_HEALTH_H__
 // #define __EFI_DRIVER_HEALTH_H__
 
-public static EFI_GUID EFI_DRIVER_HEALTH_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_DRIVER_HEALTH_PROTOCOL_GUID = new GUID(
     0x2a534210, 0x9280, 0x41d8, new byte[] { 0xae, 0x79, 0xca, 0xda, 0x1, 0xa2, 0xb1, 0x27 });
 
 // typedef struct _EFI_DRIVER_HEALTH_PROTOCOL EFI_DRIVER_HEALTH_PROTOCOL;
@@ -41,7 +41,8 @@ public static EFI_GUID EFI_DRIVER_HEALTH_PROTOCOL_GUID = new GUID(
 ///
 /// EFI_DRIVER_HEALTH_HEALTH_STATUS
 ///
-public enum EFI_DRIVER_HEALTH_STATUS {
+public enum EFI_DRIVER_HEALTH_STATUS
+{
   EfiDriverHealthStatusHealthy,
   EfiDriverHealthStatusRepairRequired,
   EfiDriverHealthStatusConfigurationRequired,
@@ -54,9 +55,10 @@ public enum EFI_DRIVER_HEALTH_STATUS {
 /// EFI_DRIVER_HEALTH_HII_MESSAGE
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE {
- public EFI_HII_HANDLE    HiiHandle;
- public EFI_STRING_ID     StringId;
+public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE
+{
+  public EFI_HII_HANDLE HiiHandle;
+  public EFI_STRING_ID StringId;
 
   ///
   /// 64-bit numeric value of the warning/error specified by this message.
@@ -66,7 +68,7 @@ public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE {
   ///   The values 0x8000000000000000 to 0x8fffffffffffffff is reserved for platform/OEM drivers.
   ///   All other values are reserved and should not be used.
   ///
- public ulong    MessageCode;
+  public ulong MessageCode;
 }
 
 
@@ -228,95 +230,96 @@ public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE {
 /// hardware configuration changes.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DRIVER_HEALTH_PROTOCOL {
-/**
-  Retrieves the health status of a controller in the platform.  This function can also
-  optionally return warning messages, error messages, and a set of HII Forms that may
-  be repair a controller that is not proper configured.
+public unsafe struct EFI_DRIVER_HEALTH_PROTOCOL
+{
+  /**
+    Retrieves the health status of a controller in the platform.  This function can also
+    optionally return warning messages, error messages, and a set of HII Forms that may
+    be repair a controller that is not proper configured.
 
-  @param[in] This             A pointer to the EFI_DRIVER_HEALTH_PROTOCOL instance.
+    @param[in] This             A pointer to the EFI_DRIVER_HEALTH_PROTOCOL instance.
 
-  @param[in] ControllerHandle The handle of the controller to retrieve the health status
-                              on.  This is an optional parameter that may be NULL.  If
-                              this parameter is NULL, then the value of ChildHandle is
-                              ignored, and the combined health status of all the devices
-                              that the driver is managing is returned.
+    @param[in] ControllerHandle The handle of the controller to retrieve the health status
+                                on.  This is an optional parameter that may be NULL.  If
+                                this parameter is NULL, then the value of ChildHandle is
+                                ignored, and the combined health status of all the devices
+                                that the driver is managing is returned.
 
-  @param[in] ChildHandle      The handle of the child controller to retrieve the health
-                              status on.  This is an optional parameter that may be NULL.
-                              This parameter is ignored of ControllerHandle is NULL.  It
-                              will be NULL for device drivers.  It will also be NULL for
-                              bus drivers when an attempt is made to collect the health
-                              status of the bus controller.  If will not be NULL when an
-                              attempt is made to collect the health status for a child
-                              controller produced by the driver.
+    @param[in] ChildHandle      The handle of the child controller to retrieve the health
+                                status on.  This is an optional parameter that may be NULL.
+                                This parameter is ignored of ControllerHandle is NULL.  It
+                                will be NULL for device drivers.  It will also be NULL for
+                                bus drivers when an attempt is made to collect the health
+                                status of the bus controller.  If will not be NULL when an
+                                attempt is made to collect the health status for a child
+                                controller produced by the driver.
 
-  @param[out] HealthStatus    A pointer to the health status that is returned by this
-                              function.  This is an optional parameter that may be NULL.
-                              This parameter is ignored of ControllerHandle is NULL.
-                              The health status for the controller specified by
-                              ControllerHandle and ChildHandle is returned.
+    @param[out] HealthStatus    A pointer to the health status that is returned by this
+                                function.  This is an optional parameter that may be NULL.
+                                This parameter is ignored of ControllerHandle is NULL.
+                                The health status for the controller specified by
+                                ControllerHandle and ChildHandle is returned.
 
-  @param[out] MessageList     A pointer to an array of warning or error messages associated
-                              with the controller specified by ControllerHandle and
-                              ChildHandle.  This is an optional parameter that may be NULL.
-                              MessageList is allocated by this function with the EFI Boot
-                              Service AllocatePool(), and it is the caller's responsibility
-                              to free MessageList with the EFI Boot Service FreePool().
-                              Each message is specified by tuple of an EFI_HII_HANDLE and
-                              an EFI_STRING_ID.  The array of messages is terminated by tuple
-                              containing a EFI_HII_HANDLE with a value of NULL.  The
-                              EFI_HII_STRING_PROTOCOL.GetString() function can be used to
-                              retrieve the warning or error message as a Null-terminated
-                              string in a specific language.  Messages may be
-                              returned for any of the HealthStatus values except
-                              EfiDriverHealthStatusReconnectRequired and
-                              EfiDriverHealthStatusRebootRequired.
+    @param[out] MessageList     A pointer to an array of warning or error messages associated
+                                with the controller specified by ControllerHandle and
+                                ChildHandle.  This is an optional parameter that may be NULL.
+                                MessageList is allocated by this function with the EFI Boot
+                                Service AllocatePool(), and it is the caller's responsibility
+                                to free MessageList with the EFI Boot Service FreePool().
+                                Each message is specified by tuple of an EFI_HII_HANDLE and
+                                an EFI_STRING_ID.  The array of messages is terminated by tuple
+                                containing a EFI_HII_HANDLE with a value of NULL.  The
+                                EFI_HII_STRING_PROTOCOL.GetString() function can be used to
+                                retrieve the warning or error message as a Null-terminated
+                                string in a specific language.  Messages may be
+                                returned for any of the HealthStatus values except
+                                EfiDriverHealthStatusReconnectRequired and
+                                EfiDriverHealthStatusRebootRequired.
 
-  @param[out] FormHiiHandle   A pointer to the HII handle containing the HII form used when
-                              configuration is required. The HII handle is associated with
-                              the controller specified by ControllerHandle and ChildHandle.
-                              If this is NULL, then no HII form is available. An HII handle
-                              will only be returned with a HealthStatus value of
-                              EfiDriverHealthStatusConfigurationRequired.
+    @param[out] FormHiiHandle   A pointer to the HII handle containing the HII form used when
+                                configuration is required. The HII handle is associated with
+                                the controller specified by ControllerHandle and ChildHandle.
+                                If this is NULL, then no HII form is available. An HII handle
+                                will only be returned with a HealthStatus value of
+                                EfiDriverHealthStatusConfigurationRequired.
 
-  @retval EFI_SUCCESS           ControllerHandle is NULL, and all the controllers
-                                managed by this driver specified by This have a health
-                                status of EfiDriverHealthStatusHealthy with no warning
-                                messages to be returned.  The ChildHandle, HealthStatus,
-                                MessageList, and FormList parameters are ignored.
+    @retval EFI_SUCCESS           ControllerHandle is NULL, and all the controllers
+                                  managed by this driver specified by This have a health
+                                  status of EfiDriverHealthStatusHealthy with no warning
+                                  messages to be returned.  The ChildHandle, HealthStatus,
+                                  MessageList, and FormList parameters are ignored.
 
-  @retval EFI_DEVICE_ERROR      ControllerHandle is NULL, and one or more of the
-                                controllers managed by this driver specified by This
-                                do not have a health status of EfiDriverHealthStatusHealthy.
-                                The ChildHandle, HealthStatus, MessageList, and
-                                FormList parameters are ignored.
+    @retval EFI_DEVICE_ERROR      ControllerHandle is NULL, and one or more of the
+                                  controllers managed by this driver specified by This
+                                  do not have a health status of EfiDriverHealthStatusHealthy.
+                                  The ChildHandle, HealthStatus, MessageList, and
+                                  FormList parameters are ignored.
 
-  @retval EFI_DEVICE_ERROR      ControllerHandle is NULL, and one or more of the
-                                controllers managed by this driver specified by This
-                                have one or more warning and/or error messages.
-                                The ChildHandle, HealthStatus, MessageList, and
-                                FormList parameters are ignored.
+    @retval EFI_DEVICE_ERROR      ControllerHandle is NULL, and one or more of the
+                                  controllers managed by this driver specified by This
+                                  have one or more warning and/or error messages.
+                                  The ChildHandle, HealthStatus, MessageList, and
+                                  FormList parameters are ignored.
 
-  @retval EFI_SUCCESS           ControllerHandle is not NULL and the health status
-                                of the controller specified by ControllerHandle and
-                                ChildHandle was returned in HealthStatus.  A list
-                                of warning and error messages may be optionally
-                                returned in MessageList, and a list of HII Forms
-                                may be optionally returned in FormList.
+    @retval EFI_SUCCESS           ControllerHandle is not NULL and the health status
+                                  of the controller specified by ControllerHandle and
+                                  ChildHandle was returned in HealthStatus.  A list
+                                  of warning and error messages may be optionally
+                                  returned in MessageList, and a list of HII Forms
+                                  may be optionally returned in FormList.
 
-  @retval EFI_UNSUPPORTED       ControllerHandle is not NULL, and the controller
-                                specified by ControllerHandle and ChildHandle is not
-                                currently being managed by the driver specified by This.
+    @retval EFI_UNSUPPORTED       ControllerHandle is not NULL, and the controller
+                                  specified by ControllerHandle and ChildHandle is not
+                                  currently being managed by the driver specified by This.
 
-  @retval EFI_INVALID_PARAMETER HealthStatus is NULL.
+    @retval EFI_INVALID_PARAMETER HealthStatus is NULL.
 
-  @retval EFI_OUT_OF_RESOURCES  MessageList is not NULL, and there are not enough
-                                resource available to allocate memory for MessageList.
+    @retval EFI_OUT_OF_RESOURCES  MessageList is not NULL, and there are not enough
+                                  resource available to allocate memory for MessageList.
 
-**/
-public readonly delegate* unmanaged<EFI_DRIVER_HEALTH_PROTOCOL*,EFI_HANDLE,EFI_HANDLE,EFI_DRIVER_HEALTH_STATUS*,EFI_DRIVER_HEALTH_HII_MESSAGE**,EFI_HII_HANDLE*, EFI_STATUS> GetHealthStatus;
- public EFI_DRIVER_HEALTH_REPAIR               Repair;
+  **/
+  public readonly delegate* unmanaged<EFI_DRIVER_HEALTH_PROTOCOL*, EFI_HANDLE, EFI_HANDLE, EFI_DRIVER_HEALTH_STATUS*, EFI_DRIVER_HEALTH_HII_MESSAGE**, EFI_HII_HANDLE*, EFI_STATUS> GetHealthStatus;
+  public EFI_DRIVER_HEALTH_REPAIR Repair;
 }
 
 // extern EFI_GUID  gEfiDriverHealthProtocolGuid;

@@ -16,8 +16,8 @@ namespace Uefi;
 ///
 /// EFI EAP Configuration protocol provides a way to set and get EAP configuration.
 ///
-public static EFI_GUID EFI_EAP_CONFIGURATION_PROTOCOL_GUID = new GUID( 
-    0xe5b58dbb, 0x7688, 0x44b4, new byte[] {0x97, 0xbf, 0x5f, 0x1d, 0x4b, 0x7c, 0xc8, 0xdb });
+public static EFI_GUID EFI_EAP_CONFIGURATION_PROTOCOL_GUID = new GUID(
+    0xe5b58dbb, 0x7688, 0x44b4, new byte[] { 0x97, 0xbf, 0x5f, 0x1d, 0x4b, 0x7c, 0xc8, 0xdb });
 
 // typedef struct _EFI_EAP_CONFIGURATION_PROTOCOL EFI_EAP_CONFIGURATION_PROTOCOL;
 
@@ -26,7 +26,8 @@ public static EFI_GUID EFI_EAP_CONFIGURATION_PROTOCOL_GUID = new GUID(
 ///
 public static ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
 
-public enum EFI_EAP_CONFIG_DATA_TYPE {
+public enum EFI_EAP_CONFIG_DATA_TYPE
+{
   ///
   /// EFI_EAP_TYPE_ATTRIBUTE
   ///
@@ -62,7 +63,7 @@ public enum EFI_EAP_CONFIG_DATA_TYPE {
 /// EFI_EAP_TYPE
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_EAP_TYPE { byte Value; public static implicit operator EFI_EAP_TYPE(byte value) => new EFI_EAP_TYPE() { Value = value }; public static implicit operator byte(EFI_EAP_TYPE value) => value.Value;}
+public unsafe struct EFI_EAP_TYPE { byte Value; public static implicit operator EFI_EAP_TYPE(byte value) => new EFI_EAP_TYPE() { Value = value }; public static implicit operator byte(EFI_EAP_TYPE value) => value.Value; }
 public static ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
 public static ulong EFI_EAP_TYPE_IDENTITY = 1;
 public static ulong EFI_EAP_TYPE_NOTIFICATION = 2;
@@ -144,50 +145,51 @@ public static ulong EFI_EAP_TYPE_EAP_EXTENSION = 33;
 /// private key file.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_EAP_CONFIGURATION_PROTOCOL {
-/**
-  Set EAP configuration data.
+public unsafe struct EFI_EAP_CONFIGURATION_PROTOCOL
+{
+  /**
+    Set EAP configuration data.
 
-  The SetData() function sets EAP configuration to non-volatile storage or volatile
-  storage.
+    The SetData() function sets EAP configuration to non-volatile storage or volatile
+    storage.
 
-  @param[in]  This                Pointer to the EFI_EAP_CONFIGURATION_PROTOCOL instance.
-  @param[in]  EapType             EAP type.
-  @param[in]  DataType            Configuration data type.
-  @param[in]  Data                Pointer to configuration data.
-  @param[in]  DataSize            Total size of configuration data.
+    @param[in]  This                Pointer to the EFI_EAP_CONFIGURATION_PROTOCOL instance.
+    @param[in]  EapType             EAP type.
+    @param[in]  DataType            Configuration data type.
+    @param[in]  Data                Pointer to configuration data.
+    @param[in]  DataSize            Total size of configuration data.
 
-  @retval EFI_SUCCESS             The EAP configuration data is set successfully.
-  @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                  Data is NULL.
-                                  DataSize is 0.
-  @retval EFI_UNSUPPORTED         The EapType or DataType is unsupported.
-  @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-**/
-public readonly delegate* unmanaged<EFI_EAP_CONFIGURATION_PROTOCOL*,EFI_EAP_TYPE,EFI_EAP_CONFIG_DATA_TYPE,void*,ulong, EFI_STATUS> SetData;
-/**
-  Get EAP configuration data.
+    @retval EFI_SUCCESS             The EAP configuration data is set successfully.
+    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+                                    Data is NULL.
+                                    DataSize is 0.
+    @retval EFI_UNSUPPORTED         The EapType or DataType is unsupported.
+    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+  **/
+  public readonly delegate* unmanaged<EFI_EAP_CONFIGURATION_PROTOCOL*, EFI_EAP_TYPE, EFI_EAP_CONFIG_DATA_TYPE, void*, ulong, EFI_STATUS> SetData;
+  /**
+    Get EAP configuration data.
 
-  The GetData() function gets EAP configuration.
+    The GetData() function gets EAP configuration.
 
-  @param[in]       This           Pointer to the EFI_EAP_CONFIGURATION_PROTOCOL instance.
-  @param[in]       EapType        EAP type.
-  @param[in]       DataType       Configuration data type.
-  @param[in, out]  Data           Pointer to configuration data.
-  @param[in, out]  DataSize       Total size of configuration data. On input, it means
-                                  the size of Data buffer. On output, it means the size
-                                  of copied Data buffer if EFI_SUCCESS, and means the
-                                  size of desired Data buffer if EFI_BUFFER_TOO_SMALL.
+    @param[in]       This           Pointer to the EFI_EAP_CONFIGURATION_PROTOCOL instance.
+    @param[in]       EapType        EAP type.
+    @param[in]       DataType       Configuration data type.
+    @param[in, out]  Data           Pointer to configuration data.
+    @param[in, out]  DataSize       Total size of configuration data. On input, it means
+                                    the size of Data buffer. On output, it means the size
+                                    of copied Data buffer if EFI_SUCCESS, and means the
+                                    size of desired Data buffer if EFI_BUFFER_TOO_SMALL.
 
-  @retval EFI_SUCCESS             The EAP configuration data is got successfully.
-  @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                  Data is NULL.
-                                  DataSize is NULL.
-  @retval EFI_UNSUPPORTED         The EapType or DataType is unsupported.
-  @retval EFI_NOT_FOUND           The EAP configuration data is not found.
-  @retval EFI_BUFFER_TOO_SMALL    The buffer is too small to hold the buffer.
-**/
-public readonly delegate* unmanaged<EFI_EAP_CONFIGURATION_PROTOCOL*,EFI_EAP_TYPE,EFI_EAP_CONFIG_DATA_TYPE,void*,ulong*, EFI_STATUS> GetData;
+    @retval EFI_SUCCESS             The EAP configuration data is got successfully.
+    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+                                    Data is NULL.
+                                    DataSize is NULL.
+    @retval EFI_UNSUPPORTED         The EapType or DataType is unsupported.
+    @retval EFI_NOT_FOUND           The EAP configuration data is not found.
+    @retval EFI_BUFFER_TOO_SMALL    The buffer is too small to hold the buffer.
+  **/
+  public readonly delegate* unmanaged<EFI_EAP_CONFIGURATION_PROTOCOL*, EFI_EAP_TYPE, EFI_EAP_CONFIG_DATA_TYPE, void*, ulong*, EFI_STATUS> GetData;
 }
 
 // extern EFI_GUID  gEfiEapConfigurationProtocolGuid;

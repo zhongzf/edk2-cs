@@ -10,7 +10,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_DRIVER_FAMILY_OVERRIDE_H__
 // #define __EFI_DRIVER_FAMILY_OVERRIDE_H__
 
-public static EFI_GUID EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL_GUID = new GUID(
     0xb1ee129e, 0xda36, 0x4181, new byte[] { 0x91, 0xf8, 0x4, 0xa4, 0x92, 0x37, 0x66, 0xa7 });
 
 // typedef struct _EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL;
@@ -52,22 +52,23 @@ public static EFI_GUID EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL_GUID = new GUID(
 /// Bus Specific Driver Override Protocol.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL {
-/**
-  This function returns the version value associated with the driver specified by This.
+public unsafe struct EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL
+{
+  /**
+    This function returns the version value associated with the driver specified by This.
 
-  Retrieves the version of the driver that is used by the EFI Boot Service ConnectController()
-  to sort the set of Driver Binding Protocols in order from highest priority to lowest priority.
-  For drivers that support the Driver Family Override Protocol, those drivers are sorted so that
-  the drivers with higher values returned by GetVersion() are higher priority than drivers that
-  return lower values from GetVersion().
+    Retrieves the version of the driver that is used by the EFI Boot Service ConnectController()
+    to sort the set of Driver Binding Protocols in order from highest priority to lowest priority.
+    For drivers that support the Driver Family Override Protocol, those drivers are sorted so that
+    the drivers with higher values returned by GetVersion() are higher priority than drivers that
+    return lower values from GetVersion().
 
-  @param  This                  A pointer to the EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL instance.
+    @param  This                  A pointer to the EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL instance.
 
-  @return The version value associated with the driver specified by This.
+    @return The version value associated with the driver specified by This.
 
-**/
-public readonly delegate* unmanaged<EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL*, EFI_STATUS> GetVersion;
+  **/
+  public readonly delegate* unmanaged<EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL*, EFI_STATUS> GetVersion;
 }
 
 // extern EFI_GUID  gEfiDriverFamilyOverrideProtocolGuid;

@@ -32,7 +32,7 @@ namespace Uefi;
 public static EFI_GUID EFI_S3_SMM_SAVE_STATE_PROTOCOL_GUID = new GUID(0x320afe62, 0xe593, 0x49cb, new byte[] { 0xa9, 0xf1, 0xd4, 0xc2, 0xf4, 0xaf, 0x1, 0x4c });
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_S3_SMM_SAVE_STATE_PROTOCOL { EFI_S3_SAVE_STATE_PROTOCOL Value; public static implicit operator EFI_S3_SMM_SAVE_STATE_PROTOCOL(EFI_S3_SAVE_STATE_PROTOCOL value) => new EFI_S3_SMM_SAVE_STATE_PROTOCOL() { Value = value }; public static implicit operator EFI_S3_SAVE_STATE_PROTOCOL(EFI_S3_SMM_SAVE_STATE_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_S3_SMM_SAVE_STATE_PROTOCOL { EFI_S3_SAVE_STATE_PROTOCOL Value; public static implicit operator EFI_S3_SMM_SAVE_STATE_PROTOCOL(EFI_S3_SAVE_STATE_PROTOCOL value) => new EFI_S3_SMM_SAVE_STATE_PROTOCOL() { Value = value }; public static implicit operator EFI_S3_SAVE_STATE_PROTOCOL(EFI_S3_SMM_SAVE_STATE_PROTOCOL value) => value.Value; }
 
 // extern EFI_GUID  gEfiS3SmmSaveStateProtocolGuid;
 

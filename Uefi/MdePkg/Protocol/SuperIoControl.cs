@@ -15,11 +15,11 @@ namespace Uefi;
 // #ifndef __EFI_SUPER_IO_CONTROL_PROTOCOL_H__
 // #define __EFI_SUPER_IO_CONTROL_PROTOCOL_H__
 
-public static EFI_GUID EFI_SIO_CONTROL_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_SIO_CONTROL_PROTOCOL_GUID = new GUID(
     0xb91978df, 0x9fc1, 0x427d, new byte[] { 0xbb, 0x5, 0x4c, 0x82, 0x84, 0x55, 0xca, 0x27 });
 
 typedef struct _EFI_SIO_CONTROL_PROTOCOL  EFI_SIO_CONTROL_PROTOCOL;
-typedef struct _EFI_SIO_CONTROL_PROTOCOL  *PEFI_SIO_CONTROL_PROTOCOL;
+typedef struct _EFI_SIO_CONTROL_PROTOCOL  * PEFI_SIO_CONTROL_PROTOCOL;
 
 
 
@@ -66,51 +66,52 @@ typedef struct _EFI_SIO_CONTROL_PROTOCOL  *PEFI_SIO_CONTROL_PROTOCOL;
 
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SIO_CONTROL_PROTOCOL {
+public unsafe struct EFI_SIO_CONTROL_PROTOCOL
+{
   ///
   /// The version of this protocol.
   ///
- public uint                     Version;
+  public uint Version;
   ///
   /// Enable a device.
   ///
-/**
-  Enable an ISA-style device.
+  /**
+    Enable an ISA-style device.
 
-  This function enables a logical ISA device and, if necessary, configures it
-  to default settings, including memory, I/O, DMA and IRQ resources.
+    This function enables a logical ISA device and, if necessary, configures it
+    to default settings, including memory, I/O, DMA and IRQ resources.
 
-  @param This A pointer to this instance of the EFI_SIO_CONTROL_PROTOCOL.
+    @param This A pointer to this instance of the EFI_SIO_CONTROL_PROTOCOL.
 
-  @retval EFI_SUCCESS          The device is enabled successfully.
-  @retval EFI_OUT_OF_RESOURCES The device could not be enabled because there
-                               were insufficient resources either for the device
-                               itself or for the records needed to track the device.
-  @retval EFI_ALREADY_STARTED  The device is already enabled.
-  @retval EFI_UNSUPPORTED      The device cannot be enabled.
-**/
-public readonly delegate* unmanaged<CONST, EFI_STATUS> EnableDevice;
+    @retval EFI_SUCCESS          The device is enabled successfully.
+    @retval EFI_OUT_OF_RESOURCES The device could not be enabled because there
+                                 were insufficient resources either for the device
+                                 itself or for the records needed to track the device.
+    @retval EFI_ALREADY_STARTED  The device is already enabled.
+    @retval EFI_UNSUPPORTED      The device cannot be enabled.
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_STATUS> EnableDevice;
   ///
   /// Disable a device.
   ///
-/**
-  Disable a logical ISA device.
+  /**
+    Disable a logical ISA device.
 
-  This function disables a logical ISA device so that it no longer consumes
-  system resources, such as memory, I/O, DMA and IRQ resources. Enough information
-  must be available so that subsequent Enable() calls would properly reconfigure
-  the device.
+    This function disables a logical ISA device so that it no longer consumes
+    system resources, such as memory, I/O, DMA and IRQ resources. Enough information
+    must be available so that subsequent Enable() calls would properly reconfigure
+    the device.
 
-  @param This A pointer to this instance of the EFI_SIO_CONTROL_PROTOCOL.
+    @param This A pointer to this instance of the EFI_SIO_CONTROL_PROTOCOL.
 
-  @retval EFI_SUCCESS          The device is disabled successfully.
-  @retval EFI_OUT_OF_RESOURCES The device could not be disabled because there
-                               were insufficient resources either for the device
-                               itself or for the records needed to track the device.
-  @retval EFI_ALREADY_STARTED  The device is already disabled.
-  @retval EFI_UNSUPPORTED      The device cannot be disabled.
-**/
-public readonly delegate* unmanaged<CONST, EFI_STATUS> DisableDevice;
+    @retval EFI_SUCCESS          The device is disabled successfully.
+    @retval EFI_OUT_OF_RESOURCES The device could not be disabled because there
+                                 were insufficient resources either for the device
+                                 itself or for the records needed to track the device.
+    @retval EFI_ALREADY_STARTED  The device is already disabled.
+    @retval EFI_UNSUPPORTED      The device cannot be disabled.
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_STATUS> DisableDevice;
 }
 
 // extern EFI_GUID  gEfiSioControlProtocolGuid;

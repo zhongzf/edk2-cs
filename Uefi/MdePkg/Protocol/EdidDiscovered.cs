@@ -13,20 +13,21 @@ namespace Uefi;
 // #ifndef __EDID_DISCOVERED_H__
 // #define __EDID_DISCOVERED_H__
 
-public static EFI_GUID EFI_EDID_DISCOVERED_PROTOCOL_GUID = new GUID( 
-    0x1c0c34f6, 0xd380, 0x41fa, new byte[] {0xa0, 0x49, 0x8a, 0xd0, 0x6c, 0x1a, 0x66, 0xaa });
+public static EFI_GUID EFI_EDID_DISCOVERED_PROTOCOL_GUID = new GUID(
+    0x1c0c34f6, 0xd380, 0x41fa, new byte[] { 0xa0, 0x49, 0x8a, 0xd0, 0x6c, 0x1a, 0x66, 0xaa });
 
 ///
 /// This protocol contains the EDID information retrieved from a video output device.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_EDID_DISCOVERED_PROTOCOL {
+public unsafe struct EFI_EDID_DISCOVERED_PROTOCOL
+{
   ///
   /// The size, in bytes, of the Edid buffer. 0 if no EDID information
   /// is available from the video output device. Otherwise, it must be a
   /// minimum of 128 bytes.
   ///
- public uint    SizeOfEdid;
+  public uint SizeOfEdid;
 
   ///
   /// A pointer to a read-only array of bytes that contains the EDID
@@ -36,7 +37,7 @@ public unsafe struct EFI_EDID_DISCOVERED_PROTOCOL {
   /// EDID information is defined in the E-EDID EEPROM
   /// specification published by VESA (www.vesa.org).
   ///
- public byte    *Edid;
+  public byte* Edid;
 }
 
 // extern EFI_GUID  gEfiEdidDiscoveredProtocolGuid;

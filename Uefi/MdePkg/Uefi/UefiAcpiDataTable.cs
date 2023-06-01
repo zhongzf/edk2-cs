@@ -14,10 +14,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #pragma pack(1)
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_ACPI_DATA_TABLE {
- public EFI_ACPI_DESCRIPTION_HEADER    Header;
- public GUID                           Identifier;
- public ushort                         DataOffset;
+public unsafe struct EFI_ACPI_DATA_TABLE
+{
+  public EFI_ACPI_DESCRIPTION_HEADER Header;
+  public GUID Identifier;
+  public ushort DataOffset;
 }
 // #pragma pack()
 

@@ -22,7 +22,7 @@ public static ulong EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = EFI_MM_PCI_ROOT_B
 /// EFI_UNSUPPORTED.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL { EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL Value; public static implicit operator EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => new EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL { EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL Value; public static implicit operator EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => new EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => value.Value; }
 
 // extern EFI_GUID  gEfiSmmPciRootBridgeIoProtocolGuid;
 

@@ -22,12 +22,12 @@ namespace Uefi;
 
 // #include <PiDxe.h>
 
-public static EFI_GUID EFI_MM_CONTROL_PROTOCOL_GUID = new GUID( 
-    0x843dc720, 0xab1e, 0x42cb, new byte[] {0x93, 0x57, 0x8a, 0x0, 0x78, 0xf3, 0x56, 0x1b});
+public static EFI_GUID EFI_MM_CONTROL_PROTOCOL_GUID = new GUID(
+    0x843dc720, 0xab1e, 0x42cb, new byte[] { 0x93, 0x57, 0x8a, 0x0, 0x78, 0xf3, 0x56, 0x1b });
 
 typedef struct _EFI_MM_CONTROL_PROTOCOL  EFI_MM_CONTROL_PROTOCOL;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_PERIOD { ulong Value; public static implicit operator EFI_MM_PERIOD(ulong value) => new EFI_MM_PERIOD() { Value = value }; public static implicit operator ulong(EFI_MM_PERIOD value) => value.Value;}
+public unsafe struct EFI_MM_PERIOD { ulong Value; public static implicit operator EFI_MM_PERIOD(ulong value) => new EFI_MM_PERIOD() { Value = value }; public static implicit operator ulong(EFI_MM_PERIOD value) => value.Value; }
 
 
 
@@ -83,46 +83,47 @@ public unsafe struct EFI_MM_PERIOD { ulong Value; public static implicit operato
 /// these signals.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_CONTROL_PROTOCOL {
-/**
-  Invokes MMI activation from either the preboot or runtime environment.
+public unsafe struct EFI_MM_CONTROL_PROTOCOL
+{
+  /**
+    Invokes MMI activation from either the preboot or runtime environment.
 
-  This function generates an MMI.
+    This function generates an MMI.
 
-  @param[in]     This                The EFI_MM_CONTROL_PROTOCOL instance.
-  @param[in,out] CommandPort         The value written to the command port.
-  @param[in,out] DataPort            The value written to the data port.
-  @param[in]     Periodic            Optional mechanism to engender a periodic stream.
-  @param[in]     ActivationInterval  Optional parameter to repeat at this period one
-                                     time or, if the Periodic Boolean is set, periodically.
+    @param[in]     This                The EFI_MM_CONTROL_PROTOCOL instance.
+    @param[in,out] CommandPort         The value written to the command port.
+    @param[in,out] DataPort            The value written to the data port.
+    @param[in]     Periodic            Optional mechanism to engender a periodic stream.
+    @param[in]     ActivationInterval  Optional parameter to repeat at this period one
+                                       time or, if the Periodic Boolean is set, periodically.
 
-  @retval EFI_SUCCESS            The MMI/PMI has been engendered.
-  @retval EFI_DEVICE_ERROR       The timing is unsupported.
-  @retval EFI_INVALID_PARAMETER  The activation period is unsupported.
-  @retval EFI_INVALID_PARAMETER  The last periodic activation has not been cleared.
-  @retval EFI_NOT_STARTED        The MM base service has not been initialized.
-**/
-public readonly delegate* unmanaged<CONST,byte*,byte*,bool,ulong, EFI_STATUS> Trigger;
-/**
-  Clears any system state that was created in response to the Trigger() call.
+    @retval EFI_SUCCESS            The MMI/PMI has been engendered.
+    @retval EFI_DEVICE_ERROR       The timing is unsupported.
+    @retval EFI_INVALID_PARAMETER  The activation period is unsupported.
+    @retval EFI_INVALID_PARAMETER  The last periodic activation has not been cleared.
+    @retval EFI_NOT_STARTED        The MM base service has not been initialized.
+  **/
+  public readonly delegate* unmanaged<CONST, byte*, byte*, bool, ulong, EFI_STATUS> Trigger;
+  /**
+    Clears any system state that was created in response to the Trigger() call.
 
-  This function acknowledges and causes the deassertion of the MMI activation source.
+    This function acknowledges and causes the deassertion of the MMI activation source.
 
-  @param[in] This                The EFI_MM_CONTROL_PROTOCOL instance.
-  @param[in] Periodic            Optional parameter to repeat at this period one time
+    @param[in] This                The EFI_MM_CONTROL_PROTOCOL instance.
+    @param[in] Periodic            Optional parameter to repeat at this period one time
 
-  @retval EFI_SUCCESS            The MMI/PMI has been engendered.
-  @retval EFI_DEVICE_ERROR       The source could not be cleared.
-  @retval EFI_INVALID_PARAMETER  The service did not support the Periodic input argument.
-**/
-public readonly delegate* unmanaged<CONST,bool, EFI_STATUS> Clear;
+    @retval EFI_SUCCESS            The MMI/PMI has been engendered.
+    @retval EFI_DEVICE_ERROR       The source could not be cleared.
+    @retval EFI_INVALID_PARAMETER  The service did not support the Periodic input argument.
+  **/
+  public readonly delegate* unmanaged<CONST, bool, EFI_STATUS> Clear;
   ///
   /// Minimum interval at which the platform can set the period.  A maximum is not
   /// specified in that the MM infrastructure code can emulate a maximum interval that is
   /// greater than the hardware capabilities by using software emulation in the MM
   /// infrastructure code.
   ///
- public EFI_MM_PERIOD        MinimumTriggerPeriod;
+  public EFI_MM_PERIOD MinimumTriggerPeriod;
 }
 
 // extern EFI_GUID  gEfiMmControlProtocolGuid;

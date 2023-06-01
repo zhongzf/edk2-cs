@@ -14,7 +14,7 @@ namespace Uefi;
 // #ifndef __EFI_TIME_STAMP_PROTOCOL_H__
 // #define __EFI_TIME_STAMP_PROTOCOL_H__
 
-public static EFI_GUID EFI_TIMESTAMP_PROTOCOL_GUID = new GUID( 0xafbfde41, 0x2e6e, 0x4262, new byte[] {0xba, 0x65, 0x62, 0xb9, 0x23, 0x6e, 0x54, 0x95 });
+public static EFI_GUID EFI_TIMESTAMP_PROTOCOL_GUID = new GUID(0xafbfde41, 0x2e6e, 0x4262, new byte[] { 0xba, 0x65, 0x62, 0xb9, 0x23, 0x6e, 0x54, 0x95 });
 
 ///
 /// Declare forward reference for the Time Stamp Protocol
@@ -25,17 +25,18 @@ public static EFI_GUID EFI_TIMESTAMP_PROTOCOL_GUID = new GUID( 0xafbfde41, 0x2e6
 /// EFI_TIMESTAMP_PROPERTIES
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_TIMESTAMP_PROPERTIES {
+public unsafe struct EFI_TIMESTAMP_PROPERTIES
+{
   ///
   /// The frequency of the timestamp counter in Hz.
   ///
- public ulong    Frequency;
+  public ulong Frequency;
   ///
   /// The value that the timestamp counter ends with immediately before it rolls over.
   /// For example, a 64-bit free running counter would have an EndValue of 0xFFFFFFFFFFFFFFFF.
   /// A 24-bit free running counter would have an EndValue of 0xFFFFFF.
   ///
- public ulong    EndValue;
+  public ulong EndValue;
 }
 
 
@@ -83,36 +84,37 @@ public unsafe struct EFI_TIMESTAMP_PROPERTIES {
 /// timestamp counter.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_TIMESTAMP_PROTOCOL {
-/**
-  Retrieves the current value of a 64-bit free running timestamp counter.
+public unsafe struct EFI_TIMESTAMP_PROTOCOL
+{
+  /**
+    Retrieves the current value of a 64-bit free running timestamp counter.
 
-  The counter shall count up in proportion to the amount of time that has passed. The counter value
-  will always roll over to zero. The properties of the counter can be retrieved from GetProperties().
-  The caller should be prepared for the function to return the same value twice across successive calls.
-  The counter value will not go backwards other than when wrapping, as defined by EndValue in GetProperties().
-  The frequency of the returned timestamp counter value must remain constant. Power management operations that
-  affect clocking must not change the returned counter frequency. The quantization of counter value updates may
-  vary as long as the value reflecting time passed remains consistent.
+    The counter shall count up in proportion to the amount of time that has passed. The counter value
+    will always roll over to zero. The properties of the counter can be retrieved from GetProperties().
+    The caller should be prepared for the function to return the same value twice across successive calls.
+    The counter value will not go backwards other than when wrapping, as defined by EndValue in GetProperties().
+    The frequency of the returned timestamp counter value must remain constant. Power management operations that
+    affect clocking must not change the returned counter frequency. The quantization of counter value updates may
+    vary as long as the value reflecting time passed remains consistent.
 
-  @param  None.
+    @param  None.
 
-  @retval The current value of the free running timestamp counter.
+    @retval The current value of the free running timestamp counter.
 
-**/
-public readonly delegate* unmanaged<, EFI_STATUS> GetTimestamp;
-/**
-  Obtains timestamp counter properties including frequency and value limits.
+  **/
+  public readonly delegate* unmanaged<, EFI_STATUS> GetTimestamp;
+  /**
+    Obtains timestamp counter properties including frequency and value limits.
 
-  @param[out]  Properties              The properties of the timestamp counter.
+    @param[out]  Properties              The properties of the timestamp counter.
 
-  @retval      EFI_SUCCESS             The properties were successfully retrieved.
-  @retval      EFI_DEVICE_ERROR        An error occurred trying to retrieve the properties of the timestamp
-                                       counter subsystem. Properties is not pedated.
-  @retval      EFI_INVALID_PARAMETER   Properties is NULL.
+    @retval      EFI_SUCCESS             The properties were successfully retrieved.
+    @retval      EFI_DEVICE_ERROR        An error occurred trying to retrieve the properties of the timestamp
+                                         counter subsystem. Properties is not pedated.
+    @retval      EFI_INVALID_PARAMETER   Properties is NULL.
 
-**/
-public readonly delegate* unmanaged<EFI_TIMESTAMP_PROPERTIES*, EFI_STATUS> GetProperties;
+  **/
+  public readonly delegate* unmanaged<EFI_TIMESTAMP_PROPERTIES*, EFI_STATUS> GetProperties;
 }
 
 // extern EFI_GUID  gEfiTimestampProtocolGuid;

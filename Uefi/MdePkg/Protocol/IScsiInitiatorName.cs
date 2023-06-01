@@ -11,8 +11,8 @@ namespace Uefi;
 // #ifndef __ISCSI_INITIATOR_NAME_H__
 // #define __ISCSI_INITIATOR_NAME_H__
 
-public static EFI_GUID EFI_ISCSI_INITIATOR_NAME_PROTOCOL_GUID = new GUID( 
-  0x59324945, 0xec44, 0x4c0d, new byte[] {0xb1, 0xcd, 0x9d, 0xb1, 0x39, 0xdf, 0x7, 0xc });
+public static EFI_GUID EFI_ISCSI_INITIATOR_NAME_PROTOCOL_GUID = new GUID(
+  0x59324945, 0xec44, 0x4c0d, new byte[] { 0xb1, 0xcd, 0x9d, 0xb1, 0x39, 0xdf, 0x7, 0xc });
 
 // typedef struct _EFI_ISCSI_INITIATOR_NAME_PROTOCOL EFI_ISCSI_INITIATOR_NAME_PROTOCOL;
 
@@ -68,42 +68,43 @@ public static EFI_GUID EFI_ISCSI_INITIATOR_NAME_PROTOCOL_GUID = new GUID(
 /// iSCSI Initiator Name Protocol for setting and obtaining the iSCSI Initiator Name.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_ISCSI_INITIATOR_NAME_PROTOCOL {
-/**
-  Retrieves the current set value of iSCSI Initiator Name.
+public unsafe struct EFI_ISCSI_INITIATOR_NAME_PROTOCOL
+{
+  /**
+    Retrieves the current set value of iSCSI Initiator Name.
 
-  @param  This       Pointer to the EFI_ISCSI_INITIATOR_NAME_PROTOCOL instance.
-  @param  BufferSize Size of the buffer in bytes pointed to by Buffer / Actual size of the
-                     variable data buffer.
-  @param  Buffer     Pointer to the buffer for data to be read. The data is a null-terminated UTF-8 encoded string.
-                     The maximum length is 223 characters, including the null-terminator.
+    @param  This       Pointer to the EFI_ISCSI_INITIATOR_NAME_PROTOCOL instance.
+    @param  BufferSize Size of the buffer in bytes pointed to by Buffer / Actual size of the
+                       variable data buffer.
+    @param  Buffer     Pointer to the buffer for data to be read. The data is a null-terminated UTF-8 encoded string.
+                       The maximum length is 223 characters, including the null-terminator.
 
-  @retval EFI_SUCCESS           Data was successfully retrieved into the provided buffer and the
-                                BufferSize was sufficient to handle the iSCSI initiator name
-  @retval EFI_BUFFER_TOO_SMALL  BufferSize is too small for the result.
-  @retval EFI_INVALID_PARAMETER BufferSize or Buffer is NULL.
-  @retval EFI_DEVICE_ERROR      The iSCSI initiator name could not be retrieved due to a hardware error.
+    @retval EFI_SUCCESS           Data was successfully retrieved into the provided buffer and the
+                                  BufferSize was sufficient to handle the iSCSI initiator name
+    @retval EFI_BUFFER_TOO_SMALL  BufferSize is too small for the result.
+    @retval EFI_INVALID_PARAMETER BufferSize or Buffer is NULL.
+    @retval EFI_DEVICE_ERROR      The iSCSI initiator name could not be retrieved due to a hardware error.
 
-**/
-public readonly delegate* unmanaged<EFI_ISCSI_INITIATOR_NAME_PROTOCOL*,ulong*,void*, EFI_STATUS> Get;
-/**
-  Sets the iSCSI Initiator Name.
+  **/
+  public readonly delegate* unmanaged<EFI_ISCSI_INITIATOR_NAME_PROTOCOL*, ulong*, void*, EFI_STATUS> Get;
+  /**
+    Sets the iSCSI Initiator Name.
 
-  @param  This       Pointer to the EFI_ISCSI_INITIATOR_NAME_PROTOCOL instance.
-  @param  BufferSize Size of the buffer in bytes pointed to by Buffer.
-  @param  Buffer     Pointer to the buffer for data to be written. The data is a null-terminated UTF-8 encoded string.
-                     The maximum length is 223 characters, including the null-terminator.
+    @param  This       Pointer to the EFI_ISCSI_INITIATOR_NAME_PROTOCOL instance.
+    @param  BufferSize Size of the buffer in bytes pointed to by Buffer.
+    @param  Buffer     Pointer to the buffer for data to be written. The data is a null-terminated UTF-8 encoded string.
+                       The maximum length is 223 characters, including the null-terminator.
 
-  @retval EFI_SUCCESS           Data was successfully stored by the protocol.
-  @retval EFI_UNSUPPORTED       Platform policies do not allow for data to be written.
-  @retval EFI_INVALID_PARAMETER BufferSize or Buffer is NULL, or BufferSize exceeds the maximum allowed limit.
-  @retval EFI_DEVICE_ERROR      The data could not be stored due to a hardware error.
-  @retval EFI_OUT_OF_RESOURCES  Not enough storage is available to hold the data.
-  @retval EFI_PROTOCOL_ERROR    Input iSCSI initiator name does not adhere to RFC 3720
-                                (and other related protocols)
+    @retval EFI_SUCCESS           Data was successfully stored by the protocol.
+    @retval EFI_UNSUPPORTED       Platform policies do not allow for data to be written.
+    @retval EFI_INVALID_PARAMETER BufferSize or Buffer is NULL, or BufferSize exceeds the maximum allowed limit.
+    @retval EFI_DEVICE_ERROR      The data could not be stored due to a hardware error.
+    @retval EFI_OUT_OF_RESOURCES  Not enough storage is available to hold the data.
+    @retval EFI_PROTOCOL_ERROR    Input iSCSI initiator name does not adhere to RFC 3720
+                                  (and other related protocols)
 
-**/
-public readonly delegate* unmanaged<ulong*,void*, EFI_STATUS> Set;
+  **/
+  public readonly delegate* unmanaged<ulong*, void*, EFI_STATUS> Set;
 }
 
 // extern EFI_GUID  gEfiIScsiInitiatorNameProtocolGuid;

@@ -15,7 +15,7 @@ namespace Uefi;
 // #include <Protocol/ShellParameters.h>
 
 // {3C7200E9-005F-4EA4-87DE-A3DFAC8A27C3}
-public static EFI_GUID EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL_GUID = new GUID(
   0x3c7200e9, 0x005f, 0x4ea4, new byte[] { 0x87, 0xde, 0xa3, 0xdf, 0xac, 0x8a, 0x27, 0xc3 });
 
 //
@@ -64,33 +64,34 @@ public static EFI_GUID EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL_GUID = new GUID(
 
 /// EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL protocol structure.
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL {
-  CONSTpublic char             *CommandName;
-/**
-  This is the shell command handler function pointer callback type.  This
-  function handles the command when it is invoked in the shell.
+public unsafe struct EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL
+{
+  CONSTpublic char* CommandName;
+  /**
+    This is the shell command handler function pointer callback type.  This
+    function handles the command when it is invoked in the shell.
 
-  @param[in] This                   The instance of the EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL.
-  @param[in] SystemTable            The pointer to the system table.
-  @param[in] ShellParameters        The parameters associated with the command.
-  @param[in] Shell                  The instance of the shell protocol used in the context
-                                    of processing this command.
+    @param[in] This                   The instance of the EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL.
+    @param[in] SystemTable            The pointer to the system table.
+    @param[in] ShellParameters        The parameters associated with the command.
+    @param[in] Shell                  The instance of the shell protocol used in the context
+                                      of processing this command.
 
-  @return EFI_SUCCESS               the operation was sucessful
-  @return other                     the operation failed.
-**/
-public readonly delegate* unmanaged<EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL*,EFI_SYSTEM_TABLE*,EFI_SHELL_PARAMETERS_PROTOCOL*,EFI_SHELL_PROTOCOL*, EFI_STATUS> Handler;
-/**
-  This is the command help handler function pointer callback type.  This
-  function is responsible for displaying help information for the associated
-  command.
+    @return EFI_SUCCESS               the operation was sucessful
+    @return other                     the operation failed.
+  **/
+  public readonly delegate* unmanaged<EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL*, EFI_SYSTEM_TABLE*, EFI_SHELL_PARAMETERS_PROTOCOL*, EFI_SHELL_PROTOCOL*, EFI_STATUS> Handler;
+  /**
+    This is the command help handler function pointer callback type.  This
+    function is responsible for displaying help information for the associated
+    command.
 
-  @param[in] This                   The instance of the EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL.
-  @param[in] Language               The pointer to the language string to use.
+    @param[in] This                   The instance of the EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL.
+    @param[in] Language               The pointer to the language string to use.
 
-  @return string                    Pool allocated help string, must be freed by caller
-**/
-public readonly delegate* unmanaged<EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL*,CONST, EFI_STATUS> GetHelp;
+    @return string                    Pool allocated help string, must be freed by caller
+  **/
+  public readonly delegate* unmanaged<EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL*, CONST, EFI_STATUS> GetHelp;
 }
 
 // extern EFI_GUID  gEfiShellDynamicCommandProtocolGuid;

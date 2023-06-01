@@ -14,8 +14,8 @@ namespace Uefi;
 ///
 /// Device Path To Text protocol
 ///
-public static EFI_GUID EFI_DEVICE_PATH_TO_TEXT_PROTOCOL_GUID = new GUID( 
-    0x8b843e20, 0x8132, 0x4852, new byte[] {0x90, 0xcc, 0x55, 0x1a, 0x4e, 0x4a, 0x7f, 0x1c });
+public static EFI_GUID EFI_DEVICE_PATH_TO_TEXT_PROTOCOL_GUID = new GUID(
+    0x8b843e20, 0x8132, 0x4852, new byte[] { 0x90, 0xcc, 0x55, 0x1a, 0x4e, 0x4a, 0x7f, 0x1c });
 
 
 
@@ -67,39 +67,40 @@ public static EFI_GUID EFI_DEVICE_PATH_TO_TEXT_PROTOCOL_GUID = new GUID(
 /// This protocol converts device paths and device nodes to text.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DEVICE_PATH_TO_TEXT_PROTOCOL {
-/**
-  Convert a device node to its text representation.
+public unsafe struct EFI_DEVICE_PATH_TO_TEXT_PROTOCOL
+{
+  /**
+    Convert a device node to its text representation.
 
-  @param  DeviceNode     Points to the device node to be converted.
-  @param  DisplayOnly    If DisplayOnly is TRUE, then the shorter text representation
-                         of the display node is used, where applicable. If DisplayOnly
-                         is FALSE, then the longer text representation of the display node
-                         is used.
-  @param  AllowShortcuts If AllowShortcuts is TRUE, then the shortcut forms of text
-                         representation for a device node can be used, where applicable.
+    @param  DeviceNode     Points to the device node to be converted.
+    @param  DisplayOnly    If DisplayOnly is TRUE, then the shorter text representation
+                           of the display node is used, where applicable. If DisplayOnly
+                           is FALSE, then the longer text representation of the display node
+                           is used.
+    @param  AllowShortcuts If AllowShortcuts is TRUE, then the shortcut forms of text
+                           representation for a device node can be used, where applicable.
 
-  @retval a_pointer      a pointer to the allocated text representation of the device node data
-  @retval NULL           if DeviceNode is NULL or there was insufficient memory.
+    @retval a_pointer      a pointer to the allocated text representation of the device node data
+    @retval NULL           if DeviceNode is NULL or there was insufficient memory.
 
-**/
-public readonly delegate* unmanaged<CONST,bool,bool, EFI_STATUS> ConvertDeviceNodeToText;
-/**
-  Convert a device path to its text representation.
+  **/
+  public readonly delegate* unmanaged<CONST, bool, bool, EFI_STATUS> ConvertDeviceNodeToText;
+  /**
+    Convert a device path to its text representation.
 
-  @param  DevicePath     Points to the device path to be converted.
-  @param  DisplayOnly    If DisplayOnly is TRUE, then the shorter text representation
-                         of the display node is used, where applicable. If DisplayOnly
-                         is FALSE, then the longer text representation of the display node
-                         is used.
-  @param  AllowShortcuts The AllowShortcuts is FALSE, then the shortcut forms of
-                         text representation for a device node cannot be used.
+    @param  DevicePath     Points to the device path to be converted.
+    @param  DisplayOnly    If DisplayOnly is TRUE, then the shorter text representation
+                           of the display node is used, where applicable. If DisplayOnly
+                           is FALSE, then the longer text representation of the display node
+                           is used.
+    @param  AllowShortcuts The AllowShortcuts is FALSE, then the shortcut forms of
+                           text representation for a device node cannot be used.
 
-  @retval a_pointer      a pointer to the allocated text representation of the device node.
-  @retval NULL           if DevicePath is NULL or there was insufficient memory.
+    @retval a_pointer      a pointer to the allocated text representation of the device node.
+    @retval NULL           if DevicePath is NULL or there was insufficient memory.
 
-**/
-public readonly delegate* unmanaged<CONST,bool,bool, EFI_STATUS> ConvertDevicePathToText;
+  **/
+  public readonly delegate* unmanaged<CONST, bool, bool, EFI_STATUS> ConvertDevicePathToText;
 }
 
 // extern EFI_GUID  gEfiDevicePathToTextProtocolGuid;

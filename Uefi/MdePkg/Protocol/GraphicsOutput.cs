@@ -12,20 +12,22 @@ namespace Uefi;
 // #ifndef __GRAPHICS_OUTPUT_H__
 // #define __GRAPHICS_OUTPUT_H__
 
-public static EFI_GUID EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID = new GUID( 
-    0x9042a9de, 0x23dc, 0x4a38, new byte[] {0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a });
+public static EFI_GUID EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID = new GUID(
+    0x9042a9de, 0x23dc, 0x4a38, new byte[] { 0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a });
 
 // typedef struct _EFI_GRAPHICS_OUTPUT_PROTOCOL EFI_GRAPHICS_OUTPUT_PROTOCOL;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PIXEL_BITMASK {
- public uint    RedMask;
- public uint    GreenMask;
- public uint    BlueMask;
- public uint    ReservedMask;
+public unsafe struct EFI_PIXEL_BITMASK
+{
+  public uint RedMask;
+  public uint GreenMask;
+  public uint BlueMask;
+  public uint ReservedMask;
 }
 
-public enum EFI_GRAPHICS_PIXEL_FORMAT {
+public enum EFI_GRAPHICS_PIXEL_FORMAT
+{
   ///
   /// A pixel is 32-bits and byte zero represents red, byte one represents green,
   /// byte two represents blue, and byte three is reserved. This is the definition
@@ -57,34 +59,35 @@ public enum EFI_GRAPHICS_PIXEL_FORMAT {
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_GRAPHICS_OUTPUT_MODE_INFORMATION {
+public unsafe struct EFI_GRAPHICS_OUTPUT_MODE_INFORMATION
+{
   ///
   /// The version of this data structure. A value of zero represents the
   /// EFI_GRAPHICS_OUTPUT_MODE_INFORMATION structure as defined in this specification.
   ///
- public uint                       Version;
+  public uint Version;
   ///
   /// The size of video screen in pixels in the X dimension.
   ///
- public uint                       HorizontalResolution;
+  public uint HorizontalResolution;
   ///
   /// The size of video screen in pixels in the Y dimension.
   ///
- public uint                       VerticalResolution;
+  public uint VerticalResolution;
   ///
   /// Enumeration that defines the physical format of the pixel. A value of PixelBltOnly
   /// implies that a linear frame buffer is not available for this mode.
   ///
- public EFI_GRAPHICS_PIXEL_FORMAT    PixelFormat;
+  public EFI_GRAPHICS_PIXEL_FORMAT PixelFormat;
   ///
   /// This bit-mask is only valid if PixelFormat is set to PixelPixelBitMask.
   /// A bit being set defines what bits are used for what purpose such as Red, Green, Blue, or Reserved.
   ///
- public EFI_PIXEL_BITMASK            PixelInformation;
+  public EFI_PIXEL_BITMASK PixelInformation;
   ///
   /// Defines the number of pixel elements per video memory line.
   ///
- public uint                       PixelsPerScanLine;
+  public uint PixelsPerScanLine;
 }
 
 
@@ -130,22 +133,26 @@ public unsafe struct EFI_GRAPHICS_OUTPUT_MODE_INFORMATION {
 
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_GRAPHICS_OUTPUT_BLT_PIXEL {
- public byte    Blue;
- public byte    Green;
- public byte    Red;
- public byte    Reserved;
+public unsafe struct EFI_GRAPHICS_OUTPUT_BLT_PIXEL
+{
+  public byte Blue;
+  public byte Green;
+  public byte Red;
+  public byte Reserved;
 }
 
-[StructLayout(LayoutKind.Explicit)] public unsafe struct EFI_GRAPHICS_OUTPUT_BLT_PIXEL_UNION {
- [FieldOffset(0)] public EFI_GRAPHICS_OUTPUT_BLT_PIXEL    Pixel;
- [FieldOffset(0)] public uint                           Raw;
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct EFI_GRAPHICS_OUTPUT_BLT_PIXEL_UNION
+{
+  [FieldOffset(0)] public EFI_GRAPHICS_OUTPUT_BLT_PIXEL Pixel;
+  [FieldOffset(0)] public uint Raw;
 }
 
 ///
 /// actions for BltOperations
 ///
-public enum EFI_GRAPHICS_OUTPUT_BLT_OPERATION {
+public enum EFI_GRAPHICS_OUTPUT_BLT_OPERATION
+{
   ///
   /// Write data from the BltBuffer pixel (0, 0)
   /// directly to every pixel of the video display rectangle
@@ -224,33 +231,34 @@ public enum EFI_GRAPHICS_OUTPUT_BLT_OPERATION {
 
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE {
+public unsafe struct EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE
+{
   ///
   /// The number of modes supported by QueryMode() and SetMode().
   ///
- public uint                                  MaxMode;
+  public uint MaxMode;
   ///
   /// Current Mode of the graphics device. Valid mode numbers are 0 to MaxMode -1.
   ///
- public uint                                  Mode;
+  public uint Mode;
   ///
   /// Pointer to read-only EFI_GRAPHICS_OUTPUT_MODE_INFORMATION data.
   ///
- public EFI_GRAPHICS_OUTPUT_MODE_INFORMATION    *Info;
+  public EFI_GRAPHICS_OUTPUT_MODE_INFORMATION* Info;
   ///
   /// Size of Info structure in bytes.
   ///
- public ulong                                   SizeOfInfo;
+  public ulong SizeOfInfo;
   ///
   /// Base address of graphics linear frame buffer.
   /// Offset zero in FrameBufferBase represents the upper left pixel of the display.
   ///
- public EFI_PHYSICAL_ADDRESS                    FrameBufferBase;
+  public EFI_PHYSICAL_ADDRESS FrameBufferBase;
   ///
   /// Amount of frame buffer needed to support the active mode as defined by
   /// PixelsPerScanLine xVerticalResolution x PixelElementSize.
   ///
- public ulong                                   FrameBufferSize;
+  public ulong FrameBufferSize;
 }
 
 ///
@@ -259,63 +267,64 @@ public unsafe struct EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE {
 /// frame buffer is also exposed so software can write directly to the video hardware.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_GRAPHICS_OUTPUT_PROTOCOL {
-/**
-  Returns information for an available graphics mode that the graphics device
-  and the set of active video output devices supports.
+public unsafe struct EFI_GRAPHICS_OUTPUT_PROTOCOL
+{
+  /**
+    Returns information for an available graphics mode that the graphics device
+    and the set of active video output devices supports.
 
-  @param  This                  The EFI_GRAPHICS_OUTPUT_PROTOCOL instance.
-  @param  ModeNumber            The mode number to return information on.
-  @param  SizeOfInfo            A pointer to the size, in bytes, of the Info buffer.
-  @param  Info                  A pointer to callee allocated buffer that returns information about ModeNumber.
+    @param  This                  The EFI_GRAPHICS_OUTPUT_PROTOCOL instance.
+    @param  ModeNumber            The mode number to return information on.
+    @param  SizeOfInfo            A pointer to the size, in bytes, of the Info buffer.
+    @param  Info                  A pointer to callee allocated buffer that returns information about ModeNumber.
 
-  @retval EFI_SUCCESS           Valid mode information was returned.
-  @retval EFI_DEVICE_ERROR      A hardware error occurred trying to retrieve the video mode.
-  @retval EFI_INVALID_PARAMETER ModeNumber is not valid.
+    @retval EFI_SUCCESS           Valid mode information was returned.
+    @retval EFI_DEVICE_ERROR      A hardware error occurred trying to retrieve the video mode.
+    @retval EFI_INVALID_PARAMETER ModeNumber is not valid.
 
-**/
-public readonly delegate* unmanaged<EFI_GRAPHICS_OUTPUT_PROTOCOL*,uint,ulong*,EFI_GRAPHICS_OUTPUT_MODE_INFORMATION**, EFI_STATUS> QueryMode;
-/**
-  Set the video device into the specified mode and clears the visible portions of
-  the output display to black.
+  **/
+  public readonly delegate* unmanaged<EFI_GRAPHICS_OUTPUT_PROTOCOL*, uint, ulong*, EFI_GRAPHICS_OUTPUT_MODE_INFORMATION**, EFI_STATUS> QueryMode;
+  /**
+    Set the video device into the specified mode and clears the visible portions of
+    the output display to black.
 
-  @param  This              The EFI_GRAPHICS_OUTPUT_PROTOCOL instance.
-  @param  ModeNumber        Abstraction that defines the current video mode.
+    @param  This              The EFI_GRAPHICS_OUTPUT_PROTOCOL instance.
+    @param  ModeNumber        Abstraction that defines the current video mode.
 
-  @retval EFI_SUCCESS       The graphics mode specified by ModeNumber was selected.
-  @retval EFI_DEVICE_ERROR  The device had an error and could not complete the request.
-  @retval EFI_UNSUPPORTED   ModeNumber is not supported by this device.
+    @retval EFI_SUCCESS       The graphics mode specified by ModeNumber was selected.
+    @retval EFI_DEVICE_ERROR  The device had an error and could not complete the request.
+    @retval EFI_UNSUPPORTED   ModeNumber is not supported by this device.
 
-**/
-public readonly delegate* unmanaged<EFI_GRAPHICS_OUTPUT_PROTOCOL*,uint, EFI_STATUS> SetMode;
-/**
-  Blt a rectangle of pixels on the graphics screen. Blt stands for BLock Transfer.
+  **/
+  public readonly delegate* unmanaged<EFI_GRAPHICS_OUTPUT_PROTOCOL*, uint, EFI_STATUS> SetMode;
+  /**
+    Blt a rectangle of pixels on the graphics screen. Blt stands for BLock Transfer.
 
-  @param  This         Protocol instance pointer.
-  @param  BltBuffer    The data to transfer to the graphics screen.
-                       Size is at least Width*Height*sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL).
-  @param  BltOperation The operation to perform when copying BltBuffer on to the graphics screen.
-  @param  SourceX      The X coordinate of source for the BltOperation.
-  @param  SourceY      The Y coordinate of source for the BltOperation.
-  @param  DestinationX The X coordinate of destination for the BltOperation.
-  @param  DestinationY The Y coordinate of destination for the BltOperation.
-  @param  Width        The width of a rectangle in the blt rectangle in pixels.
-  @param  Height       The height of a rectangle in the blt rectangle in pixels.
-  @param  Delta        Not used for EfiBltVideoFill or the EfiBltVideoToVideo operation.
-                       If a Delta of zero is used, the entire BltBuffer is being operated on.
-                       If a subrectangle of the BltBuffer is being used then Delta
-                       represents the number of bytes in a row of the BltBuffer.
+    @param  This         Protocol instance pointer.
+    @param  BltBuffer    The data to transfer to the graphics screen.
+                         Size is at least Width*Height*sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL).
+    @param  BltOperation The operation to perform when copying BltBuffer on to the graphics screen.
+    @param  SourceX      The X coordinate of source for the BltOperation.
+    @param  SourceY      The Y coordinate of source for the BltOperation.
+    @param  DestinationX The X coordinate of destination for the BltOperation.
+    @param  DestinationY The Y coordinate of destination for the BltOperation.
+    @param  Width        The width of a rectangle in the blt rectangle in pixels.
+    @param  Height       The height of a rectangle in the blt rectangle in pixels.
+    @param  Delta        Not used for EfiBltVideoFill or the EfiBltVideoToVideo operation.
+                         If a Delta of zero is used, the entire BltBuffer is being operated on.
+                         If a subrectangle of the BltBuffer is being used then Delta
+                         represents the number of bytes in a row of the BltBuffer.
 
-  @retval EFI_SUCCESS           BltBuffer was drawn to the graphics screen.
-  @retval EFI_INVALID_PARAMETER BltOperation is not valid.
-  @retval EFI_DEVICE_ERROR      The device had an error and could not complete the request.
+    @retval EFI_SUCCESS           BltBuffer was drawn to the graphics screen.
+    @retval EFI_INVALID_PARAMETER BltOperation is not valid.
+    @retval EFI_DEVICE_ERROR      The device had an error and could not complete the request.
 
-**/
-public readonly delegate* unmanaged<EFI_GRAPHICS_OUTPUT_PROTOCOL*,EFI_GRAPHICS_OUTPUT_BLT_PIXEL*,EFI_GRAPHICS_OUTPUT_BLT_OPERATION,ulong,ulong,ulong,ulong,ulong,ulong,ulong, EFI_STATUS> Blt;
+  **/
+  public readonly delegate* unmanaged<EFI_GRAPHICS_OUTPUT_PROTOCOL*, EFI_GRAPHICS_OUTPUT_BLT_PIXEL*, EFI_GRAPHICS_OUTPUT_BLT_OPERATION, ulong, ulong, ulong, ulong, ulong, ulong, ulong, EFI_STATUS> Blt;
   ///
   /// Pointer to EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE data.
   ///
- public EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE          *Mode;
+  public EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE* Mode;
 }
 
 // extern EFI_GUID  gEfiGraphicsOutputProtocolGuid;

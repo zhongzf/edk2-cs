@@ -14,7 +14,7 @@ namespace Uefi;
 // #ifndef __ACPI_TABLE_H___
 // #define __ACPI_TABLE_H___
 
-public static EFI_GUID EFI_ACPI_TABLE_PROTOCOL_GUID = new GUID( 0xffe06bdd, 0x6107, 0x46a6, new byte[] { 0x7b, 0xb2, 0x5a, 0x9c, 0x7e, 0xc5, 0x27, 0x5c });
+public static EFI_GUID EFI_ACPI_TABLE_PROTOCOL_GUID = new GUID(0xffe06bdd, 0x6107, 0x46a6, new byte[] { 0x7b, 0xb2, 0x5a, 0x9c, 0x7e, 0xc5, 0x27, 0x5c });
 
 // typedef struct _EFI_ACPI_TABLE_PROTOCOL EFI_ACPI_TABLE_PROTOCOL;
 
@@ -112,82 +112,83 @@ public static EFI_GUID EFI_ACPI_TABLE_PROTOCOL_GUID = new GUID( 0xffe06bdd, 0x61
 /// to install and uninstall ACPI tables from a platform.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_ACPI_TABLE_PROTOCOL {
-/**
+public unsafe struct EFI_ACPI_TABLE_PROTOCOL
+{
+  /**
 
-  The InstallAcpiTable() function allows a caller to install an
-  ACPI table. When successful, the table will be linked by the
-  RSDT/XSDT. AcpiTableBuffer specifies the table to be installed.
-  InstallAcpiTable() will make a copy of the table and insert the
-  copy into the RSDT/XSDT. InstallAcpiTable() must insert the new
-  table at the end of the RSDT/XSDT. To prevent namespace
-  collision, ACPI tables may be created using UEFI ACPI table
-  format. If this protocol is used to install a table with a
-  signature already present in the system, the new table will not
-  replace the existing table. It is a platform implementation
-  decision to add a new table with a signature matching an
-  existing table or disallow duplicate table signatures and
-  return EFI_ACCESS_DENIED. On successful output, TableKey is
-  initialized with a unique key. Its value may be used in a
-  subsequent call to UninstallAcpiTable to remove an ACPI table.
-  If an EFI application is running at the time of this call, the
-  relevant EFI_CONFIGURATION_TABLE pointer to the RSDT is no
-  longer considered valid.
-
-
-  @param This                 A pointer to a EFI_ACPI_TABLE_PROTOCOL.
-
-  @param AcpiTableBuffer      A pointer to a buffer containing the
-                              ACPI table to be installed.
-
-  @param AcpiTableBufferSize  Specifies the size, in bytes, of
-                              the AcpiTableBuffer buffer.
+    The InstallAcpiTable() function allows a caller to install an
+    ACPI table. When successful, the table will be linked by the
+    RSDT/XSDT. AcpiTableBuffer specifies the table to be installed.
+    InstallAcpiTable() will make a copy of the table and insert the
+    copy into the RSDT/XSDT. InstallAcpiTable() must insert the new
+    table at the end of the RSDT/XSDT. To prevent namespace
+    collision, ACPI tables may be created using UEFI ACPI table
+    format. If this protocol is used to install a table with a
+    signature already present in the system, the new table will not
+    replace the existing table. It is a platform implementation
+    decision to add a new table with a signature matching an
+    existing table or disallow duplicate table signatures and
+    return EFI_ACCESS_DENIED. On successful output, TableKey is
+    initialized with a unique key. Its value may be used in a
+    subsequent call to UninstallAcpiTable to remove an ACPI table.
+    If an EFI application is running at the time of this call, the
+    relevant EFI_CONFIGURATION_TABLE pointer to the RSDT is no
+    longer considered valid.
 
 
-  @param TableKey             Returns a key to refer to the ACPI table.
+    @param This                 A pointer to a EFI_ACPI_TABLE_PROTOCOL.
 
-  @retval EFI_SUCCESS           The table was successfully inserted
+    @param AcpiTableBuffer      A pointer to a buffer containing the
+                                ACPI table to be installed.
 
-  @retval EFI_INVALID_PARAMETER Either AcpiTableBuffer is NULL,
-                                TableKey is NULL, or
-                                AcpiTableBufferSize and the size
-                                field embedded in the ACPI table
-                                pointed to by AcpiTableBuffer
-                                are not in sync.
+    @param AcpiTableBufferSize  Specifies the size, in bytes, of
+                                the AcpiTableBuffer buffer.
 
-  @retval EFI_OUT_OF_RESOURCES  Insufficient resources exist to
-                                complete the request.
-  @retval EFI_ACCESS_DENIED     The table signature matches a table already
-                                present in the system and platform policy
-                                does not allow duplicate tables of this type.
 
-**/
-public readonly delegate* unmanaged<EFI_ACPI_TABLE_PROTOCOL*,void*,ulong,ulong*, EFI_STATUS> InstallAcpiTable;
-/**
+    @param TableKey             Returns a key to refer to the ACPI table.
 
-  The UninstallAcpiTable() function allows a caller to remove an
-  ACPI table. The routine will remove its reference from the
-  RSDT/XSDT. A table is referenced by the TableKey parameter
-  returned from a prior call to InstallAcpiTable(). If an EFI
-  application is running at the time of this call, the relevant
-  EFI_CONFIGURATION_TABLE pointer to the RSDT is no longer
-  considered valid.
+    @retval EFI_SUCCESS           The table was successfully inserted
 
-  @param This                   A pointer to a EFI_ACPI_TABLE_PROTOCOL.
+    @retval EFI_INVALID_PARAMETER Either AcpiTableBuffer is NULL,
+                                  TableKey is NULL, or
+                                  AcpiTableBufferSize and the size
+                                  field embedded in the ACPI table
+                                  pointed to by AcpiTableBuffer
+                                  are not in sync.
 
-  @param TableKey               Specifies the table to uninstall. The key was
-                                returned from InstallAcpiTable().
+    @retval EFI_OUT_OF_RESOURCES  Insufficient resources exist to
+                                  complete the request.
+    @retval EFI_ACCESS_DENIED     The table signature matches a table already
+                                  present in the system and platform policy
+                                  does not allow duplicate tables of this type.
 
-  @retval EFI_SUCCESS           The table was successfully inserted
+  **/
+  public readonly delegate* unmanaged<EFI_ACPI_TABLE_PROTOCOL*, void*, ulong, ulong*, EFI_STATUS> InstallAcpiTable;
+  /**
 
-  @retval EFI_NOT_FOUND         TableKey does not refer to a valid key
-                                for a table entry.
+    The UninstallAcpiTable() function allows a caller to remove an
+    ACPI table. The routine will remove its reference from the
+    RSDT/XSDT. A table is referenced by the TableKey parameter
+    returned from a prior call to InstallAcpiTable(). If an EFI
+    application is running at the time of this call, the relevant
+    EFI_CONFIGURATION_TABLE pointer to the RSDT is no longer
+    considered valid.
 
-  @retval EFI_OUT_OF_RESOURCES  Insufficient resources exist to
-                                complete the request.
+    @param This                   A pointer to a EFI_ACPI_TABLE_PROTOCOL.
 
-**/
-public readonly delegate* unmanaged<EFI_ACPI_TABLE_PROTOCOL*,ulong, EFI_STATUS> UninstallAcpiTable;
+    @param TableKey               Specifies the table to uninstall. The key was
+                                  returned from InstallAcpiTable().
+
+    @retval EFI_SUCCESS           The table was successfully inserted
+
+    @retval EFI_NOT_FOUND         TableKey does not refer to a valid key
+                                  for a table entry.
+
+    @retval EFI_OUT_OF_RESOURCES  Insufficient resources exist to
+                                  complete the request.
+
+  **/
+  public readonly delegate* unmanaged<EFI_ACPI_TABLE_PROTOCOL*, ulong, EFI_STATUS> UninstallAcpiTable;
 }
 
 // extern EFI_GUID  gEfiAcpiTableProtocolGuid;

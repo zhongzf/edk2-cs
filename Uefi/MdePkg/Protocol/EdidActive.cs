@@ -12,8 +12,8 @@ namespace Uefi;
 // #ifndef __EDID_ACTIVE_H__
 // #define __EDID_ACTIVE_H__
 
-public static EFI_GUID EFI_EDID_ACTIVE_PROTOCOL_GUID = new GUID( 
-    0xbd8c1056, 0x9f36, 0x44ec, new byte[] {0x92, 0xa8, 0xa6, 0x33, 0x7f, 0x81, 0x79, 0x86 });
+public static EFI_GUID EFI_EDID_ACTIVE_PROTOCOL_GUID = new GUID(
+    0xbd8c1056, 0x9f36, 0x44ec, new byte[] { 0x92, 0xa8, 0xa6, 0x33, 0x7f, 0x81, 0x79, 0x86 });
 
 ///
 /// This protocol contains the EDID information for an active video output device. This is either the
@@ -22,13 +22,14 @@ public static EFI_GUID EFI_EDID_ACTIVE_PROTOCOL_GUID = new GUID(
 /// EFI_EDID_DISCOVERED_PROTOCOL if no overrides are available.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_EDID_ACTIVE_PROTOCOL {
+public unsafe struct EFI_EDID_ACTIVE_PROTOCOL
+{
   ///
   /// The size, in bytes, of the Edid buffer. 0 if no EDID information
   /// is available from the video output device. Otherwise, it must be a
   /// minimum of 128 bytes.
   ///
- public uint    SizeOfEdid;
+  public uint SizeOfEdid;
 
   ///
   /// A pointer to a read-only array of bytes that contains the EDID
@@ -38,7 +39,7 @@ public unsafe struct EFI_EDID_ACTIVE_PROTOCOL {
   /// EDID information is defined in the E-EDID EEPROM
   /// specification published by VESA (www.vesa.org).
   ///
- public byte    *Edid;
+  public byte* Edid;
 }
 
 // extern EFI_GUID  gEfiEdidActiveProtocolGuid;

@@ -37,9 +37,9 @@ public static ulong EFI_SMM_BASE2_PROTOCOL_GUID = EFI_MM_BASE_PROTOCOL_GUID;
 **/
 typedef
 EFI_STATUS
-(EFIAPI *EFI_SMM_INSIDE_OUT2)(
-  IN CONST EFI_SMM_BASE2_PROTOCOL  *This,
-  OUT bool                      *InSmram
+(EFIAPI* EFI_SMM_INSIDE_OUT2)(
+  IN CONST EFI_SMM_BASE2_PROTOCOL  * This,
+  OUT bool* InSmram
   )
 ;
 
@@ -59,9 +59,9 @@ EFI_STATUS
 **/
 typedef
 EFI_STATUS
-(EFIAPI *EFI_SMM_GET_SMST_LOCATION2)(
-  IN CONST EFI_SMM_BASE2_PROTOCOL  *This,
-  IN OUT EFI_SMM_SYSTEM_TABLE2     **Smst
+(EFIAPI* EFI_SMM_GET_SMST_LOCATION2)(
+  IN CONST EFI_SMM_BASE2_PROTOCOL  * This,
+  IN OUT EFI_SMM_SYSTEM_TABLE2     ** Smst
   )
 ;
 
@@ -70,9 +70,10 @@ EFI_STATUS
 /// services and determine whether the driver is being invoked inside SMRAM or outside of SMRAM.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_BASE2_PROTOCOL {
- public EFI_SMM_INSIDE_OUT2           InSmm;
- public EFI_SMM_GET_SMST_LOCATION2    GetSmstLocation;
+public unsafe struct EFI_SMM_BASE2_PROTOCOL
+{
+  public EFI_SMM_INSIDE_OUT2 InSmm;
+  public EFI_SMM_GET_SMST_LOCATION2 GetSmstLocation;
 }
 
 // extern EFI_GUID  gEfiSmmBase2ProtocolGuid;

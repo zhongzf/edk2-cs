@@ -15,91 +15,92 @@ namespace Uefi;
 // #ifndef _MM_CPU_H_
 // #define _MM_CPU_H_
 
-public static EFI_GUID EFI_MM_CPU_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_MM_CPU_PROTOCOL_GUID = new GUID(
     0xeb346b97, 0x975f, 0x4a9f, new byte[] { 0x8b, 0x22, 0xf8, 0xe9, 0x2b, 0xb3, 0xd5, 0x69 });
 
 ///
 /// Save State register index
 ///
-public enum EFI_MM_SAVE_STATE_REGISTER {
+public enum EFI_MM_SAVE_STATE_REGISTER
+{
   ///
   /// x86/X64 standard registers
   ///
-  EFI_MM_SAVE_STATE_REGISTER_GDTBASE    = 4,
-  EFI_MM_SAVE_STATE_REGISTER_IDTBASE    = 5,
-  EFI_MM_SAVE_STATE_REGISTER_LDTBASE    = 6,
-  EFI_MM_SAVE_STATE_REGISTER_GDTLIMIT   = 7,
-  EFI_MM_SAVE_STATE_REGISTER_IDTLIMIT   = 8,
-  EFI_MM_SAVE_STATE_REGISTER_LDTLIMIT   = 9,
-  EFI_MM_SAVE_STATE_REGISTER_LDTINFO    = 10,
-  EFI_MM_SAVE_STATE_REGISTER_ES         = 20,
-  EFI_MM_SAVE_STATE_REGISTER_CS         = 21,
-  EFI_MM_SAVE_STATE_REGISTER_SS         = 22,
-  EFI_MM_SAVE_STATE_REGISTER_DS         = 23,
-  EFI_MM_SAVE_STATE_REGISTER_FS         = 24,
-  EFI_MM_SAVE_STATE_REGISTER_GS         = 25,
-  EFI_MM_SAVE_STATE_REGISTER_LDTR_SEL   = 26,
-  EFI_MM_SAVE_STATE_REGISTER_TR_SEL     = 27,
-  EFI_MM_SAVE_STATE_REGISTER_DR7        = 28,
-  EFI_MM_SAVE_STATE_REGISTER_DR6        = 29,
-  EFI_MM_SAVE_STATE_REGISTER_R8         = 30,
-  EFI_MM_SAVE_STATE_REGISTER_R9         = 31,
-  EFI_MM_SAVE_STATE_REGISTER_R10        = 32,
-  EFI_MM_SAVE_STATE_REGISTER_R11        = 33,
-  EFI_MM_SAVE_STATE_REGISTER_R12        = 34,
-  EFI_MM_SAVE_STATE_REGISTER_R13        = 35,
-  EFI_MM_SAVE_STATE_REGISTER_R14        = 36,
-  EFI_MM_SAVE_STATE_REGISTER_R15        = 37,
-  EFI_MM_SAVE_STATE_REGISTER_RAX        = 38,
-  EFI_MM_SAVE_STATE_REGISTER_RBX        = 39,
-  EFI_MM_SAVE_STATE_REGISTER_RCX        = 40,
-  EFI_MM_SAVE_STATE_REGISTER_RDX        = 41,
-  EFI_MM_SAVE_STATE_REGISTER_RSP        = 42,
-  EFI_MM_SAVE_STATE_REGISTER_RBP        = 43,
-  EFI_MM_SAVE_STATE_REGISTER_RSI        = 44,
-  EFI_MM_SAVE_STATE_REGISTER_RDI        = 45,
-  EFI_MM_SAVE_STATE_REGISTER_RIP        = 46,
-  EFI_MM_SAVE_STATE_REGISTER_RFLAGS     = 51,
-  EFI_MM_SAVE_STATE_REGISTER_CR0        = 52,
-  EFI_MM_SAVE_STATE_REGISTER_CR3        = 53,
-  EFI_MM_SAVE_STATE_REGISTER_CR4        = 54,
-  EFI_MM_SAVE_STATE_REGISTER_FCW        = 256,
-  EFI_MM_SAVE_STATE_REGISTER_FSW        = 257,
-  EFI_MM_SAVE_STATE_REGISTER_FTW        = 258,
-  EFI_MM_SAVE_STATE_REGISTER_OPCODE     = 259,
-  EFI_MM_SAVE_STATE_REGISTER_FP_EIP     = 260,
-  EFI_MM_SAVE_STATE_REGISTER_FP_CS      = 261,
+  EFI_MM_SAVE_STATE_REGISTER_GDTBASE = 4,
+  EFI_MM_SAVE_STATE_REGISTER_IDTBASE = 5,
+  EFI_MM_SAVE_STATE_REGISTER_LDTBASE = 6,
+  EFI_MM_SAVE_STATE_REGISTER_GDTLIMIT = 7,
+  EFI_MM_SAVE_STATE_REGISTER_IDTLIMIT = 8,
+  EFI_MM_SAVE_STATE_REGISTER_LDTLIMIT = 9,
+  EFI_MM_SAVE_STATE_REGISTER_LDTINFO = 10,
+  EFI_MM_SAVE_STATE_REGISTER_ES = 20,
+  EFI_MM_SAVE_STATE_REGISTER_CS = 21,
+  EFI_MM_SAVE_STATE_REGISTER_SS = 22,
+  EFI_MM_SAVE_STATE_REGISTER_DS = 23,
+  EFI_MM_SAVE_STATE_REGISTER_FS = 24,
+  EFI_MM_SAVE_STATE_REGISTER_GS = 25,
+  EFI_MM_SAVE_STATE_REGISTER_LDTR_SEL = 26,
+  EFI_MM_SAVE_STATE_REGISTER_TR_SEL = 27,
+  EFI_MM_SAVE_STATE_REGISTER_DR7 = 28,
+  EFI_MM_SAVE_STATE_REGISTER_DR6 = 29,
+  EFI_MM_SAVE_STATE_REGISTER_R8 = 30,
+  EFI_MM_SAVE_STATE_REGISTER_R9 = 31,
+  EFI_MM_SAVE_STATE_REGISTER_R10 = 32,
+  EFI_MM_SAVE_STATE_REGISTER_R11 = 33,
+  EFI_MM_SAVE_STATE_REGISTER_R12 = 34,
+  EFI_MM_SAVE_STATE_REGISTER_R13 = 35,
+  EFI_MM_SAVE_STATE_REGISTER_R14 = 36,
+  EFI_MM_SAVE_STATE_REGISTER_R15 = 37,
+  EFI_MM_SAVE_STATE_REGISTER_RAX = 38,
+  EFI_MM_SAVE_STATE_REGISTER_RBX = 39,
+  EFI_MM_SAVE_STATE_REGISTER_RCX = 40,
+  EFI_MM_SAVE_STATE_REGISTER_RDX = 41,
+  EFI_MM_SAVE_STATE_REGISTER_RSP = 42,
+  EFI_MM_SAVE_STATE_REGISTER_RBP = 43,
+  EFI_MM_SAVE_STATE_REGISTER_RSI = 44,
+  EFI_MM_SAVE_STATE_REGISTER_RDI = 45,
+  EFI_MM_SAVE_STATE_REGISTER_RIP = 46,
+  EFI_MM_SAVE_STATE_REGISTER_RFLAGS = 51,
+  EFI_MM_SAVE_STATE_REGISTER_CR0 = 52,
+  EFI_MM_SAVE_STATE_REGISTER_CR3 = 53,
+  EFI_MM_SAVE_STATE_REGISTER_CR4 = 54,
+  EFI_MM_SAVE_STATE_REGISTER_FCW = 256,
+  EFI_MM_SAVE_STATE_REGISTER_FSW = 257,
+  EFI_MM_SAVE_STATE_REGISTER_FTW = 258,
+  EFI_MM_SAVE_STATE_REGISTER_OPCODE = 259,
+  EFI_MM_SAVE_STATE_REGISTER_FP_EIP = 260,
+  EFI_MM_SAVE_STATE_REGISTER_FP_CS = 261,
   EFI_MM_SAVE_STATE_REGISTER_DATAOFFSET = 262,
-  EFI_MM_SAVE_STATE_REGISTER_FP_DS      = 263,
-  EFI_MM_SAVE_STATE_REGISTER_MM0        = 264,
-  EFI_MM_SAVE_STATE_REGISTER_MM1        = 265,
-  EFI_MM_SAVE_STATE_REGISTER_MM2        = 266,
-  EFI_MM_SAVE_STATE_REGISTER_MM3        = 267,
-  EFI_MM_SAVE_STATE_REGISTER_MM4        = 268,
-  EFI_MM_SAVE_STATE_REGISTER_MM5        = 269,
-  EFI_MM_SAVE_STATE_REGISTER_MM6        = 270,
-  EFI_MM_SAVE_STATE_REGISTER_MM7        = 271,
-  EFI_MM_SAVE_STATE_REGISTER_XMM0       = 272,
-  EFI_MM_SAVE_STATE_REGISTER_XMM1       = 273,
-  EFI_MM_SAVE_STATE_REGISTER_XMM2       = 274,
-  EFI_MM_SAVE_STATE_REGISTER_XMM3       = 275,
-  EFI_MM_SAVE_STATE_REGISTER_XMM4       = 276,
-  EFI_MM_SAVE_STATE_REGISTER_XMM5       = 277,
-  EFI_MM_SAVE_STATE_REGISTER_XMM6       = 278,
-  EFI_MM_SAVE_STATE_REGISTER_XMM7       = 279,
-  EFI_MM_SAVE_STATE_REGISTER_XMM8       = 280,
-  EFI_MM_SAVE_STATE_REGISTER_XMM9       = 281,
-  EFI_MM_SAVE_STATE_REGISTER_XMM10      = 282,
-  EFI_MM_SAVE_STATE_REGISTER_XMM11      = 283,
-  EFI_MM_SAVE_STATE_REGISTER_XMM12      = 284,
-  EFI_MM_SAVE_STATE_REGISTER_XMM13      = 285,
-  EFI_MM_SAVE_STATE_REGISTER_XMM14      = 286,
-  EFI_MM_SAVE_STATE_REGISTER_XMM15      = 287,
+  EFI_MM_SAVE_STATE_REGISTER_FP_DS = 263,
+  EFI_MM_SAVE_STATE_REGISTER_MM0 = 264,
+  EFI_MM_SAVE_STATE_REGISTER_MM1 = 265,
+  EFI_MM_SAVE_STATE_REGISTER_MM2 = 266,
+  EFI_MM_SAVE_STATE_REGISTER_MM3 = 267,
+  EFI_MM_SAVE_STATE_REGISTER_MM4 = 268,
+  EFI_MM_SAVE_STATE_REGISTER_MM5 = 269,
+  EFI_MM_SAVE_STATE_REGISTER_MM6 = 270,
+  EFI_MM_SAVE_STATE_REGISTER_MM7 = 271,
+  EFI_MM_SAVE_STATE_REGISTER_XMM0 = 272,
+  EFI_MM_SAVE_STATE_REGISTER_XMM1 = 273,
+  EFI_MM_SAVE_STATE_REGISTER_XMM2 = 274,
+  EFI_MM_SAVE_STATE_REGISTER_XMM3 = 275,
+  EFI_MM_SAVE_STATE_REGISTER_XMM4 = 276,
+  EFI_MM_SAVE_STATE_REGISTER_XMM5 = 277,
+  EFI_MM_SAVE_STATE_REGISTER_XMM6 = 278,
+  EFI_MM_SAVE_STATE_REGISTER_XMM7 = 279,
+  EFI_MM_SAVE_STATE_REGISTER_XMM8 = 280,
+  EFI_MM_SAVE_STATE_REGISTER_XMM9 = 281,
+  EFI_MM_SAVE_STATE_REGISTER_XMM10 = 282,
+  EFI_MM_SAVE_STATE_REGISTER_XMM11 = 283,
+  EFI_MM_SAVE_STATE_REGISTER_XMM12 = 284,
+  EFI_MM_SAVE_STATE_REGISTER_XMM13 = 285,
+  EFI_MM_SAVE_STATE_REGISTER_XMM14 = 286,
+  EFI_MM_SAVE_STATE_REGISTER_XMM15 = 287,
   ///
   /// Pseudo-Registers
   ///
-  EFI_MM_SAVE_STATE_REGISTER_IO           = 512,
-  EFI_MM_SAVE_STATE_REGISTER_LMA          = 513,
+  EFI_MM_SAVE_STATE_REGISTER_IO = 512,
+  EFI_MM_SAVE_STATE_REGISTER_LMA = 513,
   EFI_MM_SAVE_STATE_REGISTER_PROCESSOR_ID = 514
 }
 
@@ -115,8 +116,9 @@ public static ulong EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT = 64;
 ///
 /// Size width of I/O instruction
 ///
-public enum EFI_MM_SAVE_STATE_IO_WIDTH {
-  EFI_MM_SAVE_STATE_IO_WIDTH_UINT8  = 0,
+public enum EFI_MM_SAVE_STATE_IO_WIDTH
+{
+  EFI_MM_SAVE_STATE_IO_WIDTH_UINT8 = 0,
   EFI_MM_SAVE_STATE_IO_WIDTH_UINT16 = 1,
   EFI_MM_SAVE_STATE_IO_WIDTH_UINT32 = 2,
   EFI_MM_SAVE_STATE_IO_WIDTH_UINT64 = 3
@@ -125,10 +127,11 @@ public enum EFI_MM_SAVE_STATE_IO_WIDTH {
 ///
 /// Types of I/O instruction
 ///
-public enum EFI_MM_SAVE_STATE_IO_TYPE {
-  EFI_MM_SAVE_STATE_IO_TYPE_INPUT      = 1,
-  EFI_MM_SAVE_STATE_IO_TYPE_OUTPUT     = 2,
-  EFI_MM_SAVE_STATE_IO_TYPE_STRING     = 4,
+public enum EFI_MM_SAVE_STATE_IO_TYPE
+{
+  EFI_MM_SAVE_STATE_IO_TYPE_INPUT = 1,
+  EFI_MM_SAVE_STATE_IO_TYPE_OUTPUT = 2,
+  EFI_MM_SAVE_STATE_IO_TYPE_STRING = 4,
   EFI_MM_SAVE_STATE_IO_TYPE_REP_PREFIX = 8
 }
 
@@ -140,25 +143,26 @@ public enum EFI_MM_SAVE_STATE_IO_TYPE {
 /// This structure describes the I/O operation which was in process when the MMI was generated.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_SAVE_STATE_IO_INFO {
+public unsafe struct EFI_MM_SAVE_STATE_IO_INFO
+{
   ///
   /// For input instruction (IN, INS), this is data read before the MMI occurred. For output
   /// instructions (OUT, OUTS) this is data that was written before the MMI occurred. The
   /// width of the data is specified by IoWidth.
   ///
- public ulong                        IoData;
+  public ulong IoData;
   ///
   /// The I/O port that was being accessed when the MMI was triggered.
   ///
- public ushort                        IoPort;
+  public ushort IoPort;
   ///
   /// Defines the size width (UINT8, UINT16, UINT32, UINT64) for IoData.
   ///
- public EFI_MM_SAVE_STATE_IO_WIDTH    IoWidth;
+  public EFI_MM_SAVE_STATE_IO_WIDTH IoWidth;
   ///
   /// Defines type of I/O instruction.
   ///
- public EFI_MM_SAVE_STATE_IO_TYPE     IoType;
+  public EFI_MM_SAVE_STATE_IO_TYPE IoType;
 }
 
 // typedef struct _EFI_MM_CPU_PROTOCOL EFI_MM_CPU_PROTOCOL;
@@ -230,47 +234,48 @@ public unsafe struct EFI_MM_SAVE_STATE_IO_INFO {
 /// format.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_CPU_PROTOCOL {
-/**
-  Read data from the CPU save state.
+public unsafe struct EFI_MM_CPU_PROTOCOL
+{
+  /**
+    Read data from the CPU save state.
 
-  This function is used to read the specified number of bytes of the specified register from the CPU
-  save state of the specified CPU and place the value into the buffer. If the CPU does not support the
-  specified register Register, then EFI_NOT_FOUND  should be returned. If the CPU does not
-  support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
+    This function is used to read the specified number of bytes of the specified register from the CPU
+    save state of the specified CPU and place the value into the buffer. If the CPU does not support the
+    specified register Register, then EFI_NOT_FOUND  should be returned. If the CPU does not
+    support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
 
-  @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
-  @param[in]  Width              The number of bytes to read from the CPU save state.
-  @param[in]  Register           Specifies the CPU register to read form the save state.
-  @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
-  @param[out] Buffer             Upon return, this holds the CPU register value read from the save state.
+    @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
+    @param[in]  Width              The number of bytes to read from the CPU save state.
+    @param[in]  Register           Specifies the CPU register to read form the save state.
+    @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
+    @param[out] Buffer             Upon return, this holds the CPU register value read from the save state.
 
-  @retval EFI_SUCCESS            The register was read from Save State.
-  @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
-  @retval EFI_INVALID_PARAMETER  Input parameters are not valid, for example, Processor No or register width
-                                 is not correct.This or Buffer is NULL.
-**/
-public readonly delegate* unmanaged<CONST,ulong,EFI_MM_SAVE_STATE_REGISTER,ulong,void*, EFI_STATUS> ReadSaveState;
-/**
-  Write data to the CPU save state.
+    @retval EFI_SUCCESS            The register was read from Save State.
+    @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
+    @retval EFI_INVALID_PARAMETER  Input parameters are not valid, for example, Processor No or register width
+                                   is not correct.This or Buffer is NULL.
+  **/
+  public readonly delegate* unmanaged<CONST, ulong, EFI_MM_SAVE_STATE_REGISTER, ulong, void*, EFI_STATUS> ReadSaveState;
+  /**
+    Write data to the CPU save state.
 
-  This function is used to write the specified number of bytes of the specified register to the CPU save
-  state of the specified CPU and place the value into the buffer. If the CPU does not support the
-  specified register Register, then EFI_UNSUPPORTED should be returned. If the CPU does not
-  support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
+    This function is used to write the specified number of bytes of the specified register to the CPU save
+    state of the specified CPU and place the value into the buffer. If the CPU does not support the
+    specified register Register, then EFI_UNSUPPORTED should be returned. If the CPU does not
+    support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
 
-  @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
-  @param[in]  Width              The number of bytes to write to the CPU save state.
-  @param[in]  Register           Specifies the CPU register to write to the save state.
-  @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
-  @param[in]  Buffer             Upon entry, this holds the new CPU register value.
+    @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
+    @param[in]  Width              The number of bytes to write to the CPU save state.
+    @param[in]  Register           Specifies the CPU register to write to the save state.
+    @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
+    @param[in]  Buffer             Upon entry, this holds the new CPU register value.
 
-  @retval EFI_SUCCESS            The register was written to Save State.
-  @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
-  @retval EFI_INVALID_PARAMETER  Input parameters are not valid. For example:
-                                 ProcessorIndex or Width is not correct.
-**/
-public readonly delegate* unmanaged<CONST,ulong,EFI_MM_SAVE_STATE_REGISTER,ulong,CONST, EFI_STATUS> WriteSaveState;
+    @retval EFI_SUCCESS            The register was written to Save State.
+    @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
+    @retval EFI_INVALID_PARAMETER  Input parameters are not valid. For example:
+                                   ProcessorIndex or Width is not correct.
+  **/
+  public readonly delegate* unmanaged<CONST, ulong, EFI_MM_SAVE_STATE_REGISTER, ulong, CONST, EFI_STATUS> WriteSaveState;
 }
 
 // extern EFI_GUID  gEfiMmCpuProtocolGuid;

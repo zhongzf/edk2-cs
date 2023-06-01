@@ -14,7 +14,7 @@ namespace Uefi;
 // #ifndef __EFI_RESET_NOTIFICATION_H__
 // #define __EFI_RESET_NOTIFICATION_H__
 
-public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID = new GUID( 0x9da34ae0, 0xeaf9, 0x4bbf, new byte[] { 0x8e, 0xc3, 0xfd, 0x60, 0x22, 0x6c, 0x44, 0xbe });
+public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID = new GUID(0x9da34ae0, 0xeaf9, 0x4bbf, new byte[] { 0x8e, 0xc3, 0xfd, 0x60, 0x22, 0x6c, 0x44, 0xbe });
 
 // typedef struct _EFI_RESET_NOTIFICATION_PROTOCOL EFI_RESET_NOTIFICATION_PROTOCOL;
 
@@ -69,45 +69,46 @@ public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID = new GUID( 0x9da34a
 
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_RESET_NOTIFICATION_PROTOCOL {
-/**
-  Register a notification function to be called when ResetSystem() is called.
+public unsafe struct EFI_RESET_NOTIFICATION_PROTOCOL
+{
+  /**
+    Register a notification function to be called when ResetSystem() is called.
 
-  The RegisterResetNotify() function registers a notification function that is called when
-  ResetSystem()is called and prior to completing the reset of the platform.
-  The registered functions must not perform a platform reset themselves. These
-  notifications are intended only for the notification of components which may need some
-  special-purpose maintenance prior to the platform resetting.
-  The list of registered reset notification functions are processed if ResetSystem()is called
-  before ExitBootServices(). The list of registered reset notification functions is ignored if
-  ResetSystem()is called after ExitBootServices().
+    The RegisterResetNotify() function registers a notification function that is called when
+    ResetSystem()is called and prior to completing the reset of the platform.
+    The registered functions must not perform a platform reset themselves. These
+    notifications are intended only for the notification of components which may need some
+    special-purpose maintenance prior to the platform resetting.
+    The list of registered reset notification functions are processed if ResetSystem()is called
+    before ExitBootServices(). The list of registered reset notification functions is ignored if
+    ResetSystem()is called after ExitBootServices().
 
-  @param[in]  This              A pointer to the EFI_RESET_NOTIFICATION_PROTOCOL instance.
-  @param[in]  ResetFunction     Points to the function to be called when a ResetSystem() is executed.
+    @param[in]  This              A pointer to the EFI_RESET_NOTIFICATION_PROTOCOL instance.
+    @param[in]  ResetFunction     Points to the function to be called when a ResetSystem() is executed.
 
-  @retval EFI_SUCCESS           The reset notification function was successfully registered.
-  @retval EFI_INVALID_PARAMETER ResetFunction is NULL.
-  @retval EFI_OUT_OF_RESOURCES  There are not enough resources available to register the reset notification function.
-  @retval EFI_ALREADY_STARTED   The reset notification function specified by ResetFunction has already been registered.
+    @retval EFI_SUCCESS           The reset notification function was successfully registered.
+    @retval EFI_INVALID_PARAMETER ResetFunction is NULL.
+    @retval EFI_OUT_OF_RESOURCES  There are not enough resources available to register the reset notification function.
+    @retval EFI_ALREADY_STARTED   The reset notification function specified by ResetFunction has already been registered.
 
-**/
-public readonly delegate* unmanaged<EFI_RESET_NOTIFICATION_PROTOCOL*,EFI_RESET_SYSTEM, EFI_STATUS> RegisterResetNotify;
-/**
-  Unregister a notification function.
+  **/
+  public readonly delegate* unmanaged<EFI_RESET_NOTIFICATION_PROTOCOL*, EFI_RESET_SYSTEM, EFI_STATUS> RegisterResetNotify;
+  /**
+    Unregister a notification function.
 
-  The UnregisterResetNotify() function removes the previously registered
-  notification using RegisterResetNotify().
+    The UnregisterResetNotify() function removes the previously registered
+    notification using RegisterResetNotify().
 
-  @param[in]  This              A pointer to the EFI_RESET_NOTIFICATION_PROTOCOL instance.
-  @param[in]  ResetFunction     The pointer to the ResetFunction being unregistered.
+    @param[in]  This              A pointer to the EFI_RESET_NOTIFICATION_PROTOCOL instance.
+    @param[in]  ResetFunction     The pointer to the ResetFunction being unregistered.
 
-  @retval EFI_SUCCESS           The reset notification function was unregistered.
-  @retval EFI_INVALID_PARAMETER ResetFunction is NULL.
-  @retval EFI_INVALID_PARAMETER The reset notification function specified by ResetFunction was not previously
-                                registered using RegisterResetNotify().
+    @retval EFI_SUCCESS           The reset notification function was unregistered.
+    @retval EFI_INVALID_PARAMETER ResetFunction is NULL.
+    @retval EFI_INVALID_PARAMETER The reset notification function specified by ResetFunction was not previously
+                                  registered using RegisterResetNotify().
 
-**/
-public readonly delegate* unmanaged<EFI_RESET_NOTIFICATION_PROTOCOL*,EFI_RESET_SYSTEM, EFI_STATUS> UnregisterResetNotify;
+  **/
+  public readonly delegate* unmanaged<EFI_RESET_NOTIFICATION_PROTOCOL*, EFI_RESET_SYSTEM, EFI_STATUS> UnregisterResetNotify;
 }
 
 // extern EFI_GUID  gEfiResetNotificationProtocolGuid;

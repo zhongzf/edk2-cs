@@ -25,15 +25,15 @@ namespace Uefi;
 public static ulong EFI_SMM_CONTROL2_PROTOCOL_GUID = EFI_MM_CONTROL_PROTOCOL_GUID;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_CONTROL2_PROTOCOL { EFI_MM_CONTROL_PROTOCOL Value; public static implicit operator EFI_SMM_CONTROL2_PROTOCOL(EFI_MM_CONTROL_PROTOCOL value) => new EFI_SMM_CONTROL2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_CONTROL_PROTOCOL(EFI_SMM_CONTROL2_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_SMM_CONTROL2_PROTOCOL { EFI_MM_CONTROL_PROTOCOL Value; public static implicit operator EFI_SMM_CONTROL2_PROTOCOL(EFI_MM_CONTROL_PROTOCOL value) => new EFI_SMM_CONTROL2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_CONTROL_PROTOCOL(EFI_SMM_CONTROL2_PROTOCOL value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_PERIOD { EFI_MM_PERIOD Value; public static implicit operator EFI_SMM_PERIOD(EFI_MM_PERIOD value) => new EFI_SMM_PERIOD() { Value = value }; public static implicit operator EFI_MM_PERIOD(EFI_SMM_PERIOD value) => value.Value;}
+public unsafe struct EFI_SMM_PERIOD { EFI_MM_PERIOD Value; public static implicit operator EFI_SMM_PERIOD(EFI_MM_PERIOD value) => new EFI_SMM_PERIOD() { Value = value }; public static implicit operator EFI_MM_PERIOD(EFI_SMM_PERIOD value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_ACTIVATE2 { EFI_MM_ACTIVATE Value; public static implicit operator EFI_SMM_ACTIVATE2(EFI_MM_ACTIVATE value) => new EFI_SMM_ACTIVATE2() { Value = value }; public static implicit operator EFI_MM_ACTIVATE(EFI_SMM_ACTIVATE2 value) => value.Value;}
+public unsafe struct EFI_SMM_ACTIVATE2 { EFI_MM_ACTIVATE Value; public static implicit operator EFI_SMM_ACTIVATE2(EFI_MM_ACTIVATE value) => new EFI_SMM_ACTIVATE2() { Value = value }; public static implicit operator EFI_MM_ACTIVATE(EFI_SMM_ACTIVATE2 value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_DEACTIVATE2 { EFI_MM_DEACTIVATE Value; public static implicit operator EFI_SMM_DEACTIVATE2(EFI_MM_DEACTIVATE value) => new EFI_SMM_DEACTIVATE2() { Value = value }; public static implicit operator EFI_MM_DEACTIVATE(EFI_SMM_DEACTIVATE2 value) => value.Value;}
+public unsafe struct EFI_SMM_DEACTIVATE2 { EFI_MM_DEACTIVATE Value; public static implicit operator EFI_SMM_DEACTIVATE2(EFI_MM_DEACTIVATE value) => new EFI_SMM_DEACTIVATE2() { Value = value }; public static implicit operator EFI_MM_DEACTIVATE(EFI_SMM_DEACTIVATE2 value) => value.Value; }
 // extern EFI_GUID  gEfiSmmControl2ProtocolGuid;
 
 // #endif

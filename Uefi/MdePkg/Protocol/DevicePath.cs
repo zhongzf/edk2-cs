@@ -21,8 +21,8 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// Device Path protocol.
 ///
-public static EFI_GUID EFI_DEVICE_PATH_PROTOCOL_GUID = new GUID( 
-    0x9576e91, 0x6d3f, 0x11d2, new byte[] {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public static EFI_GUID EFI_DEVICE_PATH_PROTOCOL_GUID = new GUID(
+    0x9576e91, 0x6d3f, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
 ///
 /// Device Path guid definition for backward-compatible with EFI1.1.
@@ -40,28 +40,29 @@ public static ulong DEVICE_PATH_PROTOCOL = EFI_DEVICE_PATH_PROTOCOL_GUID;
   that make up the Device Path.
 **/
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DEVICE_PATH_PROTOCOL {
- public byte    Type;    ///< 0x01 Hardware Device Path.
-                    ///< 0x02 ACPI Device Path.
-                    ///< 0x03 Messaging Device Path.
-                    ///< 0x04 Media Device Path.
-                    ///< 0x05 BIOS Boot Specification Device Path.
-                    ///< 0x7F End of Hardware Device Path.
+public unsafe struct EFI_DEVICE_PATH_PROTOCOL
+{
+  public byte Type;    ///< 0x01 Hardware Device Path.
+                       ///< 0x02 ACPI Device Path.
+                       ///< 0x03 Messaging Device Path.
+                       ///< 0x04 Media Device Path.
+                       ///< 0x05 BIOS Boot Specification Device Path.
+                       ///< 0x7F End of Hardware Device Path.
 
- public byte    SubType; ///< Varies by Type
-                    ///< 0xFF End Entire Device Path, or
-                    ///< 0x01 End This Instance of a Device Path and start a new
-                    ///< Device Path.
+  public byte SubType; ///< Varies by Type
+                       ///< 0xFF End Entire Device Path, or
+                       ///< 0x01 End This Instance of a Device Path and start a new
+                       ///< Device Path.
 
- public fixed byte    Length[2]; ///< Specific Device Path data. Type and Sub-Type define
-                      ///< type of data. Size of data is included in Length.
+  public fixed byte Length[2]; ///< Specific Device Path data. Type and Sub-Type define
+                               ///< type of data. Size of data is included in Length.
 }
 
 ///
 /// Device Path protocol definition for backward-compatible with EFI1.1.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DEVICE_PATH { EFI_DEVICE_PATH_PROTOCOL Value; public static implicit operator EFI_DEVICE_PATH(EFI_DEVICE_PATH_PROTOCOL value) => new EFI_DEVICE_PATH() { Value = value }; public static implicit operator EFI_DEVICE_PATH_PROTOCOL(EFI_DEVICE_PATH value) => value.Value;}
+public unsafe struct EFI_DEVICE_PATH { EFI_DEVICE_PATH_PROTOCOL Value; public static implicit operator EFI_DEVICE_PATH(EFI_DEVICE_PATH_PROTOCOL value) => new EFI_DEVICE_PATH() { Value = value }; public static implicit operator EFI_DEVICE_PATH_PROTOCOL(EFI_DEVICE_PATH value) => value.Value; }
 
 ///
 /// Hardware Device Paths.
@@ -77,16 +78,17 @@ public static ulong HW_PCI_DP = 0x01;
 /// PCI Device Path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct PCI_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct PCI_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// PCI Function Number.
   ///
- public byte                       Function;
+  public byte Function;
   ///
   /// PCI Device Number.
   ///
- public byte                       Device;
+  public byte Device;
 }
 
 ///
@@ -98,12 +100,13 @@ public static ulong HW_PCCARD_DP = 0x02;
 /// PCCARD Device Path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct PCCARD_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct PCCARD_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Function Number (0 = First Function).
   ///
- public byte                       FunctionNumber;
+  public byte FunctionNumber;
 }
 
 ///
@@ -115,20 +118,21 @@ public static ulong HW_MEMMAP_DP = 0x03;
 /// Memory Mapped Device Path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MEMMAP_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct MEMMAP_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// EFI_MEMORY_TYPE
   ///
- public uint                      MemoryType;
+  public uint MemoryType;
   ///
   /// Starting Memory Address.
   ///
- public EFI_PHYSICAL_ADDRESS        StartingAddress;
+  public EFI_PHYSICAL_ADDRESS StartingAddress;
   ///
   /// Ending Memory Address.
   ///
- public EFI_PHYSICAL_ADDRESS        EndingAddress;
+  public EFI_PHYSICAL_ADDRESS EndingAddress;
 }
 
 ///
@@ -142,12 +146,13 @@ public static ulong HW_VENDOR_DP = 0x04;
 /// contents on the n bytes that follow in the Vendor Device Path node.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct VENDOR_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct VENDOR_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Vendor-assigned GUID that defines the data that follows.
   ///
- public EFI_GUID                    Guid;
+  public EFI_GUID Guid;
   ///
   /// Vendor-defined variable size data.
   ///
@@ -162,12 +167,13 @@ public static ulong HW_CONTROLLER_DP = 0x05;
 /// Controller Device Path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct CONTROLLER_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct CONTROLLER_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Controller number.
   ///
- public uint                      ControllerNumber;
+  public uint ControllerNumber;
 }
 
 ///
@@ -179,16 +185,17 @@ public static ulong HW_BMC_DP = 0x06;
 /// BMC Device Path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct BMC_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct BMC_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Interface Type.
   ///
- public byte                       InterfaceType;
+  public byte InterfaceType;
   ///
   /// Base Address.
   ///
- public fixed byte                       BaseAddress[8];
+  public fixed byte BaseAddress[8];
 }
 
 ///
@@ -201,14 +208,15 @@ public static ulong ACPI_DEVICE_PATH = 0x02;
 ///
 public static ulong ACPI_DP = 0x01;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ACPI_HID_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct ACPI_HID_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Device's PnP hardware ID stored in a numeric 32-bit
   /// compressed EISA-type ID. This value must match the
   /// corresponding _HID in the ACPI name space.
   ///
- public uint                      HID;
+  public uint HID;
   ///
   /// Unique ID that is required by ACPI if two devices have the
   /// same _HID. This value must also match the corresponding
@@ -216,7 +224,7 @@ public unsafe struct ACPI_HID_DEVICE_PATH {
   /// numeric value type of _UID is supported. Thus, strings must
   /// not be used for the _UID in the ACPI name space.
   ///
- public uint                      UID;
+  public uint UID;
 }
 
 ///
@@ -224,27 +232,28 @@ public unsafe struct ACPI_HID_DEVICE_PATH {
 ///
 public static ulong ACPI_EXTENDED_DP = 0x02;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ACPI_EXTENDED_HID_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct ACPI_EXTENDED_HID_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Device's PnP hardware ID stored in a numeric 32-bit
   /// compressed EISA-type ID. This value must match the
   /// corresponding _HID in the ACPI name space.
   ///
- public uint                      HID;
+  public uint HID;
   ///
   /// Unique ID that is required by ACPI if two devices have the
   /// same _HID. This value must also match the corresponding
   /// _UID/_HID pair in the ACPI name space.
   ///
- public uint                      UID;
+  public uint UID;
   ///
   /// Device's compatible PnP hardware ID stored in a numeric
   /// 32-bit compressed EISA-type ID. This value must match at
   /// least one of the compatible device IDs returned by the
   /// corresponding _CID in the ACPI name space.
   ///
- public uint                      CID;
+  public uint CID;
   ///
   /// Optional variable length _HIDSTR.
   /// Optional variable length _UIDSTR.
@@ -260,12 +269,12 @@ public unsafe struct ACPI_EXTENDED_HID_DEVICE_PATH {
 //    Compressed ASCII is 5 bits per character 0b00001 = 'A' 0b11010 = 'Z'
 //
 public static ulong PNP_EISA_ID_CONST = 0x41d0;
-public static ulong EISA_ID = (_Name, _Num)  ((uint)((_Name) | (_Num) << 16));
-public static ulong EISA_PNP_ID = (_PNPId)   (EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
-public static ulong EFI_PNP_ID = (_PNPId)    (EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
+public static ulong EISA_ID = (_Name, _Num)((uint)((_Name) | (_Num) << 16));
+public static ulong EISA_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
+public static ulong EFI_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
 
 public static ulong PNP_EISA_ID_MASK = 0xffff;
-public static ulong EISA_ID_TO_NUM = (_Id)  ((_Id) >> 16);
+public static ulong EISA_ID_TO_NUM = (_Id)((_Id) >> 16);
 
 ///
 /// ACPI _ADR Device Path SubType.
@@ -278,14 +287,15 @@ public static ulong ACPI_ADR_DP = 0x03;
 /// devices are displaying the same output.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ACPI_ADR_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct ACPI_ADR_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// _ADR value. For video output devices the value of this
   /// field comes from Table B-2 of the ACPI 3.0 specification. At
   /// least one _ADR value is required.
   ///
- public uint                      ADR;
+  public uint ADR;
   //
   // This device path may optionally contain more than one _ADR entry.
   //
@@ -298,13 +308,14 @@ public static ulong ACPI_NVDIMM_DP = 0x04;
 ///
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ACPI_NVDIMM_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct ACPI_NVDIMM_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// NFIT Device Handle, the _ADR of the NVDIMM device.
   /// The value of this field comes from Section 9.20.3 of the ACPI 6.2A specification.
   ///
- public uint                      NFITDeviceHandle;
+  public uint NFITDeviceHandle;
 }
 
 public static ulong ACPI_ADR_DISPLAY_TYPE_OTHER = 0;
@@ -314,7 +325,7 @@ public static ulong ACPI_ADR_DISPLAY_TYPE_EXTERNAL_DIGITAL = 3;
 public static ulong ACPI_ADR_DISPLAY_TYPE_INTERNAL_DIGITAL = 4;
 
 public static ulong ACPI_DISPLAY_ADR = (_DeviceIdScheme, _HeadId, _NonVgaOutput, _BiosCanDetect, _VendorInfo, _Type, _Port, _Index) \;
-          ((uint)(  ((uint)((_DeviceIdScheme) & 0x1) << 31) |  \
+          ((uint)(((uint)((_DeviceIdScheme) & 0x1) << 31) |  \
                       (((_HeadId)                 & 0x7) << 18) |  \
                       (((_NonVgaOutput)           & 0x1) << 17) |  \
                       (((_BiosCanDetect)          & 0x1) << 16) |  \
@@ -336,20 +347,21 @@ public static ulong MESSAGING_DEVICE_PATH = 0x03;
 ///
 public static ulong MSG_ATAPI_DP = 0x01;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ATAPI_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct ATAPI_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Set to zero for primary, or one for secondary.
   ///
- public byte                       PrimarySecondary;
+  public byte PrimarySecondary;
   ///
   /// Set to zero for master, or one for slave mode.
   ///
- public byte                       SlaveMaster;
+  public byte SlaveMaster;
   ///
   /// Logical Unit Number.
   ///
- public ushort                      Lun;
+  public ushort Lun;
 }
 
 ///
@@ -357,16 +369,17 @@ public unsafe struct ATAPI_DEVICE_PATH {
 ///
 public static ulong MSG_SCSI_DP = 0x02;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SCSI_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct SCSI_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Target ID on the SCSI bus (PUN).
   ///
- public ushort                      Pun;
+  public ushort Pun;
   ///
   /// Logical Unit Number (LUN).
   ///
- public ushort                      Lun;
+  public ushort Lun;
 }
 
 ///
@@ -374,20 +387,21 @@ public unsafe struct SCSI_DEVICE_PATH {
 ///
 public static ulong MSG_FIBRECHANNEL_DP = 0x03;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct FIBRECHANNEL_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct FIBRECHANNEL_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Reserved for the future.
   ///
- public uint                      Reserved;
+  public uint Reserved;
   ///
   /// Fibre Channel World Wide Number.
   ///
- public ulong                      WWN;
+  public ulong WWN;
   ///
   /// Fibre Channel Logical Unit Number.
   ///
- public ulong                      Lun;
+  public ulong Lun;
 }
 
 ///
@@ -395,20 +409,21 @@ public unsafe struct FIBRECHANNEL_DEVICE_PATH {
 ///
 public static ulong MSG_FIBRECHANNELEX_DP = 0x15;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct FIBRECHANNELEX_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct FIBRECHANNELEX_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Reserved for the future.
   ///
- public uint                      Reserved;
+  public uint Reserved;
   ///
   /// 8 byte array containing Fibre Channel End Device Port Name.
   ///
- public fixed byte                       WWN[8];
+  public fixed byte WWN[8];
   ///
   /// 8 byte array containing Fibre Channel Logical Unit Number.
   ///
- public fixed byte                       Lun[8];
+  public fixed byte Lun[8];
 }
 
 ///
@@ -416,16 +431,17 @@ public unsafe struct FIBRECHANNELEX_DEVICE_PATH {
 ///
 public static ulong MSG_1394_DP = 0x04;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct F1394_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct F1394_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Reserved for the future.
   ///
- public uint                      Reserved;
+  public uint Reserved;
   ///
   /// 1394 Global Unique ID (GUID).
   ///
- public ulong                      Guid;
+  public ulong Guid;
 }
 
 ///
@@ -433,16 +449,17 @@ public unsafe struct F1394_DEVICE_PATH {
 ///
 public static ulong MSG_USB_DP = 0x05;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct USB_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct USB_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// USB Parent Port Number.
   ///
- public byte                       ParentPortNumber;
+  public byte ParentPortNumber;
   ///
   /// USB Interface Number.
   ///
- public byte                       InterfaceNumber;
+  public byte InterfaceNumber;
 }
 
 ///
@@ -450,33 +467,34 @@ public unsafe struct USB_DEVICE_PATH {
 ///
 public static ulong MSG_USB_CLASS_DP = 0x0f;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct USB_CLASS_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct USB_CLASS_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Vendor ID assigned by USB-IF. A value of 0xFFFF will
   /// match any Vendor ID.
   ///
- public ushort                      VendorId;
+  public ushort VendorId;
   ///
   /// Product ID assigned by USB-IF. A value of 0xFFFF will
   /// match any Product ID.
   ///
- public ushort                      ProductId;
+  public ushort ProductId;
   ///
   /// The class code assigned by the USB-IF. A value of 0xFF
   /// will match any class code.
   ///
- public byte                       DeviceClass;
+  public byte DeviceClass;
   ///
   /// The subclass code assigned by the USB-IF. A value of
   /// 0xFF will match any subclass code.
   ///
- public byte                       DeviceSubClass;
+  public byte DeviceSubClass;
   ///
   /// The protocol code assigned by the USB-IF. A value of
   /// 0xFF will match any protocol code.
   ///
- public byte                       DeviceProtocol;
+  public byte DeviceProtocol;
 }
 
 ///
@@ -488,20 +506,21 @@ public static ulong MSG_USB_WWID_DP = 0x10;
 /// This device path describes a USB device using its serial number.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct USB_WWID_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct USB_WWID_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// USB interface number.
   ///
- public ushort                      InterfaceNumber;
+  public ushort InterfaceNumber;
   ///
   /// USB vendor id of the device.
   ///
- public ushort                      VendorId;
+  public ushort VendorId;
   ///
   /// USB product id of the device.
   ///
- public ushort                      ProductId;
+  public ushort ProductId;
   ///
   /// Last 64-or-fewer UTF-16 characters of the USB
   /// serial number. The length of the string is
@@ -516,12 +535,13 @@ public unsafe struct USB_WWID_DEVICE_PATH {
 ///
 public static ulong MSG_DEVICE_LOGICAL_UNIT_DP = 0x11;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct DEVICE_LOGICAL_UNIT_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct DEVICE_LOGICAL_UNIT_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Logical Unit Number for the interface.
   ///
- public byte                       Lun;
+  public byte Lun;
 }
 
 ///
@@ -529,23 +549,24 @@ public unsafe struct DEVICE_LOGICAL_UNIT_DEVICE_PATH {
 ///
 public static ulong MSG_SATA_DP = 0x12;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SATA_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct SATA_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// The HBA port number that facilitates the connection to the
   /// device or a port multiplier. The value 0xFFFF is reserved.
   ///
- public ushort                      HBAPortNumber;
+  public ushort HBAPortNumber;
   ///
   /// The Port multiplier port number that facilitates the connection
   /// to the device. Must be set to 0xFFFF if the device is directly
   /// connected to the HBA.
   ///
- public ushort                      PortMultiplierPortNumber;
+  public ushort PortMultiplierPortNumber;
   ///
   /// Logical Unit Number.
   ///
- public ushort                      Lun;
+  public ushort Lun;
 }
 
 ///
@@ -558,12 +579,13 @@ public static ulong SATA_HBA_DIRECT_CONNECT_FLAG = 0x8000;
 ///
 public static ulong MSG_I2O_DP = 0x06;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct I2O_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct I2O_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Target ID (TID) for a device.
   ///
- public uint                      Tid;
+  public uint Tid;
 }
 
 ///
@@ -571,16 +593,17 @@ public unsafe struct I2O_DEVICE_PATH {
 ///
 public static ulong MSG_MAC_ADDR_DP = 0x0b;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MAC_ADDR_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct MAC_ADDR_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// The MAC address for a network interface padded with 0s.
   ///
- public EFI_MAC_ADDRESS             MacAddress;
+  public EFI_MAC_ADDRESS MacAddress;
   ///
   /// Network interface type(i.e. 802.3, FDDI).
   ///
- public byte                       IfType;
+  public byte IfType;
 }
 
 ///
@@ -588,41 +611,42 @@ public unsafe struct MAC_ADDR_DEVICE_PATH {
 ///
 public static ulong MSG_IPv4_DP = 0x0c;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct IPv4_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct IPv4_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// The local IPv4 address.
   ///
- public EFI_IPv4_ADDRESS            LocalIpAddress;
+  public EFI_IPv4_ADDRESS LocalIpAddress;
   ///
   /// The remote IPv4 address.
   ///
- public EFI_IPv4_ADDRESS            RemoteIpAddress;
+  public EFI_IPv4_ADDRESS RemoteIpAddress;
   ///
   /// The local port number.
   ///
- public ushort                      LocalPort;
+  public ushort LocalPort;
   ///
   /// The remote port number.
   ///
- public ushort                      RemotePort;
+  public ushort RemotePort;
   ///
   /// The network protocol(i.e. UDP, TCP).
   ///
- public ushort                      Protocol;
+  public ushort Protocol;
   ///
   /// 0x00 - The Source IP Address was assigned though DHCP.
   /// 0x01 - The Source IP Address is statically bound.
   ///
- public bool                     StaticIpAddress;
+  public bool StaticIpAddress;
   ///
   /// The gateway IP address
   ///
- public EFI_IPv4_ADDRESS            GatewayIpAddress;
+  public EFI_IPv4_ADDRESS GatewayIpAddress;
   ///
   /// The subnet mask
   ///
- public EFI_IPv4_ADDRESS            SubnetMask;
+  public EFI_IPv4_ADDRESS SubnetMask;
 }
 
 ///
@@ -630,28 +654,29 @@ public unsafe struct IPv4_DEVICE_PATH {
 ///
 public static ulong MSG_IPv6_DP = 0x0d;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct IPv6_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct IPv6_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// The local IPv6 address.
   ///
- public EFI_IPv6_ADDRESS            LocalIpAddress;
+  public EFI_IPv6_ADDRESS LocalIpAddress;
   ///
   /// The remote IPv6 address.
   ///
- public EFI_IPv6_ADDRESS            RemoteIpAddress;
+  public EFI_IPv6_ADDRESS RemoteIpAddress;
   ///
   /// The local port number.
   ///
- public ushort                      LocalPort;
+  public ushort LocalPort;
   ///
   /// The remote port number.
   ///
- public ushort                      RemotePort;
+  public ushort RemotePort;
   ///
   /// The network protocol(i.e. UDP, TCP).
   ///
- public ushort                      Protocol;
+  public ushort Protocol;
   ///
   /// 0x00 - The Local IP Address was manually configured.
   /// 0x01 - The Local IP Address is assigned through IPv6
@@ -659,15 +684,15 @@ public unsafe struct IPv6_DEVICE_PATH {
   /// 0x02 - The Local IP Address is assigned through IPv6
   /// stateful configuration.
   ///
- public byte                       IpAddressOrigin;
+  public byte IpAddressOrigin;
   ///
   /// The prefix length
   ///
- public byte                       PrefixLength;
+  public byte PrefixLength;
   ///
   /// The gateway IP address
   ///
- public EFI_IPv6_ADDRESS            GatewayIpAddress;
+  public EFI_IPv6_ADDRESS GatewayIpAddress;
 }
 
 ///
@@ -675,8 +700,9 @@ public unsafe struct IPv6_DEVICE_PATH {
 ///
 public static ulong MSG_INFINIBAND_DP = 0x09;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct INFINIBAND_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct INFINIBAND_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Flags to help identify/manage InfiniBand device path elements:
   /// Bit 0 - IOC/Service (0b = IOC, 1b = Service).
@@ -686,24 +712,24 @@ public unsafe struct INFINIBAND_DEVICE_PATH {
   /// Bit 4 - Network Protocol.
   /// All other bits are reserved.
   ///
- public uint    ResourceFlags;
+  public uint ResourceFlags;
   ///
   /// 128-bit Global Identifier for remote fabric port.
   ///
- public fixed byte     PortGid[16];
+  public fixed byte PortGid[16];
   ///
   /// 64-bit unique identifier to remote IOC or server process.
   /// Interpretation of field specified by Resource Flags (bit 0).
   ///
- public ulong    ServiceId;
+  public ulong ServiceId;
   ///
   /// 64-bit persistent ID of remote IOC port.
   ///
- public ulong    TargetPortId;
+  public ulong TargetPortId;
   ///
   /// 64-bit persistent ID of remote device.
   ///
- public ulong    DeviceId;
+  public ulong DeviceId;
 }
 
 public static ulong INFINIBAND_RESOURCE_FLAG_IOC_SERVICE = 0x01;
@@ -717,22 +743,23 @@ public static ulong INFINIBAND_RESOURCE_FLAG_NETWORK_PROTOCOL = 0x10;
 ///
 public static ulong MSG_UART_DP = 0x0e;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct UART_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct UART_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Reserved.
   ///
- public uint                      Reserved;
+  public uint Reserved;
   ///
   /// The baud rate setting for the UART style device. A value of 0
   /// means that the device's default baud rate will be used.
   ///
- public ulong                      BaudRate;
+  public ulong BaudRate;
   ///
   /// The number of data bits for the UART style device. A value
   /// of 0 means that the device's default number of data bits will be used.
   ///
- public byte                       DataBits;
+  public byte DataBits;
   ///
   /// The parity setting for the UART style device.
   /// Parity 0x00 - Default Parity.
@@ -742,7 +769,7 @@ public unsafe struct UART_DEVICE_PATH {
   /// Parity 0x04 - Mark Parity.
   /// Parity 0x05 - Space Parity.
   ///
- public byte    Parity;
+  public byte Parity;
   ///
   /// The number of stop bits for the UART style device.
   /// Stop Bits 0x00 - Default Stop Bits.
@@ -750,7 +777,7 @@ public unsafe struct UART_DEVICE_PATH {
   /// Stop Bits 0x02 - 1.5 Stop Bits.
   /// Stop Bits 0x03 - 2 Stop Bits.
   ///
- public byte    StopBits;
+  public byte StopBits;
 }
 
 ///
@@ -758,12 +785,13 @@ public unsafe struct UART_DEVICE_PATH {
 ///
 public static ulong NVDIMM_NAMESPACE_DP = 0x20;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct NVDIMM_NAMESPACE_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct NVDIMM_NAMESPACE_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Namespace unique label identifier UUID.
   ///
- public EFI_GUID                    Uuid;
+  public EFI_GUID Uuid;
 }
 
 //
@@ -771,7 +799,7 @@ public unsafe struct NVDIMM_NAMESPACE_DEVICE_PATH {
 //
 public static ulong MSG_VENDOR_DP = 0x0a;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct VENDOR_DEFINED_DEVICE_PATH { VENDOR_DEVICE_PATH Value; public static implicit operator VENDOR_DEFINED_DEVICE_PATH(VENDOR_DEVICE_PATH value) => new VENDOR_DEFINED_DEVICE_PATH() { Value = value }; public static implicit operator VENDOR_DEVICE_PATH(VENDOR_DEFINED_DEVICE_PATH value) => value.Value;}
+public unsafe struct VENDOR_DEFINED_DEVICE_PATH { VENDOR_DEVICE_PATH Value; public static implicit operator VENDOR_DEFINED_DEVICE_PATH(VENDOR_DEVICE_PATH value) => new VENDOR_DEFINED_DEVICE_PATH() { Value = value }; public static implicit operator VENDOR_DEVICE_PATH(VENDOR_DEFINED_DEVICE_PATH value) => value.Value; }
 
 public static ulong DEVICE_PATH_MESSAGING_PC_ANSI = EFI_PC_ANSI_GUID;
 public static ulong DEVICE_PATH_MESSAGING_VT_100 = EFI_VT_100_GUID;
@@ -783,19 +811,20 @@ public static ulong DEVICE_PATH_MESSAGING_VT_UTF8 = EFI_VT_UTF8_GUID;
 /// UART Flow Control Messaging Device Path
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct UART_FLOW_CONTROL_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct UART_FLOW_CONTROL_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// DEVICE_PATH_MESSAGING_UART_FLOW_CONTROL GUID.
   ///
- public EFI_GUID                    Guid;
+  public EFI_GUID Guid;
   ///
   /// Bitmap of supported flow control types.
   /// Bit 0 set indicates hardware flow control.
   /// Bit 1 set indicates Xon/Xoff flow control.
   /// All other bits are reserved and are clear.
   ///
- public uint                      FlowControlMap;
+  public uint FlowControlMap;
 }
 
 public static ulong UART_FLOW_CONTROL_HARDWARE = 0x00000001;
@@ -806,32 +835,33 @@ public static ulong DEVICE_PATH_MESSAGING_SAS = EFI_SAS_DEVICE_PATH_GUID;
 /// Serial Attached SCSI (SAS) Device Path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SAS_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct SAS_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// DEVICE_PATH_MESSAGING_SAS GUID.
   ///
- public EFI_GUID                    Guid;
+  public EFI_GUID Guid;
   ///
   /// Reserved for future use.
   ///
- public uint                      Reserved;
+  public uint Reserved;
   ///
   /// SAS Address for Serial Attached SCSI Target.
   ///
- public ulong                      SasAddress;
+  public ulong SasAddress;
   ///
   /// SAS Logical Unit Number.
   ///
- public ulong                      Lun;
+  public ulong Lun;
   ///
   /// More Information about the device and its interconnect.
   ///
- public ushort                      DeviceTopology;
+  public ushort DeviceTopology;
   ///
   /// Relative Target Port (RTP).
   ///
- public ushort                      RelativeTargetPort;
+  public ushort RelativeTargetPort;
 }
 
 ///
@@ -839,24 +869,25 @@ public unsafe struct SAS_DEVICE_PATH {
 ///
 public static ulong MSG_SASEX_DP = 0x16;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SASEX_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct SASEX_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// 8-byte array of the SAS Address for Serial Attached SCSI Target Port.
   ///
- public fixed byte                       SasAddress[8];
+  public fixed byte SasAddress[8];
   ///
   /// 8-byte array of the SAS Logical Unit Number.
   ///
- public fixed byte                       Lun[8];
+  public fixed byte Lun[8];
   ///
   /// More Information about the device and its interconnect.
   ///
- public ushort                      DeviceTopology;
+  public ushort DeviceTopology;
   ///
   /// Relative Target Port (RTP).
   ///
- public ushort                      RelativeTargetPort;
+  public ushort RelativeTargetPort;
 }
 
 ///
@@ -864,10 +895,11 @@ public unsafe struct SASEX_DEVICE_PATH {
 ///
 public static ulong MSG_NVME_NAMESPACE_DP = 0x17;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct NVME_NAMESPACE_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
- public uint                      NamespaceId;
- public ulong                      NamespaceUuid;
+public unsafe struct NVME_NAMESPACE_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
+  public uint NamespaceId;
+  public ulong NamespaceUuid;
 }
 
 ///
@@ -875,16 +907,17 @@ public unsafe struct NVME_NAMESPACE_DEVICE_PATH {
 ///
 public static ulong MSG_DNS_DP = 0x1F;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct DNS_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct DNS_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Indicates the DNS server address is IPv4 or IPv6 address.
   ///
- public byte                       IsIPv6;
+  public byte IsIPv6;
   ///
   /// Instance of the DNS server address.
   ///
- public fixed EFI_IP_ADDRESS              DnsServerIp[];
+  public fixed EFI_IP_ADDRESS DnsServerIp[];
 }
 
 ///
@@ -892,12 +925,13 @@ public unsafe struct DNS_DEVICE_PATH {
 ///
 public static ulong MSG_URI_DP = 0x18;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct URI_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct URI_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Instance of the URI pursuant to RFC 3986.
   ///
- public fixed byte                       Uri[];
+  public fixed byte Uri[];
 }
 
 ///
@@ -905,16 +939,17 @@ public unsafe struct URI_DEVICE_PATH {
 ///
 public static ulong MSG_UFS_DP = 0x19;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct UFS_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct UFS_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Target ID on the UFS bus (PUN).
   ///
- public byte                       Pun;
+  public byte Pun;
   ///
   /// Logical Unit Number (LUN).
   ///
- public byte                       Lun;
+  public byte Lun;
 }
 
 ///
@@ -922,9 +957,10 @@ public unsafe struct UFS_DEVICE_PATH {
 ///
 public static ulong MSG_SD_DP = 0x1A;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SD_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
- public byte                       SlotNumber;
+public unsafe struct SD_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
+  public byte SlotNumber;
 }
 
 ///
@@ -932,9 +968,10 @@ public unsafe struct SD_DEVICE_PATH {
 ///
 public static ulong MSG_EMMC_DP = 0x1D;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EMMC_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
- public byte                       SlotNumber;
+public unsafe struct EMMC_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
+  public byte SlotNumber;
 }
 
 ///
@@ -942,25 +979,26 @@ public unsafe struct EMMC_DEVICE_PATH {
 ///
 public static ulong MSG_ISCSI_DP = 0x13;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ISCSI_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct ISCSI_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Network Protocol (0 = TCP, 1+ = reserved).
   ///
- public ushort                      NetworkProtocol;
+  public ushort NetworkProtocol;
   ///
   /// iSCSI Login Options.
   ///
- public ushort                      LoginOption;
+  public ushort LoginOption;
   ///
   /// iSCSI Logical Unit Number.
   ///
- public ulong                      Lun;
+  public ulong Lun;
   ///
   /// iSCSI Target Portal group tag the initiator intends
   /// to establish a session with.
   ///
- public ushort                      TargetPortalGroupTag;
+  public ushort TargetPortalGroupTag;
   ///
   /// iSCSI NodeTarget Name. The length of the name
   /// is determined by subtracting the offset of this field from Length.
@@ -982,12 +1020,13 @@ public static ulong ISCSI_LOGIN_OPTION_CHAP_UNI = 0x2000;
 ///
 public static ulong MSG_VLAN_DP = 0x14;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct VLAN_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct VLAN_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// VLAN identifier (0-4094).
   ///
- public ushort                      VlanId;
+  public ushort VlanId;
 }
 
 ///
@@ -995,12 +1034,13 @@ public unsafe struct VLAN_DEVICE_PATH {
 ///
 public static ulong MSG_BLUETOOTH_DP = 0x1b;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct BLUETOOTH_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct BLUETOOTH_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// 48bit Bluetooth device address.
   ///
- public BLUETOOTH_ADDRESS           BD_ADDR;
+  public BLUETOOTH_ADDRESS BD_ADDR;
 }
 
 ///
@@ -1008,12 +1048,13 @@ public unsafe struct BLUETOOTH_DEVICE_PATH {
 ///
 public static ulong MSG_WIFI_DP = 0x1C;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct WIFI_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct WIFI_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Service set identifier. A 32-byte octets string.
   ///
- public fixed byte                       SSId[32];
+  public fixed byte SSId[32];
 }
 
 ///
@@ -1021,9 +1062,10 @@ public unsafe struct WIFI_DEVICE_PATH {
 ///
 public static ulong MSG_BLUETOOTH_LE_DP = 0x1E;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct BLUETOOTH_LE_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
- public BLUETOOTH_LE_ADDRESS        Address;
+public unsafe struct BLUETOOTH_LE_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
+  public BLUETOOTH_LE_ADDRESS Address;
 }
 
 //
@@ -1040,23 +1082,24 @@ public static ulong MEDIA_HARDDRIVE_DP = 0x01;
 /// The Hard Drive Media Device Path is used to represent a partition on a hard drive.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct HARDDRIVE_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct HARDDRIVE_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Describes the entry in a partition table, starting with entry 1.
   /// Partition number zero represents the entire device. Valid
   /// partition numbers for a MBR partition are [1, 4]. Valid
   /// partition numbers for a GPT partition are [1, NumberOfPartitionEntries].
   ///
- public uint                      PartitionNumber;
+  public uint PartitionNumber;
   ///
   /// Starting LBA of the partition on the hard drive.
   ///
- public ulong                      PartitionStart;
+  public ulong PartitionStart;
   ///
   /// Size of the partition in units of Logical Blocks.
   ///
- public ulong                      PartitionSize;
+  public ulong PartitionSize;
   ///
   /// Signature unique to this partition:
   /// If SignatureType is 0, this field has to be initialized with 16 zeros.
@@ -1064,20 +1107,20 @@ public unsafe struct HARDDRIVE_DEVICE_PATH {
   /// The other 12 bytes are initialized with zeros.
   /// If SignatureType is 2, this field contains a 16 byte signature.
   ///
- public fixed byte                       Signature[16];
+  public fixed byte Signature[16];
   ///
   /// Partition Format: (Unused values reserved).
   /// 0x01 - PC-AT compatible legacy MBR.
   /// 0x02 - GUID Partition Table.
   ///
- public byte                       MBRType;
+  public byte MBRType;
   ///
   /// Type of Disk Signature: (Unused values reserved).
   /// 0x00 - No Disk Signature.
   /// 0x01 - 32-bit signature from address 0x1b8 of the type 0x01 MBR.
   /// 0x02 - GUID signature.
   ///
- public byte                       SignatureType;
+  public byte SignatureType;
 }
 
 public static ulong MBR_TYPE_PCAT = 0x01;
@@ -1096,20 +1139,21 @@ public static ulong MEDIA_CDROM_DP = 0x02;
 /// The CD-ROM Media Device Path is used to define a system partition that exists on a CD-ROM.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct CDROM_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct CDROM_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Boot Entry number from the Boot Catalog. The Initial/Default entry is defined as zero.
   ///
- public uint                      BootEntry;
+  public uint BootEntry;
   ///
   /// Starting RBA of the partition on the medium. CD-ROMs use Relative logical Block Addressing.
   ///
- public ulong                      PartitionStart;
+  public ulong PartitionStart;
   ///
   /// Size of the partition in units of Blocks, also called Sectors.
   ///
- public ulong                      PartitionSize;
+  public ulong PartitionSize;
 }
 
 //
@@ -1122,15 +1166,16 @@ public static ulong MEDIA_VENDOR_DP = 0x03           ///< Media vendor device pa
 ///
 public static ulong MEDIA_FILEPATH_DP = 0x04;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct FILEPATH_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct FILEPATH_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// A NULL-terminated Path string including directory and file names.
   ///
- public fixed char                      PathName[1];
+  public fixed char PathName[1];
 }
 
-public static ulong SIZE_OF_FILEPATH_DEVICE_PATH = OFFSET_OF(FILEPATH_DEVICE_PATH,PathName);
+public static ulong SIZE_OF_FILEPATH_DEVICE_PATH = OFFSET_OF(FILEPATH_DEVICE_PATH, PathName);
 
 ///
 /// Media Protocol Device Path SubType.
@@ -1143,12 +1188,13 @@ public static ulong MEDIA_PROTOCOL_DP = 0x05;
 /// Many protocols are inherent to the style of device path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MEDIA_PROTOCOL_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct MEDIA_PROTOCOL_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// The ID of the protocol.
   ///
- public EFI_GUID                    Protocol;
+  public EFI_GUID Protocol;
 }
 
 ///
@@ -1160,12 +1206,13 @@ public static ulong MEDIA_PIWG_FW_FILE_DP = 0x06;
 /// This device path is used by systems implementing the UEFI PI Specification 1.0 to describe a firmware file.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MEDIA_FW_VOL_FILEPATH_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct MEDIA_FW_VOL_FILEPATH_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Firmware file name
   ///
- public EFI_GUID                    FvFileName;
+  public EFI_GUID FvFileName;
 }
 
 ///
@@ -1177,12 +1224,13 @@ public static ulong MEDIA_PIWG_FW_VOL_DP = 0x07;
 /// This device path is used by systems implementing the UEFI PI Specification 1.0 to describe a firmware volume.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MEDIA_FW_VOL_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct MEDIA_FW_VOL_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Firmware volume name.
   ///
- public EFI_GUID                    FvName;
+  public EFI_GUID FvName;
 }
 
 ///
@@ -1194,11 +1242,12 @@ public static ulong MEDIA_RELATIVE_OFFSET_RANGE_DP = 0x08;
 /// Used to describe the offset range of media relative.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
- public uint                      Reserved;
- public ulong                      StartingOffset;
- public ulong                      EndingOffset;
+public unsafe struct MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
+  public uint Reserved;
+  public ulong StartingOffset;
+  public ulong EndingOffset;
 }
 
 ///
@@ -1238,24 +1287,25 @@ public static ulong MEDIA_RAM_DISK_DP = 0x09;
 /// Used to describe the ram disk device path.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct MEDIA_RAM_DISK_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct MEDIA_RAM_DISK_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Starting Memory Address.
   ///
- public fixed uint                      StartingAddr[2];
+  public fixed uint StartingAddr[2];
   ///
   /// Ending Memory Address.
   ///
- public fixed uint                      EndingAddr[2];
+  public fixed uint EndingAddr[2];
   ///
   /// GUID that defines the type of the RAM Disk.
   ///
- public EFI_GUID                    TypeGuid;
+  public EFI_GUID TypeGuid;
   ///
   /// RAM Diskinstance number, if supported. The default value is zero.
   ///
- public ushort                      Instance;
+  public ushort Instance;
 }
 
 ///
@@ -1272,20 +1322,21 @@ public static ulong BBS_BBS_DP = 0x01;
 /// This Device Path is used to describe the booting of non-EFI-aware operating systems.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct BBS_BBS_DEVICE_PATH {
- public EFI_DEVICE_PATH_PROTOCOL    Header;
+public unsafe struct BBS_BBS_DEVICE_PATH
+{
+  public EFI_DEVICE_PATH_PROTOCOL Header;
   ///
   /// Device Type as defined by the BIOS Boot Specification.
   ///
- public ushort                      DeviceType;
+  public ushort DeviceType;
   ///
   /// Status Flags as defined by the BIOS Boot Specification.
   ///
- public ushort                      StatusFlag;
+  public ushort StatusFlag;
   ///
   /// Null-terminated ASCII string that describes the boot device to a user.
   ///
- public fixed byte                       String[1];
+  public fixed byte String[1];
 }
 
 //
@@ -1303,117 +1354,121 @@ public static ulong BBS_TYPE_UNKNOWN = 0xFF;
 ///
 /// Union of all possible Device Paths and pointers to Device Paths.
 ///
-[StructLayout(LayoutKind.Explicit)] public unsafe struct EFI_DEV_PATH {
- [FieldOffset(0)] public EFI_DEVICE_PATH_PROTOCOL                   DevPath;
- [FieldOffset(0)] public PCI_DEVICE_PATH                            Pci;
- [FieldOffset(0)] public PCCARD_DEVICE_PATH                         PcCard;
- [FieldOffset(0)] public MEMMAP_DEVICE_PATH                         MemMap;
- [FieldOffset(0)] public VENDOR_DEVICE_PATH                         Vendor;
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct EFI_DEV_PATH
+{
+  [FieldOffset(0)] public EFI_DEVICE_PATH_PROTOCOL DevPath;
+  [FieldOffset(0)] public PCI_DEVICE_PATH Pci;
+  [FieldOffset(0)] public PCCARD_DEVICE_PATH PcCard;
+  [FieldOffset(0)] public MEMMAP_DEVICE_PATH MemMap;
+  [FieldOffset(0)] public VENDOR_DEVICE_PATH Vendor;
 
- [FieldOffset(0)] public CONTROLLER_DEVICE_PATH                     Controller;
- [FieldOffset(0)] public BMC_DEVICE_PATH                            Bmc;
- [FieldOffset(0)] public ACPI_HID_DEVICE_PATH                       Acpi;
- [FieldOffset(0)] public ACPI_EXTENDED_HID_DEVICE_PATH              ExtendedAcpi;
- [FieldOffset(0)] public ACPI_ADR_DEVICE_PATH                       AcpiAdr;
+  [FieldOffset(0)] public CONTROLLER_DEVICE_PATH Controller;
+  [FieldOffset(0)] public BMC_DEVICE_PATH Bmc;
+  [FieldOffset(0)] public ACPI_HID_DEVICE_PATH Acpi;
+  [FieldOffset(0)] public ACPI_EXTENDED_HID_DEVICE_PATH ExtendedAcpi;
+  [FieldOffset(0)] public ACPI_ADR_DEVICE_PATH AcpiAdr;
 
- [FieldOffset(0)] public ATAPI_DEVICE_PATH                          Atapi;
- [FieldOffset(0)] public SCSI_DEVICE_PATH                           Scsi;
-  ISCSI_DEVICE_PATH                          Iscsi;
- [FieldOffset(0)] public FIBRECHANNEL_DEVICE_PATH                   FibreChannel;
- [FieldOffset(0)] public FIBRECHANNELEX_DEVICE_PATH                 FibreChannelEx;
+  [FieldOffset(0)] public ATAPI_DEVICE_PATH Atapi;
+  [FieldOffset(0)] public SCSI_DEVICE_PATH Scsi;
+  ISCSI_DEVICE_PATH Iscsi;
+  [FieldOffset(0)] public FIBRECHANNEL_DEVICE_PATH FibreChannel;
+  [FieldOffset(0)] public FIBRECHANNELEX_DEVICE_PATH FibreChannelEx;
 
- [FieldOffset(0)] public F1394_DEVICE_PATH                          F1394;
-  USB_DEVICE_PATH                            Usb;
- [FieldOffset(0)] public SATA_DEVICE_PATH                           Sata;
-  USB_CLASS_DEVICE_PATH                      UsbClass;
-  USB_WWID_DEVICE_PATH                       UsbWwid;
- [FieldOffset(0)] public DEVICE_LOGICAL_UNIT_DEVICE_PATH            LogicUnit;
-  I2O_DEVICE_PATH                            I2O;
- [FieldOffset(0)] public MAC_ADDR_DEVICE_PATH                       MacAddr;
-  IPv4_DEVICE_PATH                           Ipv4;
-  IPv6_DEVICE_PATH                           Ipv6;
- [FieldOffset(0)] public VLAN_DEVICE_PATH                           Vlan;
-  INFINIBAND_DEVICE_PATH                     InfiniBand;
-  UART_DEVICE_PATH                           Uart;
-  UART_FLOW_CONTROL_DEVICE_PATH              UartFlowControl;
- [FieldOffset(0)] public SAS_DEVICE_PATH                            Sas;
- [FieldOffset(0)] public SASEX_DEVICE_PATH                          SasEx;
-  NVME_NAMESPACE_DEVICE_PATH                 NvmeNamespace;
- [FieldOffset(0)] public DNS_DEVICE_PATH                            Dns;
-  URI_DEVICE_PATH                            Uri;
- [FieldOffset(0)] public BLUETOOTH_DEVICE_PATH                      Bluetooth;
- [FieldOffset(0)] public WIFI_DEVICE_PATH                           WiFi;
-  UFS_DEVICE_PATH                            Ufs;
- [FieldOffset(0)] public SD_DEVICE_PATH                             Sd;
- [FieldOffset(0)] public EMMC_DEVICE_PATH                           Emmc;
- [FieldOffset(0)] public HARDDRIVE_DEVICE_PATH                      HardDrive;
- [FieldOffset(0)] public CDROM_DEVICE_PATH                          CD;
+  [FieldOffset(0)] public F1394_DEVICE_PATH F1394;
+  USB_DEVICE_PATH Usb;
+  [FieldOffset(0)] public SATA_DEVICE_PATH Sata;
+  USB_CLASS_DEVICE_PATH UsbClass;
+  USB_WWID_DEVICE_PATH UsbWwid;
+  [FieldOffset(0)] public DEVICE_LOGICAL_UNIT_DEVICE_PATH LogicUnit;
+  I2O_DEVICE_PATH I2O;
+  [FieldOffset(0)] public MAC_ADDR_DEVICE_PATH MacAddr;
+  IPv4_DEVICE_PATH Ipv4;
+  IPv6_DEVICE_PATH Ipv6;
+  [FieldOffset(0)] public VLAN_DEVICE_PATH Vlan;
+  INFINIBAND_DEVICE_PATH InfiniBand;
+  UART_DEVICE_PATH Uart;
+  UART_FLOW_CONTROL_DEVICE_PATH UartFlowControl;
+  [FieldOffset(0)] public SAS_DEVICE_PATH Sas;
+  [FieldOffset(0)] public SASEX_DEVICE_PATH SasEx;
+  NVME_NAMESPACE_DEVICE_PATH NvmeNamespace;
+  [FieldOffset(0)] public DNS_DEVICE_PATH Dns;
+  URI_DEVICE_PATH Uri;
+  [FieldOffset(0)] public BLUETOOTH_DEVICE_PATH Bluetooth;
+  [FieldOffset(0)] public WIFI_DEVICE_PATH WiFi;
+  UFS_DEVICE_PATH Ufs;
+  [FieldOffset(0)] public SD_DEVICE_PATH Sd;
+  [FieldOffset(0)] public EMMC_DEVICE_PATH Emmc;
+  [FieldOffset(0)] public HARDDRIVE_DEVICE_PATH HardDrive;
+  [FieldOffset(0)] public CDROM_DEVICE_PATH CD;
 
- [FieldOffset(0)] public FILEPATH_DEVICE_PATH                       FilePath;
- [FieldOffset(0)] public MEDIA_PROTOCOL_DEVICE_PATH                 MediaProtocol;
+  [FieldOffset(0)] public FILEPATH_DEVICE_PATH FilePath;
+  [FieldOffset(0)] public MEDIA_PROTOCOL_DEVICE_PATH MediaProtocol;
 
- [FieldOffset(0)] public MEDIA_FW_VOL_DEVICE_PATH                   FirmwareVolume;
- [FieldOffset(0)] public MEDIA_FW_VOL_FILEPATH_DEVICE_PATH          FirmwareFile;
- [FieldOffset(0)] public MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH    Offset;
- [FieldOffset(0)] public MEDIA_RAM_DISK_DEVICE_PATH                 RamDisk;
- [FieldOffset(0)] public BBS_BBS_DEVICE_PATH                        Bbs;
+  [FieldOffset(0)] public MEDIA_FW_VOL_DEVICE_PATH FirmwareVolume;
+  [FieldOffset(0)] public MEDIA_FW_VOL_FILEPATH_DEVICE_PATH FirmwareFile;
+  [FieldOffset(0)] public MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH Offset;
+  [FieldOffset(0)] public MEDIA_RAM_DISK_DEVICE_PATH RamDisk;
+  [FieldOffset(0)] public BBS_BBS_DEVICE_PATH Bbs;
 }
 
-[StructLayout(LayoutKind.Explicit)] public unsafe struct EFI_DEV_PATH_PTR {
- [FieldOffset(0)] public EFI_DEVICE_PATH_PROTOCOL                   *DevPath;
- [FieldOffset(0)] public PCI_DEVICE_PATH                            *Pci;
- [FieldOffset(0)] public PCCARD_DEVICE_PATH                         *PcCard;
- [FieldOffset(0)] public MEMMAP_DEVICE_PATH                         *MemMap;
- [FieldOffset(0)] public VENDOR_DEVICE_PATH                         *Vendor;
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct EFI_DEV_PATH_PTR
+{
+  [FieldOffset(0)] public EFI_DEVICE_PATH_PROTOCOL* DevPath;
+  [FieldOffset(0)] public PCI_DEVICE_PATH* Pci;
+  [FieldOffset(0)] public PCCARD_DEVICE_PATH* PcCard;
+  [FieldOffset(0)] public MEMMAP_DEVICE_PATH* MemMap;
+  [FieldOffset(0)] public VENDOR_DEVICE_PATH* Vendor;
 
- [FieldOffset(0)] public CONTROLLER_DEVICE_PATH                     *Controller;
- [FieldOffset(0)] public BMC_DEVICE_PATH                            *Bmc;
- [FieldOffset(0)] public ACPI_HID_DEVICE_PATH                       *Acpi;
- [FieldOffset(0)] public ACPI_EXTENDED_HID_DEVICE_PATH              *ExtendedAcpi;
- [FieldOffset(0)] public ACPI_ADR_DEVICE_PATH                       *AcpiAdr;
+  [FieldOffset(0)] public CONTROLLER_DEVICE_PATH* Controller;
+  [FieldOffset(0)] public BMC_DEVICE_PATH* Bmc;
+  [FieldOffset(0)] public ACPI_HID_DEVICE_PATH* Acpi;
+  [FieldOffset(0)] public ACPI_EXTENDED_HID_DEVICE_PATH* ExtendedAcpi;
+  [FieldOffset(0)] public ACPI_ADR_DEVICE_PATH* AcpiAdr;
 
- [FieldOffset(0)] public ATAPI_DEVICE_PATH                          *Atapi;
- [FieldOffset(0)] public SCSI_DEVICE_PATH                           *Scsi;
-  ISCSI_DEVICE_PATH                          *Iscsi;
- [FieldOffset(0)] public FIBRECHANNEL_DEVICE_PATH                   *FibreChannel;
- [FieldOffset(0)] public FIBRECHANNELEX_DEVICE_PATH                 *FibreChannelEx;
+  [FieldOffset(0)] public ATAPI_DEVICE_PATH* Atapi;
+  [FieldOffset(0)] public SCSI_DEVICE_PATH* Scsi;
+  ISCSI_DEVICE_PATH* Iscsi;
+  [FieldOffset(0)] public FIBRECHANNEL_DEVICE_PATH* FibreChannel;
+  [FieldOffset(0)] public FIBRECHANNELEX_DEVICE_PATH* FibreChannelEx;
 
- [FieldOffset(0)] public F1394_DEVICE_PATH                          *F1394;
-  USB_DEVICE_PATH                            *Usb;
- [FieldOffset(0)] public SATA_DEVICE_PATH                           *Sata;
-  USB_CLASS_DEVICE_PATH                      *UsbClass;
-  USB_WWID_DEVICE_PATH                       *UsbWwid;
- [FieldOffset(0)] public DEVICE_LOGICAL_UNIT_DEVICE_PATH            *LogicUnit;
-  I2O_DEVICE_PATH                            *I2O;
- [FieldOffset(0)] public MAC_ADDR_DEVICE_PATH                       *MacAddr;
-  IPv4_DEVICE_PATH                           *Ipv4;
-  IPv6_DEVICE_PATH                           *Ipv6;
- [FieldOffset(0)] public VLAN_DEVICE_PATH                           *Vlan;
-  INFINIBAND_DEVICE_PATH                     *InfiniBand;
-  UART_DEVICE_PATH                           *Uart;
-  UART_FLOW_CONTROL_DEVICE_PATH              *UartFlowControl;
- [FieldOffset(0)] public SAS_DEVICE_PATH                            *Sas;
- [FieldOffset(0)] public SASEX_DEVICE_PATH                          *SasEx;
-  NVME_NAMESPACE_DEVICE_PATH                 *NvmeNamespace;
- [FieldOffset(0)] public DNS_DEVICE_PATH                            *Dns;
-  URI_DEVICE_PATH                            *Uri;
- [FieldOffset(0)] public BLUETOOTH_DEVICE_PATH                      *Bluetooth;
- [FieldOffset(0)] public WIFI_DEVICE_PATH                           *WiFi;
-  UFS_DEVICE_PATH                            *Ufs;
- [FieldOffset(0)] public SD_DEVICE_PATH                             *Sd;
- [FieldOffset(0)] public EMMC_DEVICE_PATH                           *Emmc;
- [FieldOffset(0)] public HARDDRIVE_DEVICE_PATH                      *HardDrive;
- [FieldOffset(0)] public CDROM_DEVICE_PATH                          *CD;
+  [FieldOffset(0)] public F1394_DEVICE_PATH* F1394;
+  USB_DEVICE_PATH* Usb;
+  [FieldOffset(0)] public SATA_DEVICE_PATH* Sata;
+  USB_CLASS_DEVICE_PATH* UsbClass;
+  USB_WWID_DEVICE_PATH* UsbWwid;
+  [FieldOffset(0)] public DEVICE_LOGICAL_UNIT_DEVICE_PATH* LogicUnit;
+  I2O_DEVICE_PATH* I2O;
+  [FieldOffset(0)] public MAC_ADDR_DEVICE_PATH* MacAddr;
+  IPv4_DEVICE_PATH* Ipv4;
+  IPv6_DEVICE_PATH* Ipv6;
+  [FieldOffset(0)] public VLAN_DEVICE_PATH* Vlan;
+  INFINIBAND_DEVICE_PATH* InfiniBand;
+  UART_DEVICE_PATH* Uart;
+  UART_FLOW_CONTROL_DEVICE_PATH* UartFlowControl;
+  [FieldOffset(0)] public SAS_DEVICE_PATH* Sas;
+  [FieldOffset(0)] public SASEX_DEVICE_PATH* SasEx;
+  NVME_NAMESPACE_DEVICE_PATH* NvmeNamespace;
+  [FieldOffset(0)] public DNS_DEVICE_PATH* Dns;
+  URI_DEVICE_PATH* Uri;
+  [FieldOffset(0)] public BLUETOOTH_DEVICE_PATH* Bluetooth;
+  [FieldOffset(0)] public WIFI_DEVICE_PATH* WiFi;
+  UFS_DEVICE_PATH* Ufs;
+  [FieldOffset(0)] public SD_DEVICE_PATH* Sd;
+  [FieldOffset(0)] public EMMC_DEVICE_PATH* Emmc;
+  [FieldOffset(0)] public HARDDRIVE_DEVICE_PATH* HardDrive;
+  [FieldOffset(0)] public CDROM_DEVICE_PATH* CD;
 
- [FieldOffset(0)] public FILEPATH_DEVICE_PATH                       *FilePath;
- [FieldOffset(0)] public MEDIA_PROTOCOL_DEVICE_PATH                 *MediaProtocol;
+  [FieldOffset(0)] public FILEPATH_DEVICE_PATH* FilePath;
+  [FieldOffset(0)] public MEDIA_PROTOCOL_DEVICE_PATH* MediaProtocol;
 
- [FieldOffset(0)] public MEDIA_FW_VOL_DEVICE_PATH                   *FirmwareVolume;
- [FieldOffset(0)] public MEDIA_FW_VOL_FILEPATH_DEVICE_PATH          *FirmwareFile;
- [FieldOffset(0)] public MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH    *Offset;
- [FieldOffset(0)] public MEDIA_RAM_DISK_DEVICE_PATH                 *RamDisk;
- [FieldOffset(0)] public BBS_BBS_DEVICE_PATH                        *Bbs;
- [FieldOffset(0)] public byte                                      *Raw;
+  [FieldOffset(0)] public MEDIA_FW_VOL_DEVICE_PATH* FirmwareVolume;
+  [FieldOffset(0)] public MEDIA_FW_VOL_FILEPATH_DEVICE_PATH* FirmwareFile;
+  [FieldOffset(0)] public MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH* Offset;
+  [FieldOffset(0)] public MEDIA_RAM_DISK_DEVICE_PATH* RamDisk;
+  [FieldOffset(0)] public BBS_BBS_DEVICE_PATH* Bbs;
+  [FieldOffset(0)] public byte* Raw;
 }
 
 // #pragma pack()

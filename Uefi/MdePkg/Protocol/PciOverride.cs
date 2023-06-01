@@ -25,14 +25,14 @@ namespace Uefi;
 ///
 /// Global ID for the EFI_PCI_OVERRIDE_PROTOCOL
 ///
-public static EFI_GUID EFI_PCI_OVERRIDE_GUID = new GUID( 
-    0xb5b35764, 0x460c, 0x4a06, new byte[] {0x99, 0xfc, 0x77, 0xa1, 0x7c, 0x1b, 0x5c, 0xeb});
+public static EFI_GUID EFI_PCI_OVERRIDE_GUID = new GUID(
+    0xb5b35764, 0x460c, 0x4a06, new byte[] { 0x99, 0xfc, 0x77, 0xa1, 0x7c, 0x1b, 0x5c, 0xeb });
 
 ///
 /// Declaration for EFI_PCI_OVERRIDE_PROTOCOL
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PCI_OVERRIDE_PROTOCOL { EFI_PCI_PLATFORM_PROTOCOL Value; public static implicit operator EFI_PCI_OVERRIDE_PROTOCOL(EFI_PCI_PLATFORM_PROTOCOL value) => new EFI_PCI_OVERRIDE_PROTOCOL() { Value = value }; public static implicit operator EFI_PCI_PLATFORM_PROTOCOL(EFI_PCI_OVERRIDE_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_PCI_OVERRIDE_PROTOCOL { EFI_PCI_PLATFORM_PROTOCOL Value; public static implicit operator EFI_PCI_OVERRIDE_PROTOCOL(EFI_PCI_PLATFORM_PROTOCOL value) => new EFI_PCI_OVERRIDE_PROTOCOL() { Value = value }; public static implicit operator EFI_PCI_PLATFORM_PROTOCOL(EFI_PCI_OVERRIDE_PROTOCOL value) => value.Value; }
 
 // extern EFI_GUID  gEfiPciOverrideProtocolGuid;
 

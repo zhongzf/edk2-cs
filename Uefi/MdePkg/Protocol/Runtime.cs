@@ -22,7 +22,7 @@ namespace Uefi;
 ///
 /// Global ID for the Runtime Architectural Protocol
 ///
-public static EFI_GUID EFI_RUNTIME_ARCH_PROTOCOL_GUID = new GUID( 0xb7dfb4e1, 0x52f, 0x449f, new byte[] {0x87, 0xbe, 0x98, 0x18, 0xfc, 0x91, 0xb7, 0x33 });
+public static EFI_GUID EFI_RUNTIME_ARCH_PROTOCOL_GUID = new GUID(0xb7dfb4e1, 0x52f, 0x449f, new byte[] { 0x87, 0xbe, 0x98, 0x18, 0xfc, 0x91, 0xb7, 0x33 });
 
 // typedef struct _EFI_RUNTIME_ARCH_PROTOCOL EFI_RUNTIME_ARCH_PROTOCOL;
 
@@ -30,7 +30,7 @@ public static EFI_GUID EFI_RUNTIME_ARCH_PROTOCOL_GUID = new GUID( 0xb7dfb4e1, 0x
 /// LIST_ENTRY from BaseType
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_LIST_ENTRY { LIST_ENTRY Value; public static implicit operator EFI_LIST_ENTRY(LIST_ENTRY value) => new EFI_LIST_ENTRY() { Value = value }; public static implicit operator LIST_ENTRY(EFI_LIST_ENTRY value) => value.Value;}
+public unsafe struct EFI_LIST_ENTRY { LIST_ENTRY Value; public static implicit operator EFI_LIST_ENTRY(LIST_ENTRY value) => new EFI_LIST_ENTRY() { Value = value }; public static implicit operator LIST_ENTRY(EFI_LIST_ENTRY value) => value.Value; }
 
 // typedef struct _EFI_RUNTIME_IMAGE_ENTRY EFI_RUNTIME_IMAGE_ENTRY;
 
@@ -38,29 +38,30 @@ public unsafe struct EFI_LIST_ENTRY { LIST_ENTRY Value; public static implicit o
 /// EFI_RUNTIME_IMAGE_ENTRY
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_RUNTIME_IMAGE_ENTRY {
+public unsafe struct EFI_RUNTIME_IMAGE_ENTRY
+{
   ///
   /// Start of image that has been loaded in memory. It is a pointer
   /// to either the DOS header or PE header of the image.
   ///
- public void              *ImageBase;
+  public void* ImageBase;
   ///
   /// Size in bytes of the image represented by ImageBase.
   ///
- public ulong            ImageSize;
+  public ulong ImageSize;
   ///
   /// Information about the fix-ups that were performed on ImageBase when it was
   /// loaded into memory.
   ///
- public void              *RelocationData;
+  public void* RelocationData;
   ///
   /// The ImageHandle passed into ImageBase when it was loaded.
   ///
- public EFI_HANDLE        Handle;
+  public EFI_HANDLE Handle;
   ///
   /// Entry for this node in the EFI_RUNTIME_ARCHITECTURE_PROTOCOL.ImageHead list.
   ///
- public EFI_LIST_ENTRY    Link;
+  public EFI_LIST_ENTRY Link;
 }
 
 // typedef struct _EFI_RUNTIME_EVENT_ENTRY EFI_RUNTIME_EVENT_ENTRY;
@@ -69,32 +70,33 @@ public unsafe struct EFI_RUNTIME_IMAGE_ENTRY {
 /// EFI_RUNTIME_EVENT_ENTRY
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_RUNTIME_EVENT_ENTRY {
+public unsafe struct EFI_RUNTIME_EVENT_ENTRY
+{
   ///
   /// The same as Type passed into CreateEvent().
   ///
- public uint              Type;
+  public uint Type;
   ///
   /// The same as NotifyTpl passed into CreateEvent().
   ///
- public EFI_TPL             NotifyTpl;
+  public EFI_TPL NotifyTpl;
   ///
   /// The same as NotifyFunction passed into CreateEvent().
   ///
- public EFI_EVENT_NOTIFY    NotifyFunction;
+  public EFI_EVENT_NOTIFY NotifyFunction;
   ///
   /// The same as NotifyContext passed into CreateEvent().
   ///
- public void                *NotifyContext;
+  public void* NotifyContext;
   ///
   /// The EFI_EVENT returned by CreateEvent(). Event must be in runtime memory.
   ///
- public EFI_EVENT           *Event;
+  public EFI_EVENT* Event;
   ///
   /// Entry for this node in the
   /// EFI_RUNTIME_ARCHITECTURE_PROTOCOL.EventHead list.
   ///
- public EFI_LIST_ENTRY      Link;
+  public EFI_LIST_ENTRY Link;
 }
 
 ///
@@ -108,17 +110,18 @@ public unsafe struct EFI_RUNTIME_EVENT_ENTRY {
 /// by a runtime DXE driver and may only be consumed by the DXE Foundation.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_RUNTIME_ARCH_PROTOCOL {
- public EFI_LIST_ENTRY           ImageHead;              ///< A list of type EFI_RUNTIME_IMAGE_ENTRY.
- public EFI_LIST_ENTRY           EventHead;              ///< A list of type EFI_RUNTIME_EVENT_ENTRY.
- public ulong                    MemoryDescriptorSize;   ///< Size of a memory descriptor that is returned by GetMemoryMap().
- public uint                   MemoryDesciptorVersion; ///< Version of a memory descriptor that is returned by GetMemoryMap().
- public ulong                    MemoryMapSize;          ///< Size of the memory map in bytes contained in MemoryMapPhysical and MemoryMapVirtual.
- public EFI_MEMORY_DESCRIPTOR    *MemoryMapPhysical;     ///< Pointer to a runtime buffer that contains a copy of
-                                                   ///< the memory map returned via GetMemoryMap().
- public EFI_MEMORY_DESCRIPTOR    *MemoryMapVirtual;      ///< Pointer to MemoryMapPhysical that is updated to virtual mode after SetVirtualAddressMap().
- public bool                  VirtualMode;            ///< Boolean that is TRUE if SetVirtualAddressMap() has been called.
- public bool                  AtRuntime;              ///< Boolean that is TRUE if ExitBootServices () has been called.
+public unsafe struct EFI_RUNTIME_ARCH_PROTOCOL
+{
+  public EFI_LIST_ENTRY ImageHead;              ///< A list of type EFI_RUNTIME_IMAGE_ENTRY.
+  public EFI_LIST_ENTRY EventHead;              ///< A list of type EFI_RUNTIME_EVENT_ENTRY.
+  public ulong MemoryDescriptorSize;   ///< Size of a memory descriptor that is returned by GetMemoryMap().
+  public uint MemoryDesciptorVersion; ///< Version of a memory descriptor that is returned by GetMemoryMap().
+  public ulong MemoryMapSize;          ///< Size of the memory map in bytes contained in MemoryMapPhysical and MemoryMapVirtual.
+  public EFI_MEMORY_DESCRIPTOR* MemoryMapPhysical;     ///< Pointer to a runtime buffer that contains a copy of
+                                                       ///< the memory map returned via GetMemoryMap().
+  public EFI_MEMORY_DESCRIPTOR* MemoryMapVirtual;      ///< Pointer to MemoryMapPhysical that is updated to virtual mode after SetVirtualAddressMap().
+  public bool VirtualMode;            ///< Boolean that is TRUE if SetVirtualAddressMap() has been called.
+  public bool AtRuntime;              ///< Boolean that is TRUE if ExitBootServices () has been called.
 }
 
 // extern EFI_GUID  gEfiRuntimeArchProtocolGuid;

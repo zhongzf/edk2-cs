@@ -74,8 +74,8 @@ namespace Uefi;
 ///
 /// Global ID for EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
 ///
-public static EFI_GUID EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL_GUID = new GUID( 
-    0xeb23f55a, 0x7863, 0x4ac2, new byte[] {0x8d, 0x3d, 0x95, 0x65, 0x35, 0xde, 0x03, 0x75});
+public static EFI_GUID EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL_GUID = new GUID(
+    0xeb23f55a, 0x7863, 0x4ac2, new byte[] { 0x8d, 0x3d, 0x95, 0x65, 0x35, 0xde, 0x03, 0x75 });
 
 ///
 /// Forward declaration for EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
@@ -153,68 +153,69 @@ public static EFI_GUID EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL_GUID = new G
 /// Interface structure for the Incompatible PCI Device Support Protocol
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL {
+public unsafe struct EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
+{
   ///
   ///  Returns a list of ACPI resource descriptors that detail any special
   ///  resource configuration requirements if the specified device is a recognized
   ///  incompatible PCI device.
   ///
-/**
-  Returns a list of ACPI resource descriptors that detail the special resource
-  configuration requirements for an incompatible PCI device.
+  /**
+    Returns a list of ACPI resource descriptors that detail the special resource
+    configuration requirements for an incompatible PCI device.
 
-  This function returns a list of ACPI resource descriptors that detail the
-  special resource configuration requirements for an incompatible PCI device.
+    This function returns a list of ACPI resource descriptors that detail the
+    special resource configuration requirements for an incompatible PCI device.
 
-  Prior to bus enumeration, the PCI bus driver will look for the presence
-  of the EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL. Only one instance of this
-  protocol can be present in the system. For each PCI device that the PCI bus
-  driver discovers, the PCI bus driver calls this function with the device's vendor
-  ID, device ID, revision ID, subsystem vendor ID, and subsystem device ID. If the
-  VendorId, DeviceId, RevisionId, SubsystemVendorId, or SubsystemDeviceId value is
-  set to (ulong)-1, that field will be ignored. The ID values that are not (ulong)-1
-  will be used to identify the current device.
+    Prior to bus enumeration, the PCI bus driver will look for the presence
+    of the EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL. Only one instance of this
+    protocol can be present in the system. For each PCI device that the PCI bus
+    driver discovers, the PCI bus driver calls this function with the device's vendor
+    ID, device ID, revision ID, subsystem vendor ID, and subsystem device ID. If the
+    VendorId, DeviceId, RevisionId, SubsystemVendorId, or SubsystemDeviceId value is
+    set to (ulong)-1, that field will be ignored. The ID values that are not (ulong)-1
+    will be used to identify the current device.
 
-  This function will only return EFI_SUCCESS. However, if the device is an
-  incompatible PCI device, a list of ACPI resource descriptors will be returned
-  in Configuration. Otherwise, NULL will be returned in Configuration instead.
-  The PCI bus driver does not need to allocate memory for Configuration. However,
-  it is the PCI bus driver's responsibility to free it. The PCI bus driver then
-  can configure this device with the information that is derived from this list
-  of resource nodes, rather than the result of BAR probing.
+    This function will only return EFI_SUCCESS. However, if the device is an
+    incompatible PCI device, a list of ACPI resource descriptors will be returned
+    in Configuration. Otherwise, NULL will be returned in Configuration instead.
+    The PCI bus driver does not need to allocate memory for Configuration. However,
+    it is the PCI bus driver's responsibility to free it. The PCI bus driver then
+    can configure this device with the information that is derived from this list
+    of resource nodes, rather than the result of BAR probing.
 
-  Only the following two resource descriptor types from the ACPI Specification
-  may be used to describe the incompatible PCI device resource requirements:
-    - QWORD Address Space Descriptor (ACPI 2.0, section 6.4.3.5.1; also ACPI 3.0)
-    - End Tag (ACPI 2.0, section 6.4.2.8; also ACPI 3.0)
+    Only the following two resource descriptor types from the ACPI Specification
+    may be used to describe the incompatible PCI device resource requirements:
+      - QWORD Address Space Descriptor (ACPI 2.0, section 6.4.3.5.1; also ACPI 3.0)
+      - End Tag (ACPI 2.0, section 6.4.2.8; also ACPI 3.0)
 
-  The QWORD Address Space Descriptor can describe memory, I/O, and bus number
-  ranges for dynamic or fixed resources.  The configuration of a PCI root bridge
-  is described with one or more QWORD Address Space Descriptors, followed by an
-  End Tag. See the ACPI Specification for details on the field values.
+    The QWORD Address Space Descriptor can describe memory, I/O, and bus number
+    ranges for dynamic or fixed resources.  The configuration of a PCI root bridge
+    is described with one or more QWORD Address Space Descriptors, followed by an
+    End Tag. See the ACPI Specification for details on the field values.
 
-  @param[in]  This                Pointer to the EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
-                                  instance.
-  @param[in]  VendorId            A unique ID to identify the manufacturer of
-                                  the PCI device.  See the Conventional PCI
-                                  Specification 3.0 for details.
-  @param[in]  DeviceId            A unique ID to identify the particular PCI
-                                  device. See the Conventional PCI Specification
-                                  3.0 for details.
-  @param[in]  RevisionId          A PCI device-specific revision identifier.
-                                  See the Conventional PCI Specification 3.0
-                                  for details.
-  @param[in]  SubsystemVendorId   Specifies the subsystem vendor ID. See the
-                                  Conventional PCI Specification 3.0 for details.
-  @param[in]  SubsystemDeviceId   Specifies the subsystem device ID. See the
-                                  Conventional PCI Specification 3.0 for details.
-  @param[out] Configuration       A list of ACPI resource descriptors that detail
-                                  the configuration requirement.
+    @param[in]  This                Pointer to the EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
+                                    instance.
+    @param[in]  VendorId            A unique ID to identify the manufacturer of
+                                    the PCI device.  See the Conventional PCI
+                                    Specification 3.0 for details.
+    @param[in]  DeviceId            A unique ID to identify the particular PCI
+                                    device. See the Conventional PCI Specification
+                                    3.0 for details.
+    @param[in]  RevisionId          A PCI device-specific revision identifier.
+                                    See the Conventional PCI Specification 3.0
+                                    for details.
+    @param[in]  SubsystemVendorId   Specifies the subsystem vendor ID. See the
+                                    Conventional PCI Specification 3.0 for details.
+    @param[in]  SubsystemDeviceId   Specifies the subsystem device ID. See the
+                                    Conventional PCI Specification 3.0 for details.
+    @param[out] Configuration       A list of ACPI resource descriptors that detail
+                                    the configuration requirement.
 
-  @retval EFI_SUCCESS   The function always returns EFI_SUCCESS.
+    @retval EFI_SUCCESS   The function always returns EFI_SUCCESS.
 
-**/
-public readonly delegate* unmanaged<EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL*,ulong,ulong,ulong,ulong,ulong,void**, EFI_STATUS> CheckDevice;
+  **/
+  public readonly delegate* unmanaged<EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL*, ulong, ulong, ulong, ulong, ulong, void**, EFI_STATUS> CheckDevice;
 }
 
 // extern EFI_GUID  gEfiIncompatiblePciDeviceSupportProtocolGuid;

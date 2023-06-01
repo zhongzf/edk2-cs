@@ -14,17 +14,17 @@ namespace Uefi;
 // #ifndef __REPORT_STATUS_CODE_HANDLER_PROTOCOL_H__
 // #define __REPORT_STATUS_CODE_HANDLER_PROTOCOL_H__
 
-public static EFI_GUID EFI_RSC_HANDLER_PROTOCOL_GUID = new GUID( 
-    0x86212936, 0xe76, 0x41c8, new byte[] {0xa0, 0x3a, 0x2a, 0xf2, 0xfc, 0x1c, 0x39, 0xe2});
+public static EFI_GUID EFI_RSC_HANDLER_PROTOCOL_GUID = new GUID(
+    0x86212936, 0xe76, 0x41c8, new byte[] { 0xa0, 0x3a, 0x2a, 0xf2, 0xfc, 0x1c, 0x39, 0xe2 });
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_RSC_HANDLER_CALLBACK)(
+(EFIAPI* EFI_RSC_HANDLER_CALLBACK)(
   IN EFI_STATUS_CODE_TYPE   CodeType,
-  IN EFI_STATUS_CODE_VALUE  Value,
-  IN uint                 Instance,
-  IN EFI_GUID               *CallerId,
-  IN EFI_STATUS_CODE_DATA   *Data
+  IN EFI_STATUS_CODE_VALUE Value,
+  IN uint Instance,
+  IN EFI_GUID* CallerId,
+  IN EFI_STATUS_CODE_DATA* Data
   );
 
 
@@ -81,49 +81,50 @@ EFI_STATUS
 
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_RSC_HANDLER_PROTOCOL {
-/**
-  Register the callback function for ReportStatusCode() notification.
+public unsafe struct EFI_RSC_HANDLER_PROTOCOL
+{
+  /**
+    Register the callback function for ReportStatusCode() notification.
 
-  When this function is called the function pointer is added to an internal list and any future calls to
-  ReportStatusCode() will be forwarded to the Callback function. During the bootservices,
-  this is the callback for which this service can be invoked. The report status code router
-  will create an event such that the callback function is only invoked at the TPL for which it was
-  registered. The entity that registers for the callback should also register for an event upon
-  generation of exit boot services and invoke the unregister service.
-  If the handler does not have a TPL dependency, it should register for a callback at TPL high. The
-  router infrastructure will support making callbacks at runtime, but the caller for runtime invocation
-  must meet the following criteria:
-  1. must be a runtime driver type so that its memory is not reclaimed
-  2. not unregister at exit boot services so that the router will still have its callback address
-  3. the caller must be self-contained (eg. Not call out into any boot-service interfaces) and be
-  runtime safe, in general.
+    When this function is called the function pointer is added to an internal list and any future calls to
+    ReportStatusCode() will be forwarded to the Callback function. During the bootservices,
+    this is the callback for which this service can be invoked. The report status code router
+    will create an event such that the callback function is only invoked at the TPL for which it was
+    registered. The entity that registers for the callback should also register for an event upon
+    generation of exit boot services and invoke the unregister service.
+    If the handler does not have a TPL dependency, it should register for a callback at TPL high. The
+    router infrastructure will support making callbacks at runtime, but the caller for runtime invocation
+    must meet the following criteria:
+    1. must be a runtime driver type so that its memory is not reclaimed
+    2. not unregister at exit boot services so that the router will still have its callback address
+    3. the caller must be self-contained (eg. Not call out into any boot-service interfaces) and be
+    runtime safe, in general.
 
-  @param[in] Callback   A pointer to a function of type EFI_RSC_HANDLER_CALLBACK that is called when
-                        a call to ReportStatusCode() occurs.
-  @param[in] Tpl        TPL at which callback can be safely invoked.
+    @param[in] Callback   A pointer to a function of type EFI_RSC_HANDLER_CALLBACK that is called when
+                          a call to ReportStatusCode() occurs.
+    @param[in] Tpl        TPL at which callback can be safely invoked.
 
-  @retval  EFI_SUCCESS              Function was successfully registered.
-  @retval  EFI_INVALID_PARAMETER    The callback function was NULL.
-  @retval  EFI_OUT_OF_RESOURCES     The internal buffer ran out of space. No more functions can be
-                                    registered.
-  @retval  EFI_ALREADY_STARTED      The function was already registered. It can't be registered again.
-**/
-public readonly delegate* unmanaged<EFI_RSC_HANDLER_CALLBACK,EFI_TPL, EFI_STATUS> Register;
-/**
-  Remove a previously registered callback function from the notification list.
+    @retval  EFI_SUCCESS              Function was successfully registered.
+    @retval  EFI_INVALID_PARAMETER    The callback function was NULL.
+    @retval  EFI_OUT_OF_RESOURCES     The internal buffer ran out of space. No more functions can be
+                                      registered.
+    @retval  EFI_ALREADY_STARTED      The function was already registered. It can't be registered again.
+  **/
+  public readonly delegate* unmanaged<EFI_RSC_HANDLER_CALLBACK, EFI_TPL, EFI_STATUS> Register;
+  /**
+    Remove a previously registered callback function from the notification list.
 
-  A callback function must be unregistered before it is deallocated. It is important that any registered
-  callbacks that are not runtime complaint be unregistered when ExitBootServices() is called.
+    A callback function must be unregistered before it is deallocated. It is important that any registered
+    callbacks that are not runtime complaint be unregistered when ExitBootServices() is called.
 
-  @param[in]  Callback  A pointer to a function of type EFI_RSC_HANDLER_CALLBACK that is to be
-                        unregistered.
+    @param[in]  Callback  A pointer to a function of type EFI_RSC_HANDLER_CALLBACK that is to be
+                          unregistered.
 
-  @retval EFI_SUCCESS           The function was successfully unregistered.
-  @retval EFI_INVALID_PARAMETER The callback function was NULL.
-  @retval EFI_NOT_FOUND         The callback function was not found to be unregistered.
-**/
-public readonly delegate* unmanaged<EFI_RSC_HANDLER_CALLBACK, EFI_STATUS> Unregister;
+    @retval EFI_SUCCESS           The function was successfully unregistered.
+    @retval EFI_INVALID_PARAMETER The callback function was NULL.
+    @retval EFI_NOT_FOUND         The callback function was not found to be unregistered.
+  **/
+  public readonly delegate* unmanaged<EFI_RSC_HANDLER_CALLBACK, EFI_STATUS> Unregister;
 }
 
 // extern EFI_GUID  gEfiRscHandlerProtocolGuid;

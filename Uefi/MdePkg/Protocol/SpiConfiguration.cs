@@ -16,15 +16,15 @@ namespace Uefi;
 ///
 /// Global ID for the SPI Configuration Protocol
 ///
-public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID( 0x85a6d3e6, 0xb65b, 0x4afc,     
+public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
     { 0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8 });
 
 ///
 /// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
 ///
-public static ulong Hz = (Frequency)   (Frequency);
-public static ulong KHz = (Frequency)  (1000 * Hz (Frequency));
-public static ulong MHz = (Frequency)  (1000 * KHz (Frequency));
+public static ulong Hz = (Frequency)(Frequency);
+public static ulong KHz = (Frequency)(1000 * Hz(Frequency));
+public static ulong MHz = (Frequency)(1000 * KHz(Frequency));
 
 // typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
 
@@ -96,35 +96,36 @@ public static ulong MHz = (Frequency)  (1000 * KHz (Frequency));
 /// from the part's datasheet and may be provided by the vendor.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SPI_PART {
+public unsafe struct EFI_SPI_PART
+{
   ///
   /// A Unicode string specifying the SPI chip vendor.
   ///
-  CONSTpublic char    *Vendor;
+  CONSTpublic char* Vendor;
 
   ///
   /// A Unicode string specifying the SPI chip part number.
   ///
-  CONSTpublic char    *PartNumber;
+  CONSTpublic char* PartNumber;
 
   ///
   /// The minimum SPI bus clock frequency used to access this chip. This value
   /// may be specified in the chip's datasheet. If not, use the value of zero.
   ///
- public uint          MinClockHz;
+  public uint MinClockHz;
 
   ///
   /// The maximum SPI bus clock frequency used to access this chip. This value
   /// is found in the chip's datasheet.
   ///
- public uint          MaxClockHz;
+  public uint MaxClockHz;
 
   ///
   /// Specify the polarity of the chip select pin. This value can be found in
   /// the SPI chip's datasheet. Specify TRUE when a one asserts the chip select
   /// and FALSE when a zero asserts the chip select.
   ///
- public bool         ChipSelectPolarity;
+  public bool ChipSelectPolarity;
 }
 
 ///
@@ -135,11 +136,12 @@ public unsafe struct EFI_SPI_PART {
 /// of physical SPI devices which are attached to the SPI bus.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SPI_BUS {
+public unsafe struct EFI_SPI_BUS
+{
   ///
   /// A Unicode string describing the SPI bus
   ///
-  CONSTpublic char                      *FriendlyName;
+  CONSTpublic char* FriendlyName;
 
   ///
   /// Address of the first EFI_SPI_PERIPHERAL data structure connected to this
@@ -192,7 +194,7 @@ public readonly delegate* unmanaged<uint*, EFI_STATUS> Clock;
   /// host's SPI controller driver. When Clock is not NULL, the declaration for
   /// this data structure is provided by the board layer.
   ///
- public void    *ClockParameter;
+  public void* ClockParameter;
 }
 
 ///
@@ -203,7 +205,8 @@ public readonly delegate* unmanaged<uint*, EFI_STATUS> Clock;
 /// peripheral driver.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SPI_PERIPHERAL {
+public unsafe struct EFI_SPI_PERIPHERAL
+{
   ///
   /// Address of the next EFI_SPI_PERIPHERAL data structure. Specify NULL if
   /// the current data structure is the last one on the SPI bus.
@@ -213,7 +216,7 @@ public unsafe struct EFI_SPI_PERIPHERAL {
   ///
   /// A unicode string describing the function of the SPI part.
   ///
-  CONSTpublic char                *FriendlyName;
+  CONSTpublic char* FriendlyName;
 
   ///
   /// Address of a GUID provided by the vendor of the SPI peripheral driver.
@@ -235,20 +238,20 @@ public unsafe struct EFI_SPI_PERIPHERAL {
   /// this value is non-zero and less than the value in the EFI_SPI_PART then
   /// this value is used for the maximum clock frequency for the SPI part.
   ///
- public uint                MaxClockHz;
+ public uint MaxClockHz;
 
   ///
   /// Specify the idle value of the clock as found in the datasheet.
   /// Use zero (0) if the clock'S idle value is low or one (1) if the the
   /// clock's idle value is high.
   ///
- public bool               ClockPolarity;
+  public bool ClockPolarity;
 
   ///
   /// Specify the clock delay after chip select. Specify zero (0) to delay an
   /// entire clock cycle or one (1) to delay only half a clock cycle.
   ///
- public bool               ClockPhase;
+  public bool ClockPhase;
 
   ///
   /// SPI peripheral attributes, select zero or more of:
@@ -257,14 +260,14 @@ public unsafe struct EFI_SPI_PERIPHERAL {
   /// * SPI_PART_SUPPORTS_4_B1T_DATA_BUS_W1DTH - The SPI peripheral is wired to
   ///   support a 4-bit data bus
   ///
- public uint                 Attributes;
+  public uint Attributes;
 
   ///
   /// Address of a vendor specific data structure containing additional board
   /// configuration details related to the SPI chip. The SPI peripheral layer
   /// uses this data structure when configuring the chip.
   ///
-  CONSTpublic void             *ConfigurationData;
+  CONSTpublic void* ConfigurationData;
 
   ///
   /// The address of an EFI_SPI_BUS data structure which describes the SPI bus
@@ -301,7 +304,7 @@ public unsafe struct EFI_SPI_PERIPHERAL {
                                  is invalid
 
 **/
-public readonly delegate* unmanaged<CONST,bool, EFI_STATUS> ChipSelect;
+public readonly delegate* unmanaged<CONST, bool, EFI_STATUS> ChipSelect;
 
   ///
   /// Address of a data structure containing the additional values which
@@ -312,7 +315,7 @@ public readonly delegate* unmanaged<CONST,bool, EFI_STATUS> ChipSelect;
   /// control. When Chipselect is not NULL, the declaration for this data
   /// structure is provided by the board layer.
   ///
- public void    *ChipSelectParameter;
+  public void* ChipSelectParameter;
 }
 
 ///
@@ -323,16 +326,17 @@ public readonly delegate* unmanaged<CONST,bool, EFI_STATUS> ChipSelect;
 /// on the SPI controllers.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SPI_CONFIGURATION_PROTOCOL {
+public unsafe struct EFI_SPI_CONFIGURATION_PROTOCOL
+{
   ///
   /// The number of SPI busses on the board.
   ///
- public uint                             BusCount;
+  public uint BusCount;
 
   ///
   /// The address of an array of EFI_SPI_BUS data structure addresses.
   ///
- public CONST EFI_SPI_BUS *CONST *CONST    Buslist;
+  public CONST EFI_SPI_BUS *CONST* CONST    Buslist;
 }
 
 // extern EFI_GUID  gEfiSpiConfigurationProtocolGuid;

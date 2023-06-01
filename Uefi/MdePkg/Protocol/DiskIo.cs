@@ -14,8 +14,8 @@ namespace Uefi;
 // #ifndef __DISK_IO_H__
 // #define __DISK_IO_H__
 
-public static EFI_GUID EFI_DISK_IO_PROTOCOL_GUID = new GUID( 
-    0xce345171, 0xba0b, 0x11d2, new byte[] {0x8e, 0x4f, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public static EFI_GUID EFI_DISK_IO_PROTOCOL_GUID = new GUID(
+    0xce345171, 0xba0b, 0x11d2, new byte[] { 0x8e, 0x4f, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
 ///
 /// Protocol GUID name defined in EFI1.1.
@@ -28,7 +28,7 @@ public static ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
 /// Protocol defined in EFI1.1.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DISK_IO { EFI_DISK_IO_PROTOCOL Value; public static implicit operator EFI_DISK_IO(EFI_DISK_IO_PROTOCOL value) => new EFI_DISK_IO() { Value = value }; public static implicit operator EFI_DISK_IO_PROTOCOL(EFI_DISK_IO value) => value.Value;}
+public unsafe struct EFI_DISK_IO { EFI_DISK_IO_PROTOCOL Value; public static implicit operator EFI_DISK_IO(EFI_DISK_IO_PROTOCOL value) => new EFI_DISK_IO() { Value = value }; public static implicit operator EFI_DISK_IO_PROTOCOL(EFI_DISK_IO value) => value.Value; }
 
 
 
@@ -96,50 +96,51 @@ public static ulong EFI_DISK_IO_INTERFACE_REVISION = EFI_DISK_IO_PROTOCOL_REVISI
 /// This protocol is used to abstract Block I/O interfaces.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DISK_IO_PROTOCOL {
+public unsafe struct EFI_DISK_IO_PROTOCOL
+{
   ///
   /// The revision to which the disk I/O interface adheres. All future
   /// revisions must be backwards compatible. If a future version is not
   /// backwards compatible, it is not the same GUID.
   ///
- public ulong            Revision;
-/**
-  Read BufferSize bytes from Offset into Buffer.
+  public ulong Revision;
+  /**
+    Read BufferSize bytes from Offset into Buffer.
 
-  @param  This                  Protocol instance pointer.
-  @param  MediaId               Id of the media, changes every time the media is replaced.
-  @param  Offset                The starting byte offset to read from
-  @param  BufferSize            Size of Buffer
-  @param  Buffer                Buffer containing read data
+    @param  This                  Protocol instance pointer.
+    @param  MediaId               Id of the media, changes every time the media is replaced.
+    @param  Offset                The starting byte offset to read from
+    @param  BufferSize            Size of Buffer
+    @param  Buffer                Buffer containing read data
 
-  @retval EFI_SUCCESS           The data was read correctly from the device.
-  @retval EFI_DEVICE_ERROR      The device reported an error while performing the read.
-  @retval EFI_NO_MEDIA          There is no media in the device.
-  @retval EFI_MEDIA_CHNAGED     The MediaId does not matched the current device.
-  @retval EFI_INVALID_PARAMETER The read request contains device addresses that are not
-                                valid for the device.
+    @retval EFI_SUCCESS           The data was read correctly from the device.
+    @retval EFI_DEVICE_ERROR      The device reported an error while performing the read.
+    @retval EFI_NO_MEDIA          There is no media in the device.
+    @retval EFI_MEDIA_CHNAGED     The MediaId does not matched the current device.
+    @retval EFI_INVALID_PARAMETER The read request contains device addresses that are not
+                                  valid for the device.
 
-**/
-public readonly delegate* unmanaged<EFI_DISK_IO_PROTOCOL*,uint,ulong,ulong,void*, EFI_STATUS> ReadDisk;
-/**
-  Writes a specified number of bytes to a device.
+  **/
+  public readonly delegate* unmanaged<EFI_DISK_IO_PROTOCOL*, uint, ulong, ulong, void*, EFI_STATUS> ReadDisk;
+  /**
+    Writes a specified number of bytes to a device.
 
-  @param  This       Indicates a pointer to the calling context.
-  @param  MediaId    ID of the medium to be written.
-  @param  Offset     The starting byte offset on the logical block I/O device to write.
-  @param  BufferSize The size in bytes of Buffer. The number of bytes to write to the device.
-  @param  Buffer     A pointer to the buffer containing the data to be written.
+    @param  This       Indicates a pointer to the calling context.
+    @param  MediaId    ID of the medium to be written.
+    @param  Offset     The starting byte offset on the logical block I/O device to write.
+    @param  BufferSize The size in bytes of Buffer. The number of bytes to write to the device.
+    @param  Buffer     A pointer to the buffer containing the data to be written.
 
-  @retval EFI_SUCCESS           The data was written correctly to the device.
-  @retval EFI_WRITE_PROTECTED   The device can not be written to.
-  @retval EFI_DEVICE_ERROR      The device reported an error while performing the write.
-  @retval EFI_NO_MEDIA          There is no media in the device.
-  @retval EFI_MEDIA_CHNAGED     The MediaId does not matched the current device.
-  @retval EFI_INVALID_PARAMETER The write request contains device addresses that are not
-                                 valid for the device.
+    @retval EFI_SUCCESS           The data was written correctly to the device.
+    @retval EFI_WRITE_PROTECTED   The device can not be written to.
+    @retval EFI_DEVICE_ERROR      The device reported an error while performing the write.
+    @retval EFI_NO_MEDIA          There is no media in the device.
+    @retval EFI_MEDIA_CHNAGED     The MediaId does not matched the current device.
+    @retval EFI_INVALID_PARAMETER The write request contains device addresses that are not
+                                   valid for the device.
 
-**/
-public readonly delegate* unmanaged<EFI_DISK_IO_PROTOCOL*,uint,ulong,ulong,void*, EFI_STATUS> WriteDisk;
+  **/
+  public readonly delegate* unmanaged<EFI_DISK_IO_PROTOCOL*, uint, ulong, ulong, void*, EFI_STATUS> WriteDisk;
 }
 
 // extern EFI_GUID  gEfiDiskIoProtocolGuid;

@@ -15,8 +15,8 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_BASE_PROTOCOL_GUID = new GUID( 
-    0xf4ccbfb7, 0xf6e0, 0x47fd, new byte[] {0x9d, 0xd4, 0x10, 0xa8, 0xf1, 0x50, 0xc1, 0x91 });
+public static EFI_GUID EFI_MM_BASE_PROTOCOL_GUID = new GUID(
+    0xf4ccbfb7, 0xf6e0, 0x47fd, new byte[] { 0x9d, 0xd4, 0x10, 0xa8, 0xf1, 0x50, 0xc1, 0x91 });
 
 // typedef struct _EFI_MM_BASE_PROTOCOL EFI_MM_BASE_PROTOCOL;
 
@@ -37,9 +37,9 @@ public static EFI_GUID EFI_MM_BASE_PROTOCOL_GUID = new GUID(
 **/
 typedef
 EFI_STATUS
-(EFIAPI *EFI_MM_INSIDE_OUT)(
-  IN CONST EFI_MM_BASE_PROTOCOL    *This,
-  OUT bool                      *InMmram
+(EFIAPI* EFI_MM_INSIDE_OUT)(
+  IN CONST EFI_MM_BASE_PROTOCOL    * This,
+  OUT bool* InMmram
   )
 ;
 
@@ -59,9 +59,9 @@ EFI_STATUS
 **/
 typedef
 EFI_STATUS
-(EFIAPI *EFI_MM_GET_MMST_LOCATION)(
-  IN CONST EFI_MM_BASE_PROTOCOL  *This,
-  IN OUT EFI_MM_SYSTEM_TABLE     **Mmst
+(EFIAPI* EFI_MM_GET_MMST_LOCATION)(
+  IN CONST EFI_MM_BASE_PROTOCOL  * This,
+  IN OUT EFI_MM_SYSTEM_TABLE     ** Mmst
   )
 ;
 
@@ -70,9 +70,10 @@ EFI_STATUS
 /// services and determine whether the driver is being invoked inside MMRAM or outside of MMRAM.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_BASE_PROTOCOL {
- public EFI_MM_INSIDE_OUT           InMm;
- public EFI_MM_GET_MMST_LOCATION    GetMmstLocation;
+public unsafe struct EFI_MM_BASE_PROTOCOL
+{
+  public EFI_MM_INSIDE_OUT InMm;
+  public EFI_MM_GET_MMST_LOCATION GetMmstLocation;
 }
 
 // extern EFI_GUID  gEfiMmBaseProtocolGuid;

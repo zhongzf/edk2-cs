@@ -14,35 +14,35 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_HASH_PROTOCOL_H__
 // #define __EFI_HASH_PROTOCOL_H__
 
-public static EFI_GUID EFI_HASH_SERVICE_BINDING_PROTOCOL_GUID = new GUID( 
-    0x42881c98, 0xa4f3, 0x44b0, new byte[] {0xa3, 0x9d, 0xdf, 0xa1, 0x86, 0x67, 0xd8, 0xcd });
+public static EFI_GUID EFI_HASH_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+    0x42881c98, 0xa4f3, 0x44b0, new byte[] { 0xa3, 0x9d, 0xdf, 0xa1, 0x86, 0x67, 0xd8, 0xcd });
 
-public static EFI_GUID EFI_HASH_PROTOCOL_GUID = new GUID( 
-    0xc5184932, 0xdba5, 0x46db, new byte[] {0xa5, 0xba, 0xcc, 0x0b, 0xda, 0x9c, 0x14, 0x35 });
+public static EFI_GUID EFI_HASH_PROTOCOL_GUID = new GUID(
+    0xc5184932, 0xdba5, 0x46db, new byte[] { 0xa5, 0xba, 0xcc, 0x0b, 0xda, 0x9c, 0x14, 0x35 });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA1_GUID = new GUID( 
-    0x2ae9d80f, 0x3fb2, 0x4095, new byte[] {0xb7, 0xb1, 0xe9, 0x31, 0x57, 0xb9, 0x46, 0xb6 });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA1_GUID = new GUID(
+    0x2ae9d80f, 0x3fb2, 0x4095, new byte[] { 0xb7, 0xb1, 0xe9, 0x31, 0x57, 0xb9, 0x46, 0xb6 });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA224_GUID = new GUID( 
-    0x8df01a06, 0x9bd5, 0x4bf7, new byte[] {0xb0, 0x21, 0xdb, 0x4f, 0xd9, 0xcc, 0xf4, 0x5b });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA224_GUID = new GUID(
+    0x8df01a06, 0x9bd5, 0x4bf7, new byte[] { 0xb0, 0x21, 0xdb, 0x4f, 0xd9, 0xcc, 0xf4, 0x5b });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA256_GUID = new GUID( 
-    0x51aa59de, 0xfdf2, 0x4ea3, new byte[] {0xbc, 0x63, 0x87, 0x5f, 0xb7, 0x84, 0x2e, 0xe9 });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA256_GUID = new GUID(
+    0x51aa59de, 0xfdf2, 0x4ea3, new byte[] { 0xbc, 0x63, 0x87, 0x5f, 0xb7, 0x84, 0x2e, 0xe9 });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA384_GUID = new GUID( 
-    0xefa96432, 0xde33, 0x4dd2, new byte[] {0xae, 0xe6, 0x32, 0x8c, 0x33, 0xdf, 0x77, 0x7a });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA384_GUID = new GUID(
+    0xefa96432, 0xde33, 0x4dd2, new byte[] { 0xae, 0xe6, 0x32, 0x8c, 0x33, 0xdf, 0x77, 0x7a });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA512_GUID = new GUID( 
-    0xcaa4381e, 0x750c, 0x4770, new byte[] {0xb8, 0x70, 0x7a, 0x23, 0xb4, 0xe4, 0x21, 0x30 });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA512_GUID = new GUID(
+    0xcaa4381e, 0x750c, 0x4770, new byte[] { 0xb8, 0x70, 0x7a, 0x23, 0xb4, 0xe4, 0x21, 0x30 });
 
-public static EFI_GUID EFI_HASH_ALGORTIHM_MD5_GUID = new GUID( 
-    0xaf7c79c, 0x65b5, 0x4319, new byte[] {0xb0, 0xae, 0x44, 0xec, 0x48, 0x4e, 0x4a, 0xd7 });
+public static EFI_GUID EFI_HASH_ALGORTIHM_MD5_GUID = new GUID(
+    0xaf7c79c, 0x65b5, 0x4319, new byte[] { 0xb0, 0xae, 0x44, 0xec, 0x48, 0x4e, 0x4a, 0xd7 });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA1_NOPAD_GUID = new GUID( 
-    0x24c5dc2f, 0x53e2, 0x40ca, new byte[] {0x9e, 0xd6, 0xa5, 0xd9, 0xa4, 0x9f, 0x46, 0x3b });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA1_NOPAD_GUID = new GUID(
+    0x24c5dc2f, 0x53e2, 0x40ca, new byte[] { 0x9e, 0xd6, 0xa5, 0xd9, 0xa4, 0x9f, 0x46, 0x3b });
 
-public static EFI_GUID EFI_HASH_ALGORITHM_SHA256_NOPAD_GUID = new GUID( 
-    0x8628752a, 0x6cb7, 0x4814, new byte[] {0x96, 0xfc, 0x24, 0xa8, 0x15, 0xac, 0x22, 0x26 });
+public static EFI_GUID EFI_HASH_ALGORITHM_SHA256_NOPAD_GUID = new GUID(
+    0x8628752a, 0x6cb7, 0x4814, new byte[] { 0x96, 0xfc, 0x24, 0xa8, 0x15, 0xac, 0x22, 0x26 });
 
 //
 // Note: Use of the following algorithms with EFI_HASH_PROTOCOL is deprecated.
@@ -63,13 +63,15 @@ typedef byte EFI_SHA256_HASH[32];
 typedef byte EFI_SHA384_HASH[48];
 typedef byte EFI_SHA512_HASH[64];
 
-[StructLayout(LayoutKind.Explicit)] public unsafe struct EFI_HASH_OUTPUT {
- [FieldOffset(0)] public EFI_MD5_HASH       *Md5Hash;
- [FieldOffset(0)] public EFI_SHA1_HASH      *Sha1Hash;
- [FieldOffset(0)] public EFI_SHA224_HASH    *Sha224Hash;
- [FieldOffset(0)] public EFI_SHA256_HASH    *Sha256Hash;
- [FieldOffset(0)] public EFI_SHA384_HASH    *Sha384Hash;
- [FieldOffset(0)] public EFI_SHA512_HASH    *Sha512Hash;
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct EFI_HASH_OUTPUT
+{
+  [FieldOffset(0)] public EFI_MD5_HASH* Md5Hash;
+  [FieldOffset(0)] public EFI_SHA1_HASH* Sha1Hash;
+  [FieldOffset(0)] public EFI_SHA224_HASH* Sha224Hash;
+  [FieldOffset(0)] public EFI_SHA256_HASH* Sha256Hash;
+  [FieldOffset(0)] public EFI_SHA384_HASH* Sha384Hash;
+  [FieldOffset(0)] public EFI_SHA512_HASH* Sha512Hash;
 }
 
 
@@ -132,45 +134,46 @@ typedef byte EFI_SHA512_HASH[64];
 /// using one or more hash algorithms.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HASH_PROTOCOL {
-/**
-  Returns the size of the hash which results from a specific algorithm.
+public unsafe struct EFI_HASH_PROTOCOL
+{
+  /**
+    Returns the size of the hash which results from a specific algorithm.
 
-  @param[in]  This                  Points to this instance of EFI_HASH_PROTOCOL.
-  @param[in]  HashAlgorithm         Points to the EFI_GUID which identifies the algorithm to use.
-  @param[out] HashSize              Holds the returned size of the algorithm's hash.
+    @param[in]  This                  Points to this instance of EFI_HASH_PROTOCOL.
+    @param[in]  HashAlgorithm         Points to the EFI_GUID which identifies the algorithm to use.
+    @param[out] HashSize              Holds the returned size of the algorithm's hash.
 
-  @retval EFI_SUCCESS           Hash size returned successfully.
-  @retval EFI_INVALID_PARAMETER HashSize is NULL or HashAlgorithm is NULL.
-  @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported
-                                by this driver.
+    @retval EFI_SUCCESS           Hash size returned successfully.
+    @retval EFI_INVALID_PARAMETER HashSize is NULL or HashAlgorithm is NULL.
+    @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported
+                                  by this driver.
 
-**/
-public readonly delegate* unmanaged<CONST,CONST,ulong*, EFI_STATUS> GetHashSize;
-/**
-  Creates a hash for the specified message text.
+  **/
+  public readonly delegate* unmanaged<CONST, CONST, ulong*, EFI_STATUS> GetHashSize;
+  /**
+    Creates a hash for the specified message text.
 
-  @param[in]  This          Points to this instance of EFI_HASH_PROTOCOL.
-  @param[in]  HashAlgorithm Points to the EFI_GUID which identifies the algorithm to use.
-  @param[in]  Extend        Specifies whether to create a new hash (FALSE) or extend the specified
-                            existing hash (TRUE).
-  @param[in]  Message       Points to the start of the message.
-  @param[in]  MessageSize   The size of Message, in bytes.
-  @param[in,out]  Hash      On input, if Extend is TRUE, then this parameter holds a pointer
-                            to a pointer to an array containing the hash to extend. If Extend
-                            is FALSE, then this parameter holds a pointer to a pointer to a
-                            caller-allocated array that will receive the result of the hash
-                            computation. On output (regardless of the value of Extend), the
-                            array will contain the result of the hash computation.
+    @param[in]  This          Points to this instance of EFI_HASH_PROTOCOL.
+    @param[in]  HashAlgorithm Points to the EFI_GUID which identifies the algorithm to use.
+    @param[in]  Extend        Specifies whether to create a new hash (FALSE) or extend the specified
+                              existing hash (TRUE).
+    @param[in]  Message       Points to the start of the message.
+    @param[in]  MessageSize   The size of Message, in bytes.
+    @param[in,out]  Hash      On input, if Extend is TRUE, then this parameter holds a pointer
+                              to a pointer to an array containing the hash to extend. If Extend
+                              is FALSE, then this parameter holds a pointer to a pointer to a
+                              caller-allocated array that will receive the result of the hash
+                              computation. On output (regardless of the value of Extend), the
+                              array will contain the result of the hash computation.
 
-  @retval EFI_SUCCESS           Hash returned successfully.
-  @retval EFI_INVALID_PARAMETER Message or Hash, HashAlgorithm is NULL or MessageSize is 0.
-                                MessageSize is not an integer multiple of block size.
-  @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported by this
-                                 driver. Or, Extend is TRUE, and the algorithm doesn't support extending the hash.
+    @retval EFI_SUCCESS           Hash returned successfully.
+    @retval EFI_INVALID_PARAMETER Message or Hash, HashAlgorithm is NULL or MessageSize is 0.
+                                  MessageSize is not an integer multiple of block size.
+    @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported by this
+                                   driver. Or, Extend is TRUE, and the algorithm doesn't support extending the hash.
 
-**/
-public readonly delegate* unmanaged<CONST,CONST,bool,CONST,ulong,EFI_HASH_OUTPUT*, EFI_STATUS> Hash;
+  **/
+  public readonly delegate* unmanaged<CONST, CONST, bool, CONST, ulong, EFI_HASH_OUTPUT*, EFI_STATUS> Hash;
 }
 
 // extern EFI_GUID  gEfiHashServiceBindingProtocolGuid;

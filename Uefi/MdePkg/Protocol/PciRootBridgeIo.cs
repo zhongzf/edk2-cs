@@ -16,8 +16,8 @@ namespace Uefi;
 
 // #include <Library/BaseLib.h>
 
-public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID( 
-    0x2f707ebb, 0x4a1a, 0x11d4, new byte[] {0x9a, 0x38, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
+    0x2f707ebb, 0x4a1a, 0x11d4, new byte[] { 0x9a, 0x38, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
 // typedef struct _EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL;
 
@@ -26,7 +26,8 @@ public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
 /// EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH
 /// *******************************************************
 ///
-public enum EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH {
+public enum EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH
+{
   EfiPciWidthUint8,
   EfiPciWidthUint16,
   EfiPciWidthUint32,
@@ -47,7 +48,8 @@ public enum EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH {
 /// EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_OPERATION
 /// *******************************************************
 ///
-public enum EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_OPERATION {
+public enum EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_OPERATION
+{
   ///
   /// A read operation from system memory by a bus master that is not capable of producing
   /// PCI dual address cycles.
@@ -108,12 +110,13 @@ public static ulong EFI_PCI_ADDRESS = (bus, dev, func, reg) \;
   (((ulong) (reg)) < 256 ? ((ulong) (reg)) : (ulong) (LShiftU64 ((ulong) (reg), 32))))
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_PCI_ADDRESS {
- public byte     Register;
- public byte     Function;
- public byte     Device;
- public byte     Bus;
- public uint    ExtendedRegister;
+public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_PCI_ADDRESS
+{
+  public byte Register;
+  public byte Function;
+  public byte Device;
+  public byte Bus;
+  public uint ExtendedRegister;
 }
 
 
@@ -172,17 +175,18 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_PCI_ADDRESS {
 
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
+public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS
+{
   ///
   /// Read PCI controller registers in the PCI root bridge memory space.
   ///
-/**
-  Enables a PCI driver to access PCI controller registers in the PCI root bridge memory space.
+  /**
+    Enables a PCI driver to access PCI controller registers in the PCI root bridge memory space.
 
-  @param  This                  A pointer to the EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL.
-  @param  Width                 Signifies the width of the memory operations.
-  @param  Address               The base address of the memory operations.
-  @param  Count                 The number of memory operations to perform.
+    @param  This                  A pointer to the EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL.
+    @param  Width                 Signifies the width of the memory operations.
+    @param  Address               The base address of the memory operations.
+    @param  Count                 The number of memory operations to perform.
 
 
 
@@ -238,7 +242,7 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-  @retval EFI_INVALID_PARAMETER One or more parameters are invalid.
+    @retval EFI_INVALID_PARAMETER One or more parameters are invalid.
 
 
 
@@ -287,7 +291,7 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-                                MEMORY_WRITE_COMBINE and MEMORY_CACHED.
+                                  MEMORY_WRITE_COMBINE and MEMORY_CACHED.
 
 
 
@@ -307,7 +311,7 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-  @param  Pages                 The number of pages to free.
+    @param  Pages                 The number of pages to free.
 
 
 
@@ -324,7 +328,7 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-  Flushes all PCI posted write transactions from a PCI host bridge to system memory.
+    Flushes all PCI posted write transactions from a PCI host bridge to system memory.
 
 
 
@@ -350,7 +354,7 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-  @retval EFI_SUCCESS           If Supports is not NULL, then the attributes that the PCI root
+    @retval EFI_SUCCESS           If Supports is not NULL, then the attributes that the PCI root
 
 
 
@@ -380,7 +384,7 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-  @retval EFI_UNSUPPORTED       A bit is set in Attributes that is not supported by the PCI Root
+    @retval EFI_UNSUPPORTED       A bit is set in Attributes that is not supported by the PCI Root
 
 
 
@@ -401,70 +405,71 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS {
 
 
 
-  @param  Resources             A pointer to the resource descriptors that describe the current
-                                configuration of this PCI root bridge.
+    @param  Resources             A pointer to the resource descriptors that describe the current
+                                  configuration of this PCI root bridge.
 
-  @retval EFI_SUCCESS           The current configuration of this PCI root bridge was returned in
-                                Resources.
-  @retval EFI_UNSUPPORTED       The current configuration of this PCI root bridge could not be
-                                retrieved.
+    @retval EFI_SUCCESS           The current configuration of this PCI root bridge was returned in
+                                  Resources.
+    @retval EFI_UNSUPPORTED       The current configuration of this PCI root bridge could not be
+                                  retrieved.
 
-**/
-typedef
-EFI_STATUS
-(EFIAPI *EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_CONFIGURATION)(
-  IN  EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL          *This,
-  OUT void                                     **Resources
+  **/
+  typedef
+  EFI_STATUS
+  (EFIAPI* EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_CONFIGURATION)(
+    IN EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL          * This,
+    OUT void** Resources
   );
 
-///
-/// Provides the basic Memory, I/O, PCI configuration, and DMA interfaces that are
-/// used to abstract accesses to PCI controllers behind a PCI Root Bridge Controller.
-///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL {
   ///
-  /// The EFI_HANDLE of the PCI Host Bridge of which this PCI Root Bridge is a member.
+  /// Provides the basic Memory, I/O, PCI configuration, and DMA interfaces that are
+  /// used to abstract accesses to PCI controllers behind a PCI Root Bridge Controller.
   ///
- public EFI_HANDLE                                         ParentHandle;
-/**
-  Reads from the I/O space of a PCI Root Bridge. Returns when either the polling exit criteria is
-  satisfied or after a defined duration.
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL
+  {
+    ///
+    /// The EFI_HANDLE of the PCI Host Bridge of which this PCI Root Bridge is a member.
+    ///
+    public EFI_HANDLE ParentHandle;
+    /**
+      Reads from the I/O space of a PCI Root Bridge. Returns when either the polling exit criteria is
+      satisfied or after a defined duration.
 
-  @param  This                  A pointer to the EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL.
-  @param  Width                 Signifies the width of the memory or I/O operations.
-  @param  Address               The base address of the memory or I/O operations.
-  @param  Mask                  Mask used for the polling criteria.
-  @param  Value                 The comparison value used for the polling exit criteria.
-  @param  Delay                 The number of 100 ns units to poll.
-  @param  Result                Pointer to the last value read from the memory location.
+      @param  This                  A pointer to the EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL.
+      @param  Width                 Signifies the width of the memory or I/O operations.
+      @param  Address               The base address of the memory or I/O operations.
+      @param  Mask                  Mask used for the polling criteria.
+      @param  Value                 The comparison value used for the polling exit criteria.
+      @param  Delay                 The number of 100 ns units to poll.
+      @param  Result                Pointer to the last value read from the memory location.
 
-  @retval EFI_SUCCESS           The last data returned from the access matched the poll exit criteria.
-  @retval EFI_TIMEOUT           Delay expired before a match occurred.
-  @retval EFI_OUT_OF_RESOURCES  The request could not be completed due to a lack of resources.
-  @retval EFI_INVALID_PARAMETER One or more parameters are invalid.
+      @retval EFI_SUCCESS           The last data returned from the access matched the poll exit criteria.
+      @retval EFI_TIMEOUT           Delay expired before a match occurred.
+      @retval EFI_OUT_OF_RESOURCES  The request could not be completed due to a lack of resources.
+      @retval EFI_INVALID_PARAMETER One or more parameters are invalid.
 
-**/
-public readonly delegate* unmanaged<EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL*,EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH,ulong,ulong,ulong,ulong,ulong*, EFI_STATUS> PollMem;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_POLL_IO_MEM        PollIo;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS             Mem;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS             Io;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS             Pci;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_COPY_MEM           CopyMem;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_MAP                Map;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_UNMAP              Unmap;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ALLOCATE_BUFFER    AllocateBuffer;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_FREE_BUFFER        FreeBuffer;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_FLUSH              Flush;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GET_ATTRIBUTES     GetAttributes;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_SET_ATTRIBUTES     SetAttributes;
- public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_CONFIGURATION      Configuration;
+    **/
+    public readonly delegate* unmanaged<EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL*, EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_WIDTH, ulong, ulong, ulong, ulong, ulong*, EFI_STATUS> PollMem;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_POLL_IO_MEM PollIo;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS Mem;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS Io;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS Pci;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_COPY_MEM CopyMem;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_MAP Map;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_UNMAP Unmap;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ALLOCATE_BUFFER AllocateBuffer;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_FREE_BUFFER FreeBuffer;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_FLUSH Flush;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GET_ATTRIBUTES GetAttributes;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_SET_ATTRIBUTES SetAttributes;
+    public EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_CONFIGURATION Configuration;
 
-  ///
-  /// The segment number that this PCI root bridge resides.
-  ///
- public uint                                             SegmentNumber;
-}
+    ///
+    /// The segment number that this PCI root bridge resides.
+    ///
+    public uint SegmentNumber;
+  }
 
 // extern EFI_GUID  gEfiPciRootBridgeIoProtocolGuid;
 

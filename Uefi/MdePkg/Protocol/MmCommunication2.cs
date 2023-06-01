@@ -16,7 +16,7 @@ namespace Uefi;
 
 // #include <Protocol/MmCommunication.h>
 
-public static EFI_GUID EFI_MM_COMMUNICATION2_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_MM_COMMUNICATION2_PROTOCOL_GUID = new GUID(
     0x378daedc, 0xf06b, 0x4446, new byte[] { 0x83, 0x14, 0x40, 0xab, 0x93, 0x3c, 0x87, 0xa3 });
 
 // typedef struct _EFI_MM_COMMUNICATION2_PROTOCOL EFI_MM_COMMUNICATION2_PROTOCOL;
@@ -60,33 +60,34 @@ public static EFI_GUID EFI_MM_COMMUNICATION2_PROTOCOL_GUID = new GUID(
 /// between DXE drivers and a registered MMI handler.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_COMMUNICATION2_PROTOCOL {
-/**
-  Communicates with a registered handler.
+public unsafe struct EFI_MM_COMMUNICATION2_PROTOCOL
+{
+  /**
+    Communicates with a registered handler.
 
-  This function provides a service to send and receive messages from a registered UEFI service.
+    This function provides a service to send and receive messages from a registered UEFI service.
 
-  @param[in] This                     The EFI_MM_COMMUNICATION_PROTOCOL instance.
-  @param[in, out] CommBufferPhysical  Physical address of the MM communication buffer
-  @param[in, out] CommBufferVirtual   Virtual address of the MM communication buffer
-  @param[in, out] CommSize            The size of the data buffer being passed in. On exit, the
-                                      size of data being returned. Zero if the handler does not
-                                      wish to reply with any data. This parameter is optional
-                                      and may be NULL.
+    @param[in] This                     The EFI_MM_COMMUNICATION_PROTOCOL instance.
+    @param[in, out] CommBufferPhysical  Physical address of the MM communication buffer
+    @param[in, out] CommBufferVirtual   Virtual address of the MM communication buffer
+    @param[in, out] CommSize            The size of the data buffer being passed in. On exit, the
+                                        size of data being returned. Zero if the handler does not
+                                        wish to reply with any data. This parameter is optional
+                                        and may be NULL.
 
-  @retval EFI_SUCCESS            The message was successfully posted.
-  @retval EFI_INVALID_PARAMETER  CommBufferPhysical was NULL or CommBufferVirtual was NULL.
-  @retval EFI_BAD_BUFFER_SIZE    The buffer is too large for the MM implementation.
-                                 If this error is returned, the MessageLength field
-                                 in the CommBuffer header or the integer pointed by
-                                 CommSize, are updated to reflect the maximum payload
-                                 size the implementation can accommodate.
-  @retval EFI_ACCESS_DENIED      The CommunicateBuffer parameter or CommSize parameter,
-                                 if not omitted, are in address range that cannot be
-                                 accessed by the MM environment.
+    @retval EFI_SUCCESS            The message was successfully posted.
+    @retval EFI_INVALID_PARAMETER  CommBufferPhysical was NULL or CommBufferVirtual was NULL.
+    @retval EFI_BAD_BUFFER_SIZE    The buffer is too large for the MM implementation.
+                                   If this error is returned, the MessageLength field
+                                   in the CommBuffer header or the integer pointed by
+                                   CommSize, are updated to reflect the maximum payload
+                                   size the implementation can accommodate.
+    @retval EFI_ACCESS_DENIED      The CommunicateBuffer parameter or CommSize parameter,
+                                   if not omitted, are in address range that cannot be
+                                   accessed by the MM environment.
 
-**/
-public readonly delegate* unmanaged<CONST,void*,void*,ulong*, EFI_STATUS> Communicate;
+  **/
+  public readonly delegate* unmanaged<CONST, void*, void*, ulong*, EFI_STATUS> Communicate;
 }
 
 // extern EFI_GUID  gEfiMmCommunication2ProtocolGuid;

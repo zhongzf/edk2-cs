@@ -18,7 +18,7 @@ namespace Uefi;
 // #ifndef __I2C_BUS_CONFIGURATION_MANAGEMENT_H__
 // #define __I2C_BUS_CONFIGURATION_MANAGEMENT_H__
 
-public static EFI_GUID EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL_GUID = new GUID( 0x55b71fb5, 0x17c6, 0x410e, new byte[] { 0xb5, 0xbd, 0x5f, 0xa2, 0xe3, 0xd4, 0x46, 0x6b });
+public static EFI_GUID EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL_GUID = new GUID(0x55b71fb5, 0x17c6, 0x410e, new byte[] { 0xb5, 0xbd, 0x5f, 0xa2, 0xe3, 0xd4, 0x46, 0x6b });
 
 ///
 /// I2C bus configuration management protocol
@@ -150,62 +150,63 @@ public static EFI_GUID EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL_GUID = new 
 /// I2C bus configuration management protocol
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL {
+public unsafe struct EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL
+{
   ///
   /// Enable an I2C bus configuration for use.
   ///
-/**
-  Enable access to an I2C bus configuration.
+  /**
+    Enable access to an I2C bus configuration.
 
-  This routine must be called at or below TPL_NOTIFY.  For synchronous
-  requests this routine must be called at or below TPL_CALLBACK.
+    This routine must be called at or below TPL_NOTIFY.  For synchronous
+    requests this routine must be called at or below TPL_CALLBACK.
 
-  Reconfigure the switches and multiplexers in the I2C bus to enable
-  access to a specific I2C bus configuration.  Also select the maximum
-  clock frequency for this I2C bus configuration.
+    Reconfigure the switches and multiplexers in the I2C bus to enable
+    access to a specific I2C bus configuration.  Also select the maximum
+    clock frequency for this I2C bus configuration.
 
-  This routine uses the I2C Master protocol to perform I2C transactions
-  on the local bus.  This eliminates any recursion in the I2C stack for
-  configuration transactions on the same I2C bus.  This works because the
-  local I2C bus is idle while the I2C bus configuration is being enabled.
+    This routine uses the I2C Master protocol to perform I2C transactions
+    on the local bus.  This eliminates any recursion in the I2C stack for
+    configuration transactions on the same I2C bus.  This works because the
+    local I2C bus is idle while the I2C bus configuration is being enabled.
 
-  If I2C transactions must be performed on other I2C busses, then the
-  EFI_I2C_HOST_PROTOCOL, the EFI_I2C_IO_PROTCOL, or a third party I2C
-  driver interface for a specific device must be used.  This requirement
-  is because the I2C host protocol controls the flow of requests to the
-  I2C controller.  Use the EFI_I2C_HOST_PROTOCOL when the I2C device is
-  not enumerated by the EFI_I2C_ENUMERATE_PROTOCOL.  Use a protocol
-  produced by a third party driver when it is available or the
-  EFI_I2C_IO_PROTOCOL when the third party driver is not available but
-  the device is enumerated with the EFI_I2C_ENUMERATE_PROTOCOL.
+    If I2C transactions must be performed on other I2C busses, then the
+    EFI_I2C_HOST_PROTOCOL, the EFI_I2C_IO_PROTCOL, or a third party I2C
+    driver interface for a specific device must be used.  This requirement
+    is because the I2C host protocol controls the flow of requests to the
+    I2C controller.  Use the EFI_I2C_HOST_PROTOCOL when the I2C device is
+    not enumerated by the EFI_I2C_ENUMERATE_PROTOCOL.  Use a protocol
+    produced by a third party driver when it is available or the
+    EFI_I2C_IO_PROTOCOL when the third party driver is not available but
+    the device is enumerated with the EFI_I2C_ENUMERATE_PROTOCOL.
 
-  When Event is NULL, EnableI2cBusConfiguration operates synchronously
-  and returns the I2C completion status as its return value.
+    When Event is NULL, EnableI2cBusConfiguration operates synchronously
+    and returns the I2C completion status as its return value.
 
-  @param[in]  This            Pointer to an EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL
-                              structure.
-  @param[in]  I2cBusConfiguration Index of an I2C bus configuration.  All
-                                  values in the range of zero to N-1 are
-                                  valid where N is the total number of I2C
-                                  bus configurations for an I2C bus.
-  @param[in]  Event           Event to signal when the transaction is complete
-  @param[out] I2cStatus       Buffer to receive the transaction status.
+    @param[in]  This            Pointer to an EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL
+                                structure.
+    @param[in]  I2cBusConfiguration Index of an I2C bus configuration.  All
+                                    values in the range of zero to N-1 are
+                                    valid where N is the total number of I2C
+                                    bus configurations for an I2C bus.
+    @param[in]  Event           Event to signal when the transaction is complete
+    @param[out] I2cStatus       Buffer to receive the transaction status.
 
-  @return  When Event is NULL, EnableI2cBusConfiguration operates synchrouously
-  and returns the I2C completion status as its return value.  In this case it is
-  recommended to use NULL for I2cStatus.  The values returned from
-  EnableI2cBusConfiguration are:
+    @return  When Event is NULL, EnableI2cBusConfiguration operates synchrouously
+    and returns the I2C completion status as its return value.  In this case it is
+    recommended to use NULL for I2cStatus.  The values returned from
+    EnableI2cBusConfiguration are:
 
-  @retval EFI_SUCCESS           The asynchronous bus configuration request
-                                was successfully started when Event is not
-                                NULL.
-  @retval EFI_SUCCESS           The bus configuration request completed
-                                successfully when Event is NULL.
-  @retval EFI_DEVICE_ERROR      The bus configuration failed.
-  @retval EFI_NO_MAPPING        Invalid I2cBusConfiguration value
+    @retval EFI_SUCCESS           The asynchronous bus configuration request
+                                  was successfully started when Event is not
+                                  NULL.
+    @retval EFI_SUCCESS           The bus configuration request completed
+                                  successfully when Event is NULL.
+    @retval EFI_DEVICE_ERROR      The bus configuration failed.
+    @retval EFI_NO_MAPPING        Invalid I2cBusConfiguration value
 
-**/
-public readonly delegate* unmanaged<CONST,ulong,EFI_EVENT,EFI_STATUS*, EFI_STATUS> EnableI2cBusConfiguration;
+  **/
+  public readonly delegate* unmanaged<CONST, ulong, EFI_EVENT, EFI_STATUS*, EFI_STATUS> EnableI2cBusConfiguration;
 }
 
 ///

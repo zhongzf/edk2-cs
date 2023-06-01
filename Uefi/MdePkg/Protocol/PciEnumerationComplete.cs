@@ -15,8 +15,8 @@ namespace Uefi;
 // #ifndef _PCI_ENUMERATION_COMPLETE_H_
 // #define _PCI_ENUMERATION_COMPLETE_H_
 
-public static EFI_GUID EFI_PCI_ENUMERATION_COMPLETE_GUID = new GUID(  
-   0x30cfe3e7, 0x3de1, 0x4586, new byte[] { 0xbe, 0x20, 0xde, 0xab, 0xa1, 0xb3, 0xb7, 0x93  });
+public static EFI_GUID EFI_PCI_ENUMERATION_COMPLETE_GUID = new GUID(
+   0x30cfe3e7, 0x3de1, 0x4586, new byte[] { 0xbe, 0x20, 0xde, 0xab, 0xa1, 0xb3, 0xb7, 0x93 });
 
 // extern EFI_GUID  gEfiPciEnumerationCompleteProtocolGuid;
 

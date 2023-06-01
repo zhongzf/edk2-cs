@@ -25,15 +25,16 @@ namespace Uefi;
 // #ifndef __CPU_IO2_H__
 // #define __CPU_IO2_H__
 
-public static EFI_GUID EFI_CPU_IO2_PROTOCOL_GUID = new GUID( 
-    0xad61f191, 0xae5f, 0x4c0e, new byte[] {0xb9, 0xfa, 0xe8, 0x69, 0xd2, 0x88, 0xc6, 0x4f});
+public static EFI_GUID EFI_CPU_IO2_PROTOCOL_GUID = new GUID(
+    0xad61f191, 0xae5f, 0x4c0e, new byte[] { 0xb9, 0xfa, 0xe8, 0x69, 0xd2, 0x88, 0xc6, 0x4f });
 
 // typedef struct _EFI_CPU_IO2_PROTOCOL EFI_CPU_IO2_PROTOCOL;
 
 ///
 /// Enumeration that defines the width of the I/O operation.
 ///
-public enum EFI_CPU_IO_PROTOCOL_WIDTH {
+public enum EFI_CPU_IO_PROTOCOL_WIDTH
+{
   EfiCpuIoWidthUint8,
   EfiCpuIoWidthUint16,
   EfiCpuIoWidthUint32,
@@ -105,57 +106,58 @@ public enum EFI_CPU_IO_PROTOCOL_WIDTH {
 /// Service for read and write accesses.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_CPU_IO_PROTOCOL_ACCESS {
+public unsafe struct EFI_CPU_IO_PROTOCOL_ACCESS
+{
   ///
   /// This service provides the various modalities of memory and I/O read.
   ///
-/**
-  Enables a driver to access registers in the PI CPU I/O space.
+  /**
+    Enables a driver to access registers in the PI CPU I/O space.
 
-  The Io.Read() and Io.Write() functions enable a driver to access PCI controller
-  registers in the PI CPU I/O space.
+    The Io.Read() and Io.Write() functions enable a driver to access PCI controller
+    registers in the PI CPU I/O space.
 
-  The I/O operations are carried out exactly as requested. The caller is responsible
-  for satisfying any alignment and I/O width restrictions that a PI System on a
-  platform might require. For example on some platforms, width requests of
-  EfiCpuIoWidthUint64 do not work. Misaligned buffers, on the other hand, will
-  be handled by the driver.
+    The I/O operations are carried out exactly as requested. The caller is responsible
+    for satisfying any alignment and I/O width restrictions that a PI System on a
+    platform might require. For example on some platforms, width requests of
+    EfiCpuIoWidthUint64 do not work. Misaligned buffers, on the other hand, will
+    be handled by the driver.
 
-  If Width is EfiCpuIoWidthUint8, EfiCpuIoWidthUint16, EfiCpuIoWidthUint32,
-  or EfiCpuIoWidthUint64, then both Address and Buffer are incremented for
-  each of the Count operations that is performed.
+    If Width is EfiCpuIoWidthUint8, EfiCpuIoWidthUint16, EfiCpuIoWidthUint32,
+    or EfiCpuIoWidthUint64, then both Address and Buffer are incremented for
+    each of the Count operations that is performed.
 
-  If Width is EfiCpuIoWidthFifoUint8, EfiCpuIoWidthFifoUint16,
-  EfiCpuIoWidthFifoUint32, or EfiCpuIoWidthFifoUint64, then only Buffer is
-  incremented for each of the Count operations that is performed. The read or
-  write operation is performed Count times on the same Address.
+    If Width is EfiCpuIoWidthFifoUint8, EfiCpuIoWidthFifoUint16,
+    EfiCpuIoWidthFifoUint32, or EfiCpuIoWidthFifoUint64, then only Buffer is
+    incremented for each of the Count operations that is performed. The read or
+    write operation is performed Count times on the same Address.
 
-  If Width is EfiCpuIoWidthFillUint8, EfiCpuIoWidthFillUint16,
-  EfiCpuIoWidthFillUint32, or EfiCpuIoWidthFillUint64, then only Address is
-  incremented for each of the Count operations that is performed. The read or
-  write operation is performed Count times from the first element of Buffer.
+    If Width is EfiCpuIoWidthFillUint8, EfiCpuIoWidthFillUint16,
+    EfiCpuIoWidthFillUint32, or EfiCpuIoWidthFillUint64, then only Address is
+    incremented for each of the Count operations that is performed. The read or
+    write operation is performed Count times from the first element of Buffer.
 
-  @param[in]       This     A pointer to the EFI_CPU_IO2_PROTOCOL instance.
-  @param[in]       Width    Signifies the width of the I/O or Memory operation.
-  @param[in]       Address  The base address of the I/O operation.
-  @param[in]       Count    The number of I/O operations to perform. The number
-                            of bytes moved is Width size * Count, starting at Address.
-  @param[in, out]  Buffer   For read operations, the destination buffer to store the results.
-                            For write operations, the source buffer from which to write data.
+    @param[in]       This     A pointer to the EFI_CPU_IO2_PROTOCOL instance.
+    @param[in]       Width    Signifies the width of the I/O or Memory operation.
+    @param[in]       Address  The base address of the I/O operation.
+    @param[in]       Count    The number of I/O operations to perform. The number
+                              of bytes moved is Width size * Count, starting at Address.
+    @param[in, out]  Buffer   For read operations, the destination buffer to store the results.
+                              For write operations, the source buffer from which to write data.
 
-  @retval EFI_SUCCESS            The data was read from or written to the PI system.
-  @retval EFI_INVALID_PARAMETER  Width is invalid for this PI system.
-  @retval EFI_INVALID_PARAMETER  Buffer is NULL.
-  @retval EFI_UNSUPPORTED        The Buffer is not aligned for the given Width.
-  @retval EFI_UNSUPPORTED        The address range specified by Address, Width,
-                                 and Count is not valid for this PI system.
+    @retval EFI_SUCCESS            The data was read from or written to the PI system.
+    @retval EFI_INVALID_PARAMETER  Width is invalid for this PI system.
+    @retval EFI_INVALID_PARAMETER  Buffer is NULL.
+    @retval EFI_UNSUPPORTED        The Buffer is not aligned for the given Width.
+    @retval EFI_UNSUPPORTED        The address range specified by Address, Width,
+                                   and Count is not valid for this PI system.
 
-**/
-public readonly delegate* unmanaged<EFI_CPU_IO2_PROTOCOL*,EFI_CPU_IO_PROTOCOL_WIDTH,ulong,ulong,void*, EFI_STATUS> Read;
+  **/
+  public readonly delegate* unmanaged<EFI_CPU_IO2_PROTOCOL*, EFI_CPU_IO_PROTOCOL_WIDTH, ulong, ulong, void*, EFI_STATUS> Read;
   ///
   /// This service provides the various modalities of memory and I/O write.
   ///
- public EFI_CPU_IO_PROTOCOL_IO_MEM    Write;
+  public EFI_CPU_IO_PROTOCOL_IO_MEM Write;
 }
 
 ///
@@ -163,15 +165,16 @@ public readonly delegate* unmanaged<EFI_CPU_IO2_PROTOCOL*,EFI_CPU_IO_PROTOCOL_WI
 /// accesses to devices in a system.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_CPU_IO2_PROTOCOL {
+public unsafe struct EFI_CPU_IO2_PROTOCOL
+{
   ///
   /// Enables a driver to access memory-mapped registers in the EFI system memory space.
   ///
- public EFI_CPU_IO_PROTOCOL_ACCESS    Mem;
+  public EFI_CPU_IO_PROTOCOL_ACCESS Mem;
   ///
   /// Enables a driver to access registers in the EFI CPU I/O space.
   ///
- public EFI_CPU_IO_PROTOCOL_ACCESS    Io;
+  public EFI_CPU_IO_PROTOCOL_ACCESS Io;
 }
 
 // extern EFI_GUID  gEfiCpuIo2ProtocolGuid;

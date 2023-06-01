@@ -94,7 +94,7 @@ public static ulong EFI_SMM_SAVE_STATE_REGISTER_LMA = EFI_MM_SAVE_STATE_REGISTER
 public static ulong EFI_SMM_SAVE_STATE_REGISTER_PROCESSOR_ID = EFI_MM_SAVE_STATE_REGISTER_PROCESSOR_ID;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_SAVE_STATE_REGISTER { EFI_MM_SAVE_STATE_REGISTER Value; public static implicit operator EFI_SMM_SAVE_STATE_REGISTER(EFI_MM_SAVE_STATE_REGISTER value) => new EFI_SMM_SAVE_STATE_REGISTER() { Value = value }; public static implicit operator EFI_MM_SAVE_STATE_REGISTER(EFI_SMM_SAVE_STATE_REGISTER value) => value.Value;}
+public unsafe struct EFI_SMM_SAVE_STATE_REGISTER { EFI_MM_SAVE_STATE_REGISTER Value; public static implicit operator EFI_SMM_SAVE_STATE_REGISTER(EFI_MM_SAVE_STATE_REGISTER value) => new EFI_SMM_SAVE_STATE_REGISTER() { Value = value }; public static implicit operator EFI_MM_SAVE_STATE_REGISTER(EFI_SMM_SAVE_STATE_REGISTER value) => value.Value; }
 
 public static ulong EFI_SMM_SAVE_STATE_REGISTER_LMA_32BIT = EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT;
 public static ulong EFI_SMM_SAVE_STATE_REGISTER_LMA_64BIT = EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT;
@@ -107,7 +107,7 @@ public static ulong EFI_SMM_SAVE_STATE_IO_WIDTH_UINT16 = EFI_MM_SAVE_STATE_IO_WI
 public static ulong EFI_SMM_SAVE_STATE_IO_WIDTH_UINT32 = EFI_MM_SAVE_STATE_IO_WIDTH_UINT32;
 public static ulong EFI_SMM_SAVE_STATE_IO_WIDTH_UINT64 = EFI_MM_SAVE_STATE_IO_WIDTH_UINT64;
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_SAVE_STATE_IO_WIDTH { EFI_MM_SAVE_STATE_IO_WIDTH Value; public static implicit operator EFI_SMM_SAVE_STATE_IO_WIDTH(EFI_MM_SAVE_STATE_IO_WIDTH value) => new EFI_SMM_SAVE_STATE_IO_WIDTH() { Value = value }; public static implicit operator EFI_MM_SAVE_STATE_IO_WIDTH(EFI_SMM_SAVE_STATE_IO_WIDTH value) => value.Value;}
+public unsafe struct EFI_SMM_SAVE_STATE_IO_WIDTH { EFI_MM_SAVE_STATE_IO_WIDTH Value; public static implicit operator EFI_SMM_SAVE_STATE_IO_WIDTH(EFI_MM_SAVE_STATE_IO_WIDTH value) => new EFI_SMM_SAVE_STATE_IO_WIDTH() { Value = value }; public static implicit operator EFI_MM_SAVE_STATE_IO_WIDTH(EFI_SMM_SAVE_STATE_IO_WIDTH value) => value.Value; }
 
 ///
 /// Types of I/O instruction
@@ -116,17 +116,17 @@ public static ulong EFI_SMM_SAVE_STATE_IO_TYPE_INPUT = EFI_MM_SAVE_STATE_IO_TYPE
 public static ulong EFI_SMM_SAVE_STATE_IO_TYPE_OUTPUT = EFI_MM_SAVE_STATE_IO_TYPE_OUTPUT;
 public static ulong EFI_SMM_SAVE_STATE_IO_TYPE_STRING = EFI_MM_SAVE_STATE_IO_TYPE_STRING;
 public static ulong EFI_SMM_SAVE_STATE_IO_TYPE_REP_PREFIX = EFI_MM_SAVE_STATE_IO_TYPE_REP_PREFIX;
-typedef  EFI_MM_SAVE_STATE_IO_TYPE EFI_SMM_SAVE_STATE_IO_TYPE;
+typedef EFI_MM_SAVE_STATE_IO_TYPE EFI_SMM_SAVE_STATE_IO_TYPE;
 
-typedef  EFI_MM_SAVE_STATE_IO_INFO EFI_SMM_SAVE_STATE_IO_INFO;
+typedef EFI_MM_SAVE_STATE_IO_INFO EFI_SMM_SAVE_STATE_IO_INFO;
 
-typedef  EFI_MM_CPU_PROTOCOL EFI_SMM_CPU_PROTOCOL;
-
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_READ_SAVE_STATE { EFI_MM_READ_SAVE_STATE Value; public static implicit operator EFI_SMM_READ_SAVE_STATE(EFI_MM_READ_SAVE_STATE value) => new EFI_SMM_READ_SAVE_STATE() { Value = value }; public static implicit operator EFI_MM_READ_SAVE_STATE(EFI_SMM_READ_SAVE_STATE value) => value.Value;}
+typedef EFI_MM_CPU_PROTOCOL EFI_SMM_CPU_PROTOCOL;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_WRITE_SAVE_STATE { EFI_MM_WRITE_SAVE_STATE Value; public static implicit operator EFI_SMM_WRITE_SAVE_STATE(EFI_MM_WRITE_SAVE_STATE value) => new EFI_SMM_WRITE_SAVE_STATE() { Value = value }; public static implicit operator EFI_MM_WRITE_SAVE_STATE(EFI_SMM_WRITE_SAVE_STATE value) => value.Value;}
+public unsafe struct EFI_SMM_READ_SAVE_STATE { EFI_MM_READ_SAVE_STATE Value; public static implicit operator EFI_SMM_READ_SAVE_STATE(EFI_MM_READ_SAVE_STATE value) => new EFI_SMM_READ_SAVE_STATE() { Value = value }; public static implicit operator EFI_MM_READ_SAVE_STATE(EFI_SMM_READ_SAVE_STATE value) => value.Value; }
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_SMM_WRITE_SAVE_STATE { EFI_MM_WRITE_SAVE_STATE Value; public static implicit operator EFI_SMM_WRITE_SAVE_STATE(EFI_MM_WRITE_SAVE_STATE value) => new EFI_SMM_WRITE_SAVE_STATE() { Value = value }; public static implicit operator EFI_MM_WRITE_SAVE_STATE(EFI_SMM_WRITE_SAVE_STATE value) => value.Value; }
 // extern EFI_GUID  gEfiSmmCpuProtocolGuid;
 
 // #endif

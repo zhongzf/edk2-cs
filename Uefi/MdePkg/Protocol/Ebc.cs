@@ -10,8 +10,8 @@ namespace Uefi;
 // #ifndef __EFI_EBC_PROTOCOL_H__
 // #define __EFI_EBC_PROTOCOL_H__
 
-public static EFI_GUID EFI_EBC_INTERPRETER_PROTOCOL_GUID = new GUID( 
-    0x13AC6DD1, 0x73D0, 0x11D4, new byte[] {0xB0, 0x6B, 0x00, 0xAA, 0x00, 0xBD, 0x6D, 0xE7 });
+public static EFI_GUID EFI_EBC_INTERPRETER_PROTOCOL_GUID = new GUID(
+    0x13AC6DD1, 0x73D0, 0x11D4, new byte[] { 0xB0, 0x6B, 0x00, 0xAA, 0x00, 0xBD, 0x6D, 0xE7 });
 
 //
 // Define OPCODES
@@ -156,17 +156,17 @@ public static ulong JMP_M_CS = 0x40;
 //
 // Macros to determine if a given operand is indirect
 //
-public static ulong OPERAND1_INDIRECT = (op)  ((op) & OPERAND_M_INDIRECT1);
-public static ulong OPERAND2_INDIRECT = (op)  ((op) & OPERAND_M_INDIRECT2);
+public static ulong OPERAND1_INDIRECT = (op)((op) & OPERAND_M_INDIRECT1);
+public static ulong OPERAND2_INDIRECT = (op)((op) & OPERAND_M_INDIRECT2);
 
 //
 // Macros to extract the operands from second byte of instructions
 //
-public static ulong OPERAND1_REGNUM = (op)  ((op) & OPERAND_M_OP1);
-public static ulong OPERAND2_REGNUM = (op)  (((op) & OPERAND_M_OP2) >> 4);
+public static ulong OPERAND1_REGNUM = (op)((op) & OPERAND_M_OP1);
+public static ulong OPERAND2_REGNUM = (op)(((op) & OPERAND_M_OP2) >> 4);
 
-public static ulong OPERAND1_CHAR = (op)  ('0' + OPERAND1_REGNUM (op));
-public static ulong OPERAND2_CHAR = (op)  ('0' + OPERAND2_REGNUM (op));
+public static ulong OPERAND1_CHAR = (op)('0' + OPERAND1_REGNUM(op));
+public static ulong OPERAND2_CHAR = (op)('0' + OPERAND2_REGNUM(op));
 
 //
 // Condition masks usually for byte 1 encodings of code
@@ -244,9 +244,9 @@ public static ulong EFI_EBC_PROTOCOL_GUID = EFI_EBC_INTERPRETER_PROTOCOL_GUID;
 **/
 typedef
 EFI_STATUS
-(EFIAPI *EBC_ICACHE_FLUSH)(
+(EFIAPI* EBC_ICACHE_FLUSH)(
   IN EFI_PHYSICAL_ADDRESS     Start,
-  IN ulong                   Length
+  IN ulong Length
   );
 
 
@@ -293,56 +293,57 @@ EFI_STATUS
 /// image can then be run using the standard EFI start image services.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_EBC_PROTOCOL {
-/**
-  Creates a thunk for an EBC entry point, returning the address of the thunk.
+public unsafe struct EFI_EBC_PROTOCOL
+{
+  /**
+    Creates a thunk for an EBC entry point, returning the address of the thunk.
 
-  A PE32+ EBC image, like any other PE32+ image, contains an optional header that specifies the
-  entry point for image execution. However, for EBC images, this is the entry point of EBC
-  instructions, so is not directly executable by the native processor. Therefore, when an EBC image is
-  loaded, the loader must call this service to get a pointer to native code (thunk) that can be executed,
-  which will invoke the interpreter to begin execution at the original EBC entry point.
+    A PE32+ EBC image, like any other PE32+ image, contains an optional header that specifies the
+    entry point for image execution. However, for EBC images, this is the entry point of EBC
+    instructions, so is not directly executable by the native processor. Therefore, when an EBC image is
+    loaded, the loader must call this service to get a pointer to native code (thunk) that can be executed,
+    which will invoke the interpreter to begin execution at the original EBC entry point.
 
-  @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
-  @param  ImageHandle   Handle of image for which the thunk is being created.
-  @param  EbcEntryPoint Address of the actual EBC entry point or protocol service the thunk should call.
-  @param  Thunk         Returned pointer to a thunk created.
+    @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
+    @param  ImageHandle   Handle of image for which the thunk is being created.
+    @param  EbcEntryPoint Address of the actual EBC entry point or protocol service the thunk should call.
+    @param  Thunk         Returned pointer to a thunk created.
 
-  @retval EFI_SUCCESS            The function completed successfully.
-  @retval EFI_INVALID_PARAMETER  Image entry point is not 2-byte aligned.
-  @retval EFI_OUT_OF_RESOURCES   Memory could not be allocated for the thunk.
-**/
-public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*,EFI_HANDLE,void*,void**, EFI_STATUS> CreateThunk;
-/**
-  Called prior to unloading an EBC image from memory.
+    @retval EFI_SUCCESS            The function completed successfully.
+    @retval EFI_INVALID_PARAMETER  Image entry point is not 2-byte aligned.
+    @retval EFI_OUT_OF_RESOURCES   Memory could not be allocated for the thunk.
+  **/
+  public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*, EFI_HANDLE, void*, void**, EFI_STATUS> CreateThunk;
+  /**
+    Called prior to unloading an EBC image from memory.
 
-  This function is called after an EBC image has exited, but before the image is actually unloaded. It
-  is intended to provide the interpreter with the opportunity to perform any cleanup that may be
-  necessary as a result of loading and executing the image.
+    This function is called after an EBC image has exited, but before the image is actually unloaded. It
+    is intended to provide the interpreter with the opportunity to perform any cleanup that may be
+    necessary as a result of loading and executing the image.
 
-  @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
-  @param  ImageHandle   Image handle of the EBC image that is being unloaded from memory.
+    @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
+    @param  ImageHandle   Image handle of the EBC image that is being unloaded from memory.
 
-  @retval EFI_SUCCESS            The function completed successfully.
-  @retval EFI_INVALID_PARAMETER  Image handle is not recognized as belonging
-                                 to an EBC image that has been executed.
-**/
-public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*,EFI_HANDLE, EFI_STATUS> UnloadImage;
- public EFI_EBC_REGISTER_ICACHE_FLUSH    RegisterICacheFlush;
-/**
-  Called to get the version of the interpreter.
+    @retval EFI_SUCCESS            The function completed successfully.
+    @retval EFI_INVALID_PARAMETER  Image handle is not recognized as belonging
+                                   to an EBC image that has been executed.
+  **/
+  public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*, EFI_HANDLE, EFI_STATUS> UnloadImage;
+  public EFI_EBC_REGISTER_ICACHE_FLUSH RegisterICacheFlush;
+  /**
+    Called to get the version of the interpreter.
 
-  This function is called to get the version of the loaded EBC interpreter. The value and format of the
-  returned version is identical to that returned by the EBC BREAK 1 instruction.
+    This function is called to get the version of the loaded EBC interpreter. The value and format of the
+    returned version is identical to that returned by the EBC BREAK 1 instruction.
 
-  @param  This       A pointer to the EFI_EBC_PROTOCOL instance.
-  @param  Version    Pointer to where to store the returned version of the interpreter.
+    @param  This       A pointer to the EFI_EBC_PROTOCOL instance.
+    @param  Version    Pointer to where to store the returned version of the interpreter.
 
-  @retval EFI_SUCCESS            The function completed successfully.
-  @retval EFI_INVALID_PARAMETER  Version pointer is NULL.
+    @retval EFI_SUCCESS            The function completed successfully.
+    @retval EFI_INVALID_PARAMETER  Version pointer is NULL.
 
-**/
-public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*,ulong*, EFI_STATUS> GetVersion;
+  **/
+  public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*, ulong*, EFI_STATUS> GetVersion;
 }
 
 //

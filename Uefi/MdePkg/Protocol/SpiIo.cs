@@ -22,7 +22,8 @@ namespace Uefi;
 /// Note: The UEFI PI 1.6 specification does not specify values for the
 ///       members below. The order matches the specification.
 ///
-public enum EFI_SPI_TRANSACTION_TYPE {
+public enum EFI_SPI_TRANSACTION_TYPE
+{
   ///
   /// Data flowing in both direction between the host and
   /// SPI peripheral.ReadBytes must equal WriteBytes and both ReadBuffer and
@@ -169,7 +170,8 @@ public enum EFI_SPI_TRANSACTION_TYPE {
 /// SPI transaction to perform on the host controller.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SPI_BUS_TRANSACTION {
+public unsafe struct EFI_SPI_BUS_TRANSACTION
+{
   ///
   /// Pointer to the SPI peripheral being manipulated.
   ///
@@ -179,7 +181,7 @@ public unsafe struct EFI_SPI_BUS_TRANSACTION {
   /// Type of transaction specified by one of the EFI_SPI_TRANSACTION_TYPE
   /// values.
   ///
- public EFI_SPI_TRANSACTION_TYPE    TransactionType;
+ public EFI_SPI_TRANSACTION_TYPE TransactionType;
 
   ///
   /// TRUE if the transaction is being debugged. Debugging may be turned on for
@@ -187,34 +189,34 @@ public unsafe struct EFI_SPI_BUS_TRANSACTION {
   /// messages. All other transactions with this value set to FALSE will not
   /// display any debugging messages.
   ///
- public bool                     DebugTransaction;
+  public bool DebugTransaction;
 
   ///
   /// SPI bus width in bits: 1, 2, 4
   ///
- public uint                      BusWidth;
+  public uint BusWidth;
 
   ///
   /// Frame size in bits, range: 1 - 32
   ///
- public uint                      FrameSize;
+  public uint FrameSize;
 
   ///
   /// Length of the write buffer in bytes
   ///
- public uint                      WriteBytes;
+  public uint WriteBytes;
 
   ///
   /// Buffer containing data to send to the SPI peripheral
   /// Frame sizes 1 - 8 bits: byte (one byte) per frame
   /// Frame sizes 7 - 16 bits : ushort (two bytes) per frame
   ///
- public byte                       *WriteBuffer;
+  public byte* WriteBuffer;
 
   ///
   /// Length of the read buffer in bytes
   ///
- public uint                      ReadBytes;
+  public uint ReadBytes;
 
   ///
   /// Buffer to receive the data from the SPI peripheral
@@ -222,7 +224,7 @@ public unsafe struct EFI_SPI_BUS_TRANSACTION {
   /// * Frame sizes 7 - 16 bits : ushort (two bytes) per frame
   /// * Frame sizes 17 - 32 bits : uint (four bytes) per frame
   ///
- public byte                       *ReadBuffer;
+  public byte* ReadBuffer;
 }
 
 ///
@@ -230,7 +232,8 @@ public unsafe struct EFI_SPI_BUS_TRANSACTION {
 /// chip.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SPI_IO_PROTOCOL {
+public unsafe struct EFI_SPI_IO_PROTOCOL
+{
   ///
   /// Address of an EFI_SPI_PERIPHERAL data structure associated with this
   /// protocol instance.
@@ -250,12 +253,12 @@ public unsafe struct EFI_SPI_IO_PROTOCOL {
   /// 8-bit frame sizes by the SPI bus layer if the frame size is not supported
   /// by the SPI host controller.
   ///
- public uint    FrameSizeSupportMask;
+ public uint FrameSizeSupportMask;
 
   ///
   /// Maximum transfer size in bytes: 1 - Oxffffffff
   ///
- public uint    MaximumTransferBytes;
+  public uint MaximumTransferBytes;
 
   ///
   /// Transaction attributes: One or more from:
@@ -268,7 +271,7 @@ public unsafe struct EFI_SPI_IO_PROTOCOL {
   /// * SPI_IO_TRANSFER_SIZE_INCLUDES_ADDRESS
   ///   - Transfer size includes the 3 address bytes
   ///
- public uint                                       Attributes;
+  public uint Attributes;
 
   ///
   /// Pointer to legacy SPI controller protocol
@@ -351,31 +354,31 @@ public unsafe struct EFI_SPI_IO_PROTOCOL {
   @retval EFI_UNSUPPORTED        The SPI controller was not able to support
 
 **/
-public readonly delegate* unmanaged<CONST,EFI_SPI_TRANSACTION_TYPE,bool,uint,uint,uint,uint,byte*,uint,byte*, EFI_STATUS> Transaction;
+public readonly delegate* unmanaged<CONST, EFI_SPI_TRANSACTION_TYPE, bool, uint, uint, uint, uint, byte*, uint, byte*, EFI_STATUS> Transaction;
 
   ///
   /// Update the SPI peripheral associated with this SPI 10 instance.
   ///
-/**
-  Update the SPI peripheral associated with this SPI 10 instance.
+  /**
+    Update the SPI peripheral associated with this SPI 10 instance.
 
-  Support socketed SPI parts by allowing the SPI peripheral driver to replace
-  the SPI peripheral after the connection is made. An example use is socketed
-  SPI NOR flash parts, where the size and parameters change depending upon
-  device is in the socket.
+    Support socketed SPI parts by allowing the SPI peripheral driver to replace
+    the SPI peripheral after the connection is made. An example use is socketed
+    SPI NOR flash parts, where the size and parameters change depending upon
+    device is in the socket.
 
-  @param[in] This           Pointer to an EFI_SPI_IO_PROTOCOL structure.
-  @param[in] SpiPeripheral  Pointer to an EFI_SPI_PERIPHERAL structure.
+    @param[in] This           Pointer to an EFI_SPI_IO_PROTOCOL structure.
+    @param[in] SpiPeripheral  Pointer to an EFI_SPI_PERIPHERAL structure.
 
-  @retval EFI_SUCCESS            The SPI peripheral was updated successfully
-  @retval EFI_INVALID_PARAMETER  The SpiPeripheral value is NULL,
-                                 or the SpiPeripheral->SpiBus is NULL,
-                                 or the SpiP eripheral - >SpiBus pointing at
-                                 wrong bus,
-                                 or the SpiP eripheral - >SpiPart is NULL
+    @retval EFI_SUCCESS            The SPI peripheral was updated successfully
+    @retval EFI_INVALID_PARAMETER  The SpiPeripheral value is NULL,
+                                   or the SpiPeripheral->SpiBus is NULL,
+                                   or the SpiP eripheral - >SpiBus pointing at
+                                   wrong bus,
+                                   or the SpiP eripheral - >SpiPart is NULL
 
-**/
-public readonly delegate* unmanaged<CONST, EFI_STATUS> UpdateSpiPeripheral;
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_STATUS> UpdateSpiPeripheral;
 }
 
 // #endif // __SPI_IO_PROTOCOL_H__

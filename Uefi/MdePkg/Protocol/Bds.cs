@@ -15,7 +15,7 @@ namespace Uefi;
 ///
 /// Global ID for the BDS Architectural Protocol
 ///
-public static EFI_GUID EFI_BDS_ARCH_PROTOCOL_GUID = new GUID( 0x665E3FF6, 0x46CC, 0x11d4, new byte[] {0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
+public static EFI_GUID EFI_BDS_ARCH_PROTOCOL_GUID = new GUID(0x665E3FF6, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
 
 ///
 /// Declare forward reference for the BDS Architectural Protocol
@@ -58,29 +58,30 @@ public static EFI_GUID EFI_BDS_ARCH_PROTOCOL_GUID = new GUID( 0x665E3FF6, 0x46CC
 /// the boot device can be used to load and invoke an OS or a system utility.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_BDS_ARCH_PROTOCOL {
-/**
-  This function uses policy data from the platform to determine what operating
-  system or system utility should be loaded and invoked.  This function call
-  also optionally make the use of user input to determine the operating system
-  or system utility to be loaded and invoked.  When the DXE Core has dispatched
-  all the drivers on the dispatch queue, this function is called.  This
-  function will attempt to connect the boot devices required to load and invoke
-  the selected operating system or system utility.  During this process,
-  additional firmware volumes may be discovered that may contain addition DXE
-  drivers that can be dispatched by the DXE Core.   If a boot device cannot be
-  fully connected, this function calls the DXE Service Dispatch() to allow the
-  DXE drivers from any newly discovered firmware volumes to be dispatched.
-  Then the boot device connection can be attempted again.  If the same boot
-  device connection operation fails twice in a row, then that boot device has
-  failed, and should be skipped.  This function should never return.
+public unsafe struct EFI_BDS_ARCH_PROTOCOL
+{
+  /**
+    This function uses policy data from the platform to determine what operating
+    system or system utility should be loaded and invoked.  This function call
+    also optionally make the use of user input to determine the operating system
+    or system utility to be loaded and invoked.  When the DXE Core has dispatched
+    all the drivers on the dispatch queue, this function is called.  This
+    function will attempt to connect the boot devices required to load and invoke
+    the selected operating system or system utility.  During this process,
+    additional firmware volumes may be discovered that may contain addition DXE
+    drivers that can be dispatched by the DXE Core.   If a boot device cannot be
+    fully connected, this function calls the DXE Service Dispatch() to allow the
+    DXE drivers from any newly discovered firmware volumes to be dispatched.
+    Then the boot device connection can be attempted again.  If the same boot
+    device connection operation fails twice in a row, then that boot device has
+    failed, and should be skipped.  This function should never return.
 
-  @param  This             The EFI_BDS_ARCH_PROTOCOL instance.
+    @param  This             The EFI_BDS_ARCH_PROTOCOL instance.
 
-  @return None.
+    @return None.
 
-**/
-public readonly delegate* unmanaged<EFI_BDS_ARCH_PROTOCOL*, EFI_STATUS> Entry;
+  **/
+  public readonly delegate* unmanaged<EFI_BDS_ARCH_PROTOCOL*, EFI_STATUS> Entry;
 }
 
 // extern EFI_GUID  gEfiBdsArchProtocolGuid;

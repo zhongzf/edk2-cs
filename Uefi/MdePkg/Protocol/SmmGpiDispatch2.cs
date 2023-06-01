@@ -29,16 +29,16 @@ public static ulong EFI_SMM_GPI_DISPATCH2_PROTOCOL_GUID = EFI_MM_GPI_DISPATCH_PR
 /// The dispatch function's context.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_GPI_REGISTER_CONTEXT { EFI_MM_GPI_REGISTER_CONTEXT Value; public static implicit operator EFI_SMM_GPI_REGISTER_CONTEXT(EFI_MM_GPI_REGISTER_CONTEXT value) => new EFI_SMM_GPI_REGISTER_CONTEXT() { Value = value }; public static implicit operator EFI_MM_GPI_REGISTER_CONTEXT(EFI_SMM_GPI_REGISTER_CONTEXT value) => value.Value;}
+public unsafe struct EFI_SMM_GPI_REGISTER_CONTEXT { EFI_MM_GPI_REGISTER_CONTEXT Value; public static implicit operator EFI_SMM_GPI_REGISTER_CONTEXT(EFI_MM_GPI_REGISTER_CONTEXT value) => new EFI_SMM_GPI_REGISTER_CONTEXT() { Value = value }; public static implicit operator EFI_MM_GPI_REGISTER_CONTEXT(EFI_SMM_GPI_REGISTER_CONTEXT value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_GPI_REGISTER2 { EFI_MM_GPI_REGISTER Value; public static implicit operator EFI_SMM_GPI_REGISTER2(EFI_MM_GPI_REGISTER value) => new EFI_SMM_GPI_REGISTER2() { Value = value }; public static implicit operator EFI_MM_GPI_REGISTER(EFI_SMM_GPI_REGISTER2 value) => value.Value;}
+public unsafe struct EFI_SMM_GPI_REGISTER2 { EFI_MM_GPI_REGISTER Value; public static implicit operator EFI_SMM_GPI_REGISTER2(EFI_MM_GPI_REGISTER value) => new EFI_SMM_GPI_REGISTER2() { Value = value }; public static implicit operator EFI_MM_GPI_REGISTER(EFI_SMM_GPI_REGISTER2 value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_GPI_UNREGISTER2 { EFI_MM_GPI_UNREGISTER Value; public static implicit operator EFI_SMM_GPI_UNREGISTER2(EFI_MM_GPI_UNREGISTER value) => new EFI_SMM_GPI_UNREGISTER2() { Value = value }; public static implicit operator EFI_MM_GPI_UNREGISTER(EFI_SMM_GPI_UNREGISTER2 value) => value.Value;}
+public unsafe struct EFI_SMM_GPI_UNREGISTER2 { EFI_MM_GPI_UNREGISTER Value; public static implicit operator EFI_SMM_GPI_UNREGISTER2(EFI_MM_GPI_UNREGISTER value) => new EFI_SMM_GPI_UNREGISTER2() { Value = value }; public static implicit operator EFI_MM_GPI_UNREGISTER(EFI_SMM_GPI_UNREGISTER2 value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_GPI_DISPATCH2_PROTOCOL { EFI_MM_GPI_DISPATCH_PROTOCOL Value; public static implicit operator EFI_SMM_GPI_DISPATCH2_PROTOCOL(EFI_MM_GPI_DISPATCH_PROTOCOL value) => new EFI_SMM_GPI_DISPATCH2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_GPI_DISPATCH_PROTOCOL(EFI_SMM_GPI_DISPATCH2_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_SMM_GPI_DISPATCH2_PROTOCOL { EFI_MM_GPI_DISPATCH_PROTOCOL Value; public static implicit operator EFI_SMM_GPI_DISPATCH2_PROTOCOL(EFI_MM_GPI_DISPATCH_PROTOCOL value) => new EFI_SMM_GPI_DISPATCH2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_GPI_DISPATCH_PROTOCOL(EFI_SMM_GPI_DISPATCH2_PROTOCOL value) => value.Value; }
 
 // extern EFI_GUID  gEfiSmmGpiDispatch2ProtocolGuid;
 

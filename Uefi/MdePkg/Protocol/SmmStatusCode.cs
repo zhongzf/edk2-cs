@@ -17,10 +17,10 @@ namespace Uefi;
 public static ulong EFI_SMM_STATUS_CODE_PROTOCOL_GUID = EFI_MM_STATUS_CODE_PROTOCOL_GUID;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_STATUS_CODE_PROTOCOL { EFI_MM_STATUS_CODE_PROTOCOL Value; public static implicit operator EFI_SMM_STATUS_CODE_PROTOCOL(EFI_MM_STATUS_CODE_PROTOCOL value) => new EFI_SMM_STATUS_CODE_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_STATUS_CODE_PROTOCOL(EFI_SMM_STATUS_CODE_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_SMM_STATUS_CODE_PROTOCOL { EFI_MM_STATUS_CODE_PROTOCOL Value; public static implicit operator EFI_SMM_STATUS_CODE_PROTOCOL(EFI_MM_STATUS_CODE_PROTOCOL value) => new EFI_SMM_STATUS_CODE_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_STATUS_CODE_PROTOCOL(EFI_SMM_STATUS_CODE_PROTOCOL value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_REPORT_STATUS_CODE { EFI_MM_REPORT_STATUS_CODE Value; public static implicit operator EFI_SMM_REPORT_STATUS_CODE(EFI_MM_REPORT_STATUS_CODE value) => new EFI_SMM_REPORT_STATUS_CODE() { Value = value }; public static implicit operator EFI_MM_REPORT_STATUS_CODE(EFI_SMM_REPORT_STATUS_CODE value) => value.Value;}
+public unsafe struct EFI_SMM_REPORT_STATUS_CODE { EFI_MM_REPORT_STATUS_CODE Value; public static implicit operator EFI_SMM_REPORT_STATUS_CODE(EFI_MM_REPORT_STATUS_CODE value) => new EFI_SMM_REPORT_STATUS_CODE() { Value = value }; public static implicit operator EFI_MM_REPORT_STATUS_CODE(EFI_SMM_REPORT_STATUS_CODE value) => value.Value; }
 
 // extern EFI_GUID  gEfiSmmStatusCodeProtocolGuid;
 

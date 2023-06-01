@@ -12,41 +12,42 @@ namespace Uefi;
 
 // #include <Protocol/Shell.h>
 
-public static EFI_GUID EFI_SHELL_PARAMETERS_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_SHELL_PARAMETERS_PROTOCOL_GUID = new GUID(
   0x752f3136, 0x4e16, 0x4fdc, new byte[] { 0xa2, 0x2a, 0xe5, 0xf4, 0x68, 0x12, 0xf4, 0xca });
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SHELL_PARAMETERS_PROTOCOL {
+public unsafe struct EFI_SHELL_PARAMETERS_PROTOCOL
+{
   ///
   /// Points to an Argc-element array of points to NULL-terminated strings containing
   /// the command-line parameters. The first entry in the array is always the full file
   /// path of the executable. Any quotation marks that were used to preserve
   /// whitespace have been removed.
   ///
- public char               **Argv;
+  public char** Argv;
 
   ///
   /// The number of elements in the Argv array.
   ///
- public ulong                Argc;
+  public ulong Argc;
 
   ///
   /// The file handle for the standard input for this executable. This may be different
   /// from the ConInHandle in EFI_SYSTEM_TABLE.
   ///
- public SHELL_FILE_HANDLE    StdIn;
+  public SHELL_FILE_HANDLE StdIn;
 
   ///
   /// The file handle for the standard output for this executable. This may be different
   /// from the ConOutHandle in EFI_SYSTEM_TABLE.
   ///
- public SHELL_FILE_HANDLE    StdOut;
+  public SHELL_FILE_HANDLE StdOut;
 
   ///
   /// The file handle for the standard error output for this executable. This may be
   /// different from the StdErrHandle in EFI_SYSTEM_TABLE.
   ///
- public SHELL_FILE_HANDLE    StdErr;
+  public SHELL_FILE_HANDLE StdErr;
 }
 
 // extern EFI_GUID  gEfiShellParametersProtocolGuid;

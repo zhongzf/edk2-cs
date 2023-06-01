@@ -32,11 +32,12 @@ public static ulong EFI_VARIABLE_APPEND_WRITE = 0x00000040;
 public static ulong EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS = 0x00000010;
 
 // #ifndef VFRCOMPILE
-  #include <Guid/WinCertificate.h>
+# include <Guid/WinCertificate.h>
 ///
 /// Enumeration of memory types introduced in UEFI.
 ///
-public enum EFI_MEMORY_TYPE {
+public enum EFI_MEMORY_TYPE
+{
   ///
   /// Not used.
   ///
@@ -115,7 +116,8 @@ public enum EFI_MEMORY_TYPE {
 ///
 /// Enumeration of reset types.
 ///
-public enum EFI_RESET_TYPE {
+public enum EFI_RESET_TYPE
+{
   ///
   /// Used to induce a system-wide reset. This sets all circuitry within the
   /// system to its initial state.  This type of reset is asynchronous to system
@@ -149,33 +151,34 @@ public enum EFI_RESET_TYPE {
 /// Data structure that precedes all of the standard EFI table types.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_TABLE_HEADER {
+public unsafe struct EFI_TABLE_HEADER
+{
   ///
   /// A 64-bit signature that identifies the type of table that follows.
   /// Unique signatures have been generated for the EFI System Table,
   /// the EFI Boot Services Table, and the EFI Runtime Services Table.
   ///
- public ulong    Signature;
+  public ulong Signature;
   ///
   /// The revision of the EFI Specification to which this table
   /// conforms. The upper 16 bits of this field contain the major
   /// revision value, and the lower 16 bits contain the minor revision
   /// value. The minor revision values are limited to the range of 00..99.
   ///
- public uint    Revision;
+  public uint Revision;
   ///
   /// The size, in bytes, of the entire table including the EFI_TABLE_HEADER.
   ///
- public uint    HeaderSize;
+  public uint HeaderSize;
   ///
   /// The 32-bit CRC for the entire table. This value is computed by
   /// setting this field to 0, and computing the 32-bit CRC for HeaderSize bytes.
   ///
- public uint    CRC32;
+  public uint CRC32;
   ///
   /// Reserved field that must be set to 0.
   ///
- public uint    Reserved;
+  public uint Reserved;
 }
 
 ///
@@ -194,14 +197,15 @@ public unsafe struct EFI_TABLE_HEADER {
 /// include the MonotonicCount value to guard against replay attacks.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_VARIABLE_AUTHENTICATION {
+public unsafe struct EFI_VARIABLE_AUTHENTICATION
+{
   ///
   /// Included in the signature of
   /// AuthInfo.Used to ensure freshness/no
   /// replay. Incremented during each
   /// "Write" access.
   ///
- public ulong    MonotonicCount;
+  public ulong MonotonicCount;
   ///
   /// Provides the authorization for the variable
   /// access. It is a signature across the
@@ -210,7 +214,7 @@ public unsafe struct EFI_VARIABLE_AUTHENTICATION {
   /// associated with a public key that has been
   /// provisioned via the key exchange.
   ///
- public WIN_CERTIFICATE_UEFI_GUID    AuthInfo;
+  public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
 }
 
 ///
@@ -222,16 +226,17 @@ public unsafe struct EFI_VARIABLE_AUTHENTICATION {
 /// returned by subsequent calls to GetVariable().
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_VARIABLE_AUTHENTICATION_2 {
+public unsafe struct EFI_VARIABLE_AUTHENTICATION_2
+{
   ///
   /// For the TimeStamp value, components Pad1, Nanosecond, TimeZone, Daylight and
   /// Pad2 shall be set to 0. This means that the time shall always be expressed in GMT.
   ///
- public EFI_TIME                     TimeStamp;
+  public EFI_TIME TimeStamp;
   ///
   /// Only a CertType of  EFI_CERT_TYPE_PKCS7_GUID is accepted.
   ///
- public WIN_CERTIFICATE_UEFI_GUID    AuthInfo;
+  public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
 }
 // #endif // VFRCOMPILE
 

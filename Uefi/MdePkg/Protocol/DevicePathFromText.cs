@@ -14,8 +14,8 @@ namespace Uefi;
 ///
 /// Device Path From Text protocol
 ///
-public static EFI_GUID EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL_GUID = new GUID( 
-    0x5c99a21, 0xc70f, 0x4ad2, new byte[] {0x8a, 0x5f, 0x35, 0xdf, 0x33, 0x43, 0xf5, 0x1e  });
+public static EFI_GUID EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL_GUID = new GUID(
+    0x5c99a21, 0xc70f, 0x4ad2, new byte[] { 0x8a, 0x5f, 0x35, 0xdf, 0x33, 0x43, 0xf5, 0x1e });
 
 
 
@@ -55,31 +55,32 @@ public static EFI_GUID EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL_GUID = new GUID(
 /// This protocol converts text to device paths and device nodes.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL {
-/**
-  Convert text to the binary representation of a device node.
+public unsafe struct EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL
+{
+  /**
+    Convert text to the binary representation of a device node.
 
-  @param  TextDeviceNode TextDeviceNode points to the text representation of a device
-                         node. Conversion starts with the first character and continues
-                         until the first non-device node character.
+    @param  TextDeviceNode TextDeviceNode points to the text representation of a device
+                           node. Conversion starts with the first character and continues
+                           until the first non-device node character.
 
-  @retval a_pointer      Pointer to the EFI device node.
-  @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
+    @retval a_pointer      Pointer to the EFI device node.
+    @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
 
-**/
-public readonly delegate* unmanaged<CONST, EFI_STATUS> ConvertTextToDeviceNode;
-/**
-  Convert text to the binary representation of a device node.
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_STATUS> ConvertTextToDeviceNode;
+  /**
+    Convert text to the binary representation of a device node.
 
-  @param  TextDeviceNode TextDevicePath points to the text representation of a device
-                         path. Conversion starts with the first character and continues
-                         until the first non-device path character.
+    @param  TextDeviceNode TextDevicePath points to the text representation of a device
+                           path. Conversion starts with the first character and continues
+                           until the first non-device path character.
 
-  @retval a_pointer      Pointer to the allocated device path.
-  @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
+    @retval a_pointer      Pointer to the allocated device path.
+    @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
 
-**/
-public readonly delegate* unmanaged<CONST, EFI_STATUS> ConvertTextToDevicePath;
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_STATUS> ConvertTextToDevicePath;
 }
 
 // extern EFI_GUID  gEfiDevicePathFromTextProtocolGuid;

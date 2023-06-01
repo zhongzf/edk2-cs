@@ -14,7 +14,7 @@ namespace Uefi;
 
 // #include <Protocol/PciRootBridgeIo.h>
 
-public static EFI_GUID EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
     0x8bc1714d, 0xffcb, 0x41c3, new byte[] { 0x89, 0xdc, 0x6c, 0x74, 0xd0, 0x6d, 0x98, 0xea });
 
 ///
@@ -23,7 +23,7 @@ public static EFI_GUID EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
 /// EFI_UNSUPPORTED.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL { EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL Value; public static implicit operator EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => new EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL() { Value = value }; public static implicit operator EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL { EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL Value; public static implicit operator EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => new EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL() { Value = value }; public static implicit operator EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL(EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL value) => value.Value; }
 
 // extern EFI_GUID  gEfiMmPciRootBridgeIoProtocolGuid;
 

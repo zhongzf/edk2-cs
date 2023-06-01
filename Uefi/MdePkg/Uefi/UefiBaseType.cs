@@ -24,44 +24,44 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 /// 128-bit buffer containing a unique identifier value.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_GUID { GUID Value; public static implicit operator EFI_GUID(GUID value) => new EFI_GUID() { Value = value }; public static implicit operator GUID(EFI_GUID value) => value.Value;}
+public unsafe struct EFI_GUID { GUID Value; public static implicit operator EFI_GUID(GUID value) => new EFI_GUID() { Value = value }; public static implicit operator GUID(EFI_GUID value) => value.Value; }
 ///
 /// Function return status for EFI API.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_STATUS { RETURN_STATUS Value; public static implicit operator EFI_STATUS(RETURN_STATUS value) => new EFI_STATUS() { Value = value }; public static implicit operator RETURN_STATUS(EFI_STATUS value) => value.Value;}
+public unsafe struct EFI_STATUS { RETURN_STATUS Value; public static implicit operator EFI_STATUS(RETURN_STATUS value) => new EFI_STATUS() { Value = value }; public static implicit operator RETURN_STATUS(EFI_STATUS value) => value.Value; }
 ///
 /// A collection of related interfaces.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HANDLE { void* Value; public static implicit operator EFI_HANDLE(void* value) => new EFI_HANDLE() { Value = value }; public static implicit operator void*(EFI_HANDLE value) => value.Value;}
+public unsafe struct EFI_HANDLE { void* Value; public static implicit operator EFI_HANDLE(void* value) => new EFI_HANDLE() { Value = value }; public static implicit operator void*(EFI_HANDLE value) => value.Value; }
 ///
 /// Handle to an event structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_EVENT { void* Value; public static implicit operator EFI_EVENT(void* value) => new EFI_EVENT() { Value = value }; public static implicit operator void*(EFI_EVENT value) => value.Value;}
+public unsafe struct EFI_EVENT { void* Value; public static implicit operator EFI_EVENT(void* value) => new EFI_EVENT() { Value = value }; public static implicit operator void*(EFI_EVENT value) => value.Value; }
 ///
 /// Task priority level.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_TPL { ulong Value; public static implicit operator EFI_TPL(ulong value) => new EFI_TPL() { Value = value }; public static implicit operator ulong(EFI_TPL value) => value.Value;}
+public unsafe struct EFI_TPL { ulong Value; public static implicit operator EFI_TPL(ulong value) => new EFI_TPL() { Value = value }; public static implicit operator ulong(EFI_TPL value) => value.Value; }
 ///
 /// Logical block address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_LBA { ulong Value; public static implicit operator EFI_LBA(ulong value) => new EFI_LBA() { Value = value }; public static implicit operator ulong(EFI_LBA value) => value.Value;}
+public unsafe struct EFI_LBA { ulong Value; public static implicit operator EFI_LBA(ulong value) => new EFI_LBA() { Value = value }; public static implicit operator ulong(EFI_LBA value) => value.Value; }
 
 ///
 /// 64-bit physical memory address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PHYSICAL_ADDRESS { ulong Value; public static implicit operator EFI_PHYSICAL_ADDRESS(ulong value) => new EFI_PHYSICAL_ADDRESS() { Value = value }; public static implicit operator ulong(EFI_PHYSICAL_ADDRESS value) => value.Value;}
+public unsafe struct EFI_PHYSICAL_ADDRESS { ulong Value; public static implicit operator EFI_PHYSICAL_ADDRESS(ulong value) => new EFI_PHYSICAL_ADDRESS() { Value = value }; public static implicit operator ulong(EFI_PHYSICAL_ADDRESS value) => value.Value; }
 
 ///
 /// 64-bit virtual memory address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_VIRTUAL_ADDRESS { ulong Value; public static implicit operator EFI_VIRTUAL_ADDRESS(ulong value) => new EFI_VIRTUAL_ADDRESS() { Value = value }; public static implicit operator ulong(EFI_VIRTUAL_ADDRESS value) => value.Value;}
+public unsafe struct EFI_VIRTUAL_ADDRESS { ulong Value; public static implicit operator EFI_VIRTUAL_ADDRESS(ulong value) => new EFI_VIRTUAL_ADDRESS() { Value = value }; public static implicit operator ulong(EFI_VIRTUAL_ADDRESS value) => value.Value; }
 
 ///
 /// EFI Time Abstraction:
@@ -75,48 +75,52 @@ public unsafe struct EFI_VIRTUAL_ADDRESS { ulong Value; public static implicit o
 ///  TimeZone:   -1440 to 1440 or 2047
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_TIME {
- public ushort    Year;
- public byte     Month;
- public byte     Day;
- public byte     Hour;
- public byte     Minute;
- public byte     Second;
- public byte     Pad1;
- public uint    Nanosecond;
- public short     TimeZone;
- public byte     Daylight;
- public byte     Pad2;
+public unsafe struct EFI_TIME
+{
+  public ushort Year;
+  public byte Month;
+  public byte Day;
+  public byte Hour;
+  public byte Minute;
+  public byte Second;
+  public byte Pad1;
+  public uint Nanosecond;
+  public short TimeZone;
+  public byte Daylight;
+  public byte Pad2;
 }
 
 ///
 /// 4-byte buffer. An IPv4 internet protocol address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_IPv4_ADDRESS { IPv4_ADDRESS Value; public static implicit operator EFI_IPv4_ADDRESS(IPv4_ADDRESS value) => new EFI_IPv4_ADDRESS() { Value = value }; public static implicit operator IPv4_ADDRESS(EFI_IPv4_ADDRESS value) => value.Value;}
+public unsafe struct EFI_IPv4_ADDRESS { IPv4_ADDRESS Value; public static implicit operator EFI_IPv4_ADDRESS(IPv4_ADDRESS value) => new EFI_IPv4_ADDRESS() { Value = value }; public static implicit operator IPv4_ADDRESS(EFI_IPv4_ADDRESS value) => value.Value; }
 
 ///
 /// 16-byte buffer. An IPv6 internet protocol address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_IPv6_ADDRESS { IPv6_ADDRESS Value; public static implicit operator EFI_IPv6_ADDRESS(IPv6_ADDRESS value) => new EFI_IPv6_ADDRESS() { Value = value }; public static implicit operator IPv6_ADDRESS(EFI_IPv6_ADDRESS value) => value.Value;}
+public unsafe struct EFI_IPv6_ADDRESS { IPv6_ADDRESS Value; public static implicit operator EFI_IPv6_ADDRESS(IPv6_ADDRESS value) => new EFI_IPv6_ADDRESS() { Value = value }; public static implicit operator IPv6_ADDRESS(EFI_IPv6_ADDRESS value) => value.Value; }
 
 ///
 /// 32-byte buffer containing a network Media Access Control address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MAC_ADDRESS {
- public fixed byte    Addr[32];
+public unsafe struct EFI_MAC_ADDRESS
+{
+  public fixed byte Addr[32];
 }
 
 ///
 /// 16-byte buffer aligned on a 4-byte boundary.
 /// An IPv4 or IPv6 internet protocol address.
 ///
-[StructLayout(LayoutKind.Explicit)] public unsafe struct EFI_IP_ADDRESS {
- [FieldOffset(0)] public fixed uint              Addr[4];
- [FieldOffset(0)] public EFI_IPv4_ADDRESS    v4;
- [FieldOffset(0)] public EFI_IPv6_ADDRESS    v6;
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct EFI_IP_ADDRESS
+{
+  [FieldOffset(0)] public fixed uint Addr[4];
+  [FieldOffset(0)] public EFI_IPv4_ADDRESS v4;
+  [FieldOffset(0)] public EFI_IPv6_ADDRESS v6;
 }
 
 ///
@@ -167,9 +171,9 @@ public static ulong EFI_WARN_FILE_SYSTEM = RETURN_WARN_FILE_SYSTEM;
 ///
 /// Define macro to encode the status code.
 ///
-public static ulong EFIERR = (_a)  ENCODE_ERROR(_a);
+public static ulong EFIERR = (_a)ENCODE_ERROR(_a);
 
-public static ulong EFI_ERROR = (A)  RETURN_ERROR(A);
+public static ulong EFI_ERROR = (A)RETURN_ERROR(A);
 
 ///
 /// ICMP error definitions
@@ -208,7 +212,7 @@ public static ulong EFI_PAGE_SHIFT = 12;
            by Size.
 
 **/
-public static ulong EFI_SIZE_TO_PAGES = (Size)  (((Size) >> EFI_PAGE_SHIFT) + (((Size) & EFI_PAGE_MASK) ? 1 : 0));
+public static ulong EFI_SIZE_TO_PAGES = (Size)(((Size) >> EFI_PAGE_SHIFT) + (((Size) & EFI_PAGE_MASK) ? 1 : 0));
 
 /**
   Macro that converts a number of EFI_PAGEs to a size in bytes.
@@ -221,7 +225,7 @@ public static ulong EFI_SIZE_TO_PAGES = (Size)  (((Size) >> EFI_PAGE_SHIFT) + ((
            by Pages.
 
 **/
-public static ulong EFI_PAGES_TO_SIZE = (Pages)  ((Pages) << EFI_PAGE_SHIFT);
+public static ulong EFI_PAGES_TO_SIZE = (Pages)((Pages) << EFI_PAGE_SHIFT);
 
 ///
 /// PE32+ Machine type for IA32 UEFI images.
@@ -267,47 +271,47 @@ public static ulong EFI_IMAGE_MACHINE_LOONGARCH32 = 0x6232;
 public static ulong EFI_IMAGE_MACHINE_LOONGARCH64 = 0x6264;
 
 #if !defined (EFI_IMAGE_MACHINE_TYPE_VALUE) && !defined (EFI_IMAGE_MACHINE_CROSS_TYPE_VALUE)
-  #if   defined (MDE_CPU_IA32)
+#if defined (MDE_CPU_IA32)
 
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine) \;
   ((Machine) == EFI_IMAGE_MACHINE_IA32)
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  ((Machine) == EFI_IMAGE_MACHINE_X64);
 
-  #elif defined (MDE_CPU_X64)
+#elif defined (MDE_CPU_X64)
 
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine) \;
   ((Machine) == EFI_IMAGE_MACHINE_X64)
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  ((Machine) == EFI_IMAGE_MACHINE_IA32);
 
-  #elif defined (MDE_CPU_ARM)
+#elif defined (MDE_CPU_ARM)
 
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine)  ((Machine) == EFI_IMAGE_MACHINE_ARMTHUMB_MIXED);
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  (FALSE);
 
-  #elif defined (MDE_CPU_AARCH64)
+#elif defined (MDE_CPU_AARCH64)
 
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine) \;
   ((Machine) == EFI_IMAGE_MACHINE_AARCH64)
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  (FALSE);
 
-  #elif defined (MDE_CPU_RISCV64)
+#elif defined (MDE_CPU_RISCV64)
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine) \;
   ((Machine) == EFI_IMAGE_MACHINE_RISCV64)
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  (FALSE);
 
-  #elif defined (MDE_CPU_LOONGARCH64)
+#elif defined (MDE_CPU_LOONGARCH64)
 
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine) \;
     ((Machine) == EFI_IMAGE_MACHINE_LOONGARCH64)
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  (FALSE);
 
-  #elif defined (MDE_CPU_EBC)
+#elif defined (MDE_CPU_EBC)
 
 ///
 /// This is just to make sure you can cross compile with the EBC compiler.
@@ -317,20 +321,20 @@ public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine)  ((Machine) == 
 
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  (FALSE);
 
-  #else
-    #error Unknown Processor Type
-  #endif
 #else
-  #if defined (EFI_IMAGE_MACHINE_TYPE_VALUE)
+#error Unknown Processor Type
+#endif
+#else
+#if defined (EFI_IMAGE_MACHINE_TYPE_VALUE)
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine)  ((Machine) == EFI_IMAGE_MACHINE_TYPE_VALUE);
-  #else
+#else
 public static ulong EFI_IMAGE_MACHINE_TYPE_SUPPORTED = (Machine)  (FALSE);
-  #endif
-  #if defined (EFI_IMAGE_MACHINE_CROSS_TYPE_VALUE)
+#endif
+#if defined (EFI_IMAGE_MACHINE_CROSS_TYPE_VALUE)
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  ((Machine) == EFI_IMAGE_MACHINE_CROSS_TYPE_VALUE);
-  #else
+#else
 public static ulong EFI_IMAGE_MACHINE_CROSS_TYPE_SUPPORTED = (Machine)  (FALSE);
-  #endif
+#endif
 // #endif
 
 // #endif

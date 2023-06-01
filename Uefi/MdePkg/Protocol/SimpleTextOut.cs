@@ -15,8 +15,8 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __SIMPLE_TEXT_OUT_H__
 // #define __SIMPLE_TEXT_OUT_H__
 
-public static EFI_GUID EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID = new GUID( 
-    0x387477c2, 0x69c7, 0x11d2, new byte[] {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public static EFI_GUID EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID = new GUID(
+    0x387477c2, 0x69c7, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
 ///
 /// Protocol GUID defined in EFI1.1.
@@ -29,7 +29,7 @@ public static ulong SIMPLE_TEXT_OUTPUT_PROTOCOL = EFI_SIMPLE_TEXT_OUTPUT_PROTOCO
 /// Backward-compatible with EFI1.1.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SIMPLE_TEXT_OUTPUT_INTERFACE { EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL Value; public static implicit operator SIMPLE_TEXT_OUTPUT_INTERFACE(EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL value) => new SIMPLE_TEXT_OUTPUT_INTERFACE() { Value = value }; public static implicit operator EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL(SIMPLE_TEXT_OUTPUT_INTERFACE value) => value.Value;}
+public unsafe struct SIMPLE_TEXT_OUTPUT_INTERFACE { EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL Value; public static implicit operator SIMPLE_TEXT_OUTPUT_INTERFACE(EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL value) => new SIMPLE_TEXT_OUTPUT_INTERFACE() { Value = value }; public static implicit operator EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL(SIMPLE_TEXT_OUTPUT_INTERFACE value) => value.Value; }
 
 //
 // Defines for required EFI Unicode Box Draw characters
@@ -129,7 +129,7 @@ public static ulong EFI_WHITE = (EFI_BLUE | EFI_GREEN | EFI_RED | EFI_BRIGHT);
 //
 // Do not use EFI_BACKGROUND_xxx values with this macro.
 //
-public static ulong EFI_TEXT_ATTR = (Foreground, Background)  ((Foreground) | ((Background) << 4));
+public static ulong EFI_TEXT_ATTR = (Foreground, Background)((Foreground) | ((Background) << 4));
 
 public static ulong EFI_BACKGROUND_BLACK = 0x00;
 public static ulong EFI_BACKGROUND_BLUE = 0x10;
@@ -347,11 +347,12 @@ public static ulong EFI_WIDE_ATTRIBUTE = 0x80;
   Mode Structure pointed to by Simple Text Out protocol.
 **/
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SIMPLE_TEXT_OUTPUT_MODE {
+public unsafe struct EFI_SIMPLE_TEXT_OUTPUT_MODE
+{
   ///
   /// The number of modes supported by QueryMode () and SetMode ().
   ///
- public int    MaxMode;
+  public int MaxMode;
 
   //
   // current settings
@@ -360,23 +361,23 @@ public unsafe struct EFI_SIMPLE_TEXT_OUTPUT_MODE {
   ///
   /// The text mode of the output device(s).
   ///
- public int      Mode;
+  public int Mode;
   ///
   /// The current character output attribute.
   ///
- public int      Attribute;
+  public int Attribute;
   ///
   /// The cursor's column.
   ///
- public int      CursorColumn;
+  public int CursorColumn;
   ///
   /// The cursor's row.
   ///
- public int      CursorRow;
+  public int CursorRow;
   ///
   /// The cursor is currently visible or not.
   ///
- public bool    CursorVisible;
+  public bool CursorVisible;
 }
 
 ///
@@ -386,151 +387,152 @@ public unsafe struct EFI_SIMPLE_TEXT_OUTPUT_MODE {
 /// devices is at least 80 x 25 characters.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL {
-/**
-  Reset the text output device hardware and optionally run diagnostics
+public unsafe struct EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL
+{
+  /**
+    Reset the text output device hardware and optionally run diagnostics
 
-  @param  This                 The protocol instance pointer.
-  @param  ExtendedVerification Driver may perform more exhaustive verification
-                               operation of the device during reset.
+    @param  This                 The protocol instance pointer.
+    @param  ExtendedVerification Driver may perform more exhaustive verification
+                                 operation of the device during reset.
 
-  @retval EFI_SUCCESS          The text output device was reset.
-  @retval EFI_DEVICE_ERROR     The text output device is not functioning correctly and
-                               could not be reset.
+    @retval EFI_SUCCESS          The text output device was reset.
+    @retval EFI_DEVICE_ERROR     The text output device is not functioning correctly and
+                                 could not be reset.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,bool, EFI_STATUS> Reset;
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, bool, EFI_STATUS> Reset;
 
-/**
-  Write a string to the output device.
+  /**
+    Write a string to the output device.
 
-  @param  This   The protocol instance pointer.
-  @param  String The NULL-terminated string to be displayed on the output
-                 device(s). All output devices must also support the Unicode
-                 drawing character codes defined in this file.
+    @param  This   The protocol instance pointer.
+    @param  String The NULL-terminated string to be displayed on the output
+                   device(s). All output devices must also support the Unicode
+                   drawing character codes defined in this file.
 
-  @retval EFI_SUCCESS             The string was output to the device.
-  @retval EFI_DEVICE_ERROR        The device reported an error while attempting to output
-                                  the text.
-  @retval EFI_UNSUPPORTED         The output device's mode is not currently in a
-                                  defined text mode.
-  @retval EFI_WARN_UNKNOWN_GLYPH  This warning code indicates that some of the
-                                  characters in the string could not be
-                                  rendered and were skipped.
+    @retval EFI_SUCCESS             The string was output to the device.
+    @retval EFI_DEVICE_ERROR        The device reported an error while attempting to output
+                                    the text.
+    @retval EFI_UNSUPPORTED         The output device's mode is not currently in a
+                                    defined text mode.
+    @retval EFI_WARN_UNKNOWN_GLYPH  This warning code indicates that some of the
+                                    characters in the string could not be
+                                    rendered and were skipped.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,char*, EFI_STATUS> OutputString;
-/**
-  Verifies that all characters in a string can be output to the
-  target device.
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, char*, EFI_STATUS> OutputString;
+  /**
+    Verifies that all characters in a string can be output to the
+    target device.
 
-  @param  This   The protocol instance pointer.
-  @param  String The NULL-terminated string to be examined for the output
-                 device(s).
+    @param  This   The protocol instance pointer.
+    @param  String The NULL-terminated string to be examined for the output
+                   device(s).
 
-  @retval EFI_SUCCESS      The device(s) are capable of rendering the output string.
-  @retval EFI_UNSUPPORTED  Some of the characters in the string cannot be
-                           rendered by one or more of the output devices mapped
-                           by the EFI handle.
+    @retval EFI_SUCCESS      The device(s) are capable of rendering the output string.
+    @retval EFI_UNSUPPORTED  Some of the characters in the string cannot be
+                             rendered by one or more of the output devices mapped
+                             by the EFI handle.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,char*, EFI_STATUS> TestString;
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, char*, EFI_STATUS> TestString;
 
-/**
-  Returns information for an available text mode that the output device(s)
-  supports.
+  /**
+    Returns information for an available text mode that the output device(s)
+    supports.
 
-  @param  This       The protocol instance pointer.
-  @param  ModeNumber The mode number to return information on.
-  @param  Columns    Returns the geometry of the text output device for the
-                     requested ModeNumber.
-  @param  Rows       Returns the geometry of the text output device for the
-                     requested ModeNumber.
+    @param  This       The protocol instance pointer.
+    @param  ModeNumber The mode number to return information on.
+    @param  Columns    Returns the geometry of the text output device for the
+                       requested ModeNumber.
+    @param  Rows       Returns the geometry of the text output device for the
+                       requested ModeNumber.
 
-  @retval EFI_SUCCESS      The requested mode information was returned.
-  @retval EFI_DEVICE_ERROR The device had an error and could not complete the request.
-  @retval EFI_UNSUPPORTED  The mode number was not valid.
+    @retval EFI_SUCCESS      The requested mode information was returned.
+    @retval EFI_DEVICE_ERROR The device had an error and could not complete the request.
+    @retval EFI_UNSUPPORTED  The mode number was not valid.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,ulong,ulong*,ulong*, EFI_STATUS> QueryMode;
-/**
-  Sets the output device(s) to a specified mode.
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, ulong, ulong*, ulong*, EFI_STATUS> QueryMode;
+  /**
+    Sets the output device(s) to a specified mode.
 
-  @param  This       The protocol instance pointer.
-  @param  ModeNumber The mode number to set.
+    @param  This       The protocol instance pointer.
+    @param  ModeNumber The mode number to set.
 
-  @retval EFI_SUCCESS      The requested text mode was set.
-  @retval EFI_DEVICE_ERROR The device had an error and could not complete the request.
-  @retval EFI_UNSUPPORTED  The mode number was not valid.
+    @retval EFI_SUCCESS      The requested text mode was set.
+    @retval EFI_DEVICE_ERROR The device had an error and could not complete the request.
+    @retval EFI_UNSUPPORTED  The mode number was not valid.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,ulong, EFI_STATUS> SetMode;
-/**
-  Sets the background and foreground colors for the OutputString () and
-  ClearScreen () functions.
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, ulong, EFI_STATUS> SetMode;
+  /**
+    Sets the background and foreground colors for the OutputString () and
+    ClearScreen () functions.
 
-  @param  This      The protocol instance pointer.
-  @param  Attribute The attribute to set. Bits 0..3 are the foreground color, and
-                    bits 4..6 are the background color. All other bits are undefined
-                    and must be zero. The valid Attributes are defined in this file.
+    @param  This      The protocol instance pointer.
+    @param  Attribute The attribute to set. Bits 0..3 are the foreground color, and
+                      bits 4..6 are the background color. All other bits are undefined
+                      and must be zero. The valid Attributes are defined in this file.
 
-  @retval EFI_SUCCESS       The attribute was set.
-  @retval EFI_DEVICE_ERROR  The device had an error and could not complete the request.
-  @retval EFI_UNSUPPORTED   The attribute requested is not defined.
+    @retval EFI_SUCCESS       The attribute was set.
+    @retval EFI_DEVICE_ERROR  The device had an error and could not complete the request.
+    @retval EFI_UNSUPPORTED   The attribute requested is not defined.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,ulong, EFI_STATUS> SetAttribute;
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, ulong, EFI_STATUS> SetAttribute;
 
-/**
-  Clears the output device(s) display to the currently selected background
-  color.
+  /**
+    Clears the output device(s) display to the currently selected background
+    color.
 
-  @param  This              The protocol instance pointer.
+    @param  This              The protocol instance pointer.
 
-  @retval  EFI_SUCCESS      The operation completed successfully.
-  @retval  EFI_DEVICE_ERROR The device had an error and could not complete the request.
-  @retval  EFI_UNSUPPORTED  The output device is not in a valid text mode.
+    @retval  EFI_SUCCESS      The operation completed successfully.
+    @retval  EFI_DEVICE_ERROR The device had an error and could not complete the request.
+    @retval  EFI_UNSUPPORTED  The output device is not in a valid text mode.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, EFI_STATUS> ClearScreen;
-/**
-  Sets the current coordinates of the cursor position
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, EFI_STATUS> ClearScreen;
+  /**
+    Sets the current coordinates of the cursor position
 
-  @param  This        The protocol instance pointer.
-  @param  Column      The position to set the cursor to. Must be greater than or
-                      equal to zero and less than the number of columns and rows
-                      by QueryMode ().
-  @param  Row         The position to set the cursor to. Must be greater than or
-                      equal to zero and less than the number of columns and rows
-                      by QueryMode ().
+    @param  This        The protocol instance pointer.
+    @param  Column      The position to set the cursor to. Must be greater than or
+                        equal to zero and less than the number of columns and rows
+                        by QueryMode ().
+    @param  Row         The position to set the cursor to. Must be greater than or
+                        equal to zero and less than the number of columns and rows
+                        by QueryMode ().
 
-  @retval EFI_SUCCESS      The operation completed successfully.
-  @retval EFI_DEVICE_ERROR The device had an error and could not complete the request.
-  @retval EFI_UNSUPPORTED  The output device is not in a valid text mode, or the
-                           cursor position is invalid for the current mode.
+    @retval EFI_SUCCESS      The operation completed successfully.
+    @retval EFI_DEVICE_ERROR The device had an error and could not complete the request.
+    @retval EFI_UNSUPPORTED  The output device is not in a valid text mode, or the
+                             cursor position is invalid for the current mode.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,ulong,ulong, EFI_STATUS> SetCursorPosition;
-/**
-  Makes the cursor visible or invisible
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, ulong, ulong, EFI_STATUS> SetCursorPosition;
+  /**
+    Makes the cursor visible or invisible
 
-  @param  This    The protocol instance pointer.
-  @param  Visible If TRUE, the cursor is set to be visible. If FALSE, the cursor is
-                  set to be invisible.
+    @param  This    The protocol instance pointer.
+    @param  Visible If TRUE, the cursor is set to be visible. If FALSE, the cursor is
+                    set to be invisible.
 
-  @retval EFI_SUCCESS      The operation completed successfully.
-  @retval EFI_DEVICE_ERROR The device had an error and could not complete the
-                           request, or the device does not support changing
-                           the cursor mode.
-  @retval EFI_UNSUPPORTED  The output device is not in a valid text mode.
+    @retval EFI_SUCCESS      The operation completed successfully.
+    @retval EFI_DEVICE_ERROR The device had an error and could not complete the
+                             request, or the device does not support changing
+                             the cursor mode.
+    @retval EFI_UNSUPPORTED  The output device is not in a valid text mode.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*,bool, EFI_STATUS> EnableCursor;
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL*, bool, EFI_STATUS> EnableCursor;
 
   ///
   /// Pointer to SIMPLE_TEXT_OUTPUT_MODE data.
   ///
- public EFI_SIMPLE_TEXT_OUTPUT_MODE     *Mode;
+  public EFI_SIMPLE_TEXT_OUTPUT_MODE* Mode;
 }
 
 // extern EFI_GUID  gEfiSimpleTextOutProtocolGuid;

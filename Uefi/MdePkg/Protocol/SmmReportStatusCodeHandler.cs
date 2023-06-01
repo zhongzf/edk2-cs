@@ -18,16 +18,16 @@ namespace Uefi;
 public static ulong EFI_SMM_RSC_HANDLER_PROTOCOL_GUID = EFI_MM_RSC_HANDLER_PROTOCOL_GUID;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_RSC_HANDLER_CALLBACK { EFI_MM_RSC_HANDLER_CALLBACK Value; public static implicit operator EFI_SMM_RSC_HANDLER_CALLBACK(EFI_MM_RSC_HANDLER_CALLBACK value) => new EFI_SMM_RSC_HANDLER_CALLBACK() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_CALLBACK(EFI_SMM_RSC_HANDLER_CALLBACK value) => value.Value;}
+public unsafe struct EFI_SMM_RSC_HANDLER_CALLBACK { EFI_MM_RSC_HANDLER_CALLBACK Value; public static implicit operator EFI_SMM_RSC_HANDLER_CALLBACK(EFI_MM_RSC_HANDLER_CALLBACK value) => new EFI_SMM_RSC_HANDLER_CALLBACK() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_CALLBACK(EFI_SMM_RSC_HANDLER_CALLBACK value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_RSC_HANDLER_REGISTER { EFI_MM_RSC_HANDLER_REGISTER Value; public static implicit operator EFI_SMM_RSC_HANDLER_REGISTER(EFI_MM_RSC_HANDLER_REGISTER value) => new EFI_SMM_RSC_HANDLER_REGISTER() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_REGISTER(EFI_SMM_RSC_HANDLER_REGISTER value) => value.Value;}
+public unsafe struct EFI_SMM_RSC_HANDLER_REGISTER { EFI_MM_RSC_HANDLER_REGISTER Value; public static implicit operator EFI_SMM_RSC_HANDLER_REGISTER(EFI_MM_RSC_HANDLER_REGISTER value) => new EFI_SMM_RSC_HANDLER_REGISTER() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_REGISTER(EFI_SMM_RSC_HANDLER_REGISTER value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_RSC_HANDLER_UNREGISTER { EFI_MM_RSC_HANDLER_UNREGISTER Value; public static implicit operator EFI_SMM_RSC_HANDLER_UNREGISTER(EFI_MM_RSC_HANDLER_UNREGISTER value) => new EFI_SMM_RSC_HANDLER_UNREGISTER() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_UNREGISTER(EFI_SMM_RSC_HANDLER_UNREGISTER value) => value.Value;}
+public unsafe struct EFI_SMM_RSC_HANDLER_UNREGISTER { EFI_MM_RSC_HANDLER_UNREGISTER Value; public static implicit operator EFI_SMM_RSC_HANDLER_UNREGISTER(EFI_MM_RSC_HANDLER_UNREGISTER value) => new EFI_SMM_RSC_HANDLER_UNREGISTER() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_UNREGISTER(EFI_SMM_RSC_HANDLER_UNREGISTER value) => value.Value; }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_RSC_HANDLER_PROTOCOL { EFI_MM_RSC_HANDLER_PROTOCOL Value; public static implicit operator EFI_SMM_RSC_HANDLER_PROTOCOL(EFI_MM_RSC_HANDLER_PROTOCOL value) => new EFI_SMM_RSC_HANDLER_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_PROTOCOL(EFI_SMM_RSC_HANDLER_PROTOCOL value) => value.Value;}
+public unsafe struct EFI_SMM_RSC_HANDLER_PROTOCOL { EFI_MM_RSC_HANDLER_PROTOCOL Value; public static implicit operator EFI_SMM_RSC_HANDLER_PROTOCOL(EFI_MM_RSC_HANDLER_PROTOCOL value) => new EFI_SMM_RSC_HANDLER_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_PROTOCOL(EFI_SMM_RSC_HANDLER_PROTOCOL value) => value.Value; }
 
 // extern EFI_GUID  gEfiSmmRscHandlerProtocolGuid;
 

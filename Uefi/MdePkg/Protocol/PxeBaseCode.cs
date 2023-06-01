@@ -20,8 +20,8 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// PXE Base Code protocol.
 ///
-public static EFI_GUID EFI_PXE_BASE_CODE_PROTOCOL_GUID = new GUID( 
-    0x03c4e603, 0xac28, 0x11d3, new byte[] {0x9a, 0x2d, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public static EFI_GUID EFI_PXE_BASE_CODE_PROTOCOL_GUID = new GUID(
+    0x03c4e603, 0xac28, 0x11d3, new byte[] { 0x9a, 0x2d, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
 // typedef struct _EFI_PXE_BASE_CODE_PROTOCOL EFI_PXE_BASE_CODE_PROTOCOL;
 
@@ -29,7 +29,7 @@ public static EFI_GUID EFI_PXE_BASE_CODE_PROTOCOL_GUID = new GUID(
 /// Protocol defined in EFI1.1.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE { EFI_PXE_BASE_CODE_PROTOCOL Value; public static implicit operator EFI_PXE_BASE_CODE(EFI_PXE_BASE_CODE_PROTOCOL value) => new EFI_PXE_BASE_CODE() { Value = value }; public static implicit operator EFI_PXE_BASE_CODE_PROTOCOL(EFI_PXE_BASE_CODE value) => value.Value;}
+public unsafe struct EFI_PXE_BASE_CODE { EFI_PXE_BASE_CODE_PROTOCOL Value; public static implicit operator EFI_PXE_BASE_CODE(EFI_PXE_BASE_CODE_PROTOCOL value) => new EFI_PXE_BASE_CODE() { Value = value }; public static implicit operator EFI_PXE_BASE_CODE_PROTOCOL(EFI_PXE_BASE_CODE value) => value.Value; }
 
 ///
 /// Default IP TTL and ToS.
@@ -41,29 +41,31 @@ public static ulong DEFAULT_ToS = 0;
 /// ICMP error format.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Echo {
- public byte     Type;
- public byte     Code;
- public ushort    Checksum;
+public unsafe struct Echo
+{
+  public byte Type;
+  public byte Code;
+  public ushort Checksum;
   union {
-   public uint    reserved;
-   public uint    Mtu;
-   public uint    Pointer;
-    struct {
-     public ushort    Identifier;
-     public ushort    Sequence;
+   public uint reserved;
+  public uint Mtu;
+  public uint Pointer;
+  struct {
+     public ushort Identifier;
+  public ushort Sequence;
 }
   } u;
-  byte    Data[494];
+byte Data[494];
 } EFI_PXE_BASE_CODE_ICMP_ERROR;
 
 ///
 /// TFTP error format.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_TFTP_ERROR {
- public byte    ErrorCode;
- public fixed byte    ErrorString[127];
+public unsafe struct EFI_PXE_BASE_CODE_TFTP_ERROR
+{
+  public byte ErrorCode;
+  public fixed byte ErrorString[127];
 }
 
 ///
@@ -75,11 +77,12 @@ public static ulong EFI_PXE_BASE_CODE_MAX_IPCNT = 8;
 /// IP Receive Filter structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_IP_FILTER {
- public byte             Filters;
- public byte             IpCnt;
- public ushort            reserved;
- public fixed EFI_IP_ADDRESS    IpList[EFI_PXE_BASE_CODE_MAX_IPCNT];
+public unsafe struct EFI_PXE_BASE_CODE_IP_FILTER
+{
+  public byte Filters;
+  public byte IpCnt;
+  public ushort reserved;
+  public fixed EFI_IP_ADDRESS IpList[EFI_PXE_BASE_CODE_MAX_IPCNT];
 }
 
 public static ulong EFI_PXE_BASE_CODE_IP_FILTER_STATION_IP = 0x0001;
@@ -91,26 +94,28 @@ public static ulong EFI_PXE_BASE_CODE_IP_FILTER_PROMISCUOUS_MULTICAST = 0x0008;
 /// ARP cache entries.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_ARP_ENTRY {
- public EFI_IP_ADDRESS     IpAddr;
- public EFI_MAC_ADDRESS    MacAddr;
+public unsafe struct EFI_PXE_BASE_CODE_ARP_ENTRY
+{
+  public EFI_IP_ADDRESS IpAddr;
+  public EFI_MAC_ADDRESS MacAddr;
 }
 
 ///
 /// ARP route table entries.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_ROUTE_ENTRY {
- public EFI_IP_ADDRESS    IpAddr;
- public EFI_IP_ADDRESS    SubnetMask;
- public EFI_IP_ADDRESS    GwAddr;
+public unsafe struct EFI_PXE_BASE_CODE_ROUTE_ENTRY
+{
+  public EFI_IP_ADDRESS IpAddr;
+  public EFI_IP_ADDRESS SubnetMask;
+  public EFI_IP_ADDRESS GwAddr;
 }
 
 //
 // UDP definitions
 //
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_UDP_PORT { ushort Value; public static implicit operator EFI_PXE_BASE_CODE_UDP_PORT(ushort value) => new EFI_PXE_BASE_CODE_UDP_PORT() { Value = value }; public static implicit operator ushort(EFI_PXE_BASE_CODE_UDP_PORT value) => value.Value;}
+public unsafe struct EFI_PXE_BASE_CODE_UDP_PORT { ushort Value; public static implicit operator EFI_PXE_BASE_CODE_UDP_PORT(ushort value) => new EFI_PXE_BASE_CODE_UDP_PORT() { Value = value }; public static implicit operator ushort(EFI_PXE_BASE_CODE_UDP_PORT value) => value.Value; }
 
 public static ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_SRC_IP = 0x0001;
 public static ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_SRC_PORT = 0x0002;

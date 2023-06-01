@@ -19,11 +19,11 @@ namespace Uefi;
 // #ifndef __EFI_FTP4_PROTOCOL_H__
 // #define __EFI_FTP4_PROTOCOL_H__
 
-public static EFI_GUID EFI_FTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID( 
-    0xfaaecb1, 0x226e, 0x4782, new byte[] {0xaa, 0xce, 0x7d, 0xb9, 0xbc, 0xbf, 0x4d, 0xaf });
+public static EFI_GUID EFI_FTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+    0xfaaecb1, 0x226e, 0x4782, new byte[] { 0xaa, 0xce, 0x7d, 0xb9, 0xbc, 0xbf, 0x4d, 0xaf });
 
-public static EFI_GUID EFI_FTP4_PROTOCOL_GUID = new GUID( 
-    0xeb338826, 0x681b, 0x4295, new byte[] {0xb3, 0x56, 0x2b, 0x36, 0x4c, 0x75, 0x7b, 0x9 });
+public static EFI_GUID EFI_FTP4_PROTOCOL_GUID = new GUID(
+    0xeb338826, 0x681b, 0x4295, new byte[] { 0xb3, 0x56, 0x2b, 0x36, 0x4c, 0x75, 0x7b, 0x9 });
 
 // typedef struct _EFI_FTP4_PROTOCOL EFI_FTP4_PROTOCOL;
 
@@ -31,7 +31,8 @@ public static EFI_GUID EFI_FTP4_PROTOCOL_GUID = new GUID(
 /// EFI_FTP4_CONNECTION_TOKEN
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_FTP4_CONNECTION_TOKEN {
+public unsafe struct EFI_FTP4_CONNECTION_TOKEN
+{
   ///
   /// The Event to signal after the connection is established and Status field is updated
   /// by the EFI FTP v4 Protocol driver. The type of Event must be
@@ -39,7 +40,7 @@ public unsafe struct EFI_FTP4_CONNECTION_TOKEN {
   /// equal to TPL_CALLBACK. If it is set to NULL, this function will not return  until the
   /// function completes.
   ///
- public EFI_EVENT    Event;
+  public EFI_EVENT Event;
   ///
   /// The variable to receive the result of the completed operation.
   /// EFI_SUCCESS:              The FTP connection is established successfully
@@ -60,59 +61,60 @@ public unsafe struct EFI_FTP4_CONNECTION_TOKEN {
   ///                           error is received.
   /// EFI_DEVICE_ERROR:         An unexpected system or network error occurred.
   ///
- public EFI_STATUS    Status;
+  public EFI_STATUS Status;
 }
 
 ///
 /// EFI_FTP4_CONFIG_DATA
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_FTP4_CONFIG_DATA {
+public unsafe struct EFI_FTP4_CONFIG_DATA
+{
   ///
   /// Pointer to a ASCII string that contains user name. The caller is
   /// responsible for freeing Username after GetModeData() is called.
   ///
- public byte               *Username;
+  public byte* Username;
   ///
   /// Pointer to a ASCII string that contains password. The caller is
   /// responsible for freeing Password after GetModeData() is called.
   ///
- public byte               *Password;
+  public byte* Password;
   ///
   /// Set it to TRUE to initiate an active data connection. Set it to
   /// FALSE to initiate a passive data connection.
   ///
- public bool             Active;
+  public bool Active;
   ///
   /// Boolean value indicating if default network settting used.
   ///
- public bool             UseDefaultSetting;
+  public bool UseDefaultSetting;
   ///
   /// IP address of station if UseDefaultSetting is FALSE.
   ///
- public EFI_IPv4_ADDRESS    StationIp;
+  public EFI_IPv4_ADDRESS StationIp;
   ///
   /// Subnet mask of station if UseDefaultSetting is FALSE.
   ///
- public EFI_IPv4_ADDRESS    SubnetMask;
+  public EFI_IPv4_ADDRESS SubnetMask;
   ///
   /// IP address of gateway if UseDefaultSetting is FALSE.
   ///
- public EFI_IPv4_ADDRESS    GatewayIp;
+  public EFI_IPv4_ADDRESS GatewayIp;
   ///
   /// IP address of FTPv4 server.
   ///
- public EFI_IPv4_ADDRESS    ServerIp;
+  public EFI_IPv4_ADDRESS ServerIp;
   ///
   /// FTPv4 server port number of control connection, and the default
   /// value is 21 as convention.
   ///
- public ushort              ServerPort;
+  public ushort ServerPort;
   ///
   /// FTPv4 server port number of data connection. If it is zero, use
   /// (ServerPort - 1) by convention.
   ///
- public ushort              AltDataPort;
+  public ushort AltDataPort;
   ///
   /// A byte indicate the representation type. The right 4 bit is used for
   /// first parameter, the left 4 bit is use for second parameter
@@ -122,15 +124,15 @@ public unsafe struct EFI_FTP4_CONFIG_DATA {
   /// - If it is a local type, the second parameter is the local byte byte size.
   /// - If it is a image type, the second parameter is undefined.
   ///
- public byte    RepType;
+  public byte RepType;
   ///
   /// Defines the file structure in FTP used. 0x00 = file, 0x01 = record, 0x02 = page.
   ///
- public byte    FileStruct;
+  public byte FileStruct;
   ///
   /// Defines the transifer mode used in FTP. 0x00 = stream, 0x01 = Block, 0x02 = Compressed.
   ///
- public byte    TransMode;
+  public byte TransMode;
 }
 
 // typedef struct _EFI_FTP4_COMMAND_TOKEN EFI_FTP4_COMMAND_TOKEN;
@@ -162,7 +164,8 @@ public unsafe struct EFI_FTP4_CONFIG_DATA {
 /// EFI_FTP4_COMMAND_TOKEN
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_FTP4_COMMAND_TOKEN {
+public unsafe struct EFI_FTP4_COMMAND_TOKEN
+{
   ///
   /// The Event to signal after request is finished and Status field
   /// is updated by the EFI FTP v4 Protocol driver. The type of Event
@@ -171,20 +174,20 @@ public unsafe struct EFI_FTP4_COMMAND_TOKEN {
   /// set to NULL, related function must wait until the function
   /// completes.
   ///
- public EFI_EVENT    Event;
+  public EFI_EVENT Event;
   ///
   /// Pointer to a null-terminated ASCII name string.
   ///
- public byte        *Pathname;
+  public byte* Pathname;
   ///
   /// The size of data buffer in bytes.
   ///
- public ulong       DataBufferSize;
+  public ulong DataBufferSize;
   ///
   /// Pointer to the data buffer. Data downloaded from FTP server
   /// through connection is downloaded here.
   ///
- public void         *DataBuffer;
+  public void* DataBuffer;
   ///
   /// Pointer to a callback function. If it is receiving function that leads
   /// to inbound data, the callback function is called when databuffer is
@@ -197,27 +200,27 @@ public unsafe struct EFI_FTP4_COMMAND_TOKEN {
   /// DataBufferSize, again. If there is no data remained,
   /// DataBufferSize should be set to 0.
   ///
-/**
-  Callback function when process inbound or outbound data.
+  /**
+    Callback function when process inbound or outbound data.
 
-  If it is receiving function that leads to inbound data, the callback function
-  is called when data buffer is full. Then, old data in the data buffer should be
-  flushed and new data is stored from the beginning of data buffer.
-  If it is a transmit function that lead to outbound data and the size of
-  Data in daata buffer has been transmitted, this callback function is called to
-  supply additional data to be transmitted.
+    If it is receiving function that leads to inbound data, the callback function
+    is called when data buffer is full. Then, old data in the data buffer should be
+    flushed and new data is stored from the beginning of data buffer.
+    If it is a transmit function that lead to outbound data and the size of
+    Data in daata buffer has been transmitted, this callback function is called to
+    supply additional data to be transmitted.
 
-  @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
-  @param[in] Token               Pointer to the token structure to provide the parameters that
-                                 are used in this operation.
-  @return  User defined Status.
+    @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+    @param[in] Token               Pointer to the token structure to provide the parameters that
+                                   are used in this operation.
+    @return  User defined Status.
 
-**/
-public readonly delegate* unmanaged<EFI_FTP4_PROTOCOL*,EFI_FTP4_COMMAND_TOKEN*, EFI_STATUS> DataCallback;
+  **/
+  public readonly delegate* unmanaged<EFI_FTP4_PROTOCOL*, EFI_FTP4_COMMAND_TOKEN*, EFI_STATUS> DataCallback;
   ///
   /// Pointer to the parameter for DataCallback.
   ///
- public void                      *Context;
+  public void* Context;
   ///
   /// The variable to receive the result of the completed operation.
   /// EFI_SUCCESS:              The FTP command is completed successfully.
@@ -351,7 +354,7 @@ public readonly delegate* unmanaged<EFI_FTP4_PROTOCOL*,EFI_FTP4_COMMAND_TOKEN*, 
 
 
 
-  @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+  @retval EFI_NO_MAPPING         When using a default address, configuration(DHCP, BOOTP,
 
 
 
@@ -505,8 +508,8 @@ public readonly delegate* unmanaged<EFI_FTP4_PROTOCOL*,EFI_FTP4_COMMAND_TOKEN*, 
 **/
 typedef
 EFI_STATUS
-(EFIAPI *EFI_FTP4_POLL)(
-  IN EFI_FTP4_PROTOCOL        *This
+(EFIAPI* EFI_FTP4_POLL)(
+  IN EFI_FTP4_PROTOCOL        * This
   );
 
 ///
@@ -515,15 +518,16 @@ EFI_STATUS
 /// operations.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_FTP4_PROTOCOL {
- public EFI_FTP4_GET_MODE_DATA     GetModeData;
- public EFI_FTP4_CONNECT           Connect;
- public EFI_FTP4_CLOSE             Close;
- public EFI_FTP4_CONFIGURE         Configure;
- public EFI_FTP4_READ_FILE         ReadFile;
- public EFI_FTP4_WRITE_FILE        WriteFile;
- public EFI_FTP4_READ_DIRECTORY    ReadDirectory;
- public EFI_FTP4_POLL              Poll;
+public unsafe struct EFI_FTP4_PROTOCOL
+{
+  public EFI_FTP4_GET_MODE_DATA GetModeData;
+  public EFI_FTP4_CONNECT Connect;
+  public EFI_FTP4_CLOSE Close;
+  public EFI_FTP4_CONFIGURE Configure;
+  public EFI_FTP4_READ_FILE ReadFile;
+  public EFI_FTP4_WRITE_FILE WriteFile;
+  public EFI_FTP4_READ_DIRECTORY ReadDirectory;
+  public EFI_FTP4_POLL Poll;
 }
 
 // extern EFI_GUID  gEfiFtp4ServiceBindingProtocolGuid;

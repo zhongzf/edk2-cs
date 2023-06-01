@@ -13,8 +13,8 @@ namespace Uefi;
 // #ifndef __SIMPLE_TEXT_IN_PROTOCOL_H__
 // #define __SIMPLE_TEXT_IN_PROTOCOL_H__
 
-public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID = new GUID( 
-    0x387477c1, 0x69c7, 0x11d2, new byte[] {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID = new GUID(
+    0x387477c1, 0x69c7, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
 // typedef struct _EFI_SIMPLE_TEXT_INPUT_PROTOCOL EFI_SIMPLE_TEXT_INPUT_PROTOCOL;
 
@@ -32,9 +32,10 @@ public static ulong SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
 /// The keystroke information for the key that was pressed.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_INPUT_KEY {
- public ushort    ScanCode;
- public char    UnicodeChar;
+public unsafe struct EFI_INPUT_KEY
+{
+  public ushort ScanCode;
+  public char UnicodeChar;
 }
 
 //
@@ -114,37 +115,38 @@ public static ulong SCAN_ESC = 0x0017;
 /// It is the minimum required protocol for ConsoleIn.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL {
-/**
-  Reset the input device and optionally run diagnostics
+public unsafe struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL
+{
+  /**
+    Reset the input device and optionally run diagnostics
 
-  @param  This                 Protocol instance pointer.
-  @param  ExtendedVerification Driver may perform diagnostics on reset.
+    @param  This                 Protocol instance pointer.
+    @param  ExtendedVerification Driver may perform diagnostics on reset.
 
-  @retval EFI_SUCCESS          The device was reset.
-  @retval EFI_DEVICE_ERROR     The device is not functioning properly and could not be reset.
+    @retval EFI_SUCCESS          The device was reset.
+    @retval EFI_DEVICE_ERROR     The device is not functioning properly and could not be reset.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_PROTOCOL*,bool, EFI_STATUS> Reset;
-/**
-  Reads the next keystroke from the input device. The WaitForKey Event can
-  be used to test for existence of a keystroke via WaitForEvent () call.
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_PROTOCOL*, bool, EFI_STATUS> Reset;
+  /**
+    Reads the next keystroke from the input device. The WaitForKey Event can
+    be used to test for existence of a keystroke via WaitForEvent () call.
 
-  @param  This  Protocol instance pointer.
-  @param  Key   A pointer to a buffer that is filled in with the keystroke
-                information for the key that was pressed.
+    @param  This  Protocol instance pointer.
+    @param  Key   A pointer to a buffer that is filled in with the keystroke
+                  information for the key that was pressed.
 
-  @retval EFI_SUCCESS      The keystroke information was returned.
-  @retval EFI_NOT_READY    There was no keystroke data available.
-  @retval EFI_DEVICE_ERROR The keystroke information was not returned due to
-                           hardware errors.
+    @retval EFI_SUCCESS      The keystroke information was returned.
+    @retval EFI_NOT_READY    There was no keystroke data available.
+    @retval EFI_DEVICE_ERROR The keystroke information was not returned due to
+                             hardware errors.
 
-**/
-public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_PROTOCOL*,EFI_INPUT_KEY*, EFI_STATUS> ReadKeyStroke;
+  **/
+  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_PROTOCOL*, EFI_INPUT_KEY*, EFI_STATUS> ReadKeyStroke;
   ///
   /// Event to use with WaitForEvent() to wait for a key to be available
   ///
- public EFI_EVENT             WaitForKey;
+  public EFI_EVENT WaitForKey;
 }
 
 // extern EFI_GUID  gEfiSimpleTextInProtocolGuid;

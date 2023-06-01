@@ -14,7 +14,7 @@ namespace Uefi;
 // #ifndef __EFI_BLUETOOTH_HC_PROTOCOL_H__
 // #define __EFI_BLUETOOTH_HC_PROTOCOL_H__
 
-public static EFI_GUID EFI_BLUETOOTH_HC_PROTOCOL_GUID = new GUID( 
+public static EFI_GUID EFI_BLUETOOTH_HC_PROTOCOL_GUID = new GUID(
     0xb3930571, 0xbeba, 0x4fc5, new byte[] { 0x92, 0x3, 0x94, 0x27, 0x24, 0x2e, 0x6a, 0x43 });
 
 // typedef struct _EFI_BLUETOOTH_HC_PROTOCOL EFI_BLUETOOTH_HC_PROTOCOL;
@@ -373,286 +373,287 @@ public static EFI_GUID EFI_BLUETOOTH_HC_PROTOCOL_GUID = new GUID(
 // The EFI_BLUETOOTH_HC_PROTOCOL is used to transmit or receive HCI layer data packets.
 //
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_BLUETOOTH_HC_PROTOCOL {
+public unsafe struct EFI_BLUETOOTH_HC_PROTOCOL
+{
   //
   // Send HCI command packet.
   //
-/**
-  Send HCI command packet.
+  /**
+    Send HCI command packet.
 
-  The SendCommand() function sends HCI command packet. Buffer holds the whole HCI
-  command packet, including OpCode, OCF, OGF, parameter length, and parameters. When
-  this function is returned, it just means the HCI command packet is sent, it does not mean
-  the command is success or complete. Caller might need to wait a command status event
-  to know the command status, or wait a command complete event to know if the
-  command is completed.
+    The SendCommand() function sends HCI command packet. Buffer holds the whole HCI
+    command packet, including OpCode, OCF, OGF, parameter length, and parameters. When
+    this function is returned, it just means the HCI command packet is sent, it does not mean
+    the command is success or complete. Caller might need to wait a command status event
+    to know the command status, or wait a command complete event to know if the
+    command is completed.
 
-  @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
-                                    specified by Buffer. On output, indicates the amount of
-                                    data actually transferred.
-  @param[in]      Buffer            A pointer to the buffer of data that will be transmitted to
-                                    Bluetooth host controller.
-  @param[in]      Timeout           Indicating the transfer should be completed within this
-                                    time frame. The units are in milliseconds. If Timeout is 0,
-                                    then the caller must wait for the function to be completed
-                                    until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
+    @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
+                                      specified by Buffer. On output, indicates the amount of
+                                      data actually transferred.
+    @param[in]      Buffer            A pointer to the buffer of data that will be transmitted to
+                                      Bluetooth host controller.
+    @param[in]      Timeout           Indicating the transfer should be completed within this
+                                      time frame. The units are in milliseconds. If Timeout is 0,
+                                      then the caller must wait for the function to be completed
+                                      until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
 
-  @retval EFI_SUCCESS               The HCI command packet is sent successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      BufferSize is NULL.
-                                      *BufferSize is 0.
-                                      Buffer is NULL.
-  @retval EFI_TIMEOUT               Sending HCI command packet fail due to timeout.
-  @retval EFI_DEVICE_ERROR          Sending HCI command packet fail due to host controller or device
-                                    error.
+    @retval EFI_SUCCESS               The HCI command packet is sent successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        BufferSize is NULL.
+                                        *BufferSize is 0.
+                                        Buffer is NULL.
+    @retval EFI_TIMEOUT               Sending HCI command packet fail due to timeout.
+    @retval EFI_DEVICE_ERROR          Sending HCI command packet fail due to host controller or device
+                                      error.
 
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,ulong*,void*,ulong, EFI_STATUS> SendCommand;
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, ulong*, void*, ulong, EFI_STATUS> SendCommand;
   //
   // Receive HCI event packets.
   //
-/**
-  Receive HCI event packet.
+  /**
+    Receive HCI event packet.
 
-  The ReceiveEvent() function receives HCI event packet. Buffer holds the whole HCI event
-  packet, including EventCode, parameter length, and parameters.
+    The ReceiveEvent() function receives HCI event packet. Buffer holds the whole HCI event
+    packet, including EventCode, parameter length, and parameters.
 
-  @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
-                                    specified by Buffer. On output, indicates the amount of
-                                    data actually transferred.
-  @param[out]     Buffer            A pointer to the buffer of data that will be received from
-                                    Bluetooth host controller.
-  @param[in]      Timeout           Indicating the transfer should be completed within this
-                                    time frame. The units are in milliseconds. If Timeout is 0,
-                                    then the caller must wait for the function to be completed
-                                    until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
+    @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
+                                      specified by Buffer. On output, indicates the amount of
+                                      data actually transferred.
+    @param[out]     Buffer            A pointer to the buffer of data that will be received from
+                                      Bluetooth host controller.
+    @param[in]      Timeout           Indicating the transfer should be completed within this
+                                      time frame. The units are in milliseconds. If Timeout is 0,
+                                      then the caller must wait for the function to be completed
+                                      until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
 
-  @retval EFI_SUCCESS               The HCI event packet is received successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      BufferSize is NULL.
-                                      *BufferSize is 0.
-                                      Buffer is NULL.
-  @retval EFI_TIMEOUT               Receiving HCI event packet fail due to timeout.
-  @retval EFI_DEVICE_ERROR          Receiving HCI event packet fail due to host controller or device
-                                    error.
+    @retval EFI_SUCCESS               The HCI event packet is received successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        BufferSize is NULL.
+                                        *BufferSize is 0.
+                                        Buffer is NULL.
+    @retval EFI_TIMEOUT               Receiving HCI event packet fail due to timeout.
+    @retval EFI_DEVICE_ERROR          Receiving HCI event packet fail due to host controller or device
+                                      error.
 
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,ulong*,void*,ulong, EFI_STATUS> ReceiveEvent;
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, ulong*, void*, ulong, EFI_STATUS> ReceiveEvent;
   //
   // Non-blocking receive HCI event packets.
   //
-/**
-  Receive HCI event packet in non-blocking way.
+  /**
+    Receive HCI event packet in non-blocking way.
 
-  The AsyncReceiveEvent() function receives HCI event packet in non-blocking way. Data
-  in Callback function holds the whole HCI event packet, including EventCode, parameter
-  length, and parameters.
+    The AsyncReceiveEvent() function receives HCI event packet in non-blocking way. Data
+    in Callback function holds the whole HCI event packet, including EventCode, parameter
+    length, and parameters.
 
-  @param[in]  This                  Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in]  IsNewTransfer         If TRUE, a new transfer will be submitted. If FALSE, the
-                                    request is deleted.
-  @param[in]  PollingInterval       Indicates the periodic rate, in milliseconds, that the
-                                    transfer is to be executed.
-  @param[in]  DataLength            Specifies the length, in bytes, of the data to be received.
-  @param[in]  Callback              The callback function. This function is called if the
-                                    asynchronous transfer is completed.
-  @param[in]  Context               Data passed into Callback function. This is optional
-                                    parameter and may be NULL.
+    @param[in]  This                  Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in]  IsNewTransfer         If TRUE, a new transfer will be submitted. If FALSE, the
+                                      request is deleted.
+    @param[in]  PollingInterval       Indicates the periodic rate, in milliseconds, that the
+                                      transfer is to be executed.
+    @param[in]  DataLength            Specifies the length, in bytes, of the data to be received.
+    @param[in]  Callback              The callback function. This function is called if the
+                                      asynchronous transfer is completed.
+    @param[in]  Context               Data passed into Callback function. This is optional
+                                      parameter and may be NULL.
 
-  @retval EFI_SUCCESS               The HCI asynchronous receive request is submitted successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      DataLength is 0.
-                                      If IsNewTransfer is TRUE, and an asynchronous receive
-                                      request already exists.
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,bool,ulong,ulong,EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK,void*, EFI_STATUS> AsyncReceiveEvent;
+    @retval EFI_SUCCESS               The HCI asynchronous receive request is submitted successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        DataLength is 0.
+                                        If IsNewTransfer is TRUE, and an asynchronous receive
+                                        request already exists.
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, bool, ulong, ulong, EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK, void*, EFI_STATUS> AsyncReceiveEvent;
   //
   // Send HCI ACL (asynchronous connection-oriented) data packets.
   //
-/**
-  Send HCI ACL data packet.
+  /**
+    Send HCI ACL data packet.
 
-  The SendACLData() function sends HCI ACL data packet. Buffer holds the whole HCI ACL
-  data packet, including Handle, PB flag, BC flag, data length, and data.
+    The SendACLData() function sends HCI ACL data packet. Buffer holds the whole HCI ACL
+    data packet, including Handle, PB flag, BC flag, data length, and data.
 
-  The SendACLData() function and ReceiveACLData() function just send and receive data
-  payload from application layer. In order to protect the payload data, the Bluetooth bus is
-  required to call HCI_Set_Connection_Encryption command to enable hardware based
-  encryption after authentication completed, according to pairing mode and host
-  capability.
+    The SendACLData() function and ReceiveACLData() function just send and receive data
+    payload from application layer. In order to protect the payload data, the Bluetooth bus is
+    required to call HCI_Set_Connection_Encryption command to enable hardware based
+    encryption after authentication completed, according to pairing mode and host
+    capability.
 
-  @param[in]       This             Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in, out]  BufferSize       On input, indicates the size, in bytes, of the data buffer
-                                    specified by Buffer. On output, indicates the amount of
-                                    data actually transferred.
-  @param[in]       Buffer           A pointer to the buffer of data that will be transmitted to
-                                    Bluetooth host controller.
-  @param[in]       Timeout          Indicating the transfer should be completed within this
-                                    time frame. The units are in milliseconds. If Timeout is 0,
-                                    then the caller must wait for the function to be completed
-                                    until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
+    @param[in]       This             Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in, out]  BufferSize       On input, indicates the size, in bytes, of the data buffer
+                                      specified by Buffer. On output, indicates the amount of
+                                      data actually transferred.
+    @param[in]       Buffer           A pointer to the buffer of data that will be transmitted to
+                                      Bluetooth host controller.
+    @param[in]       Timeout          Indicating the transfer should be completed within this
+                                      time frame. The units are in milliseconds. If Timeout is 0,
+                                      then the caller must wait for the function to be completed
+                                      until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
 
-  @retval EFI_SUCCESS               The HCI ACL data packet is sent successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      BufferSize is NULL.
-                                      *BufferSize is 0.
-                                      Buffer is NULL.
-  @retval EFI_TIMEOUT               Sending HCI ACL data packet fail due to timeout.
-  @retval EFI_DEVICE_ERROR          Sending HCI ACL data packet fail due to host controller or device
-                                    error.
+    @retval EFI_SUCCESS               The HCI ACL data packet is sent successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        BufferSize is NULL.
+                                        *BufferSize is 0.
+                                        Buffer is NULL.
+    @retval EFI_TIMEOUT               Sending HCI ACL data packet fail due to timeout.
+    @retval EFI_DEVICE_ERROR          Sending HCI ACL data packet fail due to host controller or device
+                                      error.
 
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,ulong*,void*,ulong, EFI_STATUS> SendACLData;
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, ulong*, void*, ulong, EFI_STATUS> SendACLData;
   //
   // Receive HCI ACL data packets.
   //
-/**
-  Receive HCI ACL data packet.
+  /**
+    Receive HCI ACL data packet.
 
-  The ReceiveACLData() function receives HCI ACL data packet. Buffer holds the whole HCI
-  ACL data packet, including Handle, PB flag, BC flag, data length, and data.
+    The ReceiveACLData() function receives HCI ACL data packet. Buffer holds the whole HCI
+    ACL data packet, including Handle, PB flag, BC flag, data length, and data.
 
-  @param[in]       This             Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in, out]  BufferSize       On input, indicates the size, in bytes, of the data buffer
-                                    specified by Buffer. On output, indicates the amount of
-                                    data actually transferred.
-  @param[out]      Buffer           A pointer to the buffer of data that will be received from
-                                    Bluetooth host controller.
-  @param[in]       Timeout          Indicating the transfer should be completed within this
-                                    time frame. The units are in milliseconds. If Timeout is 0,
-                                    then the caller must wait for the function to be completed
-                                    until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
+    @param[in]       This             Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in, out]  BufferSize       On input, indicates the size, in bytes, of the data buffer
+                                      specified by Buffer. On output, indicates the amount of
+                                      data actually transferred.
+    @param[out]      Buffer           A pointer to the buffer of data that will be received from
+                                      Bluetooth host controller.
+    @param[in]       Timeout          Indicating the transfer should be completed within this
+                                      time frame. The units are in milliseconds. If Timeout is 0,
+                                      then the caller must wait for the function to be completed
+                                      until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
 
-  @retval EFI_SUCCESS               The HCI ACL data packet is received successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      BufferSize is NULL.
-                                      *BufferSize is 0.
-                                      Buffer is NULL.
-  @retval EFI_TIMEOUT               Receiving HCI ACL data packet fail due to timeout.
-  @retval EFI_DEVICE_ERROR          Receiving HCI ACL data packet fail due to host controller or device
-                                    error.
+    @retval EFI_SUCCESS               The HCI ACL data packet is received successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        BufferSize is NULL.
+                                        *BufferSize is 0.
+                                        Buffer is NULL.
+    @retval EFI_TIMEOUT               Receiving HCI ACL data packet fail due to timeout.
+    @retval EFI_DEVICE_ERROR          Receiving HCI ACL data packet fail due to host controller or device
+                                      error.
 
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,ulong*,void*,ulong, EFI_STATUS> ReceiveACLData;
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, ulong*, void*, ulong, EFI_STATUS> ReceiveACLData;
   //
   // Non-blocking receive HCI ACL data packets.
   //
-/**
-  Receive HCI ACL data packet in non-blocking way.
+  /**
+    Receive HCI ACL data packet in non-blocking way.
 
-  The AsyncReceiveACLData() function receives HCI ACL data packet in non-blocking way.
-  Data in Callback holds the whole HCI ACL data packet, including Handle, PB flag, BC flag,
-  data length, and data.
+    The AsyncReceiveACLData() function receives HCI ACL data packet in non-blocking way.
+    Data in Callback holds the whole HCI ACL data packet, including Handle, PB flag, BC flag,
+    data length, and data.
 
-  @param[in]  This                  Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in]  IsNewTransfer         If TRUE, a new transfer will be submitted. If FALSE, the
-                                    request is deleted.
-  @param[in]  PollingInterval       Indicates the periodic rate, in milliseconds, that the
-                                    transfer is to be executed.
-  @param[in]  DataLength            Specifies the length, in bytes, of the data to be received.
-  @param[in]  Callback              The callback function. This function is called if the
-                                    asynchronous transfer is completed.
-  @param[in]  Context               Data passed into Callback function. This is optional
-                                    parameter and may be NULL.
+    @param[in]  This                  Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in]  IsNewTransfer         If TRUE, a new transfer will be submitted. If FALSE, the
+                                      request is deleted.
+    @param[in]  PollingInterval       Indicates the periodic rate, in milliseconds, that the
+                                      transfer is to be executed.
+    @param[in]  DataLength            Specifies the length, in bytes, of the data to be received.
+    @param[in]  Callback              The callback function. This function is called if the
+                                      asynchronous transfer is completed.
+    @param[in]  Context               Data passed into Callback function. This is optional
+                                      parameter and may be NULL.
 
-  @retval EFI_SUCCESS               The HCI asynchronous receive request is submitted successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      DataLength is 0.
-                                      If IsNewTransfer is TRUE, and an asynchronous receive
-                                      request already exists.
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,bool,ulong,ulong,EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK,void*, EFI_STATUS> AsyncReceiveACLData;
+    @retval EFI_SUCCESS               The HCI asynchronous receive request is submitted successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        DataLength is 0.
+                                        If IsNewTransfer is TRUE, and an asynchronous receive
+                                        request already exists.
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, bool, ulong, ulong, EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK, void*, EFI_STATUS> AsyncReceiveACLData;
   //
   // Send HCI synchronous (SCO and eSCO) data packets.
   //
-/**
-  Send HCI SCO data packet.
+  /**
+    Send HCI SCO data packet.
 
-  The SendSCOData() function sends HCI SCO data packet. Buffer holds the whole HCI SCO
-  data packet, including ConnectionHandle, PacketStatus flag, data length, and data.
+    The SendSCOData() function sends HCI SCO data packet. Buffer holds the whole HCI SCO
+    data packet, including ConnectionHandle, PacketStatus flag, data length, and data.
 
-  @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
-                                    specified by Buffer. On output, indicates the amount of
-                                    data actually transferred.
-  @param[in]      Buffer            A pointer to the buffer of data that will be transmitted to
-                                    Bluetooth host controller.
-  @param[in]      Timeout           Indicating the transfer should be completed within this
-                                    time frame. The units are in milliseconds. If Timeout is 0,
-                                    then the caller must wait for the function to be completed
-                                    until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
+    @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
+                                      specified by Buffer. On output, indicates the amount of
+                                      data actually transferred.
+    @param[in]      Buffer            A pointer to the buffer of data that will be transmitted to
+                                      Bluetooth host controller.
+    @param[in]      Timeout           Indicating the transfer should be completed within this
+                                      time frame. The units are in milliseconds. If Timeout is 0,
+                                      then the caller must wait for the function to be completed
+                                      until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
 
-  @retval EFI_SUCCESS               The HCI SCO data packet is sent successfully.
-  @retval EFI_UNSUPPORTED           The implementation does not support HCI SCO transfer.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      BufferSize is NULL.
-                                      *BufferSize is 0.
-                                      Buffer is NULL.
-  @retval EFI_TIMEOUT               Sending HCI SCO data packet fail due to timeout.
-  @retval EFI_DEVICE_ERROR          Sending HCI SCO data packet fail due to host controller or device
-                                    error.
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,ulong*,void*,ulong, EFI_STATUS> SendSCOData;
+    @retval EFI_SUCCESS               The HCI SCO data packet is sent successfully.
+    @retval EFI_UNSUPPORTED           The implementation does not support HCI SCO transfer.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        BufferSize is NULL.
+                                        *BufferSize is 0.
+                                        Buffer is NULL.
+    @retval EFI_TIMEOUT               Sending HCI SCO data packet fail due to timeout.
+    @retval EFI_DEVICE_ERROR          Sending HCI SCO data packet fail due to host controller or device
+                                      error.
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, ulong*, void*, ulong, EFI_STATUS> SendSCOData;
   //
   // Receive HCI synchronous data packets.
   //
-/**
-  Receive HCI SCO data packet.
+  /**
+    Receive HCI SCO data packet.
 
-  The ReceiveSCOData() function receives HCI SCO data packet. Buffer holds the whole HCI
-  SCO data packet, including ConnectionHandle, PacketStatus flag, data length, and data.
+    The ReceiveSCOData() function receives HCI SCO data packet. Buffer holds the whole HCI
+    SCO data packet, including ConnectionHandle, PacketStatus flag, data length, and data.
 
-  @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
-                                    specified by Buffer. On output, indicates the amount of
-                                    data actually transferred.
-  @param[out]     Buffer            A pointer to the buffer of data that will be received from
-                                    Bluetooth host controller.
-  @param[in]      Timeout           Indicating the transfer should be completed within this
-                                    time frame. The units are in milliseconds. If Timeout is 0,
-                                    then the caller must wait for the function to be completed
-                                    until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
+    @param[in]      This              Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in,out]  BufferSize        On input, indicates the size, in bytes, of the data buffer
+                                      specified by Buffer. On output, indicates the amount of
+                                      data actually transferred.
+    @param[out]     Buffer            A pointer to the buffer of data that will be received from
+                                      Bluetooth host controller.
+    @param[in]      Timeout           Indicating the transfer should be completed within this
+                                      time frame. The units are in milliseconds. If Timeout is 0,
+                                      then the caller must wait for the function to be completed
+                                      until EFI_SUCCESS or EFI_DEVICE_ERROR is returned.
 
-  @retval EFI_SUCCESS               The HCI SCO data packet is received successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      BufferSize is NULL.
-                                      *BufferSize is 0.
-                                      Buffer is NULL.
-  @retval EFI_TIMEOUT               Receiving HCI SCO data packet fail due to timeout.
-  @retval EFI_DEVICE_ERROR          Receiving HCI SCO data packet fail due to host controller or device
-                                    error.
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,ulong*,void*,ulong, EFI_STATUS> ReceiveSCOData;
+    @retval EFI_SUCCESS               The HCI SCO data packet is received successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        BufferSize is NULL.
+                                        *BufferSize is 0.
+                                        Buffer is NULL.
+    @retval EFI_TIMEOUT               Receiving HCI SCO data packet fail due to timeout.
+    @retval EFI_DEVICE_ERROR          Receiving HCI SCO data packet fail due to host controller or device
+                                      error.
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, ulong*, void*, ulong, EFI_STATUS> ReceiveSCOData;
   //
   // Non-blocking receive HCI synchronous data packets.
   //
-/**
-  Receive HCI SCO data packet in non-blocking way.
+  /**
+    Receive HCI SCO data packet in non-blocking way.
 
-  The AsyncReceiveSCOData() function receives HCI SCO data packet in non-blocking way.
-  Data in Callback holds the whole HCI SCO data packet, including ConnectionHandle,
-  PacketStatus flag, data length, and data.
+    The AsyncReceiveSCOData() function receives HCI SCO data packet in non-blocking way.
+    Data in Callback holds the whole HCI SCO data packet, including ConnectionHandle,
+    PacketStatus flag, data length, and data.
 
-  @param[in]  This                  Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
-  @param[in]  IsNewTransfer         If TRUE, a new transfer will be submitted. If FALSE, the
-                                    request is deleted.
-  @param[in]  PollingInterval       Indicates the periodic rate, in milliseconds, that the
-                                    transfer is to be executed.
-  @param[in]  DataLength            Specifies the length, in bytes, of the data to be received.
-  @param[in]  Callback              The callback function. This function is called if the
-                                    asynchronous transfer is completed.
-  @param[in]  Context               Data passed into Callback function. This is optional
-                                    parameter and may be NULL.
+    @param[in]  This                  Pointer to the EFI_BLUETOOTH_HC_PROTOCOL instance.
+    @param[in]  IsNewTransfer         If TRUE, a new transfer will be submitted. If FALSE, the
+                                      request is deleted.
+    @param[in]  PollingInterval       Indicates the periodic rate, in milliseconds, that the
+                                      transfer is to be executed.
+    @param[in]  DataLength            Specifies the length, in bytes, of the data to be received.
+    @param[in]  Callback              The callback function. This function is called if the
+                                      asynchronous transfer is completed.
+    @param[in]  Context               Data passed into Callback function. This is optional
+                                      parameter and may be NULL.
 
-  @retval EFI_SUCCESS               The HCI asynchronous receive request is submitted successfully.
-  @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
-                                      DataLength is 0.
-                                      If IsNewTransfer is TRUE, and an asynchronous receive
-                                      request already exists.
-**/
-public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*,bool,ulong,ulong,EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK,void*, EFI_STATUS> AsyncReceiveSCOData;
+    @retval EFI_SUCCESS               The HCI asynchronous receive request is submitted successfully.
+    @retval EFI_INVALID_PARAMETER     One or more of the following conditions is TRUE:
+                                        DataLength is 0.
+                                        If IsNewTransfer is TRUE, and an asynchronous receive
+                                        request already exists.
+  **/
+  public readonly delegate* unmanaged<EFI_BLUETOOTH_HC_PROTOCOL*, bool, ulong, ulong, EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK, void*, EFI_STATUS> AsyncReceiveSCOData;
 }
 
 // extern EFI_GUID  gEfiBluetoothHcProtocolGuid;

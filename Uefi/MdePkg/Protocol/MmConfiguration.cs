@@ -17,8 +17,8 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_CONFIGURATION_PROTOCOL_GUID = new GUID( 
-    0x26eeb3de, 0xb689, 0x492e, new byte[] {0x80, 0xf0, 0xbe, 0x8b, 0xd7, 0xda, 0x4b, 0xa7 });
+public static EFI_GUID EFI_MM_CONFIGURATION_PROTOCOL_GUID = new GUID(
+    0x26eeb3de, 0xb689, 0x492e, new byte[] { 0x80, 0xf0, 0xbe, 0x8b, 0xd7, 0xda, 0x4b, 0xa7 });
 
 // typedef struct _EFI_MM_CONFIGURATION_PROTOCOL EFI_MM_CONFIGURATION_PROTOCOL;
 
@@ -50,24 +50,25 @@ public static EFI_GUID EFI_MM_CONFIGURATION_PROTOCOL_GUID = new GUID(
 /// Foundation entry point with the MM entry vector code.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_MM_CONFIGURATION_PROTOCOL {
+public unsafe struct EFI_MM_CONFIGURATION_PROTOCOL
+{
   ///
   /// A pointer to an array MMRAM ranges used by the initial MM entry code.
   ///
- public EFI_MM_RESERVED_MMRAM_REGION    *MmramReservedRegions;
-/**
-  Register the MM Foundation entry point.
+  public EFI_MM_RESERVED_MMRAM_REGION* MmramReservedRegions;
+  /**
+    Register the MM Foundation entry point.
 
-  This function registers the MM Foundation entry point with the processor code. This entry point
-  will be invoked by the MM Processor entry code.
+    This function registers the MM Foundation entry point with the processor code. This entry point
+    will be invoked by the MM Processor entry code.
 
-  @param[in] This                The EFI_MM_CONFIGURATION_PROTOCOL instance.
-  @param[in] MmEntryPoint        MM Foundation entry point.
+    @param[in] This                The EFI_MM_CONFIGURATION_PROTOCOL instance.
+    @param[in] MmEntryPoint        MM Foundation entry point.
 
-  @retval EFI_SUCCESS            Success to register MM Entry Point.
-  @retval EFI_INVALID_PARAMETER  MmEntryPoint is NULL.
-**/
-public readonly delegate* unmanaged<CONST,EFI_MM_ENTRY_POINT, EFI_STATUS> RegisterMmEntry;
+    @retval EFI_SUCCESS            Success to register MM Entry Point.
+    @retval EFI_INVALID_PARAMETER  MmEntryPoint is NULL.
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_MM_ENTRY_POINT, EFI_STATUS> RegisterMmEntry;
 }
 
 // extern EFI_GUID  gEfiMmConfigurationProtocolGuid;

@@ -18,7 +18,7 @@ namespace Uefi;
 
 // #include <Pi/PiI2c.h>
 
-public static ulong EFI_I2C_MASTER_PROTOCOL_GUID = { 0xcd72881f, 0x45b5, 0x4feb, { 0x98, 0xc8, 0x31, 0x3d, 0xa8, 0x11, 0x74, 0x62 }};
+public static ulong EFI_I2C_MASTER_PROTOCOL_GUID = { 0xcd72881f, 0x45b5, 0x4feb, { 0x98, 0xc8, 0x31, 0x3d, 0xa8, 0x11, 0x74, 0x62 } };
 
 // typedef struct _EFI_I2C_MASTER_PROTOCOL EFI_I2C_MASTER_PROTOCOL;
 
@@ -160,128 +160,129 @@ public static ulong EFI_I2C_MASTER_PROTOCOL_GUID = { 0xcd72881f, 0x45b5, 0x4feb,
 /// in the I2C bus.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_I2C_MASTER_PROTOCOL {
+public unsafe struct EFI_I2C_MASTER_PROTOCOL
+{
   ///
   /// Set the clock frequency for the I2C bus.
   ///
-/**
-  Set the frequency for the I2C clock line.
+  /**
+    Set the frequency for the I2C clock line.
 
-  This routine must be called at or below TPL_NOTIFY.
+    This routine must be called at or below TPL_NOTIFY.
 
-  The software and controller do a best case effort of using the specified
-  frequency for the I2C bus.  If the frequency does not match exactly then
-  the I2C master protocol selects the next lower frequency to avoid
-  exceeding the operating conditions for any of the I2C devices on the bus.
-  For example if 400 KHz was specified and the controller's divide network
-  only supports 402 KHz or 398 KHz then the I2C master protocol selects 398
-  KHz.  If there are not lower frequencies available, then return
-  EFI_UNSUPPORTED.
+    The software and controller do a best case effort of using the specified
+    frequency for the I2C bus.  If the frequency does not match exactly then
+    the I2C master protocol selects the next lower frequency to avoid
+    exceeding the operating conditions for any of the I2C devices on the bus.
+    For example if 400 KHz was specified and the controller's divide network
+    only supports 402 KHz or 398 KHz then the I2C master protocol selects 398
+    KHz.  If there are not lower frequencies available, then return
+    EFI_UNSUPPORTED.
 
-  @param[in] This           Pointer to an EFI_I2C_MASTER_PROTOCOL structure
-  @param[in] BusClockHertz  Pointer to the requested I2C bus clock frequency
-                            in Hertz.  Upon return this value contains the
-                            actual frequency in use by the I2C controller.
+    @param[in] This           Pointer to an EFI_I2C_MASTER_PROTOCOL structure
+    @param[in] BusClockHertz  Pointer to the requested I2C bus clock frequency
+                              in Hertz.  Upon return this value contains the
+                              actual frequency in use by the I2C controller.
 
-  @retval EFI_SUCCESS           The bus frequency was set successfully.
-  @retval EFI_ALREADY_STARTED   The controller is busy with another transaction.
-  @retval EFI_INVALID_PARAMETER BusClockHertz is NULL
-  @retval EFI_UNSUPPORTED       The controller does not support this frequency.
+    @retval EFI_SUCCESS           The bus frequency was set successfully.
+    @retval EFI_ALREADY_STARTED   The controller is busy with another transaction.
+    @retval EFI_INVALID_PARAMETER BusClockHertz is NULL
+    @retval EFI_UNSUPPORTED       The controller does not support this frequency.
 
-**/
-public readonly delegate* unmanaged<CONST,ulong*, EFI_STATUS> SetBusFrequency;
+  **/
+  public readonly delegate* unmanaged<CONST, ulong*, EFI_STATUS> SetBusFrequency;
 
   ///
   /// Reset the I2C host controller.
   ///
-/**
-  Reset the I2C controller and configure it for use
+  /**
+    Reset the I2C controller and configure it for use
 
-  This routine must be called at or below TPL_NOTIFY.
+    This routine must be called at or below TPL_NOTIFY.
 
-  The I2C controller is reset.  The caller must call SetBusFrequench() after
-  calling Reset().
+    The I2C controller is reset.  The caller must call SetBusFrequench() after
+    calling Reset().
 
-  @param[in]     This       Pointer to an EFI_I2C_MASTER_PROTOCOL structure.
+    @param[in]     This       Pointer to an EFI_I2C_MASTER_PROTOCOL structure.
 
-  @retval EFI_SUCCESS         The reset completed successfully.
-  @retval EFI_ALREADY_STARTED The controller is busy with another transaction.
-  @retval EFI_DEVICE_ERROR    The reset operation failed.
+    @retval EFI_SUCCESS         The reset completed successfully.
+    @retval EFI_ALREADY_STARTED The controller is busy with another transaction.
+    @retval EFI_DEVICE_ERROR    The reset operation failed.
 
-**/
-public readonly delegate* unmanaged<CONST, EFI_STATUS> Reset;
+  **/
+  public readonly delegate* unmanaged<CONST, EFI_STATUS> Reset;
 
   ///
   /// Start an I2C transaction in master mode on the host controller.
   ///
-/**
-  Start an I2C transaction on the host controller.
+  /**
+    Start an I2C transaction on the host controller.
 
-  This routine must be called at or below TPL_NOTIFY.  For synchronous
-  requests this routine must be called at or below TPL_CALLBACK.
+    This routine must be called at or below TPL_NOTIFY.  For synchronous
+    requests this routine must be called at or below TPL_CALLBACK.
 
-  This function initiates an I2C transaction on the controller.  To
-  enable proper error handling by the I2C protocol stack, the I2C
-  master protocol does not support queuing but instead only manages
-  one I2C transaction at a time.  This API requires that the I2C bus
-  is in the correct configuration for the I2C transaction.
+    This function initiates an I2C transaction on the controller.  To
+    enable proper error handling by the I2C protocol stack, the I2C
+    master protocol does not support queuing but instead only manages
+    one I2C transaction at a time.  This API requires that the I2C bus
+    is in the correct configuration for the I2C transaction.
 
-  The transaction is performed by sending a start-bit and selecting the
-  I2C device with the specified I2C slave address and then performing
-  the specified I2C operations.  When multiple operations are requested
-  they are separated with a repeated start bit and the slave address.
-  The transaction is terminated with a stop bit.
+    The transaction is performed by sending a start-bit and selecting the
+    I2C device with the specified I2C slave address and then performing
+    the specified I2C operations.  When multiple operations are requested
+    they are separated with a repeated start bit and the slave address.
+    The transaction is terminated with a stop bit.
 
-  When Event is NULL, StartRequest operates synchronously and returns
-  the I2C completion status as its return value.
+    When Event is NULL, StartRequest operates synchronously and returns
+    the I2C completion status as its return value.
 
-  When Event is not NULL, StartRequest synchronously returns EFI_SUCCESS
-  indicating that the I2C transaction was started asynchronously.  The
-  transaction status value is returned in the buffer pointed to by
-  I2cStatus upon the completion of the I2C transaction when I2cStatus
-  is not NULL.  After the transaction status is returned the Event is
-  signaled.
+    When Event is not NULL, StartRequest synchronously returns EFI_SUCCESS
+    indicating that the I2C transaction was started asynchronously.  The
+    transaction status value is returned in the buffer pointed to by
+    I2cStatus upon the completion of the I2C transaction when I2cStatus
+    is not NULL.  After the transaction status is returned the Event is
+    signaled.
 
-  Note: The typical consumer of this API is the I2C host protocol.
-  Extreme care must be taken by other consumers of this API to prevent
-  confusing the third party I2C drivers due to a state change at the
-  I2C device which the third party I2C drivers did not initiate.  I2C
-  platform specific code may use this API within these guidelines.
+    Note: The typical consumer of this API is the I2C host protocol.
+    Extreme care must be taken by other consumers of this API to prevent
+    confusing the third party I2C drivers due to a state change at the
+    I2C device which the third party I2C drivers did not initiate.  I2C
+    platform specific code may use this API within these guidelines.
 
-  @param[in] This           Pointer to an EFI_I2C_MASTER_PROTOCOL structure.
-  @param[in] SlaveAddress   Address of the device on the I2C bus.  Set the
-                            I2C_ADDRESSING_10_BIT when using 10-bit addresses,
-                            clear this bit for 7-bit addressing.  Bits 0-6
-                            are used for 7-bit I2C slave addresses and bits
-                            0-9 are used for 10-bit I2C slave addresses.
-  @param[in] RequestPacket  Pointer to an EFI_I2C_REQUEST_PACKET
-                            structure describing the I2C transaction.
-  @param[in] Event          Event to signal for asynchronous transactions,
-                            NULL for asynchronous transactions
-  @param[out] I2cStatus     Optional buffer to receive the I2C transaction
-                            completion status
+    @param[in] This           Pointer to an EFI_I2C_MASTER_PROTOCOL structure.
+    @param[in] SlaveAddress   Address of the device on the I2C bus.  Set the
+                              I2C_ADDRESSING_10_BIT when using 10-bit addresses,
+                              clear this bit for 7-bit addressing.  Bits 0-6
+                              are used for 7-bit I2C slave addresses and bits
+                              0-9 are used for 10-bit I2C slave addresses.
+    @param[in] RequestPacket  Pointer to an EFI_I2C_REQUEST_PACKET
+                              structure describing the I2C transaction.
+    @param[in] Event          Event to signal for asynchronous transactions,
+                              NULL for asynchronous transactions
+    @param[out] I2cStatus     Optional buffer to receive the I2C transaction
+                              completion status
 
-  @retval EFI_SUCCESS           The asynchronous transaction was successfully
-                                started when Event is not NULL.
-  @retval EFI_SUCCESS           The transaction completed successfully when
-                                Event is NULL.
-  @retval EFI_ALREADY_STARTED   The controller is busy with another transaction.
-  @retval EFI_BAD_BUFFER_SIZE   The RequestPacket->LengthInBytes value is too
-                                large.
-  @retval EFI_DEVICE_ERROR      There was an I2C error (NACK) during the
-                                transaction.
-  @retval EFI_INVALID_PARAMETER RequestPacket is NULL
-  @retval EFI_NOT_FOUND         Reserved bit set in the SlaveAddress parameter
-  @retval EFI_NO_RESPONSE       The I2C device is not responding to the slave
-                                address.  EFI_DEVICE_ERROR will be returned if
-                                the controller cannot distinguish when the NACK
-                                occurred.
-  @retval EFI_OUT_OF_RESOURCES  Insufficient memory for I2C transaction
-  @retval EFI_UNSUPPORTED       The controller does not support the requested
-                                transaction.
+    @retval EFI_SUCCESS           The asynchronous transaction was successfully
+                                  started when Event is not NULL.
+    @retval EFI_SUCCESS           The transaction completed successfully when
+                                  Event is NULL.
+    @retval EFI_ALREADY_STARTED   The controller is busy with another transaction.
+    @retval EFI_BAD_BUFFER_SIZE   The RequestPacket->LengthInBytes value is too
+                                  large.
+    @retval EFI_DEVICE_ERROR      There was an I2C error (NACK) during the
+                                  transaction.
+    @retval EFI_INVALID_PARAMETER RequestPacket is NULL
+    @retval EFI_NOT_FOUND         Reserved bit set in the SlaveAddress parameter
+    @retval EFI_NO_RESPONSE       The I2C device is not responding to the slave
+                                  address.  EFI_DEVICE_ERROR will be returned if
+                                  the controller cannot distinguish when the NACK
+                                  occurred.
+    @retval EFI_OUT_OF_RESOURCES  Insufficient memory for I2C transaction
+    @retval EFI_UNSUPPORTED       The controller does not support the requested
+                                  transaction.
 
-**/
-public readonly delegate* unmanaged<CONST,ulong,EFI_I2C_REQUEST_PACKET*,EFI_EVENT,EFI_STATUS*, EFI_STATUS> StartRequest;
+  **/
+  public readonly delegate* unmanaged<CONST, ulong, EFI_I2C_REQUEST_PACKET*, EFI_EVENT, EFI_STATUS*, EFI_STATUS> StartRequest;
 
   ///
   /// Pointer to an EFI_I2C_CONTROLLER_CAPABILITIES data structure containing

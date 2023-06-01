@@ -25,7 +25,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 //
 // Disable warning when last field of data structure is a zero sized array.
 //
-  #pragma warning ( disable : 4200 )
+#pragma warning ( disable : 4200 )
 // #endif
 
 //
@@ -54,29 +54,29 @@ public static ulong GLOBAL_REMOVE_IF_UNREFERENCED = __declspec(selectany);
 // warnings.
 //
 // #ifndef UNREACHABLE
-  #ifdef __GNUC__
+# ifdef __GNUC__
 ///
 /// Signal compilers and analyzers that this call is not reachable.  It is
 /// up to the compiler to remove any code past that point.
 ///
 public static ulong UNREACHABLE = ()  __builtin_unreachable ();
-  #elif defined (__has_feature)
-    #if __has_builtin (__builtin_unreachable)
+#elif defined (__has_feature)
+#if __has_builtin (__builtin_unreachable)
 ///
 /// Signal compilers and analyzers that this call is not reachable.  It is
 /// up to the compiler to remove any code past that point.
 ///
 public static ulong UNREACHABLE = ()  __builtin_unreachable ();
-    #endif
-  #endif
+#endif
+#endif
 
-  #ifndef UNREACHABLE
+# ifndef UNREACHABLE
 ///
 /// Signal compilers and analyzers that this call is not reachable.  It is
 /// up to the compiler to remove any code past that point.
 ///
 public static ulong UNREACHABLE = ();
-  #endif
+#endif
 // #endif
 
 //
@@ -85,28 +85,28 @@ public static ulong UNREACHABLE = ();
 // false positives.
 //
 // #ifndef NORETURN
-  #if defined (__GNUC__) || defined (__clang__)
+#if defined (__GNUC__) || defined (__clang__)
 ///
 /// Signal compilers and analyzers that the function cannot return.
 /// It is up to the compiler to remove any code past a call to functions
 /// flagged with this attribute.
 ///
 public static ulong NORETURN = __attribute__((noreturn));
-  #elif defined (_MSC_EXTENSIONS) && !defined (MDE_CPU_EBC)
+#elif defined (_MSC_EXTENSIONS) && !defined (MDE_CPU_EBC)
 ///
 /// Signal compilers and analyzers that the function cannot return.
 /// It is up to the compiler to remove any code past a call to functions
 /// flagged with this attribute.
 ///
 public static ulong NORETURN = __declspec(noreturn);
-  #else
+#else
 ///
 /// Signal compilers and analyzers that the function cannot return.
 /// It is up to the compiler to remove any code past a call to functions
 /// flagged with this attribute.
 ///
 // #define NORETURN
-  #endif
+#endif
 // #endif
 
 //
@@ -114,23 +114,23 @@ public static ulong NORETURN = __declspec(noreturn);
 // returns warnings.
 //
 // #ifndef ANALYZER_UNREACHABLE
-  #ifdef __clang_analyzer__
-    #if __has_builtin (__builtin_unreachable)
+# ifdef __clang_analyzer__
+#if __has_builtin (__builtin_unreachable)
 ///
 /// Signal the analyzer that this call is not reachable.
 /// This excludes compilers.
 ///
 public static ulong ANALYZER_UNREACHABLE = ()  __builtin_unreachable ();
-    #endif
-  #endif
+#endif
+#endif
 
-  #ifndef ANALYZER_UNREACHABLE
+# ifndef ANALYZER_UNREACHABLE
 ///
 /// Signal the analyzer that this call is not reachable.
 /// This excludes compilers.
 ///
 public static ulong ANALYZER_UNREACHABLE = ();
-  #endif
+#endif
 // #endif
 
 //
@@ -140,23 +140,23 @@ public static ulong ANALYZER_UNREACHABLE = ();
 // for verification.
 //
 // #ifndef ANALYZER_NORETURN
-  #ifdef __has_feature
-    #if __has_feature (attribute_analyzer_noreturn)
+# ifdef __has_feature
+#if __has_feature (attribute_analyzer_noreturn)
 ///
 /// Signal analyzers that the function cannot return.
 /// This excludes compilers.
 ///
 public static ulong ANALYZER_NORETURN = __attribute__((analyzer_noreturn));
-    #endif
-  #endif
+#endif
+#endif
 
-  #ifndef ANALYZER_NORETURN
+# ifndef ANALYZER_NORETURN
 ///
 /// Signal the analyzer that the function cannot return.
 /// This excludes compilers.
 ///
 // #define ANALYZER_NORETURN
-  #endif
+#endif
 // #endif
 
 ///
@@ -164,19 +164,19 @@ public static ulong ANALYZER_NORETURN = __attribute__((analyzer_noreturn));
 /// This prevents wrong optimizations which can cause bugs.
 ///
 // #ifndef RETURNS_TWICE
-  #if defined (__GNUC__) || defined (__clang__)
+#if defined (__GNUC__) || defined (__clang__)
 ///
 /// Tell the code optimizer that the function will return twice.
 /// This prevents wrong optimizations which can cause bugs.
 ///
 public static ulong RETURNS_TWICE = __attribute__((returns_twice));
-  #else
+#else
 ///
 /// Tell the code optimizer that the function will return twice.
 /// This prevents wrong optimizations which can cause bugs.
 ///
 // #define RETURNS_TWICE
-  #endif
+#endif
 // #endif
 
 //
@@ -193,7 +193,7 @@ public static ulong __CONCATENATE = (a, b)  a ## b;
 /// The __USER_LABEL_PREFIX__ macro predefined by GNUC represents the prefix
 /// on symbols in assembly language.
 ///
-public static ulong ASM_PFX = (name)  _CONCATENATE (__USER_LABEL_PREFIX__, name);
+public static ulong ASM_PFX = (name)_CONCATENATE(__USER_LABEL_PREFIX__, name);
 
 #ifdef __APPLE__
 //
@@ -212,34 +212,37 @@ public static ulong ASM_FUNCTION_REMOVE_IF_UNREFERENCED = .subsections_via_symbo
 /// Unless otherwise specified, aligned on a 64 bit boundary.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct GUID {
- public uint    Data1;
- public ushort    Data2;
- public ushort    Data3;
- public fixed byte     Data4[8];
+public unsafe struct GUID
+{
+  public uint Data1;
+  public ushort Data2;
+  public ushort Data3;
+  public fixed byte Data4[8];
 }
 
 ///
 /// 4-byte buffer. An IPv4 internet protocol address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct IPv4_ADDRESS {
- public fixed byte    Addr[4];
+public unsafe struct IPv4_ADDRESS
+{
+  public fixed byte Addr[4];
 }
 
 ///
 /// 16-byte buffer. An IPv6 internet protocol address.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct IPv6_ADDRESS {
- public fixed byte    Addr[16];
+public unsafe struct IPv6_ADDRESS
+{
+  public fixed byte Addr[16];
 }
 
 //
 // 8-bytes unsigned value that represents a physical system address.
 //
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct PHYSICAL_ADDRESS { ulong Value; public static implicit operator PHYSICAL_ADDRESS(ulong value) => new PHYSICAL_ADDRESS() { Value = value }; public static implicit operator ulong(PHYSICAL_ADDRESS value) => value.Value;}
+public unsafe struct PHYSICAL_ADDRESS { ulong Value; public static implicit operator PHYSICAL_ADDRESS(ulong value) => new PHYSICAL_ADDRESS() { Value = value }; public static implicit operator ulong(PHYSICAL_ADDRESS value) => value.Value; }
 
 ///
 /// LIST_ENTRY structure definition.
@@ -250,9 +253,10 @@ public unsafe struct PHYSICAL_ADDRESS { ulong Value; public static implicit oper
 /// _LIST_ENTRY structure definition.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct LIST_ENTRY {
- public LIST_ENTRY    *ForwardLink;
- public LIST_ENTRY    *BackLink;
+public unsafe struct LIST_ENTRY
+{
+  public LIST_ENTRY* ForwardLink;
+  public LIST_ENTRY* BackLink;
 }
 
 //
@@ -304,25 +308,25 @@ public static ulong void = void;
 /// Boolean true value.  UEFI Specification defines this value to be 1,
 /// but this form is more portable.
 ///
-public static ulong TRUE = ((bool)(1==1));
+public static ulong TRUE = ((bool)(1 == 1));
 
 ///
 /// Boolean false value.  UEFI Specification defines this value to be 0,
 /// but this form is more portable.
 ///
-public static ulong FALSE = ((bool)(0==1));
+public static ulong FALSE = ((bool)(0 == 1));
 
 ///
 /// NULL pointer (VOID *)
 ///
 #if defined (__cplusplus)
-  #if defined (_MSC_EXTENSIONS)
+#if defined (_MSC_EXTENSIONS)
 public static ulong NULL = nullptr;
-  #else
-public static ulong NULL = __null;
-  #endif
 #else
-public static ulong NULL = ((VOID *) 0);
+public static ulong NULL = __null;
+#endif
+#else
+public static ulong NULL = ((VOID*)0);
 // #endif
 
 //
@@ -345,10 +349,10 @@ public static ulong MAX_UINT64 = ((ulong)0xFFFFFFFFFFFFFFFF);
 ///
 /// Minimum values for the signed UEFI Data Types
 ///
-public static ulong MIN_INT8 = (((sbyte)  -127) - 1);
-public static ulong MIN_INT16 = (((short) -32767) - 1);
-public static ulong MIN_INT32 = (((int) -2147483647) - 1);
-public static ulong MIN_INT64 = (((long) -9223372036854775807LL) - 1);
+public static ulong MIN_INT8 = (((sbyte)-127) - 1);
+public static ulong MIN_INT16 = (((short)-32767) - 1);
+public static ulong MIN_INT32 = (((int)-2147483647) - 1);
+public static ulong MIN_INT64 = (((long)-9223372036854775807LL) - 1);
 
 public static ulong BIT0 = 0x00000001;
 public static ulong BIT1 = 0x00000002;
@@ -582,7 +586,7 @@ public static ulong BASE_8EB = 0x8000000000000000;
 
   @return The aligned size.
 **/
-public static ulong _INT_SIZE_OF = (n)  ((sizeof (n) + sizeof (ulong) - 1) &~(sizeof (ulong) - 1));
+public static ulong _INT_SIZE_OF = (n)((sizeof(n) + sizeof(ulong) - 1) & ~(sizeof(ulong) - 1));
 
 #if defined (_M_ARM) || defined (_M_ARM64)
 //
@@ -599,7 +603,7 @@ public static ulong VA_COPY = (Dest, Start)         ((void)((Dest) = (Start)));
 
 #elif defined (__GNUC__) || defined (__clang__)
 
-  #if defined (MDE_CPU_X64) && !defined (NO_MSABI_VA_FUNCS)
+#if defined (MDE_CPU_X64) && !defined (NO_MSABI_VA_FUNCS)
 //
 // X64 only. Use MS ABI version of GCC built-in macros for variable argument lists.
 //
@@ -622,7 +626,7 @@ public static ulong VA_END = (Marker)  __builtin_ms_va_end (Marker);
 
 public static ulong VA_COPY = (Dest, Start)  __builtin_ms_va_copy (Dest, Start);
 
-  #else
+#else
 //
 // Use GCC built-in macros for variable argument lists.
 //
@@ -642,7 +646,7 @@ public static ulong VA_END = (Marker)  __builtin_va_end (Marker);
 
 public static ulong VA_COPY = (Dest, Start)  __builtin_va_copy (Dest, Start);
 
-  #endif
+#endif
 
 #else
 ///
@@ -650,7 +654,7 @@ public static ulong VA_COPY = (Dest, Start)  __builtin_va_copy (Dest, Start);
 /// implementation and could be an array or structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct VA_LIST { byte* Value; public static implicit operator VA_LIST(byte* value) => new VA_LIST() { Value = value }; public static implicit operator byte*(VA_LIST value) => value.Value;}
+public unsafe struct VA_LIST { byte* Value; public static implicit operator VA_LIST(byte* value) => new VA_LIST() { Value = value }; public static implicit operator byte*(VA_LIST value) => value.Value; }
 
 /**
   Retrieves a pointer to the beginning of a variable argument list, based on
@@ -668,7 +672,7 @@ public unsafe struct VA_LIST { byte* Value; public static implicit operator VA_L
   @return  A pointer to the beginning of a variable argument list.
 
 **/
-public static ulong VA_START = (Marker, Parameter)  (Marker = (VA_LIST) ((ulong) & (Parameter) + _INT_SIZE_OF (Parameter)));
+public static ulong VA_START = (Marker, Parameter)(Marker = (VA_LIST)((ulong)&(Parameter) + _INT_SIZE_OF(Parameter)));
 
 /**
   Returns an argument of a specified type from a variable argument list and updates
@@ -686,7 +690,7 @@ public static ulong VA_START = (Marker, Parameter)  (Marker = (VA_LIST) ((ulong)
   @return  An argument of the type specified by TYPE.
 
 **/
-public static ulong VA_ARG = (Marker, TYPE)  (*(TYPE *) ((Marker += _INT_SIZE_OF (TYPE)) - _INT_SIZE_OF (TYPE)));
+public static ulong VA_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _INT_SIZE_OF(TYPE)) - _INT_SIZE_OF(TYPE)));
 
 /**
   Terminates the use of a variable argument list.
@@ -698,7 +702,7 @@ public static ulong VA_ARG = (Marker, TYPE)  (*(TYPE *) ((Marker += _INT_SIZE_OF
   @param   Marker   VA_LIST used to traverse the list of arguments.
 
 **/
-public static ulong VA_END = (Marker)  (Marker = (VA_LIST) 0);
+public static ulong VA_END = (Marker)(Marker = (VA_LIST)0);
 
 /**
   Initializes a VA_LIST as a copy of an existing VA_LIST.
@@ -711,7 +715,7 @@ public static ulong VA_END = (Marker)  (Marker = (VA_LIST) 0);
   @param   Start  VA_LIST used to traverse the list of arguments.
 
 **/
-public static ulong VA_COPY = (Dest, Start)  ((void)((Dest) = (Start)));
+public static ulong VA_COPY = (Dest, Start)((void)((Dest) = (Start)));
 
 // #endif
 
@@ -719,7 +723,7 @@ public static ulong VA_COPY = (Dest, Start)  ((void)((Dest) = (Start)));
 /// Pointer to the start of a variable argument list stored in a memory buffer. Same as byte *.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct BASE_LIST { ulong* Value; public static implicit operator BASE_LIST(ulong* value) => new BASE_LIST() { Value = value }; public static implicit operator ulong*(BASE_LIST value) => value.Value;}
+public unsafe struct BASE_LIST { ulong* Value; public static implicit operator BASE_LIST(ulong* value) => new BASE_LIST() { Value = value }; public static implicit operator ulong*(BASE_LIST value) => value.Value; }
 
 /**
   Returns the size of a data type in sizeof(ulong) units rounded up to the nearest ulong boundary.
@@ -728,7 +732,7 @@ public unsafe struct BASE_LIST { ulong* Value; public static implicit operator B
 
   @return The size of TYPE in sizeof (ulong) units rounded up to the nearest ulong boundary.
 **/
-public static ulong _BASE_INT_SIZE_OF = (TYPE)  ((sizeof (TYPE) + sizeof (ulong) - 1) / sizeof (ulong));
+public static ulong _BASE_INT_SIZE_OF = (TYPE)((sizeof(TYPE) + sizeof(ulong) - 1) / sizeof(ulong));
 
 /**
   Returns an argument of a specified type from a variable argument list and updates
@@ -746,7 +750,7 @@ public static ulong _BASE_INT_SIZE_OF = (TYPE)  ((sizeof (TYPE) + sizeof (ulong)
   @return  An argument of the type specified by TYPE.
 
 **/
-public static ulong BASE_ARG = (Marker, TYPE)  (*(TYPE *) ((Marker += _BASE_INT_SIZE_OF (TYPE)) - _BASE_INT_SIZE_OF (TYPE)));
+public static ulong BASE_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _BASE_INT_SIZE_OF(TYPE)) - _BASE_INT_SIZE_OF(TYPE)));
 
 /**
   The macro that returns the byte offset of a field in a data structure.
@@ -811,7 +815,7 @@ public static ulong ALIGNOF = (TYPE)  OFFSET_OF (struct { byte C; TYPE A; }, A);
   @param  Message     Raised compiler diagnostic message when expression is false.
 
 **/
-#ifdef MDE_CPU_EBC
+# ifdef MDE_CPU_EBC
 public static ulong STATIC_ASSERT = (Expression, Message);
 #elif defined (_MSC_EXTENSIONS) || defined (__cplusplus)
 public static ulong STATIC_ASSERT = static_assert;
@@ -1339,7 +1343,7 @@ _ReturnAddress (
   void
   );
 
-  #pragma intrinsic(_ReturnAddress)
+#pragma intrinsic(_ReturnAddress)
 
 /**
   Get the return address of the calling function.

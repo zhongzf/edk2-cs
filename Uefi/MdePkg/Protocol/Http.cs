@@ -17,18 +17,19 @@ namespace Uefi;
 // #ifndef __EFI_HTTP_PROTOCOL_H__
 // #define __EFI_HTTP_PROTOCOL_H__
 
-public static EFI_GUID EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID = new GUID( 
-    0xbdc8e6af, 0xd9bc, 0x4379, new byte[] {0xa7, 0x2a, 0xe0, 0xc4, 0xe7, 0x5d, 0xae, 0x1c });
+public static EFI_GUID EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+    0xbdc8e6af, 0xd9bc, 0x4379, new byte[] { 0xa7, 0x2a, 0xe0, 0xc4, 0xe7, 0x5d, 0xae, 0x1c });
 
-public static EFI_GUID EFI_HTTP_PROTOCOL_GUID = new GUID( 
-    0x7a59b29b, 0x910b, 0x4171, new byte[] {0x82, 0x42, 0xa8, 0x5a, 0x0d, 0xf2, 0x5b, 0x5b });
+public static EFI_GUID EFI_HTTP_PROTOCOL_GUID = new GUID(
+    0x7a59b29b, 0x910b, 0x4171, new byte[] { 0x82, 0x42, 0xa8, 0x5a, 0x0d, 0xf2, 0x5b, 0x5b });
 
 // typedef struct _EFI_HTTP_PROTOCOL EFI_HTTP_PROTOCOL;
 
 ///
 /// EFI_HTTP_VERSION
 ///
-public enum EFI_HTTP_VERSION {
+public enum EFI_HTTP_VERSION
+{
   HttpVersion10,
   HttpVersion11,
   HttpVersionUnsupported
@@ -37,7 +38,8 @@ public enum EFI_HTTP_VERSION {
 ///
 /// EFI_HTTP_METHOD
 ///
-public enum EFI_HTTP_METHOD {
+public enum EFI_HTTP_METHOD
+{
   HttpMethodGet,
   HttpMethodPost,
   HttpMethodPatch,
@@ -53,7 +55,8 @@ public enum EFI_HTTP_METHOD {
 ///
 /// EFI_HTTP_STATUS_CODE
 ///
-public enum EFI_HTTP_STATUS_CODE {
+public enum EFI_HTTP_STATUS_CODE
+{
   HTTP_STATUS_UNSUPPORTED_STATUS = 0,
   HTTP_STATUS_100_CONTINUE,
   HTTP_STATUS_101_SWITCHING_PROTOCOLS,
@@ -102,43 +105,45 @@ public enum EFI_HTTP_STATUS_CODE {
 /// EFI_HTTPv4_ACCESS_POINT
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTPv4_ACCESS_POINT {
+public unsafe struct EFI_HTTPv4_ACCESS_POINT
+{
   ///
   /// Set to TRUE to instruct the EFI HTTP instance to use the default address
   /// information in every TCP connection made by this instance. In addition, when set
   /// to TRUE, LocalAddress and LocalSubnet are ignored.
   ///
- public bool             UseDefaultAddress;
+  public bool UseDefaultAddress;
   ///
   /// If UseDefaultAddress is set to FALSE, this defines the local IP address to be
   /// used in every TCP connection opened by this instance.
   ///
- public EFI_IPv4_ADDRESS    LocalAddress;
+  public EFI_IPv4_ADDRESS LocalAddress;
   ///
   /// If UseDefaultAddress is set to FALSE, this defines the local subnet to be used
   /// in every TCP connection opened by this instance.
   ///
- public EFI_IPv4_ADDRESS    LocalSubnet;
+  public EFI_IPv4_ADDRESS LocalSubnet;
   ///
   /// This defines the local port to be used in
   /// every TCP connection opened by this instance.
   ///
- public ushort              LocalPort;
+  public ushort LocalPort;
 }
 
 ///
 /// EFI_HTTPv6_ACCESS_POINT
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTPv6_ACCESS_POINT {
+public unsafe struct EFI_HTTPv6_ACCESS_POINT
+{
   ///
   /// Local IP address to be used in every TCP connection opened by this instance.
   ///
- public EFI_IPv6_ADDRESS    LocalAddress;
+  public EFI_IPv6_ADDRESS LocalAddress;
   ///
   /// Local port to be used in every TCP connection opened by this instance.
   ///
- public ushort              LocalPort;
+  public ushort LocalPort;
 }
 
 ///
@@ -146,33 +151,34 @@ public unsafe struct EFI_HTTPv6_ACCESS_POINT {
 ///
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct AccessPoint {
+public unsafe struct AccessPoint
+{
   ///
   /// HTTP version that this instance will support.
   ///
- public EFI_HTTP_VERSION    HttpVersion;
+  public EFI_HTTP_VERSION HttpVersion;
   ///
   /// Time out (in milliseconds) when blocking for requests.
   ///
- public uint              TimeOutMillisec;
+  public uint TimeOutMillisec;
   ///
   /// Defines behavior of EFI DNS and TCP protocols consumed by this instance. If
   /// FALSE, this instance will use EFI_DNS4_PROTOCOL and EFI_TCP4_PROTOCOL. If TRUE,
   /// this instance will use EFI_DNS6_PROTOCOL and EFI_TCP6_PROTOCOL.
   ///
- public bool             LocalAddressIsIPv6;
+  public bool LocalAddressIsIPv6;
 
   union {
     ///
     /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
     /// port used by the underlying TCP protocol.
     ///
-   public EFI_HTTPv4_ACCESS_POINT    *IPv4Node;
-    ///
-    /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
-    /// used by the underlying TCP protocol.
-    ///
-   public EFI_HTTPv6_ACCESS_POINT    *IPv6Node;
+   public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
+  ///
+  /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
+  /// used by the underlying TCP protocol.
+  ///
+  public EFI_HTTPv6_ACCESS_POINT* IPv6Node;
 }
 } EFI_HTTP_CONFIG_DATA;
 
@@ -180,53 +186,57 @@ public unsafe struct AccessPoint {
 /// EFI_HTTP_REQUEST_DATA
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTP_REQUEST_DATA {
+public unsafe struct EFI_HTTP_REQUEST_DATA
+{
   ///
   /// The HTTP method (e.g. GET, POST) for this HTTP Request.
   ///
- public EFI_HTTP_METHOD    Method;
+  public EFI_HTTP_METHOD Method;
   ///
   /// The URI of a remote host. From the information in this field, the HTTP instance
   /// will be able to determine whether to use HTTP or HTTPS and will also be able to
   /// determine the port number to use. If no port number is specified, port 80 (HTTP)
   /// is assumed. See RFC 3986 for more details on URI syntax.
   ///
- public char             *Url;
+  public char* Url;
 }
 
 ///
 /// EFI_HTTP_RESPONSE_DATA
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTP_RESPONSE_DATA {
+public unsafe struct EFI_HTTP_RESPONSE_DATA
+{
   ///
   /// Response status code returned by the remote host.
   ///
- public EFI_HTTP_STATUS_CODE    StatusCode;
+  public EFI_HTTP_STATUS_CODE StatusCode;
 }
 
 ///
 /// EFI_HTTP_HEADER
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTP_HEADER {
+public unsafe struct EFI_HTTP_HEADER
+{
   ///
   /// Null terminated string which describes a field name. See RFC 2616 Section 14 for
   /// detailed information about field names.
   ///
- public byte    *FieldName;
+  public byte* FieldName;
   ///
   /// Null terminated string which describes the corresponding field value. See RFC 2616
   /// Section 14 for detailed information about field values.
   ///
- public byte    *FieldValue;
+  public byte* FieldValue;
 }
 
 ///
 /// EFI_HTTP_MESSAGE
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Data {
+public unsafe struct Data
+{
   ///
   /// HTTP message data.
   ///
@@ -235,47 +245,48 @@ public unsafe struct Data {
     /// When the token is used to send a HTTP request, Request is a pointer to storage that
     /// contains such data as URL and HTTP method.
     ///
-   public EFI_HTTP_REQUEST_DATA     *Request;
-    ///
-    /// When used to await a response, Response points to storage containing HTTP response
-    /// status code.
-    ///
-   public EFI_HTTP_RESPONSE_DATA    *Response;
+   public EFI_HTTP_REQUEST_DATA* Request;
+  ///
+  /// When used to await a response, Response points to storage containing HTTP response
+  /// status code.
+  ///
+  public EFI_HTTP_RESPONSE_DATA* Response;
 }
-  ///
-  /// Number of HTTP header structures in Headers list. On request, this count is
-  /// provided by the caller. On response, this count is provided by the HTTP driver.
-  ///
-  ulong              HeaderCount;
-  ///
-  /// Array containing list of HTTP headers. On request, this array is populated by the
-  /// caller. On response, this array is allocated and populated by the HTTP driver. It
-  /// is the responsibility of the caller to free this memory on both request and
-  /// response.
-  ///
-  EFI_HTTP_HEADER    *Headers;
-  ///
-  /// Length in bytes of the HTTP body. This can be zero depending on the HttpMethod type.
-  ///
-  ulong              BodyLength;
-  ///
-  /// Body associated with the HTTP request or response. This can be NULL depending on
-  /// the HttpMethod type.
-  ///
-  void               *Body;
+///
+/// Number of HTTP header structures in Headers list. On request, this count is
+/// provided by the caller. On response, this count is provided by the HTTP driver.
+///
+ulong HeaderCount;
+///
+/// Array containing list of HTTP headers. On request, this array is populated by the
+/// caller. On response, this array is allocated and populated by the HTTP driver. It
+/// is the responsibility of the caller to free this memory on both request and
+/// response.
+///
+EFI_HTTP_HEADER* Headers;
+///
+/// Length in bytes of the HTTP body. This can be zero depending on the HttpMethod type.
+///
+ulong BodyLength;
+///
+/// Body associated with the HTTP request or response. This can be NULL depending on
+/// the HttpMethod type.
+///
+void* Body;
 } EFI_HTTP_MESSAGE;
 
 ///
 /// EFI_HTTP_TOKEN
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTP_TOKEN {
+public unsafe struct EFI_HTTP_TOKEN
+{
   ///
   /// This Event will be signaled after the Status field is updated by the EFI HTTP
   /// Protocol driver. The type of Event must be EFI_NOTIFY_SIGNAL. The Task Priority
   /// Level (TPL) of Event must be lower than or equal to TPL_CALLBACK.
   ///
- public EFI_EVENT    Event;
+  public EFI_EVENT Event;
   ///
   /// Status will be set to one of the following value if the HTTP request is
   /// successfully sent or if an unexpected error occurs:
@@ -287,11 +298,11 @@ public unsafe struct EFI_HTTP_TOKEN {
   ///   EFI_TIMEOUT:      The HTTP request timed out before reaching the remote host.
   ///   EFI_DEVICE_ERROR: An unexpected system or network error occurred.
   ///
- public EFI_STATUS          Status;
+  public EFI_STATUS Status;
   ///
   /// Pointer to storage containing HTTP message data.
   ///
- public EFI_HTTP_MESSAGE    *Message;
+  public EFI_HTTP_MESSAGE* Message;
 }
 
 
@@ -505,176 +516,177 @@ public unsafe struct EFI_HTTP_TOKEN {
 /// TCP protocol.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HTTP_PROTOCOL {
-/**
-  Returns the operational parameters for the current HTTP child instance.
+public unsafe struct EFI_HTTP_PROTOCOL
+{
+  /**
+    Returns the operational parameters for the current HTTP child instance.
 
-  The GetModeData() function is used to read the current mode data (operational
-  parameters) for this HTTP protocol instance.
+    The GetModeData() function is used to read the current mode data (operational
+    parameters) for this HTTP protocol instance.
 
-  @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
-  @param[out] HttpConfigData      Point to buffer for operational parameters of this
-                                  HTTP instance. It is the responsibility of the caller
-                                  to allocate the memory for HttpConfigData and
-                                  HttpConfigData->AccessPoint.IPv6Node/IPv4Node. In fact,
-                                  it is recommended to allocate sufficient memory to record
-                                  IPv6Node since it is big enough for all possibilities.
+    @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
+    @param[out] HttpConfigData      Point to buffer for operational parameters of this
+                                    HTTP instance. It is the responsibility of the caller
+                                    to allocate the memory for HttpConfigData and
+                                    HttpConfigData->AccessPoint.IPv6Node/IPv4Node. In fact,
+                                    it is recommended to allocate sufficient memory to record
+                                    IPv6Node since it is big enough for all possibilities.
 
-  @retval EFI_SUCCESS             Operation succeeded.
-  @retval EFI_INVALID_PARAMETER   This is NULL.
-                                  HttpConfigData is NULL.
-                                  HttpConfigData->AccessPoint.IPv4Node or
-                                  HttpConfigData->AccessPoint.IPv6Node is NULL.
-  @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been started.
-**/
-public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*,EFI_HTTP_CONFIG_DATA*, EFI_STATUS> GetModeData;
-/**
-  Initialize or brutally reset the operational parameters for this EFI HTTP instance.
+    @retval EFI_SUCCESS             Operation succeeded.
+    @retval EFI_INVALID_PARAMETER   This is NULL.
+                                    HttpConfigData is NULL.
+                                    HttpConfigData->AccessPoint.IPv4Node or
+                                    HttpConfigData->AccessPoint.IPv6Node is NULL.
+    @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been started.
+  **/
+  public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_HTTP_CONFIG_DATA*, EFI_STATUS> GetModeData;
+  /**
+    Initialize or brutally reset the operational parameters for this EFI HTTP instance.
 
-  The Configure() function does the following:
-  When HttpConfigData is not NULL Initialize this EFI HTTP instance by configuring
-  timeout, local address, port, etc.
-  When HttpConfigData is NULL, reset this EFI HTTP instance by closing all active
-  connections with remote hosts, canceling all asynchronous tokens, and flush request
-  and response buffers without informing the appropriate hosts.
+    The Configure() function does the following:
+    When HttpConfigData is not NULL Initialize this EFI HTTP instance by configuring
+    timeout, local address, port, etc.
+    When HttpConfigData is NULL, reset this EFI HTTP instance by closing all active
+    connections with remote hosts, canceling all asynchronous tokens, and flush request
+    and response buffers without informing the appropriate hosts.
 
-  No other EFI HTTP function can be executed by this instance until the Configure()
-  function is executed and returns successfully.
+    No other EFI HTTP function can be executed by this instance until the Configure()
+    function is executed and returns successfully.
 
-  @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
-  @param[in]  HttpConfigData      Pointer to the configure data to configure the instance.
+    @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
+    @param[in]  HttpConfigData      Pointer to the configure data to configure the instance.
 
-  @retval EFI_SUCCESS             Operation succeeded.
-  @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                  This is NULL.
-                                  HttpConfigData->LocalAddressIsIPv6 is FALSE and
-                                  HttpConfigData->AccessPoint.IPv4Node is NULL.
-                                  HttpConfigData->LocalAddressIsIPv6 is TRUE and
-                                  HttpConfigData->AccessPoint.IPv6Node is NULL.
-  @retval EFI_ALREADY_STARTED     Reinitialize this HTTP instance without calling
-                                  Configure() with NULL to reset it.
-  @retval EFI_DEVICE_ERROR        An unexpected system or network error occurred.
-  @retval EFI_OUT_OF_RESOURCES    Could not allocate enough system resources when
-                                  executing Configure().
-  @retval EFI_UNSUPPORTED         One or more options in ConfigData are not supported
-                                  in the implementation.
-**/
-public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*,EFI_HTTP_CONFIG_DATA*, EFI_STATUS> Configure;
-/**
-  The Request() function queues an HTTP request to this HTTP instance,
-  similar to Transmit() function in the EFI TCP driver. When the HTTP request is sent
-  successfully, or if there is an error, Status in token will be updated and Event will
-  be signaled.
+    @retval EFI_SUCCESS             Operation succeeded.
+    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+                                    This is NULL.
+                                    HttpConfigData->LocalAddressIsIPv6 is FALSE and
+                                    HttpConfigData->AccessPoint.IPv4Node is NULL.
+                                    HttpConfigData->LocalAddressIsIPv6 is TRUE and
+                                    HttpConfigData->AccessPoint.IPv6Node is NULL.
+    @retval EFI_ALREADY_STARTED     Reinitialize this HTTP instance without calling
+                                    Configure() with NULL to reset it.
+    @retval EFI_DEVICE_ERROR        An unexpected system or network error occurred.
+    @retval EFI_OUT_OF_RESOURCES    Could not allocate enough system resources when
+                                    executing Configure().
+    @retval EFI_UNSUPPORTED         One or more options in ConfigData are not supported
+                                    in the implementation.
+  **/
+  public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_HTTP_CONFIG_DATA*, EFI_STATUS> Configure;
+  /**
+    The Request() function queues an HTTP request to this HTTP instance,
+    similar to Transmit() function in the EFI TCP driver. When the HTTP request is sent
+    successfully, or if there is an error, Status in token will be updated and Event will
+    be signaled.
 
-  @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
-  @param[in]  Token               Pointer to storage containing HTTP request token.
+    @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
+    @param[in]  Token               Pointer to storage containing HTTP request token.
 
-  @retval EFI_SUCCESS             Outgoing data was processed.
-  @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been started.
-  @retval EFI_DEVICE_ERROR        An unexpected system or network error occurred.
-  @retval EFI_TIMEOUT             Data was dropped out of the transmit or receive queue.
-  @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                  This is NULL.
-                                  Token is NULL.
-                                  Token->Message is NULL.
-                                  Token->Message->Body is not NULL,
-                                  Token->Message->BodyLength is non-zero, and
-                                  Token->Message->Data is NULL, but a previous call to
-                                  Request()has not been completed successfully.
-  @retval EFI_OUT_OF_RESOURCES    Could not allocate enough system resources.
-  @retval EFI_UNSUPPORTED         The HTTP method is not supported in current implementation.
-**/
-public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*,EFI_HTTP_TOKEN*, EFI_STATUS> Request;
-/**
-  Abort an asynchronous HTTP request or response token.
+    @retval EFI_SUCCESS             Outgoing data was processed.
+    @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been started.
+    @retval EFI_DEVICE_ERROR        An unexpected system or network error occurred.
+    @retval EFI_TIMEOUT             Data was dropped out of the transmit or receive queue.
+    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+                                    This is NULL.
+                                    Token is NULL.
+                                    Token->Message is NULL.
+                                    Token->Message->Body is not NULL,
+                                    Token->Message->BodyLength is non-zero, and
+                                    Token->Message->Data is NULL, but a previous call to
+                                    Request()has not been completed successfully.
+    @retval EFI_OUT_OF_RESOURCES    Could not allocate enough system resources.
+    @retval EFI_UNSUPPORTED         The HTTP method is not supported in current implementation.
+  **/
+  public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_HTTP_TOKEN*, EFI_STATUS> Request;
+  /**
+    Abort an asynchronous HTTP request or response token.
 
-  The Cancel() function aborts a pending HTTP request or response transaction. If
-  Token is not NULL and the token is in transmit or receive queues when it is being
-  cancelled, its Token->Status will be set to EFI_ABORTED and then Token->Event will
-  be signaled. If the token is not in one of the queues, which usually means that the
-  asynchronous operation has completed, EFI_NOT_FOUND is returned. If Token is NULL,
-  all asynchronous tokens issued by Request() or Response() will be aborted.
+    The Cancel() function aborts a pending HTTP request or response transaction. If
+    Token is not NULL and the token is in transmit or receive queues when it is being
+    cancelled, its Token->Status will be set to EFI_ABORTED and then Token->Event will
+    be signaled. If the token is not in one of the queues, which usually means that the
+    asynchronous operation has completed, EFI_NOT_FOUND is returned. If Token is NULL,
+    all asynchronous tokens issued by Request() or Response() will be aborted.
 
-  @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
-  @param[in]  Token               Point to storage containing HTTP request or response
-                                  token.
+    @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
+    @param[in]  Token               Point to storage containing HTTP request or response
+                                    token.
 
-  @retval EFI_SUCCESS             Request and Response queues are successfully flushed.
-  @retval EFI_INVALID_PARAMETER   This is NULL.
-  @retval EFI_NOT_STARTED         This instance hasn't been configured.
-  @retval EFI_NOT_FOUND           The asynchronous request or response token is not
-                                  found.
-  @retval EFI_UNSUPPORTED         The implementation does not support this function.
-**/
-public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*,EFI_HTTP_TOKEN*, EFI_STATUS> Cancel;
-/**
-  The Response() function queues an HTTP response to this HTTP instance, similar to
-  Receive() function in the EFI TCP driver. When the HTTP Response is received successfully,
-  or if there is an error, Status in token will be updated and Event will be signaled.
+    @retval EFI_SUCCESS             Request and Response queues are successfully flushed.
+    @retval EFI_INVALID_PARAMETER   This is NULL.
+    @retval EFI_NOT_STARTED         This instance hasn't been configured.
+    @retval EFI_NOT_FOUND           The asynchronous request or response token is not
+                                    found.
+    @retval EFI_UNSUPPORTED         The implementation does not support this function.
+  **/
+  public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_HTTP_TOKEN*, EFI_STATUS> Cancel;
+  /**
+    The Response() function queues an HTTP response to this HTTP instance, similar to
+    Receive() function in the EFI TCP driver. When the HTTP Response is received successfully,
+    or if there is an error, Status in token will be updated and Event will be signaled.
 
-  The HTTP driver will queue a receive token to the underlying TCP instance. When data
-  is received in the underlying TCP instance, the data will be parsed and Token will
-  be populated with the response data. If the data received from the remote host
-  contains an incomplete or invalid HTTP header, the HTTP driver will continue waiting
-  (asynchronously) for more data to be sent from the remote host before signaling
-  Event in Token.
+    The HTTP driver will queue a receive token to the underlying TCP instance. When data
+    is received in the underlying TCP instance, the data will be parsed and Token will
+    be populated with the response data. If the data received from the remote host
+    contains an incomplete or invalid HTTP header, the HTTP driver will continue waiting
+    (asynchronously) for more data to be sent from the remote host before signaling
+    Event in Token.
 
-  It is the responsibility of the caller to allocate a buffer for Body and specify the
-  size in BodyLength. If the remote host provides a response that contains a content
-  body, up to BodyLength bytes will be copied from the receive buffer into Body and
-  BodyLength will be updated with the amount of bytes received and copied to Body. This
-  allows the client to download a large file in chunks instead of into one contiguous
-  block of memory. Similar to HTTP request, if Body is not NULL and BodyLength is
-  non-zero and all other fields are NULL or 0, the HTTP driver will queue a receive
-  token to underlying TCP instance. If data arrives in the receive buffer, up to
-  BodyLength bytes of data will be copied to Body. The HTTP driver will then update
-  BodyLength with the amount of bytes received and copied to Body.
+    It is the responsibility of the caller to allocate a buffer for Body and specify the
+    size in BodyLength. If the remote host provides a response that contains a content
+    body, up to BodyLength bytes will be copied from the receive buffer into Body and
+    BodyLength will be updated with the amount of bytes received and copied to Body. This
+    allows the client to download a large file in chunks instead of into one contiguous
+    block of memory. Similar to HTTP request, if Body is not NULL and BodyLength is
+    non-zero and all other fields are NULL or 0, the HTTP driver will queue a receive
+    token to underlying TCP instance. If data arrives in the receive buffer, up to
+    BodyLength bytes of data will be copied to Body. The HTTP driver will then update
+    BodyLength with the amount of bytes received and copied to Body.
 
-  If the HTTP driver does not have an open underlying TCP connection with the host
-  specified in the response URL, Request() will return EFI_ACCESS_DENIED. This is
-  consistent with RFC 2616 recommendation that HTTP clients should attempt to maintain
-  an open TCP connection between client and host.
+    If the HTTP driver does not have an open underlying TCP connection with the host
+    specified in the response URL, Request() will return EFI_ACCESS_DENIED. This is
+    consistent with RFC 2616 recommendation that HTTP clients should attempt to maintain
+    an open TCP connection between client and host.
 
-  @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
-  @param[in]  Token               Pointer to storage containing HTTP response token.
+    @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
+    @param[in]  Token               Pointer to storage containing HTTP response token.
 
-  @retval EFI_SUCCESS             Allocation succeeded.
-  @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been
-                                  initialized.
-  @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                  This is NULL.
-                                  Token is NULL.
-                                  Token->Message->Headers is NULL.
-                                  Token->Message is NULL.
-                                  Token->Message->Body is not NULL,
-                                  Token->Message->BodyLength is non-zero, and
-                                  Token->Message->Data is NULL, but a previous call to
-                                  Response() has not been completed successfully.
-  @retval EFI_OUT_OF_RESOURCES    Could not allocate enough system resources.
-  @retval EFI_ACCESS_DENIED       An open TCP connection is not present with the host
-                                  specified by response URL.
-**/
-public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*,EFI_HTTP_TOKEN*, EFI_STATUS> Response;
-/**
-  The Poll() function can be used by network drivers and applications to increase the
-  rate that data packets are moved between the communication devices and the transmit
-  and receive queues.
+    @retval EFI_SUCCESS             Allocation succeeded.
+    @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been
+                                    initialized.
+    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+                                    This is NULL.
+                                    Token is NULL.
+                                    Token->Message->Headers is NULL.
+                                    Token->Message is NULL.
+                                    Token->Message->Body is not NULL,
+                                    Token->Message->BodyLength is non-zero, and
+                                    Token->Message->Data is NULL, but a previous call to
+                                    Response() has not been completed successfully.
+    @retval EFI_OUT_OF_RESOURCES    Could not allocate enough system resources.
+    @retval EFI_ACCESS_DENIED       An open TCP connection is not present with the host
+                                    specified by response URL.
+  **/
+  public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_HTTP_TOKEN*, EFI_STATUS> Response;
+  /**
+    The Poll() function can be used by network drivers and applications to increase the
+    rate that data packets are moved between the communication devices and the transmit
+    and receive queues.
 
-  In some systems, the periodic timer event in the managed network driver may not poll
-  the underlying communications device fast enough to transmit and/or receive all data
-  packets without missing incoming packets or dropping outgoing packets. Drivers and
-  applications that are experiencing packet loss should try calling the Poll() function
-  more often.
+    In some systems, the periodic timer event in the managed network driver may not poll
+    the underlying communications device fast enough to transmit and/or receive all data
+    packets without missing incoming packets or dropping outgoing packets. Drivers and
+    applications that are experiencing packet loss should try calling the Poll() function
+    more often.
 
-  @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
+    @param[in]  This                Pointer to EFI_HTTP_PROTOCOL instance.
 
-  @retval EFI_SUCCESS             Incoming or outgoing data was processed..
-  @retval EFI_DEVICE_ERROR        An unexpected system or network error occurred
-  @retval EFI_INVALID_PARAMETER   This is NULL.
-  @retval EFI_NOT_READY           No incoming or outgoing data is processed.
-  @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been started.
-**/
-public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_STATUS> Poll;
+    @retval EFI_SUCCESS             Incoming or outgoing data was processed..
+    @retval EFI_DEVICE_ERROR        An unexpected system or network error occurred
+    @retval EFI_INVALID_PARAMETER   This is NULL.
+    @retval EFI_NOT_READY           No incoming or outgoing data is processed.
+    @retval EFI_NOT_STARTED         This EFI HTTP Protocol instance has not been started.
+  **/
+  public readonly delegate* unmanaged<EFI_HTTP_PROTOCOL*, EFI_STATUS> Poll;
 }
 
 // extern EFI_GUID  gEfiHttpServiceBindingProtocolGuid;
