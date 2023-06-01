@@ -26,11 +26,11 @@ public static EFI_GUID EFI_KMS_PROTOCOL_GUID = new GUID(
 // Where appropriate, EFI_KMS_DATA_TYPE values may be combined using a bitwise 'OR'
 // operation to indicate support for multiple data types.
 //
-public static ulong EFI_KMS_DATA_TYPE_NONE = 0;
-public static ulong EFI_KMS_DATA_TYPE_BINARY = 1;
-public static ulong EFI_KMS_DATA_TYPE_ASCII = 2;
-public static ulong EFI_KMS_DATA_TYPE_UNICODE = 4;
-public static ulong EFI_KMS_DATA_TYPE_UTF8 = 8;
+public const ulong EFI_KMS_DATA_TYPE_NONE = 0;
+public const ulong EFI_KMS_DATA_TYPE_BINARY = 1;
+public const ulong EFI_KMS_DATA_TYPE_ASCII = 2;
+public const ulong EFI_KMS_DATA_TYPE_UNICODE = 4;
+public const ulong EFI_KMS_DATA_TYPE_UTF8 = 8;
 
 //
 // The key formats recognized by the KMS protocol are defined by an EFI_GUID which specifies
@@ -108,18 +108,18 @@ public static EFI_GUID EFI_KMS_FORMAT_RSASHA256_3072_GUID = new GUID(
     0x4e1356c2, 0xeed, 0x463f, new byte[] { 0x81, 0x47, 0x99, 0x33, 0xab, 0xdb, 0xc7, 0xd5 });
 ///@}
 
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_NONE = 0x00;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_INTEGER = 0x01;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_LONG_INTEGER = 0x02;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_BIG_INTEGER = 0x03;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_ENUMERATION = 0x04;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_BOOLEAN = 0x05;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_BYTE_STRING = 0x06;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_TEXT_STRING = 0x07;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_DATE_TIME = 0x08;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_INTERVAL = 0x09;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_STRUCTURE = 0x0A;
-public static ulong EFI_KMS_ATTRIBUTE_TYPE_DYNAMIC = 0x0B;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_NONE = 0x00;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_INTEGER = 0x01;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_LONG_INTEGER = 0x02;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_BIG_INTEGER = 0x03;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_ENUMERATION = 0x04;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_BOOLEAN = 0x05;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_BYTE_STRING = 0x06;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_TEXT_STRING = 0x07;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_DATE_TIME = 0x08;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_INTERVAL = 0x09;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_STRUCTURE = 0x0A;
+public const ulong EFI_KMS_ATTRIBUTE_TYPE_DYNAMIC = 0x0B;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_KMS_FORMAT_GENERIC_DYNAMIC

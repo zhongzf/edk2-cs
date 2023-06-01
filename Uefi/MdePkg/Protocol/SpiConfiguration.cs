@@ -22,9 +22,9 @@ public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b,
 ///
 /// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
 ///
-public static ulong Hz = (Frequency)(Frequency);
-public static ulong KHz = (Frequency)(1000 * Hz(Frequency));
-public static ulong MHz = (Frequency)(1000 * KHz(Frequency));
+public const ulong Hz = (Frequency)(Frequency);
+public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
+public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
 
 // typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
 

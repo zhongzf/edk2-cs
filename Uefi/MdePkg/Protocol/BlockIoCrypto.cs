@@ -97,7 +97,7 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_IV_INPUT_AES_CBC_MICROSOFT_BITLOCKER
   public ulong CryptoBlockByteSize;
 }
 
-public static ulong EFI_BLOCK_IO_CRYPTO_INDEX_ANY = 0xFFFFFFFFFFFFFFFF;
+public const ulong EFI_BLOCK_IO_CRYPTO_INDEX_ANY = 0xFFFFFFFFFFFFFFFF;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLOCK_IO_CRYPTO_CAPABILITIES

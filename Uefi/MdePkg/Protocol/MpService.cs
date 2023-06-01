@@ -49,7 +49,7 @@ public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID = new GUID(
 ///
 /// Value used in the NumberProcessors parameter of the GetProcessorInfo function
 ///
-public static ulong CPU_V2_EXTENDED_TOPOLOGY = BIT24;
+public const ulong CPU_V2_EXTENDED_TOPOLOGY = BIT24;
 
 ///
 /// Forward declaration for the EFI_MP_SERVICES_PROTOCOL.
@@ -59,28 +59,28 @@ public static ulong CPU_V2_EXTENDED_TOPOLOGY = BIT24;
 ///
 /// Terminator for a list of failed CPUs returned by StartAllAPs().
 ///
-public static ulong END_OF_CPU_LIST = 0xffffffff;
+public const ulong END_OF_CPU_LIST = 0xffffffff;
 
 ///
 /// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
 /// indicates whether the processor is playing the role of BSP. If the bit is 1,
 /// then the processor is BSP. Otherwise, it is AP.
 ///
-public static ulong PROCESSOR_AS_BSP_BIT = 0x00000001;
+public const ulong PROCESSOR_AS_BSP_BIT = 0x00000001;
 
 ///
 /// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
 /// indicates whether the processor is enabled. If the bit is 1, then the
 /// processor is enabled. Otherwise, it is disabled.
 ///
-public static ulong PROCESSOR_ENABLED_BIT = 0x00000002;
+public const ulong PROCESSOR_ENABLED_BIT = 0x00000002;
 
 ///
 /// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
 /// indicates whether the processor is healthy. If the bit is 1, then the
 /// processor is healthy. Otherwise, some fault has been detected for the processor.
 ///
-public static ulong PROCESSOR_HEALTH_STATUS_BIT = 0x00000004;
+public const ulong PROCESSOR_HEALTH_STATUS_BIT = 0x00000004;
 
 ///
 /// Structure that describes the pyhiscal location of a logical CPU.

@@ -332,7 +332,7 @@ public unsafe struct EFI_IPSEC_SA_ID
   public EFI_IP_ADDRESS DestAddress;
 }
 
-public static ulong MAX_PEERID_LEN = 128;
+public const ulong MAX_PEERID_LEN = 128;
 
 ///
 /// EFI_IPSEC_SPD_DATA

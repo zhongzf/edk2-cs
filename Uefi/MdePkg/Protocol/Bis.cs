@@ -64,8 +64,8 @@ public unsafe struct EFI_BIS_VERSION
 // and to interpret results of Initialize.
 // ----------------------------------------------------//
 //
-public static ulong BIS_CURRENT_VERSION_MAJOR = BIS_VERSION_1;
-public static ulong BIS_VERSION_1 = 1;
+public const ulong BIS_CURRENT_VERSION_MAJOR = BIS_VERSION_1;
+public const ulong BIS_VERSION_1 = 1;
 
 ///
 /// EFI_BIS_SIGNATURE_INFO type.
@@ -83,20 +83,20 @@ public unsafe struct EFI_BIS_SIGNATURE_INFO
 /// The exact numeric values come from the
 ///    "Common Data Security Architecture (CDSA) Specification".
 ///
-public static ulong BIS_ALG_DSA = (41) // CSSM_ALGID_DSA;
-public static ulong BIS_ALG_RSA_MD5 = (42) // CSSM_ALGID_MD5_WITH_RSA;
+public const ulong BIS_ALG_DSA = (41) // CSSM_ALGID_DSA;
+public const ulong BIS_ALG_RSA_MD5 = (42) // CSSM_ALGID_MD5_WITH_RSA;
 ///
 /// values for EFI_BIS_SIGNATURE_INFO.CertificateId.
 ///
-public static ulong BIS_CERT_ID_DSA = BIS_ALG_DSA     // CSSM_ALGID_DSA;
-public static ulong BIS_CERT_ID_RSA_MD5 = BIS_ALG_RSA_MD5 // CSSM_ALGID_MD5_WITH_RSA;
+public const ulong BIS_CERT_ID_DSA = BIS_ALG_DSA     // CSSM_ALGID_DSA;
+public const ulong BIS_CERT_ID_RSA_MD5 = BIS_ALG_RSA_MD5 // CSSM_ALGID_MD5_WITH_RSA;
 ///
 /// The mask value that gets applied to the truncated hash of a
 /// platform  Boot Object Authorization Certificate to create the certificateID.
 /// A certificateID must not have any bits set to the value 1 other than bits in
 /// this mask.
 ///
-public static ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
+public const ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
 
 ///
 /// Macros for dealing with the EFI_BIS_DATA object obtained
@@ -105,13 +105,13 @@ public static ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
 ///  elements are contained in a EFI_BIS_DATA struct pointed to
 ///  by the provided EFI_BIS_DATA*.
 ///
-public static ulong BIS_GET_SIGINFO_COUNT = (BisDataPtr)((BisDataPtr)->Length / sizeof(EFI_BIS_SIGNATURE_INFO));
+public const ulong BIS_GET_SIGINFO_COUNT = (BisDataPtr)((BisDataPtr)->Length / sizeof(EFI_BIS_SIGNATURE_INFO));
 
 ///
 /// BIS_GET_SIGINFO_ARRAY - produces a EFI_BIS_SIGNATURE_INFO*
 ///  from a given EFI_BIS_DATA*.
 ///
-public static ulong BIS_GET_SIGINFO_ARRAY = (BisDataPtr)((EFI_BIS_SIGNATURE_INFO*)(BisDataPtr)->Data);
+public const ulong BIS_GET_SIGINFO_ARRAY = (BisDataPtr)((EFI_BIS_SIGNATURE_INFO*)(BisDataPtr)->Data);
 
 ///
 /// Support an old name for backward compatibility.

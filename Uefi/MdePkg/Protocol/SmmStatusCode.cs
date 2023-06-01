@@ -14,7 +14,7 @@ namespace Uefi;
 
 // #include <Protocol/MmStatusCode.h>
 
-public static ulong EFI_SMM_STATUS_CODE_PROTOCOL_GUID = EFI_MM_STATUS_CODE_PROTOCOL_GUID;
+public const ulong EFI_SMM_STATUS_CODE_PROTOCOL_GUID = EFI_MM_STATUS_CODE_PROTOCOL_GUID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_STATUS_CODE_PROTOCOL { EFI_MM_STATUS_CODE_PROTOCOL Value; public static implicit operator EFI_SMM_STATUS_CODE_PROTOCOL(EFI_MM_STATUS_CODE_PROTOCOL value) => new EFI_SMM_STATUS_CODE_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_STATUS_CODE_PROTOCOL(EFI_SMM_STATUS_CODE_PROTOCOL value) => value.Value; }

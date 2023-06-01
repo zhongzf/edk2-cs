@@ -130,11 +130,11 @@ public enum EFI_DHCP6_EVENT
 ///
 /// An IA which carries assigned not temporary address.
 ///
-public static ulong EFI_DHCP6_IA_TYPE_NA = 3;
+public const ulong EFI_DHCP6_IA_TYPE_NA = 3;
 ///
 /// An IA which carries assigned temporary address.
 ///
-public static ulong EFI_DHCP6_IA_TYPE_TA = 4;
+public const ulong EFI_DHCP6_IA_TYPE_TA = 4;
 
 // #pragma pack(1)
 ///

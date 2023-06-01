@@ -21,7 +21,7 @@ public static EFI_GUID EFI_DEVICE_IO_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
-public static ulong DEVICE_IO_PROTOCOL = EFI_DEVICE_IO_PROTOCOL_GUID;
+public const ulong DEVICE_IO_PROTOCOL = EFI_DEVICE_IO_PROTOCOL_GUID;
 
 ///
 /// Protocol defined in EFI1.1.

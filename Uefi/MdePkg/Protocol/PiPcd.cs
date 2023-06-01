@@ -27,7 +27,7 @@ namespace Uefi;
 
 public static EFI_GUID EFI_PCD_PROTOCOL_GUID = new GUID(0x13a3f0f6, 0x264a, 0x3ef0, new byte[] { 0xf2, 0xe0, 0xde, 0xc5, 0x12, 0x34, 0x2f, 0x34 });
 
-public static ulong EFI_PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
+public const ulong EFI_PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
 
 
 

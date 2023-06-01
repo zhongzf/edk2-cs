@@ -98,55 +98,55 @@ public unsafe struct EFI_KEY_DATA
 //
 // Shift state
 //
-public static ulong EFI_SHIFT_STATE_VALID = 0x80000000;
-public static ulong EFI_RIGHT_SHIFT_PRESSED = 0x00000001;
-public static ulong EFI_LEFT_SHIFT_PRESSED = 0x00000002;
-public static ulong EFI_RIGHT_CONTROL_PRESSED = 0x00000004;
-public static ulong EFI_LEFT_CONTROL_PRESSED = 0x00000008;
-public static ulong EFI_RIGHT_ALT_PRESSED = 0x00000010;
-public static ulong EFI_LEFT_ALT_PRESSED = 0x00000020;
-public static ulong EFI_RIGHT_LOGO_PRESSED = 0x00000040;
-public static ulong EFI_LEFT_LOGO_PRESSED = 0x00000080;
-public static ulong EFI_MENU_KEY_PRESSED = 0x00000100;
-public static ulong EFI_SYS_REQ_PRESSED = 0x00000200;
+public const ulong EFI_SHIFT_STATE_VALID = 0x80000000;
+public const ulong EFI_RIGHT_SHIFT_PRESSED = 0x00000001;
+public const ulong EFI_LEFT_SHIFT_PRESSED = 0x00000002;
+public const ulong EFI_RIGHT_CONTROL_PRESSED = 0x00000004;
+public const ulong EFI_LEFT_CONTROL_PRESSED = 0x00000008;
+public const ulong EFI_RIGHT_ALT_PRESSED = 0x00000010;
+public const ulong EFI_LEFT_ALT_PRESSED = 0x00000020;
+public const ulong EFI_RIGHT_LOGO_PRESSED = 0x00000040;
+public const ulong EFI_LEFT_LOGO_PRESSED = 0x00000080;
+public const ulong EFI_MENU_KEY_PRESSED = 0x00000100;
+public const ulong EFI_SYS_REQ_PRESSED = 0x00000200;
 
 //
 // Toggle state
 //
-public static ulong EFI_TOGGLE_STATE_VALID = 0x80;
-public static ulong EFI_KEY_STATE_EXPOSED = 0x40;
-public static ulong EFI_SCROLL_LOCK_ACTIVE = 0x01;
-public static ulong EFI_NUM_LOCK_ACTIVE = 0x02;
-public static ulong EFI_CAPS_LOCK_ACTIVE = 0x04;
+public const ulong EFI_TOGGLE_STATE_VALID = 0x80;
+public const ulong EFI_KEY_STATE_EXPOSED = 0x40;
+public const ulong EFI_SCROLL_LOCK_ACTIVE = 0x01;
+public const ulong EFI_NUM_LOCK_ACTIVE = 0x02;
+public const ulong EFI_CAPS_LOCK_ACTIVE = 0x04;
 
 //
 // EFI Scan codes
 //
-public static ulong SCAN_F11 = 0x0015;
-public static ulong SCAN_F12 = 0x0016;
-public static ulong SCAN_PAUSE = 0x0048;
-public static ulong SCAN_F13 = 0x0068;
-public static ulong SCAN_F14 = 0x0069;
-public static ulong SCAN_F15 = 0x006A;
-public static ulong SCAN_F16 = 0x006B;
-public static ulong SCAN_F17 = 0x006C;
-public static ulong SCAN_F18 = 0x006D;
-public static ulong SCAN_F19 = 0x006E;
-public static ulong SCAN_F20 = 0x006F;
-public static ulong SCAN_F21 = 0x0070;
-public static ulong SCAN_F22 = 0x0071;
-public static ulong SCAN_F23 = 0x0072;
-public static ulong SCAN_F24 = 0x0073;
-public static ulong SCAN_MUTE = 0x007F;
-public static ulong SCAN_VOLUME_UP = 0x0080;
-public static ulong SCAN_VOLUME_DOWN = 0x0081;
-public static ulong SCAN_BRIGHTNESS_UP = 0x0100;
-public static ulong SCAN_BRIGHTNESS_DOWN = 0x0101;
-public static ulong SCAN_SUSPEND = 0x0102;
-public static ulong SCAN_HIBERNATE = 0x0103;
-public static ulong SCAN_TOGGLE_DISPLAY = 0x0104;
-public static ulong SCAN_RECOVERY = 0x0105;
-public static ulong SCAN_EJECT = 0x0106;
+public const ulong SCAN_F11 = 0x0015;
+public const ulong SCAN_F12 = 0x0016;
+public const ulong SCAN_PAUSE = 0x0048;
+public const ulong SCAN_F13 = 0x0068;
+public const ulong SCAN_F14 = 0x0069;
+public const ulong SCAN_F15 = 0x006A;
+public const ulong SCAN_F16 = 0x006B;
+public const ulong SCAN_F17 = 0x006C;
+public const ulong SCAN_F18 = 0x006D;
+public const ulong SCAN_F19 = 0x006E;
+public const ulong SCAN_F20 = 0x006F;
+public const ulong SCAN_F21 = 0x0070;
+public const ulong SCAN_F22 = 0x0071;
+public const ulong SCAN_F23 = 0x0072;
+public const ulong SCAN_F24 = 0x0073;
+public const ulong SCAN_MUTE = 0x007F;
+public const ulong SCAN_VOLUME_UP = 0x0080;
+public const ulong SCAN_VOLUME_DOWN = 0x0081;
+public const ulong SCAN_BRIGHTNESS_UP = 0x0100;
+public const ulong SCAN_BRIGHTNESS_DOWN = 0x0101;
+public const ulong SCAN_SUSPEND = 0x0102;
+public const ulong SCAN_HIBERNATE = 0x0103;
+public const ulong SCAN_TOGGLE_DISPLAY = 0x0104;
+public const ulong SCAN_RECOVERY = 0x0105;
+public const ulong SCAN_EJECT = 0x0106;
 
 
 

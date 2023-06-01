@@ -168,15 +168,15 @@ public unsafe struct EFI_DEBUGPORT_PROTOCOL
 //
 // DEBUGPORT variable definitions...
 //
-public static string EFI_DEBUGPORT_VARIABLE_NAME = "DEBUGPORT";
-public static ulong EFI_DEBUGPORT_VARIABLE_GUID = EFI_DEBUGPORT_PROTOCOL_GUID;
+public const string EFI_DEBUGPORT_VARIABLE_NAME = "DEBUGPORT";
+public const ulong EFI_DEBUGPORT_VARIABLE_GUID = EFI_DEBUGPORT_PROTOCOL_GUID;
 
 // extern EFI_GUID  gEfiDebugPortVariableGuid;
 
 //
 // DebugPort device path definitions...
 //
-public static ulong DEVICE_PATH_MESSAGING_DEBUGPORT = EFI_DEBUGPORT_PROTOCOL_GUID;
+public const ulong DEVICE_PATH_MESSAGING_DEBUGPORT = EFI_DEBUGPORT_PROTOCOL_GUID;
 
 // extern EFI_GUID  gEfiDebugPortDevicePathGuid;
 

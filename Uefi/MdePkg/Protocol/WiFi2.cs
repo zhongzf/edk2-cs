@@ -66,7 +66,7 @@ public unsafe struct EFI_80211_MAC_ADDRESS
   public fixed byte Addr[6];
 }
 
-public static ulong EFI_MAX_SSID_LEN = 32;
+public const ulong EFI_MAX_SSID_LEN = 32;
 
 ///
 /// EFI_80211_SSID

@@ -219,7 +219,7 @@ public unsafe struct EFI_SUPPLICANT_KEY_REFRESH
   public bool GTKRefresh;
 }
 
-public static ulong EFI_MAX_KEY_LEN = 64;
+public const ulong EFI_MAX_KEY_LEN = 64;
 
 ///
 /// EFI_SUPPLICANT_KEY

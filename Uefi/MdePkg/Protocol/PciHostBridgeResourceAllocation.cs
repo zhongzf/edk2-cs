@@ -38,7 +38,7 @@ public static EFI_GUID EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL_GUID = n
 /// memory. A PCI bus driver needs to include requests for Prefetchable
 /// memory in the Non-prefetchable memory pool.
 ///
-public static ulong EFI_PCI_HOST_BRIDGE_COMBINE_MEM_PMEM = 1;
+public const ulong EFI_PCI_HOST_BRIDGE_COMBINE_MEM_PMEM = 1;
 
 ///
 /// If this bit is set, then the PCI Root Bridge supports
@@ -46,7 +46,7 @@ public static ulong EFI_PCI_HOST_BRIDGE_COMBINE_MEM_PMEM = 1;
 /// the PCI bus driver needs to include requests for 64 bit
 /// memory address in the corresponding 32 bit memory pool.
 ///
-public static ulong EFI_PCI_HOST_BRIDGE_MEM64_DECODE = 2;
+public const ulong EFI_PCI_HOST_BRIDGE_MEM64_DECODE = 2;
 
 ///
 /// A ulong value that contains the status of a PCI resource requested
@@ -61,7 +61,7 @@ public unsafe struct EFI_RESOURCE_ALLOCATION_STATUS { ulong Value; public static
 /// Configuration parameter returned by GetProposedResources() to identify
 /// a PCI resources request that can be satisfied.
 ///
-public static ulong EFI_RESOURCE_SATISFIED = 0x0000000000000000;
+public const ulong EFI_RESOURCE_SATISFIED = 0x0000000000000000;
 
 ///
 /// The request of this resource type could not be fulfilled for its
@@ -69,7 +69,7 @@ public static ulong EFI_RESOURCE_SATISFIED = 0x0000000000000000;
 /// returned by GetProposedResources() to identify a PCI resources request that
 /// can not be satisfied.
 ///
-public static ulong EFI_RESOURCE_NOT_SATISFIED = 0xFFFFFFFFFFFFFFFF;
+public const ulong EFI_RESOURCE_NOT_SATISFIED = 0xFFFFFFFFFFFFFFFF;
 
 ///
 /// This  enum is used to specify the phase of the PCI enumaeration process.

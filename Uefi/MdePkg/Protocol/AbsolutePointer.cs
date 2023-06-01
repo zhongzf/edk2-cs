@@ -47,12 +47,12 @@ public unsafe struct EFI_ABSOLUTE_POINTER_MODE
 ///
 /// If set, indicates this device supports an alternate button input.
 ///
-public static ulong EFI_ABSP_SupportsAltActive = 0x00000001;
+public const ulong EFI_ABSP_SupportsAltActive = 0x00000001;
 
 ///
 /// If set, indicates this device returns pressure data in parameter CurrentZ.
 ///
-public static ulong EFI_ABSP_SupportsPressureAsZ = 0x00000002;
+public const ulong EFI_ABSP_SupportsPressureAsZ = 0x00000002;
 
 
 
@@ -89,12 +89,12 @@ public static ulong EFI_ABSP_SupportsPressureAsZ = 0x00000002;
 ///
 /// This bit is set if the touch sensor is active.
 ///
-public static ulong EFI_ABSP_TouchActive = 0x00000001;
+public const ulong EFI_ABSP_TouchActive = 0x00000001;
 
 ///
 /// This bit is set if the alt sensor, such as pen-side button, is active
 ///
-public static ulong EFI_ABS_AltActive = 0x00000002;
+public const ulong EFI_ABS_AltActive = 0x00000002;
 
 /**
   Definition of EFI_ABSOLUTE_POINTER_STATE.

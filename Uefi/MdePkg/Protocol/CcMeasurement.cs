@@ -35,9 +35,9 @@ public unsafe struct EFI_CC_VERSION
 //
 // EFI_CC Type/SubType definition
 //
-public static ulong EFI_CC_TYPE_NONE = 0;
-public static ulong EFI_CC_TYPE_SEV = 1;
-public static ulong EFI_CC_TYPE_TDX = 2;
+public const ulong EFI_CC_TYPE_NONE = 0;
+public const ulong EFI_CC_TYPE_SEV = 1;
+public const ulong EFI_CC_TYPE_TDX = 2;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_TYPE
@@ -58,27 +58,27 @@ public unsafe struct EFI_CC_MR_INDEX { uint Value; public static implicit operat
 //
 // Intel TDX measure register index
 //
-public static ulong TDX_MR_INDEX_MRTD = 0;
-public static ulong TDX_MR_INDEX_RTMR0 = 1;
-public static ulong TDX_MR_INDEX_RTMR1 = 2;
-public static ulong TDX_MR_INDEX_RTMR2 = 3;
-public static ulong TDX_MR_INDEX_RTMR3 = 4;
+public const ulong TDX_MR_INDEX_MRTD = 0;
+public const ulong TDX_MR_INDEX_RTMR0 = 1;
+public const ulong TDX_MR_INDEX_RTMR1 = 2;
+public const ulong TDX_MR_INDEX_RTMR2 = 3;
+public const ulong TDX_MR_INDEX_RTMR3 = 4;
 
-public static ulong EFI_CC_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
-public static ulong EFI_CC_BOOT_HASH_ALG_SHA384 = 0x00000004;
+public const ulong EFI_CC_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
+public const ulong EFI_CC_BOOT_HASH_ALG_SHA384 = 0x00000004;
 
 //
 // This bit is shall be set when an event shall be extended but not logged.
 //
-public static ulong EFI_CC_FLAG_EXTEND_ONLY = 0x0000000000000001;
+public const ulong EFI_CC_FLAG_EXTEND_ONLY = 0x0000000000000001;
 //
 // This bit shall be set when the intent is to measure a PE/COFF image.
 //
-public static ulong EFI_CC_FLAG_PE_COFF_IMAGE = 0x0000000000000010;
+public const ulong EFI_CC_FLAG_PE_COFF_IMAGE = 0x0000000000000010;
 
 // #pragma pack (1)
 
-public static ulong EFI_CC_EVENT_HEADER_VERSION = 1;
+public const ulong EFI_CC_EVENT_HEADER_VERSION = 1;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_EVENT_HEADER
@@ -363,7 +363,7 @@ public unsafe struct CC_EVENT_HDR
 // Log entries after Get Event Log service
 //
 
-public static ulong EFI_CC_FINAL_EVENTS_TABLE_VERSION = 1;
+public const ulong EFI_CC_FINAL_EVENTS_TABLE_VERSION = 1;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_FINAL_EVENTS_TABLE
@@ -406,7 +406,7 @@ public unsafe struct EFI_CC_EVENTLOG_ACPI_TABLE
 //
 // Define the signature and revision of CC Measurement EventLog ACPI Table
 //
-public static ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
-public static ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
+public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
+public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
 
 // #endif

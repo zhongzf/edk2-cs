@@ -28,7 +28,7 @@ namespace Uefi;
 
 // #include <Protocol/DxeMmReadyToLock.h>
 
-public static ulong EFI_DXE_SMM_READY_TO_LOCK_PROTOCOL_GUID = EFI_DXE_MM_READY_TO_LOCK_PROTOCOL_GUID;
+public const ulong EFI_DXE_SMM_READY_TO_LOCK_PROTOCOL_GUID = EFI_DXE_MM_READY_TO_LOCK_PROTOCOL_GUID;
 
 // extern EFI_GUID  gEfiDxeSmmReadyToLockProtocolGuid;
 

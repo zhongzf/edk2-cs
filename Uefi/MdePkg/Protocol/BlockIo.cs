@@ -21,7 +21,7 @@ public static EFI_GUID EFI_BLOCK_IO_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
-public static ulong BLOCK_IO_PROTOCOL = EFI_BLOCK_IO_PROTOCOL_GUID;
+public const ulong BLOCK_IO_PROTOCOL = EFI_BLOCK_IO_PROTOCOL_GUID;
 
 ///
 /// Protocol defined in EFI1.1.
@@ -201,14 +201,14 @@ public unsafe struct EFI_BLOCK_IO_MEDIA
   public uint OptimalTransferLengthGranularity;
 }
 
-public static ulong EFI_BLOCK_IO_PROTOCOL_REVISION = 0x00010000;
-public static ulong EFI_BLOCK_IO_PROTOCOL_REVISION2 = 0x00020001;
-public static ulong EFI_BLOCK_IO_PROTOCOL_REVISION3 = 0x0002001F;
+public const ulong EFI_BLOCK_IO_PROTOCOL_REVISION = 0x00010000;
+public const ulong EFI_BLOCK_IO_PROTOCOL_REVISION2 = 0x00020001;
+public const ulong EFI_BLOCK_IO_PROTOCOL_REVISION3 = 0x0002001F;
 
 ///
 /// Revision defined in EFI1.1.
 ///
-public static ulong EFI_BLOCK_IO_INTERFACE_REVISION = EFI_BLOCK_IO_PROTOCOL_REVISION;
+public const ulong EFI_BLOCK_IO_INTERFACE_REVISION = EFI_BLOCK_IO_PROTOCOL_REVISION;
 
 ///
 ///  This protocol provides control over block devices.

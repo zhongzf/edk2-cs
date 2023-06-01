@@ -54,8 +54,8 @@ public unsafe struct EFI_HII_IMAGE_DECODER_IMAGE_INFO_HEADER
   public byte ColorDepthInBits;
 }
 
-public static ulong EFI_IMAGE_JPEG_SCANTYPE_PROGREESSIVE = 0x01;
-public static ulong EFI_IMAGE_JPEG_SCANTYPE_INTERLACED = 0x02;
+public const ulong EFI_IMAGE_JPEG_SCANTYPE_PROGREESSIVE = 0x01;
+public const ulong EFI_IMAGE_JPEG_SCANTYPE_INTERLACED = 0x02;
 
 //
 // EFI_HII_IMAGE_DECODER_JPEG_INFO

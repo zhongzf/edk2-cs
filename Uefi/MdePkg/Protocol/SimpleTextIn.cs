@@ -21,7 +21,7 @@ public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
-public static ulong SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
+public const ulong SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
 
 ///
 /// Protocol name in EFI1.1 for backward-compatible.
@@ -41,36 +41,36 @@ public unsafe struct EFI_INPUT_KEY
 //
 // Required unicode control chars
 //
-public static ulong CHAR_BACKSPACE = 0x0008;
-public static ulong CHAR_TAB = 0x0009;
-public static ulong CHAR_LINEFEED = 0x000A;
-public static ulong CHAR_CARRIAGE_RETURN = 0x000D;
+public const ulong CHAR_BACKSPACE = 0x0008;
+public const ulong CHAR_TAB = 0x0009;
+public const ulong CHAR_LINEFEED = 0x000A;
+public const ulong CHAR_CARRIAGE_RETURN = 0x000D;
 
 //
 // EFI Scan codes
 //
-public static ulong SCAN_NULL = 0x0000;
-public static ulong SCAN_UP = 0x0001;
-public static ulong SCAN_DOWN = 0x0002;
-public static ulong SCAN_RIGHT = 0x0003;
-public static ulong SCAN_LEFT = 0x0004;
-public static ulong SCAN_HOME = 0x0005;
-public static ulong SCAN_END = 0x0006;
-public static ulong SCAN_INSERT = 0x0007;
-public static ulong SCAN_DELETE = 0x0008;
-public static ulong SCAN_PAGE_UP = 0x0009;
-public static ulong SCAN_PAGE_DOWN = 0x000A;
-public static ulong SCAN_F1 = 0x000B;
-public static ulong SCAN_F2 = 0x000C;
-public static ulong SCAN_F3 = 0x000D;
-public static ulong SCAN_F4 = 0x000E;
-public static ulong SCAN_F5 = 0x000F;
-public static ulong SCAN_F6 = 0x0010;
-public static ulong SCAN_F7 = 0x0011;
-public static ulong SCAN_F8 = 0x0012;
-public static ulong SCAN_F9 = 0x0013;
-public static ulong SCAN_F10 = 0x0014;
-public static ulong SCAN_ESC = 0x0017;
+public const ulong SCAN_NULL = 0x0000;
+public const ulong SCAN_UP = 0x0001;
+public const ulong SCAN_DOWN = 0x0002;
+public const ulong SCAN_RIGHT = 0x0003;
+public const ulong SCAN_LEFT = 0x0004;
+public const ulong SCAN_HOME = 0x0005;
+public const ulong SCAN_END = 0x0006;
+public const ulong SCAN_INSERT = 0x0007;
+public const ulong SCAN_DELETE = 0x0008;
+public const ulong SCAN_PAGE_UP = 0x0009;
+public const ulong SCAN_PAGE_DOWN = 0x000A;
+public const ulong SCAN_F1 = 0x000B;
+public const ulong SCAN_F2 = 0x000C;
+public const ulong SCAN_F3 = 0x000D;
+public const ulong SCAN_F4 = 0x000E;
+public const ulong SCAN_F5 = 0x000F;
+public const ulong SCAN_F6 = 0x0010;
+public const ulong SCAN_F7 = 0x0011;
+public const ulong SCAN_F8 = 0x0012;
+public const ulong SCAN_F9 = 0x0013;
+public const ulong SCAN_F10 = 0x0014;
+public const ulong SCAN_ESC = 0x0017;
 
 
 

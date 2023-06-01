@@ -32,29 +32,29 @@ public unsafe struct EFI_NVM_EXPRESS_PASS_THRU_MODE
 // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
 // for directly addressable namespaces.
 //
-public static ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
+public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
 //
 // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
 // for a single volume logical namespace comprised of multiple namespaces.
 //
-public static ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
+public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
 //
 // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface
 // supports non-blocking I/O.
 //
-public static ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
+public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
 //
 // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface
 // supports NVM command set.
 //
-public static ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_CMD_SET_NVM = 0x0008;
+public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_CMD_SET_NVM = 0x0008;
 
 //
 // FusedOperation
 //
-public static ulong NORMAL_CMD = 0x00;
-public static ulong FUSED_FIRST_CMD = 0x01;
-public static ulong FUSED_SECOND_CMD = 0x02;
+public const ulong NORMAL_CMD = 0x00;
+public const ulong FUSED_FIRST_CMD = 0x01;
+public const ulong FUSED_SECOND_CMD = 0x02;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_CDW0
@@ -67,20 +67,20 @@ public unsafe struct NVME_CDW0
 //
 // Flags
 //
-public static ulong CDW2_VALID = 0x01;
-public static ulong CDW3_VALID = 0x02;
-public static ulong CDW10_VALID = 0x04;
-public static ulong CDW11_VALID = 0x08;
-public static ulong CDW12_VALID = 0x10;
-public static ulong CDW13_VALID = 0x20;
-public static ulong CDW14_VALID = 0x40;
-public static ulong CDW15_VALID = 0x80;
+public const ulong CDW2_VALID = 0x01;
+public const ulong CDW3_VALID = 0x02;
+public const ulong CDW10_VALID = 0x04;
+public const ulong CDW11_VALID = 0x08;
+public const ulong CDW12_VALID = 0x10;
+public const ulong CDW13_VALID = 0x20;
+public const ulong CDW14_VALID = 0x40;
+public const ulong CDW15_VALID = 0x80;
 
 //
 // Queue Type
 //
-public static ulong NVME_ADMIN_QUEUE = 0x00;
-public static ulong NVME_IO_QUEUE = 0x01;
+public const ulong NVME_ADMIN_QUEUE = 0x00;
+public const ulong NVME_IO_QUEUE = 0x01;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVM_EXPRESS_COMMAND

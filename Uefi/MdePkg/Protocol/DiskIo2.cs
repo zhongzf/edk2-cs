@@ -146,7 +146,7 @@ public unsafe struct EFI_DISK_IO2_TOKEN
 
 
 
-public static ulong EFI_DISK_IO2_PROTOCOL_REVISION = 0x00020000;
+public const ulong EFI_DISK_IO2_PROTOCOL_REVISION = 0x00020000;
 
 ///
 /// This protocol is used to abstract Block I/O interfaces.

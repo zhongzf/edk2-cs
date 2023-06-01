@@ -33,25 +33,25 @@ public unsafe struct EFI_USB_PORT_STATUS
 ///
 /// EFI_USB_PORT_STATUS.PortStatus bit definition
 ///
-public static ulong USB_PORT_STAT_CONNECTION = 0x0001;
-public static ulong USB_PORT_STAT_ENABLE = 0x0002;
-public static ulong USB_PORT_STAT_SUSPEND = 0x0004;
-public static ulong USB_PORT_STAT_OVERCURRENT = 0x0008;
-public static ulong USB_PORT_STAT_RESET = 0x0010;
-public static ulong USB_PORT_STAT_POWER = 0x0100;
-public static ulong USB_PORT_STAT_LOW_SPEED = 0x0200;
-public static ulong USB_PORT_STAT_HIGH_SPEED = 0x0400;
-public static ulong USB_PORT_STAT_SUPER_SPEED = 0x0800;
-public static ulong USB_PORT_STAT_OWNER = 0x2000;
+public const ulong USB_PORT_STAT_CONNECTION = 0x0001;
+public const ulong USB_PORT_STAT_ENABLE = 0x0002;
+public const ulong USB_PORT_STAT_SUSPEND = 0x0004;
+public const ulong USB_PORT_STAT_OVERCURRENT = 0x0008;
+public const ulong USB_PORT_STAT_RESET = 0x0010;
+public const ulong USB_PORT_STAT_POWER = 0x0100;
+public const ulong USB_PORT_STAT_LOW_SPEED = 0x0200;
+public const ulong USB_PORT_STAT_HIGH_SPEED = 0x0400;
+public const ulong USB_PORT_STAT_SUPER_SPEED = 0x0800;
+public const ulong USB_PORT_STAT_OWNER = 0x2000;
 
 ///
 /// EFI_USB_PORT_STATUS.PortChangeStatus bit definition
 ///
-public static ulong USB_PORT_STAT_C_CONNECTION = 0x0001;
-public static ulong USB_PORT_STAT_C_ENABLE = 0x0002;
-public static ulong USB_PORT_STAT_C_SUSPEND = 0x0004;
-public static ulong USB_PORT_STAT_C_OVERCURRENT = 0x0008;
-public static ulong USB_PORT_STAT_C_RESET = 0x0010;
+public const ulong USB_PORT_STAT_C_CONNECTION = 0x0001;
+public const ulong USB_PORT_STAT_C_ENABLE = 0x0002;
+public const ulong USB_PORT_STAT_C_SUSPEND = 0x0004;
+public const ulong USB_PORT_STAT_C_OVERCURRENT = 0x0008;
+public const ulong USB_PORT_STAT_C_RESET = 0x0010;
 
 ///
 /// Usb port features value
@@ -72,10 +72,10 @@ public enum EFI_USB_PORT_FEATURE
   EfiUsbPortResetChange = 20
 }
 
-public static ulong EFI_USB_SPEED_FULL = 0x0000     ///< 12 Mb/s, USB 1.1 OHCI and UHCI HC.;
-public static ulong EFI_USB_SPEED_LOW = 0x0001     ///< 1 Mb/s, USB 1.1 OHCI and UHCI HC.;
-public static ulong EFI_USB_SPEED_HIGH = 0x0002     ///< 480 Mb/s, USB 2.0 EHCI HC.;
-public static ulong EFI_USB_SPEED_SUPER = 0x0003     ///< 4.8 Gb/s, USB 3.0 XHCI HC.;
+public const ulong EFI_USB_SPEED_FULL = 0x0000     ///< 12 Mb/s, USB 1.1 OHCI and UHCI HC.;
+public const ulong EFI_USB_SPEED_LOW = 0x0001     ///< 1 Mb/s, USB 1.1 OHCI and UHCI HC.;
+public const ulong EFI_USB_SPEED_HIGH = 0x0002     ///< 480 Mb/s, USB 2.0 EHCI HC.;
+public const ulong EFI_USB_SPEED_SUPER = 0x0003     ///< 4.8 Gb/s, USB 3.0 XHCI HC.;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USB2_HC_TRANSACTION_TRANSLATOR
@@ -112,10 +112,10 @@ public unsafe struct EFI_USB2_HC_TRANSACTION_TRANSLATOR
 
 
 
-public static ulong EFI_USB_HC_RESET_GLOBAL = 0x0001;
-public static ulong EFI_USB_HC_RESET_HOST_CONTROLLER = 0x0002;
-public static ulong EFI_USB_HC_RESET_GLOBAL_WITH_DEBUG = 0x0004;
-public static ulong EFI_USB_HC_RESET_HOST_WITH_DEBUG = 0x0008;
+public const ulong EFI_USB_HC_RESET_GLOBAL = 0x0001;
+public const ulong EFI_USB_HC_RESET_HOST_CONTROLLER = 0x0002;
+public const ulong EFI_USB_HC_RESET_GLOBAL_WITH_DEBUG = 0x0004;
+public const ulong EFI_USB_HC_RESET_HOST_WITH_DEBUG = 0x0008;
 
 
 
@@ -262,7 +262,7 @@ public enum EFI_USB_HC_STATE
 
 
 
-public static ulong EFI_USB_MAX_BULK_BUFFER_NUM = 10;
+public const ulong EFI_USB_MAX_BULK_BUFFER_NUM = 10;
 
 
 
@@ -405,8 +405,8 @@ public static ulong EFI_USB_MAX_BULK_BUFFER_NUM = 10;
 
 
 
-public static ulong EFI_USB_MAX_ISO_BUFFER_NUM = 7;
-public static ulong EFI_USB_MAX_ISO_BUFFER_NUM1 = 2;
+public const ulong EFI_USB_MAX_ISO_BUFFER_NUM = 7;
+public const ulong EFI_USB_MAX_ISO_BUFFER_NUM1 = 2;
 
 
 

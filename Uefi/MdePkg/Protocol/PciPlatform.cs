@@ -116,7 +116,7 @@ public unsafe struct EFI_PCI_PLATFORM_POLICY { uint Value; public static implici
 /// Does not set aside either ISA or VGA I/O resources during PCI
 /// enumeration.
 ///
-public static ulong EFI_RESERVE_NONE_IO_ALIAS = 0x0000;
+public const ulong EFI_RESERVE_NONE_IO_ALIAS = 0x0000;
 
 ///
 /// Sets aside ISA I/O range and all aliases:
@@ -125,22 +125,22 @@ public static ulong EFI_RESERVE_NONE_IO_ALIAS = 0x0000;
 ///   - n900..nBFF
 ///   - nD00..nFFF.
 ///
-public static ulong EFI_RESERVE_ISA_IO_ALIAS = 0x0001;
+public const ulong EFI_RESERVE_ISA_IO_ALIAS = 0x0001;
 
 ///
 /// Sets aside ISA I/O range 0x100-0x3FF.
 ///
-public static ulong EFI_RESERVE_ISA_IO_NO_ALIAS = 0x0002;
+public const ulong EFI_RESERVE_ISA_IO_NO_ALIAS = 0x0002;
 
 ///
 /// Sets aside VGA I/O ranges and all aliases.
 ///
-public static ulong EFI_RESERVE_VGA_IO_ALIAS = 0x0004;
+public const ulong EFI_RESERVE_VGA_IO_ALIAS = 0x0004;
 
 ///
 /// Sets aside VGA I/O ranges
 ///
-public static ulong EFI_RESERVE_VGA_IO_NO_ALIAS = 0x0008;
+public const ulong EFI_RESERVE_VGA_IO_NO_ALIAS = 0x0008;
 
 ///
 /// EFI_PCI_EXECUTION_PHASE is used to call a platform protocol and execute

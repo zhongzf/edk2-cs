@@ -23,7 +23,7 @@ public static EFI_GUID EFI_UNICODE_COLLATION_PROTOCOL2_GUID = new GUID(
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
-public static ulong UNICODE_COLLATION_PROTOCOL = EFI_UNICODE_COLLATION_PROTOCOL_GUID;
+public const ulong UNICODE_COLLATION_PROTOCOL = EFI_UNICODE_COLLATION_PROTOCOL_GUID;
 
 ///
 /// Protocol defined in EFI1.1.
@@ -34,7 +34,7 @@ public unsafe struct UNICODE_COLLATION_INTERFACE { EFI_UNICODE_COLLATION_PROTOCO
 ///
 /// Protocol data structures and defines
 ///
-public static ulong EFI_UNICODE_BYTE_ORDER_MARK = (char)(0xfeff);
+public const ulong EFI_UNICODE_BYTE_ORDER_MARK = (char)(0xfeff);
 
 //
 // Protocol member functions

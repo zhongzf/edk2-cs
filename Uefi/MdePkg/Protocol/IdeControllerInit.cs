@@ -104,17 +104,17 @@ public enum EFI_ATA_EXT_TRANSFER_PROTOCOL
 ///
 /// Automatically detects the optimum SATA speed.
 ///
-public static ulong EFI_SATA_AUTO_SPEED = 0;
+public const ulong EFI_SATA_AUTO_SPEED = 0;
 
 ///
 /// Indicates a first-generation (Gen1) SATA speed.
 ///
-public static ulong EFI_SATA_GEN1_SPEED = 1;
+public const ulong EFI_SATA_GEN1_SPEED = 1;
 
 ///
 /// Indicates a second-generation (Gen2) SATA speed.
 ///
-public static ulong EFI_SATA_GEN2_SPEED = 2;
+public const ulong EFI_SATA_GEN2_SPEED = 2;
 
 ///
 /// EFI_ATA_MODE structure.
@@ -221,7 +221,7 @@ public unsafe struct EFI_ATAPI_IDENTIFY_DATA { ATAPI_IDENTIFY_DATA Value; public
 /// The Config field is common to both EFI_ATA_IDENTIFY_DATA and
 /// EFI_ATAPI_IDENTIFY_DATA.
 ///
-public static ulong EFI_ATAPI_DEVICE_IDENTIFY_DATA = 0x8000;
+public const ulong EFI_ATAPI_DEVICE_IDENTIFY_DATA = 0x8000;
 
 ///
 /// EFI_IDENTIFY_DATA structure.

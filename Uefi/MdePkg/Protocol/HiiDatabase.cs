@@ -24,10 +24,10 @@ public static EFI_GUID EFI_HII_DATABASE_PROTOCOL_GUID = new GUID(0xef9fc172, 0xa
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_DATABASE_NOTIFY_TYPE { ulong Value; public static implicit operator EFI_HII_DATABASE_NOTIFY_TYPE(ulong value) => new EFI_HII_DATABASE_NOTIFY_TYPE() { Value = value }; public static implicit operator ulong(EFI_HII_DATABASE_NOTIFY_TYPE value) => value.Value; }
 
-public static ulong EFI_HII_DATABASE_NOTIFY_NEW_PACK = 0x00000001;
-public static ulong EFI_HII_DATABASE_NOTIFY_REMOVE_PACK = 0x00000002;
-public static ulong EFI_HII_DATABASE_NOTIFY_EXPORT_PACK = 0x00000004;
-public static ulong EFI_HII_DATABASE_NOTIFY_ADD_PACK = 0x00000008;
+public const ulong EFI_HII_DATABASE_NOTIFY_NEW_PACK = 0x00000001;
+public const ulong EFI_HII_DATABASE_NOTIFY_REMOVE_PACK = 0x00000002;
+public const ulong EFI_HII_DATABASE_NOTIFY_EXPORT_PACK = 0x00000004;
+public const ulong EFI_HII_DATABASE_NOTIFY_ADD_PACK = 0x00000008;
 
 
 

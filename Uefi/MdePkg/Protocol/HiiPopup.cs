@@ -16,7 +16,7 @@ namespace Uefi;
 
 public static EFI_GUID EFI_HII_POPUP_PROTOCOL_GUID = new GUID(0x4311edc0, 0x6054, 0x46d4, new byte[] { 0x9e, 0x40, 0x89, 0x3e, 0xa9, 0x52, 0xfc, 0xcc });
 
-public static ulong EFI_HII_POPUP_PROTOCOL_REVISION = 1;
+public const ulong EFI_HII_POPUP_PROTOCOL_REVISION = 1;
 
 // typedef struct _EFI_HII_POPUP_PROTOCOL EFI_HII_POPUP_PROTOCOL;
 

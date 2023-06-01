@@ -23,7 +23,7 @@ public static EFI_GUID EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_GUID = new GUID(
 ///
 /// UEFI Revision Number Definition.
 ///
-public static ulong EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION = 0x00010000;
+public const ulong EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION = 0x00010000;
 
 ///
 /// EFI 1.1 Revision Number defintion.

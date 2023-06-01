@@ -110,8 +110,8 @@ public enum EFI_MM_SAVE_STATE_REGISTER
 /// EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT is returned in Buffer. Otherwise,
 /// EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT is returned in Buffer.
 ///
-public static ulong EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT = 32;
-public static ulong EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT = 64;
+public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT = 32;
+public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT = 64;
 
 ///
 /// Size width of I/O instruction

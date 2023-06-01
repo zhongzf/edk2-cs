@@ -25,12 +25,12 @@ public static EFI_GUID EFI_MM_MP_PROTOCOL_GUID = new GUID(
 //
 // Revision definition.
 //
-public static ulong EFI_MM_MP_PROTOCOL_REVISION = 0x00;
+public const ulong EFI_MM_MP_PROTOCOL_REVISION = 0x00;
 
 //
 // Attribute flags
 //
-public static ulong EFI_MM_MP_TIMEOUT_SUPPORTED = 0x01;
+public const ulong EFI_MM_MP_TIMEOUT_SUPPORTED = 0x01;
 
 //
 // Completion token

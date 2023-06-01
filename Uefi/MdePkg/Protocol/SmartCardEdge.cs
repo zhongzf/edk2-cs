@@ -26,15 +26,15 @@ public static EFI_GUID EFI_SMART_CARD_EDGE_PROTOCOL_GUID = new GUID(
 //
 // Maximum size for a Smart Card AID (Application IDentifier)
 //
-public static ulong SCARD_AID_MAXSIZE = 0x0010;
+public const ulong SCARD_AID_MAXSIZE = 0x0010;
 //
 // Size of CSN (Card Serial Number)
 //
-public static ulong SCARD_CSN_SIZE = 0x0010;
+public const ulong SCARD_CSN_SIZE = 0x0010;
 //
 // Current specification version 1.00
 //
-public static ulong SMART_CARD_EDGE_PROTOCOL_VERSION_1 = 0x00000100;
+public const ulong SMART_CARD_EDGE_PROTOCOL_VERSION_1 = 0x00000100;
 //
 // Parameters type definition
 //
@@ -46,23 +46,23 @@ typedef byte SMART_CARD_CSN[SCARD_CSN_SIZE];
 //
 // value of tag field for header, the number of containers
 //
-public static ulong SC_EDGE_TAG_HEADER = 0x0000;
+public const ulong SC_EDGE_TAG_HEADER = 0x0000;
 //
 // value of tag field for certificate
 //
-public static ulong SC_EDGE_TAG_CERT = 0x0001;
+public const ulong SC_EDGE_TAG_CERT = 0x0001;
 //
 // value of tag field for key index associated with certificate
 //
-public static ulong SC_EDGE_TAG_KEY_ID = 0x0002;
+public const ulong SC_EDGE_TAG_KEY_ID = 0x0002;
 //
 // value of tag field for key type
 //
-public static ulong SC_EDGE_TAG_KEY_TYPE = 0x0003;
+public const ulong SC_EDGE_TAG_KEY_TYPE = 0x0003;
 //
 // value of tag field for key size
 //
-public static ulong SC_EDGE_TAG_KEY_SIZE = 0x0004;
+public const ulong SC_EDGE_TAG_KEY_SIZE = 0x0004;
 
 //
 // Length of L fields of TLV items
@@ -70,42 +70,42 @@ public static ulong SC_EDGE_TAG_KEY_SIZE = 0x0004;
 //
 // size of L field for header
 //
-public static ulong SC_EDGE_L_SIZE_HEADER = 1;
+public const ulong SC_EDGE_L_SIZE_HEADER = 1;
 //
 // size of L field for certificate (big endian)
 //
-public static ulong SC_EDGE_L_SIZE_CERT = 2;
+public const ulong SC_EDGE_L_SIZE_CERT = 2;
 //
 // size of L field for key index
 //
-public static ulong SC_EDGE_L_SIZE_KEY_ID = 1;
+public const ulong SC_EDGE_L_SIZE_KEY_ID = 1;
 //
 // size of L field for key type
 //
-public static ulong SC_EDGE_L_SIZE_KEY_TYPE = 1;
+public const ulong SC_EDGE_L_SIZE_KEY_TYPE = 1;
 //
 // size of L field for key size (big endian)
 //
-public static ulong SC_EDGE_L_SIZE_KEY_SIZE = 2;
+public const ulong SC_EDGE_L_SIZE_KEY_SIZE = 2;
 
 //
 // Some TLV items have a fixed value for L field
 //
 // value of L field for header
 //
-public static ulong SC_EDGE_L_VALUE_HEADER = 1;
+public const ulong SC_EDGE_L_VALUE_HEADER = 1;
 //
 // value of L field for key index
 //
-public static ulong SC_EDGE_L_VALUE_KEY_ID = 1;
+public const ulong SC_EDGE_L_VALUE_KEY_ID = 1;
 //
 // value of L field for key type
 //
-public static ulong SC_EDGE_L_VALUE_KEY_TYPE = 1;
+public const ulong SC_EDGE_L_VALUE_KEY_TYPE = 1;
 //
 // value of L field for key size
 //
-public static ulong SC_EDGE_L_VALUE_KEY_SIZE = 2;
+public const ulong SC_EDGE_L_VALUE_KEY_SIZE = 2;
 
 //
 // Possible values for key type
@@ -113,35 +113,35 @@ public static ulong SC_EDGE_L_VALUE_KEY_SIZE = 2;
 //
 // RSA decryption
 //
-public static ulong SC_EDGE_RSA_EXCHANGE = 0x01;
+public const ulong SC_EDGE_RSA_EXCHANGE = 0x01;
 //
 // RSA signature
 //
-public static ulong SC_EDGE_RSA_SIGNATURE = 0x02;
+public const ulong SC_EDGE_RSA_SIGNATURE = 0x02;
 //
 // ECDSA signature
 //
-public static ulong SC_EDGE_ECDSA_256 = 0x03;
+public const ulong SC_EDGE_ECDSA_256 = 0x03;
 //
 // ECDSA signature
 //
-public static ulong SC_EDGE_ECDSA_384 = 0x04;
+public const ulong SC_EDGE_ECDSA_384 = 0x04;
 //
 // ECDSA signature
 //
-public static ulong SC_EDGE_ECDSA_521 = 0x05;
+public const ulong SC_EDGE_ECDSA_521 = 0x05;
 //
 // ECDH agreement
 //
-public static ulong SC_EDGE_ECDH_256 = 0x06;
+public const ulong SC_EDGE_ECDH_256 = 0x06;
 //
 // ECDH agreement
 //
-public static ulong SC_EDGE_ECDH_384 = 0x07;
+public const ulong SC_EDGE_ECDH_384 = 0x07;
 //
 // ECDH agreement
 //
-public static ulong SC_EDGE_ECDH_521 = 0x08;
+public const ulong SC_EDGE_ECDH_521 = 0x08;
 
 //
 // Padding methods GUIDs for signature

@@ -27,7 +27,7 @@ public static EFI_GUID EFI_DEVICE_PATH_PROTOCOL_GUID = new GUID(
 ///
 /// Device Path guid definition for backward-compatible with EFI1.1.
 ///
-public static ulong DEVICE_PATH_PROTOCOL = EFI_DEVICE_PATH_PROTOCOL_GUID;
+public const ulong DEVICE_PATH_PROTOCOL = EFI_DEVICE_PATH_PROTOCOL_GUID;
 
 // #pragma pack(1)
 
@@ -67,12 +67,12 @@ public unsafe struct EFI_DEVICE_PATH { EFI_DEVICE_PATH_PROTOCOL Value; public st
 ///
 /// Hardware Device Paths.
 ///
-public static ulong HARDWARE_DEVICE_PATH = 0x01;
+public const ulong HARDWARE_DEVICE_PATH = 0x01;
 
 ///
 /// PCI Device Path SubType.
 ///
-public static ulong HW_PCI_DP = 0x01;
+public const ulong HW_PCI_DP = 0x01;
 
 ///
 /// PCI Device Path.
@@ -94,7 +94,7 @@ public unsafe struct PCI_DEVICE_PATH
 ///
 /// PCCARD Device Path SubType.
 ///
-public static ulong HW_PCCARD_DP = 0x02;
+public const ulong HW_PCCARD_DP = 0x02;
 
 ///
 /// PCCARD Device Path.
@@ -112,7 +112,7 @@ public unsafe struct PCCARD_DEVICE_PATH
 ///
 /// Memory Mapped Device Path SubType.
 ///
-public static ulong HW_MEMMAP_DP = 0x03;
+public const ulong HW_MEMMAP_DP = 0x03;
 
 ///
 /// Memory Mapped Device Path.
@@ -138,7 +138,7 @@ public unsafe struct MEMMAP_DEVICE_PATH
 ///
 /// Hardware Vendor Device Path SubType.
 ///
-public static ulong HW_VENDOR_DP = 0x04;
+public const ulong HW_VENDOR_DP = 0x04;
 
 ///
 /// The Vendor Device Path allows the creation of vendor-defined Device Paths. A vendor must
@@ -161,7 +161,7 @@ public unsafe struct VENDOR_DEVICE_PATH
 ///
 /// Controller Device Path SubType.
 ///
-public static ulong HW_CONTROLLER_DP = 0x05;
+public const ulong HW_CONTROLLER_DP = 0x05;
 
 ///
 /// Controller Device Path.
@@ -179,7 +179,7 @@ public unsafe struct CONTROLLER_DEVICE_PATH
 ///
 /// BMC Device Path SubType.
 ///
-public static ulong HW_BMC_DP = 0x06;
+public const ulong HW_BMC_DP = 0x06;
 
 ///
 /// BMC Device Path.
@@ -201,12 +201,12 @@ public unsafe struct BMC_DEVICE_PATH
 ///
 /// ACPI Device Paths.
 ///
-public static ulong ACPI_DEVICE_PATH = 0x02;
+public const ulong ACPI_DEVICE_PATH = 0x02;
 
 ///
 /// ACPI Device Path SubType.
 ///
-public static ulong ACPI_DP = 0x01;
+public const ulong ACPI_DP = 0x01;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ACPI_HID_DEVICE_PATH
 {
@@ -230,7 +230,7 @@ public unsafe struct ACPI_HID_DEVICE_PATH
 ///
 /// Expanded ACPI Device Path SubType.
 ///
-public static ulong ACPI_EXTENDED_DP = 0x02;
+public const ulong ACPI_EXTENDED_DP = 0x02;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ACPI_EXTENDED_HID_DEVICE_PATH
 {
@@ -268,18 +268,18 @@ public unsafe struct ACPI_EXTENDED_HID_DEVICE_PATH
 //   bits[31:16] - binary number
 //    Compressed ASCII is 5 bits per character 0b00001 = 'A' 0b11010 = 'Z'
 //
-public static ulong PNP_EISA_ID_CONST = 0x41d0;
-public static ulong EISA_ID = (_Name, _Num)((uint)((_Name) | (_Num) << 16));
-public static ulong EISA_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
-public static ulong EFI_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
+public const ulong PNP_EISA_ID_CONST = 0x41d0;
+public const ulong EISA_ID = (_Name, _Num)((uint)((_Name) | (_Num) << 16));
+public const ulong EISA_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
+public const ulong EFI_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
 
-public static ulong PNP_EISA_ID_MASK = 0xffff;
-public static ulong EISA_ID_TO_NUM = (_Id)((_Id) >> 16);
+public const ulong PNP_EISA_ID_MASK = 0xffff;
+public const ulong EISA_ID_TO_NUM = (_Id)((_Id) >> 16);
 
 ///
 /// ACPI _ADR Device Path SubType.
 ///
-public static ulong ACPI_ADR_DP = 0x03;
+public const ulong ACPI_ADR_DP = 0x03;
 
 ///
 /// The _ADR device path is used to contain video output device attributes to support the Graphics
@@ -304,7 +304,7 @@ public unsafe struct ACPI_ADR_DEVICE_PATH
 ///
 /// ACPI NVDIMM Device Path SubType.
 ///
-public static ulong ACPI_NVDIMM_DP = 0x04;
+public const ulong ACPI_NVDIMM_DP = 0x04;
 ///
 ///
 [StructLayout(LayoutKind.Sequential)]
@@ -318,13 +318,13 @@ public unsafe struct ACPI_NVDIMM_DEVICE_PATH
   public uint NFITDeviceHandle;
 }
 
-public static ulong ACPI_ADR_DISPLAY_TYPE_OTHER = 0;
-public static ulong ACPI_ADR_DISPLAY_TYPE_VGA = 1;
-public static ulong ACPI_ADR_DISPLAY_TYPE_TV = 2;
-public static ulong ACPI_ADR_DISPLAY_TYPE_EXTERNAL_DIGITAL = 3;
-public static ulong ACPI_ADR_DISPLAY_TYPE_INTERNAL_DIGITAL = 4;
+public const ulong ACPI_ADR_DISPLAY_TYPE_OTHER = 0;
+public const ulong ACPI_ADR_DISPLAY_TYPE_VGA = 1;
+public const ulong ACPI_ADR_DISPLAY_TYPE_TV = 2;
+public const ulong ACPI_ADR_DISPLAY_TYPE_EXTERNAL_DIGITAL = 3;
+public const ulong ACPI_ADR_DISPLAY_TYPE_INTERNAL_DIGITAL = 4;
 
-public static ulong ACPI_DISPLAY_ADR = (_DeviceIdScheme, _HeadId, _NonVgaOutput, _BiosCanDetect, _VendorInfo, _Type, _Port, _Index) \;
+public const ulong ACPI_DISPLAY_ADR = (_DeviceIdScheme, _HeadId, _NonVgaOutput, _BiosCanDetect, _VendorInfo, _Type, _Port, _Index) \;
           ((uint)(((uint)((_DeviceIdScheme) & 0x1) << 31) |  \
                       (((_HeadId)                 & 0x7) << 18) |  \
                       (((_NonVgaOutput)           & 0x1) << 17) |  \
@@ -340,12 +340,12 @@ public static ulong ACPI_DISPLAY_ADR = (_DeviceIdScheme, _HeadId, _NonVgaOutput,
 /// system. This Device Path can describe physical messaging information like SCSI ID, or abstract
 /// information like networking protocol IP addresses.
 ///
-public static ulong MESSAGING_DEVICE_PATH = 0x03;
+public const ulong MESSAGING_DEVICE_PATH = 0x03;
 
 ///
 /// ATAPI Device Path SubType
 ///
-public static ulong MSG_ATAPI_DP = 0x01;
+public const ulong MSG_ATAPI_DP = 0x01;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ATAPI_DEVICE_PATH
 {
@@ -367,7 +367,7 @@ public unsafe struct ATAPI_DEVICE_PATH
 ///
 /// SCSI Device Path SubType.
 ///
-public static ulong MSG_SCSI_DP = 0x02;
+public const ulong MSG_SCSI_DP = 0x02;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SCSI_DEVICE_PATH
 {
@@ -385,7 +385,7 @@ public unsafe struct SCSI_DEVICE_PATH
 ///
 /// Fibre Channel SubType.
 ///
-public static ulong MSG_FIBRECHANNEL_DP = 0x03;
+public const ulong MSG_FIBRECHANNEL_DP = 0x03;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FIBRECHANNEL_DEVICE_PATH
 {
@@ -407,7 +407,7 @@ public unsafe struct FIBRECHANNEL_DEVICE_PATH
 ///
 /// Fibre Channel Ex SubType.
 ///
-public static ulong MSG_FIBRECHANNELEX_DP = 0x15;
+public const ulong MSG_FIBRECHANNELEX_DP = 0x15;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FIBRECHANNELEX_DEVICE_PATH
 {
@@ -429,7 +429,7 @@ public unsafe struct FIBRECHANNELEX_DEVICE_PATH
 ///
 /// 1394 Device Path SubType
 ///
-public static ulong MSG_1394_DP = 0x04;
+public const ulong MSG_1394_DP = 0x04;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct F1394_DEVICE_PATH
 {
@@ -447,7 +447,7 @@ public unsafe struct F1394_DEVICE_PATH
 ///
 /// USB Device Path SubType.
 ///
-public static ulong MSG_USB_DP = 0x05;
+public const ulong MSG_USB_DP = 0x05;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct USB_DEVICE_PATH
 {
@@ -465,7 +465,7 @@ public unsafe struct USB_DEVICE_PATH
 ///
 /// USB Class Device Path SubType.
 ///
-public static ulong MSG_USB_CLASS_DP = 0x0f;
+public const ulong MSG_USB_CLASS_DP = 0x0f;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct USB_CLASS_DEVICE_PATH
 {
@@ -500,7 +500,7 @@ public unsafe struct USB_CLASS_DEVICE_PATH
 ///
 /// USB WWID Device Path SubType.
 ///
-public static ulong MSG_USB_WWID_DP = 0x10;
+public const ulong MSG_USB_WWID_DP = 0x10;
 
 ///
 /// This device path describes a USB device using its serial number.
@@ -533,7 +533,7 @@ public unsafe struct USB_WWID_DEVICE_PATH
 ///
 /// Device Logical Unit SubType.
 ///
-public static ulong MSG_DEVICE_LOGICAL_UNIT_DP = 0x11;
+public const ulong MSG_DEVICE_LOGICAL_UNIT_DP = 0x11;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct DEVICE_LOGICAL_UNIT_DEVICE_PATH
 {
@@ -547,7 +547,7 @@ public unsafe struct DEVICE_LOGICAL_UNIT_DEVICE_PATH
 ///
 /// SATA Device Path SubType.
 ///
-public static ulong MSG_SATA_DP = 0x12;
+public const ulong MSG_SATA_DP = 0x12;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SATA_DEVICE_PATH
 {
@@ -572,12 +572,12 @@ public unsafe struct SATA_DEVICE_PATH
 ///
 /// Flag for if the device is directly connected to the HBA.
 ///
-public static ulong SATA_HBA_DIRECT_CONNECT_FLAG = 0x8000;
+public const ulong SATA_HBA_DIRECT_CONNECT_FLAG = 0x8000;
 
 ///
 /// I2O Device Path SubType.
 ///
-public static ulong MSG_I2O_DP = 0x06;
+public const ulong MSG_I2O_DP = 0x06;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct I2O_DEVICE_PATH
 {
@@ -591,7 +591,7 @@ public unsafe struct I2O_DEVICE_PATH
 ///
 /// MAC Address Device Path SubType.
 ///
-public static ulong MSG_MAC_ADDR_DP = 0x0b;
+public const ulong MSG_MAC_ADDR_DP = 0x0b;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MAC_ADDR_DEVICE_PATH
 {
@@ -609,7 +609,7 @@ public unsafe struct MAC_ADDR_DEVICE_PATH
 ///
 /// IPv4 Device Path SubType
 ///
-public static ulong MSG_IPv4_DP = 0x0c;
+public const ulong MSG_IPv4_DP = 0x0c;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPv4_DEVICE_PATH
 {
@@ -652,7 +652,7 @@ public unsafe struct IPv4_DEVICE_PATH
 ///
 /// IPv6 Device Path SubType.
 ///
-public static ulong MSG_IPv6_DP = 0x0d;
+public const ulong MSG_IPv6_DP = 0x0d;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPv6_DEVICE_PATH
 {
@@ -698,7 +698,7 @@ public unsafe struct IPv6_DEVICE_PATH
 ///
 /// InfiniBand Device Path SubType.
 ///
-public static ulong MSG_INFINIBAND_DP = 0x09;
+public const ulong MSG_INFINIBAND_DP = 0x09;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct INFINIBAND_DEVICE_PATH
 {
@@ -732,16 +732,16 @@ public unsafe struct INFINIBAND_DEVICE_PATH
   public ulong DeviceId;
 }
 
-public static ulong INFINIBAND_RESOURCE_FLAG_IOC_SERVICE = 0x01;
-public static ulong INFINIBAND_RESOURCE_FLAG_EXTENDED_BOOT_ENVIRONMENT = 0x02;
-public static ulong INFINIBAND_RESOURCE_FLAG_CONSOLE_PROTOCOL = 0x04;
-public static ulong INFINIBAND_RESOURCE_FLAG_STORAGE_PROTOCOL = 0x08;
-public static ulong INFINIBAND_RESOURCE_FLAG_NETWORK_PROTOCOL = 0x10;
+public const ulong INFINIBAND_RESOURCE_FLAG_IOC_SERVICE = 0x01;
+public const ulong INFINIBAND_RESOURCE_FLAG_EXTENDED_BOOT_ENVIRONMENT = 0x02;
+public const ulong INFINIBAND_RESOURCE_FLAG_CONSOLE_PROTOCOL = 0x04;
+public const ulong INFINIBAND_RESOURCE_FLAG_STORAGE_PROTOCOL = 0x08;
+public const ulong INFINIBAND_RESOURCE_FLAG_NETWORK_PROTOCOL = 0x10;
 
 ///
 /// UART Device Path SubType.
 ///
-public static ulong MSG_UART_DP = 0x0e;
+public const ulong MSG_UART_DP = 0x0e;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UART_DEVICE_PATH
 {
@@ -783,7 +783,7 @@ public unsafe struct UART_DEVICE_PATH
 ///
 /// NVDIMM Namespace Device Path SubType.
 ///
-public static ulong NVDIMM_NAMESPACE_DP = 0x20;
+public const ulong NVDIMM_NAMESPACE_DP = 0x20;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVDIMM_NAMESPACE_DEVICE_PATH
 {
@@ -797,14 +797,14 @@ public unsafe struct NVDIMM_NAMESPACE_DEVICE_PATH
 //
 // Use VENDOR_DEVICE_PATH struct
 //
-public static ulong MSG_VENDOR_DP = 0x0a;
+public const ulong MSG_VENDOR_DP = 0x0a;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VENDOR_DEFINED_DEVICE_PATH { VENDOR_DEVICE_PATH Value; public static implicit operator VENDOR_DEFINED_DEVICE_PATH(VENDOR_DEVICE_PATH value) => new VENDOR_DEFINED_DEVICE_PATH() { Value = value }; public static implicit operator VENDOR_DEVICE_PATH(VENDOR_DEFINED_DEVICE_PATH value) => value.Value; }
 
-public static ulong DEVICE_PATH_MESSAGING_PC_ANSI = EFI_PC_ANSI_GUID;
-public static ulong DEVICE_PATH_MESSAGING_VT_100 = EFI_VT_100_GUID;
-public static ulong DEVICE_PATH_MESSAGING_VT_100_PLUS = EFI_VT_100_PLUS_GUID;
-public static ulong DEVICE_PATH_MESSAGING_VT_UTF8 = EFI_VT_UTF8_GUID;
+public const ulong DEVICE_PATH_MESSAGING_PC_ANSI = EFI_PC_ANSI_GUID;
+public const ulong DEVICE_PATH_MESSAGING_VT_100 = EFI_VT_100_GUID;
+public const ulong DEVICE_PATH_MESSAGING_VT_100_PLUS = EFI_VT_100_PLUS_GUID;
+public const ulong DEVICE_PATH_MESSAGING_VT_UTF8 = EFI_VT_UTF8_GUID;
 
 ///
 /// A new device path node is defined to declare flow control characteristics.
@@ -827,10 +827,10 @@ public unsafe struct UART_FLOW_CONTROL_DEVICE_PATH
   public uint FlowControlMap;
 }
 
-public static ulong UART_FLOW_CONTROL_HARDWARE = 0x00000001;
-public static ulong UART_FLOW_CONTROL_XON_XOFF = 0x00000010;
+public const ulong UART_FLOW_CONTROL_HARDWARE = 0x00000001;
+public const ulong UART_FLOW_CONTROL_XON_XOFF = 0x00000010;
 
-public static ulong DEVICE_PATH_MESSAGING_SAS = EFI_SAS_DEVICE_PATH_GUID;
+public const ulong DEVICE_PATH_MESSAGING_SAS = EFI_SAS_DEVICE_PATH_GUID;
 ///
 /// Serial Attached SCSI (SAS) Device Path.
 ///
@@ -867,7 +867,7 @@ public unsafe struct SAS_DEVICE_PATH
 ///
 /// Serial Attached SCSI (SAS) Ex Device Path SubType
 ///
-public static ulong MSG_SASEX_DP = 0x16;
+public const ulong MSG_SASEX_DP = 0x16;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SASEX_DEVICE_PATH
 {
@@ -893,7 +893,7 @@ public unsafe struct SASEX_DEVICE_PATH
 ///
 /// NvmExpress Namespace Device Path SubType.
 ///
-public static ulong MSG_NVME_NAMESPACE_DP = 0x17;
+public const ulong MSG_NVME_NAMESPACE_DP = 0x17;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_NAMESPACE_DEVICE_PATH
 {
@@ -905,7 +905,7 @@ public unsafe struct NVME_NAMESPACE_DEVICE_PATH
 ///
 /// DNS Device Path SubType
 ///
-public static ulong MSG_DNS_DP = 0x1F;
+public const ulong MSG_DNS_DP = 0x1F;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct DNS_DEVICE_PATH
 {
@@ -923,7 +923,7 @@ public unsafe struct DNS_DEVICE_PATH
 ///
 /// Uniform Resource Identifiers (URI) Device Path SubType
 ///
-public static ulong MSG_URI_DP = 0x18;
+public const ulong MSG_URI_DP = 0x18;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct URI_DEVICE_PATH
 {
@@ -937,7 +937,7 @@ public unsafe struct URI_DEVICE_PATH
 ///
 /// Universal Flash Storage (UFS) Device Path SubType.
 ///
-public static ulong MSG_UFS_DP = 0x19;
+public const ulong MSG_UFS_DP = 0x19;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UFS_DEVICE_PATH
 {
@@ -955,7 +955,7 @@ public unsafe struct UFS_DEVICE_PATH
 ///
 /// SD (Secure Digital) Device Path SubType.
 ///
-public static ulong MSG_SD_DP = 0x1A;
+public const ulong MSG_SD_DP = 0x1A;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SD_DEVICE_PATH
 {
@@ -966,7 +966,7 @@ public unsafe struct SD_DEVICE_PATH
 ///
 /// EMMC (Embedded MMC) Device Path SubType.
 ///
-public static ulong MSG_EMMC_DP = 0x1D;
+public const ulong MSG_EMMC_DP = 0x1D;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EMMC_DEVICE_PATH
 {
@@ -977,7 +977,7 @@ public unsafe struct EMMC_DEVICE_PATH
 ///
 /// iSCSI Device Path SubType
 ///
-public static ulong MSG_ISCSI_DP = 0x13;
+public const ulong MSG_ISCSI_DP = 0x13;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ISCSI_DEVICE_PATH
 {
@@ -1006,19 +1006,19 @@ public unsafe struct ISCSI_DEVICE_PATH
   /// byte                        iSCSI Target Name.
 }
 
-public static ulong ISCSI_LOGIN_OPTION_NO_HEADER_DIGEST = 0x0000;
-public static ulong ISCSI_LOGIN_OPTION_HEADER_DIGEST_USING_CRC32C = 0x0002;
-public static ulong ISCSI_LOGIN_OPTION_NO_DATA_DIGEST = 0x0000;
-public static ulong ISCSI_LOGIN_OPTION_DATA_DIGEST_USING_CRC32C = 0x0008;
-public static ulong ISCSI_LOGIN_OPTION_AUTHMETHOD_CHAP = 0x0000;
-public static ulong ISCSI_LOGIN_OPTION_AUTHMETHOD_NON = 0x1000;
-public static ulong ISCSI_LOGIN_OPTION_CHAP_BI = 0x0000;
-public static ulong ISCSI_LOGIN_OPTION_CHAP_UNI = 0x2000;
+public const ulong ISCSI_LOGIN_OPTION_NO_HEADER_DIGEST = 0x0000;
+public const ulong ISCSI_LOGIN_OPTION_HEADER_DIGEST_USING_CRC32C = 0x0002;
+public const ulong ISCSI_LOGIN_OPTION_NO_DATA_DIGEST = 0x0000;
+public const ulong ISCSI_LOGIN_OPTION_DATA_DIGEST_USING_CRC32C = 0x0008;
+public const ulong ISCSI_LOGIN_OPTION_AUTHMETHOD_CHAP = 0x0000;
+public const ulong ISCSI_LOGIN_OPTION_AUTHMETHOD_NON = 0x1000;
+public const ulong ISCSI_LOGIN_OPTION_CHAP_BI = 0x0000;
+public const ulong ISCSI_LOGIN_OPTION_CHAP_UNI = 0x2000;
 
 ///
 /// VLAN Device Path SubType.
 ///
-public static ulong MSG_VLAN_DP = 0x14;
+public const ulong MSG_VLAN_DP = 0x14;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VLAN_DEVICE_PATH
 {
@@ -1032,7 +1032,7 @@ public unsafe struct VLAN_DEVICE_PATH
 ///
 /// Bluetooth Device Path SubType.
 ///
-public static ulong MSG_BLUETOOTH_DP = 0x1b;
+public const ulong MSG_BLUETOOTH_DP = 0x1b;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct BLUETOOTH_DEVICE_PATH
 {
@@ -1046,7 +1046,7 @@ public unsafe struct BLUETOOTH_DEVICE_PATH
 ///
 /// Wi-Fi Device Path SubType.
 ///
-public static ulong MSG_WIFI_DP = 0x1C;
+public const ulong MSG_WIFI_DP = 0x1C;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct WIFI_DEVICE_PATH
 {
@@ -1060,7 +1060,7 @@ public unsafe struct WIFI_DEVICE_PATH
 ///
 /// Bluetooth LE Device Path SubType.
 ///
-public static ulong MSG_BLUETOOTH_LE_DP = 0x1E;
+public const ulong MSG_BLUETOOTH_LE_DP = 0x1E;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct BLUETOOTH_LE_DEVICE_PATH
 {
@@ -1071,12 +1071,12 @@ public unsafe struct BLUETOOTH_LE_DEVICE_PATH
 //
 // Media Device Path
 //
-public static ulong MEDIA_DEVICE_PATH = 0x04;
+public const ulong MEDIA_DEVICE_PATH = 0x04;
 
 ///
 /// Hard Drive Media Device Path SubType.
 ///
-public static ulong MEDIA_HARDDRIVE_DP = 0x01;
+public const ulong MEDIA_HARDDRIVE_DP = 0x01;
 
 ///
 /// The Hard Drive Media Device Path is used to represent a partition on a hard drive.
@@ -1123,17 +1123,17 @@ public unsafe struct HARDDRIVE_DEVICE_PATH
   public byte SignatureType;
 }
 
-public static ulong MBR_TYPE_PCAT = 0x01;
-public static ulong MBR_TYPE_EFI_PARTITION_TABLE_HEADER = 0x02;
+public const ulong MBR_TYPE_PCAT = 0x01;
+public const ulong MBR_TYPE_EFI_PARTITION_TABLE_HEADER = 0x02;
 
-public static ulong NO_DISK_SIGNATURE = 0x00;
-public static ulong SIGNATURE_TYPE_MBR = 0x01;
-public static ulong SIGNATURE_TYPE_GUID = 0x02;
+public const ulong NO_DISK_SIGNATURE = 0x00;
+public const ulong SIGNATURE_TYPE_MBR = 0x01;
+public const ulong SIGNATURE_TYPE_GUID = 0x02;
 
 ///
 /// CD-ROM Media Device Path SubType.
 ///
-public static ulong MEDIA_CDROM_DP = 0x02;
+public const ulong MEDIA_CDROM_DP = 0x02;
 
 ///
 /// The CD-ROM Media Device Path is used to define a system partition that exists on a CD-ROM.
@@ -1159,12 +1159,12 @@ public unsafe struct CDROM_DEVICE_PATH
 //
 // Use VENDOR_DEVICE_PATH struct
 //
-public static ulong MEDIA_VENDOR_DP = 0x03           ///< Media vendor device path subtype.;
+public const ulong MEDIA_VENDOR_DP = 0x03           ///< Media vendor device path subtype.;
 
 ///
 /// File Path Media Device Path SubType
 ///
-public static ulong MEDIA_FILEPATH_DP = 0x04;
+public const ulong MEDIA_FILEPATH_DP = 0x04;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FILEPATH_DEVICE_PATH
 {
@@ -1175,12 +1175,12 @@ public unsafe struct FILEPATH_DEVICE_PATH
   public fixed char PathName[1];
 }
 
-public static ulong SIZE_OF_FILEPATH_DEVICE_PATH = OFFSET_OF(FILEPATH_DEVICE_PATH, PathName);
+public const ulong SIZE_OF_FILEPATH_DEVICE_PATH = OFFSET_OF(FILEPATH_DEVICE_PATH, PathName);
 
 ///
 /// Media Protocol Device Path SubType.
 ///
-public static ulong MEDIA_PROTOCOL_DP = 0x05;
+public const ulong MEDIA_PROTOCOL_DP = 0x05;
 
 ///
 /// The Media Protocol Device Path is used to denote the protocol that is being
@@ -1200,7 +1200,7 @@ public unsafe struct MEDIA_PROTOCOL_DEVICE_PATH
 ///
 /// PIWG Firmware File SubType.
 ///
-public static ulong MEDIA_PIWG_FW_FILE_DP = 0x06;
+public const ulong MEDIA_PIWG_FW_FILE_DP = 0x06;
 
 ///
 /// This device path is used by systems implementing the UEFI PI Specification 1.0 to describe a firmware file.
@@ -1218,7 +1218,7 @@ public unsafe struct MEDIA_FW_VOL_FILEPATH_DEVICE_PATH
 ///
 /// PIWG Firmware Volume Device Path SubType.
 ///
-public static ulong MEDIA_PIWG_FW_VOL_DP = 0x07;
+public const ulong MEDIA_PIWG_FW_VOL_DP = 0x07;
 
 ///
 /// This device path is used by systems implementing the UEFI PI Specification 1.0 to describe a firmware volume.
@@ -1236,7 +1236,7 @@ public unsafe struct MEDIA_FW_VOL_DEVICE_PATH
 ///
 /// Media relative offset range device path.
 ///
-public static ulong MEDIA_RELATIVE_OFFSET_RANGE_DP = 0x08;
+public const ulong MEDIA_RELATIVE_OFFSET_RANGE_DP = 0x08;
 
 ///
 /// Used to describe the offset range of media relative.
@@ -1253,35 +1253,35 @@ public unsafe struct MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH
 ///
 /// This GUID defines a RAM Disk supporting a raw disk format in volatile memory.
 ///
-public static ulong EFI_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE;
+public const ulong EFI_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE;
 
 // extern  EFI_GUID  gEfiVirtualDiskGuid;
 
 ///
 /// This GUID defines a RAM Disk supporting an ISO image in volatile memory.
 ///
-public static ulong EFI_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE;
+public const ulong EFI_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE;
 
 // extern  EFI_GUID  gEfiVirtualCdGuid;
 
 ///
 /// This GUID defines a RAM Disk supporting a raw disk format in persistent memory.
 ///
-public static ulong EFI_PERSISTENT_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT;
+public const ulong EFI_PERSISTENT_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT;
 
 // extern  EFI_GUID  gEfiPersistentVirtualDiskGuid;
 
 ///
 /// This GUID defines a RAM Disk supporting an ISO image in persistent memory.
 ///
-public static ulong EFI_PERSISTENT_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT;
+public const ulong EFI_PERSISTENT_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT;
 
 // extern  EFI_GUID  gEfiPersistentVirtualCdGuid;
 
 ///
 /// Media ram disk device path.
 ///
-public static ulong MEDIA_RAM_DISK_DP = 0x09;
+public const ulong MEDIA_RAM_DISK_DP = 0x09;
 
 ///
 /// Used to describe the ram disk device path.
@@ -1311,12 +1311,12 @@ public unsafe struct MEDIA_RAM_DISK_DEVICE_PATH
 ///
 /// BIOS Boot Specification Device Path.
 ///
-public static ulong BBS_DEVICE_PATH = 0x05;
+public const ulong BBS_DEVICE_PATH = 0x05;
 
 ///
 /// BIOS Boot Specification Device Path SubType.
 ///
-public static ulong BBS_BBS_DP = 0x01;
+public const ulong BBS_BBS_DP = 0x01;
 
 ///
 /// This Device Path is used to describe the booting of non-EFI-aware operating systems.
@@ -1342,14 +1342,14 @@ public unsafe struct BBS_BBS_DEVICE_PATH
 //
 // DeviceType definitions - from BBS specification
 //
-public static ulong BBS_TYPE_FLOPPY = 0x01;
-public static ulong BBS_TYPE_HARDDRIVE = 0x02;
-public static ulong BBS_TYPE_CDROM = 0x03;
-public static ulong BBS_TYPE_PCMCIA = 0x04;
-public static ulong BBS_TYPE_USB = 0x05;
-public static ulong BBS_TYPE_EMBEDDED_NETWORK = 0x06;
-public static ulong BBS_TYPE_BEV = 0x80;
-public static ulong BBS_TYPE_UNKNOWN = 0xFF;
+public const ulong BBS_TYPE_FLOPPY = 0x01;
+public const ulong BBS_TYPE_HARDDRIVE = 0x02;
+public const ulong BBS_TYPE_CDROM = 0x03;
+public const ulong BBS_TYPE_PCMCIA = 0x04;
+public const ulong BBS_TYPE_USB = 0x05;
+public const ulong BBS_TYPE_EMBEDDED_NETWORK = 0x06;
+public const ulong BBS_TYPE_BEV = 0x80;
+public const ulong BBS_TYPE_UNKNOWN = 0xFF;
 
 ///
 /// Union of all possible Device Paths and pointers to Device Paths.
@@ -1473,9 +1473,9 @@ public unsafe struct EFI_DEV_PATH_PTR
 
 // #pragma pack()
 
-public static ulong END_DEVICE_PATH_TYPE = 0x7f;
-public static ulong END_ENTIRE_DEVICE_PATH_SUBTYPE = 0xFF;
-public static ulong END_INSTANCE_DEVICE_PATH_SUBTYPE = 0x01;
+public const ulong END_DEVICE_PATH_TYPE = 0x7f;
+public const ulong END_ENTIRE_DEVICE_PATH_SUBTYPE = 0xFF;
+public const ulong END_INSTANCE_DEVICE_PATH_SUBTYPE = 0x01;
 
 // extern EFI_GUID  gEfiDevicePathProtocolGuid;
 

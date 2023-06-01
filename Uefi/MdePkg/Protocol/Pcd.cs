@@ -22,7 +22,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public static EFI_GUID PCD_PROTOCOL_GUID = new GUID(0x11b34006, 0xd85b, 0x4d0a, new byte[] { 0xa2, 0x90, 0xd5, 0xa5, 0x71, 0x31, 0xe, 0xf7 });
 
-public static ulong PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
+public const ulong PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
 
 
 

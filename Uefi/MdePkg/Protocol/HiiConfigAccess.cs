@@ -26,18 +26,18 @@ public static EFI_GUID EFI_HII_CONFIG_ACCESS_PROTOCOL_GUID = new GUID(0x330d4706
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BROWSER_ACTION { ulong Value; public static implicit operator EFI_BROWSER_ACTION(ulong value) => new EFI_BROWSER_ACTION() { Value = value }; public static implicit operator ulong(EFI_BROWSER_ACTION value) => value.Value; }
 
-public static ulong EFI_BROWSER_ACTION_CHANGING = 0;
-public static ulong EFI_BROWSER_ACTION_CHANGED = 1;
-public static ulong EFI_BROWSER_ACTION_RETRIEVE = 2;
-public static ulong EFI_BROWSER_ACTION_FORM_OPEN = 3;
-public static ulong EFI_BROWSER_ACTION_FORM_CLOSE = 4;
-public static ulong EFI_BROWSER_ACTION_SUBMITTED = 5;
-public static ulong EFI_BROWSER_ACTION_DEFAULT_STANDARD = 0x1000;
-public static ulong EFI_BROWSER_ACTION_DEFAULT_MANUFACTURING = 0x1001;
-public static ulong EFI_BROWSER_ACTION_DEFAULT_SAFE = 0x1002;
-public static ulong EFI_BROWSER_ACTION_DEFAULT_PLATFORM = 0x2000;
-public static ulong EFI_BROWSER_ACTION_DEFAULT_HARDWARE = 0x3000;
-public static ulong EFI_BROWSER_ACTION_DEFAULT_FIRMWARE = 0x4000;
+public const ulong EFI_BROWSER_ACTION_CHANGING = 0;
+public const ulong EFI_BROWSER_ACTION_CHANGED = 1;
+public const ulong EFI_BROWSER_ACTION_RETRIEVE = 2;
+public const ulong EFI_BROWSER_ACTION_FORM_OPEN = 3;
+public const ulong EFI_BROWSER_ACTION_FORM_CLOSE = 4;
+public const ulong EFI_BROWSER_ACTION_SUBMITTED = 5;
+public const ulong EFI_BROWSER_ACTION_DEFAULT_STANDARD = 0x1000;
+public const ulong EFI_BROWSER_ACTION_DEFAULT_MANUFACTURING = 0x1001;
+public const ulong EFI_BROWSER_ACTION_DEFAULT_SAFE = 0x1002;
+public const ulong EFI_BROWSER_ACTION_DEFAULT_PLATFORM = 0x2000;
+public const ulong EFI_BROWSER_ACTION_DEFAULT_HARDWARE = 0x3000;
+public const ulong EFI_BROWSER_ACTION_DEFAULT_FIRMWARE = 0x4000;
 
 
 

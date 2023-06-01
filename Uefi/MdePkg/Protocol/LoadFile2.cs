@@ -22,7 +22,7 @@ public static EFI_GUID EFI_LOAD_FILE2_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol Guid defined by UEFI2.1.
 ///
-public static ulong LOAD_FILE2_PROTOCOL = EFI_LOAD_FILE2_PROTOCOL_GUID;
+public const ulong LOAD_FILE2_PROTOCOL = EFI_LOAD_FILE2_PROTOCOL_GUID;
 
 // typedef struct _EFI_LOAD_FILE2_PROTOCOL EFI_LOAD_FILE2_PROTOCOL;
 

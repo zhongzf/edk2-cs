@@ -22,17 +22,17 @@ public static EFI_GUID EFI_LOADED_IMAGE_DEVICE_PATH_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol GUID defined in EFI1.1.
 ///
-public static ulong LOADED_IMAGE_PROTOCOL = EFI_LOADED_IMAGE_PROTOCOL_GUID;
+public const ulong LOADED_IMAGE_PROTOCOL = EFI_LOADED_IMAGE_PROTOCOL_GUID;
 
 ///
 /// EFI_SYSTEM_TABLE & EFI_IMAGE_UNLOAD are defined in EfiApi.h
 ///
-public static ulong EFI_LOADED_IMAGE_PROTOCOL_REVISION = 0x1000;
+public const ulong EFI_LOADED_IMAGE_PROTOCOL_REVISION = 0x1000;
 
 ///
 /// Revision defined in EFI1.1.
 ///
-public static ulong EFI_LOADED_IMAGE_INFORMATION_REVISION = EFI_LOADED_IMAGE_PROTOCOL_REVISION;
+public const ulong EFI_LOADED_IMAGE_INFORMATION_REVISION = EFI_LOADED_IMAGE_PROTOCOL_REVISION;
 
 ///
 /// Can be used on any image handle to obtain information about the loaded image.

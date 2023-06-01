@@ -22,7 +22,7 @@ public static EFI_GUID EFI_HII_IMAGE_PROTOCOL_GUID = new GUID(0x31a6406a, 0x6bdf
 ///
 /// Flags in EFI_IMAGE_INPUT
 ///
-public static ulong EFI_IMAGE_TRANSPARENT = 0x00000001;
+public const ulong EFI_IMAGE_TRANSPARENT = 0x00000001;
 
 /**
 
@@ -165,12 +165,12 @@ public unsafe struct EFI_IMAGE_INPUT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_DRAW_FLAGS { uint Value; public static implicit operator EFI_HII_DRAW_FLAGS(uint value) => new EFI_HII_DRAW_FLAGS() { Value = value }; public static implicit operator uint(EFI_HII_DRAW_FLAGS value) => value.Value; }
 
-public static ulong EFI_HII_DRAW_FLAG_CLIP = 0x00000001;
-public static ulong EFI_HII_DRAW_FLAG_TRANSPARENT = 0x00000030;
-public static ulong EFI_HII_DRAW_FLAG_DEFAULT = 0x00000000;
-public static ulong EFI_HII_DRAW_FLAG_FORCE_TRANS = 0x00000010;
-public static ulong EFI_HII_DRAW_FLAG_FORCE_OPAQUE = 0x00000020;
-public static ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
+public const ulong EFI_HII_DRAW_FLAG_CLIP = 0x00000001;
+public const ulong EFI_HII_DRAW_FLAG_TRANSPARENT = 0x00000030;
+public const ulong EFI_HII_DRAW_FLAG_DEFAULT = 0x00000000;
+public const ulong EFI_HII_DRAW_FLAG_FORCE_TRANS = 0x00000010;
+public const ulong EFI_HII_DRAW_FLAG_FORCE_OPAQUE = 0x00000020;
+public const ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
 
 /**
 

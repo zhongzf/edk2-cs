@@ -55,16 +55,16 @@ public enum EFI_USB_DATA_DIRECTION
 //
 // USB Transfer Results
 //
-public static ulong EFI_USB_NOERROR = 0x00;
-public static ulong EFI_USB_ERR_NOTEXECUTE = 0x01;
-public static ulong EFI_USB_ERR_STALL = 0x02;
-public static ulong EFI_USB_ERR_BUFFER = 0x04;
-public static ulong EFI_USB_ERR_BABBLE = 0x08;
-public static ulong EFI_USB_ERR_NAK = 0x10;
-public static ulong EFI_USB_ERR_CRC = 0x20;
-public static ulong EFI_USB_ERR_TIMEOUT = 0x40;
-public static ulong EFI_USB_ERR_BITSTUFF = 0x80;
-public static ulong EFI_USB_ERR_SYSTEM = 0x100;
+public const ulong EFI_USB_NOERROR = 0x00;
+public const ulong EFI_USB_ERR_NOTEXECUTE = 0x01;
+public const ulong EFI_USB_ERR_STALL = 0x02;
+public const ulong EFI_USB_ERR_BUFFER = 0x04;
+public const ulong EFI_USB_ERR_BABBLE = 0x08;
+public const ulong EFI_USB_ERR_NAK = 0x10;
+public const ulong EFI_USB_ERR_CRC = 0x20;
+public const ulong EFI_USB_ERR_TIMEOUT = 0x40;
+public const ulong EFI_USB_ERR_BITSTUFF = 0x80;
+public const ulong EFI_USB_ERR_SYSTEM = 0x100;
 
 
 

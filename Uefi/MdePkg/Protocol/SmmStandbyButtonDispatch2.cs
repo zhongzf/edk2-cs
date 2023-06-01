@@ -18,7 +18,7 @@ namespace Uefi;
 
 // #include <Protocol/MmStandbyButtonDispatch.h>
 
-public static ulong EFI_SMM_STANDBY_BUTTON_DISPATCH2_PROTOCOL_GUID = EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID;
+public const ulong EFI_SMM_STANDBY_BUTTON_DISPATCH2_PROTOCOL_GUID = EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID;
 
 ///
 /// The dispatch function's context.

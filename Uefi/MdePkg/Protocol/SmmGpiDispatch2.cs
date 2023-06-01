@@ -24,7 +24,7 @@ namespace Uefi;
 // #include <Protocol/MmGpiDispatch.h>
 // #include <Pi/PiSmmCis.h>
 
-public static ulong EFI_SMM_GPI_DISPATCH2_PROTOCOL_GUID = EFI_MM_GPI_DISPATCH_PROTOCOL_GUID;
+public const ulong EFI_SMM_GPI_DISPATCH2_PROTOCOL_GUID = EFI_MM_GPI_DISPATCH_PROTOCOL_GUID;
 ///
 /// The dispatch function's context.
 ///

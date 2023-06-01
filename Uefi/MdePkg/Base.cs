@@ -39,7 +39,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 /// it after all compiler and linker optimizations have been performed.
 ///
 ///
-public static ulong GLOBAL_REMOVE_IF_UNREFERENCED = __declspec(selectany);
+public const ulong GLOBAL_REMOVE_IF_UNREFERENCED = __declspec(selectany);
 #else
 ///
 /// Remove the global variable from the linked image if there are no references
@@ -59,14 +59,14 @@ public static ulong GLOBAL_REMOVE_IF_UNREFERENCED = __declspec(selectany);
 /// Signal compilers and analyzers that this call is not reachable.  It is
 /// up to the compiler to remove any code past that point.
 ///
-public static ulong UNREACHABLE = ()  __builtin_unreachable ();
+public const ulong UNREACHABLE = ()  __builtin_unreachable ();
 #elif defined (__has_feature)
 #if __has_builtin (__builtin_unreachable)
 ///
 /// Signal compilers and analyzers that this call is not reachable.  It is
 /// up to the compiler to remove any code past that point.
 ///
-public static ulong UNREACHABLE = ()  __builtin_unreachable ();
+public const ulong UNREACHABLE = ()  __builtin_unreachable ();
 #endif
 #endif
 
@@ -75,7 +75,7 @@ public static ulong UNREACHABLE = ()  __builtin_unreachable ();
 /// Signal compilers and analyzers that this call is not reachable.  It is
 /// up to the compiler to remove any code past that point.
 ///
-public static ulong UNREACHABLE = ();
+public const ulong UNREACHABLE = ();
 #endif
 // #endif
 
@@ -91,14 +91,14 @@ public static ulong UNREACHABLE = ();
 /// It is up to the compiler to remove any code past a call to functions
 /// flagged with this attribute.
 ///
-public static ulong NORETURN = __attribute__((noreturn));
+public const ulong NORETURN = __attribute__((noreturn));
 #elif defined (_MSC_EXTENSIONS) && !defined (MDE_CPU_EBC)
 ///
 /// Signal compilers and analyzers that the function cannot return.
 /// It is up to the compiler to remove any code past a call to functions
 /// flagged with this attribute.
 ///
-public static ulong NORETURN = __declspec(noreturn);
+public const ulong NORETURN = __declspec(noreturn);
 #else
 ///
 /// Signal compilers and analyzers that the function cannot return.
@@ -120,7 +120,7 @@ public static ulong NORETURN = __declspec(noreturn);
 /// Signal the analyzer that this call is not reachable.
 /// This excludes compilers.
 ///
-public static ulong ANALYZER_UNREACHABLE = ()  __builtin_unreachable ();
+public const ulong ANALYZER_UNREACHABLE = ()  __builtin_unreachable ();
 #endif
 #endif
 
@@ -129,7 +129,7 @@ public static ulong ANALYZER_UNREACHABLE = ()  __builtin_unreachable ();
 /// Signal the analyzer that this call is not reachable.
 /// This excludes compilers.
 ///
-public static ulong ANALYZER_UNREACHABLE = ();
+public const ulong ANALYZER_UNREACHABLE = ();
 #endif
 // #endif
 
@@ -146,7 +146,7 @@ public static ulong ANALYZER_UNREACHABLE = ();
 /// Signal analyzers that the function cannot return.
 /// This excludes compilers.
 ///
-public static ulong ANALYZER_NORETURN = __attribute__((analyzer_noreturn));
+public const ulong ANALYZER_NORETURN = __attribute__((analyzer_noreturn));
 #endif
 #endif
 
@@ -169,7 +169,7 @@ public static ulong ANALYZER_NORETURN = __attribute__((analyzer_noreturn));
 /// Tell the code optimizer that the function will return twice.
 /// This prevents wrong optimizations which can cause bugs.
 ///
-public static ulong RETURNS_TWICE = __attribute__((returns_twice));
+public const ulong RETURNS_TWICE = __attribute__((returns_twice));
 #else
 ///
 /// Tell the code optimizer that the function will return twice.
@@ -186,21 +186,21 @@ public static ulong RETURNS_TWICE = __attribute__((returns_twice));
 ///
 /// Private worker functions for ASM_PFX()
 ///
-public static ulong _CONCATENATE = (a, b)   __CONCATENATE(a, b);
-public static ulong __CONCATENATE = (a, b)  a ## b;
+public const ulong _CONCATENATE = (a, b)   __CONCATENATE(a, b);
+public const ulong __CONCATENATE = (a, b)  a ## b;
 
 ///
 /// The __USER_LABEL_PREFIX__ macro predefined by GNUC represents the prefix
 /// on symbols in assembly language.
 ///
-public static ulong ASM_PFX = (name)_CONCATENATE(__USER_LABEL_PREFIX__, name);
+public const ulong ASM_PFX = (name)_CONCATENATE(__USER_LABEL_PREFIX__, name);
 
 #ifdef __APPLE__
 //
 // Apple extension that is used by the linker to optimize code size
 // with assembly functions. Put at the end of your .S files
 //
-public static ulong ASM_FUNCTION_REMOVE_IF_UNREFERENCED = .subsections_via_symbols;
+public const ulong ASM_FUNCTION_REMOVE_IF_UNREFERENCED = .subsections_via_symbols;
 #else
 // #define ASM_FUNCTION_REMOVE_IF_UNREFERENCED
 // #endif
@@ -266,17 +266,17 @@ public unsafe struct LIST_ENTRY
 ///
 /// Datum is read-only.
 ///
-public static ulong CONST = const;
+public const ulong CONST = const;
 
 ///
 /// Datum is scoped to the current file or function.
 ///
-public static ulong STATIC = static;
+public const ulong STATIC = static;
 
 ///
 /// Undeclared type.
 ///
-public static ulong void = void;
+public const ulong void = void;
 
 //
 // Modifiers for Data Types used to self document code.
@@ -308,226 +308,226 @@ public static ulong void = void;
 /// Boolean true value.  UEFI Specification defines this value to be 1,
 /// but this form is more portable.
 ///
-public static ulong TRUE = ((bool)(1 == 1));
+public const ulong TRUE = ((bool)(1 == 1));
 
 ///
 /// Boolean false value.  UEFI Specification defines this value to be 0,
 /// but this form is more portable.
 ///
-public static ulong FALSE = ((bool)(0 == 1));
+public const ulong FALSE = ((bool)(0 == 1));
 
 ///
 /// NULL pointer (VOID *)
 ///
 #if defined (__cplusplus)
 #if defined (_MSC_EXTENSIONS)
-public static ulong NULL = nullptr;
+public const ulong NULL = nullptr;
 #else
-public static ulong NULL = __null;
+public const ulong NULL = __null;
 #endif
 #else
-public static ulong NULL = ((VOID*)0);
+public const ulong NULL = ((VOID*)0);
 // #endif
 
 //
 // Null character
 //
-public static ulong CHAR_NULL = 0x0000;
+public const ulong CHAR_NULL = 0x0000;
 
 ///
 /// Maximum values for common UEFI Data Types
 ///
-public static ulong MAX_INT8 = ((sbyte)0x7F);
-public static ulong MAX_UINT8 = ((byte)0xFF);
-public static ulong MAX_INT16 = ((short)0x7FFF);
-public static ulong MAX_UINT16 = ((ushort)0xFFFF);
-public static ulong MAX_INT32 = ((int)0x7FFFFFFF);
-public static ulong MAX_UINT32 = ((uint)0xFFFFFFFF);
-public static ulong MAX_INT64 = ((long)0x7FFFFFFFFFFFFFFF);
-public static ulong MAX_UINT64 = ((ulong)0xFFFFFFFFFFFFFFFF);
+public const ulong MAX_INT8 = ((sbyte)0x7F);
+public const ulong MAX_UINT8 = ((byte)0xFF);
+public const ulong MAX_INT16 = ((short)0x7FFF);
+public const ulong MAX_UINT16 = ((ushort)0xFFFF);
+public const ulong MAX_INT32 = ((int)0x7FFFFFFF);
+public const ulong MAX_UINT32 = ((uint)0xFFFFFFFF);
+public const ulong MAX_INT64 = ((long)0x7FFFFFFFFFFFFFFF);
+public const ulong MAX_UINT64 = ((ulong)0xFFFFFFFFFFFFFFFF);
 
 ///
 /// Minimum values for the signed UEFI Data Types
 ///
-public static ulong MIN_INT8 = (((sbyte)-127) - 1);
-public static ulong MIN_INT16 = (((short)-32767) - 1);
-public static ulong MIN_INT32 = (((int)-2147483647) - 1);
-public static ulong MIN_INT64 = (((long)-9223372036854775807LL) - 1);
+public const ulong MIN_INT8 = (((sbyte)-127) - 1);
+public const ulong MIN_INT16 = (((short)-32767) - 1);
+public const ulong MIN_INT32 = (((int)-2147483647) - 1);
+public const ulong MIN_INT64 = (((long)-9223372036854775807LL) - 1);
 
-public static ulong BIT0 = 0x00000001;
-public static ulong BIT1 = 0x00000002;
-public static ulong BIT2 = 0x00000004;
-public static ulong BIT3 = 0x00000008;
-public static ulong BIT4 = 0x00000010;
-public static ulong BIT5 = 0x00000020;
-public static ulong BIT6 = 0x00000040;
-public static ulong BIT7 = 0x00000080;
-public static ulong BIT8 = 0x00000100;
-public static ulong BIT9 = 0x00000200;
-public static ulong BIT10 = 0x00000400;
-public static ulong BIT11 = 0x00000800;
-public static ulong BIT12 = 0x00001000;
-public static ulong BIT13 = 0x00002000;
-public static ulong BIT14 = 0x00004000;
-public static ulong BIT15 = 0x00008000;
-public static ulong BIT16 = 0x00010000;
-public static ulong BIT17 = 0x00020000;
-public static ulong BIT18 = 0x00040000;
-public static ulong BIT19 = 0x00080000;
-public static ulong BIT20 = 0x00100000;
-public static ulong BIT21 = 0x00200000;
-public static ulong BIT22 = 0x00400000;
-public static ulong BIT23 = 0x00800000;
-public static ulong BIT24 = 0x01000000;
-public static ulong BIT25 = 0x02000000;
-public static ulong BIT26 = 0x04000000;
-public static ulong BIT27 = 0x08000000;
-public static ulong BIT28 = 0x10000000;
-public static ulong BIT29 = 0x20000000;
-public static ulong BIT30 = 0x40000000;
-public static ulong BIT31 = 0x80000000;
-public static ulong BIT32 = 0x0000000100000000;
-public static ulong BIT33 = 0x0000000200000000;
-public static ulong BIT34 = 0x0000000400000000;
-public static ulong BIT35 = 0x0000000800000000;
-public static ulong BIT36 = 0x0000001000000000;
-public static ulong BIT37 = 0x0000002000000000;
-public static ulong BIT38 = 0x0000004000000000;
-public static ulong BIT39 = 0x0000008000000000;
-public static ulong BIT40 = 0x0000010000000000;
-public static ulong BIT41 = 0x0000020000000000;
-public static ulong BIT42 = 0x0000040000000000;
-public static ulong BIT43 = 0x0000080000000000;
-public static ulong BIT44 = 0x0000100000000000;
-public static ulong BIT45 = 0x0000200000000000;
-public static ulong BIT46 = 0x0000400000000000;
-public static ulong BIT47 = 0x0000800000000000;
-public static ulong BIT48 = 0x0001000000000000;
-public static ulong BIT49 = 0x0002000000000000;
-public static ulong BIT50 = 0x0004000000000000;
-public static ulong BIT51 = 0x0008000000000000;
-public static ulong BIT52 = 0x0010000000000000;
-public static ulong BIT53 = 0x0020000000000000;
-public static ulong BIT54 = 0x0040000000000000;
-public static ulong BIT55 = 0x0080000000000000;
-public static ulong BIT56 = 0x0100000000000000;
-public static ulong BIT57 = 0x0200000000000000;
-public static ulong BIT58 = 0x0400000000000000;
-public static ulong BIT59 = 0x0800000000000000;
-public static ulong BIT60 = 0x1000000000000000;
-public static ulong BIT61 = 0x2000000000000000;
-public static ulong BIT62 = 0x4000000000000000;
-public static ulong BIT63 = 0x8000000000000000;
+public const ulong BIT0 = 0x00000001;
+public const ulong BIT1 = 0x00000002;
+public const ulong BIT2 = 0x00000004;
+public const ulong BIT3 = 0x00000008;
+public const ulong BIT4 = 0x00000010;
+public const ulong BIT5 = 0x00000020;
+public const ulong BIT6 = 0x00000040;
+public const ulong BIT7 = 0x00000080;
+public const ulong BIT8 = 0x00000100;
+public const ulong BIT9 = 0x00000200;
+public const ulong BIT10 = 0x00000400;
+public const ulong BIT11 = 0x00000800;
+public const ulong BIT12 = 0x00001000;
+public const ulong BIT13 = 0x00002000;
+public const ulong BIT14 = 0x00004000;
+public const ulong BIT15 = 0x00008000;
+public const ulong BIT16 = 0x00010000;
+public const ulong BIT17 = 0x00020000;
+public const ulong BIT18 = 0x00040000;
+public const ulong BIT19 = 0x00080000;
+public const ulong BIT20 = 0x00100000;
+public const ulong BIT21 = 0x00200000;
+public const ulong BIT22 = 0x00400000;
+public const ulong BIT23 = 0x00800000;
+public const ulong BIT24 = 0x01000000;
+public const ulong BIT25 = 0x02000000;
+public const ulong BIT26 = 0x04000000;
+public const ulong BIT27 = 0x08000000;
+public const ulong BIT28 = 0x10000000;
+public const ulong BIT29 = 0x20000000;
+public const ulong BIT30 = 0x40000000;
+public const ulong BIT31 = 0x80000000;
+public const ulong BIT32 = 0x0000000100000000;
+public const ulong BIT33 = 0x0000000200000000;
+public const ulong BIT34 = 0x0000000400000000;
+public const ulong BIT35 = 0x0000000800000000;
+public const ulong BIT36 = 0x0000001000000000;
+public const ulong BIT37 = 0x0000002000000000;
+public const ulong BIT38 = 0x0000004000000000;
+public const ulong BIT39 = 0x0000008000000000;
+public const ulong BIT40 = 0x0000010000000000;
+public const ulong BIT41 = 0x0000020000000000;
+public const ulong BIT42 = 0x0000040000000000;
+public const ulong BIT43 = 0x0000080000000000;
+public const ulong BIT44 = 0x0000100000000000;
+public const ulong BIT45 = 0x0000200000000000;
+public const ulong BIT46 = 0x0000400000000000;
+public const ulong BIT47 = 0x0000800000000000;
+public const ulong BIT48 = 0x0001000000000000;
+public const ulong BIT49 = 0x0002000000000000;
+public const ulong BIT50 = 0x0004000000000000;
+public const ulong BIT51 = 0x0008000000000000;
+public const ulong BIT52 = 0x0010000000000000;
+public const ulong BIT53 = 0x0020000000000000;
+public const ulong BIT54 = 0x0040000000000000;
+public const ulong BIT55 = 0x0080000000000000;
+public const ulong BIT56 = 0x0100000000000000;
+public const ulong BIT57 = 0x0200000000000000;
+public const ulong BIT58 = 0x0400000000000000;
+public const ulong BIT59 = 0x0800000000000000;
+public const ulong BIT60 = 0x1000000000000000;
+public const ulong BIT61 = 0x2000000000000000;
+public const ulong BIT62 = 0x4000000000000000;
+public const ulong BIT63 = 0x8000000000000000;
 
-public static ulong SIZE_1KB = 0x00000400;
-public static ulong SIZE_2KB = 0x00000800;
-public static ulong SIZE_4KB = 0x00001000;
-public static ulong SIZE_8KB = 0x00002000;
-public static ulong SIZE_16KB = 0x00004000;
-public static ulong SIZE_32KB = 0x00008000;
-public static ulong SIZE_64KB = 0x00010000;
-public static ulong SIZE_128KB = 0x00020000;
-public static ulong SIZE_256KB = 0x00040000;
-public static ulong SIZE_512KB = 0x00080000;
-public static ulong SIZE_1MB = 0x00100000;
-public static ulong SIZE_2MB = 0x00200000;
-public static ulong SIZE_4MB = 0x00400000;
-public static ulong SIZE_8MB = 0x00800000;
-public static ulong SIZE_16MB = 0x01000000;
-public static ulong SIZE_32MB = 0x02000000;
-public static ulong SIZE_64MB = 0x04000000;
-public static ulong SIZE_128MB = 0x08000000;
-public static ulong SIZE_256MB = 0x10000000;
-public static ulong SIZE_512MB = 0x20000000;
-public static ulong SIZE_1GB = 0x40000000;
-public static ulong SIZE_2GB = 0x80000000;
-public static ulong SIZE_4GB = 0x0000000100000000;
-public static ulong SIZE_8GB = 0x0000000200000000;
-public static ulong SIZE_16GB = 0x0000000400000000;
-public static ulong SIZE_32GB = 0x0000000800000000;
-public static ulong SIZE_64GB = 0x0000001000000000;
-public static ulong SIZE_128GB = 0x0000002000000000;
-public static ulong SIZE_256GB = 0x0000004000000000;
-public static ulong SIZE_512GB = 0x0000008000000000;
-public static ulong SIZE_1TB = 0x0000010000000000;
-public static ulong SIZE_2TB = 0x0000020000000000;
-public static ulong SIZE_4TB = 0x0000040000000000;
-public static ulong SIZE_8TB = 0x0000080000000000;
-public static ulong SIZE_16TB = 0x0000100000000000;
-public static ulong SIZE_32TB = 0x0000200000000000;
-public static ulong SIZE_64TB = 0x0000400000000000;
-public static ulong SIZE_128TB = 0x0000800000000000;
-public static ulong SIZE_256TB = 0x0001000000000000;
-public static ulong SIZE_512TB = 0x0002000000000000;
-public static ulong SIZE_1PB = 0x0004000000000000;
-public static ulong SIZE_2PB = 0x0008000000000000;
-public static ulong SIZE_4PB = 0x0010000000000000;
-public static ulong SIZE_8PB = 0x0020000000000000;
-public static ulong SIZE_16PB = 0x0040000000000000;
-public static ulong SIZE_32PB = 0x0080000000000000;
-public static ulong SIZE_64PB = 0x0100000000000000;
-public static ulong SIZE_128PB = 0x0200000000000000;
-public static ulong SIZE_256PB = 0x0400000000000000;
-public static ulong SIZE_512PB = 0x0800000000000000;
-public static ulong SIZE_1EB = 0x1000000000000000;
-public static ulong SIZE_2EB = 0x2000000000000000;
-public static ulong SIZE_4EB = 0x4000000000000000;
-public static ulong SIZE_8EB = 0x8000000000000000;
+public const ulong SIZE_1KB = 0x00000400;
+public const ulong SIZE_2KB = 0x00000800;
+public const ulong SIZE_4KB = 0x00001000;
+public const ulong SIZE_8KB = 0x00002000;
+public const ulong SIZE_16KB = 0x00004000;
+public const ulong SIZE_32KB = 0x00008000;
+public const ulong SIZE_64KB = 0x00010000;
+public const ulong SIZE_128KB = 0x00020000;
+public const ulong SIZE_256KB = 0x00040000;
+public const ulong SIZE_512KB = 0x00080000;
+public const ulong SIZE_1MB = 0x00100000;
+public const ulong SIZE_2MB = 0x00200000;
+public const ulong SIZE_4MB = 0x00400000;
+public const ulong SIZE_8MB = 0x00800000;
+public const ulong SIZE_16MB = 0x01000000;
+public const ulong SIZE_32MB = 0x02000000;
+public const ulong SIZE_64MB = 0x04000000;
+public const ulong SIZE_128MB = 0x08000000;
+public const ulong SIZE_256MB = 0x10000000;
+public const ulong SIZE_512MB = 0x20000000;
+public const ulong SIZE_1GB = 0x40000000;
+public const ulong SIZE_2GB = 0x80000000;
+public const ulong SIZE_4GB = 0x0000000100000000;
+public const ulong SIZE_8GB = 0x0000000200000000;
+public const ulong SIZE_16GB = 0x0000000400000000;
+public const ulong SIZE_32GB = 0x0000000800000000;
+public const ulong SIZE_64GB = 0x0000001000000000;
+public const ulong SIZE_128GB = 0x0000002000000000;
+public const ulong SIZE_256GB = 0x0000004000000000;
+public const ulong SIZE_512GB = 0x0000008000000000;
+public const ulong SIZE_1TB = 0x0000010000000000;
+public const ulong SIZE_2TB = 0x0000020000000000;
+public const ulong SIZE_4TB = 0x0000040000000000;
+public const ulong SIZE_8TB = 0x0000080000000000;
+public const ulong SIZE_16TB = 0x0000100000000000;
+public const ulong SIZE_32TB = 0x0000200000000000;
+public const ulong SIZE_64TB = 0x0000400000000000;
+public const ulong SIZE_128TB = 0x0000800000000000;
+public const ulong SIZE_256TB = 0x0001000000000000;
+public const ulong SIZE_512TB = 0x0002000000000000;
+public const ulong SIZE_1PB = 0x0004000000000000;
+public const ulong SIZE_2PB = 0x0008000000000000;
+public const ulong SIZE_4PB = 0x0010000000000000;
+public const ulong SIZE_8PB = 0x0020000000000000;
+public const ulong SIZE_16PB = 0x0040000000000000;
+public const ulong SIZE_32PB = 0x0080000000000000;
+public const ulong SIZE_64PB = 0x0100000000000000;
+public const ulong SIZE_128PB = 0x0200000000000000;
+public const ulong SIZE_256PB = 0x0400000000000000;
+public const ulong SIZE_512PB = 0x0800000000000000;
+public const ulong SIZE_1EB = 0x1000000000000000;
+public const ulong SIZE_2EB = 0x2000000000000000;
+public const ulong SIZE_4EB = 0x4000000000000000;
+public const ulong SIZE_8EB = 0x8000000000000000;
 
-public static ulong BASE_1KB = 0x00000400;
-public static ulong BASE_2KB = 0x00000800;
-public static ulong BASE_4KB = 0x00001000;
-public static ulong BASE_8KB = 0x00002000;
-public static ulong BASE_16KB = 0x00004000;
-public static ulong BASE_32KB = 0x00008000;
-public static ulong BASE_64KB = 0x00010000;
-public static ulong BASE_128KB = 0x00020000;
-public static ulong BASE_256KB = 0x00040000;
-public static ulong BASE_512KB = 0x00080000;
-public static ulong BASE_1MB = 0x00100000;
-public static ulong BASE_2MB = 0x00200000;
-public static ulong BASE_4MB = 0x00400000;
-public static ulong BASE_8MB = 0x00800000;
-public static ulong BASE_16MB = 0x01000000;
-public static ulong BASE_32MB = 0x02000000;
-public static ulong BASE_64MB = 0x04000000;
-public static ulong BASE_128MB = 0x08000000;
-public static ulong BASE_256MB = 0x10000000;
-public static ulong BASE_512MB = 0x20000000;
-public static ulong BASE_1GB = 0x40000000;
-public static ulong BASE_2GB = 0x80000000;
-public static ulong BASE_4GB = 0x0000000100000000;
-public static ulong BASE_8GB = 0x0000000200000000;
-public static ulong BASE_16GB = 0x0000000400000000;
-public static ulong BASE_32GB = 0x0000000800000000;
-public static ulong BASE_64GB = 0x0000001000000000;
-public static ulong BASE_128GB = 0x0000002000000000;
-public static ulong BASE_256GB = 0x0000004000000000;
-public static ulong BASE_512GB = 0x0000008000000000;
-public static ulong BASE_1TB = 0x0000010000000000;
-public static ulong BASE_2TB = 0x0000020000000000;
-public static ulong BASE_4TB = 0x0000040000000000;
-public static ulong BASE_8TB = 0x0000080000000000;
-public static ulong BASE_16TB = 0x0000100000000000;
-public static ulong BASE_32TB = 0x0000200000000000;
-public static ulong BASE_64TB = 0x0000400000000000;
-public static ulong BASE_128TB = 0x0000800000000000;
-public static ulong BASE_256TB = 0x0001000000000000;
-public static ulong BASE_512TB = 0x0002000000000000;
-public static ulong BASE_1PB = 0x0004000000000000;
-public static ulong BASE_2PB = 0x0008000000000000;
-public static ulong BASE_4PB = 0x0010000000000000;
-public static ulong BASE_8PB = 0x0020000000000000;
-public static ulong BASE_16PB = 0x0040000000000000;
-public static ulong BASE_32PB = 0x0080000000000000;
-public static ulong BASE_64PB = 0x0100000000000000;
-public static ulong BASE_128PB = 0x0200000000000000;
-public static ulong BASE_256PB = 0x0400000000000000;
-public static ulong BASE_512PB = 0x0800000000000000;
-public static ulong BASE_1EB = 0x1000000000000000;
-public static ulong BASE_2EB = 0x2000000000000000;
-public static ulong BASE_4EB = 0x4000000000000000;
-public static ulong BASE_8EB = 0x8000000000000000;
+public const ulong BASE_1KB = 0x00000400;
+public const ulong BASE_2KB = 0x00000800;
+public const ulong BASE_4KB = 0x00001000;
+public const ulong BASE_8KB = 0x00002000;
+public const ulong BASE_16KB = 0x00004000;
+public const ulong BASE_32KB = 0x00008000;
+public const ulong BASE_64KB = 0x00010000;
+public const ulong BASE_128KB = 0x00020000;
+public const ulong BASE_256KB = 0x00040000;
+public const ulong BASE_512KB = 0x00080000;
+public const ulong BASE_1MB = 0x00100000;
+public const ulong BASE_2MB = 0x00200000;
+public const ulong BASE_4MB = 0x00400000;
+public const ulong BASE_8MB = 0x00800000;
+public const ulong BASE_16MB = 0x01000000;
+public const ulong BASE_32MB = 0x02000000;
+public const ulong BASE_64MB = 0x04000000;
+public const ulong BASE_128MB = 0x08000000;
+public const ulong BASE_256MB = 0x10000000;
+public const ulong BASE_512MB = 0x20000000;
+public const ulong BASE_1GB = 0x40000000;
+public const ulong BASE_2GB = 0x80000000;
+public const ulong BASE_4GB = 0x0000000100000000;
+public const ulong BASE_8GB = 0x0000000200000000;
+public const ulong BASE_16GB = 0x0000000400000000;
+public const ulong BASE_32GB = 0x0000000800000000;
+public const ulong BASE_64GB = 0x0000001000000000;
+public const ulong BASE_128GB = 0x0000002000000000;
+public const ulong BASE_256GB = 0x0000004000000000;
+public const ulong BASE_512GB = 0x0000008000000000;
+public const ulong BASE_1TB = 0x0000010000000000;
+public const ulong BASE_2TB = 0x0000020000000000;
+public const ulong BASE_4TB = 0x0000040000000000;
+public const ulong BASE_8TB = 0x0000080000000000;
+public const ulong BASE_16TB = 0x0000100000000000;
+public const ulong BASE_32TB = 0x0000200000000000;
+public const ulong BASE_64TB = 0x0000400000000000;
+public const ulong BASE_128TB = 0x0000800000000000;
+public const ulong BASE_256TB = 0x0001000000000000;
+public const ulong BASE_512TB = 0x0002000000000000;
+public const ulong BASE_1PB = 0x0004000000000000;
+public const ulong BASE_2PB = 0x0008000000000000;
+public const ulong BASE_4PB = 0x0010000000000000;
+public const ulong BASE_8PB = 0x0020000000000000;
+public const ulong BASE_16PB = 0x0040000000000000;
+public const ulong BASE_32PB = 0x0080000000000000;
+public const ulong BASE_64PB = 0x0100000000000000;
+public const ulong BASE_128PB = 0x0200000000000000;
+public const ulong BASE_256PB = 0x0400000000000000;
+public const ulong BASE_512PB = 0x0800000000000000;
+public const ulong BASE_1EB = 0x1000000000000000;
+public const ulong BASE_2EB = 0x2000000000000000;
+public const ulong BASE_4EB = 0x4000000000000000;
+public const ulong BASE_8EB = 0x8000000000000000;
 
 //
 //  Support for variable argument lists in freestanding edk2 modules.
@@ -586,7 +586,7 @@ public static ulong BASE_8EB = 0x8000000000000000;
 
   @return The aligned size.
 **/
-public static ulong _INT_SIZE_OF = (n)((sizeof(n) + sizeof(ulong) - 1) & ~(sizeof(ulong) - 1));
+public const ulong _INT_SIZE_OF = (n)((sizeof(n) + sizeof(ulong) - 1) & ~(sizeof(ulong) - 1));
 
 #if defined (_M_ARM) || defined (_M_ARM64)
 //
@@ -596,10 +596,10 @@ public static ulong _INT_SIZE_OF = (n)((sizeof(n) + sizeof(ulong) - 1) & ~(sizeo
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VA_LIST { char* Value; public static implicit operator VA_LIST(char* value) => new VA_LIST() { Value = value }; public static implicit operator char*(VA_LIST value) => value.Value;}
 
-public static ulong VA_START = (Marker, Parameter)  __va_start (&Marker, &Parameter, _INT_SIZE_OF (Parameter), __alignof(Parameter), &Parameter);
-public static ulong VA_ARG = (Marker, TYPE)         (*(TYPE *) ((Marker += _INT_SIZE_OF (TYPE) + ((-(long)Marker) & (sizeof(TYPE) - 1))) - _INT_SIZE_OF (TYPE)));
-public static ulong VA_END = (Marker)               (Marker = (VA_LIST) 0);
-public static ulong VA_COPY = (Dest, Start)         ((void)((Dest) = (Start)));
+public const ulong VA_START = (Marker, Parameter)  __va_start (&Marker, &Parameter, _INT_SIZE_OF (Parameter), __alignof(Parameter), &Parameter);
+public const ulong VA_ARG = (Marker, TYPE)         (*(TYPE *) ((Marker += _INT_SIZE_OF (TYPE) + ((-(long)Marker) & (sizeof(TYPE) - 1))) - _INT_SIZE_OF (TYPE)));
+public const ulong VA_END = (Marker)               (Marker = (VA_LIST) 0);
+public const ulong VA_COPY = (Dest, Start)         ((void)((Dest) = (Start)));
 
 #elif defined (__GNUC__) || defined (__clang__)
 
@@ -618,13 +618,13 @@ public static ulong VA_COPY = (Dest, Start)         ((void)((Dest) = (Start)));
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VA_LIST { __builtin_ms_va_list Value; public static implicit operator VA_LIST(__builtin_ms_va_list value) => new VA_LIST() { Value = value }; public static implicit operator __builtin_ms_va_list(VA_LIST value) => value.Value;}
 
-public static ulong VA_START = (Marker, Parameter)  __builtin_ms_va_start (Marker, Parameter);
+public const ulong VA_START = (Marker, Parameter)  __builtin_ms_va_start (Marker, Parameter);
 
-public static ulong VA_ARG = (Marker, TYPE)  ((sizeof (TYPE) < sizeof (ulong)) ? (TYPE)(__builtin_va_arg (Marker, UINTN)) : (TYPE)(__builtin_va_arg (Marker, TYPE)));
+public const ulong VA_ARG = (Marker, TYPE)  ((sizeof (TYPE) < sizeof (ulong)) ? (TYPE)(__builtin_va_arg (Marker, UINTN)) : (TYPE)(__builtin_va_arg (Marker, TYPE)));
 
-public static ulong VA_END = (Marker)  __builtin_ms_va_end (Marker);
+public const ulong VA_END = (Marker)  __builtin_ms_va_end (Marker);
 
-public static ulong VA_COPY = (Dest, Start)  __builtin_ms_va_copy (Dest, Start);
+public const ulong VA_COPY = (Dest, Start)  __builtin_ms_va_copy (Dest, Start);
 
 #else
 //
@@ -638,13 +638,13 @@ public static ulong VA_COPY = (Dest, Start)  __builtin_ms_va_copy (Dest, Start);
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VA_LIST { __builtin_va_list Value; public static implicit operator VA_LIST(__builtin_va_list value) => new VA_LIST() { Value = value }; public static implicit operator __builtin_va_list(VA_LIST value) => value.Value;}
 
-public static ulong VA_START = (Marker, Parameter)  __builtin_va_start (Marker, Parameter);
+public const ulong VA_START = (Marker, Parameter)  __builtin_va_start (Marker, Parameter);
 
-public static ulong VA_ARG = (Marker, TYPE)  ((sizeof (TYPE) < sizeof (ulong)) ? (TYPE)(__builtin_va_arg (Marker, UINTN)) : (TYPE)(__builtin_va_arg (Marker, TYPE)));
+public const ulong VA_ARG = (Marker, TYPE)  ((sizeof (TYPE) < sizeof (ulong)) ? (TYPE)(__builtin_va_arg (Marker, UINTN)) : (TYPE)(__builtin_va_arg (Marker, TYPE)));
 
-public static ulong VA_END = (Marker)  __builtin_va_end (Marker);
+public const ulong VA_END = (Marker)  __builtin_va_end (Marker);
 
-public static ulong VA_COPY = (Dest, Start)  __builtin_va_copy (Dest, Start);
+public const ulong VA_COPY = (Dest, Start)  __builtin_va_copy (Dest, Start);
 
 #endif
 
@@ -672,7 +672,7 @@ public unsafe struct VA_LIST { byte* Value; public static implicit operator VA_L
   @return  A pointer to the beginning of a variable argument list.
 
 **/
-public static ulong VA_START = (Marker, Parameter)(Marker = (VA_LIST)((ulong)&(Parameter) + _INT_SIZE_OF(Parameter)));
+public const ulong VA_START = (Marker, Parameter)(Marker = (VA_LIST)((ulong)&(Parameter) + _INT_SIZE_OF(Parameter)));
 
 /**
   Returns an argument of a specified type from a variable argument list and updates
@@ -690,7 +690,7 @@ public static ulong VA_START = (Marker, Parameter)(Marker = (VA_LIST)((ulong)&(P
   @return  An argument of the type specified by TYPE.
 
 **/
-public static ulong VA_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _INT_SIZE_OF(TYPE)) - _INT_SIZE_OF(TYPE)));
+public const ulong VA_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _INT_SIZE_OF(TYPE)) - _INT_SIZE_OF(TYPE)));
 
 /**
   Terminates the use of a variable argument list.
@@ -702,7 +702,7 @@ public static ulong VA_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _INT_SIZE_OF(TYP
   @param   Marker   VA_LIST used to traverse the list of arguments.
 
 **/
-public static ulong VA_END = (Marker)(Marker = (VA_LIST)0);
+public const ulong VA_END = (Marker)(Marker = (VA_LIST)0);
 
 /**
   Initializes a VA_LIST as a copy of an existing VA_LIST.
@@ -715,7 +715,7 @@ public static ulong VA_END = (Marker)(Marker = (VA_LIST)0);
   @param   Start  VA_LIST used to traverse the list of arguments.
 
 **/
-public static ulong VA_COPY = (Dest, Start)((void)((Dest) = (Start)));
+public const ulong VA_COPY = (Dest, Start)((void)((Dest) = (Start)));
 
 // #endif
 
@@ -732,7 +732,7 @@ public unsafe struct BASE_LIST { ulong* Value; public static implicit operator B
 
   @return The size of TYPE in sizeof (ulong) units rounded up to the nearest ulong boundary.
 **/
-public static ulong _BASE_INT_SIZE_OF = (TYPE)((sizeof(TYPE) + sizeof(ulong) - 1) / sizeof(ulong));
+public const ulong _BASE_INT_SIZE_OF = (TYPE)((sizeof(TYPE) + sizeof(ulong) - 1) / sizeof(ulong));
 
 /**
   Returns an argument of a specified type from a variable argument list and updates
@@ -750,7 +750,7 @@ public static ulong _BASE_INT_SIZE_OF = (TYPE)((sizeof(TYPE) + sizeof(ulong) - 1
   @return  An argument of the type specified by TYPE.
 
 **/
-public static ulong BASE_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _BASE_INT_SIZE_OF(TYPE)) - _BASE_INT_SIZE_OF(TYPE)));
+public const ulong BASE_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _BASE_INT_SIZE_OF(TYPE)) - _BASE_INT_SIZE_OF(TYPE)));
 
 /**
   The macro that returns the byte offset of a field in a data structure.
@@ -766,11 +766,11 @@ public static ulong BASE_ARG = (Marker, TYPE)(*(TYPE*)((Marker += _BASE_INT_SIZE
 
 **/
 #if (defined (__GNUC__) && __GNUC__ >= 4) || defined (__clang__)
-public static ulong OFFSET_OF = (TYPE, Field)  ((ulong) __builtin_offsetof(TYPE, Field));
+public const ulong OFFSET_OF = (TYPE, Field)  ((ulong) __builtin_offsetof(TYPE, Field));
 // #endif
 
 // #ifndef OFFSET_OF
-public static ulong OFFSET_OF = (TYPE, Field)  ((ulong) &(((TYPE *)0)->Field));
+public const ulong OFFSET_OF = (TYPE, Field)  ((ulong) &(((TYPE *)0)->Field));
 // #endif
 
 /**
@@ -784,19 +784,19 @@ public static ulong OFFSET_OF = (TYPE, Field)  ((ulong) &(((TYPE *)0)->Field));
 //
 // Standard C++ operator.
 //
-public static ulong ALIGNOF = (TYPE)  alignof (TYPE);
+public const ulong ALIGNOF = (TYPE)  alignof (TYPE);
 #elif defined (__GNUC__) || defined (__clang__) || (defined (_MSC_VER) && _MSC_VER >= 1900)
 //
 // All supported versions of GCC and Clang, as well as MSVC 2015 and later,
 // support the standard operator _Alignof.
 //
-public static ulong ALIGNOF = (TYPE)  _Alignof (TYPE);
+public const ulong ALIGNOF = (TYPE)  _Alignof (TYPE);
 #elif defined (_MSC_EXTENSIONS)
 //
 // Earlier versions of MSVC, at least MSVC 2008 and later, support the vendor
 // extension __alignof.
 //
-public static ulong ALIGNOF = (TYPE)  __alignof (TYPE);
+public const ulong ALIGNOF = (TYPE)  __alignof (TYPE);
 #else
 //
 // For compilers that do not support inbuilt alignof operators, use OFFSET_OF.
@@ -804,7 +804,7 @@ public static ulong ALIGNOF = (TYPE)  __alignof (TYPE);
 // As such, A must be located exactly at the offset equal to its alignment
 // requirement.
 //
-public static ulong ALIGNOF = (TYPE)  OFFSET_OF (struct { byte C; TYPE A; }, A);
+public const ulong ALIGNOF = (TYPE)  OFFSET_OF (struct { byte C; TYPE A; }, A);
 // #endif
 
 /**
@@ -816,11 +816,11 @@ public static ulong ALIGNOF = (TYPE)  OFFSET_OF (struct { byte C; TYPE A; }, A);
 
 **/
 # ifdef MDE_CPU_EBC
-public static ulong STATIC_ASSERT = (Expression, Message);
+public const ulong STATIC_ASSERT = (Expression, Message);
 #elif defined (_MSC_EXTENSIONS) || defined (__cplusplus)
-public static ulong STATIC_ASSERT = static_assert;
+public const ulong STATIC_ASSERT = static_assert;
 #else
-public static ulong STATIC_ASSERT = _Static_assert;
+public const ulong STATIC_ASSERT = _Static_assert;
 // #endif
 
 //
@@ -903,7 +903,7 @@ STATIC_ASSERT (ALIGNOF (__VERIFY_INT32_ENUM_SIZE) == sizeof (__VERIFY_INT32_ENUM
   @return  A pointer to the structure from one of it's elements.
 
 **/
-public static ulong BASE_CR = (Record, TYPE, Field)  ((TYPE *) ((CHAR8 *) (Record) - OFFSET_OF (TYPE, Field)));
+public const ulong BASE_CR = (Record, TYPE, Field)  ((TYPE *) ((CHAR8 *) (Record) - OFFSET_OF (TYPE, Field)));
 
 /**
   Checks whether a value is a power of two.
@@ -913,7 +913,7 @@ public static ulong BASE_CR = (Record, TYPE, Field)  ((TYPE *) ((CHAR8 *) (Recor
   @retval TRUE   Value is a power of two.
   @retval FALSE  Value is not a power of two.
 **/
-public static ulong IS_POW2 = (Value)  ((Value) != 0U && ((Value) & ((Value) - 1U)) == 0U);
+public const ulong IS_POW2 = (Value)  ((Value) != 0U && ((Value) & ((Value) - 1U)) == 0U);
 
 /**
   Checks whether a value is aligned by a specified alignment.
@@ -924,7 +924,7 @@ public static ulong IS_POW2 = (Value)  ((Value) != 0U && ((Value) & ((Value) - 1
   @retval TRUE   Value is aligned by Alignment.
   @retval FALSE  Value is not aligned by Alignment.
 **/
-public static ulong IS_ALIGNED = (Value, Alignment)  (((Value) & ((Alignment) - 1U)) == 0U);
+public const ulong IS_ALIGNED = (Value, Alignment)  (((Value) & ((Alignment) - 1U)) == 0U);
 
 /**
   Checks whether a pointer or address is aligned by a specified alignment.
@@ -935,7 +935,7 @@ public static ulong IS_ALIGNED = (Value, Alignment)  (((Value) & ((Alignment) - 
   @retval TRUE   Address is aligned by Alignment.
   @retval FALSE  Address is not aligned by Alignment.
 **/
-public static ulong ADDRESS_IS_ALIGNED = (Address, Alignment)  IS_ALIGNED ((ulong) (Address), Alignment);
+public const ulong ADDRESS_IS_ALIGNED = (Address, Alignment)  IS_ALIGNED ((ulong) (Address), Alignment);
 
 /**
   Determines the addend to add to a value to round it up to the next boundary of
@@ -946,7 +946,7 @@ public static ulong ADDRESS_IS_ALIGNED = (Address, Alignment)  IS_ALIGNED ((ulon
 
   @return  Addend to round Value up to alignment boundary Alignment.
 **/
-public static ulong ALIGN_VALUE_ADDEND = (Value, Alignment)  (((Alignment) - (Value)) & ((Alignment) - 1U));
+public const ulong ALIGN_VALUE_ADDEND = (Value, Alignment)  (((Alignment) - (Value)) & ((Alignment) - 1U));
 
 /**
   Rounds a value up to the next boundary using a specified alignment.
@@ -960,7 +960,7 @@ public static ulong ALIGN_VALUE_ADDEND = (Value, Alignment)  (((Alignment) - (Va
   @return  A value up to the next boundary.
 
 **/
-public static ulong ALIGN_VALUE = (Value, Alignment)  ((Value) + ALIGN_VALUE_ADDEND (Value, Alignment));
+public const ulong ALIGN_VALUE = (Value, Alignment)  ((Value) + ALIGN_VALUE_ADDEND (Value, Alignment));
 
 /**
   Adjust a pointer by adding the minimum offset required for it to be aligned on
@@ -975,7 +975,7 @@ public static ulong ALIGN_VALUE = (Value, Alignment)  ((Value) + ALIGN_VALUE_ADD
   @return  Pointer to the aligned address.
 
 **/
-public static ulong ALIGN_POINTER = (Pointer, Alignment)  ((VOID *) (ALIGN_VALUE ((ulong)(Pointer), (Alignment))));
+public const ulong ALIGN_POINTER = (Pointer, Alignment)  ((VOID *) (ALIGN_VALUE ((ulong)(Pointer), (Alignment))));
 
 /**
   Rounds a value up to the next natural boundary for the current CPU.
@@ -989,7 +989,7 @@ public static ulong ALIGN_POINTER = (Pointer, Alignment)  ((VOID *) (ALIGN_VALUE
   @return  Rounded value specified by Value.
 
 **/
-public static ulong ALIGN_VARIABLE = (Value)  ALIGN_VALUE ((Value), sizeof (ulong));
+public const ulong ALIGN_VARIABLE = (Value)  ALIGN_VALUE ((Value), sizeof (ulong));
 
 /**
   Return the maximum of two operands.
@@ -1004,7 +1004,7 @@ public static ulong ALIGN_VARIABLE = (Value)  ALIGN_VALUE ((Value), sizeof (ulon
   @return  Maximum of two operands.
 
 **/
-public static ulong MAX = (a, b)                       \;
+public const ulong MAX = (a, b)                       \;
   (((a) > (b)) ? (a) : (b))
 
 /**
@@ -1019,7 +1019,7 @@ public static ulong MAX = (a, b)                       \;
   @return  Minimum of two operands.
 
 **/
-public static ulong MIN = (a, b)                       \;
+public const ulong MIN = (a, b)                       \;
   (((a) < (b)) ? (a) : (b))
 
 /**
@@ -1032,7 +1032,7 @@ public static ulong MIN = (a, b)                       \;
   @return  The absolute value of the signed operand.
 
 **/
-public static ulong ABS = (a)                          \;
+public const ulong ABS = (a)                          \;
   (((a) < 0) ? (-(a)) : (a))
 
 //
@@ -1050,7 +1050,7 @@ public unsafe struct RETURN_STATUS { ulong Value; public static implicit operato
   @return The value specified by StatusCode with the highest bit set.
 
 **/
-public static ulong ENCODE_ERROR = (StatusCode)  ((RETURN_STATUS)(MAX_BIT | (StatusCode)));
+public const ulong ENCODE_ERROR = (StatusCode)  ((RETURN_STATUS)(MAX_BIT | (StatusCode)));
 
 /**
   Produces a RETURN_STATUS code with the highest bit clear.
@@ -1061,7 +1061,7 @@ public static ulong ENCODE_ERROR = (StatusCode)  ((RETURN_STATUS)(MAX_BIT | (Sta
   @return The value specified by StatusCode with the highest bit clear.
 
 **/
-public static ulong ENCODE_WARNING = (StatusCode)  ((RETURN_STATUS)(StatusCode));
+public const ulong ENCODE_WARNING = (StatusCode)  ((RETURN_STATUS)(StatusCode));
 
 /**
   Returns TRUE if a specified RETURN_STATUS code is an error code.
@@ -1074,215 +1074,215 @@ public static ulong ENCODE_WARNING = (StatusCode)  ((RETURN_STATUS)(StatusCode))
   @retval FALSE         The high bit of StatusCode is clear.
 
 **/
-public static ulong RETURN_ERROR = (StatusCode)  (((long)(RETURN_STATUS)(StatusCode)) < 0);
+public const ulong RETURN_ERROR = (StatusCode)  (((long)(RETURN_STATUS)(StatusCode)) < 0);
 
 ///
 /// The operation completed successfully.
 ///
-public static ulong RETURN_SUCCESS = (RETURN_STATUS)(0);
+public const ulong RETURN_SUCCESS = (RETURN_STATUS)(0);
 
 ///
 /// The image failed to load.
 ///
-public static ulong RETURN_LOAD_ERROR = ENCODE_ERROR (1);
+public const ulong RETURN_LOAD_ERROR = ENCODE_ERROR (1);
 
 ///
 /// The parameter was incorrect.
 ///
-public static ulong RETURN_INVALID_PARAMETER = ENCODE_ERROR (2);
+public const ulong RETURN_INVALID_PARAMETER = ENCODE_ERROR (2);
 
 ///
 /// The operation is not supported.
 ///
-public static ulong RETURN_UNSUPPORTED = ENCODE_ERROR (3);
+public const ulong RETURN_UNSUPPORTED = ENCODE_ERROR (3);
 
 ///
 /// The buffer was not the proper size for the request.
 ///
-public static ulong RETURN_BAD_BUFFER_SIZE = ENCODE_ERROR (4);
+public const ulong RETURN_BAD_BUFFER_SIZE = ENCODE_ERROR (4);
 
 ///
 /// The buffer was not large enough to hold the requested data.
 /// The required buffer size is returned in the appropriate
 /// parameter when this error occurs.
 ///
-public static ulong RETURN_BUFFER_TOO_SMALL = ENCODE_ERROR (5);
+public const ulong RETURN_BUFFER_TOO_SMALL = ENCODE_ERROR (5);
 
 ///
 /// There is no data pending upon return.
 ///
-public static ulong RETURN_NOT_READY = ENCODE_ERROR (6);
+public const ulong RETURN_NOT_READY = ENCODE_ERROR (6);
 
 ///
 /// The physical device reported an error while attempting the
 /// operation.
 ///
-public static ulong RETURN_DEVICE_ERROR = ENCODE_ERROR (7);
+public const ulong RETURN_DEVICE_ERROR = ENCODE_ERROR (7);
 
 ///
 /// The device can not be written to.
 ///
-public static ulong RETURN_WRITE_PROTECTED = ENCODE_ERROR (8);
+public const ulong RETURN_WRITE_PROTECTED = ENCODE_ERROR (8);
 
 ///
 /// The resource has run out.
 ///
-public static ulong RETURN_OUT_OF_RESOURCES = ENCODE_ERROR (9);
+public const ulong RETURN_OUT_OF_RESOURCES = ENCODE_ERROR (9);
 
 ///
 /// An inconsistency was detected on the file system causing the
 /// operation to fail.
 ///
-public static ulong RETURN_VOLUME_CORRUPTED = ENCODE_ERROR (10);
+public const ulong RETURN_VOLUME_CORRUPTED = ENCODE_ERROR (10);
 
 ///
 /// There is no more space on the file system.
 ///
-public static ulong RETURN_VOLUME_FULL = ENCODE_ERROR (11);
+public const ulong RETURN_VOLUME_FULL = ENCODE_ERROR (11);
 
 ///
 /// The device does not contain any medium to perform the
 /// operation.
 ///
-public static ulong RETURN_NO_MEDIA = ENCODE_ERROR (12);
+public const ulong RETURN_NO_MEDIA = ENCODE_ERROR (12);
 
 ///
 /// The medium in the device has changed since the last
 /// access.
 ///
-public static ulong RETURN_MEDIA_CHANGED = ENCODE_ERROR (13);
+public const ulong RETURN_MEDIA_CHANGED = ENCODE_ERROR (13);
 
 ///
 /// The item was not found.
 ///
-public static ulong RETURN_NOT_FOUND = ENCODE_ERROR (14);
+public const ulong RETURN_NOT_FOUND = ENCODE_ERROR (14);
 
 ///
 /// Access was denied.
 ///
-public static ulong RETURN_ACCESS_DENIED = ENCODE_ERROR (15);
+public const ulong RETURN_ACCESS_DENIED = ENCODE_ERROR (15);
 
 ///
 /// The server was not found or did not respond to the request.
 ///
-public static ulong RETURN_NO_RESPONSE = ENCODE_ERROR (16);
+public const ulong RETURN_NO_RESPONSE = ENCODE_ERROR (16);
 
 ///
 /// A mapping to the device does not exist.
 ///
-public static ulong RETURN_NO_MAPPING = ENCODE_ERROR (17);
+public const ulong RETURN_NO_MAPPING = ENCODE_ERROR (17);
 
 ///
 /// A timeout time expired.
 ///
-public static ulong RETURN_TIMEOUT = ENCODE_ERROR (18);
+public const ulong RETURN_TIMEOUT = ENCODE_ERROR (18);
 
 ///
 /// The protocol has not been started.
 ///
-public static ulong RETURN_NOT_STARTED = ENCODE_ERROR (19);
+public const ulong RETURN_NOT_STARTED = ENCODE_ERROR (19);
 
 ///
 /// The protocol has already been started.
 ///
-public static ulong RETURN_ALREADY_STARTED = ENCODE_ERROR (20);
+public const ulong RETURN_ALREADY_STARTED = ENCODE_ERROR (20);
 
 ///
 /// The operation was aborted.
 ///
-public static ulong RETURN_ABORTED = ENCODE_ERROR (21);
+public const ulong RETURN_ABORTED = ENCODE_ERROR (21);
 
 ///
 /// An ICMP error occurred during the network operation.
 ///
-public static ulong RETURN_ICMP_ERROR = ENCODE_ERROR (22);
+public const ulong RETURN_ICMP_ERROR = ENCODE_ERROR (22);
 
 ///
 /// A TFTP error occurred during the network operation.
 ///
-public static ulong RETURN_TFTP_ERROR = ENCODE_ERROR (23);
+public const ulong RETURN_TFTP_ERROR = ENCODE_ERROR (23);
 
 ///
 /// A protocol error occurred during the network operation.
 ///
-public static ulong RETURN_PROTOCOL_ERROR = ENCODE_ERROR (24);
+public const ulong RETURN_PROTOCOL_ERROR = ENCODE_ERROR (24);
 
 ///
 /// A function encountered an internal version that was
 /// incompatible with a version requested by the caller.
 ///
-public static ulong RETURN_INCOMPATIBLE_VERSION = ENCODE_ERROR (25);
+public const ulong RETURN_INCOMPATIBLE_VERSION = ENCODE_ERROR (25);
 
 ///
 /// The function was not performed due to a security violation.
 ///
-public static ulong RETURN_SECURITY_VIOLATION = ENCODE_ERROR (26);
+public const ulong RETURN_SECURITY_VIOLATION = ENCODE_ERROR (26);
 
 ///
 /// A CRC error was detected.
 ///
-public static ulong RETURN_CRC_ERROR = ENCODE_ERROR (27);
+public const ulong RETURN_CRC_ERROR = ENCODE_ERROR (27);
 
 ///
 /// The beginning or end of media was reached.
 ///
-public static ulong RETURN_END_OF_MEDIA = ENCODE_ERROR (28);
+public const ulong RETURN_END_OF_MEDIA = ENCODE_ERROR (28);
 
 ///
 /// The end of the file was reached.
 ///
-public static ulong RETURN_END_OF_FILE = ENCODE_ERROR (31);
+public const ulong RETURN_END_OF_FILE = ENCODE_ERROR (31);
 
 ///
 /// The language specified was invalid.
 ///
-public static ulong RETURN_INVALID_LANGUAGE = ENCODE_ERROR (32);
+public const ulong RETURN_INVALID_LANGUAGE = ENCODE_ERROR (32);
 
 ///
 /// The security status of the data is unknown or compromised
 /// and the data must be updated or replaced to restore a valid
 /// security status.
 ///
-public static ulong RETURN_COMPROMISED_DATA = ENCODE_ERROR (33);
+public const ulong RETURN_COMPROMISED_DATA = ENCODE_ERROR (33);
 
 ///
 /// A HTTP error occurred during the network operation.
 ///
-public static ulong RETURN_HTTP_ERROR = ENCODE_ERROR (35);
+public const ulong RETURN_HTTP_ERROR = ENCODE_ERROR (35);
 
 ///
 /// The string contained one or more characters that
 /// the device could not render and were skipped.
 ///
-public static ulong RETURN_WARN_UNKNOWN_GLYPH = ENCODE_WARNING (1);
+public const ulong RETURN_WARN_UNKNOWN_GLYPH = ENCODE_WARNING (1);
 
 ///
 /// The handle was closed, but the file was not deleted.
 ///
-public static ulong RETURN_WARN_DELETE_FAILURE = ENCODE_WARNING (2);
+public const ulong RETURN_WARN_DELETE_FAILURE = ENCODE_WARNING (2);
 
 ///
 /// The handle was closed, but the data to the file was not
 /// flushed properly.
 ///
-public static ulong RETURN_WARN_WRITE_FAILURE = ENCODE_WARNING (3);
+public const ulong RETURN_WARN_WRITE_FAILURE = ENCODE_WARNING (3);
 
 ///
 /// The resulting buffer was too small, and the data was
 /// truncated to the buffer size.
 ///
-public static ulong RETURN_WARN_BUFFER_TOO_SMALL = ENCODE_WARNING (4);
+public const ulong RETURN_WARN_BUFFER_TOO_SMALL = ENCODE_WARNING (4);
 
 ///
 /// The data has not been updated within the timeframe set by
 /// local policy for this type of data.
 ///
-public static ulong RETURN_WARN_STALE_DATA = ENCODE_WARNING (5);
+public const ulong RETURN_WARN_STALE_DATA = ENCODE_WARNING (5);
 
 ///
 /// The resulting buffer contains UEFI-compliant file system.
 ///
-public static ulong RETURN_WARN_FILE_SYSTEM = ENCODE_WARNING (6);
+public const ulong RETURN_WARN_FILE_SYSTEM = ENCODE_WARNING (6);
 
 /**
   Returns a 16-bit signature built from 2 ASCII characters.
@@ -1296,7 +1296,7 @@ public static ulong RETURN_WARN_FILE_SYSTEM = ENCODE_WARNING (6);
   @return A 16-bit value built from the two ASCII characters specified by A and B.
 
 **/
-public static ulong SIGNATURE_16 = (A, B)  ((A) | (B << 8));
+public const ulong SIGNATURE_16 = (A, B)  ((A) | (B << 8));
 
 /**
   Returns a 32-bit signature built from 4 ASCII characters.
@@ -1313,7 +1313,7 @@ public static ulong SIGNATURE_16 = (A, B)  ((A) | (B << 8));
           C and D.
 
 **/
-public static ulong SIGNATURE_32 = (A, B, C, D)  (SIGNATURE_16 (A, B) | (SIGNATURE_16 (C, D) << 16));
+public const ulong SIGNATURE_32 = (A, B, C, D)  (SIGNATURE_16 (A, B) | (SIGNATURE_16 (C, D) << 16));
 
 /**
   Returns a 64-bit signature built from 8 ASCII characters.
@@ -1334,7 +1334,7 @@ public static ulong SIGNATURE_32 = (A, B, C, D)  (SIGNATURE_16 (A, B) | (SIGNATU
           C, D, E, F, G and H.
 
 **/
-public static ulong SIGNATURE_64 = (A, B, C, D, E, F, G, H) \;
+public const ulong SIGNATURE_64 = (A, B, C, D, E, F, G, H) \;
     (SIGNATURE_32 (A, B, C, D) | ((ulong) (SIGNATURE_32 (E, F, G, H)) << 32))
 
 #if defined (_MSC_EXTENSIONS) && !defined (__INTEL_COMPILER) && !defined (MDE_CPU_EBC)
@@ -1357,7 +1357,7 @@ _ReturnAddress (
   @return The return address of the calling function or 0 if L != 0.
 
 **/
-public static ulong RETURN_ADDRESS = (L)  ((L == 0) ? _ReturnAddress() : (VOID *) 0);
+public const ulong RETURN_ADDRESS = (L)  ((L == 0) ? _ReturnAddress() : (VOID *) 0);
 #elif defined (__GNUC__) || defined (__clang__)
 
 /**
@@ -1371,7 +1371,7 @@ public static ulong RETURN_ADDRESS = (L)  ((L == 0) ? _ReturnAddress() : (VOID *
   @return The return address of the calling function.
 
 **/
-public static ulong RETURN_ADDRESS = (L)  __builtin_return_address (L);
+public const ulong RETURN_ADDRESS = (L)  __builtin_return_address (L);
 #else
 
 /**
@@ -1382,7 +1382,7 @@ public static ulong RETURN_ADDRESS = (L)  __builtin_return_address (L);
   @return 0 as compilers don't support this feature.
 
 **/
-public static ulong RETURN_ADDRESS = (L)  ((VOID *) 0);
+public const ulong RETURN_ADDRESS = (L)  ((VOID *) 0);
 // #endif
 
 /**
@@ -1396,6 +1396,6 @@ public static ulong RETURN_ADDRESS = (L)  ((VOID *) 0);
   @return The number of elements in Array. The result has type UINTN.
 
 **/
-public static ulong ARRAY_SIZE = (Array)  (sizeof (Array) / sizeof ((Array)[0]));
+public const ulong ARRAY_SIZE = (Array)  (sizeof (Array) / sizeof ((Array)[0]));
 
 // #endif

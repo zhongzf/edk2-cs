@@ -22,8 +22,8 @@ public static EFI_GUID EFI_NVDIMM_LABEL_PROTOCOL_GUID = new GUID(
 
 // typedef struct _EFI_NVDIMM_LABEL_PROTOCOL EFI_NVDIMM_LABEL_PROTOCOL;
 
-public static ulong EFI_NVDIMM_LABEL_INDEX_SIG_LEN = 16;
-public static ulong EFI_NVDIMM_LABEL_INDEX_ALIGN = 256;
+public const ulong EFI_NVDIMM_LABEL_INDEX_SIG_LEN = 16;
+public const ulong EFI_NVDIMM_LABEL_INDEX_ALIGN = 256;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVDIMM_LABEL_INDEX_BLOCK
 {
@@ -99,29 +99,29 @@ public unsafe struct EFI_NVDIMM_LABEL_INDEX_BLOCK
   public fixed byte Free[];
 }
 
-public static ulong EFI_NVDIMM_LABEL_NAME_LEN = 64;
+public const ulong EFI_NVDIMM_LABEL_NAME_LEN = 64;
 
 ///
 /// The label is read-only.
 ///
-public static ulong EFI_NVDIMM_LABEL_FLAGS_ROLABEL = 0x00000001;
+public const ulong EFI_NVDIMM_LABEL_FLAGS_ROLABEL = 0x00000001;
 
 ///
 /// When set, the complete label set is local to a single NVDIMM Label Storage Area.
 /// When clear, the complete label set is contained on multiple NVDIMM Label Storage Areas.
 ///
-public static ulong EFI_NVDIMM_LABEL_FLAGS_LOCAL = 0x00000002;
+public const ulong EFI_NVDIMM_LABEL_FLAGS_LOCAL = 0x00000002;
 
 ///
 /// This reserved flag is utilized on older implementations and has been deprecated.
 /// Do not use.
 //
-public static ulong EFI_NVDIMM_LABEL_FLAGS_RESERVED = 0x00000004;
+public const ulong EFI_NVDIMM_LABEL_FLAGS_RESERVED = 0x00000004;
 
 ///
 /// When set, the label set is being updated.
 ///
-public static ulong EFI_NVDIMM_LABEL_FLAGS_UPDATING = 0x00000008;
+public const ulong EFI_NVDIMM_LABEL_FLAGS_UPDATING = 0x00000008;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVDIMM_LABEL

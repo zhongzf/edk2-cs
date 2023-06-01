@@ -19,7 +19,7 @@ namespace Uefi;
 // #include <Pi/PiSmmCis.h>
 // #include <Protocol/MmPeriodicTimerDispatch.h>
 
-public static ulong EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL_GUID = EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID;
+public const ulong EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL_GUID = EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID;
 
 ///
 /// Example: A chipset supports periodic SMIs on every 64ms or 2 seconds.

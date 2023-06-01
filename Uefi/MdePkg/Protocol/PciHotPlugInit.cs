@@ -76,13 +76,13 @@ public unsafe struct EFI_HPC_STATE { ushort Value; public static implicit operat
 /// disabled in hardware, or it may be disabled due to user preferences,
 /// hardware failure, or other reasons. No resource padding is required.
 ///
-public static ulong EFI_HPC_STATE_INITIALIZED = 0x01;
+public const ulong EFI_HPC_STATE_INITIALIZED = 0x01;
 
 ///
 /// The HPC initialization function was called, the HPC completed
 /// initialization, and it was enabled. Resource padding is required.
 ///
-public static ulong EFI_HPC_STATE_ENABLED = 0x02;
+public const ulong EFI_HPC_STATE_ENABLED = 0x02;
 
 ///
 /// Location definition for PCI Hot Plug Controller

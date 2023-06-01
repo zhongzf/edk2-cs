@@ -32,8 +32,8 @@ public unsafe struct EFI_TCG2_EVENT_LOG_FORMAT { uint Value; public static impli
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCG2_EVENT_ALGORITHM_BITMAP { uint Value; public static implicit operator EFI_TCG2_EVENT_ALGORITHM_BITMAP(uint value) => new EFI_TCG2_EVENT_ALGORITHM_BITMAP() { Value = value }; public static implicit operator uint(EFI_TCG2_EVENT_ALGORITHM_BITMAP value) => value.Value; }
 
-public static ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_1_2 = 0x00000001;
-public static ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
+public const ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_1_2 = 0x00000001;
+public const ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
 
 typedef struct tdEFI_TCG2_BOOT_SERVICE_CAPABILITY
 {
@@ -94,26 +94,26 @@ typedef struct tdEFI_TCG2_BOOT_SERVICE_CAPABILITY
 }
 EFI_TCG2_BOOT_SERVICE_CAPABILITY;
 
-public static ulong EFI_TCG2_BOOT_HASH_ALG_SHA1 = 0x00000001;
-public static ulong EFI_TCG2_BOOT_HASH_ALG_SHA256 = 0x00000002;
-public static ulong EFI_TCG2_BOOT_HASH_ALG_SHA384 = 0x00000004;
-public static ulong EFI_TCG2_BOOT_HASH_ALG_SHA512 = 0x00000008;
-public static ulong EFI_TCG2_BOOT_HASH_ALG_SM3_256 = 0x00000010;
+public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA1 = 0x00000001;
+public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA256 = 0x00000002;
+public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA384 = 0x00000004;
+public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA512 = 0x00000008;
+public const ulong EFI_TCG2_BOOT_HASH_ALG_SM3_256 = 0x00000010;
 
 //
 // This bit is shall be set when an event shall be extended but not logged.
 //
-public static ulong EFI_TCG2_EXTEND_ONLY = 0x0000000000000001;
+public const ulong EFI_TCG2_EXTEND_ONLY = 0x0000000000000001;
 //
 // This bit shall be set when the intent is to measure a PE/COFF image.
 //
-public static ulong PE_COFF_IMAGE = 0x0000000000000010;
+public const ulong PE_COFF_IMAGE = 0x0000000000000010;
 
-public static ulong MAX_PCR_INDEX = 23;
+public const ulong MAX_PCR_INDEX = 23;
 
 // #pragma pack(1)
 
-public static ulong EFI_TCG2_EVENT_HEADER_VERSION = 1;
+public const ulong EFI_TCG2_EVENT_HEADER_VERSION = 1;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCG2_EVENT_HEADER
@@ -440,6 +440,6 @@ typedef struct tdEFI_TCG2_FINAL_EVENTS_TABLE
 }
 EFI_TCG2_FINAL_EVENTS_TABLE;
 
-public static ulong EFI_TCG2_FINAL_EVENTS_TABLE_VERSION = 1;
+public const ulong EFI_TCG2_FINAL_EVENTS_TABLE_VERSION = 1;
 
 // #endif

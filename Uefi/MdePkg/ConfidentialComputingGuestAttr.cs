@@ -34,7 +34,7 @@ public enum CONFIDENTIAL_COMPUTING_GUEST_ATTR
   CCAttrIntelTdx = 0x200,
 }
 
-public static ulong CC_GUEST_IS_TDX = (x)((x) == CCAttrIntelTdx);
-public static ulong CC_GUEST_IS_SEV = (x)((x) == CCAttrAmdSev || (x) == CCAttrAmdSevEs || (x) == CCAttrAmdSevSnp);
+public const ulong CC_GUEST_IS_TDX = (x)((x) == CCAttrIntelTdx);
+public const ulong CC_GUEST_IS_SEV = (x)((x) == CCAttrAmdSev || (x) == CCAttrAmdSevEs || (x) == CCAttrAmdSevSnp);
 
 // #endif

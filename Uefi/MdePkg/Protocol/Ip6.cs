@@ -78,57 +78,57 @@ public unsafe struct EFI_IP6_VARIABLE_DATA
 /// ICMPv6 type definitions for error messages
 ///
 ///@{
-public static ulong ICMP_V6_DEST_UNREACHABLE = 0x1;
-public static ulong ICMP_V6_PACKET_TOO_BIG = 0x2;
-public static ulong ICMP_V6_TIME_EXCEEDED = 0x3;
-public static ulong ICMP_V6_PARAMETER_PROBLEM = 0x4;
+public const ulong ICMP_V6_DEST_UNREACHABLE = 0x1;
+public const ulong ICMP_V6_PACKET_TOO_BIG = 0x2;
+public const ulong ICMP_V6_TIME_EXCEEDED = 0x3;
+public const ulong ICMP_V6_PARAMETER_PROBLEM = 0x4;
 ///@}
 
 ///
 /// ICMPv6 type definition for informational messages
 ///
 ///@{
-public static ulong ICMP_V6_ECHO_REQUEST = 0x80;
-public static ulong ICMP_V6_ECHO_REPLY = 0x81;
-public static ulong ICMP_V6_LISTENER_QUERY = 0x82;
-public static ulong ICMP_V6_LISTENER_REPORT = 0x83;
-public static ulong ICMP_V6_LISTENER_DONE = 0x84;
-public static ulong ICMP_V6_ROUTER_SOLICIT = 0x85;
-public static ulong ICMP_V6_ROUTER_ADVERTISE = 0x86;
-public static ulong ICMP_V6_NEIGHBOR_SOLICIT = 0x87;
-public static ulong ICMP_V6_NEIGHBOR_ADVERTISE = 0x88;
-public static ulong ICMP_V6_REDIRECT = 0x89;
-public static ulong ICMP_V6_LISTENER_REPORT_2 = 0x8F;
+public const ulong ICMP_V6_ECHO_REQUEST = 0x80;
+public const ulong ICMP_V6_ECHO_REPLY = 0x81;
+public const ulong ICMP_V6_LISTENER_QUERY = 0x82;
+public const ulong ICMP_V6_LISTENER_REPORT = 0x83;
+public const ulong ICMP_V6_LISTENER_DONE = 0x84;
+public const ulong ICMP_V6_ROUTER_SOLICIT = 0x85;
+public const ulong ICMP_V6_ROUTER_ADVERTISE = 0x86;
+public const ulong ICMP_V6_NEIGHBOR_SOLICIT = 0x87;
+public const ulong ICMP_V6_NEIGHBOR_ADVERTISE = 0x88;
+public const ulong ICMP_V6_REDIRECT = 0x89;
+public const ulong ICMP_V6_LISTENER_REPORT_2 = 0x8F;
 ///@}
 
 ///
 /// ICMPv6 code definitions for ICMP_V6_DEST_UNREACHABLE
 ///
 ///@{
-public static ulong ICMP_V6_NO_ROUTE_TO_DEST = 0x0;
-public static ulong ICMP_V6_COMM_PROHIBITED = 0x1;
-public static ulong ICMP_V6_BEYOND_SCOPE = 0x2;
-public static ulong ICMP_V6_ADDR_UNREACHABLE = 0x3;
-public static ulong ICMP_V6_PORT_UNREACHABLE = 0x4;
-public static ulong ICMP_V6_SOURCE_ADDR_FAILED = 0x5;
-public static ulong ICMP_V6_ROUTE_REJECTED = 0x6;
+public const ulong ICMP_V6_NO_ROUTE_TO_DEST = 0x0;
+public const ulong ICMP_V6_COMM_PROHIBITED = 0x1;
+public const ulong ICMP_V6_BEYOND_SCOPE = 0x2;
+public const ulong ICMP_V6_ADDR_UNREACHABLE = 0x3;
+public const ulong ICMP_V6_PORT_UNREACHABLE = 0x4;
+public const ulong ICMP_V6_SOURCE_ADDR_FAILED = 0x5;
+public const ulong ICMP_V6_ROUTE_REJECTED = 0x6;
 ///@}
 
 ///
 /// ICMPv6 code definitions for ICMP_V6_TIME_EXCEEDED
 ///
 ///@{
-public static ulong ICMP_V6_TIMEOUT_HOP_LIMIT = 0x0;
-public static ulong ICMP_V6_TIMEOUT_REASSEMBLE = 0x1;
+public const ulong ICMP_V6_TIMEOUT_HOP_LIMIT = 0x0;
+public const ulong ICMP_V6_TIMEOUT_REASSEMBLE = 0x1;
 ///@}
 
 ///
 /// ICMPv6 code definitions for ICMP_V6_PARAMETER_PROBLEM
 ///
 ///@{
-public static ulong ICMP_V6_ERRONEOUS_HEADER = 0x0;
-public static ulong ICMP_V6_UNRECOGNIZE_NEXT_HDR = 0x1;
-public static ulong ICMP_V6_UNRECOGNIZE_OPTION = 0x2;
+public const ulong ICMP_V6_ERRONEOUS_HEADER = 0x0;
+public const ulong ICMP_V6_UNRECOGNIZE_NEXT_HDR = 0x1;
+public const ulong ICMP_V6_UNRECOGNIZE_OPTION = 0x2;
 ///@}
 
 ///

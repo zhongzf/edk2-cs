@@ -20,7 +20,7 @@ namespace Uefi;
 
 // #include <Protocol/MmEndOfDxe.h>
 
-public static ulong EFI_SMM_END_OF_DXE_PROTOCOL_GUID = EFI_MM_END_OF_DXE_PROTOCOL_GUID;
+public const ulong EFI_SMM_END_OF_DXE_PROTOCOL_GUID = EFI_MM_END_OF_DXE_PROTOCOL_GUID;
 
 // extern EFI_GUID  gEfiSmmEndOfDxeProtocolGuid;
 

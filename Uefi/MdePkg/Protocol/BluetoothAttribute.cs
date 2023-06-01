@@ -39,11 +39,11 @@ public unsafe struct Data
 }
 } EFI_BLUETOOTH_UUID;
 
-public static ulong UUID_16BIT_TYPE_LEN = 2;
-public static ulong UUID_32BIT_TYPE_LEN = 4;
-public static ulong UUID_128BIT_TYPE_LEN = 16;
+public const ulong UUID_16BIT_TYPE_LEN = 2;
+public const ulong UUID_32BIT_TYPE_LEN = 4;
+public const ulong UUID_128BIT_TYPE_LEN = 16;
 
-public static ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
+public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
 
 //
 // Bluetooth Attribute Permission

@@ -21,7 +21,7 @@ public static EFI_GUID EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol GUID defined in EFI1.1.
 ///
-public static ulong SIMPLE_TEXT_OUTPUT_PROTOCOL = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID;
+public const ulong SIMPLE_TEXT_OUTPUT_PROTOCOL = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID;
 
 // typedef struct _EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL;
 
@@ -34,89 +34,89 @@ public unsafe struct SIMPLE_TEXT_OUTPUT_INTERFACE { EFI_SIMPLE_TEXT_OUTPUT_PROTO
 //
 // Defines for required EFI Unicode Box Draw characters
 //
-public static ulong BOXDRAW_HORIZONTAL = 0x2500;
-public static ulong BOXDRAW_VERTICAL = 0x2502;
-public static ulong BOXDRAW_DOWN_RIGHT = 0x250c;
-public static ulong BOXDRAW_DOWN_LEFT = 0x2510;
-public static ulong BOXDRAW_UP_RIGHT = 0x2514;
-public static ulong BOXDRAW_UP_LEFT = 0x2518;
-public static ulong BOXDRAW_VERTICAL_RIGHT = 0x251c;
-public static ulong BOXDRAW_VERTICAL_LEFT = 0x2524;
-public static ulong BOXDRAW_DOWN_HORIZONTAL = 0x252c;
-public static ulong BOXDRAW_UP_HORIZONTAL = 0x2534;
-public static ulong BOXDRAW_VERTICAL_HORIZONTAL = 0x253c;
-public static ulong BOXDRAW_DOUBLE_HORIZONTAL = 0x2550;
-public static ulong BOXDRAW_DOUBLE_VERTICAL = 0x2551;
-public static ulong BOXDRAW_DOWN_RIGHT_DOUBLE = 0x2552;
-public static ulong BOXDRAW_DOWN_DOUBLE_RIGHT = 0x2553;
-public static ulong BOXDRAW_DOUBLE_DOWN_RIGHT = 0x2554;
-public static ulong BOXDRAW_DOWN_LEFT_DOUBLE = 0x2555;
-public static ulong BOXDRAW_DOWN_DOUBLE_LEFT = 0x2556;
-public static ulong BOXDRAW_DOUBLE_DOWN_LEFT = 0x2557;
-public static ulong BOXDRAW_UP_RIGHT_DOUBLE = 0x2558;
-public static ulong BOXDRAW_UP_DOUBLE_RIGHT = 0x2559;
-public static ulong BOXDRAW_DOUBLE_UP_RIGHT = 0x255a;
-public static ulong BOXDRAW_UP_LEFT_DOUBLE = 0x255b;
-public static ulong BOXDRAW_UP_DOUBLE_LEFT = 0x255c;
-public static ulong BOXDRAW_DOUBLE_UP_LEFT = 0x255d;
-public static ulong BOXDRAW_VERTICAL_RIGHT_DOUBLE = 0x255e;
-public static ulong BOXDRAW_VERTICAL_DOUBLE_RIGHT = 0x255f;
-public static ulong BOXDRAW_DOUBLE_VERTICAL_RIGHT = 0x2560;
-public static ulong BOXDRAW_VERTICAL_LEFT_DOUBLE = 0x2561;
-public static ulong BOXDRAW_VERTICAL_DOUBLE_LEFT = 0x2562;
-public static ulong BOXDRAW_DOUBLE_VERTICAL_LEFT = 0x2563;
-public static ulong BOXDRAW_DOWN_HORIZONTAL_DOUBLE = 0x2564;
-public static ulong BOXDRAW_DOWN_DOUBLE_HORIZONTAL = 0x2565;
-public static ulong BOXDRAW_DOUBLE_DOWN_HORIZONTAL = 0x2566;
-public static ulong BOXDRAW_UP_HORIZONTAL_DOUBLE = 0x2567;
-public static ulong BOXDRAW_UP_DOUBLE_HORIZONTAL = 0x2568;
-public static ulong BOXDRAW_DOUBLE_UP_HORIZONTAL = 0x2569;
-public static ulong BOXDRAW_VERTICAL_HORIZONTAL_DOUBLE = 0x256a;
-public static ulong BOXDRAW_VERTICAL_DOUBLE_HORIZONTAL = 0x256b;
-public static ulong BOXDRAW_DOUBLE_VERTICAL_HORIZONTAL = 0x256c;
+public const ulong BOXDRAW_HORIZONTAL = 0x2500;
+public const ulong BOXDRAW_VERTICAL = 0x2502;
+public const ulong BOXDRAW_DOWN_RIGHT = 0x250c;
+public const ulong BOXDRAW_DOWN_LEFT = 0x2510;
+public const ulong BOXDRAW_UP_RIGHT = 0x2514;
+public const ulong BOXDRAW_UP_LEFT = 0x2518;
+public const ulong BOXDRAW_VERTICAL_RIGHT = 0x251c;
+public const ulong BOXDRAW_VERTICAL_LEFT = 0x2524;
+public const ulong BOXDRAW_DOWN_HORIZONTAL = 0x252c;
+public const ulong BOXDRAW_UP_HORIZONTAL = 0x2534;
+public const ulong BOXDRAW_VERTICAL_HORIZONTAL = 0x253c;
+public const ulong BOXDRAW_DOUBLE_HORIZONTAL = 0x2550;
+public const ulong BOXDRAW_DOUBLE_VERTICAL = 0x2551;
+public const ulong BOXDRAW_DOWN_RIGHT_DOUBLE = 0x2552;
+public const ulong BOXDRAW_DOWN_DOUBLE_RIGHT = 0x2553;
+public const ulong BOXDRAW_DOUBLE_DOWN_RIGHT = 0x2554;
+public const ulong BOXDRAW_DOWN_LEFT_DOUBLE = 0x2555;
+public const ulong BOXDRAW_DOWN_DOUBLE_LEFT = 0x2556;
+public const ulong BOXDRAW_DOUBLE_DOWN_LEFT = 0x2557;
+public const ulong BOXDRAW_UP_RIGHT_DOUBLE = 0x2558;
+public const ulong BOXDRAW_UP_DOUBLE_RIGHT = 0x2559;
+public const ulong BOXDRAW_DOUBLE_UP_RIGHT = 0x255a;
+public const ulong BOXDRAW_UP_LEFT_DOUBLE = 0x255b;
+public const ulong BOXDRAW_UP_DOUBLE_LEFT = 0x255c;
+public const ulong BOXDRAW_DOUBLE_UP_LEFT = 0x255d;
+public const ulong BOXDRAW_VERTICAL_RIGHT_DOUBLE = 0x255e;
+public const ulong BOXDRAW_VERTICAL_DOUBLE_RIGHT = 0x255f;
+public const ulong BOXDRAW_DOUBLE_VERTICAL_RIGHT = 0x2560;
+public const ulong BOXDRAW_VERTICAL_LEFT_DOUBLE = 0x2561;
+public const ulong BOXDRAW_VERTICAL_DOUBLE_LEFT = 0x2562;
+public const ulong BOXDRAW_DOUBLE_VERTICAL_LEFT = 0x2563;
+public const ulong BOXDRAW_DOWN_HORIZONTAL_DOUBLE = 0x2564;
+public const ulong BOXDRAW_DOWN_DOUBLE_HORIZONTAL = 0x2565;
+public const ulong BOXDRAW_DOUBLE_DOWN_HORIZONTAL = 0x2566;
+public const ulong BOXDRAW_UP_HORIZONTAL_DOUBLE = 0x2567;
+public const ulong BOXDRAW_UP_DOUBLE_HORIZONTAL = 0x2568;
+public const ulong BOXDRAW_DOUBLE_UP_HORIZONTAL = 0x2569;
+public const ulong BOXDRAW_VERTICAL_HORIZONTAL_DOUBLE = 0x256a;
+public const ulong BOXDRAW_VERTICAL_DOUBLE_HORIZONTAL = 0x256b;
+public const ulong BOXDRAW_DOUBLE_VERTICAL_HORIZONTAL = 0x256c;
 
 //
 // EFI Required Block Elements Code Chart
 //
-public static ulong BLOCKELEMENT_FULL_BLOCK = 0x2588;
-public static ulong BLOCKELEMENT_LIGHT_SHADE = 0x2591;
+public const ulong BLOCKELEMENT_FULL_BLOCK = 0x2588;
+public const ulong BLOCKELEMENT_LIGHT_SHADE = 0x2591;
 
 //
 // EFI Required Geometric Shapes Code Chart
 //
-public static ulong GEOMETRICSHAPE_UP_TRIANGLE = 0x25b2;
-public static ulong GEOMETRICSHAPE_RIGHT_TRIANGLE = 0x25ba;
-public static ulong GEOMETRICSHAPE_DOWN_TRIANGLE = 0x25bc;
-public static ulong GEOMETRICSHAPE_LEFT_TRIANGLE = 0x25c4;
+public const ulong GEOMETRICSHAPE_UP_TRIANGLE = 0x25b2;
+public const ulong GEOMETRICSHAPE_RIGHT_TRIANGLE = 0x25ba;
+public const ulong GEOMETRICSHAPE_DOWN_TRIANGLE = 0x25bc;
+public const ulong GEOMETRICSHAPE_LEFT_TRIANGLE = 0x25c4;
 
 //
 // EFI Required Arrow shapes
 //
-public static ulong ARROW_LEFT = 0x2190;
-public static ulong ARROW_UP = 0x2191;
-public static ulong ARROW_RIGHT = 0x2192;
-public static ulong ARROW_DOWN = 0x2193;
+public const ulong ARROW_LEFT = 0x2190;
+public const ulong ARROW_UP = 0x2191;
+public const ulong ARROW_RIGHT = 0x2192;
+public const ulong ARROW_DOWN = 0x2193;
 
 //
 // EFI Console Colours
 //
-public static ulong EFI_BLACK = 0x00;
-public static ulong EFI_BLUE = 0x01;
-public static ulong EFI_GREEN = 0x02;
-public static ulong EFI_CYAN = (EFI_BLUE | EFI_GREEN);
-public static ulong EFI_RED = 0x04;
-public static ulong EFI_MAGENTA = (EFI_BLUE | EFI_RED);
-public static ulong EFI_BROWN = (EFI_GREEN | EFI_RED);
-public static ulong EFI_LIGHTGRAY = (EFI_BLUE | EFI_GREEN | EFI_RED);
-public static ulong EFI_BRIGHT = 0x08;
-public static ulong EFI_DARKGRAY = (EFI_BLACK | EFI_BRIGHT);
-public static ulong EFI_LIGHTBLUE = (EFI_BLUE | EFI_BRIGHT);
-public static ulong EFI_LIGHTGREEN = (EFI_GREEN | EFI_BRIGHT);
-public static ulong EFI_LIGHTCYAN = (EFI_CYAN | EFI_BRIGHT);
-public static ulong EFI_LIGHTRED = (EFI_RED | EFI_BRIGHT);
-public static ulong EFI_LIGHTMAGENTA = (EFI_MAGENTA | EFI_BRIGHT);
-public static ulong EFI_YELLOW = (EFI_BROWN | EFI_BRIGHT);
-public static ulong EFI_WHITE = (EFI_BLUE | EFI_GREEN | EFI_RED | EFI_BRIGHT);
+public const ulong EFI_BLACK = 0x00;
+public const ulong EFI_BLUE = 0x01;
+public const ulong EFI_GREEN = 0x02;
+public const ulong EFI_CYAN = (EFI_BLUE | EFI_GREEN);
+public const ulong EFI_RED = 0x04;
+public const ulong EFI_MAGENTA = (EFI_BLUE | EFI_RED);
+public const ulong EFI_BROWN = (EFI_GREEN | EFI_RED);
+public const ulong EFI_LIGHTGRAY = (EFI_BLUE | EFI_GREEN | EFI_RED);
+public const ulong EFI_BRIGHT = 0x08;
+public const ulong EFI_DARKGRAY = (EFI_BLACK | EFI_BRIGHT);
+public const ulong EFI_LIGHTBLUE = (EFI_BLUE | EFI_BRIGHT);
+public const ulong EFI_LIGHTGREEN = (EFI_GREEN | EFI_BRIGHT);
+public const ulong EFI_LIGHTCYAN = (EFI_CYAN | EFI_BRIGHT);
+public const ulong EFI_LIGHTRED = (EFI_RED | EFI_BRIGHT);
+public const ulong EFI_LIGHTMAGENTA = (EFI_MAGENTA | EFI_BRIGHT);
+public const ulong EFI_YELLOW = (EFI_BROWN | EFI_BRIGHT);
+public const ulong EFI_WHITE = (EFI_BLUE | EFI_GREEN | EFI_RED | EFI_BRIGHT);
 
 //
 // Macro to accept color values in their raw form to create
@@ -129,16 +129,16 @@ public static ulong EFI_WHITE = (EFI_BLUE | EFI_GREEN | EFI_RED | EFI_BRIGHT);
 //
 // Do not use EFI_BACKGROUND_xxx values with this macro.
 //
-public static ulong EFI_TEXT_ATTR = (Foreground, Background)((Foreground) | ((Background) << 4));
+public const ulong EFI_TEXT_ATTR = (Foreground, Background)((Foreground) | ((Background) << 4));
 
-public static ulong EFI_BACKGROUND_BLACK = 0x00;
-public static ulong EFI_BACKGROUND_BLUE = 0x10;
-public static ulong EFI_BACKGROUND_GREEN = 0x20;
-public static ulong EFI_BACKGROUND_CYAN = (EFI_BACKGROUND_BLUE | EFI_BACKGROUND_GREEN);
-public static ulong EFI_BACKGROUND_RED = 0x40;
-public static ulong EFI_BACKGROUND_MAGENTA = (EFI_BACKGROUND_BLUE | EFI_BACKGROUND_RED);
-public static ulong EFI_BACKGROUND_BROWN = (EFI_BACKGROUND_GREEN | EFI_BACKGROUND_RED);
-public static ulong EFI_BACKGROUND_LIGHTGRAY = (EFI_BACKGROUND_BLUE | EFI_BACKGROUND_GREEN | EFI_BACKGROUND_RED);
+public const ulong EFI_BACKGROUND_BLACK = 0x00;
+public const ulong EFI_BACKGROUND_BLUE = 0x10;
+public const ulong EFI_BACKGROUND_GREEN = 0x20;
+public const ulong EFI_BACKGROUND_CYAN = (EFI_BACKGROUND_BLUE | EFI_BACKGROUND_GREEN);
+public const ulong EFI_BACKGROUND_RED = 0x40;
+public const ulong EFI_BACKGROUND_MAGENTA = (EFI_BACKGROUND_BLUE | EFI_BACKGROUND_RED);
+public const ulong EFI_BACKGROUND_BROWN = (EFI_BACKGROUND_GREEN | EFI_BACKGROUND_RED);
+public const ulong EFI_BACKGROUND_LIGHTGRAY = (EFI_BACKGROUND_BLUE | EFI_BACKGROUND_GREEN | EFI_BACKGROUND_RED);
 
 //
 // We currently define attributes from 0 - 7F for color manipulations
@@ -148,7 +148,7 @@ public static ulong EFI_BACKGROUND_LIGHTGRAY = (EFI_BACKGROUND_BLUE | EFI_BACKGR
 // If bit 7 is off, the narrow glyph database will be used.  This does NOT affect information that is sent to
 // non-local displays, such as serial or LAN consoles.
 //
-public static ulong EFI_WIDE_ATTRIBUTE = 0x80;
+public const ulong EFI_WIDE_ATTRIBUTE = 0x80;
 
 
 

@@ -29,8 +29,8 @@ public static EFI_GUID EFI_EAP_MANAGEMENT_PROTOCOL_GUID = new GUID(
 /// PAE Capabilities
 ///
 ///@{
-public static ulong PAE_SUPPORT_AUTHENTICATOR = 0x01;
-public static ulong PAE_SUPPORT_SUPPLICANT = 0x02;
+public const ulong PAE_SUPPORT_AUTHENTICATOR = 0x01;
+public const ulong PAE_SUPPORT_SUPPLICANT = 0x02;
 ///@}
 
 ///
@@ -77,10 +77,10 @@ EFI_EAPOL_SUPPLICANT_PAE_STATE;
 /// Definitions for ValidFieldMask
 ///
 ///@{
-public static ulong AUTH_PERIOD_FIELD_VALID = 0x01;
-public static ulong HELD_PERIOD_FIELD_VALID = 0x02;
-public static ulong START_PERIOD_FIELD_VALID = 0x04;
-public static ulong MAX_START_FIELD_VALID = 0x08;
+public const ulong AUTH_PERIOD_FIELD_VALID = 0x01;
+public const ulong HELD_PERIOD_FIELD_VALID = 0x02;
+public const ulong START_PERIOD_FIELD_VALID = 0x04;
+public const ulong MAX_START_FIELD_VALID = 0x08;
 ///@}
 
 ///

@@ -18,7 +18,7 @@ namespace Uefi;
 
 // #include <Protocol/MmPowerButtonDispatch.h>
 
-public static ulong EFI_SMM_POWER_BUTTON_DISPATCH2_PROTOCOL_GUID = EFI_MM_POWER_BUTTON_DISPATCH_PROTOCOL_GUID;
+public const ulong EFI_SMM_POWER_BUTTON_DISPATCH2_PROTOCOL_GUID = EFI_MM_POWER_BUTTON_DISPATCH_PROTOCOL_GUID;
 
 ///
 /// The dispatch function's context.

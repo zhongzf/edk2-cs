@@ -18,7 +18,7 @@ namespace Uefi;
 
 // #include <Protocol/MmUsbDispatch.h>
 
-public static ulong EFI_SMM_USB_DISPATCH2_PROTOCOL_GUID = EFI_MM_USB_DISPATCH_PROTOCOL_GUID;
+public const ulong EFI_SMM_USB_DISPATCH2_PROTOCOL_GUID = EFI_MM_USB_DISPATCH_PROTOCOL_GUID;
 
 ///
 /// USB SMI event types

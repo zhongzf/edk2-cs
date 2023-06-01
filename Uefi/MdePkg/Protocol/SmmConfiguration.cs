@@ -18,7 +18,7 @@ namespace Uefi;
 // #include <Protocol/MmConfiguration.h>
 // #include <Pi/PiSmmCis.h>
 
-public static ulong EFI_SMM_CONFIGURATION_PROTOCOL_GUID = EFI_MM_CONFIGURATION_PROTOCOL_GUID;
+public const ulong EFI_SMM_CONFIGURATION_PROTOCOL_GUID = EFI_MM_CONFIGURATION_PROTOCOL_GUID;
 
 ///
 /// Structure describing a SMRAM region which cannot be used for the SMRAM heap.

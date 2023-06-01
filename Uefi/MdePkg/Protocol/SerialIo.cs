@@ -22,7 +22,7 @@ public static EFI_GUID EFI_SERIAL_TERMINAL_DEVICE_TYPE_GUID = new GUID(
 ///
 /// Protocol GUID defined in EFI1.1.
 ///
-public static ulong SERIAL_IO_PROTOCOL = EFI_SERIAL_IO_PROTOCOL_GUID;
+public const ulong SERIAL_IO_PROTOCOL = EFI_SERIAL_IO_PROTOCOL_GUID;
 
 // typedef struct _EFI_SERIAL_IO_PROTOCOL EFI_SERIAL_IO_PROTOCOL;
 
@@ -63,25 +63,25 @@ public enum EFI_STOP_BITS_TYPE
 //
 // Read Only
 //
-public static ulong EFI_SERIAL_CLEAR_TO_SEND = 0x00000010;
-public static ulong EFI_SERIAL_DATA_SET_READY = 0x00000020;
-public static ulong EFI_SERIAL_RING_INDICATE = 0x00000040;
-public static ulong EFI_SERIAL_CARRIER_DETECT = 0x00000080;
-public static ulong EFI_SERIAL_INPUT_BUFFER_EMPTY = 0x00000100;
-public static ulong EFI_SERIAL_OUTPUT_BUFFER_EMPTY = 0x00000200;
+public const ulong EFI_SERIAL_CLEAR_TO_SEND = 0x00000010;
+public const ulong EFI_SERIAL_DATA_SET_READY = 0x00000020;
+public const ulong EFI_SERIAL_RING_INDICATE = 0x00000040;
+public const ulong EFI_SERIAL_CARRIER_DETECT = 0x00000080;
+public const ulong EFI_SERIAL_INPUT_BUFFER_EMPTY = 0x00000100;
+public const ulong EFI_SERIAL_OUTPUT_BUFFER_EMPTY = 0x00000200;
 
 //
 // Write Only
 //
-public static ulong EFI_SERIAL_REQUEST_TO_SEND = 0x00000002;
-public static ulong EFI_SERIAL_DATA_TERMINAL_READY = 0x00000001;
+public const ulong EFI_SERIAL_REQUEST_TO_SEND = 0x00000002;
+public const ulong EFI_SERIAL_DATA_TERMINAL_READY = 0x00000001;
 
 //
 // Read Write
 //
-public static ulong EFI_SERIAL_HARDWARE_LOOPBACK_ENABLE = 0x00001000;
-public static ulong EFI_SERIAL_SOFTWARE_LOOPBACK_ENABLE = 0x00002000;
-public static ulong EFI_SERIAL_HARDWARE_FLOW_CONTROL_ENABLE = 0x00004000;
+public const ulong EFI_SERIAL_HARDWARE_LOOPBACK_ENABLE = 0x00001000;
+public const ulong EFI_SERIAL_SOFTWARE_LOOPBACK_ENABLE = 0x00002000;
+public const ulong EFI_SERIAL_HARDWARE_FLOW_CONTROL_ENABLE = 0x00004000;
 
 //
 // Serial IO Member Functions
@@ -269,9 +269,9 @@ public unsafe struct EFI_SERIAL_IO_MODE
   public uint StopBits;
 }
 
-public static ulong EFI_SERIAL_IO_PROTOCOL_REVISION = 0x00010000;
-public static ulong EFI_SERIAL_IO_PROTOCOL_REVISION1p1 = 0x00010001;
-public static ulong SERIAL_IO_INTERFACE_REVISION = EFI_SERIAL_IO_PROTOCOL_REVISION;
+public const ulong EFI_SERIAL_IO_PROTOCOL_REVISION = 0x00010000;
+public const ulong EFI_SERIAL_IO_PROTOCOL_REVISION1p1 = 0x00010001;
+public const ulong SERIAL_IO_INTERFACE_REVISION = EFI_SERIAL_IO_PROTOCOL_REVISION;
 
 ///
 /// The Serial I/O protocol is used to communicate with UART-style serial devices.

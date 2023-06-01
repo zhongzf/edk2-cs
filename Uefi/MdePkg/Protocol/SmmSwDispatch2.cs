@@ -16,7 +16,7 @@ namespace Uefi;
 // #include <Protocol/MmSwDispatch.h>
 // #include <Pi/PiSmmCis.h>
 
-public static ulong EFI_SMM_SW_DISPATCH2_PROTOCOL_GUID = EFI_MM_SW_DISPATCH_PROTOCOL_GUID;
+public const ulong EFI_SMM_SW_DISPATCH2_PROTOCOL_GUID = EFI_MM_SW_DISPATCH_PROTOCOL_GUID;
 
 ///
 /// A particular chipset may not support all possible software SMI input values.

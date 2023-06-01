@@ -436,8 +436,8 @@ public unsafe struct EFI_SHELL_FILE_INFO
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SHELL_DEVICE_NAME_FLAGS { uint Value; public static implicit operator EFI_SHELL_DEVICE_NAME_FLAGS(uint value) => new EFI_SHELL_DEVICE_NAME_FLAGS() { Value = value }; public static implicit operator uint(EFI_SHELL_DEVICE_NAME_FLAGS value) => value.Value; }
-public static ulong EFI_DEVICE_NAME_USE_COMPONENT_NAME = 0x00000001;
-public static ulong EFI_DEVICE_NAME_USE_DEVICE_PATH = 0x00000002;
+public const ulong EFI_DEVICE_NAME_USE_COMPONENT_NAME = 0x00000001;
+public const ulong EFI_DEVICE_NAME_USE_DEVICE_PATH = 0x00000002;
 
 
 

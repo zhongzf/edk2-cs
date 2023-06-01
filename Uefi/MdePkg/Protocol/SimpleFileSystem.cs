@@ -27,7 +27,7 @@ typedef struct _EFI_FILE_PROTOCOL * EFI_FILE_HANDLE;
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
-public static ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
+public const ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
 
 ///
 /// Protocol name defined in EFI1.1.
@@ -64,12 +64,12 @@ public unsafe struct EFI_FILE { EFI_FILE_PROTOCOL Value; public static implicit 
 
 
 
-public static ulong EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION = 0x00010000;
+public const ulong EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION = 0x00010000;
 
 ///
 /// Revision defined in EFI1.1
 ///
-public static ulong EFI_FILE_IO_INTERFACE_REVISION = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION;
+public const ulong EFI_FILE_IO_INTERFACE_REVISION = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
@@ -155,7 +155,7 @@ public unsafe struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
 
 
 
-public static ulong EFI_FILE_SYSTEM = 0x0000000000000004;
+public const ulong EFI_FILE_SYSTEM = 0x0000000000000004;
 
 
 
@@ -537,14 +537,14 @@ EFI_STATUS
   IN OUT EFI_FILE_IO_TOKEN* Token
   );
 
-    public static ulong EFI_FILE_PROTOCOL_REVISION = 0x00010000;
-    public static ulong EFI_FILE_PROTOCOL_REVISION2 = 0x00020000;
-    public static ulong EFI_FILE_PROTOCOL_LATEST_REVISION = EFI_FILE_PROTOCOL_REVISION2;
+    public const ulong EFI_FILE_PROTOCOL_REVISION = 0x00010000;
+    public const ulong EFI_FILE_PROTOCOL_REVISION2 = 0x00020000;
+    public const ulong EFI_FILE_PROTOCOL_LATEST_REVISION = EFI_FILE_PROTOCOL_REVISION2;
 
     //
     // Revision defined in EFI1.1.
     //
-    public static ulong EFI_FILE_REVISION = EFI_FILE_PROTOCOL_REVISION;
+    public const ulong EFI_FILE_REVISION = EFI_FILE_PROTOCOL_REVISION;
 
     ///
     /// The EFI_FILE_PROTOCOL provides file IO access to supported file systems.

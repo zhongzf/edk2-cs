@@ -25,28 +25,28 @@ typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
 //
 // MTFTP4 packet opcode definition
 //
-public static ulong EFI_MTFTP4_OPCODE_RRQ = 1;
-public static ulong EFI_MTFTP4_OPCODE_WRQ = 2;
-public static ulong EFI_MTFTP4_OPCODE_DATA = 3;
-public static ulong EFI_MTFTP4_OPCODE_ACK = 4;
-public static ulong EFI_MTFTP4_OPCODE_ERROR = 5;
-public static ulong EFI_MTFTP4_OPCODE_OACK = 6;
-public static ulong EFI_MTFTP4_OPCODE_DIR = 7;
-public static ulong EFI_MTFTP4_OPCODE_DATA8 = 8;
-public static ulong EFI_MTFTP4_OPCODE_ACK8 = 9;
+public const ulong EFI_MTFTP4_OPCODE_RRQ = 1;
+public const ulong EFI_MTFTP4_OPCODE_WRQ = 2;
+public const ulong EFI_MTFTP4_OPCODE_DATA = 3;
+public const ulong EFI_MTFTP4_OPCODE_ACK = 4;
+public const ulong EFI_MTFTP4_OPCODE_ERROR = 5;
+public const ulong EFI_MTFTP4_OPCODE_OACK = 6;
+public const ulong EFI_MTFTP4_OPCODE_DIR = 7;
+public const ulong EFI_MTFTP4_OPCODE_DATA8 = 8;
+public const ulong EFI_MTFTP4_OPCODE_ACK8 = 9;
 
 //
 // MTFTP4 error code definition
 //
-public static ulong EFI_MTFTP4_ERRORCODE_NOT_DEFINED = 0;
-public static ulong EFI_MTFTP4_ERRORCODE_FILE_NOT_FOUND = 1;
-public static ulong EFI_MTFTP4_ERRORCODE_ACCESS_VIOLATION = 2;
-public static ulong EFI_MTFTP4_ERRORCODE_DISK_FULL = 3;
-public static ulong EFI_MTFTP4_ERRORCODE_ILLEGAL_OPERATION = 4;
-public static ulong EFI_MTFTP4_ERRORCODE_UNKNOWN_TRANSFER_ID = 5;
-public static ulong EFI_MTFTP4_ERRORCODE_FILE_ALREADY_EXISTS = 6;
-public static ulong EFI_MTFTP4_ERRORCODE_NO_SUCH_USER = 7;
-public static ulong EFI_MTFTP4_ERRORCODE_REQUEST_DENIED = 8;
+public const ulong EFI_MTFTP4_ERRORCODE_NOT_DEFINED = 0;
+public const ulong EFI_MTFTP4_ERRORCODE_FILE_NOT_FOUND = 1;
+public const ulong EFI_MTFTP4_ERRORCODE_ACCESS_VIOLATION = 2;
+public const ulong EFI_MTFTP4_ERRORCODE_DISK_FULL = 3;
+public const ulong EFI_MTFTP4_ERRORCODE_ILLEGAL_OPERATION = 4;
+public const ulong EFI_MTFTP4_ERRORCODE_UNKNOWN_TRANSFER_ID = 5;
+public const ulong EFI_MTFTP4_ERRORCODE_FILE_ALREADY_EXISTS = 6;
+public const ulong EFI_MTFTP4_ERRORCODE_NO_SUCH_USER = 7;
+public const ulong EFI_MTFTP4_ERRORCODE_REQUEST_DENIED = 8;
 
 //
 // MTFTP4 pacekt definitions

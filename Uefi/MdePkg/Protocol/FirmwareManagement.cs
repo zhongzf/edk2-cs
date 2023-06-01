@@ -29,20 +29,20 @@ public static EFI_GUID EFI_FIRMWARE_MANAGEMENT_PROTOCOL_GUID = new GUID(
 ///
 /// Dependency Expression Opcode
 ///
-public static ulong EFI_FMP_DEP_PUSH_GUID = 0x00;
-public static ulong EFI_FMP_DEP_PUSH_VERSION = 0x01;
-public static ulong EFI_FMP_DEP_VERSION_STR = 0x02;
-public static ulong EFI_FMP_DEP_AND = 0x03;
-public static ulong EFI_FMP_DEP_OR = 0x04;
-public static ulong EFI_FMP_DEP_NOT = 0x05;
-public static ulong EFI_FMP_DEP_TRUE = 0x06;
-public static ulong EFI_FMP_DEP_FALSE = 0x07;
-public static ulong EFI_FMP_DEP_EQ = 0x08;
-public static ulong EFI_FMP_DEP_GT = 0x09;
-public static ulong EFI_FMP_DEP_GTE = 0x0A;
-public static ulong EFI_FMP_DEP_LT = 0x0B;
-public static ulong EFI_FMP_DEP_LTE = 0x0C;
-public static ulong EFI_FMP_DEP_END = 0x0D;
+public const ulong EFI_FMP_DEP_PUSH_GUID = 0x00;
+public const ulong EFI_FMP_DEP_PUSH_VERSION = 0x01;
+public const ulong EFI_FMP_DEP_VERSION_STR = 0x02;
+public const ulong EFI_FMP_DEP_AND = 0x03;
+public const ulong EFI_FMP_DEP_OR = 0x04;
+public const ulong EFI_FMP_DEP_NOT = 0x05;
+public const ulong EFI_FMP_DEP_TRUE = 0x06;
+public const ulong EFI_FMP_DEP_FALSE = 0x07;
+public const ulong EFI_FMP_DEP_EQ = 0x08;
+public const ulong EFI_FMP_DEP_GT = 0x09;
+public const ulong EFI_FMP_DEP_GTE = 0x0A;
+public const ulong EFI_FMP_DEP_LT = 0x0B;
+public const ulong EFI_FMP_DEP_LTE = 0x0C;
+public const ulong EFI_FMP_DEP_END = 0x0D;
 
 ///
 /// Image Attribute - Dependency
@@ -148,33 +148,33 @@ public unsafe struct EFI_FIRMWARE_IMAGE_DESCRIPTOR
 /// The attribute IMAGE_ATTRIBUTE_IMAGE_UPDATABLE indicates this device supports firmware
 /// image update.
 ///
-public static ulong IMAGE_ATTRIBUTE_IMAGE_UPDATABLE = 0x0000000000000001;
+public const ulong IMAGE_ATTRIBUTE_IMAGE_UPDATABLE = 0x0000000000000001;
 ///
 /// The attribute IMAGE_ATTRIBUTE_RESET_REQUIRED indicates a reset of the device is required
 /// for the new firmware image to take effect after a firmware update. The device is the device hosting
 /// the firmware image.
 ///
-public static ulong IMAGE_ATTRIBUTE_RESET_REQUIRED = 0x0000000000000002;
+public const ulong IMAGE_ATTRIBUTE_RESET_REQUIRED = 0x0000000000000002;
 ///
 /// The attribute IMAGE_ATTRIBUTE_AUTHENTICATION_REQUIRED indicates authentication is
 /// required to perform the following image operations: GetImage(), SetImage(), and
 /// CheckImage(). See 'Image Attribute - Authentication'.
 ///
-public static ulong IMAGE_ATTRIBUTE_AUTHENTICATION_REQUIRED = 0x0000000000000004;
+public const ulong IMAGE_ATTRIBUTE_AUTHENTICATION_REQUIRED = 0x0000000000000004;
 ///
 /// The attribute IMAGE_ATTRIBUTE_IN_USE indicates the current state of the firmware image.
 /// This distinguishes firmware images in a device that supports redundant images.
 ///
-public static ulong IMAGE_ATTRIBUTE_IN_USE = 0x0000000000000008;
+public const ulong IMAGE_ATTRIBUTE_IN_USE = 0x0000000000000008;
 ///
 /// The attribute IMAGE_ATTRIBUTE_UEFI_IMAGE indicates that this image is an EFI compatible image.
 ///
-public static ulong IMAGE_ATTRIBUTE_UEFI_IMAGE = 0x0000000000000010;
+public const ulong IMAGE_ATTRIBUTE_UEFI_IMAGE = 0x0000000000000010;
 ///
 /// The attribute IMAGE_ATTRIBUTE_DEPENDENCY indicates that there is an EFI_FIRMWARE_IMAGE_DEP
 /// section associated with the image.
 ///
-public static ulong IMAGE_ATTRIBUTE_DEPENDENCY = 0x0000000000000020;
+public const ulong IMAGE_ATTRIBUTE_DEPENDENCY = 0x0000000000000020;
 
 //
 // Image Compatibility Definitions
@@ -184,12 +184,12 @@ public static ulong IMAGE_ATTRIBUTE_DEPENDENCY = 0x0000000000000020;
 /// Values from 0x0000000000010000 thru 0xFFFFFFFFFFFFFFFF are used by firmware vendor for
 /// compatibility check.
 ///
-public static ulong IMAGE_COMPATIBILITY_CHECK_SUPPORTED = 0x0000000000000001;
+public const ulong IMAGE_COMPATIBILITY_CHECK_SUPPORTED = 0x0000000000000001;
 
 ///
 /// Descriptor Version exposed by GetImageInfo() function
 ///
-public static ulong EFI_FIRMWARE_IMAGE_DESCRIPTOR_VERSION = 4;
+public const ulong EFI_FIRMWARE_IMAGE_DESCRIPTOR_VERSION = 4;
 
 ///
 /// Image Attribute - Authentication Required
@@ -221,30 +221,30 @@ public unsafe struct EFI_FIRMWARE_IMAGE_AUTHENTICATION
 /// the current image. SetImage VendorCode is optional but can be used for vendor
 /// specific action.
 ///
-public static ulong IMAGE_UPDATABLE_VALID = 0x0000000000000001;
+public const ulong IMAGE_UPDATABLE_VALID = 0x0000000000000001;
 ///
 /// IMAGE_UPDATABLE_INVALID indicates SetImage() will reject the new image. No additional
 /// information is provided for the rejection.
 ///
-public static ulong IMAGE_UPDATABLE_INVALID = 0x0000000000000002;
+public const ulong IMAGE_UPDATABLE_INVALID = 0x0000000000000002;
 ///
 /// IMAGE_UPDATABLE_INVALID_TYPE indicates SetImage() will reject the new image. The
 /// rejection is due to the new image is not a firmware image recognized for this device.
 ///
-public static ulong IMAGE_UPDATABLE_INVALID_TYPE = 0x0000000000000004;
+public const ulong IMAGE_UPDATABLE_INVALID_TYPE = 0x0000000000000004;
 ///
 /// IMAGE_UPDATABLE_INVALID_OLD indicates SetImage() will reject the new image. The
 /// rejection is due to the new image version is older than the current firmware image
 /// version in the device. The device firmware update policy does not support firmware
 /// version downgrade.
 ///
-public static ulong IMAGE_UPDATABLE_INVALID_OLD = 0x0000000000000008;
+public const ulong IMAGE_UPDATABLE_INVALID_OLD = 0x0000000000000008;
 ///
 /// IMAGE_UPDATABLE_VALID_WITH_VENDOR_CODE indicates SetImage() will accept and update
 /// the new image only if a correct VendorCode is provided or else image would be
 /// rejected and SetImage will return appropriate error.
 ///
-public static ulong IMAGE_UPDATABLE_VALID_WITH_VENDOR_CODE = 0x0000000000000010;
+public const ulong IMAGE_UPDATABLE_VALID_WITH_VENDOR_CODE = 0x0000000000000010;
 
 //
 // Package Attribute Definitions
@@ -253,17 +253,17 @@ public static ulong IMAGE_UPDATABLE_VALID_WITH_VENDOR_CODE = 0x0000000000000010;
 /// The attribute PACKAGE_ATTRIBUTE_VERSION_UPDATABLE indicates this device supports the
 /// update of the firmware package version.
 ///
-public static ulong PACKAGE_ATTRIBUTE_VERSION_UPDATABLE = 0x0000000000000001;
+public const ulong PACKAGE_ATTRIBUTE_VERSION_UPDATABLE = 0x0000000000000001;
 ///
 /// The attribute PACKAGE_ATTRIBUTE_RESET_REQUIRED indicates a reset of the device is
 /// required for the new package info to take effect after an update.
 ///
-public static ulong PACKAGE_ATTRIBUTE_RESET_REQUIRED = 0x0000000000000002;
+public const ulong PACKAGE_ATTRIBUTE_RESET_REQUIRED = 0x0000000000000002;
 ///
 /// The attribute PACKAGE_ATTRIBUTE_AUTHENTICATION_REQUIRED indicates authentication
 /// is required to update the package info.
 ///
-public static ulong PACKAGE_ATTRIBUTE_AUTHENTICATION_REQUIRED = 0x0000000000000004;
+public const ulong PACKAGE_ATTRIBUTE_AUTHENTICATION_REQUIRED = 0x0000000000000004;
 
 
 

@@ -18,7 +18,7 @@ public static EFI_GUID EFI_ERASE_BLOCK_PROTOCOL_GUID = new GUID(
 
 // typedef struct _EFI_ERASE_BLOCK_PROTOCOL EFI_ERASE_BLOCK_PROTOCOL;
 
-public static ulong EFI_ERASE_BLOCK_PROTOCOL_REVISION = ((2 << 16) | (60));
+public const ulong EFI_ERASE_BLOCK_PROTOCOL_REVISION = ((2 << 16) | (60));
 
 ///
 /// EFI_ERASE_BLOCK_TOKEN

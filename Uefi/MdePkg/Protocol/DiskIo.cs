@@ -20,7 +20,7 @@ public static EFI_GUID EFI_DISK_IO_PROTOCOL_GUID = new GUID(
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
-public static ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
+public const ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
 
 // typedef struct _EFI_DISK_IO_PROTOCOL EFI_DISK_IO_PROTOCOL;
 
@@ -85,12 +85,12 @@ public unsafe struct EFI_DISK_IO { EFI_DISK_IO_PROTOCOL Value; public static imp
 
 
 
-public static ulong EFI_DISK_IO_PROTOCOL_REVISION = 0x00010000;
+public const ulong EFI_DISK_IO_PROTOCOL_REVISION = 0x00010000;
 
 ///
 /// Revision defined in EFI1.1
 ///
-public static ulong EFI_DISK_IO_INTERFACE_REVISION = EFI_DISK_IO_PROTOCOL_REVISION;
+public const ulong EFI_DISK_IO_INTERFACE_REVISION = EFI_DISK_IO_PROTOCOL_REVISION;
 
 ///
 /// This protocol is used to abstract Block I/O interfaces.

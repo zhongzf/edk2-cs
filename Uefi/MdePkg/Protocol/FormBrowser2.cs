@@ -49,15 +49,15 @@ public unsafe struct EFI_SCREEN_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BROWSER_ACTION_REQUEST { ulong Value; public static implicit operator EFI_BROWSER_ACTION_REQUEST(ulong value) => new EFI_BROWSER_ACTION_REQUEST() { Value = value }; public static implicit operator ulong(EFI_BROWSER_ACTION_REQUEST value) => value.Value; }
 
-public static ulong EFI_BROWSER_ACTION_REQUEST_NONE = 0;
-public static ulong EFI_BROWSER_ACTION_REQUEST_RESET = 1;
-public static ulong EFI_BROWSER_ACTION_REQUEST_SUBMIT = 2;
-public static ulong EFI_BROWSER_ACTION_REQUEST_EXIT = 3;
-public static ulong EFI_BROWSER_ACTION_REQUEST_FORM_SUBMIT_EXIT = 4;
-public static ulong EFI_BROWSER_ACTION_REQUEST_FORM_DISCARD_EXIT = 5;
-public static ulong EFI_BROWSER_ACTION_REQUEST_FORM_APPLY = 6;
-public static ulong EFI_BROWSER_ACTION_REQUEST_FORM_DISCARD = 7;
-public static ulong EFI_BROWSER_ACTION_REQUEST_RECONNECT = 8;
+public const ulong EFI_BROWSER_ACTION_REQUEST_NONE = 0;
+public const ulong EFI_BROWSER_ACTION_REQUEST_RESET = 1;
+public const ulong EFI_BROWSER_ACTION_REQUEST_SUBMIT = 2;
+public const ulong EFI_BROWSER_ACTION_REQUEST_EXIT = 3;
+public const ulong EFI_BROWSER_ACTION_REQUEST_FORM_SUBMIT_EXIT = 4;
+public const ulong EFI_BROWSER_ACTION_REQUEST_FORM_DISCARD_EXIT = 5;
+public const ulong EFI_BROWSER_ACTION_REQUEST_FORM_APPLY = 6;
+public const ulong EFI_BROWSER_ACTION_REQUEST_FORM_DISCARD = 7;
+public const ulong EFI_BROWSER_ACTION_REQUEST_RECONNECT = 8;
 
 
 

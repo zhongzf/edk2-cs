@@ -37,23 +37,23 @@ public unsafe struct EFI_EXCEPTION_TYPE { long Value; public static implicit ope
 ///
 ///  IA-32 processor exception types.
 ///
-public static ulong EXCEPT_IA32_DIVIDE_ERROR = 0;
-public static ulong EXCEPT_IA32_DEBUG = 1;
-public static ulong EXCEPT_IA32_NMI = 2;
-public static ulong EXCEPT_IA32_BREAKPOINT = 3;
-public static ulong EXCEPT_IA32_OVERFLOW = 4;
-public static ulong EXCEPT_IA32_BOUND = 5;
-public static ulong EXCEPT_IA32_INVALID_OPCODE = 6;
-public static ulong EXCEPT_IA32_DOUBLE_FAULT = 8;
-public static ulong EXCEPT_IA32_INVALID_TSS = 10;
-public static ulong EXCEPT_IA32_SEG_NOT_PRESENT = 11;
-public static ulong EXCEPT_IA32_STACK_FAULT = 12;
-public static ulong EXCEPT_IA32_GP_FAULT = 13;
-public static ulong EXCEPT_IA32_PAGE_FAULT = 14;
-public static ulong EXCEPT_IA32_FP_ERROR = 16;
-public static ulong EXCEPT_IA32_ALIGNMENT_CHECK = 17;
-public static ulong EXCEPT_IA32_MACHINE_CHECK = 18;
-public static ulong EXCEPT_IA32_SIMD = 19;
+public const ulong EXCEPT_IA32_DIVIDE_ERROR = 0;
+public const ulong EXCEPT_IA32_DEBUG = 1;
+public const ulong EXCEPT_IA32_NMI = 2;
+public const ulong EXCEPT_IA32_BREAKPOINT = 3;
+public const ulong EXCEPT_IA32_OVERFLOW = 4;
+public const ulong EXCEPT_IA32_BOUND = 5;
+public const ulong EXCEPT_IA32_INVALID_OPCODE = 6;
+public const ulong EXCEPT_IA32_DOUBLE_FAULT = 8;
+public const ulong EXCEPT_IA32_INVALID_TSS = 10;
+public const ulong EXCEPT_IA32_SEG_NOT_PRESENT = 11;
+public const ulong EXCEPT_IA32_STACK_FAULT = 12;
+public const ulong EXCEPT_IA32_GP_FAULT = 13;
+public const ulong EXCEPT_IA32_PAGE_FAULT = 14;
+public const ulong EXCEPT_IA32_FP_ERROR = 16;
+public const ulong EXCEPT_IA32_ALIGNMENT_CHECK = 17;
+public const ulong EXCEPT_IA32_MACHINE_CHECK = 18;
+public const ulong EXCEPT_IA32_SIMD = 19;
 
 ///
 /// FXSAVE_STATE.
@@ -135,23 +135,23 @@ public unsafe struct EFI_SYSTEM_CONTEXT_IA32
 ///
 ///  x64 processor exception types.
 ///
-public static ulong EXCEPT_X64_DIVIDE_ERROR = 0;
-public static ulong EXCEPT_X64_DEBUG = 1;
-public static ulong EXCEPT_X64_NMI = 2;
-public static ulong EXCEPT_X64_BREAKPOINT = 3;
-public static ulong EXCEPT_X64_OVERFLOW = 4;
-public static ulong EXCEPT_X64_BOUND = 5;
-public static ulong EXCEPT_X64_INVALID_OPCODE = 6;
-public static ulong EXCEPT_X64_DOUBLE_FAULT = 8;
-public static ulong EXCEPT_X64_INVALID_TSS = 10;
-public static ulong EXCEPT_X64_SEG_NOT_PRESENT = 11;
-public static ulong EXCEPT_X64_STACK_FAULT = 12;
-public static ulong EXCEPT_X64_GP_FAULT = 13;
-public static ulong EXCEPT_X64_PAGE_FAULT = 14;
-public static ulong EXCEPT_X64_FP_ERROR = 16;
-public static ulong EXCEPT_X64_ALIGNMENT_CHECK = 17;
-public static ulong EXCEPT_X64_MACHINE_CHECK = 18;
-public static ulong EXCEPT_X64_SIMD = 19;
+public const ulong EXCEPT_X64_DIVIDE_ERROR = 0;
+public const ulong EXCEPT_X64_DEBUG = 1;
+public const ulong EXCEPT_X64_NMI = 2;
+public const ulong EXCEPT_X64_BREAKPOINT = 3;
+public const ulong EXCEPT_X64_OVERFLOW = 4;
+public const ulong EXCEPT_X64_BOUND = 5;
+public const ulong EXCEPT_X64_INVALID_OPCODE = 6;
+public const ulong EXCEPT_X64_DOUBLE_FAULT = 8;
+public const ulong EXCEPT_X64_INVALID_TSS = 10;
+public const ulong EXCEPT_X64_SEG_NOT_PRESENT = 11;
+public const ulong EXCEPT_X64_STACK_FAULT = 12;
+public const ulong EXCEPT_X64_GP_FAULT = 13;
+public const ulong EXCEPT_X64_PAGE_FAULT = 14;
+public const ulong EXCEPT_X64_FP_ERROR = 16;
+public const ulong EXCEPT_X64_ALIGNMENT_CHECK = 17;
+public const ulong EXCEPT_X64_MACHINE_CHECK = 18;
+public const ulong EXCEPT_X64_SIMD = 19;
 
 ///
 /// FXSAVE_STATE.
@@ -242,47 +242,47 @@ public unsafe struct EFI_SYSTEM_CONTEXT_X64
 ///
 ///  Itanium Processor Family Exception types.
 ///
-public static ulong EXCEPT_IPF_VHTP_TRANSLATION = 0;
-public static ulong EXCEPT_IPF_INSTRUCTION_TLB = 1;
-public static ulong EXCEPT_IPF_DATA_TLB = 2;
-public static ulong EXCEPT_IPF_ALT_INSTRUCTION_TLB = 3;
-public static ulong EXCEPT_IPF_ALT_DATA_TLB = 4;
-public static ulong EXCEPT_IPF_DATA_NESTED_TLB = 5;
-public static ulong EXCEPT_IPF_INSTRUCTION_KEY_MISSED = 6;
-public static ulong EXCEPT_IPF_DATA_KEY_MISSED = 7;
-public static ulong EXCEPT_IPF_DIRTY_BIT = 8;
-public static ulong EXCEPT_IPF_INSTRUCTION_ACCESS_BIT = 9;
-public static ulong EXCEPT_IPF_DATA_ACCESS_BIT = 10;
-public static ulong EXCEPT_IPF_BREAKPOINT = 11;
-public static ulong EXCEPT_IPF_EXTERNAL_INTERRUPT = 12;
+public const ulong EXCEPT_IPF_VHTP_TRANSLATION = 0;
+public const ulong EXCEPT_IPF_INSTRUCTION_TLB = 1;
+public const ulong EXCEPT_IPF_DATA_TLB = 2;
+public const ulong EXCEPT_IPF_ALT_INSTRUCTION_TLB = 3;
+public const ulong EXCEPT_IPF_ALT_DATA_TLB = 4;
+public const ulong EXCEPT_IPF_DATA_NESTED_TLB = 5;
+public const ulong EXCEPT_IPF_INSTRUCTION_KEY_MISSED = 6;
+public const ulong EXCEPT_IPF_DATA_KEY_MISSED = 7;
+public const ulong EXCEPT_IPF_DIRTY_BIT = 8;
+public const ulong EXCEPT_IPF_INSTRUCTION_ACCESS_BIT = 9;
+public const ulong EXCEPT_IPF_DATA_ACCESS_BIT = 10;
+public const ulong EXCEPT_IPF_BREAKPOINT = 11;
+public const ulong EXCEPT_IPF_EXTERNAL_INTERRUPT = 12;
 //
 // 13 - 19 reserved
 //
-public static ulong EXCEPT_IPF_PAGE_NOT_PRESENT = 20;
-public static ulong EXCEPT_IPF_KEY_PERMISSION = 21;
-public static ulong EXCEPT_IPF_INSTRUCTION_ACCESS_RIGHTS = 22;
-public static ulong EXCEPT_IPF_DATA_ACCESS_RIGHTS = 23;
-public static ulong EXCEPT_IPF_GENERAL_EXCEPTION = 24;
-public static ulong EXCEPT_IPF_DISABLED_FP_REGISTER = 25;
-public static ulong EXCEPT_IPF_NAT_CONSUMPTION = 26;
-public static ulong EXCEPT_IPF_SPECULATION = 27;
+public const ulong EXCEPT_IPF_PAGE_NOT_PRESENT = 20;
+public const ulong EXCEPT_IPF_KEY_PERMISSION = 21;
+public const ulong EXCEPT_IPF_INSTRUCTION_ACCESS_RIGHTS = 22;
+public const ulong EXCEPT_IPF_DATA_ACCESS_RIGHTS = 23;
+public const ulong EXCEPT_IPF_GENERAL_EXCEPTION = 24;
+public const ulong EXCEPT_IPF_DISABLED_FP_REGISTER = 25;
+public const ulong EXCEPT_IPF_NAT_CONSUMPTION = 26;
+public const ulong EXCEPT_IPF_SPECULATION = 27;
 //
 // 28 reserved
 //
-public static ulong EXCEPT_IPF_DEBUG = 29;
-public static ulong EXCEPT_IPF_UNALIGNED_REFERENCE = 30;
-public static ulong EXCEPT_IPF_UNSUPPORTED_DATA_REFERENCE = 31;
-public static ulong EXCEPT_IPF_FP_FAULT = 32;
-public static ulong EXCEPT_IPF_FP_TRAP = 33;
-public static ulong EXCEPT_IPF_LOWER_PRIVILEGE_TRANSFER_TRAP = 34;
-public static ulong EXCEPT_IPF_TAKEN_BRANCH = 35;
-public static ulong EXCEPT_IPF_SINGLE_STEP = 36;
+public const ulong EXCEPT_IPF_DEBUG = 29;
+public const ulong EXCEPT_IPF_UNALIGNED_REFERENCE = 30;
+public const ulong EXCEPT_IPF_UNSUPPORTED_DATA_REFERENCE = 31;
+public const ulong EXCEPT_IPF_FP_FAULT = 32;
+public const ulong EXCEPT_IPF_FP_TRAP = 33;
+public const ulong EXCEPT_IPF_LOWER_PRIVILEGE_TRANSFER_TRAP = 34;
+public const ulong EXCEPT_IPF_TAKEN_BRANCH = 35;
+public const ulong EXCEPT_IPF_SINGLE_STEP = 36;
 //
 // 37 - 44 reserved
 //
-public static ulong EXCEPT_IPF_IA32_EXCEPTION = 45;
-public static ulong EXCEPT_IPF_IA32_INTERCEPT = 46;
-public static ulong EXCEPT_IPF_IA32_INTERRUPT = 47;
+public const ulong EXCEPT_IPF_IA32_EXCEPTION = 45;
+public const ulong EXCEPT_IPF_IA32_INTERCEPT = 46;
+public const ulong EXCEPT_IPF_IA32_INTERRUPT = 47;
 
 ///
 ///  IPF processor context definition.
@@ -444,21 +444,21 @@ public unsafe struct EFI_SYSTEM_CONTEXT_IPF
 ///
 ///  EBC processor exception types.
 ///
-public static ulong EXCEPT_EBC_UNDEFINED = 0;
-public static ulong EXCEPT_EBC_DIVIDE_ERROR = 1;
-public static ulong EXCEPT_EBC_DEBUG = 2;
-public static ulong EXCEPT_EBC_BREAKPOINT = 3;
-public static ulong EXCEPT_EBC_OVERFLOW = 4;
-public static ulong EXCEPT_EBC_INVALID_OPCODE = 5  ///< Opcode out of range.;
-public static ulong EXCEPT_EBC_STACK_FAULT = 6;
-public static ulong EXCEPT_EBC_ALIGNMENT_CHECK = 7;
-public static ulong EXCEPT_EBC_INSTRUCTION_ENCODING = 8  ///< Malformed instruction.;
-public static ulong EXCEPT_EBC_BAD_BREAK = 9  ///< BREAK 0 or undefined BREAK.;
-public static ulong EXCEPT_EBC_STEP = 10 ///< To support debug stepping.;
+public const ulong EXCEPT_EBC_UNDEFINED = 0;
+public const ulong EXCEPT_EBC_DIVIDE_ERROR = 1;
+public const ulong EXCEPT_EBC_DEBUG = 2;
+public const ulong EXCEPT_EBC_BREAKPOINT = 3;
+public const ulong EXCEPT_EBC_OVERFLOW = 4;
+public const ulong EXCEPT_EBC_INVALID_OPCODE = 5  ///< Opcode out of range.;
+public const ulong EXCEPT_EBC_STACK_FAULT = 6;
+public const ulong EXCEPT_EBC_ALIGNMENT_CHECK = 7;
+public const ulong EXCEPT_EBC_INSTRUCTION_ENCODING = 8  ///< Malformed instruction.;
+public const ulong EXCEPT_EBC_BAD_BREAK = 9  ///< BREAK 0 or undefined BREAK.;
+public const ulong EXCEPT_EBC_STEP = 10 ///< To support debug stepping.;
 ///
 /// For coding convenience, define the maximum valid EBC exception.
 ///
-public static ulong MAX_EBC_EXCEPTION = EXCEPT_EBC_STEP;
+public const ulong MAX_EBC_EXCEPTION = EXCEPT_EBC_STEP;
 
 ///
 ///  EBC processor context definition.
@@ -482,19 +482,19 @@ public unsafe struct EFI_SYSTEM_CONTEXT_EBC
 ///
 ///  ARM processor exception types.
 ///
-public static ulong EXCEPT_ARM_RESET = 0;
-public static ulong EXCEPT_ARM_UNDEFINED_INSTRUCTION = 1;
-public static ulong EXCEPT_ARM_SOFTWARE_INTERRUPT = 2;
-public static ulong EXCEPT_ARM_PREFETCH_ABORT = 3;
-public static ulong EXCEPT_ARM_DATA_ABORT = 4;
-public static ulong EXCEPT_ARM_RESERVED = 5;
-public static ulong EXCEPT_ARM_IRQ = 6;
-public static ulong EXCEPT_ARM_FIQ = 7;
+public const ulong EXCEPT_ARM_RESET = 0;
+public const ulong EXCEPT_ARM_UNDEFINED_INSTRUCTION = 1;
+public const ulong EXCEPT_ARM_SOFTWARE_INTERRUPT = 2;
+public const ulong EXCEPT_ARM_PREFETCH_ABORT = 3;
+public const ulong EXCEPT_ARM_DATA_ABORT = 4;
+public const ulong EXCEPT_ARM_RESERVED = 5;
+public const ulong EXCEPT_ARM_IRQ = 6;
+public const ulong EXCEPT_ARM_FIQ = 7;
 
 ///
 /// For coding convenience, define the maximum valid ARM exception.
 ///
-public static ulong MAX_ARM_EXCEPTION = EXCEPT_ARM_FIQ;
+public const ulong MAX_ARM_EXCEPTION = EXCEPT_ARM_FIQ;
 
 ///
 ///  ARM processor context definition.
@@ -528,15 +528,15 @@ public unsafe struct EFI_SYSTEM_CONTEXT_ARM
 ///
 ///  AARCH64 processor exception types.
 ///
-public static ulong EXCEPT_AARCH64_SYNCHRONOUS_EXCEPTIONS = 0;
-public static ulong EXCEPT_AARCH64_IRQ = 1;
-public static ulong EXCEPT_AARCH64_FIQ = 2;
-public static ulong EXCEPT_AARCH64_SERROR = 3;
+public const ulong EXCEPT_AARCH64_SYNCHRONOUS_EXCEPTIONS = 0;
+public const ulong EXCEPT_AARCH64_IRQ = 1;
+public const ulong EXCEPT_AARCH64_FIQ = 2;
+public const ulong EXCEPT_AARCH64_SERROR = 3;
 
 ///
 /// For coding convenience, define the maximum valid ARM exception.
 ///
-public static ulong MAX_AARCH64_EXCEPTION = EXCEPT_AARCH64_SERROR;
+public const ulong MAX_AARCH64_EXCEPTION = EXCEPT_AARCH64_SERROR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SYSTEM_CONTEXT_AARCH64
@@ -619,44 +619,44 @@ public unsafe struct EFI_SYSTEM_CONTEXT_AARCH64
 ///
 /// RISC-V processor exception types.
 ///
-public static ulong EXCEPT_RISCV_INST_MISALIGNED = 0;
-public static ulong EXCEPT_RISCV_INST_ACCESS_FAULT = 1;
-public static ulong EXCEPT_RISCV_ILLEGAL_INST = 2;
-public static ulong EXCEPT_RISCV_BREAKPOINT = 3;
-public static ulong EXCEPT_RISCV_LOAD_ADDRESS_MISALIGNED = 4;
-public static ulong EXCEPT_RISCV_LOAD_ACCESS_FAULT = 5;
-public static ulong EXCEPT_RISCV_STORE_AMO_ADDRESS_MISALIGNED = 6;
-public static ulong EXCEPT_RISCV_STORE_AMO_ACCESS_FAULT = 7;
-public static ulong EXCEPT_RISCV_ENV_CALL_FROM_UMODE = 8;
-public static ulong EXCEPT_RISCV_ENV_CALL_FROM_SMODE = 9;
-public static ulong EXCEPT_RISCV_ENV_CALL_FROM_VS_MODE = 10;
-public static ulong EXCEPT_RISCV_ENV_CALL_FROM_MMODE = 11;
-public static ulong EXCEPT_RISCV_INST_ACCESS_PAGE_FAULT = 12;
-public static ulong EXCEPT_RISCV_LOAD_ACCESS_PAGE_FAULT = 13;
-public static ulong EXCEPT_RISCV_14 = 14;
-public static ulong EXCEPT_RISCV_STORE_ACCESS_PAGE_FAULT = 15;
-public static ulong EXCEPT_RISCV_16 = 16;
-public static ulong EXCEPT_RISCV_17 = 17;
-public static ulong EXCEPT_RISCV_18 = 18;
-public static ulong EXCEPT_RISCV_19 = 19;
-public static ulong EXCEPT_RISCV_INST_GUEST_PAGE_FAULT = 20;
-public static ulong EXCEPT_RISCV_LOAD_GUEST_PAGE_FAULT = 21;
-public static ulong EXCEPT_RISCV_VIRTUAL_INSTRUCTION = 22;
-public static ulong EXCEPT_RISCV_STORE_GUEST_PAGE_FAULT = 23;
-public static ulong EXCEPT_RISCV_MAX_EXCEPTIONS = (EXCEPT_RISCV_STORE_GUEST_PAGE_FAULT);
+public const ulong EXCEPT_RISCV_INST_MISALIGNED = 0;
+public const ulong EXCEPT_RISCV_INST_ACCESS_FAULT = 1;
+public const ulong EXCEPT_RISCV_ILLEGAL_INST = 2;
+public const ulong EXCEPT_RISCV_BREAKPOINT = 3;
+public const ulong EXCEPT_RISCV_LOAD_ADDRESS_MISALIGNED = 4;
+public const ulong EXCEPT_RISCV_LOAD_ACCESS_FAULT = 5;
+public const ulong EXCEPT_RISCV_STORE_AMO_ADDRESS_MISALIGNED = 6;
+public const ulong EXCEPT_RISCV_STORE_AMO_ACCESS_FAULT = 7;
+public const ulong EXCEPT_RISCV_ENV_CALL_FROM_UMODE = 8;
+public const ulong EXCEPT_RISCV_ENV_CALL_FROM_SMODE = 9;
+public const ulong EXCEPT_RISCV_ENV_CALL_FROM_VS_MODE = 10;
+public const ulong EXCEPT_RISCV_ENV_CALL_FROM_MMODE = 11;
+public const ulong EXCEPT_RISCV_INST_ACCESS_PAGE_FAULT = 12;
+public const ulong EXCEPT_RISCV_LOAD_ACCESS_PAGE_FAULT = 13;
+public const ulong EXCEPT_RISCV_14 = 14;
+public const ulong EXCEPT_RISCV_STORE_ACCESS_PAGE_FAULT = 15;
+public const ulong EXCEPT_RISCV_16 = 16;
+public const ulong EXCEPT_RISCV_17 = 17;
+public const ulong EXCEPT_RISCV_18 = 18;
+public const ulong EXCEPT_RISCV_19 = 19;
+public const ulong EXCEPT_RISCV_INST_GUEST_PAGE_FAULT = 20;
+public const ulong EXCEPT_RISCV_LOAD_GUEST_PAGE_FAULT = 21;
+public const ulong EXCEPT_RISCV_VIRTUAL_INSTRUCTION = 22;
+public const ulong EXCEPT_RISCV_STORE_GUEST_PAGE_FAULT = 23;
+public const ulong EXCEPT_RISCV_MAX_EXCEPTIONS = (EXCEPT_RISCV_STORE_GUEST_PAGE_FAULT);
 
 ///
 /// RISC-V processor exception types for interrupts.
 ///
-public static ulong EXCEPT_RISCV_IS_IRQ = (x)((x & 0x8000000000000000UL) != 0);
-public static ulong EXCEPT_RISCV_IRQ_INDEX = (x)(x & 0x7FFFFFFFFFFFFFFFUL);
-public static ulong EXCEPT_RISCV_IRQ_0 = 0x8000000000000000UL;
-public static ulong EXCEPT_RISCV_IRQ_SOFT_FROM_SMODE = 0x8000000000000001UL;
-public static ulong EXCEPT_RISCV_IRQ_SOFT_FROM_VSMODE = 0x8000000000000002UL;
-public static ulong EXCEPT_RISCV_IRQ_SOFT_FROM_MMODE = 0x8000000000000003UL;
-public static ulong EXCEPT_RISCV_IRQ_4 = 0x8000000000000004UL;
-public static ulong EXCEPT_RISCV_IRQ_TIMER_FROM_SMODE = 0x8000000000000005UL;
-public static ulong EXCEPT_RISCV_MAX_IRQS = (EXCEPT_RISCV_IRQ_INDEX(EXCEPT_RISCV_IRQ_TIMER_FROM_SMODE));
+public const ulong EXCEPT_RISCV_IS_IRQ = (x)((x & 0x8000000000000000UL) != 0);
+public const ulong EXCEPT_RISCV_IRQ_INDEX = (x)(x & 0x7FFFFFFFFFFFFFFFUL);
+public const ulong EXCEPT_RISCV_IRQ_0 = 0x8000000000000000UL;
+public const ulong EXCEPT_RISCV_IRQ_SOFT_FROM_SMODE = 0x8000000000000001UL;
+public const ulong EXCEPT_RISCV_IRQ_SOFT_FROM_VSMODE = 0x8000000000000002UL;
+public const ulong EXCEPT_RISCV_IRQ_SOFT_FROM_MMODE = 0x8000000000000003UL;
+public const ulong EXCEPT_RISCV_IRQ_4 = 0x8000000000000004UL;
+public const ulong EXCEPT_RISCV_IRQ_TIMER_FROM_SMODE = 0x8000000000000005UL;
+public const ulong EXCEPT_RISCV_MAX_IRQS = (EXCEPT_RISCV_IRQ_INDEX(EXCEPT_RISCV_IRQ_TIMER_FROM_SMODE));
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SYSTEM_CONTEXT_RISCV64
@@ -701,49 +701,49 @@ public unsafe struct EFI_SYSTEM_CONTEXT_RISCV64
 //
 // LoongArch processor exception types.
 //
-public static ulong EXCEPT_LOONGARCH_INT = 0;
-public static ulong EXCEPT_LOONGARCH_PIL = 1;
-public static ulong EXCEPT_LOONGARCH_PIS = 2;
-public static ulong EXCEPT_LOONGARCH_PIF = 3;
-public static ulong EXCEPT_LOONGARCH_PME = 4;
-public static ulong EXCEPT_LOONGARCH_PNR = 5;
-public static ulong EXCEPT_LOONGARCH_PNX = 6;
-public static ulong EXCEPT_LOONGARCH_PPI = 7;
-public static ulong EXCEPT_LOONGARCH_ADE = 8;
-public static ulong EXCEPT_LOONGARCH_ALE = 9;
-public static ulong EXCEPT_LOONGARCH_BCE = 10;
-public static ulong EXCEPT_LOONGARCH_SYS = 11;
-public static ulong EXCEPT_LOONGARCH_BRK = 12;
-public static ulong EXCEPT_LOONGARCH_INE = 13;
-public static ulong EXCEPT_LOONGARCH_IPE = 14;
-public static ulong EXCEPT_LOONGARCH_FPD = 15;
-public static ulong EXCEPT_LOONGARCH_SXD = 16;
-public static ulong EXCEPT_LOONGARCH_ASXD = 17;
-public static ulong EXCEPT_LOONGARCH_FPE = 18;
-public static ulong EXCEPT_LOONGARCH_TBR = 64 // For code only, there is no such type in the ISA spec, the TLB refill is defined for an independent exception.;
+public const ulong EXCEPT_LOONGARCH_INT = 0;
+public const ulong EXCEPT_LOONGARCH_PIL = 1;
+public const ulong EXCEPT_LOONGARCH_PIS = 2;
+public const ulong EXCEPT_LOONGARCH_PIF = 3;
+public const ulong EXCEPT_LOONGARCH_PME = 4;
+public const ulong EXCEPT_LOONGARCH_PNR = 5;
+public const ulong EXCEPT_LOONGARCH_PNX = 6;
+public const ulong EXCEPT_LOONGARCH_PPI = 7;
+public const ulong EXCEPT_LOONGARCH_ADE = 8;
+public const ulong EXCEPT_LOONGARCH_ALE = 9;
+public const ulong EXCEPT_LOONGARCH_BCE = 10;
+public const ulong EXCEPT_LOONGARCH_SYS = 11;
+public const ulong EXCEPT_LOONGARCH_BRK = 12;
+public const ulong EXCEPT_LOONGARCH_INE = 13;
+public const ulong EXCEPT_LOONGARCH_IPE = 14;
+public const ulong EXCEPT_LOONGARCH_FPD = 15;
+public const ulong EXCEPT_LOONGARCH_SXD = 16;
+public const ulong EXCEPT_LOONGARCH_ASXD = 17;
+public const ulong EXCEPT_LOONGARCH_FPE = 18;
+public const ulong EXCEPT_LOONGARCH_TBR = 64 // For code only, there is no such type in the ISA spec, the TLB refill is defined for an independent exception.;
 
 //
 // LoongArch processor Interrupt types.
 //
-public static ulong EXCEPT_LOONGARCH_INT_SIP0 = 0;
-public static ulong EXCEPT_LOONGARCH_INT_SIP1 = 1;
-public static ulong EXCEPT_LOONGARCH_INT_IP0 = 2;
-public static ulong EXCEPT_LOONGARCH_INT_IP1 = 3;
-public static ulong EXCEPT_LOONGARCH_INT_IP2 = 4;
-public static ulong EXCEPT_LOONGARCH_INT_IP3 = 5;
-public static ulong EXCEPT_LOONGARCH_INT_IP4 = 6;
-public static ulong EXCEPT_LOONGARCH_INT_IP5 = 7;
-public static ulong EXCEPT_LOONGARCH_INT_IP6 = 8;
-public static ulong EXCEPT_LOONGARCH_INT_IP7 = 9;
-public static ulong EXCEPT_LOONGARCH_INT_PMC = 10;
-public static ulong EXCEPT_LOONGARCH_INT_TIMER = 11;
-public static ulong EXCEPT_LOONGARCH_INT_IPI = 12;
+public const ulong EXCEPT_LOONGARCH_INT_SIP0 = 0;
+public const ulong EXCEPT_LOONGARCH_INT_SIP1 = 1;
+public const ulong EXCEPT_LOONGARCH_INT_IP0 = 2;
+public const ulong EXCEPT_LOONGARCH_INT_IP1 = 3;
+public const ulong EXCEPT_LOONGARCH_INT_IP2 = 4;
+public const ulong EXCEPT_LOONGARCH_INT_IP3 = 5;
+public const ulong EXCEPT_LOONGARCH_INT_IP4 = 6;
+public const ulong EXCEPT_LOONGARCH_INT_IP5 = 7;
+public const ulong EXCEPT_LOONGARCH_INT_IP6 = 8;
+public const ulong EXCEPT_LOONGARCH_INT_IP7 = 9;
+public const ulong EXCEPT_LOONGARCH_INT_PMC = 10;
+public const ulong EXCEPT_LOONGARCH_INT_TIMER = 11;
+public const ulong EXCEPT_LOONGARCH_INT_IPI = 12;
 
 //
 // For coding convenience, define the maximum valid
 // LoongArch interrupt.
 //
-public static ulong MAX_LOONGARCH_INTERRUPT = 14;
+public const ulong MAX_LOONGARCH_INTERRUPT = 14;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SYSTEM_CONTEXT_LOONGARCH64

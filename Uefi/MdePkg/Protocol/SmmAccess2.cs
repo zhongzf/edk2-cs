@@ -22,7 +22,7 @@ namespace Uefi;
 
 // #include <Protocol/MmAccess.h>
 
-public static ulong EFI_SMM_ACCESS2_PROTOCOL_GUID = EFI_MM_ACCESS_PROTOCOL_GUID;
+public const ulong EFI_SMM_ACCESS2_PROTOCOL_GUID = EFI_MM_ACCESS_PROTOCOL_GUID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_ACCESS2_PROTOCOL { EFI_MM_ACCESS_PROTOCOL Value; public static implicit operator EFI_SMM_ACCESS2_PROTOCOL(EFI_MM_ACCESS_PROTOCOL value) => new EFI_SMM_ACCESS2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_ACCESS_PROTOCOL(EFI_SMM_ACCESS2_PROTOCOL value) => value.Value; }

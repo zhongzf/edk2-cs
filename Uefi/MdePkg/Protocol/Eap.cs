@@ -32,16 +32,16 @@ public unsafe struct EFI_PORT_HANDLE { void* Value; public static implicit opera
 ///
 /// EAP Authentication Method Type (RFC 3748)
 ///@{
-public static ulong EFI_EAP_TYPE_TLS = 13///< REQUIRED - RFC 5216;
+public const ulong EFI_EAP_TYPE_TLS = 13///< REQUIRED - RFC 5216;
 ///@}
 
 //
 // EAP_TYPE MD5, OTP and TOEKN_CARD has been removed from UEFI2.3.1B.
 // Definitions are kept for backward compatibility.
 //
-public static ulong EFI_EAP_TYPE_MD5 = 4;
-public static ulong EFI_EAP_TYPE_OTP = 5;
-public static ulong EFI_EAP_TYPE_TOKEN_CARD = 6;
+public const ulong EFI_EAP_TYPE_MD5 = 4;
+public const ulong EFI_EAP_TYPE_OTP = 5;
+public const ulong EFI_EAP_TYPE_TOKEN_CARD = 6;
 
 
 

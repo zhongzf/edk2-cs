@@ -14,7 +14,7 @@ namespace Uefi;
 
 // #include <Protocol/MmCpuIo.h>
 
-public static ulong EFI_SMM_CPU_IO2_PROTOCOL_GUID = EFI_MM_CPU_IO_PROTOCOL_GUID;
+public const ulong EFI_SMM_CPU_IO2_PROTOCOL_GUID = EFI_MM_CPU_IO_PROTOCOL_GUID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_CPU_IO2_PROTOCOL { EFI_MM_CPU_IO_PROTOCOL Value; public static implicit operator EFI_SMM_CPU_IO2_PROTOCOL(EFI_MM_CPU_IO_PROTOCOL value) => new EFI_SMM_CPU_IO2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_CPU_IO_PROTOCOL(EFI_SMM_CPU_IO2_PROTOCOL value) => value.Value; }
@@ -22,10 +22,10 @@ public unsafe struct EFI_SMM_CPU_IO2_PROTOCOL { EFI_MM_CPU_IO_PROTOCOL Value; pu
 ///
 /// Width of the SMM CPU I/O operations
 ///
-public static ulong SMM_IO_UINT8 = MM_IO_UINT8;
-public static ulong SMM_IO_UINT16 = MM_IO_UINT16;
-public static ulong SMM_IO_UINT32 = MM_IO_UINT32;
-public static ulong SMM_IO_UINT64 = MM_IO_UINT64;
+public const ulong SMM_IO_UINT8 = MM_IO_UINT8;
+public const ulong SMM_IO_UINT16 = MM_IO_UINT16;
+public const ulong SMM_IO_UINT32 = MM_IO_UINT32;
+public const ulong SMM_IO_UINT64 = MM_IO_UINT64;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_IO_WIDTH { EFI_MM_IO_WIDTH Value; public static implicit operator EFI_SMM_IO_WIDTH(EFI_MM_IO_WIDTH value) => new EFI_SMM_IO_WIDTH() { Value = value }; public static implicit operator EFI_MM_IO_WIDTH(EFI_SMM_IO_WIDTH value) => value.Value; }

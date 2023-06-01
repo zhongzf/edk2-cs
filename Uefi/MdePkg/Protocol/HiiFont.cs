@@ -29,14 +29,14 @@ public unsafe struct EFI_FONT_HANDLE { void* Value; public static implicit opera
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_OUT_FLAGS { uint Value; public static implicit operator EFI_HII_OUT_FLAGS(uint value) => new EFI_HII_OUT_FLAGS() { Value = value }; public static implicit operator uint(EFI_HII_OUT_FLAGS value) => value.Value; }
 
-public static ulong EFI_HII_OUT_FLAG_CLIP = 0x00000001;
-public static ulong EFI_HII_OUT_FLAG_WRAP = 0x00000002;
-public static ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_Y = 0x00000004;
-public static ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_X = 0x00000008;
-public static ulong EFI_HII_OUT_FLAG_TRANSPARENT = 0x00000010;
-public static ulong EFI_HII_IGNORE_IF_NO_GLYPH = 0x00000020;
-public static ulong EFI_HII_IGNORE_LINE_BREAK = 0x00000040;
-public static ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
+public const ulong EFI_HII_OUT_FLAG_CLIP = 0x00000001;
+public const ulong EFI_HII_OUT_FLAG_WRAP = 0x00000002;
+public const ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_Y = 0x00000004;
+public const ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_X = 0x00000008;
+public const ulong EFI_HII_OUT_FLAG_TRANSPARENT = 0x00000010;
+public const ulong EFI_HII_IGNORE_IF_NO_GLYPH = 0x00000020;
+public const ulong EFI_HII_IGNORE_LINE_BREAK = 0x00000040;
+public const ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
 
 /**
   Definition of EFI_HII_ROW_INFO.
@@ -69,16 +69,16 @@ public unsafe struct EFI_HII_ROW_INFO
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FONT_INFO_MASK { uint Value; public static implicit operator EFI_FONT_INFO_MASK(uint value) => new EFI_FONT_INFO_MASK() { Value = value }; public static implicit operator uint(EFI_FONT_INFO_MASK value) => value.Value; }
 
-public static ulong EFI_FONT_INFO_SYS_FONT = 0x00000001;
-public static ulong EFI_FONT_INFO_SYS_SIZE = 0x00000002;
-public static ulong EFI_FONT_INFO_SYS_STYLE = 0x00000004;
-public static ulong EFI_FONT_INFO_SYS_FORE_COLOR = 0x00000010;
-public static ulong EFI_FONT_INFO_SYS_BACK_COLOR = 0x00000020;
-public static ulong EFI_FONT_INFO_RESIZE = 0x00001000;
-public static ulong EFI_FONT_INFO_RESTYLE = 0x00002000;
-public static ulong EFI_FONT_INFO_ANY_FONT = 0x00010000;
-public static ulong EFI_FONT_INFO_ANY_SIZE = 0x00020000;
-public static ulong EFI_FONT_INFO_ANY_STYLE = 0x00040000;
+public const ulong EFI_FONT_INFO_SYS_FONT = 0x00000001;
+public const ulong EFI_FONT_INFO_SYS_SIZE = 0x00000002;
+public const ulong EFI_FONT_INFO_SYS_STYLE = 0x00000004;
+public const ulong EFI_FONT_INFO_SYS_FORE_COLOR = 0x00000010;
+public const ulong EFI_FONT_INFO_SYS_BACK_COLOR = 0x00000020;
+public const ulong EFI_FONT_INFO_RESIZE = 0x00001000;
+public const ulong EFI_FONT_INFO_RESTYLE = 0x00002000;
+public const ulong EFI_FONT_INFO_ANY_FONT = 0x00010000;
+public const ulong EFI_FONT_INFO_ANY_SIZE = 0x00020000;
+public const ulong EFI_FONT_INFO_ANY_STYLE = 0x00040000;
 
 //
 // EFI_FONT_INFO

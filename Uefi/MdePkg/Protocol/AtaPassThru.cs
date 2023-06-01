@@ -31,18 +31,18 @@ public unsafe struct EFI_ATA_PASS_THRU_MODE
 /// If this bit is set, then the EFI_ATA_PASS_THRU_PROTOCOL interface is for physical
 /// devices on the ATA controller.
 ///
-public static ulong EFI_ATA_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
+public const ulong EFI_ATA_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
 ///
 /// If this bit is set, then the EFI_ATA_PASS_THRU_PROTOCOL interface is for logical
 /// devices on the ATA controller.
 ///
-public static ulong EFI_ATA_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
+public const ulong EFI_ATA_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
 ///
 /// If this bit is set, then the EFI_ATA_PASS_THRU_PROTOCOL interface supports non blocking
 /// I/O. Every EFI_ATA_PASS_THRU_PROTOCOL must support blocking I/O. The support of non-blocking
 /// I/O is optional.
 ///
-public static ulong EFI_ATA_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
+public const ulong EFI_ATA_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ATA_COMMAND_BLOCK
@@ -85,32 +85,32 @@ public unsafe struct EFI_ATA_STATUS_BLOCK
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ATA_PASS_THRU_CMD_PROTOCOL { byte Value; public static implicit operator EFI_ATA_PASS_THRU_CMD_PROTOCOL(byte value) => new EFI_ATA_PASS_THRU_CMD_PROTOCOL() { Value = value }; public static implicit operator byte(EFI_ATA_PASS_THRU_CMD_PROTOCOL value) => value.Value; }
 
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_ATA_HARDWARE_RESET = 0x00;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_ATA_SOFTWARE_RESET = 0x01;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_ATA_NON_DATA = 0x02;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_PIO_DATA_IN = 0x04;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_PIO_DATA_OUT = 0x05;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_DMA = 0x06;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_DMA_QUEUED = 0x07;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_DEVICE_DIAGNOSTIC = 0x08;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_DEVICE_RESET = 0x09;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_UDMA_DATA_IN = 0x0A;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_UDMA_DATA_OUT = 0x0B;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_FPDMA = 0x0C;
-public static ulong EFI_ATA_PASS_THRU_PROTOCOL_RETURN_RESPONSE = 0xFF;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_ATA_HARDWARE_RESET = 0x00;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_ATA_SOFTWARE_RESET = 0x01;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_ATA_NON_DATA = 0x02;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_PIO_DATA_IN = 0x04;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_PIO_DATA_OUT = 0x05;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_DMA = 0x06;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_DMA_QUEUED = 0x07;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_DEVICE_DIAGNOSTIC = 0x08;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_DEVICE_RESET = 0x09;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_UDMA_DATA_IN = 0x0A;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_UDMA_DATA_OUT = 0x0B;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_FPDMA = 0x0C;
+public const ulong EFI_ATA_PASS_THRU_PROTOCOL_RETURN_RESPONSE = 0xFF;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ATA_PASS_THRU_LENGTH { byte Value; public static implicit operator EFI_ATA_PASS_THRU_LENGTH(byte value) => new EFI_ATA_PASS_THRU_LENGTH() { Value = value }; public static implicit operator byte(EFI_ATA_PASS_THRU_LENGTH value) => value.Value; }
 
-public static ulong EFI_ATA_PASS_THRU_LENGTH_BYTES = 0x80;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_BYTES = 0x80;
 
-public static ulong EFI_ATA_PASS_THRU_LENGTH_MASK = 0x70;
-public static ulong EFI_ATA_PASS_THRU_LENGTH_NO_DATA_TRANSFER = 0x00;
-public static ulong EFI_ATA_PASS_THRU_LENGTH_FEATURES = 0x10;
-public static ulong EFI_ATA_PASS_THRU_LENGTH_SECTOR_COUNT = 0x20;
-public static ulong EFI_ATA_PASS_THRU_LENGTH_TPSIU = 0x30;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_MASK = 0x70;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_NO_DATA_TRANSFER = 0x00;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_FEATURES = 0x10;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_SECTOR_COUNT = 0x20;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_TPSIU = 0x30;
 
-public static ulong EFI_ATA_PASS_THRU_LENGTH_COUNT = 0x0F;
+public const ulong EFI_ATA_PASS_THRU_LENGTH_COUNT = 0x0F;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ATA_PASS_THRU_COMMAND_PACKET

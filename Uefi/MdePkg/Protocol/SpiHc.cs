@@ -25,7 +25,7 @@ public static EFI_GUID EFI_SPI_HOST_GUID = new GUID(0xc74e5db2, 0xfa96, 0x4ae2,
 ///
 /// EDK2-style name
 ///
-public static ulong EFI_SPI_HC_PROTOCOL_GUID = EFI_SPI_HOST_GUID;
+public const ulong EFI_SPI_HC_PROTOCOL_GUID = EFI_SPI_HOST_GUID;
 
 // typedef struct _EFI_SPI_HC_PROTOCOL EFI_SPI_HC_PROTOCOL;
 
