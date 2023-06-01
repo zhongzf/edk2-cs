@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This protocol is defined to abstract TPM2 hardware access in boot phase.

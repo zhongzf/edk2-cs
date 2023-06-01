@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Status code Runtime Protocol as defined in PI Specification 1.4a VOLUME 2 DXE

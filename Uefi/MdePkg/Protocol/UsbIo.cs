@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Usb I/O Protocol as defined in UEFI specification.

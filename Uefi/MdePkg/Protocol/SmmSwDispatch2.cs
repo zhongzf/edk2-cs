@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   SMM Software Dispatch Protocol introduced from PI 1.2 Specification

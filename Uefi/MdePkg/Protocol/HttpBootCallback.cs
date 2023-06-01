@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This file defines the EFI HTTP Boot Callback Protocol interface.

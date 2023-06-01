@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI PCI I/O Protocol provides the basic Memory, I/O, PCI configuration,

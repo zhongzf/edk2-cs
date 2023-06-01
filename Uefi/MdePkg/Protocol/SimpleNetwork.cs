@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The EFI_SIMPLE_NETWORK_PROTOCOL provides services to initialize a network interface,

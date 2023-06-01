@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The Super I/O Protocol is installed by the Super I/O driver. The Super I/O driver is a UEFI driver

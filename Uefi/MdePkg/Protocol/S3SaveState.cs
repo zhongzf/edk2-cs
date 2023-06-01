@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   S3 Save State Protocol as defined in PI 1.6(Errata A) Specification VOLUME 5 Standard.

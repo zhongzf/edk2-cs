@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   UEFI 2.3.1 User Credential Protocol definition.

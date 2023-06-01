@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   ISA HC Protocol as defined in the PI 1.2.1 specification.

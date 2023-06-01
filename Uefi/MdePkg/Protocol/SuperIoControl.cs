@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The Super I/O Control Protocol is installed by the Super I/O driver. It provides

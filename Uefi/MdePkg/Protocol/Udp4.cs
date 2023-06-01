@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   UDP4 Service Binding Protocol as defined in UEFI specification.

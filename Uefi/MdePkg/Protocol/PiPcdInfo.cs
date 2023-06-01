@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Platform Configuration Database (PCD) Info Protocol defined in PI 1.2.1 Vol3.

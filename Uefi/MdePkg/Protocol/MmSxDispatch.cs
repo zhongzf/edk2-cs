@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   MM Sx Dispatch Protocol as defined in PI 1.5 Specification

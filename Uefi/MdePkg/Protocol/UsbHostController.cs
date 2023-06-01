@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_USB_HC_PROTOCOL as defined in EFI 1.10.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This file defines the EFI Domain Name Service Binding Protocol interface. It is split

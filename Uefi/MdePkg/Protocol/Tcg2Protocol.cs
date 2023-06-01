@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   TPM2 Protocol as defined in TCG PC Client Platform EFI Protocol Specification Family "2.0".

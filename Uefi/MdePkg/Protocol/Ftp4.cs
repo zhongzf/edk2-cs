@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI FTPv4 (File Transfer Protocol version 4) Protocol Definition

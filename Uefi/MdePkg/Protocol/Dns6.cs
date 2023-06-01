@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This file defines the EFI DNSv6 (Domain Name Service version 6) Protocol. It is split

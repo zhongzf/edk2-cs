@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   UEFI Multicast Trivial File Transfer Protocol v6 Definition, which is built upon

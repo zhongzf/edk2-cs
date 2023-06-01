@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI MM Communication Protocol 2 as defined in the PI 1.7 errata A specification.

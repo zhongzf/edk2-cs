@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Platform Driver Override protocol as defined in the UEFI 2.1 specification.

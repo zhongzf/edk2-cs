@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   CPU Architectural Protocol as defined in PI spec Volume 2 DXE

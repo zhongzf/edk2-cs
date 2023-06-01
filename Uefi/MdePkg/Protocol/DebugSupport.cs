@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   DebugSupport protocol and supporting definitions as defined in the UEFI2.4

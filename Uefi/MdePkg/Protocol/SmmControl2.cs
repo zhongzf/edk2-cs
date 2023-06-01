@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI SMM Control2 Protocol as defined in the PI 1.2 specification.

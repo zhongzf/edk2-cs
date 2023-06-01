@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI TLS Configuration Protocol as defined in UEFI 2.5.

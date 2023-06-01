@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Shell protocol as defined in the UEFI Shell 2.0 specification.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   It is invoked when the PXE Base Code Protocol is about to transmit, has received,

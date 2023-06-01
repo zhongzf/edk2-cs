@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI PXE Base Code Protocol definitions, which is used to access PXE-compatible

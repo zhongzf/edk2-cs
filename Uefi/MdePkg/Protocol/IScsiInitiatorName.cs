@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_ISCSI_INITIATOR_NAME_PROTOCOL as defined in UEFI 2.0.

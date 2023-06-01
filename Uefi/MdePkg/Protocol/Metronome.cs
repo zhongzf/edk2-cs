@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Metronome Architectural Protocol as defined in PI SPEC VOLUME 2 DXE

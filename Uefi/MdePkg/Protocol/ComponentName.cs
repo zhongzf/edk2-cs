@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Component Name Protocol as defined in the EFI 1.1 specification.

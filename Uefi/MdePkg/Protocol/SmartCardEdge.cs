@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The Smart Card Edge Protocol provides an abstraction for device to provide Smart

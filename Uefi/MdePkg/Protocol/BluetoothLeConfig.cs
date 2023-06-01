@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Bluetooth LE Config Protocol as defined in UEFI 2.7.

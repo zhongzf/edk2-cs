@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Device IO protocol as defined in the EFI 1.10 specification.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The Firmware Volume Protocol provides file-level access to the firmware volume.

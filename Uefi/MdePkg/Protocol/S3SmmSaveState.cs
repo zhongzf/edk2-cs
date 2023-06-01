@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   S3 SMM Save State Protocol as defined in PI1.2 Specification VOLUME 5 Standard.

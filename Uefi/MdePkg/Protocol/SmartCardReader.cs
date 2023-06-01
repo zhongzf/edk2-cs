@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The UEFI Smart Card Reader Protocol provides an abstraction for device to provide

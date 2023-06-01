@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI HTTP Utilities protocol provides a platform independent abstraction for HTTP

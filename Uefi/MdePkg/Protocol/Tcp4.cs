@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI TCPv4(Transmission Control Protocol version 4) Protocol Definition

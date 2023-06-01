@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This file provides management service interfaces of 802.11 MAC layer. It is used by

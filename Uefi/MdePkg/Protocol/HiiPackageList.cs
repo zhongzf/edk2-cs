@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_HII_PACKAGE_LIST_PROTOCOL as defined in UEFI 2.1.

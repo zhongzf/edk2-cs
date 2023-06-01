@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This includes some definitions introduced in UEFI that will be used in both PEI and DXE phases.

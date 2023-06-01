@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This file declares PCI Host Bridge Resource Allocation Protocol which

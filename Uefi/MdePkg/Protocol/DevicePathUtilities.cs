@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_DEVICE_PATH_UTILITIES_PROTOCOL as defined in UEFI 2.0.

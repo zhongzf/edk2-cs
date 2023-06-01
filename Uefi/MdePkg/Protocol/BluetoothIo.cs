@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Bluetooth IO Service Binding Protocol as defined in UEFI 2.5.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The EFI UDPv6 (User Datagram Protocol version 6) Protocol Definition, which is built upon

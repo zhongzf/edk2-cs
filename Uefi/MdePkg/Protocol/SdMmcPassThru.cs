@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The EFI_SD_MMC_PASS_THRU_PROTOCOL provides the ability to send SD/MMC Commands

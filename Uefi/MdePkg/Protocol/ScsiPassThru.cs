@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   SCSI Pass Through protocol as defined in EFI 1.1.

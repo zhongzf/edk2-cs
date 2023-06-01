@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI EAP(Extended Authenticaton Protocol) Protocol Definition

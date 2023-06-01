@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_PKCS7_VERIFY_PROTOCOL as defined in UEFI 2.5.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI VLAN Config protocol is to provide manageability interface for VLAN configuration.

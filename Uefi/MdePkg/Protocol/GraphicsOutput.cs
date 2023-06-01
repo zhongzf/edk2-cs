@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Graphics Output Protocol from the UEFI 2.0 specification.

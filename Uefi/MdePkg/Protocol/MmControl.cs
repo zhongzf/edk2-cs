@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI MM Control Protocol as defined in the PI 1.5 specification.

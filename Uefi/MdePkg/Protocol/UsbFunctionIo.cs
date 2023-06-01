@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The USB Function Protocol provides an I/O abstraction for a USB Controller

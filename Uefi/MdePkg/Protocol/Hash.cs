@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_HASH_SERVICE_BINDING_PROTOCOL as defined in UEFI 2.0.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Disk IO protocol as defined in the UEFI 2.0 specification.

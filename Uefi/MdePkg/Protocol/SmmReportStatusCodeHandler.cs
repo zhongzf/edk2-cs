@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This protocol provides registering and unregistering services to status code consumers while in DXE SMM.

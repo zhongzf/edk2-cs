@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   I2C Device Enumerate Protocol as defined in the PI 1.3 specification.

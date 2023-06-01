@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The Key Management Service (KMS) protocol as defined in the UEFI 2.3.1 specification is to

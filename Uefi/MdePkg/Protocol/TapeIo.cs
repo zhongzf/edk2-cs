@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI_TAPE_IO_PROTOCOL as defined in the UEFI 2.0.

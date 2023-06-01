@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   SMM CPU I/O 2 protocol as defined in the PI 1.2 specification.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Timestamp Protocol as defined in UEFI2.4 Specification.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI Storage Security Command Protocol as defined in UEFI 2.3.1 specification.

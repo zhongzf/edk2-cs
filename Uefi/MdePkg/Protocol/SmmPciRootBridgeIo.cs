@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   SMM PCI Root Bridge IO protocol as defined in the PI 1.2 specification.

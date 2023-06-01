@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Security2 Architectural Protocol as defined in PI Specification1.2.1 VOLUME 2 DXE

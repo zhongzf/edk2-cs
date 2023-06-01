@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   UEFI Dynamic Host Configuration Protocol 6 Definition, which is used to get IPv6

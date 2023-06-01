@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Unicode Collation protocol that follows the UEFI 2.0 specification.

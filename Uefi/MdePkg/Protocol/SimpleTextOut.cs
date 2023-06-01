@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Simple Text Out protocol from the UEFI 2.0 specification.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Simple Text Input protocol from the UEFI 2.0 specification.

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   SMM Periodic Timer Dispatch Protocol as defined in PI 1.1 Specification

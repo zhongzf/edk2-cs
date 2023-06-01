@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   SMM General Purpose Input (GPI) Dispatch2 Protocol as defined in PI 1.1 Specification

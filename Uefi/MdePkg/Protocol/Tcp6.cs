@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   EFI TCPv6(Transmission Control Protocol version 6) Protocol Definition

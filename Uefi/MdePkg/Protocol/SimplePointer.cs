@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Simple Pointer protocol from the UEFI 2.0 specification.

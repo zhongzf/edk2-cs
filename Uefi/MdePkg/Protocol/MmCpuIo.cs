@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   MM CPU I/O 2 protocol as defined in the PI 1.5 specification.

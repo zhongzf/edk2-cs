@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   UEFI Platform to Driver Configuration Protocol is defined in UEFI specification.

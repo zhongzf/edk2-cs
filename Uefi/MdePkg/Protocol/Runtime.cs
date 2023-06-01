@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Runtime Architectural Protocol as defined in PI Specification VOLUME 2 DXE

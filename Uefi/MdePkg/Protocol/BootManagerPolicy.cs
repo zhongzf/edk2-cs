@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   Boot Manager Policy Protocol as defined in UEFI Specification.

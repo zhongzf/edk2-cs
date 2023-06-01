@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   TCG Service Protocol as defined in TCG_EFI_Protocol_1_22_Final

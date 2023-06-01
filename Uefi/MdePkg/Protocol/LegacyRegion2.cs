@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The Legacy Region Protocol controls the read, write and boot-lock attributes for
