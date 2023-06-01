@@ -220,6 +220,21 @@ public unsafe struct GUID
   public ushort Data2;
   public ushort Data3;
   public fixed byte Data4[8];
+
+  public GUID(uint d1, ushort d2, ushort d3, byte d4_0, byte[] d4)
+  {
+    Data1 = d1;
+    Data2 = d2;
+    Data3 = d3;
+    Data4[0] = d4[0];
+    Data4[1] = d4[1];
+    Data4[2] = d4[2];
+    Data4[3] = d4[3];
+    Data4[4] = d4[4];
+    Data4[5] = d4[5];
+    Data4[6] = d4[6];
+    Data4[7] = d4[7];
+  }
 }
 
 ///

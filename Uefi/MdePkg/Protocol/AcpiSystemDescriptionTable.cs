@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   This protocol provides services for creating ACPI system description tables.
@@ -51,13 +53,13 @@ public unsafe struct EFI_ACPI_SDT_HEADER
   public uint CreatorRevision;
 }
 
-typedef
-EFI_STATUS
-(EFIAPI* EFI_ACPI_NOTIFICATION_FN)(
-  IN EFI_ACPI_SDT_HEADER    * Table,     ///< A pointer to the ACPI table header.
-  IN EFI_ACPI_TABLE_VERSION Version,    ///< The ACPI table's version.
-  IN ulong TableKey    ///< The table key for this ACPI table.
-  );
+//typedef
+//EFI_STATUS
+//(EFIAPI* EFI_ACPI_NOTIFICATION_FN)(
+//  IN EFI_ACPI_SDT_HEADER    * Table,     ///< A pointer to the ACPI table header.
+//  IN EFI_ACPI_TABLE_VERSION Version,    ///< The ACPI table's version.
+//  IN ulong TableKey    ///< The table key for this ACPI table.
+//  );
 
 
 
