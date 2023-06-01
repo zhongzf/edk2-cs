@@ -6,4 +6,4 @@ A modern, feature-rich, cross-platform firmware development environment for the 
 
 ## How to use
 
-- Plese follow instructions in [ZeroSharp](https://github.com/MichalStrehovsky/zerosharp/tree/master/efi-no-runtime). 
+- Please follow instructions in [ZeroSharp](https://github.com/MichalStrehovsky/zerosharp/tree/master/efi-no-runtime). 
