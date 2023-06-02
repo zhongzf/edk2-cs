@@ -14,9 +14,12 @@ namespace Uefi;
 // #ifndef __UGA_IO_H__
 // #define __UGA_IO_H__
 
-public static EFI_GUID EFI_UGA_IO_PROTOCOL_GUID = new GUID(0x61a4d49e, 0x6f68, 0x4f1b, new byte[] { 0xb9, 0x22, 0xa8, 0x6e, 0xed, 0xb, 0x7, 0xa2 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_UGA_IO_PROTOCOL_GUID = new GUID(0x61a4d49e, 0x6f68, 0x4f1b, new byte[] { 0xb9, 0x22, 0xa8, 0x6e, 0xed, 0xb, 0x7, 0xa2 });
 
-// typedef struct _EFI_UGA_IO_PROTOCOL EFI_UGA_IO_PROTOCOL;
+  // typedef struct _EFI_UGA_IO_PROTOCOL EFI_UGA_IO_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UGA_STATUS { uint Value; public static implicit operator UGA_STATUS(uint value) => new UGA_STATUS() { Value = value }; public static implicit operator uint(UGA_STATUS value) => value.Value; }
@@ -91,76 +94,6 @@ public unsafe struct UGA_IO_REQUEST
   public ulong ui64BytesReturned;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// Provides a basic abstraction to send I/O requests to the graphics device and any of its children.
 ///
@@ -178,7 +111,6 @@ public unsafe struct EFI_UGA_IO_PROTOCOL
     @param[out]    Device          The Device returns a dynamically allocated child UGA_DEVICE object
                                    for ParentDevice. The caller is responsible for deleting Device.
 
-
     @retval  EFI_SUCCESS           Device was returned.
     @retval  EFI_INVALID_PARAMETER One of the arguments was not valid.
     @retval  EFI_DEVICE_ERROR      The device had an error and could not complete the request.
@@ -192,7 +124,6 @@ public unsafe struct EFI_UGA_IO_PROTOCOL
                                    defined in Section 10.7.
     @param[in]     Device          The Device points to a UGA_DEVICE object that was dynamically
                                    allocated via a CreateDevice() call.
-
 
     @retval  EFI_SUCCESS           Device was returned.
     @retval  EFI_INVALID_PARAMETER The Device was not allocated via CreateDevice().

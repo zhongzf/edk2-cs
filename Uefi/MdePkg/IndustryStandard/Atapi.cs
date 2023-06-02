@@ -496,23 +496,25 @@ public unsafe struct ATAPI_PACKET_COMMAND
 
 // #pragma pack()
 
-public const ulong ATAPI_MAX_DMA_EXT_CMD_SECTORS = 0x10000;
-public const ulong ATAPI_MAX_DMA_CMD_SECTORS = 0x100;
+public unsafe partial class EFI
+{
+  public const ulong ATAPI_MAX_DMA_EXT_CMD_SECTORS = 0x10000;
+  public const ulong ATAPI_MAX_DMA_CMD_SECTORS = 0x100;
 
-//  ATA/ATAPI Signature equates
-public const ulong ATA_SIGNATURE = 0x0101                                   ///< defined in ACS-3;
+  //  ATA/ATAPI Signature equates
+  public const ulong ATA_SIGNATURE = 0x0101                                   ///< defined in ACS-3;
 public const ulong ATAPI_SIGNATURE = 0xeb14                                   ///< defined in ACS-3;
 public const ulong ATAPI_SIGNATURE_32 = 0xeb140101                               ///< defined in ACS-3;
 
-//  Spin Up Configuration definitions
+  //  Spin Up Configuration definitions
 public const ulong ATA_SPINUP_CFG_REQUIRED_IDD_INCOMPLETE = 0x37c8       ///< defined in ACS-3;
 public const ulong ATA_SPINUP_CFG_REQUIRED_IDD_COMPLETE = 0x738c       ///< defined in ACS-3;
 public const ulong ATA_SPINUP_CFG_NOT_REQUIRED_IDD_INCOMPLETE = 0x8c73       ///< defined in ACS-3;
 public const ulong ATA_SPINUP_CFG_NOT_REQUIRED_IDD_COMPLETE = 0xc837       ///< defined in ACS-3;
 
-//
-// ATA Packet Command Code
-//
+  //
+  // ATA Packet Command Code
+  //
 public const ulong ATA_CMD_FORMAT_UNIT = 0x04              ///< defined in ATAPI Removable Rewritable Media Devices;
 public const ulong ATA_CMD_SOFT_RESET = 0x08              ///< defined from ATA-3;
 public const ulong ATA_CMD_PACKET = 0xA0              ///< defined from ATA-3;
@@ -553,23 +555,23 @@ public const ulong ATA_FEATURE_LIST_MORPHING = 0x0002                   ///< def
 public const ulong ATA_FEATURE_LIST_REMOVEABLE_MEDIUM = 0x0003                   ///< defined in ATAPI Multimedia Devices;
 public const ulong ATA_FEATURE_LIST_WRITE_PROTECT = 0x0004                   ///< defined in ATAPI Multimedia Devices;
 
-///
-/// Start/Stop and Eject Operations
-///
-///@{
+                                                                             ///
+                                                                             /// Start/Stop and Eject Operations
+                                                                             ///
+                                                                             ///@{
 public const ulong ATA_CMD_SUBOP_STOP_DISC = 0x00                         ///< Stop the Disc;
 public const ulong ATA_CMD_SUBOP_START_DISC = 0x01                         ///< Start the Disc and acquire the format type;
 public const ulong ATA_CMD_SUBOP_EJECT_DISC = 0x02                         ///< Eject the Disc if possible;
 public const ulong ATA_CMD_SUBOP_CLOSE_TRAY = 0x03                         ///< Load the Disc (Close Tray);
-///@}
+                                                                           ///@}
 
-//
-// ATA Commands Code
-//
+  //
+  // ATA Commands Code
+  //
 
-//
-// Class 1: PIO Data-In Commands
-//
+  //
+  // Class 1: PIO Data-In Commands
+  //
 public const ulong ATA_CMD_IDENTIFY_DRIVE = 0xec                  ///< defined from ATA-3;
 public const ulong ATA_CMD_READ_BUFFER = 0xe4                  ///< defined from ATA-1;
 public const ulong ATA_CMD_READ_SECTORS = 0x20                  ///< defined from ATA-1;
@@ -581,9 +583,9 @@ public const ulong ATA_CMD_READ_MULTIPLE = 0xc4                  ///< defined in
 public const ulong ATA_CMD_READ_MULTIPLE_EXT = 0x29                  ///< defined in ACS-3;
 public const ulong ATA_CMD_READ_LOG_EXT = 0x2f                  ///< defined in ACS-3;
 
-//
-// Class 2: PIO Data-Out Commands
-//
+  //
+  // Class 2: PIO Data-Out Commands
+  //
 public const ulong ATA_CMD_FORMAT_TRACK = 0x50                ///< defined from ATA-1, obsoleted from ATA-4;
 public const ulong ATA_CMD_WRITE_BUFFER = 0xe8                ///< defined from ATA-1;
 public const ulong ATA_CMD_WRITE_SECTORS = 0x30                ///< defined from ATA-1;
@@ -595,9 +597,9 @@ public const ulong ATA_CMD_WRITE_SECTORS_EXT = 0x34                ///< defined 
 public const ulong ATA_CMD_WRITE_MULTIPLE = 0xc5                ///< defined in ACS-3;
 public const ulong ATA_CMD_WRITE_MULTIPLE_EXT = 0x39                ///< defined in ACS-3;
 
-//
-// Class 3 No Data Command
-//
+  //
+  // Class 3 No Data Command
+  //
 public const ulong ATA_CMD_ACK_MEDIA_CHANGE = 0xdb             ///< defined from ATA-1, obsoleted from ATA-5;
 public const ulong ATA_CMD_BOOT_POST_BOOT = 0xdc             ///< defined from ATA-1, obsoleted from ATA-3;
 public const ulong ATA_CMD_BOOT_PRE_BOOT = 0xdd             ///< defined from ATA-1, obsoleted from ATA-3;
@@ -626,9 +628,9 @@ public const ulong ATA_CMD_SLEEP = 0xe6             ///< defined in ACS-3;
 public const ulong ATA_CMD_READ_NATIVE_MAX_ADDRESS = 0xf8             ///< defined in ATA-6;
 public const ulong ATA_CMD_READ_NATIVE_MAX_ADDRESS_EXT = 0x27             ///< defined in ATA-6;
 
-//
-// Set Features Sub Command
-//
+  //
+  // Set Features Sub Command
+  //
 public const ulong ATA_SUB_CMD_ENABLE_VOLATILE_WRITE_CACHE = 0x02      ///< defined in ACS-3;
 public const ulong ATA_SUB_CMD_SET_TRANSFER_MODE = 0x03      ///< defined in ACS-3;
 public const ulong ATA_SUB_CMD_ENABLE_APM = 0x05      ///< defined in ACS-3;
@@ -656,9 +658,9 @@ public const ulong ATA_SUB_CMD_ACOUSTIC_MANAGEMENT_DISABLE = 0xc2      ///< defi
 public const ulong ATA_SUB_CMD_EN_DIS_SENSE_DATA_REPORTING = 0xc3      ///< defined in ACS-3;
 public const ulong ATA_SUB_CMD_ENABLE_REVERT_TO_POWER_ON_DEFAULTS = 0xcc      ///< defined in ACS-3;
 
-//
-// S.M.A.R.T
-//
+  //
+  // S.M.A.R.T
+  //
 public const ulong ATA_CMD_SMART = 0xb0                                 ///< defined from ATA-3;
 public const ulong ATA_CONSTANT_C2 = 0xc2                                 ///< reserved;
 public const ulong ATA_CONSTANT_4F = 0x4f                                 ///< reserved;
@@ -667,9 +669,9 @@ public const ulong ATA_SMART_READ_DATA = 0xd0                              ///< 
 
 public const ulong ATA_SMART_AUTOSAVE = 0xd2                       ///< defined in ACS-3;
 public const ulong ATA_AUTOSAVE_DISABLE_ATTR = 0x00;
-public const ulong ATA_AUTOSAVE_ENABLE_ATTR = 0xf1;
+  public const ulong ATA_AUTOSAVE_ENABLE_ATTR = 0xf1;
 
-public const ulong ATA_SMART_EXECUTE_OFFLINE_IMMEDIATE = 0xd4   ///< defined in ACS-3;
+  public const ulong ATA_SMART_EXECUTE_OFFLINE_IMMEDIATE = 0xd4   ///< defined in ACS-3;
 public const ulong ATA_EXECUTE_SMART_OFFLINE_ROUTINE = 0x00   ///< defined in ACS-3;
 public const ulong ATA_EXECUTE_SMART_OFFLINE_SHORT_SELFTEST = 0x01   ///< defined in ACS-3;
 public const ulong ATA_EXECUTE_SMART_OFFLINE_EXTENDED_SELFTEST = 0x02   ///< defined in ACS-3;
@@ -690,7 +692,7 @@ public const ulong ATA_SMART_RETURN_STATUS = 0xda                     ///< defin
 public const ulong ATA_SMART_THRESHOLD_NOT_EXCEEDED_VALUE = 0xc24f              ///< defined in ACS-3;
 public const ulong ATA_SMART_THRESHOLD_EXCEEDED_VALUE = 0x2cf4              ///< defined in ACS-3;
 
-// SMART Log Definitions
+  // SMART Log Definitions
 public const ulong ATA_SMART_LOG_DIRECTORY = 0x00                  ///< defined in ACS-3;
 public const ulong ATA_SMART_SUM_SMART_ERROR_LOG = 0x01                  ///< defined in ACS-3;
 public const ulong ATA_SMART_COMP_SMART_ERROR_LOG = 0x02                  ///< defined in ACS-3;
@@ -701,9 +703,9 @@ public const ulong ATA_SMART_SELECTIVE_SELFTEST_LOG = 0x09                  ///<
 public const ulong ATA_SMART_HOST_VENDOR_SPECIFIC = 0x80                  ///< defined in ACS-3;
 public const ulong ATA_SMART_DEVICE_VENDOR_SPECIFIC = 0xa0                  ///< defined in ACS-3;
 
-//
-// Class 4: DMA Command
-//
+  //
+  // Class 4: DMA Command
+  //
 public const ulong ATA_CMD_READ_DMA = 0xc8                     ///< defined from ATA-1;
 public const ulong ATA_CMD_READ_DMA_WITH_RETRY = 0xc9                     ///< defined from ATA-1, obsoleted from ATA-5;
 public const ulong ATA_CMD_READ_DMA_EXT = 0x25                     ///< defined from ATA-6;
@@ -711,9 +713,9 @@ public const ulong ATA_CMD_WRITE_DMA = 0xca                     ///< defined fro
 public const ulong ATA_CMD_WRITE_DMA_WITH_RETRY = 0xcb                     ///< defined from ATA-1, obsoleted from ATA-;
 public const ulong ATA_CMD_WRITE_DMA_EXT = 0x35                     ///< defined from ATA-6;
 
-//
-//  ATA Security commands
-//
+  //
+  //  ATA Security commands
+  //
 public const ulong ATA_CMD_SECURITY_SET_PASSWORD = 0xf1               ///< defined in ACS-3;
 public const ulong ATA_CMD_SECURITY_UNLOCK = 0xf2               ///< defined in ACS-3;
 public const ulong ATA_CMD_SECURITY_ERASE_PREPARE = 0xf3               ///< defined in ACS-3;
@@ -723,42 +725,42 @@ public const ulong ATA_CMD_SECURITY_DISABLE_PASSWORD = 0xf6               ///< d
 
 public const ulong ATA_SECURITY_BUFFER_LENGTH = 512                          ///< defined in ACS-3;
 
-//
-//  ATA Device Config Overlay
-//
+  //
+  //  ATA Device Config Overlay
+  //
 public const ulong ATA_CMD_DEV_CONFIG_OVERLAY = 0xb1            ///< defined from ATA-6;
 public const ulong ATA_CMD_DEV_CONFIG_RESTORE_FEATURE = 0xc0            ///< defined from ATA-6;
 public const ulong ATA_CMD_DEV_CONFIG_FREEZELOCK_FEATURE = 0xc1            ///< defined from ATA-6;
 public const ulong ATA_CMD_DEV_CONFIG_IDENTIFY_FEATURE = 0xc2            ///< defined from ATA-6;
 public const ulong ATA_CMD_DEV_CONFIG_SET_FEATURE = 0xc3            ///< defined from ATA-6;
 
-//
-//  ATA Trusted Computing Feature Set Commands
-//
+  //
+  //  ATA Trusted Computing Feature Set Commands
+  //
 public const ulong ATA_CMD_TRUSTED_NON_DATA = 0x5b                     ///< defined in ACS-3;
 public const ulong ATA_CMD_TRUSTED_RECEIVE = 0x5c                     ///< defined in ACS-3;
 public const ulong ATA_CMD_TRUSTED_RECEIVE_DMA = 0x5d                     ///< defined in ACS-3;
 public const ulong ATA_CMD_TRUSTED_SEND = 0x5e                     ///< defined in ACS-3;
 public const ulong ATA_CMD_TRUSTED_SEND_DMA = 0x5f                     ///< defined in ACS-3;
 
-//
-//  ATA Trusted Receive Fields
-//
+  //
+  //  ATA Trusted Receive Fields
+  //
 public const ulong ATA_TR_RETURN_SECURITY_PROTOCOL_INFORMATION = 0x00     ///< defined in ACS-3;
 public const ulong ATA_TR_SECURITY_PROTOCOL_JEDEC_RESERVED = 0xec     ///< defined in ACS-3;
 public const ulong ATA_TR_SECURITY_PROTOCOL_SDCARD_RESERVED = 0xed     ///< defined in ACS-3;
 public const ulong ATA_TR_SECURITY_PROTOCOL_IEEE1667_RESERVED = 0xee     ///< defined in ACS-3;
 
-//
-//  Equates used for Acoustic Flags
-//
+  //
+  //  Equates used for Acoustic Flags
+  //
 public const ulong ATA_ACOUSTIC_LEVEL_BYPASS = 0xff           ///< defined from ATA-6;
 public const ulong ATA_ACOUSTIC_LEVEL_MAXIMUM_PERFORMANCE = 0xfe           ///< defined from ATA-6;
 public const ulong ATA_ACOUSTIC_LEVEL_QUIET = 0x80           ///< defined from ATA-6;
 
-//
-//  Equates used for DiPM Support
-//
+  //
+  //  Equates used for DiPM Support
+  //
 public const ulong ATA_CMD_DIPM_SUB = 0x03                                 // defined in ACS-3 : Count value in SetFeature identification : 03h  Device-initiated interface power state transitions;
 public const ulong ATA_DIPM_ENABLE = 0x10                                 // defined in ACS-3;
 public const ulong ATA_DIPM_DISABLE = 0x90                                 // defined in ACS-3;
@@ -784,72 +786,72 @@ public const ulong ATA_SET_MAX_LOCK = 0x02                      ///< defined fro
 public const ulong ATA_SET_MAX_UNLOCK = 0x03                      ///< defined from ATA-6;
 public const ulong ATA_SET_MAX_FREEZE_LOCK = 0x04                      ///< defined from ATA-6;
 
-///
-/// Default content of device control register, disable INT,
-/// Bit3 is set to 1 according ATA-1
-///
+                                                                       ///
+                                                                       /// Default content of device control register, disable INT,
+                                                                       /// Bit3 is set to 1 according ATA-1
+                                                                       ///
 public const ulong ATA_DEFAULT_CTL = (0x0a);
-///
-/// Default context of Device/Head Register,
-/// Bit7 and Bit5 are set to 1 for back-compatibilities.
-///
-public const ulong ATA_DEFAULT_CMD = (0xa0);
+  ///
+  /// Default context of Device/Head Register,
+  /// Bit7 and Bit5 are set to 1 for back-compatibilities.
+  ///
+  public const ulong ATA_DEFAULT_CMD = (0xa0);
 
-public const ulong ATAPI_MAX_BYTE_COUNT = (0xfffe);
+  public const ulong ATAPI_MAX_BYTE_COUNT = (0xfffe);
 
-public const ulong ATA_REQUEST_SENSE_ERROR = (0x70)                        ///< defined in SFF-8070i;
+  public const ulong ATA_REQUEST_SENSE_ERROR = (0x70)                        ///< defined in SFF-8070i;
 
-//
-// Sense Key, Additional Sense Codes and Additional Sense Code Qualifier
-// defined in MultiMedia Commands (MMC, MMC-2)
-//
-// Sense Key
-//
+  //
+  // Sense Key, Additional Sense Codes and Additional Sense Code Qualifier
+  // defined in MultiMedia Commands (MMC, MMC-2)
+  //
+  // Sense Key
+  //
 public const ulong ATA_SK_NO_SENSE = (0x0);
-public const ulong ATA_SK_RECOVERY_ERROR = (0x1);
-public const ulong ATA_SK_NOT_READY = (0x2);
-public const ulong ATA_SK_MEDIUM_ERROR = (0x3);
-public const ulong ATA_SK_HARDWARE_ERROR = (0x4);
-public const ulong ATA_SK_ILLEGAL_REQUEST = (0x5);
-public const ulong ATA_SK_UNIT_ATTENTION = (0x6);
-public const ulong ATA_SK_DATA_PROTECT = (0x7);
-public const ulong ATA_SK_BLANK_CHECK = (0x8);
-public const ulong ATA_SK_VENDOR_SPECIFIC = (0x9);
-public const ulong ATA_SK_RESERVED_A = (0xA);
-public const ulong ATA_SK_ABORT = (0xB);
-public const ulong ATA_SK_RESERVED_C = (0xC);
-public const ulong ATA_SK_OVERFLOW = (0xD);
-public const ulong ATA_SK_MISCOMPARE = (0xE);
-public const ulong ATA_SK_RESERVED_F = (0xF);
+  public const ulong ATA_SK_RECOVERY_ERROR = (0x1);
+  public const ulong ATA_SK_NOT_READY = (0x2);
+  public const ulong ATA_SK_MEDIUM_ERROR = (0x3);
+  public const ulong ATA_SK_HARDWARE_ERROR = (0x4);
+  public const ulong ATA_SK_ILLEGAL_REQUEST = (0x5);
+  public const ulong ATA_SK_UNIT_ATTENTION = (0x6);
+  public const ulong ATA_SK_DATA_PROTECT = (0x7);
+  public const ulong ATA_SK_BLANK_CHECK = (0x8);
+  public const ulong ATA_SK_VENDOR_SPECIFIC = (0x9);
+  public const ulong ATA_SK_RESERVED_A = (0xA);
+  public const ulong ATA_SK_ABORT = (0xB);
+  public const ulong ATA_SK_RESERVED_C = (0xC);
+  public const ulong ATA_SK_OVERFLOW = (0xD);
+  public const ulong ATA_SK_MISCOMPARE = (0xE);
+  public const ulong ATA_SK_RESERVED_F = (0xF);
 
-//
-// Additional Sense Codes
-//
-public const ulong ATA_ASC_NOT_READY = (0x04);
-public const ulong ATA_ASC_MEDIA_ERR1 = (0x10);
-public const ulong ATA_ASC_MEDIA_ERR2 = (0x11);
-public const ulong ATA_ASC_MEDIA_ERR3 = (0x14);
-public const ulong ATA_ASC_MEDIA_ERR4 = (0x30);
-public const ulong ATA_ASC_MEDIA_UPSIDE_DOWN = (0x06);
-public const ulong ATA_ASC_INVALID_CMD = (0x20);
-public const ulong ATA_ASC_LBA_OUT_OF_RANGE = (0x21);
-public const ulong ATA_ASC_INVALID_FIELD = (0x24);
-public const ulong ATA_ASC_WRITE_PROTECTED = (0x27);
-public const ulong ATA_ASC_MEDIA_CHANGE = (0x28);
-public const ulong ATA_ASC_RESET = (0x29)             ///< Power On Reset or Bus Reset occurred.;
+  //
+  // Additional Sense Codes
+  //
+  public const ulong ATA_ASC_NOT_READY = (0x04);
+  public const ulong ATA_ASC_MEDIA_ERR1 = (0x10);
+  public const ulong ATA_ASC_MEDIA_ERR2 = (0x11);
+  public const ulong ATA_ASC_MEDIA_ERR3 = (0x14);
+  public const ulong ATA_ASC_MEDIA_ERR4 = (0x30);
+  public const ulong ATA_ASC_MEDIA_UPSIDE_DOWN = (0x06);
+  public const ulong ATA_ASC_INVALID_CMD = (0x20);
+  public const ulong ATA_ASC_LBA_OUT_OF_RANGE = (0x21);
+  public const ulong ATA_ASC_INVALID_FIELD = (0x24);
+  public const ulong ATA_ASC_WRITE_PROTECTED = (0x27);
+  public const ulong ATA_ASC_MEDIA_CHANGE = (0x28);
+  public const ulong ATA_ASC_RESET = (0x29)             ///< Power On Reset or Bus Reset occurred.;
 public const ulong ATA_ASC_ILLEGAL_FIELD = (0x26);
-public const ulong ATA_ASC_NO_MEDIA = (0x3A);
-public const ulong ATA_ASC_ILLEGAL_MODE_FOR_THIS_TRACK = (0x64);
+  public const ulong ATA_ASC_NO_MEDIA = (0x3A);
+  public const ulong ATA_ASC_ILLEGAL_MODE_FOR_THIS_TRACK = (0x64);
 
-//
-// Additional Sense Code Qualifier
-//
-public const ulong ATA_ASCQ_IN_PROGRESS = (0x01);
+  //
+  // Additional Sense Code Qualifier
+  //
+  public const ulong ATA_ASCQ_IN_PROGRESS = (0x01);
 
-//
-// Error Register
-//
-public const ulong ATA_ERRREG_BBK = BIT7                                ///< Bad block detected      defined from ATA-1, obsoleted from ATA-2;
+  //
+  // Error Register
+  //
+  public const ulong ATA_ERRREG_BBK = BIT7                                ///< Bad block detected      defined from ATA-1, obsoleted from ATA-2;
 public const ulong ATA_ERRREG_UNC = BIT6                                ///< Uncorrectable Data      defined from ATA-1, obsoleted from ATA-4;
 public const ulong ATA_ERRREG_MC = BIT5                                ///< Media Change            defined from ATA-1, obsoleted from ATA-4;
 public const ulong ATA_ERRREG_IDNF = BIT4                                ///< ID Not Found            defined from ATA-1, obsoleted from ATA-4;
@@ -858,9 +860,9 @@ public const ulong ATA_ERRREG_ABRT = BIT2                                ///< Ab
 public const ulong ATA_ERRREG_TK0NF = BIT1                                ///< Track 0 Not Found       defined from ATA-1, obsoleted from ATA-4;
 public const ulong ATA_ERRREG_AMNF = BIT0                                ///< Address Mark Not Found  defined from ATA-1, obsoleted from ATA-4;
 
-//
-// Status Register
-//
+  //
+  // Status Register
+  //
 public const ulong ATA_STSREG_BSY = BIT7                                 ///< Controller Busy         defined from ATA-1;
 public const ulong ATA_STSREG_DRDY = BIT6                                 ///< Drive Ready             defined from ATA-1;
 public const ulong ATA_STSREG_DWF = BIT5                                 ///< Drive Write Fault       defined from ATA-1, obsoleted from ATA-4;
@@ -871,10 +873,11 @@ public const ulong ATA_STSREG_CORR = BIT2                                 ///< C
 public const ulong ATA_STSREG_IDX = BIT1                                 ///< Index                   defined from ATA-1, obsoleted from ATA-4;
 public const ulong ATA_STSREG_ERR = BIT0                                 ///< Error                   defined from ATA-1;
 
-//
-// Device Control Register
-//
+  //
+  // Device Control Register
+  //
 public const ulong ATA_CTLREG_SRST = BIT2                                ///< Software Reset.;
 public const ulong ATA_CTLREG_IEN_L = BIT1                                ///< Interrupt Enable #.;
+}
 
 // #endif

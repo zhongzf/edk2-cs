@@ -17,7 +17,10 @@ namespace Uefi;
 // #define __EFI_SUPER_IO_PROTOCOL_H__
 // #include <IndustryStandard/Acpi.h>
 
-public static EFI_GUID EFI_SIO_PROTOCOL_GUID = new GUID(0x215fdd18, 0xbd50, 0x4feb, new byte[] { 0x89, 0xb, 0x58, 0xca, 0xb, 0x47, 0x39, 0xe9 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SIO_PROTOCOL_GUID = new GUID(0x215fdd18, 0xbd50, 0x4feb, new byte[] { 0x89, 0xb, 0x58, 0xca, 0xb, 0x47, 0x39, 0xe9 });
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct ACPI_RESOURCE_HEADER_PTR
@@ -35,132 +38,6 @@ public unsafe struct EFI_SIO_REGISTER_MODIFY
 }
 
 // typedef struct _EFI_SIO_PROTOCOL EFI_SIO_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIO_PROTOCOL

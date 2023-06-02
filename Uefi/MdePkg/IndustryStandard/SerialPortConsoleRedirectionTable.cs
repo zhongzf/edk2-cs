@@ -24,7 +24,10 @@ namespace Uefi;
 ///
 /// SPCR Revision (defined in spec)
 ///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_REVISION = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_REVISION = 0x02;
+}
 
 ///
 /// Serial Port Console Redirection Table Format
@@ -68,113 +71,116 @@ public unsafe struct EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE
 ///
 /// Full 16550 interface
 ///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16550 = 0;
-///
-/// Full 16450 interface
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16450 = 1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16550 = 0;
+  ///
+  /// Full 16450 interface
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16450 = 1;
 
-//
-// The Serial Port Subtypes for ARM are documented in Table 3 of the DBG2 Specification
-//
+  //
+  // The Serial Port Subtypes for ARM are documented in Table 3 of the DBG2 Specification
+  //
 
-///
-/// ARM PL011 UART
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_PL011_UART = 0x03;
+  ///
+  /// ARM PL011 UART
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_PL011_UART = 0x03;
 
-///
-/// NVIDIA 16550 UART
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_NVIDIA_16550_UART = 0x05;
+  ///
+  /// NVIDIA 16550 UART
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_NVIDIA_16550_UART = 0x05;
 
-///
-/// ARM SBSA Generic UART (2.x) supporting 32-bit only accesses [deprecated]
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_SBSA_GENERIC_UART_2X = 0x0d;
+  ///
+  /// ARM SBSA Generic UART (2.x) supporting 32-bit only accesses [deprecated]
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_SBSA_GENERIC_UART_2X = 0x0d;
 
-///
-/// ARM SBSA Generic UART
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_SBSA_GENERIC_UART = 0x0e;
+  ///
+  /// ARM SBSA Generic UART
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_SBSA_GENERIC_UART = 0x0e;
 
-///
-/// ARM DCC
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_DCC = 0x0f;
+  ///
+  /// ARM DCC
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_DCC = 0x0f;
 
-///
-/// BCM2835 UART
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_BCM2835_UART = 0x10;
+  ///
+  /// BCM2835 UART
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_BCM2835_UART = 0x10;
 
-///
-/// 16550-compatible with parameters defined in Generic Address Structure
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16550_WITH_GAS = 0x12;
+  ///
+  /// 16550-compatible with parameters defined in Generic Address Structure
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16550_WITH_GAS = 0x12;
 
-//
-// Interrupt Type
-//
+  //
+  // Interrupt Type
+  //
 
-///
-/// PC-AT-compatible dual-8259 IRQ interrupt
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_8259 = 0x1;
-///
-/// I/O APIC interrupt (Global System Interrupt)
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_APIC = 0x2;
-///
-/// I/O SAPIC interrupt (Global System Interrupt)
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_SAPIC = 0x4;
-///
-/// ARMH GIC interrupt (Global System Interrupt)
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_GIC = 0x8;
+  ///
+  /// PC-AT-compatible dual-8259 IRQ interrupt
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_8259 = 0x1;
+  ///
+  /// I/O APIC interrupt (Global System Interrupt)
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_APIC = 0x2;
+  ///
+  /// I/O SAPIC interrupt (Global System Interrupt)
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_SAPIC = 0x4;
+  ///
+  /// ARMH GIC interrupt (Global System Interrupt)
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_GIC = 0x8;
 
-//
-// Baud Rate
-//
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_9600 = 3;
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_19200 = 4;
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_57600 = 6;
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_115200 = 7;
+  //
+  // Baud Rate
+  //
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_9600 = 3;
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_19200 = 4;
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_57600 = 6;
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_115200 = 7;
 
-//
-// Parity
-//
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_PARITY_NO_PARITY = 0;
+  //
+  // Parity
+  //
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_PARITY_NO_PARITY = 0;
 
-//
-// Stop Bits
-//
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_STOP_BITS_1 = 1;
+  //
+  // Stop Bits
+  //
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_STOP_BITS_1 = 1;
 
-//
-// Flow Control
-//
+  //
+  // Flow Control
+  //
 
-///
-/// DCD required for transmit
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_FLOW_CONTROL_DCD = 0x1;
-///
-/// RTS/CTS hardware flow control
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_FLOW_CONTROL_RTS_CTS = 0x2;
-///
-///  XON/XOFF software control
-///
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_FLOW_CONTROL_XON_XOFF = 0x4;
+  ///
+  /// DCD required for transmit
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_FLOW_CONTROL_DCD = 0x1;
+  ///
+  /// RTS/CTS hardware flow control
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_FLOW_CONTROL_RTS_CTS = 0x2;
+  ///
+  ///  XON/XOFF software control
+  ///
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_FLOW_CONTROL_XON_XOFF = 0x4;
 
-//
-// Terminal Type
-//
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_VT100 = 0;
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_VT100_PLUS = 1;
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_VT_UTF8 = 2;
-public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_ANSI = 3;
+  //
+  // Terminal Type
+  //
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_VT100 = 0;
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_VT100_PLUS = 1;
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_VT_UTF8 = 2;
+  public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_TERMINAL_TYPE_ANSI = 3;
+}
 
 // #endif

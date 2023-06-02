@@ -16,39 +16,42 @@ namespace Uefi;
 // #ifndef IPMI_KCS_H_
 // #define IPMI_KCS_H_
 
-public const ulong IPMI_KCS_STATUS_REGISTER_OFFSET = 1;
-public const ulong IPMI_KCS_COMMAND_REGISTER_OFFSET = 1;
-public const ulong IPMI_KCS_DATA_OUT_REGISTER_OFFSET = 0;
-public const ulong IPMI_KCS_DATA_IN_REGISTER_OFFSET = 0;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_KCS_STATUS_REGISTER_OFFSET = 1;
+  public const ulong IPMI_KCS_COMMAND_REGISTER_OFFSET = 1;
+  public const ulong IPMI_KCS_DATA_OUT_REGISTER_OFFSET = 0;
+  public const ulong IPMI_KCS_DATA_IN_REGISTER_OFFSET = 0;
 
-///
-/// IPMI KCS Interface Status Bits
-///
-public const ulong IPMI_KCS_OBF = BIT0;
-public const ulong IPMI_KCS_IBF = BIT1;
-public const ulong IPMI_KCS_SMS_ATN = BIT2;
-public const ulong IPMI_KCS_COMMAND_DATA = BIT3;
-public const ulong IPMI_KCS_OEM1 = BIT4;
-public const ulong IPMI_KCS_OEM2 = BIT5;
-public const ulong IPMI_KCS_S0 = BIT6;
-public const ulong IPMI_KCS_S1 = BIT7;
+  ///
+  /// IPMI KCS Interface Status Bits
+  ///
+  public const ulong IPMI_KCS_OBF = BIT0;
+  public const ulong IPMI_KCS_IBF = BIT1;
+  public const ulong IPMI_KCS_SMS_ATN = BIT2;
+  public const ulong IPMI_KCS_COMMAND_DATA = BIT3;
+  public const ulong IPMI_KCS_OEM1 = BIT4;
+  public const ulong IPMI_KCS_OEM2 = BIT5;
+  public const ulong IPMI_KCS_S0 = BIT6;
+  public const ulong IPMI_KCS_S1 = BIT7;
 
-///
-/// IPMI KCS Interface Control Codes
-///
-public const ulong IPMI_KCS_CONTROL_CODE_GET_STATUS_ABORT = 0x60;
-public const ulong IPMI_KCS_CONTROL_CODE_WRITE_START = 0x61;
-public const ulong IPMI_KCS_CONTROL_CODE_WRITE_END = 0x62;
-public const ulong IPMI_KCS_CONTROL_CODE_READ = 0x68;
+  ///
+  /// IPMI KCS Interface Control Codes
+  ///
+  public const ulong IPMI_KCS_CONTROL_CODE_GET_STATUS_ABORT = 0x60;
+  public const ulong IPMI_KCS_CONTROL_CODE_WRITE_START = 0x61;
+  public const ulong IPMI_KCS_CONTROL_CODE_WRITE_END = 0x62;
+  public const ulong IPMI_KCS_CONTROL_CODE_READ = 0x68;
 
-///
-/// Status Codes
-///
-public const ulong IPMI_KCS_STATUS_NO_ERROR = 0x00;
-public const ulong IPMI_KCS_STATUS_ABORT = 0x01;
-public const ulong IPMI_KCS_STATUS_ILLEGAL = 0x02;
-public const ulong IPMI_KCS_STATUS_LENGTH_ERROR = 0x06;
-public const ulong IPMI_KCS_STATUS_UNSPECIFIED = 0xFF;
+  ///
+  /// Status Codes
+  ///
+  public const ulong IPMI_KCS_STATUS_NO_ERROR = 0x00;
+  public const ulong IPMI_KCS_STATUS_ABORT = 0x01;
+  public const ulong IPMI_KCS_STATUS_ILLEGAL = 0x02;
+  public const ulong IPMI_KCS_STATUS_LENGTH_ERROR = 0x06;
+  public const ulong IPMI_KCS_STATUS_UNSPECIFIED = 0xFF;
+}
 
 ///
 /// KCS Interface State Bit

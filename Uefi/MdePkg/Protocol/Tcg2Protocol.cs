@@ -16,16 +16,19 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #include <IndustryStandard/UefiTcgPlatform.h>
 // #include <IndustryStandard/Tpm20.h>
 
-public static EFI_GUID EFI_TCG2_PROTOCOL_GUID = new GUID(0x607f766c, 0x7455, 0x42be, new byte[] { 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_TCG2_PROTOCOL_GUID = new GUID(0x607f766c, 0x7455, 0x42be, new byte[] { 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f });
 
-typedef struct tdEFI_TCG2_PROTOCOL EFI_TCG2_PROTOCOL;
+  typedef struct tdEFI_TCG2_PROTOCOL EFI_TCG2_PROTOCOL;
 
 typedef struct tdEFI_TCG2_VERSION
-{
-  byte Major;
-  byte Minor;
+  {
+    byte Major;
+    byte Minor;
+  }
+  EFI_TCG2_VERSION;
 }
-EFI_TCG2_VERSION;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCG2_EVENT_LOG_BITMAP { uint Value; public static implicit operator EFI_TCG2_EVENT_LOG_BITMAP(uint value) => new EFI_TCG2_EVENT_LOG_BITMAP() { Value = value }; public static implicit operator uint(EFI_TCG2_EVENT_LOG_BITMAP value) => value.Value; }
@@ -34,88 +37,91 @@ public unsafe struct EFI_TCG2_EVENT_LOG_FORMAT { uint Value; public static impli
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCG2_EVENT_ALGORITHM_BITMAP { uint Value; public static implicit operator EFI_TCG2_EVENT_ALGORITHM_BITMAP(uint value) => new EFI_TCG2_EVENT_ALGORITHM_BITMAP() { Value = value }; public static implicit operator uint(EFI_TCG2_EVENT_ALGORITHM_BITMAP value) => value.Value; }
 
-public const ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_1_2 = 0x00000001;
-public const ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
-
-typedef struct tdEFI_TCG2_BOOT_SERVICE_CAPABILITY
+public unsafe partial class EFI
 {
-  //
-  // Allocated size of the structure
-  //
-  byte Size;
-  //
-  // Version of the EFI_TCG2_BOOT_SERVICE_CAPABILITY structure itself.
-  // For this version of the protocol, the Major version shall be set to 1
-  // and the Minor version shall be set to 1.
-  //
-  EFI_TCG2_VERSION StructureVersion;
-  //
-  // Version of the EFI TCG2 protocol.
-  // For this version of the protocol, the Major version shall be set to 1
-  // and the Minor version shall be set to 1.
-  //
-  EFI_TCG2_VERSION ProtocolVersion;
-  //
-  // Supported hash algorithms (this bitmap is determined by the supported PCR
-  // banks in the TPM and the hashing algorithms supported by the firmware)
-  //
-  EFI_TCG2_EVENT_ALGORITHM_BITMAP HashAlgorithmBitmap;
-  //
-  // Bitmap of supported event log formats
-  //
-  EFI_TCG2_EVENT_LOG_BITMAP SupportedEventLogs;
-  //
-  // False = TPM not present
-  //
-  bool TPMPresentFlag;
-  //
-  // Max size (in bytes) of a command that can be sent to the TPM
-  //
-  ushort MaxCommandSize;
-  //
-  // Max size (in bytes) of a response that can be provided by the TPM
-  //
-  ushort MaxResponseSize;
-  //
-  // 4-byte Vendor ID
-  // (see TCG Vendor ID registry, Section "TPM Capabilities Vendor ID")
-  //
-  uint ManufacturerID;
-  //
-  // Maximum number of PCR banks (hashing algorithms) supported.
-  // No granularity is provided to support a specific set of algorithms.
-  // Minimum value is 1.
-  //
-  uint NumberOfPCRBanks;
-  //
-  // A bitmap of currently active PCR banks (hashing algorithms).
-  // This is a subset of the supported hashing algorithms reported in HashAlgorithmBitMap.
-  // NumberOfPcrBanks defines the number of bits that are set.
-  //
-  EFI_TCG2_EVENT_ALGORITHM_BITMAP ActivePcrBanks;
-}
-EFI_TCG2_BOOT_SERVICE_CAPABILITY;
+  public const ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_1_2 = 0x00000001;
+  public const ulong EFI_TCG2_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
+
+  typedef struct tdEFI_TCG2_BOOT_SERVICE_CAPABILITY
+  {
+    //
+    // Allocated size of the structure
+    //
+    byte Size;
+    //
+    // Version of the EFI_TCG2_BOOT_SERVICE_CAPABILITY structure itself.
+    // For this version of the protocol, the Major version shall be set to 1
+    // and the Minor version shall be set to 1.
+    //
+    EFI_TCG2_VERSION StructureVersion;
+    //
+    // Version of the EFI TCG2 protocol.
+    // For this version of the protocol, the Major version shall be set to 1
+    // and the Minor version shall be set to 1.
+    //
+    EFI_TCG2_VERSION ProtocolVersion;
+    //
+    // Supported hash algorithms (this bitmap is determined by the supported PCR
+    // banks in the TPM and the hashing algorithms supported by the firmware)
+    //
+    EFI_TCG2_EVENT_ALGORITHM_BITMAP HashAlgorithmBitmap;
+    //
+    // Bitmap of supported event log formats
+    //
+    EFI_TCG2_EVENT_LOG_BITMAP SupportedEventLogs;
+    //
+    // False = TPM not present
+    //
+    bool TPMPresentFlag;
+    //
+    // Max size (in bytes) of a command that can be sent to the TPM
+    //
+    ushort MaxCommandSize;
+    //
+    // Max size (in bytes) of a response that can be provided by the TPM
+    //
+    ushort MaxResponseSize;
+    //
+    // 4-byte Vendor ID
+    // (see TCG Vendor ID registry, Section "TPM Capabilities Vendor ID")
+    //
+    uint ManufacturerID;
+    //
+    // Maximum number of PCR banks (hashing algorithms) supported.
+    // No granularity is provided to support a specific set of algorithms.
+    // Minimum value is 1.
+    //
+    uint NumberOfPCRBanks;
+    //
+    // A bitmap of currently active PCR banks (hashing algorithms).
+    // This is a subset of the supported hashing algorithms reported in HashAlgorithmBitMap.
+    // NumberOfPcrBanks defines the number of bits that are set.
+    //
+    EFI_TCG2_EVENT_ALGORITHM_BITMAP ActivePcrBanks;
+  }
+  EFI_TCG2_BOOT_SERVICE_CAPABILITY;
 
 public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA1 = 0x00000001;
-public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA256 = 0x00000002;
-public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA384 = 0x00000004;
-public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA512 = 0x00000008;
-public const ulong EFI_TCG2_BOOT_HASH_ALG_SM3_256 = 0x00000010;
+  public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA256 = 0x00000002;
+  public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA384 = 0x00000004;
+  public const ulong EFI_TCG2_BOOT_HASH_ALG_SHA512 = 0x00000008;
+  public const ulong EFI_TCG2_BOOT_HASH_ALG_SM3_256 = 0x00000010;
 
-//
-// This bit is shall be set when an event shall be extended but not logged.
-//
-public const ulong EFI_TCG2_EXTEND_ONLY = 0x0000000000000001;
-//
-// This bit shall be set when the intent is to measure a PE/COFF image.
-//
-public const ulong PE_COFF_IMAGE = 0x0000000000000010;
+  //
+  // This bit is shall be set when an event shall be extended but not logged.
+  //
+  public const ulong EFI_TCG2_EXTEND_ONLY = 0x0000000000000001;
+  //
+  // This bit shall be set when the intent is to measure a PE/COFF image.
+  //
+  public const ulong PE_COFF_IMAGE = 0x0000000000000010;
 
-public const ulong MAX_PCR_INDEX = 23;
+  public const ulong MAX_PCR_INDEX = 23;
 
-// #pragma pack(1)
+  // #pragma pack(1)
 
-public const ulong EFI_TCG2_EVENT_HEADER_VERSION = 1;
+  public const ulong EFI_TCG2_EVENT_HEADER_VERSION = 1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCG2_EVENT_HEADER
@@ -150,162 +156,6 @@ typedef struct tdEFI_TCG2_EVENT
 EFI_TCG2_EVENT;
 
 // #pragma pack()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 struct tdEFI_TCG2_PROTOCOL
 {
@@ -421,27 +271,30 @@ struct tdEFI_TCG2_PROTOCOL
 // Log entries after Get Event Log service
 //
 
-public static EFI_GUID EFI_TCG2_FINAL_EVENTS_TABLE_GUID = new GUID(0x1e2ed096, 0x30e2, 0x4254, new byte[] { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 });
-
-// extern EFI_GUID  gEfiTcg2FinalEventsTableGuid;
-
-typedef struct tdEFI_TCG2_FINAL_EVENTS_TABLE
+public unsafe partial class EFI
 {
-  //
-  // The version of this structure.
-  //
-  ulong Version;
-  //
-  // Number of events recorded after invocation of GetEventLog API
-  //
-  ulong NumberOfEvents;
-  //
-  // List of events of type TCG_PCR_EVENT2.
-  //
-  // TCG_PCR_EVENT2          Event[1];
-}
-EFI_TCG2_FINAL_EVENTS_TABLE;
+  public static EFI_GUID EFI_TCG2_FINAL_EVENTS_TABLE_GUID = new GUID(0x1e2ed096, 0x30e2, 0x4254, new byte[] { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 });
+
+  // extern EFI_GUID  gEfiTcg2FinalEventsTableGuid;
+
+  typedef struct tdEFI_TCG2_FINAL_EVENTS_TABLE
+  {
+    //
+    // The version of this structure.
+    //
+    ulong Version;
+    //
+    // Number of events recorded after invocation of GetEventLog API
+    //
+    ulong NumberOfEvents;
+    //
+    // List of events of type TCG_PCR_EVENT2.
+    //
+    // TCG_PCR_EVENT2          Event[1];
+  }
+  EFI_TCG2_FINAL_EVENTS_TABLE;
 
 public const ulong EFI_TCG2_FINAL_EVENTS_TABLE_VERSION = 1;
+}
 
 // #endif

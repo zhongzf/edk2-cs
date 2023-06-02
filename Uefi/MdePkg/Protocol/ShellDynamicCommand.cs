@@ -17,52 +17,17 @@ namespace Uefi;
 // #include <Protocol/ShellParameters.h>
 
 // {3C7200E9-005F-4EA4-87DE-A3DFAC8A27C3}
-public static EFI_GUID EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL_GUID = new GUID(
-  0x3c7200e9, 0x005f, 0x4ea4, new byte[] { 0x87, 0xde, 0xa3, 0xdf, 0xac, 0x8a, 0x27, 0xc3 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL_GUID = new GUID(
+    0x3c7200e9, 0x005f, 0x4ea4, new byte[] { 0x87, 0xde, 0xa3, 0xdf, 0xac, 0x8a, 0x27, 0xc3 });
 
-//
-// Define for forward reference.
-//
-// typedef struct _EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL;
+  //
+  // Define for forward reference.
+  //
+  // typedef struct _EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 /// EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL protocol structure.
 [StructLayout(LayoutKind.Sequential)]

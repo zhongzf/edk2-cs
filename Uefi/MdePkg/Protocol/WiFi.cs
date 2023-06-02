@@ -19,10 +19,13 @@ namespace Uefi;
 
 // #include <Protocol/WiFi2.h>
 
-public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_PROTOCOL_GUID = new GUID(
-    0xda55bc9, 0x45f8, 0x4bb4, new byte[] { 0x87, 0x19, 0x52, 0x24, 0xf1, 0x8a, 0x4d, 0x45 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_PROTOCOL_GUID = new GUID(
+      0xda55bc9, 0x45f8, 0x4bb4, new byte[] { 0x87, 0x19, 0x52, 0x24, 0xf1, 0x8a, 0x4d, 0x45 });
 
-// typedef struct _EFI_WIRELESS_MAC_CONNECTION_PROTOCOL EFI_WIRELESS_MAC_CONNECTION_PROTOCOL;
+  // typedef struct _EFI_WIRELESS_MAC_CONNECTION_PROTOCOL EFI_WIRELESS_MAC_CONNECTION_PROTOCOL;
+}
 
 ///
 /// EFI_80211_ACC_NET_TYPE
@@ -1028,149 +1031,6 @@ public unsafe struct EFI_80211_DEAUTHENTICATE_DATA_TOKEN
   ///
   public EFI_80211_DEAUTHENTICATE_DATA* Data;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_WIRELESS_MAC_CONNECTION_PROTOCOL is designed to provide management service

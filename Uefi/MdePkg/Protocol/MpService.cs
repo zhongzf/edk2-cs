@@ -45,44 +45,47 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// Global ID for the EFI_MP_SERVICES_PROTOCOL.
 ///
-public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID = new GUID(
-    0x3fdda605, 0xa76e, 0x4f46, new byte[] { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID = new GUID(
+      0x3fdda605, 0xa76e, 0x4f46, new byte[] { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 });
 
-///
-/// Value used in the NumberProcessors parameter of the GetProcessorInfo function
-///
-public const ulong CPU_V2_EXTENDED_TOPOLOGY = BIT24;
+  ///
+  /// Value used in the NumberProcessors parameter of the GetProcessorInfo function
+  ///
+  public const ulong CPU_V2_EXTENDED_TOPOLOGY = BIT24;
 
-///
-/// Forward declaration for the EFI_MP_SERVICES_PROTOCOL.
-///
-// typedef struct _EFI_MP_SERVICES_PROTOCOL EFI_MP_SERVICES_PROTOCOL;
+  ///
+  /// Forward declaration for the EFI_MP_SERVICES_PROTOCOL.
+  ///
+  // typedef struct _EFI_MP_SERVICES_PROTOCOL EFI_MP_SERVICES_PROTOCOL;
 
-///
-/// Terminator for a list of failed CPUs returned by StartAllAPs().
-///
-public const ulong END_OF_CPU_LIST = 0xffffffff;
+  ///
+  /// Terminator for a list of failed CPUs returned by StartAllAPs().
+  ///
+  public const ulong END_OF_CPU_LIST = 0xffffffff;
 
-///
-/// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
-/// indicates whether the processor is playing the role of BSP. If the bit is 1,
-/// then the processor is BSP. Otherwise, it is AP.
-///
-public const ulong PROCESSOR_AS_BSP_BIT = 0x00000001;
+  ///
+  /// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
+  /// indicates whether the processor is playing the role of BSP. If the bit is 1,
+  /// then the processor is BSP. Otherwise, it is AP.
+  ///
+  public const ulong PROCESSOR_AS_BSP_BIT = 0x00000001;
 
-///
-/// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
-/// indicates whether the processor is enabled. If the bit is 1, then the
-/// processor is enabled. Otherwise, it is disabled.
-///
-public const ulong PROCESSOR_ENABLED_BIT = 0x00000002;
+  ///
+  /// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
+  /// indicates whether the processor is enabled. If the bit is 1, then the
+  /// processor is enabled. Otherwise, it is disabled.
+  ///
+  public const ulong PROCESSOR_ENABLED_BIT = 0x00000002;
 
-///
-/// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
-/// indicates whether the processor is healthy. If the bit is 1, then the
-/// processor is healthy. Otherwise, some fault has been detected for the processor.
-///
-public const ulong PROCESSOR_HEALTH_STATUS_BIT = 0x00000004;
+  ///
+  /// This bit is used in the StatusFlag field of EFI_PROCESSOR_INFORMATION and
+  /// indicates whether the processor is healthy. If the bit is 1, then the
+  /// processor is healthy. Otherwise, some fault has been detected for the processor.
+  ///
+  public const ulong PROCESSOR_HEALTH_STATUS_BIT = 0x00000004;
+}
 
 ///
 /// Structure that describes the pyhiscal location of a logical CPU.
@@ -190,454 +193,6 @@ public unsafe struct EFI_PROCESSOR_INFORMATION
   /// CPU_V2_EXTENDED_TOPOLOGY is set in parameter ProcessorNumber.
   public EXTENDED_PROCESSOR_INFORMATION ExtendedInformation;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// When installed, the MP Services Protocol produces a collection of services

@@ -17,8 +17,11 @@ namespace Uefi;
 // #ifndef _MM_CPU_H_
 // #define _MM_CPU_H_
 
-public static EFI_GUID EFI_MM_CPU_PROTOCOL_GUID = new GUID(
-    0xeb346b97, 0x975f, 0x4a9f, new byte[] { 0x8b, 0x22, 0xf8, 0xe9, 0x2b, 0xb3, 0xd5, 0x69 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_CPU_PROTOCOL_GUID = new GUID(
+      0xeb346b97, 0x975f, 0x4a9f, new byte[] { 0x8b, 0x22, 0xf8, 0xe9, 0x2b, 0xb3, 0xd5, 0x69 });
+}
 
 ///
 /// Save State register index
@@ -112,8 +115,11 @@ public enum EFI_MM_SAVE_STATE_REGISTER
 /// EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT is returned in Buffer. Otherwise,
 /// EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT is returned in Buffer.
 ///
-public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT = 32;
-public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT = 64;
+public unsafe partial class EFI
+{
+  public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT = 32;
+  public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT = 64;
+}
 
 ///
 /// Size width of I/O instruction
@@ -168,64 +174,6 @@ public unsafe struct EFI_MM_SAVE_STATE_IO_INFO
 }
 
 // typedef struct _EFI_MM_CPU_PROTOCOL EFI_MM_CPU_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI MM CPU Protocol provides access to CPU-related information while in MM.

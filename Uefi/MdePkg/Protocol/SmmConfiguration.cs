@@ -20,7 +20,10 @@ namespace Uefi;
 // #include <Protocol/MmConfiguration.h>
 // #include <Pi/PiSmmCis.h>
 
-public const ulong EFI_SMM_CONFIGURATION_PROTOCOL_GUID = EFI_MM_CONFIGURATION_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_CONFIGURATION_PROTOCOL_GUID = EFI_MM_CONFIGURATION_PROTOCOL_GUID;
+}
 
 ///
 /// Structure describing a SMRAM region which cannot be used for the SMRAM heap.
@@ -41,25 +44,6 @@ public unsafe struct EFI_SMM_RESERVED_SMRAM_REGION
 }
 
 // typedef struct _EFI_SMM_CONFIGURATION_PROTOCOL EFI_SMM_CONFIGURATION_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI SMM Configuration Protocol is a mandatory protocol published by a DXE CPU driver to

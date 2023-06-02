@@ -43,13 +43,16 @@ public unsafe struct EFI_ACPI_WATCHDOG_RESOURCE_1_0_TABLE
 //
 // WDRT Revision (defined in spec)
 //
-public const ulong EFI_ACPI_WATCHDOG_RESOURCE_1_0_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_WATCHDOG_RESOURCE_1_0_TABLE_REVISION = 0x01;
 
-//
-// WDRT 1.0 Count Unit
-//
-public const ulong EFI_ACPI_WDRT_1_0_COUNT_UNIT_1_SEC_PER_COUNT = 1;
-public const ulong EFI_ACPI_WDRT_1_0_COUNT_UNIT_100_MILLISEC_PER_COUNT = 2;
-public const ulong EFI_ACPI_WDRT_1_0_COUNT_UNIT_10_MILLISEC_PER_COUNT = 3;
+  //
+  // WDRT 1.0 Count Unit
+  //
+  public const ulong EFI_ACPI_WDRT_1_0_COUNT_UNIT_1_SEC_PER_COUNT = 1;
+  public const ulong EFI_ACPI_WDRT_1_0_COUNT_UNIT_100_MILLISEC_PER_COUNT = 2;
+  public const ulong EFI_ACPI_WDRT_1_0_COUNT_UNIT_10_MILLISEC_PER_COUNT = 3;
+}
 
 // #endif

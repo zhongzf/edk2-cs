@@ -18,29 +18,32 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 //
 // GUID retired from UEFI Specification 2.1b
 //
-public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
-    0xE18541CD, 0xF755, 0x4f73, new byte[] { 0x92, 0x8D, 0x64, 0x3C, 0x8A, 0x79, 0xB2, 0x29 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
+      0xE18541CD, 0xF755, 0x4f73, new byte[] { 0x92, 0x8D, 0x64, 0x3C, 0x8A, 0x79, 0xB2, 0x29 });
 
-//
-// GUID intruduced in UEFI Specification 2.1b
-//
-public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
-    0x1ACED566, 0x76ED, 0x4218, new byte[] { 0xBC, 0x81, 0x76, 0x7F, 0x1F, 0x97, 0x7A, 0x89 });
+  //
+  // GUID intruduced in UEFI Specification 2.1b
+  //
+  public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
+      0x1ACED566, 0x76ED, 0x4218, new byte[] { 0xBC, 0x81, 0x76, 0x7F, 0x1F, 0x97, 0x7A, 0x89 });
 
-//
-// Revision defined in UEFI Specification 2.4
-//
-public const ulong EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_REVISION = 0x00020000;
+  //
+  // Revision defined in UEFI Specification 2.4
+  //
+  public const ulong EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_REVISION = 0x00020000;
 
-///
-/// Revision defined in EFI1.1.
-///
-public const ulong EFI_NETWORK_INTERFACE_IDENTIFIER_INTERFACE_REVISION = EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_REVISION;
+  ///
+  /// Revision defined in EFI1.1.
+  ///
+  public const ulong EFI_NETWORK_INTERFACE_IDENTIFIER_INTERFACE_REVISION = EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_REVISION;
 
-///
-/// Forward reference for pure ANSI compatability.
-///
-// typedef struct _EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL;
+  ///
+  /// Forward reference for pure ANSI compatability.
+  ///
+  // typedef struct _EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL;
+}
 
 ///
 /// Protocol defined in EFI1.1.

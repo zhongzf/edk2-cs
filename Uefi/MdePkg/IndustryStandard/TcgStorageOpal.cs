@@ -28,85 +28,88 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <IndustryStandard/TcgStorageCore.h>
 
-public const ulong OPAL_UID_ADMIN_SP = TCG_TO_UID(0x00, 0x00, 0x02, 0x05, 0x00, 0x00, 0x00, 0x01);
-public const ulong OPAL_UID_ADMIN_SP_C_PIN_MSID = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x84, 0x02);
-public const ulong OPAL_UID_ADMIN_SP_C_PIN_SID = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x01);
-public const ulong OPAL_UID_LOCKING_SP = TCG_TO_UID(0x00, 0x00, 0x02, 0x05, 0x00, 0x00, 0x00, 0x02);
+public unsafe partial class EFI
+{
+  public const ulong OPAL_UID_ADMIN_SP = TCG_TO_UID(0x00, 0x00, 0x02, 0x05, 0x00, 0x00, 0x00, 0x01);
+  public const ulong OPAL_UID_ADMIN_SP_C_PIN_MSID = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x84, 0x02);
+  public const ulong OPAL_UID_ADMIN_SP_C_PIN_SID = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x01);
+  public const ulong OPAL_UID_LOCKING_SP = TCG_TO_UID(0x00, 0x00, 0x02, 0x05, 0x00, 0x00, 0x00, 0x02);
 
-// ADMIN_SP
-// Authorities
-public const ulong OPAL_ADMIN_SP_ANYBODY_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x01);
-public const ulong OPAL_ADMIN_SP_ADMINS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x02);
-public const ulong OPAL_ADMIN_SP_MAKERS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x03);
-public const ulong OPAL_ADMIN_SP_SID_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x06);
-public const ulong OPAL_ADMIN_SP_ADMIN1_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x02, 0x01);
-public const ulong OPAL_ADMIN_SP_PSID_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x01, 0xFF, 0x01);
+  // ADMIN_SP
+  // Authorities
+  public const ulong OPAL_ADMIN_SP_ANYBODY_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x01);
+  public const ulong OPAL_ADMIN_SP_ADMINS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x02);
+  public const ulong OPAL_ADMIN_SP_MAKERS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x03);
+  public const ulong OPAL_ADMIN_SP_SID_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x06);
+  public const ulong OPAL_ADMIN_SP_ADMIN1_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x02, 0x01);
+  public const ulong OPAL_ADMIN_SP_PSID_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x01, 0xFF, 0x01);
 
-public const ulong OPAL_ADMIN_SP_ACTIVATE_METHOD = TCG_TO_UID(0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x02, 0x03);
-public const ulong OPAL_ADMIN_SP_REVERT_METHOD = TCG_TO_UID(0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x02, 0x02);
+  public const ulong OPAL_ADMIN_SP_ACTIVATE_METHOD = TCG_TO_UID(0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x02, 0x03);
+  public const ulong OPAL_ADMIN_SP_REVERT_METHOD = TCG_TO_UID(0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x02, 0x02);
 
-// ADMIN_SP
-// Data Removal mechanism
-public const ulong OPAL_UID_ADMIN_SP_DATA_REMOVAL_MECHANISM = TCG_TO_UID(0x00, 0x00, 0x11, 0x01, 0x00, 0x00, 0x00, 0x01);
+  // ADMIN_SP
+  // Data Removal mechanism
+  public const ulong OPAL_UID_ADMIN_SP_DATA_REMOVAL_MECHANISM = TCG_TO_UID(0x00, 0x00, 0x11, 0x01, 0x00, 0x00, 0x00, 0x01);
 
-// LOCKING SP
-// Authorities
-public const ulong OPAL_LOCKING_SP_ANYBODY_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x01);
-public const ulong OPAL_LOCKING_SP_ADMINS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x02);
-public const ulong OPAL_LOCKING_SP_ADMIN1_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x01, 0x00, 0x01);
-public const ulong OPAL_LOCKING_SP_USERS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x03, 0x00, 0x00);
-public const ulong OPAL_LOCKING_SP_USER1_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x03, 0x00, 0x01);
+  // LOCKING SP
+  // Authorities
+  public const ulong OPAL_LOCKING_SP_ANYBODY_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x01);
+  public const ulong OPAL_LOCKING_SP_ADMINS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x02);
+  public const ulong OPAL_LOCKING_SP_ADMIN1_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x01, 0x00, 0x01);
+  public const ulong OPAL_LOCKING_SP_USERS_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x03, 0x00, 0x00);
+  public const ulong OPAL_LOCKING_SP_USER1_AUTHORITY = TCG_TO_UID(0x00, 0x00, 0x00, 0x09, 0x00, 0x03, 0x00, 0x01);
 
-public const ulong OPAL_LOCKING_SP_REVERTSP_METHOD = TCG_TO_UID(0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x11);
+  public const ulong OPAL_LOCKING_SP_REVERTSP_METHOD = TCG_TO_UID(0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x11);
 
-// C_PIN Table Rows
-public const ulong OPAL_LOCKING_SP_C_PIN_ADMIN1 = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x01, 0x00, 0x01);
-public const ulong OPAL_LOCKING_SP_C_PIN_USER1 = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x03, 0x00, 0x01);
+  // C_PIN Table Rows
+  public const ulong OPAL_LOCKING_SP_C_PIN_ADMIN1 = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x01, 0x00, 0x01);
+  public const ulong OPAL_LOCKING_SP_C_PIN_USER1 = TCG_TO_UID(0x00, 0x00, 0x00, 0x0B, 0x00, 0x03, 0x00, 0x01);
 
-// Locking Table
-public const ulong OPAL_LOCKING_SP_LOCKING_GLOBALRANGE = TCG_TO_UID(0x00, 0x00, 0x08, 0x02, 0x00, 0x00, 0x00, 0x01);
-public const ulong OPAL_LOCKING_SP_LOCKING_RANGE1 = TCG_TO_UID(0x00, 0x00, 0x08, 0x02, 0x00, 0x03, 0x00, 0x01);
+  // Locking Table
+  public const ulong OPAL_LOCKING_SP_LOCKING_GLOBALRANGE = TCG_TO_UID(0x00, 0x00, 0x08, 0x02, 0x00, 0x00, 0x00, 0x01);
+  public const ulong OPAL_LOCKING_SP_LOCKING_RANGE1 = TCG_TO_UID(0x00, 0x00, 0x08, 0x02, 0x00, 0x03, 0x00, 0x01);
 
-// LOCKING SP ACE Table Preconfiguration
-public const ulong OPAL_LOCKING_SP_ACE_LOCKING_GLOBALRANGE_GET_ALL = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xD0, 0x00);
-public const ulong OPAL_LOCKING_SP_ACE_LOCKING_GLOBALRANGE_SET_RDLOCKED = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xE0, 0x00);
-public const ulong OPAL_LOCKING_SP_ACE_LOCKING_GLOBALRANGE_SET_WRLOCKED = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xE8, 0x00);
+  // LOCKING SP ACE Table Preconfiguration
+  public const ulong OPAL_LOCKING_SP_ACE_LOCKING_GLOBALRANGE_GET_ALL = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xD0, 0x00);
+  public const ulong OPAL_LOCKING_SP_ACE_LOCKING_GLOBALRANGE_SET_RDLOCKED = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xE0, 0x00);
+  public const ulong OPAL_LOCKING_SP_ACE_LOCKING_GLOBALRANGE_SET_WRLOCKED = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xE8, 0x00);
 
-public const ulong OPAL_LOCKING_SP_ACE_K_AES_256_GLOBALRANGE_GENKEY = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xB8, 0x00);
-public const ulong OPAL_LOCKING_SP_ACE_K_AES_128_GLOBALRANGE_GENKEY = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xB0, 0x00);
+  public const ulong OPAL_LOCKING_SP_ACE_K_AES_256_GLOBALRANGE_GENKEY = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xB8, 0x00);
+  public const ulong OPAL_LOCKING_SP_ACE_K_AES_128_GLOBALRANGE_GENKEY = TCG_TO_UID(0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0xB0, 0x00);
 
-// LOCKING SP LockingInfo Table Preconfiguration
-public const ulong OPAL_LOCKING_SP_LOCKING_INFO = TCG_TO_UID(0x00, 0x00, 0x08, 0x01, 0x00, 0x00, 0x00, 0x01);
+  // LOCKING SP LockingInfo Table Preconfiguration
+  public const ulong OPAL_LOCKING_SP_LOCKING_INFO = TCG_TO_UID(0x00, 0x00, 0x08, 0x01, 0x00, 0x00, 0x00, 0x01);
 
-public const ulong OPAL_LOCKING_SP_LOCKINGINFO_ALIGNMENTREQUIRED_COL = 0x7;
-public const ulong OPAL_LOCKING_SP_LOCKINGINFO_LOGICALBLOCKSIZE_COL = 0x8;
-public const ulong OPAL_LOCKING_SP_LOCKINGINFO_ALIGNMENTGRANULARITY_COL = 0x9;
-public const ulong OPAL_LOCKING_SP_LOCKINGINFO_LOWESTALIGNEDLBA_COL = 0xA;
+  public const ulong OPAL_LOCKING_SP_LOCKINGINFO_ALIGNMENTREQUIRED_COL = 0x7;
+  public const ulong OPAL_LOCKING_SP_LOCKINGINFO_LOGICALBLOCKSIZE_COL = 0x8;
+  public const ulong OPAL_LOCKING_SP_LOCKINGINFO_ALIGNMENTGRANULARITY_COL = 0x9;
+  public const ulong OPAL_LOCKING_SP_LOCKINGINFO_LOWESTALIGNEDLBA_COL = 0xA;
 
-// K_AES_256 Table Preconfiguration
-public const ulong OPAL_LOCKING_SP_K_AES_256_GLOBALRANGE_KEY = TCG_TO_UID(0x00, 0x00, 0x08, 0x06, 0x00, 0x00, 0x00, 0x01);
+  // K_AES_256 Table Preconfiguration
+  public const ulong OPAL_LOCKING_SP_K_AES_256_GLOBALRANGE_KEY = TCG_TO_UID(0x00, 0x00, 0x08, 0x06, 0x00, 0x00, 0x00, 0x01);
 
-// K_AES_128 Table Preconfiguration
-public const ulong OPAL_LOCKING_SP_K_AES_128_GLOBALRANGE_KEY = TCG_TO_UID(0x00, 0x00, 0x08, 0x05, 0x00, 0x00, 0x00, 0x01);
+  // K_AES_128 Table Preconfiguration
+  public const ulong OPAL_LOCKING_SP_K_AES_128_GLOBALRANGE_KEY = TCG_TO_UID(0x00, 0x00, 0x08, 0x05, 0x00, 0x00, 0x00, 0x01);
 
-// Minimum Properties that an Opal Compliant SD Shall support
-public const ulong OPAL_MIN_MAX_COM_PACKET_SIZE = 2048;
-public const ulong OPAL_MIN_MAX_REPONSE_COM_PACKET_SIZE = 2048;
-public const ulong OPAL_MIN_MAX_PACKET_SIZE = 2028;
-public const ulong OPAL_MIN_MAX_IND_TOKEN_SIZE = 1992;
-public const ulong OPAL_MIN_MAX_PACKETS = 1;
-public const ulong OPAL_MIN_MAX_SUBPACKETS = 1;
-public const ulong OPAL_MIN_MAX_METHODS = 1;
-public const ulong OPAL_MIN_MAX_SESSIONS = 1;
-public const ulong OPAL_MIN_MAX_AUTHENTICATIONS = 2;
-public const ulong OPAL_MIN_MAX_TRANSACTION_LIMIT = 1;
+  // Minimum Properties that an Opal Compliant SD Shall support
+  public const ulong OPAL_MIN_MAX_COM_PACKET_SIZE = 2048;
+  public const ulong OPAL_MIN_MAX_REPONSE_COM_PACKET_SIZE = 2048;
+  public const ulong OPAL_MIN_MAX_PACKET_SIZE = 2028;
+  public const ulong OPAL_MIN_MAX_IND_TOKEN_SIZE = 1992;
+  public const ulong OPAL_MIN_MAX_PACKETS = 1;
+  public const ulong OPAL_MIN_MAX_SUBPACKETS = 1;
+  public const ulong OPAL_MIN_MAX_METHODS = 1;
+  public const ulong OPAL_MIN_MAX_SESSIONS = 1;
+  public const ulong OPAL_MIN_MAX_AUTHENTICATIONS = 2;
+  public const ulong OPAL_MIN_MAX_TRANSACTION_LIMIT = 1;
 
-public const ulong OPAL_ADMIN_SP_PIN_COL = 3;
-public const ulong OPAL_LOCKING_SP_C_PIN_TRYLIMIT_COL = 5;
-public const ulong OPAL_RANDOM_METHOD_MAX_COUNT_SIZE = 32;
+  public const ulong OPAL_ADMIN_SP_PIN_COL = 3;
+  public const ulong OPAL_LOCKING_SP_C_PIN_TRYLIMIT_COL = 5;
+  public const ulong OPAL_RANDOM_METHOD_MAX_COUNT_SIZE = 32;
 
-// Data Removal Mechanism column.
-public const ulong OPAL_ADMIN_SP_ACTIVE_DATA_REMOVAL_MECHANISM_COL = 1;
+  // Data Removal Mechanism column.
+  public const ulong OPAL_ADMIN_SP_ACTIVE_DATA_REMOVAL_MECHANISM_COL = 1;
+}
 
 //
 // Supported Data Removal Mechanism.

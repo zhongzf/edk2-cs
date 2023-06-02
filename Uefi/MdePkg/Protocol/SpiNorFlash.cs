@@ -20,163 +20,14 @@ namespace Uefi;
 ///
 /// Global ID for the SPI NOR Flash Protocol
 ///
-public static EFI_GUID EFI_SPI_NOR_FLASH_PROTOCOL_GUID = new GUID(0xb57ec3fe, 0xf833, 0x4ba6,
-    { 0x85, 0x78, 0x2a, 0x7d, 0x6a, 0x87, 0x44, 0x4b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SPI_NOR_FLASH_PROTOCOL_GUID = new GUID(0xb57ec3fe, 0xf833, 0x4ba6,
+      { 0x85, 0x78, 0x2a, 0x7d, 0x6a, 0x87, 0x44, 0x4b });
 
 // typedef struct _EFI_SPI_NOR_FLASH_PROTOCOL EFI_SPI_NOR_FLASH_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_SPI_NOR_FLASH_PROTOCOL exists in the SPI peripheral layer.
@@ -232,8 +83,6 @@ public unsafe struct EFI_SPI_NOR_FLASH_PROTOCOL
     @param[in]  This    Pointer to an EFI_SPI_NOR_FLASH_PROTOCOL data structure.
     @param[out] Buffer  Pointer to a 3 byte buffer to receive the manufacture and
                         device ID.
-
-
 
     @retval EFI_SUCCESS            The manufacture and device ID was read
                                    successfully.

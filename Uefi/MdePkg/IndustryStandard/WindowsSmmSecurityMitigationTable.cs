@@ -15,11 +15,14 @@ namespace Uefi;
 
 // #include <IndustryStandard/Acpi.h>
 
-public const ulong EFI_ACPI_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
 
-// #pragma pack(1)
+  // #pragma pack(1)
 
-public const ulong EFI_WSMT_TABLE_REVISION = 1;
+  public const ulong EFI_WSMT_TABLE_REVISION = 1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_WSMT_TABLE
@@ -28,10 +31,13 @@ public unsafe struct EFI_ACPI_WSMT_TABLE
   public uint ProtectionFlags;
 }
 
-public const ulong EFI_WSMT_PROTECTION_FLAGS_FIXED_COMM_BUFFERS = 0x1;
-public const ulong EFI_WSMT_PROTECTION_FLAGS_COMM_BUFFER_NESTED_PTR_PROTECTION = 0x2;
-public const ulong EFI_WSMT_PROTECTION_FLAGS_SYSTEM_RESOURCE_PROTECTION = 0x4;
+public unsafe partial class EFI
+{
+  public const ulong EFI_WSMT_PROTECTION_FLAGS_FIXED_COMM_BUFFERS = 0x1;
+  public const ulong EFI_WSMT_PROTECTION_FLAGS_COMM_BUFFER_NESTED_PTR_PROTECTION = 0x2;
+  public const ulong EFI_WSMT_PROTECTION_FLAGS_SYSTEM_RESOURCE_PROTECTION = 0x4;
 
-// #pragma pack()
+  // #pragma pack()
+}
 
 // #endif

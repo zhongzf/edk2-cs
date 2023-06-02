@@ -13,58 +13,14 @@ namespace Uefi;
 // #ifndef __ISCSI_INITIATOR_NAME_H__
 // #define __ISCSI_INITIATOR_NAME_H__
 
-public static EFI_GUID EFI_ISCSI_INITIATOR_NAME_PROTOCOL_GUID = new GUID(
-  0x59324945, 0xec44, 0x4c0d, new byte[] { 0xb1, 0xcd, 0x9d, 0xb1, 0x39, 0xdf, 0x7, 0xc });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_ISCSI_INITIATOR_NAME_PROTOCOL_GUID = new GUID(
+    0x59324945, 0xec44, 0x4c0d, new byte[] { 0xb1, 0xcd, 0x9d, 0xb1, 0x39, 0xdf, 0x7, 0xc });
 
-// typedef struct _EFI_ISCSI_INITIATOR_NAME_PROTOCOL EFI_ISCSI_INITIATOR_NAME_PROTOCOL;
+  // typedef struct _EFI_ISCSI_INITIATOR_NAME_PROTOCOL EFI_ISCSI_INITIATOR_NAME_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// iSCSI Initiator Name Protocol for setting and obtaining the iSCSI Initiator Name.

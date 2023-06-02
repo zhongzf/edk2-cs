@@ -18,94 +18,20 @@ namespace Uefi;
 ///
 /// DebugPortIo protocol {EBA4E8D2-3858-41EC-A281-2647BA9660D0}
 ///
-public static EFI_GUID EFI_DEBUGPORT_PROTOCOL_GUID = new GUID(
-    0xEBA4E8D2, 0x3858, 0x41EC, new byte[] { 0xA2, 0x81, 0x26, 0x47, 0xBA, 0x96, 0x60, 0xD0 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DEBUGPORT_PROTOCOL_GUID = new GUID(
+      0xEBA4E8D2, 0x3858, 0x41EC, new byte[] { 0xA2, 0x81, 0x26, 0x47, 0xBA, 0x96, 0x60, 0xD0 });
 
-// extern EFI_GUID  gEfiDebugPortProtocolGuid;
+  // extern EFI_GUID  gEfiDebugPortProtocolGuid;
 
-// typedef struct _EFI_DEBUGPORT_PROTOCOL EFI_DEBUGPORT_PROTOCOL;
+  // typedef struct _EFI_DEBUGPORT_PROTOCOL EFI_DEBUGPORT_PROTOCOL;
 
-//
-// DebugPort member functions
-//
+  //
+  // DebugPort member functions
+  //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This protocol provides the communication link between the debug agent and the remote host.
@@ -170,17 +96,20 @@ public unsafe struct EFI_DEBUGPORT_PROTOCOL
 //
 // DEBUGPORT variable definitions...
 //
-public const string EFI_DEBUGPORT_VARIABLE_NAME = "DEBUGPORT";
-public const ulong EFI_DEBUGPORT_VARIABLE_GUID = EFI_DEBUGPORT_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const string EFI_DEBUGPORT_VARIABLE_NAME = "DEBUGPORT";
+  public const ulong EFI_DEBUGPORT_VARIABLE_GUID = EFI_DEBUGPORT_PROTOCOL_GUID;
 
-// extern EFI_GUID  gEfiDebugPortVariableGuid;
+  // extern EFI_GUID  gEfiDebugPortVariableGuid;
 
-//
-// DebugPort device path definitions...
-//
-public const ulong DEVICE_PATH_MESSAGING_DEBUGPORT = EFI_DEBUGPORT_PROTOCOL_GUID;
+  //
+  // DebugPort device path definitions...
+  //
+  public const ulong DEVICE_PATH_MESSAGING_DEBUGPORT = EFI_DEBUGPORT_PROTOCOL_GUID;
 
-// extern EFI_GUID  gEfiDebugPortDevicePathGuid;
+  // extern EFI_GUID  gEfiDebugPortDevicePathGuid;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct DEBUGPORT_DEVICE_PATH

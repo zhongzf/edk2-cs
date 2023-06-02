@@ -17,9 +17,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #pragma pack (1)
 
-public const ulong EFI_TPM2_ACPI_TABLE_REVISION_3 = 3;
-public const ulong EFI_TPM2_ACPI_TABLE_REVISION_4 = 4;
-public const ulong EFI_TPM2_ACPI_TABLE_REVISION = EFI_TPM2_ACPI_TABLE_REVISION_4;
+public unsafe partial class EFI
+{
+  public const ulong EFI_TPM2_ACPI_TABLE_REVISION_3 = 3;
+  public const ulong EFI_TPM2_ACPI_TABLE_REVISION_4 = 4;
+  public const ulong EFI_TPM2_ACPI_TABLE_REVISION = EFI_TPM2_ACPI_TABLE_REVISION_4;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TPM2_ACPI_TABLE
@@ -36,11 +39,14 @@ public unsafe struct EFI_TPM2_ACPI_TABLE
   // ulong                      Lasa;                          // Optional
 }
 
-public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_ACPI = 2;
-public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_TIS = 6;
-public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_COMMAND_RESPONSE_BUFFER_INTERFACE = 7;
-public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_COMMAND_RESPONSE_BUFFER_INTERFACE_WITH_ACPI = 8;
-public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_COMMAND_RESPONSE_BUFFER_INTERFACE_WITH_SMC = 11;
+public unsafe partial class EFI
+{
+  public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_ACPI = 2;
+  public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_TIS = 6;
+  public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_COMMAND_RESPONSE_BUFFER_INTERFACE = 7;
+  public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_COMMAND_RESPONSE_BUFFER_INTERFACE_WITH_ACPI = 8;
+  public const ulong EFI_TPM2_ACPI_TABLE_START_METHOD_COMMAND_RESPONSE_BUFFER_INTERFACE_WITH_SMC = 11;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TPM2_ACPI_CONTROL_AREA

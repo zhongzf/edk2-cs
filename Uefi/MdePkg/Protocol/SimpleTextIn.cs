@@ -15,20 +15,23 @@ namespace Uefi;
 // #ifndef __SIMPLE_TEXT_IN_PROTOCOL_H__
 // #define __SIMPLE_TEXT_IN_PROTOCOL_H__
 
-public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID = new GUID(
-    0x387477c1, 0x69c7, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID = new GUID(
+      0x387477c1, 0x69c7, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
-// typedef struct _EFI_SIMPLE_TEXT_INPUT_PROTOCOL EFI_SIMPLE_TEXT_INPUT_PROTOCOL;
+  // typedef struct _EFI_SIMPLE_TEXT_INPUT_PROTOCOL EFI_SIMPLE_TEXT_INPUT_PROTOCOL;
 
-///
-/// Protocol GUID name defined in EFI1.1.
-///
-public const ulong SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
+  ///
+  /// Protocol GUID name defined in EFI1.1.
+  ///
+  public const ulong SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
 
-///
-/// Protocol name in EFI1.1 for backward-compatible.
-///
-// typedef struct _EFI_SIMPLE_TEXT_INPUT_PROTOCOL SIMPLE_INPUT_INTERFACE;
+  ///
+  /// Protocol name in EFI1.1 for backward-compatible.
+  ///
+  // typedef struct _EFI_SIMPLE_TEXT_INPUT_PROTOCOL SIMPLE_INPUT_INTERFACE;
+}
 
 ///
 /// The keystroke information for the key that was pressed.
@@ -43,74 +46,40 @@ public unsafe struct EFI_INPUT_KEY
 //
 // Required unicode control chars
 //
-public const ulong CHAR_BACKSPACE = 0x0008;
-public const ulong CHAR_TAB = 0x0009;
-public const ulong CHAR_LINEFEED = 0x000A;
-public const ulong CHAR_CARRIAGE_RETURN = 0x000D;
+public unsafe partial class EFI
+{
+  public const ulong CHAR_BACKSPACE = 0x0008;
+  public const ulong CHAR_TAB = 0x0009;
+  public const ulong CHAR_LINEFEED = 0x000A;
+  public const ulong CHAR_CARRIAGE_RETURN = 0x000D;
 
-//
-// EFI Scan codes
-//
-public const ulong SCAN_NULL = 0x0000;
-public const ulong SCAN_UP = 0x0001;
-public const ulong SCAN_DOWN = 0x0002;
-public const ulong SCAN_RIGHT = 0x0003;
-public const ulong SCAN_LEFT = 0x0004;
-public const ulong SCAN_HOME = 0x0005;
-public const ulong SCAN_END = 0x0006;
-public const ulong SCAN_INSERT = 0x0007;
-public const ulong SCAN_DELETE = 0x0008;
-public const ulong SCAN_PAGE_UP = 0x0009;
-public const ulong SCAN_PAGE_DOWN = 0x000A;
-public const ulong SCAN_F1 = 0x000B;
-public const ulong SCAN_F2 = 0x000C;
-public const ulong SCAN_F3 = 0x000D;
-public const ulong SCAN_F4 = 0x000E;
-public const ulong SCAN_F5 = 0x000F;
-public const ulong SCAN_F6 = 0x0010;
-public const ulong SCAN_F7 = 0x0011;
-public const ulong SCAN_F8 = 0x0012;
-public const ulong SCAN_F9 = 0x0013;
-public const ulong SCAN_F10 = 0x0014;
-public const ulong SCAN_ESC = 0x0017;
+  //
+  // EFI Scan codes
+  //
+  public const ulong SCAN_NULL = 0x0000;
+  public const ulong SCAN_UP = 0x0001;
+  public const ulong SCAN_DOWN = 0x0002;
+  public const ulong SCAN_RIGHT = 0x0003;
+  public const ulong SCAN_LEFT = 0x0004;
+  public const ulong SCAN_HOME = 0x0005;
+  public const ulong SCAN_END = 0x0006;
+  public const ulong SCAN_INSERT = 0x0007;
+  public const ulong SCAN_DELETE = 0x0008;
+  public const ulong SCAN_PAGE_UP = 0x0009;
+  public const ulong SCAN_PAGE_DOWN = 0x000A;
+  public const ulong SCAN_F1 = 0x000B;
+  public const ulong SCAN_F2 = 0x000C;
+  public const ulong SCAN_F3 = 0x000D;
+  public const ulong SCAN_F4 = 0x000E;
+  public const ulong SCAN_F5 = 0x000F;
+  public const ulong SCAN_F6 = 0x0010;
+  public const ulong SCAN_F7 = 0x0011;
+  public const ulong SCAN_F8 = 0x0012;
+  public const ulong SCAN_F9 = 0x0013;
+  public const ulong SCAN_F10 = 0x0014;
+  public const ulong SCAN_ESC = 0x0017;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_SIMPLE_TEXT_INPUT_PROTOCOL is used on the ConsoleIn device.

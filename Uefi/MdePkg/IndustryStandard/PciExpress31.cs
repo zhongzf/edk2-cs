@@ -18,8 +18,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #pragma pack(1)
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_L1_PM_SUBSTATES_ID = 0x001E;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_L1_PM_SUBSTATES_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_L1_PM_SUBSTATES_ID = 0x001E;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_L1_PM_SUBSTATES_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits

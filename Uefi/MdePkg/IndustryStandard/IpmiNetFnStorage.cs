@@ -24,20 +24,23 @@ namespace Uefi;
 //
 // Net function definition for Storage command
 //
-public const ulong IPMI_NETFN_STORAGE = 0x0A;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_NETFN_STORAGE = 0x0A;
 
-//
-// All Storage commands and their structure definitions to follow here
-//
+  //
+  // All Storage commands and their structure definitions to follow here
+  //
 
-//
-//  Below is Definitions for FRU Inventory Commands (Chapter 34)
-//
+  //
+  //  Below is Definitions for FRU Inventory Commands (Chapter 34)
+  //
 
-//
-//  Definitions for Get Fru Inventory Area Info command
-//
-public const ulong IPMI_STORAGE_GET_FRU_INVENTORY_AREAINFO = 0x10;
+  //
+  //  Definitions for Get Fru Inventory Area Info command
+  //
+  public const ulong IPMI_STORAGE_GET_FRU_INVENTORY_AREAINFO = 0x10;
+}
 
 //
 //  Constants and Structure definitions for "Get Fru Inventory Area Info" command to follow here
@@ -59,7 +62,10 @@ public unsafe struct IPMI_GET_FRU_INVENTORY_AREA_INFO_RESPONSE
 //
 //  Definitions for Read Fru Data command
 //
-public const ulong IPMI_STORAGE_READ_FRU_DATA = 0x11;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_READ_FRU_DATA = 0x11;
+}
 
 //
 //  Constants and Structure definitions for "Read Fru Data" command to follow here
@@ -97,7 +103,10 @@ public unsafe struct IPMI_READ_FRU_DATA_RESPONSE
 //
 //  Definitions for Write Fru Data command
 //
-public const ulong IPMI_STORAGE_WRITE_FRU_DATA = 0x12;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_WRITE_FRU_DATA = 0x12;
+}
 
 //
 //  Constants and Structure definitions for "Write Fru Data" command to follow here
@@ -131,7 +140,10 @@ public unsafe struct IPMI_WRITE_FRU_DATA_RESPONSE
 //
 //  Definitions for Get SDR Repository Info command
 //
-public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_INFO = 0x20;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_INFO = 0x20;
+}
 
 //
 //  Constants and Structure definitions for "Get SDR Repository Info" command to follow here
@@ -166,16 +178,19 @@ public unsafe struct IPMI_GET_SDR_REPOSITORY_INFO_RESPONSE
 //
 //  Definitions for Get SDR Repository Allocateion Info command
 //
-public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_ALLOCATION_INFO = 0x21;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_ALLOCATION_INFO = 0x21;
 
-//
-//  Constants and Structure definitions for "Get SDR Repository Allocateion Info" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get SDR Repository Allocateion Info" command to follow here
+  //
 
-//
-//  Definitions for Reserve SDR Repository command
-//
-public const ulong IPMI_STORAGE_RESERVE_SDR_REPOSITORY = 0x22;
+  //
+  //  Definitions for Reserve SDR Repository command
+  //
+  public const ulong IPMI_STORAGE_RESERVE_SDR_REPOSITORY = 0x22;
+}
 
 //
 //  Constants and Structure definitions for "Reserve SDR Repository" command to follow here
@@ -190,7 +205,10 @@ public unsafe struct IPMI_RESERVE_SDR_REPOSITORY_RESPONSE
 //
 //  Definitions for Get SDR command
 //
-public const ulong IPMI_STORAGE_GET_SDR = 0x23;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_SDR = 0x23;
+}
 
 //
 //  Constants and Structure definitions for "Get SDR" command to follow here
@@ -446,101 +464,104 @@ public unsafe struct IPMI_GET_SDR_RESPONSE
 //
 //  Definitions for Add SDR command
 //
-public const ulong IPMI_STORAGE_ADD_SDR = 0x24;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_ADD_SDR = 0x24;
 
-//
-//  Constants and Structure definitions for "Add SDR" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Add SDR" command to follow here
+  //
 
-//
-//  Definitions for Partial Add SDR command
-//
-public const ulong IPMI_STORAGE_PARTIAL_ADD_SDR = 0x25;
+  //
+  //  Definitions for Partial Add SDR command
+  //
+  public const ulong IPMI_STORAGE_PARTIAL_ADD_SDR = 0x25;
 
-//
-//  Constants and Structure definitions for "Partial Add SDR" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Partial Add SDR" command to follow here
+  //
 
-//
-//  Definitions for Delete SDR command
-//
-public const ulong IPMI_STORAGE_DELETE_SDR = 0x26;
+  //
+  //  Definitions for Delete SDR command
+  //
+  public const ulong IPMI_STORAGE_DELETE_SDR = 0x26;
 
-//
-//  Constants and Structure definitions for "Delete SDR" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Delete SDR" command to follow here
+  //
 
-//
-//  Definitions for Clear SDR Repository command
-//
-public const ulong IPMI_STORAGE_CLEAR_SDR = 0x27;
+  //
+  //  Definitions for Clear SDR Repository command
+  //
+  public const ulong IPMI_STORAGE_CLEAR_SDR = 0x27;
 
-//
-//  Constants and Structure definitions for "Clear SDR Repository" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Clear SDR Repository" command to follow here
+  //
 
-//
-//  Definitions for Get SDR Repository Time command
-//
-public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_TIME = 0x28;
+  //
+  //  Definitions for Get SDR Repository Time command
+  //
+  public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_TIME = 0x28;
 
-//
-//  Constants and Structure definitions for "Get SDR Repository Time" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get SDR Repository Time" command to follow here
+  //
 
-//
-//  Definitions for Set SDR Repository Time command
-//
-public const ulong IPMI_STORAGE_SET_SDR_REPOSITORY_TIME = 0x29;
+  //
+  //  Definitions for Set SDR Repository Time command
+  //
+  public const ulong IPMI_STORAGE_SET_SDR_REPOSITORY_TIME = 0x29;
 
-//
-//  Constants and Structure definitions for "Set SDR Repository Time" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set SDR Repository Time" command to follow here
+  //
 
-//
-//  Definitions for Enter SDR Repository Update Mode command
-//
-public const ulong IPMI_STORAGE_ENTER_SDR_UPDATE_MODE = 0x2A;
+  //
+  //  Definitions for Enter SDR Repository Update Mode command
+  //
+  public const ulong IPMI_STORAGE_ENTER_SDR_UPDATE_MODE = 0x2A;
 
-//
-//  Constants and Structure definitions for "Enter SDR Repository Update Mode" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Enter SDR Repository Update Mode" command to follow here
+  //
 
-//
-//  Definitions for Exit SDR Repository Update Mode command
-//
-public const ulong IPMI_STORAGE_EXIT_SDR_UPDATE_MODE = 0x2B;
+  //
+  //  Definitions for Exit SDR Repository Update Mode command
+  //
+  public const ulong IPMI_STORAGE_EXIT_SDR_UPDATE_MODE = 0x2B;
 
-//
-//  Constants and Structure definitions for "Exit SDR Repository Update Mode" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Exit SDR Repository Update Mode" command to follow here
+  //
 
-//
-//  Definitions for Run Initialize Agent command
-//
-public const ulong IPMI_STORAGE_RUN_INIT_AGENT = 0x2C;
+  //
+  //  Definitions for Run Initialize Agent command
+  //
+  public const ulong IPMI_STORAGE_RUN_INIT_AGENT = 0x2C;
 
-//
-//  Constants and Structure definitions for "Run Initialize Agent" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Run Initialize Agent" command to follow here
+  //
 
-//
-//  Below is Definitions for System Event Log(SEL) Commands (Chapter 31)
-//
+  //
+  //  Below is Definitions for System Event Log(SEL) Commands (Chapter 31)
+  //
 
-//
-//  Definitions for Get SEL Info command
-//
-public const ulong IPMI_STORAGE_GET_SEL_INFO = 0x40;
+  //
+  //  Definitions for Get SEL Info command
+  //
+  public const ulong IPMI_STORAGE_GET_SEL_INFO = 0x40;
 
-//
-//  Constants and Structure definitions for "Get SEL Info" command to follow here
-//
-public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_GET_SEL_ALLOCATION_INFO_CMD = BIT0;
-public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_RESERVE_SEL_CMD = BIT1;
-public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_PARTIAL_ADD_SEL_ENTRY_CMD = BIT2;
-public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_DELETE_SEL_CMD = BIT3;
-public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_OVERFLOW_FLAG = BIT7;
+  //
+  //  Constants and Structure definitions for "Get SEL Info" command to follow here
+  //
+  public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_GET_SEL_ALLOCATION_INFO_CMD = BIT0;
+  public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_RESERVE_SEL_CMD = BIT1;
+  public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_PARTIAL_ADD_SEL_ENTRY_CMD = BIT2;
+  public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_DELETE_SEL_CMD = BIT3;
+  public const ulong IPMI_GET_SEL_INFO_OPERATION_SUPPORT_OVERFLOW_FLAG = BIT7;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_SEL_INFO_RESPONSE
@@ -557,16 +578,19 @@ public unsafe struct IPMI_GET_SEL_INFO_RESPONSE
 //
 //  Definitions for Get SEL Allocation Info command
 //
-public const ulong IPMI_STORAGE_GET_SEL_ALLOCATION_INFO = 0x41;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_SEL_ALLOCATION_INFO = 0x41;
 
-//
-//  Constants and Structure definitions for "Get SEL Allocation Info" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get SEL Allocation Info" command to follow here
+  //
 
-//
-//  Definitions for Reserve SEL command
-//
-public const ulong IPMI_STORAGE_RESERVE_SEL = 0x42;
+  //
+  //  Definitions for Reserve SEL command
+  //
+  public const ulong IPMI_STORAGE_RESERVE_SEL = 0x42;
+}
 
 //
 //  Constants and Structure definitions for "Reserve SEL" command to follow here
@@ -581,11 +605,14 @@ public unsafe struct IPMI_RESERVE_SEL_RESPONSE
 //
 //  Definitions for Get SEL Entry command
 //
-public const ulong IPMI_STORAGE_GET_SEL_ENTRY = 0x43;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_SEL_ENTRY = 0x43;
 
-//
-//  Constants and Structure definitions for "Get SEL Entry" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get SEL Entry" command to follow here
+  //
+}
 
 //
 //  Below is Definitions for SEL Record Formats (Chapter 32)
@@ -644,7 +671,10 @@ public unsafe struct IPMI_GET_SEL_ENTRY_RESPONSE
 //
 //  Definitions for Add SEL Entry command
 //
-public const ulong IPMI_STORAGE_ADD_SEL_ENTRY = 0x44;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_ADD_SEL_ENTRY = 0x44;
+}
 
 //
 //  Constants and Structure definitions for "Add SEL Entry" command to follow here
@@ -665,7 +695,10 @@ public unsafe struct IPMI_ADD_SEL_ENTRY_RESPONSE
 //
 //  Definitions for Partial Add SEL Entry command
 //
-public const ulong IPMI_STORAGE_PARTIAL_ADD_SEL_ENTRY = 0x45;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_PARTIAL_ADD_SEL_ENTRY = 0x45;
+}
 
 //
 //  Constants and Structure definitions for "Partial Add SEL Entry" command to follow here
@@ -690,7 +723,10 @@ public unsafe struct IPMI_PARTIAL_ADD_SEL_ENTRY_RESPONSE
 //
 //  Definitions for Delete SEL Entry command
 //
-public const ulong IPMI_STORAGE_DELETE_SEL_ENTRY = 0x46;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_DELETE_SEL_ENTRY = 0x46;
+}
 
 //
 //  Constants and Structure definitions for "Delete SEL Entry" command to follow here
@@ -702,8 +738,11 @@ public unsafe struct IPMI_DELETE_SEL_ENTRY_REQUEST
   public fixed byte RecordToDelete[2]; // Record to Delete, LS Byte First
 }
 
-public const ulong IPMI_DELETE_SEL_ENTRY_RESPONSE_TYPE_UNSUPPORTED = 0x80;
-public const ulong IPMI_DELETE_SEL_ENTRY_RESPONSE_ERASE_IN_PROGRESS = 0x81;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_DELETE_SEL_ENTRY_RESPONSE_TYPE_UNSUPPORTED = 0x80;
+  public const ulong IPMI_DELETE_SEL_ENTRY_RESPONSE_ERASE_IN_PROGRESS = 0x81;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_DELETE_SEL_ENTRY_RESPONSE
@@ -715,16 +754,19 @@ public unsafe struct IPMI_DELETE_SEL_ENTRY_RESPONSE
 //
 //  Definitions for Clear SEL command
 //
-public const ulong IPMI_STORAGE_CLEAR_SEL = 0x47;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_CLEAR_SEL = 0x47;
 
-//
-//  Constants and Structure definitions for "Clear SEL" command to follow here
-//
-public const ulong IPMI_CLEAR_SEL_REQUEST_C_CHAR_ASCII = 0x43;
-public const ulong IPMI_CLEAR_SEL_REQUEST_L_CHAR_ASCII = 0x4C;
-public const ulong IPMI_CLEAR_SEL_REQUEST_R_CHAR_ASCII = 0x52;
-public const ulong IPMI_CLEAR_SEL_REQUEST_INITIALIZE_ERASE = 0xAA;
-public const ulong IPMI_CLEAR_SEL_REQUEST_GET_ERASE_STATUS = 0x00;
+  //
+  //  Constants and Structure definitions for "Clear SEL" command to follow here
+  //
+  public const ulong IPMI_CLEAR_SEL_REQUEST_C_CHAR_ASCII = 0x43;
+  public const ulong IPMI_CLEAR_SEL_REQUEST_L_CHAR_ASCII = 0x4C;
+  public const ulong IPMI_CLEAR_SEL_REQUEST_R_CHAR_ASCII = 0x52;
+  public const ulong IPMI_CLEAR_SEL_REQUEST_INITIALIZE_ERASE = 0xAA;
+  public const ulong IPMI_CLEAR_SEL_REQUEST_GET_ERASE_STATUS = 0x00;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_CLEAR_SEL_REQUEST
@@ -736,8 +778,11 @@ public unsafe struct IPMI_CLEAR_SEL_REQUEST
   public byte Erase;      // 0xAA, Initiate Erase, 0x00 Get Erase Status
 }
 
-public const ulong IPMI_CLEAR_SEL_RESPONSE_ERASURE_IN_PROGRESS = 0x00;
-public const ulong IPMI_CLEAR_SEL_RESPONSE_ERASURE_COMPLETED = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CLEAR_SEL_RESPONSE_ERASURE_IN_PROGRESS = 0x00;
+  public const ulong IPMI_CLEAR_SEL_RESPONSE_ERASURE_COMPLETED = 0x01;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_CLEAR_SEL_RESPONSE
@@ -749,7 +794,10 @@ public unsafe struct IPMI_CLEAR_SEL_RESPONSE
 //
 //  Definitions for Get SEL Time command
 //
-public const ulong IPMI_STORAGE_GET_SEL_TIME = 0x48;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_SEL_TIME = 0x48;
+}
 
 //
 //  Constants and Structure definitions for "Get SEL Time" command to follow here
@@ -764,7 +812,10 @@ public unsafe struct IPMI_GET_SEL_TIME_RESPONSE
 //
 //  Definitions for Set SEL Time command
 //
-public const ulong IPMI_STORAGE_SET_SEL_TIME = 0x49;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_SET_SEL_TIME = 0x49;
+}
 
 //
 //  Constants and Structure definitions for "Set SEL Time" command to follow here
@@ -778,25 +829,28 @@ public unsafe struct IPMI_SET_SEL_TIME_REQUEST
 //
 //  Definitions for Get Auxillary Log Status command
 //
-public const ulong IPMI_STORAGE_GET_AUXILLARY_LOG_STATUS = 0x5A;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_GET_AUXILLARY_LOG_STATUS = 0x5A;
 
-//
-//  Constants and Structure definitions for "Get Auxillary Log Status" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get Auxillary Log Status" command to follow here
+  //
 
-//
-//  Definitions for Set Auxillary Log Status command
-//
-public const ulong IPMI_STORAGE_SET_AUXILLARY_LOG_STATUS = 0x5B;
+  //
+  //  Definitions for Set Auxillary Log Status command
+  //
+  public const ulong IPMI_STORAGE_SET_AUXILLARY_LOG_STATUS = 0x5B;
 
-//
-//  Constants and Structure definitions for "Set Auxillary Log Status" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set Auxillary Log Status" command to follow here
+  //
 
-//
-//  Definitions for Get SEL Time UTC Offset command
-//
-public const ulong IPMI_STORAGE_GET_SEL_TIME_UTC_OFFSET = 0x5C;
+  //
+  //  Definitions for Get SEL Time UTC Offset command
+  //
+  public const ulong IPMI_STORAGE_GET_SEL_TIME_UTC_OFFSET = 0x5C;
+}
 
 //
 //  Constants and Structure definitions for "Get SEL Time UTC Offset" command to follow here
@@ -815,68 +869,71 @@ public unsafe struct IPMI_GET_SEL_TIME_UTC_OFFSET_RESPONSE
 //
 //  Definitions for Set SEL Time UTC Offset command
 //
-public const ulong IPMI_STORAGE_SET_SEL_TIME_UTC_OFFSET = 0x5D;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_STORAGE_SET_SEL_TIME_UTC_OFFSET = 0x5D;
 
-//
-//  Constants and Structure definitions for "Set SEL Time UTC Offset" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set SEL Time UTC Offset" command to follow here
+  //
 
-public const ulong IPMI_COMPLETE_SEL_RECORD = 0xFF;
+  public const ulong IPMI_COMPLETE_SEL_RECORD = 0xFF;
 
-public const ulong IPMI_SEL_SYSTEM_RECORD = 0x02;
-public const ulong IPMI_SEL_OEM_TIME_STAMP_RECORD_START = 0xC0;
-public const ulong IPMI_SEL_OEM_TIME_STAMP_RECORD_END = 0xDF;
-public const ulong IPMI_SEL_OEM_NO_TIME_STAMP_RECORD_START = 0xE0;
-public const ulong IPMI_SEL_OEM_NO_TIME_STAMP_RECORD_END = 0xFF;
+  public const ulong IPMI_SEL_SYSTEM_RECORD = 0x02;
+  public const ulong IPMI_SEL_OEM_TIME_STAMP_RECORD_START = 0xC0;
+  public const ulong IPMI_SEL_OEM_TIME_STAMP_RECORD_END = 0xDF;
+  public const ulong IPMI_SEL_OEM_NO_TIME_STAMP_RECORD_START = 0xE0;
+  public const ulong IPMI_SEL_OEM_NO_TIME_STAMP_RECORD_END = 0xFF;
 
-public const ulong IPMI_SEL_EVENT_DIR = (EventDirType)(EventDirType >> 7);
-public const ulong IPMI_SEL_EVENT_DIR_ASSERTION_EVENT = 0x00;
-public const ulong IPMI_SEL_EVENT_DIR_DEASSERTION_EVENT = 0x01;
+  public const ulong IPMI_SEL_EVENT_DIR = (EventDirType)(EventDirType >> 7);
+  public const ulong IPMI_SEL_EVENT_DIR_ASSERTION_EVENT = 0x00;
+  public const ulong IPMI_SEL_EVENT_DIR_DEASSERTION_EVENT = 0x01;
 
-public const ulong IPMI_SEL_EVENT_TYPE = (EventDirType)(EventDirType & 0x7F);
-//
-// Event/Reading Type Code Ranges (Chapter 42)
-//
-public const ulong IPMI_SEL_EVENT_TYPE_UNSPECIFIED = 0x00;
-public const ulong IPMI_SEL_EVENT_TYPE_THRESHOLD = 0x01;
-public const ulong IPMI_SEL_EVENT_TYPE_GENERIC_START = 0x02;
-public const ulong IPMI_SEL_EVENT_TYPE_GENERIC_END = 0x0C;
-public const ulong IPMI_SEL_EVENT_TYPE_SENSOR_SPECIFIC = 0x6F;
-public const ulong IPMI_SEL_EVENT_TYPE_OEM_START = 0x70;
-public const ulong IPMI_SEL_EVENT_TYPE_OEM_END = 0x7F;
+  public const ulong IPMI_SEL_EVENT_TYPE = (EventDirType)(EventDirType & 0x7F);
+  //
+  // Event/Reading Type Code Ranges (Chapter 42)
+  //
+  public const ulong IPMI_SEL_EVENT_TYPE_UNSPECIFIED = 0x00;
+  public const ulong IPMI_SEL_EVENT_TYPE_THRESHOLD = 0x01;
+  public const ulong IPMI_SEL_EVENT_TYPE_GENERIC_START = 0x02;
+  public const ulong IPMI_SEL_EVENT_TYPE_GENERIC_END = 0x0C;
+  public const ulong IPMI_SEL_EVENT_TYPE_SENSOR_SPECIFIC = 0x6F;
+  public const ulong IPMI_SEL_EVENT_TYPE_OEM_START = 0x70;
+  public const ulong IPMI_SEL_EVENT_TYPE_OEM_END = 0x7F;
 
-public const ulong SOFTWARE_ID_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
-//
-// System Software IDs definitions (Section 5.5)
-//
-public const ulong IPMI_SWID_BIOS_RANGE_START = 0x00;
-public const ulong IPMI_SWID_BIOS_RANGE_END = 0x0F;
-public const ulong IPMI_SWID_SMI_HANDLER_RANGE_START = 0x10;
-public const ulong IPMI_SWID_SMI_HANDLER_RANGE_END = 0x1F;
-public const ulong IPMI_SWID_SMS_RANGE_START = 0x20;
-public const ulong IPMI_SWID_SMS_RANGE_END = 0x2F;
-public const ulong IPMI_SWID_OEM_RANGE_START = 0x30;
-public const ulong IPMI_SWID_OEM_RANGE_END = 0x3F;
-public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_START = 0x40;
-public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_END = 0x46;
-public const ulong IPMI_SWID_TERMINAL_REMOTE_CONSOLE_ID = 0x47;
+  public const ulong SOFTWARE_ID_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
+  //
+  // System Software IDs definitions (Section 5.5)
+  //
+  public const ulong IPMI_SWID_BIOS_RANGE_START = 0x00;
+  public const ulong IPMI_SWID_BIOS_RANGE_END = 0x0F;
+  public const ulong IPMI_SWID_SMI_HANDLER_RANGE_START = 0x10;
+  public const ulong IPMI_SWID_SMI_HANDLER_RANGE_END = 0x1F;
+  public const ulong IPMI_SWID_SMS_RANGE_START = 0x20;
+  public const ulong IPMI_SWID_SMS_RANGE_END = 0x2F;
+  public const ulong IPMI_SWID_OEM_RANGE_START = 0x30;
+  public const ulong IPMI_SWID_OEM_RANGE_END = 0x3F;
+  public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_START = 0x40;
+  public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_END = 0x46;
+  public const ulong IPMI_SWID_TERMINAL_REMOTE_CONSOLE_ID = 0x47;
 
-public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
-public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
-public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
+  public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
+  public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
+  public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
 
-public const ulong IPMI_EVM_REVISION = 0x04;
-public const ulong IPMI_BIOS_ID = 0x18;
-public const ulong IPMI_FORMAT_REV = 0x00;
-public const ulong IPMI_FORMAT_REV1 = 0x01;
-public const ulong IPMI_SOFTWARE_ID = 0x01;
-public const ulong IPMI_PLATFORM_VAL_ID = 0x01;
-public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
+  public const ulong IPMI_EVM_REVISION = 0x04;
+  public const ulong IPMI_BIOS_ID = 0x18;
+  public const ulong IPMI_FORMAT_REV = 0x00;
+  public const ulong IPMI_FORMAT_REV1 = 0x01;
+  public const ulong IPMI_SOFTWARE_ID = 0x01;
+  public const ulong IPMI_PLATFORM_VAL_ID = 0x01;
+  public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
 
-public const ulong IPMI_SENSOR_TYPE_EVENT_CODE_DISCRETE = 0x6F;
+  public const ulong IPMI_SENSOR_TYPE_EVENT_CODE_DISCRETE = 0x6F;
 
-public const ulong IPMI_OEM_SPECIFIC_DATA = 0x02;
-public const ulong IPMI_SENSOR_SPECIFIC_DATA = 0x03;
+  public const ulong IPMI_OEM_SPECIFIC_DATA = 0x02;
+  public const ulong IPMI_SENSOR_SPECIFIC_DATA = 0x03;
+}
 
 // #pragma pack()
 // #endif

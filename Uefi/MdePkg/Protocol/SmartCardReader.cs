@@ -15,15 +15,17 @@ namespace Uefi;
 // #ifndef __SMART_CARD_READER_H__
 // #define __SMART_CARD_READER_H__
 
-public static EFI_GUID EFI_SMART_CARD_READER_PROTOCOL_GUID = new GUID(
-      0x2a4d1adf, 0x21dc, 0x4b81, new byte[] { 0xa4, 0x2f, 0x8b, 0x8e, 0xe2, 0x38, 0x00, 0x60 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SMART_CARD_READER_PROTOCOL_GUID = new GUID(
+        0x2a4d1adf, 0x21dc, 0x4b81, new byte[] { 0xa4, 0x2f, 0x8b, 0x8e, 0xe2, 0x38, 0x00, 0x60 });
 
-// typedef struct _EFI_SMART_CARD_READER_PROTOCOL EFI_SMART_CARD_READER_PROTOCOL;
+  // typedef struct _EFI_SMART_CARD_READER_PROTOCOL EFI_SMART_CARD_READER_PROTOCOL;
 
-//
-// Codes for access mode
-//
-public const ulong SCARD_AM_READER = 0x0001             // Exclusive access to reader;
+  //
+  // Codes for access mode
+  //
+  public const ulong SCARD_AM_READER = 0x0001             // Exclusive access to reader;
 public const ulong SCARD_AM_CARD = 0x0002             // Exclusive access to card;
 //
 // Codes for card action
@@ -37,269 +39,23 @@ public const ulong SCARD_CA_EJECT = 0x0004          // Eject the card;
 // Protocol types
 //
 public const ulong SCARD_PROTOCOL_UNDEFINED = 0x0000;
-public const ulong SCARD_PROTOCOL_T0 = 0x0001;
-public const ulong SCARD_PROTOCOL_T1 = 0x0002;
-public const ulong SCARD_PROTOCOL_RAW = 0x0004;
-//
-// Codes for state type
-//
-public const ulong SCARD_UNKNOWN = 0x0000              /* state is unknown */;
-public const ulong SCARD_ABSENT = 0x0001              /* Card is absent */;
-public const ulong SCARD_INACTIVE = 0x0002              /* Card is present and not powered*/;
-public const ulong SCARD_ACTIVE = 0x0003              /* Card is present and powered */;
-//
-// Macro to generate a ControlCode & PC/SC part 10 control code
-//
-public const ulong SCARD_CTL_CODE = (code)(0x42000000 + (code));
-public const ulong CM_IOCTL_GET_FEATURE_REQUEST = SCARD_CTL_CODE(3400);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  public const ulong SCARD_PROTOCOL_T0 = 0x0001;
+  public const ulong SCARD_PROTOCOL_T1 = 0x0002;
+  public const ulong SCARD_PROTOCOL_RAW = 0x0004;
+  //
+  // Codes for state type
+  //
+  public const ulong SCARD_UNKNOWN = 0x0000              /* state is unknown */;
+  public const ulong SCARD_ABSENT = 0x0001              /* Card is absent */;
+  public const ulong SCARD_INACTIVE = 0x0002              /* Card is present and not powered*/;
+  public const ulong SCARD_ACTIVE = 0x0003              /* Card is present and powered */;
+  //
+  // Macro to generate a ControlCode & PC/SC part 10 control code
+  //
+  public const ulong SCARD_CTL_CODE = (code)(0x42000000 + (code));
+  public const ulong CM_IOCTL_GET_FEATURE_REQUEST = SCARD_CTL_CODE(3400);
+
+}
 
 ///
 /// Smart card aware application invokes this protocol to get access to an inserted

@@ -13,10 +13,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_TAPE_IO_PROTOCOL_H__
 // #define __EFI_TAPE_IO_PROTOCOL_H__
 
-public static EFI_GUID EFI_TAPE_IO_PROTOCOL_GUID = new GUID(
-    0x1e93e633, 0xd65a, 0x459e, new byte[] { 0xab, 0x84, 0x93, 0xd9, 0xec, 0x26, 0x6d, 0x18 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_TAPE_IO_PROTOCOL_GUID = new GUID(
+      0x1e93e633, 0xd65a, 0x459e, new byte[] { 0xab, 0x84, 0x93, 0xd9, 0xec, 0x26, 0x6d, 0x18 });
 
-// typedef struct _EFI_TAPE_IO_PROTOCOL EFI_TAPE_IO_PROTOCOL;
+  // typedef struct _EFI_TAPE_IO_PROTOCOL EFI_TAPE_IO_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TAPE_HEADER
@@ -39,176 +42,6 @@ public unsafe struct EFI_TAPE_HEADER
   public fixed byte TapeTitle[120];  // UTF-8
   public fixed byte pad[468];        // pad to 1024
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_TAPE_IO_PROTOCOL provides basic sequential operations for tape devices.

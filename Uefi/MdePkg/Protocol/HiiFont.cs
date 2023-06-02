@@ -18,9 +18,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #include <Protocol/GraphicsOutput.h>
 // #include <Protocol/HiiImage.h>
 
-public static EFI_GUID EFI_HII_FONT_PROTOCOL_GUID = new GUID(0xe9ca4775, 0x8657, 0x47fc, new byte[] { 0x97, 0xe7, 0x7e, 0xd6, 0x5a, 0x8, 0x43, 0x24 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_HII_FONT_PROTOCOL_GUID = new GUID(0xe9ca4775, 0x8657, 0x47fc, new byte[] { 0x97, 0xe7, 0x7e, 0xd6, 0x5a, 0x8, 0x43, 0x24 });
 
-// typedef struct _EFI_HII_FONT_PROTOCOL EFI_HII_FONT_PROTOCOL;
+  // typedef struct _EFI_HII_FONT_PROTOCOL EFI_HII_FONT_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FONT_HANDLE { void* Value; public static implicit operator EFI_FONT_HANDLE(void* value) => new EFI_FONT_HANDLE() { Value = value }; public static implicit operator void*(EFI_FONT_HANDLE value) => value.Value; }
@@ -31,14 +34,17 @@ public unsafe struct EFI_FONT_HANDLE { void* Value; public static implicit opera
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_OUT_FLAGS { uint Value; public static implicit operator EFI_HII_OUT_FLAGS(uint value) => new EFI_HII_OUT_FLAGS() { Value = value }; public static implicit operator uint(EFI_HII_OUT_FLAGS value) => value.Value; }
 
-public const ulong EFI_HII_OUT_FLAG_CLIP = 0x00000001;
-public const ulong EFI_HII_OUT_FLAG_WRAP = 0x00000002;
-public const ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_Y = 0x00000004;
-public const ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_X = 0x00000008;
-public const ulong EFI_HII_OUT_FLAG_TRANSPARENT = 0x00000010;
-public const ulong EFI_HII_IGNORE_IF_NO_GLYPH = 0x00000020;
-public const ulong EFI_HII_IGNORE_LINE_BREAK = 0x00000040;
-public const ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_OUT_FLAG_CLIP = 0x00000001;
+  public const ulong EFI_HII_OUT_FLAG_WRAP = 0x00000002;
+  public const ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_Y = 0x00000004;
+  public const ulong EFI_HII_OUT_FLAG_CLIP_CLEAN_X = 0x00000008;
+  public const ulong EFI_HII_OUT_FLAG_TRANSPARENT = 0x00000010;
+  public const ulong EFI_HII_IGNORE_IF_NO_GLYPH = 0x00000020;
+  public const ulong EFI_HII_IGNORE_LINE_BREAK = 0x00000040;
+  public const ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
+}
 
 /**
   Definition of EFI_HII_ROW_INFO.
@@ -71,16 +77,19 @@ public unsafe struct EFI_HII_ROW_INFO
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FONT_INFO_MASK { uint Value; public static implicit operator EFI_FONT_INFO_MASK(uint value) => new EFI_FONT_INFO_MASK() { Value = value }; public static implicit operator uint(EFI_FONT_INFO_MASK value) => value.Value; }
 
-public const ulong EFI_FONT_INFO_SYS_FONT = 0x00000001;
-public const ulong EFI_FONT_INFO_SYS_SIZE = 0x00000002;
-public const ulong EFI_FONT_INFO_SYS_STYLE = 0x00000004;
-public const ulong EFI_FONT_INFO_SYS_FORE_COLOR = 0x00000010;
-public const ulong EFI_FONT_INFO_SYS_BACK_COLOR = 0x00000020;
-public const ulong EFI_FONT_INFO_RESIZE = 0x00001000;
-public const ulong EFI_FONT_INFO_RESTYLE = 0x00002000;
-public const ulong EFI_FONT_INFO_ANY_FONT = 0x00010000;
-public const ulong EFI_FONT_INFO_ANY_SIZE = 0x00020000;
-public const ulong EFI_FONT_INFO_ANY_STYLE = 0x00040000;
+public unsafe partial class EFI
+{
+  public const ulong EFI_FONT_INFO_SYS_FONT = 0x00000001;
+  public const ulong EFI_FONT_INFO_SYS_SIZE = 0x00000002;
+  public const ulong EFI_FONT_INFO_SYS_STYLE = 0x00000004;
+  public const ulong EFI_FONT_INFO_SYS_FORE_COLOR = 0x00000010;
+  public const ulong EFI_FONT_INFO_SYS_BACK_COLOR = 0x00000020;
+  public const ulong EFI_FONT_INFO_RESIZE = 0x00001000;
+  public const ulong EFI_FONT_INFO_RESTYLE = 0x00002000;
+  public const ulong EFI_FONT_INFO_ANY_FONT = 0x00010000;
+  public const ulong EFI_FONT_INFO_ANY_SIZE = 0x00020000;
+  public const ulong EFI_FONT_INFO_ANY_STYLE = 0x00040000;
+}
 
 //
 // EFI_FONT_INFO
@@ -113,352 +122,6 @@ public unsafe struct EFI_FONT_DISPLAY_INFO
   public EFI_FONT_INFO_MASK FontInfoMask;
   public EFI_FONT_INFO FontInfo;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The protocol provides the service to retrieve the font informations.
@@ -615,7 +278,6 @@ public unsafe struct EFI_HII_FONT_PROTOCOL
     Otherwise the string will be rendered to the bitmap specified
     by Bitmap.
 
-
     @param This       A pointer to the EFI_HII_FONT_PROTOCOL instance.
 
     @param Flags      Describes how the string is to be drawn.
@@ -676,7 +338,6 @@ public unsafe struct EFI_HII_FONT_PROTOCOL
                             character display is normalized that
                             some character cells overlap.
 
-
     @retval EFI_SUCCESS           The string was successfully updated.
 
     @retval EFI_OUT_OF_RESOURCES  Unable to allocate an output
@@ -711,7 +372,6 @@ public unsafe struct EFI_HII_FONT_PROTOCOL
     @param Baseline   The number of pixels from the bottom of the bitmap
                       to the baseline.
 
-
     @retval EFI_SUCCESS             The glyph bitmap created.
 
     @retval EFI_OUT_OF_RESOURCES    Unable to allocate the output buffer Blt.
@@ -722,7 +382,6 @@ public unsafe struct EFI_HII_FONT_PROTOCOL
 
     @retval EFI_INVALID_PARAMETER   Blt is NULL, or Width is NULL, or
                                     Height is NULL
-
 
   **/
   public readonly delegate* unmanaged<CONST, CONST, CONST, EFI_IMAGE_OUTPUT**, ulong*, EFI_STATUS> GetGlyph;

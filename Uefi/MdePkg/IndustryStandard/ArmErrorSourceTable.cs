@@ -24,11 +24,14 @@ namespace Uefi;
 ///
 /// "AEST" Arm Error Source Table
 ///
-public const ulong EFI_ACPI_6_3_ARM_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('A', 'E', 'S', 'T');
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_3_ARM_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('A', 'E', 'S', 'T');
 
-public const ulong EFI_ACPI_ARM_ERROR_SOURCE_TABLE_REVISION = 1;
+  public const ulong EFI_ACPI_ARM_ERROR_SOURCE_TABLE_REVISION = 1;
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 ///
 /// Arm Error Source Table definition.
@@ -84,11 +87,14 @@ public unsafe struct EFI_ACPI_AEST_NODE_STRUCT
 }
 
 // AEST Node type definitions
-public const ulong EFI_ACPI_AEST_NODE_TYPE_PROCESSOR = 0x0;
-public const ulong EFI_ACPI_AEST_NODE_TYPE_MEMORY = 0x1;
-public const ulong EFI_ACPI_AEST_NODE_TYPE_SMMU = 0x2;
-public const ulong EFI_ACPI_AEST_NODE_TYPE_VENDOR_DEFINED = 0x3;
-public const ulong EFI_ACPI_AEST_NODE_TYPE_GIC = 0x4;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_AEST_NODE_TYPE_PROCESSOR = 0x0;
+  public const ulong EFI_ACPI_AEST_NODE_TYPE_MEMORY = 0x1;
+  public const ulong EFI_ACPI_AEST_NODE_TYPE_SMMU = 0x2;
+  public const ulong EFI_ACPI_AEST_NODE_TYPE_VENDOR_DEFINED = 0x3;
+  public const ulong EFI_ACPI_AEST_NODE_TYPE_GIC = 0x4;
+}
 
 ///
 /// AEST Node Interface structure.
@@ -132,13 +138,16 @@ public unsafe struct EFI_ACPI_AEST_INTERFACE_STRUCT
 }
 
 // AEST Interface node type definitions.
-public const ulong EFI_ACPI_AEST_INTERFACE_TYPE_SR = 0x0;
-public const ulong EFI_ACPI_AEST_INTERFACE_TYPE_MMIO = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_AEST_INTERFACE_TYPE_SR = 0x0;
+  public const ulong EFI_ACPI_AEST_INTERFACE_TYPE_MMIO = 0x1;
 
-// AEST node interface flag definitions.
-public const ulong EFI_ACPI_AEST_INTERFACE_FLAG_PRIVATE = 0;
-public const ulong EFI_ACPI_AEST_INTERFACE_FLAG_SHARED = BIT0;
-public const ulong EFI_ACPI_AEST_INTERFACE_FLAG_CLEAR_MISCX = BIT1;
+  // AEST node interface flag definitions.
+  public const ulong EFI_ACPI_AEST_INTERFACE_FLAG_PRIVATE = 0;
+  public const ulong EFI_ACPI_AEST_INTERFACE_FLAG_SHARED = BIT0;
+  public const ulong EFI_ACPI_AEST_INTERFACE_FLAG_CLEAR_MISCX = BIT1;
+}
 
 ///
 /// AEST Node Interrupt structure.
@@ -173,12 +182,15 @@ public unsafe struct EFI_ACPI_AEST_INTERRUPT_STRUCT
 }
 
 // AEST Interrupt node - interrupt type defintions.
-public const ulong EFI_ACPI_AEST_INTERRUPT_TYPE_FAULT_HANDLING = 0x0;
-public const ulong EFI_ACPI_AEST_INTERRUPT_TYPE_ERROR_RECOVERY = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_AEST_INTERRUPT_TYPE_FAULT_HANDLING = 0x0;
+  public const ulong EFI_ACPI_AEST_INTERRUPT_TYPE_ERROR_RECOVERY = 0x1;
 
-// AEST Interrupt node - interrupt flag defintions.
-public const ulong EFI_ACPI_AEST_INTERRUPT_FLAG_TRIGGER_TYPE_EDGE = 0;
-public const ulong EFI_ACPI_AEST_INTERRUPT_FLAG_TRIGGER_TYPE_LEVEL = BIT0;
+  // AEST Interrupt node - interrupt flag defintions.
+  public const ulong EFI_ACPI_AEST_INTERRUPT_FLAG_TRIGGER_TYPE_EDGE = 0;
+  public const ulong EFI_ACPI_AEST_INTERRUPT_FLAG_TRIGGER_TYPE_LEVEL = BIT0;
+}
 
 ///
 /// Cache Processor Resource structure.
@@ -274,13 +286,16 @@ public unsafe struct EFI_ACPI_AEST_PROCESSOR_STRUCT
 }
 
 // AEST Processor resource type definitions.
-public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_CACHE = 0x0;
-public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_TLB = 0x1;
-public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_GENERIC = 0x2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_CACHE = 0x0;
+  public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_TLB = 0x1;
+  public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_GENERIC = 0x2;
 
-// AEST Processor flag definitions.
-public const ulong EFI_ACPI_AEST_PROCESSOR_FLAG_GLOBAL = BIT0;
-public const ulong EFI_ACPI_AEST_PROCESSOR_FLAG_SHARED = BIT1;
+  // AEST Processor flag definitions.
+  public const ulong EFI_ACPI_AEST_PROCESSOR_FLAG_GLOBAL = BIT0;
+  public const ulong EFI_ACPI_AEST_PROCESSOR_FLAG_SHARED = BIT1;
+}
 
 ///
 /// Memory Controller structure.
@@ -376,11 +391,14 @@ public unsafe struct EFI_ACPI_AEST_GIC_STRUCT
 }
 
 // AEST GIC interface type definitions.
-public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICC = 0x0;
-public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICD = 0x1;
-public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICR = 0x2;
-public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GITS = 0x3;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICC = 0x0;
+  public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICD = 0x1;
+  public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICR = 0x2;
+  public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GITS = 0x3;
 
-// #pragma pack()
+  // #pragma pack()
+}
 
 // #endif // ARM_ERROR_SOURCE_TABLE_H_

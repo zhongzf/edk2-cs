@@ -17,8 +17,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_SX_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x456d2859, 0xa84b, 0x4e47, new byte[] { 0xa2, 0xee, 0x32, 0x76, 0xd8, 0x86, 0x99, 0x7d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_SX_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x456d2859, 0xa84b, 0x4e47, new byte[] { 0xa2, 0xee, 0x32, 0x76, 0xd8, 0x86, 0x99, 0x7d });
+}
 
 ///
 /// Sleep states S0-S5
@@ -55,68 +58,6 @@ public unsafe struct EFI_MM_SX_REGISTER_CONTEXT
 }
 
 // typedef struct _EFI_MM_SX_DISPATCH_PROTOCOL EFI_MM_SX_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM Sx Dispatch Protocol

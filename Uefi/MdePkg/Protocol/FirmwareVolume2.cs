@@ -19,9 +19,12 @@ namespace Uefi;
 // #ifndef __FIRMWARE_VOLUME2_H__
 // #define __FIRMWARE_VOLUME2_H__
 
-public static EFI_GUID EFI_FIRMWARE_VOLUME2_PROTOCOL_GUID = new GUID(0x220e73b6, 0x6bdb, 0x4413, new byte[] { 0x84, 0x5, 0xb9, 0x74, 0xb1, 0x8, 0x61, 0x9a });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_FIRMWARE_VOLUME2_PROTOCOL_GUID = new GUID(0x220e73b6, 0x6bdb, 0x4413, new byte[] { 0x84, 0x5, 0xb9, 0x74, 0xb1, 0x8, 0x61, 0x9a });
 
-// typedef struct _EFI_FIRMWARE_VOLUME2_PROTOCOL EFI_FIRMWARE_VOLUME2_PROTOCOL;
+  // typedef struct _EFI_FIRMWARE_VOLUME2_PROTOCOL EFI_FIRMWARE_VOLUME2_PROTOCOL;
+}
 
 ///
 /// EFI_FV_ATTRIBUTES
@@ -33,390 +36,67 @@ public unsafe struct EFI_FV_ATTRIBUTES { ulong Value; public static implicit ope
 // EFI_FV_ATTRIBUTES bit definitions
 //
 // EFI_FV_ATTRIBUTES bit semantics
-public const ulong EFI_FV2_READ_DISABLE_CAP = 0x0000000000000001;
-public const ulong EFI_FV2_READ_ENABLE_CAP = 0x0000000000000002;
-public const ulong EFI_FV2_READ_STATUS = 0x0000000000000004;
-public const ulong EFI_FV2_WRITE_DISABLE_CAP = 0x0000000000000008;
-public const ulong EFI_FV2_WRITE_ENABLE_CAP = 0x0000000000000010;
-public const ulong EFI_FV2_WRITE_STATUS = 0x0000000000000020;
-public const ulong EFI_FV2_LOCK_CAP = 0x0000000000000040;
-public const ulong EFI_FV2_LOCK_STATUS = 0x0000000000000080;
-public const ulong EFI_FV2_WRITE_POLICY_RELIABLE = 0x0000000000000100;
-public const ulong EFI_FV2_READ_LOCK_CAP = 0x0000000000001000;
-public const ulong EFI_FV2_READ_LOCK_STATUS = 0x0000000000002000;
-public const ulong EFI_FV2_WRITE_LOCK_CAP = 0x0000000000004000;
-public const ulong EFI_FV2_WRITE_LOCK_STATUS = 0x0000000000008000;
-public const ulong EFI_FV2_ALIGNMENT = 0x00000000001F0000;
-public const ulong EFI_FV2_ALIGNMENT_1 = 0x0000000000000000;
-public const ulong EFI_FV2_ALIGNMENT_2 = 0x0000000000010000;
-public const ulong EFI_FV2_ALIGNMENT_4 = 0x0000000000020000;
-public const ulong EFI_FV2_ALIGNMENT_8 = 0x0000000000030000;
-public const ulong EFI_FV2_ALIGNMENT_16 = 0x0000000000040000;
-public const ulong EFI_FV2_ALIGNMENT_32 = 0x0000000000050000;
-public const ulong EFI_FV2_ALIGNMENT_64 = 0x0000000000060000;
-public const ulong EFI_FV2_ALIGNMENT_128 = 0x0000000000070000;
-public const ulong EFI_FV2_ALIGNMENT_256 = 0x0000000000080000;
-public const ulong EFI_FV2_ALIGNMENT_512 = 0x0000000000090000;
-public const ulong EFI_FV2_ALIGNMENT_1K = 0x00000000000A0000;
-public const ulong EFI_FV2_ALIGNMENT_2K = 0x00000000000B0000;
-public const ulong EFI_FV2_ALIGNMENT_4K = 0x00000000000C0000;
-public const ulong EFI_FV2_ALIGNMENT_8K = 0x00000000000D0000;
-public const ulong EFI_FV2_ALIGNMENT_16K = 0x00000000000E0000;
-public const ulong EFI_FV2_ALIGNMENT_32K = 0x00000000000F0000;
-public const ulong EFI_FV2_ALIGNMENT_64K = 0x0000000000100000;
-public const ulong EFI_FV2_ALIGNMENT_128K = 0x0000000000110000;
-public const ulong EFI_FV2_ALIGNMENT_256K = 0x0000000000120000;
-public const ulong EFI_FV2_ALIGNMENT_512K = 0x0000000000130000;
-public const ulong EFI_FV2_ALIGNMENT_1M = 0x0000000000140000;
-public const ulong EFI_FV2_ALIGNMENT_2M = 0x0000000000150000;
-public const ulong EFI_FV2_ALIGNMENT_4M = 0x0000000000160000;
-public const ulong EFI_FV2_ALIGNMENT_8M = 0x0000000000170000;
-public const ulong EFI_FV2_ALIGNMENT_16M = 0x0000000000180000;
-public const ulong EFI_FV2_ALIGNMENT_32M = 0x0000000000190000;
-public const ulong EFI_FV2_ALIGNMENT_64M = 0x00000000001A0000;
-public const ulong EFI_FV2_ALIGNMENT_128M = 0x00000000001B0000;
-public const ulong EFI_FV2_ALIGNMENT_256M = 0x00000000001C0000;
-public const ulong EFI_FV2_ALIGNMENT_512M = 0x00000000001D0000;
-public const ulong EFI_FV2_ALIGNMENT_1G = 0x00000000001E0000;
-public const ulong EFI_FV2_ALIGNMENT_2G = 0x00000000001F0000;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_FV2_READ_DISABLE_CAP = 0x0000000000000001;
+  public const ulong EFI_FV2_READ_ENABLE_CAP = 0x0000000000000002;
+  public const ulong EFI_FV2_READ_STATUS = 0x0000000000000004;
+  public const ulong EFI_FV2_WRITE_DISABLE_CAP = 0x0000000000000008;
+  public const ulong EFI_FV2_WRITE_ENABLE_CAP = 0x0000000000000010;
+  public const ulong EFI_FV2_WRITE_STATUS = 0x0000000000000020;
+  public const ulong EFI_FV2_LOCK_CAP = 0x0000000000000040;
+  public const ulong EFI_FV2_LOCK_STATUS = 0x0000000000000080;
+  public const ulong EFI_FV2_WRITE_POLICY_RELIABLE = 0x0000000000000100;
+  public const ulong EFI_FV2_READ_LOCK_CAP = 0x0000000000001000;
+  public const ulong EFI_FV2_READ_LOCK_STATUS = 0x0000000000002000;
+  public const ulong EFI_FV2_WRITE_LOCK_CAP = 0x0000000000004000;
+  public const ulong EFI_FV2_WRITE_LOCK_STATUS = 0x0000000000008000;
+  public const ulong EFI_FV2_ALIGNMENT = 0x00000000001F0000;
+  public const ulong EFI_FV2_ALIGNMENT_1 = 0x0000000000000000;
+  public const ulong EFI_FV2_ALIGNMENT_2 = 0x0000000000010000;
+  public const ulong EFI_FV2_ALIGNMENT_4 = 0x0000000000020000;
+  public const ulong EFI_FV2_ALIGNMENT_8 = 0x0000000000030000;
+  public const ulong EFI_FV2_ALIGNMENT_16 = 0x0000000000040000;
+  public const ulong EFI_FV2_ALIGNMENT_32 = 0x0000000000050000;
+  public const ulong EFI_FV2_ALIGNMENT_64 = 0x0000000000060000;
+  public const ulong EFI_FV2_ALIGNMENT_128 = 0x0000000000070000;
+  public const ulong EFI_FV2_ALIGNMENT_256 = 0x0000000000080000;
+  public const ulong EFI_FV2_ALIGNMENT_512 = 0x0000000000090000;
+  public const ulong EFI_FV2_ALIGNMENT_1K = 0x00000000000A0000;
+  public const ulong EFI_FV2_ALIGNMENT_2K = 0x00000000000B0000;
+  public const ulong EFI_FV2_ALIGNMENT_4K = 0x00000000000C0000;
+  public const ulong EFI_FV2_ALIGNMENT_8K = 0x00000000000D0000;
+  public const ulong EFI_FV2_ALIGNMENT_16K = 0x00000000000E0000;
+  public const ulong EFI_FV2_ALIGNMENT_32K = 0x00000000000F0000;
+  public const ulong EFI_FV2_ALIGNMENT_64K = 0x0000000000100000;
+  public const ulong EFI_FV2_ALIGNMENT_128K = 0x0000000000110000;
+  public const ulong EFI_FV2_ALIGNMENT_256K = 0x0000000000120000;
+  public const ulong EFI_FV2_ALIGNMENT_512K = 0x0000000000130000;
+  public const ulong EFI_FV2_ALIGNMENT_1M = 0x0000000000140000;
+  public const ulong EFI_FV2_ALIGNMENT_2M = 0x0000000000150000;
+  public const ulong EFI_FV2_ALIGNMENT_4M = 0x0000000000160000;
+  public const ulong EFI_FV2_ALIGNMENT_8M = 0x0000000000170000;
+  public const ulong EFI_FV2_ALIGNMENT_16M = 0x0000000000180000;
+  public const ulong EFI_FV2_ALIGNMENT_32M = 0x0000000000190000;
+  public const ulong EFI_FV2_ALIGNMENT_64M = 0x00000000001A0000;
+  public const ulong EFI_FV2_ALIGNMENT_128M = 0x00000000001B0000;
+  public const ulong EFI_FV2_ALIGNMENT_256M = 0x00000000001C0000;
+  public const ulong EFI_FV2_ALIGNMENT_512M = 0x00000000001D0000;
+  public const ulong EFI_FV2_ALIGNMENT_1G = 0x00000000001E0000;
+  public const ulong EFI_FV2_ALIGNMENT_2G = 0x00000000001F0000;
+
+}
 
 ///
 /// EFI_FV_WRITE_POLICY, two policies (unreliable write and reliable write) are defined.
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FV_WRITE_POLICY { uint Value; public static implicit operator EFI_FV_WRITE_POLICY(uint value) => new EFI_FV_WRITE_POLICY() { Value = value }; public static implicit operator uint(EFI_FV_WRITE_POLICY value) => value.Value; }
-public const ulong EFI_FV_UNRELIABLE_WRITE = 0x00000000;
-public const ulong EFI_FV_RELIABLE_WRITE = 0x00000001;
+public unsafe partial class EFI
+{
+  public const ulong EFI_FV_UNRELIABLE_WRITE = 0x00000000;
+  public const ulong EFI_FV_RELIABLE_WRITE = 0x00000001;
+}
 
 //
 // EFI_FV_WRITE_FILE_DATA
@@ -445,272 +125,6 @@ public unsafe struct EFI_FV_WRITE_FILE_DATA
   ///
   public uint BufferSize;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The Firmware Volume Protocol contains the file-level
@@ -746,7 +160,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
     @param  FvAttributes  Pointer to an EFI_FV_ATTRIBUTES in which
                           the attributes and current settings are
                           returned.
-
 
     @retval EFI_SUCCESS   The firmware volume attributes were
                           returned.
@@ -988,7 +401,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
                                 uint in which the authentication
                                 status is returned.
 
-
     @retval EFI_SUCCESS   The call completed successfully.
 
     @retval EFI_WARN_BUFFER_TOO_SMALL   The caller-allocated
@@ -1059,7 +471,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
     @param FileData       Pointer to an array of
                           EFI_FV_WRITE_FILE_DATA. Each element of
                           FileData[] represents a file to be written.
-
 
     @retval EFI_SUCCESS             The write completed successfully.
 
@@ -1156,14 +567,12 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
 
     @retval FI_NOT_FOUND      No files of type FileType were found.
 
-
     @retval EFI_DEVICE_ERROR  A hardware error occurred when
                               attempting to access the firmware
                               volume.
 
     @retval EFI_ACCESS_DENIED The firmware volume is configured to
                               disallow reads.
-
 
   **/
   public readonly delegate* unmanaged<CONST, void*, EFI_FV_FILETYPE*, EFI_GUID*, EFI_FV_FILE_ATTRIBUTES*, ulong*, EFI_STATUS> GetNextFile;
@@ -1206,7 +615,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
     @param Buffer           A pointer to the data buffer to return. The
                             buffer's type is indicated by InformationType.
 
-
     @retval EFI_SUCCESS           The information was retrieved.
 
     @retval EFI_UNSUPPORTED       The InformationType is not known.
@@ -1224,7 +632,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
                                   updated with the size needed to
                                   complete the request.
 
-
   **/
   public readonly delegate* unmanaged<CONST, CONST, ulong*, void*, EFI_STATUS> GetInfo;
   /**
@@ -1232,7 +639,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
 
     The SetInfo() function sets information of type InformationType
     on the requested firmware volume.
-
 
     @param This             A pointer to the EFI_FIRMWARE_VOLUME2_PROTOCOL
                             instance that is the file handle the information
@@ -1256,7 +662,6 @@ public unsafe struct EFI_FIRMWARE_VOLUME2_PROTOCOL
 
     @retval EFI_VOLUME_CORRUPTED  The file system structures are
                                   corrupted.
-
 
     @retval EFI_WRITE_PROTECTED   The media is read only.
 

@@ -20,7 +20,10 @@ namespace Uefi;
 
 // #include <Protocol/MmUsbDispatch.h>
 
-public const ulong EFI_SMM_USB_DISPATCH2_PROTOCOL_GUID = EFI_MM_USB_DISPATCH_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_USB_DISPATCH2_PROTOCOL_GUID = EFI_MM_USB_DISPATCH_PROTOCOL_GUID;
+}
 
 ///
 /// USB SMI event types

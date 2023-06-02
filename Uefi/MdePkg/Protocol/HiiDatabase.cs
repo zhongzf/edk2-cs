@@ -16,9 +16,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __HII_DATABASE_H__
 // #define __HII_DATABASE_H__
 
-public static EFI_GUID EFI_HII_DATABASE_PROTOCOL_GUID = new GUID(0xef9fc172, 0xa1b2, 0x4693, new byte[] { 0xb3, 0x27, 0x6d, 0x32, 0xfc, 0x41, 0x60, 0x42 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_HII_DATABASE_PROTOCOL_GUID = new GUID(0xef9fc172, 0xa1b2, 0x4693, new byte[] { 0xb3, 0x27, 0x6d, 0x32, 0xfc, 0x41, 0x60, 0x42 });
 
-// typedef struct _EFI_HII_DATABASE_PROTOCOL EFI_HII_DATABASE_PROTOCOL;
+  // typedef struct _EFI_HII_DATABASE_PROTOCOL EFI_HII_DATABASE_PROTOCOL;
+}
 
 ///
 /// EFI_HII_DATABASE_NOTIFY_TYPE.
@@ -26,478 +29,14 @@ public static EFI_GUID EFI_HII_DATABASE_PROTOCOL_GUID = new GUID(0xef9fc172, 0xa
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_DATABASE_NOTIFY_TYPE { ulong Value; public static implicit operator EFI_HII_DATABASE_NOTIFY_TYPE(ulong value) => new EFI_HII_DATABASE_NOTIFY_TYPE() { Value = value }; public static implicit operator ulong(EFI_HII_DATABASE_NOTIFY_TYPE value) => value.Value; }
 
-public const ulong EFI_HII_DATABASE_NOTIFY_NEW_PACK = 0x00000001;
-public const ulong EFI_HII_DATABASE_NOTIFY_REMOVE_PACK = 0x00000002;
-public const ulong EFI_HII_DATABASE_NOTIFY_EXPORT_PACK = 0x00000004;
-public const ulong EFI_HII_DATABASE_NOTIFY_ADD_PACK = 0x00000008;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_DATABASE_NOTIFY_NEW_PACK = 0x00000001;
+  public const ulong EFI_HII_DATABASE_NOTIFY_REMOVE_PACK = 0x00000002;
+  public const ulong EFI_HII_DATABASE_NOTIFY_EXPORT_PACK = 0x00000004;
+  public const ulong EFI_HII_DATABASE_NOTIFY_ADD_PACK = 0x00000008;
+
+}
 
 ///
 /// Database manager for HII-related data structures.
@@ -658,7 +197,6 @@ public unsafe struct EFI_HII_DATABASE_PROTOCOL
 
     @param This         A pointer to the EFI_HII_DATABASE_PROTOCOL instance.
 
-
     @param Handle       An EFI_HII_HANDLE  that corresponds to the
                         desired package list in the HII database to
                         export or NULL to indicate all package lists
@@ -671,7 +209,6 @@ public unsafe struct EFI_HII_DATABASE_PROTOCOL
 
     @param Buffer       A pointer to a buffer that will contain the
                         results of the export function.
-
 
     @retval EFI_SUCCESS           Package exported.
 
@@ -688,7 +225,6 @@ public unsafe struct EFI_HII_DATABASE_PROTOCOL
   public readonly delegate* unmanaged<CONST, EFI_HII_HANDLE, ulong*, EFI_HII_PACKAGE_LIST_HEADER*, EFI_STATUS> ExportPackageLists;
   /**
 
-
     This function registers a function which will be called when
     specified actions related to packages of the specified type
     occur in the HII database. By registering a function, other
@@ -697,7 +233,6 @@ public unsafe struct EFI_HII_DATABASE_PROTOCOL
     or application which registers a notification should use
     EFI_HII_DATABASE_PROTOCOL.UnregisterPackageNotify() before
     exiting.
-
 
     @param This             A pointer to the EFI_HII_DATABASE_PROTOCOL instance.
 
@@ -725,7 +260,6 @@ public unsafe struct EFI_HII_DATABASE_PROTOCOL
                             the registered notification. Can be used
                             in EFI_HII_DATABASE_PROTOCOL.UnregisterPack
                             to stop notifications.
-
 
     @retval EFI_SUCCESS           Notification registered successfully.
 

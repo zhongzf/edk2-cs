@@ -19,13 +19,13 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_ABSOLUTE_POINTER_PROTOCOL_GUID = new GUID(0x8D59D32B, 0xC655, 0x4AE9, new byte[] { 0x9B, 0x15, 0xF2, 0x59, 0x04, 0x99, 0x2A, 0x43 });
+
+  // typedef struct _EFI_ABSOLUTE_POINTER_PROTOCOL EFI_ABSOLUTE_POINTER_PROTOCOL;
+
+  // *******************************************************
+  // EFI_ABSOLUTE_POINTER_MODE
+  // *******************************************************
 }
-
-// typedef struct _EFI_ABSOLUTE_POINTER_PROTOCOL EFI_ABSOLUTE_POINTER_PROTOCOL;
-
-// *******************************************************
-// EFI_ABSOLUTE_POINTER_MODE
-// *******************************************************
 
 /**
   The following data values in the EFI_ABSOLUTE_POINTER_MODE
@@ -49,59 +49,28 @@ public unsafe struct EFI_ABSOLUTE_POINTER_MODE
                             ///< and should be 0
 }
 
+///
+/// If set, indicates this device supports an alternate button input.
+///
 public unsafe partial class EFI
 {
-  ///
-  /// If set, indicates this device supports an alternate button input.
-  ///
   public const ulong EFI_ABSP_SupportsAltActive = 0x00000001;
 
   ///
   /// If set, indicates this device returns pressure data in parameter CurrentZ.
   ///
   public const ulong EFI_ABSP_SupportsPressureAsZ = 0x00000002;
+
+  ///
+  /// This bit is set if the touch sensor is active.
+  ///
+  public const ulong EFI_ABSP_TouchActive = 0x00000001;
+
+  ///
+  /// This bit is set if the alt sensor, such as pen-side button, is active
+  ///
+  public const ulong EFI_ABS_AltActive = 0x00000002;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///
-/// This bit is set if the touch sensor is active.
-///
-public const ulong EFI_ABSP_TouchActive = 0x00000001;
-
-///
-/// This bit is set if the alt sensor, such as pen-side button, is active
-///
-public const ulong EFI_ABS_AltActive = 0x00000002;
 
 /**
   Definition of EFI_ABSOLUTE_POINTER_STATE.
@@ -139,43 +108,6 @@ public unsafe struct EFI_ABSOLUTE_POINTER_STATE
   ///
   public uint ActiveButtons;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_ABSOLUTE_POINTER_PROTOCOL provides a set of services
@@ -225,7 +157,6 @@ public unsafe struct EFI_ABSOLUTE_POINTER_PROTOCOL
     information is placed in State, and EFI_SUCCESS is returned. If
     a device error occurs while attempting to retrieve the state
     information, then EFI_DEVICE_ERROR is returned.
-
 
     @param This   A pointer to the EFI_ABSOLUTE_POINTER_PROTOCOL
                   instance.

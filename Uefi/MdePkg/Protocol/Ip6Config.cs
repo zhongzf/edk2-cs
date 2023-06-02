@@ -15,10 +15,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <Protocol/Ip6.h>
 
-public static EFI_GUID EFI_IP6_CONFIG_PROTOCOL_GUID = new GUID(
-    0x937fe521, 0x95ae, 0x4d1a, new byte[] { 0x89, 0x29, 0x48, 0xbc, 0xd9, 0x0a, 0xd3, 0x1a });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IP6_CONFIG_PROTOCOL_GUID = new GUID(
+      0x937fe521, 0x95ae, 0x4d1a, new byte[] { 0x89, 0x29, 0x48, 0xbc, 0xd9, 0x0a, 0xd3, 0x1a });
 
-// typedef struct _EFI_IP6_CONFIG_PROTOCOL EFI_IP6_CONFIG_PROTOCOL;
+  // typedef struct _EFI_IP6_CONFIG_PROTOCOL EFI_IP6_CONFIG_PROTOCOL;
+}
 
 ///
 /// EFI_IP6_CONFIG_DATA_TYPE
@@ -206,161 +209,6 @@ public unsafe struct EFI_IP6_CONFIG_MANUAL_ADDRESS
   public bool IsAnycast;       ///< Set to TRUE if Address is anycast.
   public byte PrefixLength;    ///< The length, in bits, of the prefix associated with this Address.
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_IP6_CONFIG_PROTOCOL provides the mechanism to set and get various

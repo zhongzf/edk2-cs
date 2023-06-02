@@ -24,7 +24,10 @@ namespace Uefi;
 
 // #include <Protocol/MmControl.h>
 
-public const ulong EFI_SMM_CONTROL2_PROTOCOL_GUID = EFI_MM_CONTROL_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_CONTROL2_PROTOCOL_GUID = EFI_MM_CONTROL_PROTOCOL_GUID;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_CONTROL2_PROTOCOL { EFI_MM_CONTROL_PROTOCOL Value; public static implicit operator EFI_SMM_CONTROL2_PROTOCOL(EFI_MM_CONTROL_PROTOCOL value) => new EFI_SMM_CONTROL2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_CONTROL_PROTOCOL(EFI_SMM_CONTROL2_PROTOCOL value) => value.Value; }

@@ -16,105 +16,16 @@ namespace Uefi;
 ///
 /// Global ID for the Watchdog Timer Architectural Protocol
 ///
-public static EFI_GUID EFI_WATCHDOG_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x665E3FF5, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
-
-///
-/// Declare forward reference for the Timer Architectural Protocol
-///
-// typedef struct _EFI_WATCHDOG_TIMER_ARCH_PROTOCOL EFI_WATCHDOG_TIMER_ARCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_WATCHDOG_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x665E3FF5, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
+
+  ///
+  /// Declare forward reference for the Timer Architectural Protocol
+  ///
+  // typedef struct _EFI_WATCHDOG_TIMER_ARCH_PROTOCOL EFI_WATCHDOG_TIMER_ARCH_PROTOCOL;
+
+}
 
 ///
 /// This protocol provides the services required to implement the Boot Service

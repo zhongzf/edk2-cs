@@ -21,30 +21,32 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1 - Table 58
 // (subject to change as per CXL assigned Vendor ID)
 //
-public const ulong INTEL_CXL_DVSEC_VENDOR_ID = 0x8086;
+public unsafe partial class EFI
+{
+  public const ulong INTEL_CXL_DVSEC_VENDOR_ID = 0x8086;
 
-//
-// CXL Flex Bus Device default device and function number
-// Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1
-//
-public const ulong CXL_DEV_DEV = 0;
-public const ulong CXL_DEV_FUNC = 0;
+  //
+  // CXL Flex Bus Device default device and function number
+  // Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1
+  //
+  public const ulong CXL_DEV_DEV = 0;
+  public const ulong CXL_DEV_FUNC = 0;
 
-//
-// Ensure proper structure formats
-//
-// #pragma pack(1)
+  //
+  // Ensure proper structure formats
+  //
+  // #pragma pack(1)
 
-/**
-  Macro used to verify the size of a data type at compile time and trigger a
-  STATIC_ASSERT() with an error message if the size of the data type does not
-  match the expected size.
+  /**
+    Macro used to verify the size of a data type at compile time and trigger a
+    STATIC_ASSERT() with an error message if the size of the data type does not
+    match the expected size.
 
-  @param  TypeName      Type name of data type to verify.
-  @param  ExpectedSize  The expected size, in bytes, of the data type specified
-                        by TypeName.
-**/
-public const ulong CXL_11_SIZE_ASSERT = (TypeName, ExpectedSize)        \;
+    @param  TypeName      Type name of data type to verify.
+    @param  ExpectedSize  The expected size, in bytes, of the data type specified
+                          by TypeName.
+  **/
+  public const ulong CXL_11_SIZE_ASSERT = (TypeName, ExpectedSize)        \;
   STATIC_ASSERT(                                         \
     sizeof (TypeName) == ExpectedSize,                    \
     "Size of " #TypeName                                  \
@@ -68,6 +70,7 @@ public const ulong CXL_11_OFFSET_ASSERT = (TypeName, FieldName, ExpectedOffset) 
     "Offset of " #TypeName "." #FieldName                          \
     " does not meet CXL 1.1 Specification requirements."           \
     )
+}
 
 ///
 /// The PCIe DVSEC for Flex Bus Device
@@ -239,7 +242,10 @@ uint Uint32;
 // Flex Bus Device DVSEC ID
 // Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1, Table 58
 //
-public const ulong FLEX_BUS_DEVICE_DVSEC_ID = 0;
+public unsafe partial class EFI
+{
+  public const ulong FLEX_BUS_DEVICE_DVSEC_ID = 0;
+}
 
 //
 // PCIe DVSEC for Flex Bus Device
@@ -342,7 +348,10 @@ ushort Uint16;
 // Flex Bus Port DVSEC ID
 // Compute Express Link Specification Revision: 1.1 - Chapter 7.2.1.3, Table 62
 //
-public const ulong FLEX_BUS_PORT_DVSEC_ID = 7;
+public unsafe partial class EFI
+{
+  public const ulong FLEX_BUS_PORT_DVSEC_ID = 7;
+}
 
 //
 // PCIe DVSEC for Flex Bus Port
@@ -376,7 +385,10 @@ CXL_11_SIZE_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, 0x10);
 /// Based on chapter 7.2.2 of Compute Express Link Specification Revision: 1.1
 ///@{
 
-public const ulong CXL_CAPABILITY_HEADER_OFFSET = 0;
+public unsafe partial class EFI
+{
+  public const ulong CXL_CAPABILITY_HEADER_OFFSET = 0;
+}
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
 {
@@ -389,7 +401,10 @@ public unsafe struct Bits
 uint Uint32;
 } CXL_CAPABILITY_HEADER;
 
-public const ulong CXL_RAS_CAPABILITY_HEADER_OFFSET = 4;
+public unsafe partial class EFI
+{
+  public const ulong CXL_RAS_CAPABILITY_HEADER_OFFSET = 4;
+}
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
 {
@@ -401,7 +416,10 @@ public unsafe struct Bits
 uint Uint32;
 } CXL_RAS_CAPABILITY_HEADER;
 
-public const ulong CXL_SECURITY_CAPABILITY_HEADER_OFFSET = 8;
+public unsafe partial class EFI
+{
+  public const ulong CXL_SECURITY_CAPABILITY_HEADER_OFFSET = 8;
+}
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
 {
@@ -413,7 +431,10 @@ public unsafe struct Bits
 uint Uint32;
 } CXL_SECURITY_CAPABILITY_HEADER;
 
-public const ulong CXL_LINK_CAPABILITY_HEADER_OFFSET = 0xC;
+public unsafe partial class EFI
+{
+  public const ulong CXL_LINK_CAPABILITY_HEADER_OFFSET = 0xC;
+}
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
 {
@@ -686,7 +707,10 @@ CXL_11_OFFSET_ASSERT(CXL_1_1_LINK_CAPABILITY_STRUCTURE, LinkLayerAckTimerControl
 CXL_11_OFFSET_ASSERT(CXL_1_1_LINK_CAPABILITY_STRUCTURE, LinkLayerDefeature, 0x30);
 CXL_11_SIZE_ASSERT(CXL_1_1_LINK_CAPABILITY_STRUCTURE, 0x38);
 
-public const ulong CXL_IO_ARBITRATION_CONTROL_OFFSET = 0x180;
+public unsafe partial class EFI
+{
+  public const ulong CXL_IO_ARBITRATION_CONTROL_OFFSET = 0x180;
+}
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
 {
@@ -700,7 +724,10 @@ uint Uint32;
 
 CXL_11_SIZE_ASSERT(CXL_IO_ARBITRATION_CONTROL, 0x4);
 
-public const ulong CXL_CACHE_MEMORY_ARBITRATION_CONTROL_OFFSET = 0x1C0;
+public unsafe partial class EFI
+{
+  public const ulong CXL_CACHE_MEMORY_ARBITRATION_CONTROL_OFFSET = 0x1C0;
+}
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
 {
@@ -740,8 +767,11 @@ CXL_11_SIZE_ASSERT(CXL_RCRB_BASE, 0x8);
 // CXL Downstream / Upstream Port RCRB space register offsets
 // Compute Express Link Specification Revision: 1.1 - Chapter 7.2.1.1 - Figure 97
 //
-public const ulong CXL_PORT_RCRB_MEMBAR0_LOW_OFFSET = 0x010;
-public const ulong CXL_PORT_RCRB_MEMBAR0_HIGH_OFFSET = 0x014;
-public const ulong CXL_PORT_RCRB_EXTENDED_CAPABILITY_BASE_OFFSET = 0x100;
+public unsafe partial class EFI
+{
+  public const ulong CXL_PORT_RCRB_MEMBAR0_LOW_OFFSET = 0x010;
+  public const ulong CXL_PORT_RCRB_MEMBAR0_HIGH_OFFSET = 0x014;
+  public const ulong CXL_PORT_RCRB_EXTENDED_CAPABILITY_BASE_OFFSET = 0x100;
+}
 
 // #endif

@@ -14,57 +14,14 @@ namespace Uefi;
 // #ifndef __UGA_DRAW_H__
 // #define __UGA_DRAW_H__
 
-public static EFI_GUID EFI_UGA_DRAW_PROTOCOL_GUID = new GUID(
-    0x982c298b, 0xf4fa, 0x41cb, new byte[] { 0xb8, 0x38, 0x77, 0xaa, 0x68, 0x8f, 0xb8, 0x39 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_UGA_DRAW_PROTOCOL_GUID = new GUID(
+      0x982c298b, 0xf4fa, 0x41cb, new byte[] { 0xb8, 0x38, 0x77, 0xaa, 0x68, 0x8f, 0xb8, 0x39 });
 
-// typedef struct _EFI_UGA_DRAW_PROTOCOL EFI_UGA_DRAW_PROTOCOL;
+  // typedef struct _EFI_UGA_DRAW_PROTOCOL EFI_UGA_DRAW_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UGA_PIXEL
@@ -114,41 +71,6 @@ public enum EFI_UGA_BLT_OPERATION
   EfiUgaBltMax              ///< Maxmimum value for enumration value of Blt operation. If a Blt operation
                             ///< larger or equal to this enumration value, it is invalid.
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// This protocol provides a basic abstraction to set video modes and

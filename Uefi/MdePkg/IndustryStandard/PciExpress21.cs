@@ -29,8 +29,11 @@ namespace Uefi;
   @return The encode ECAM address.
 
 **/
-public const ulong PCI_ECAM_ADDRESS = (Bus, Device, Function, Offset) \;
+public unsafe partial class EFI
+{
+  public const ulong PCI_ECAM_ADDRESS = (Bus, Device, Function, Offset) \;
   (((Offset) & 0xfff) | (((Function) & 0x07) << 12) | (((Device) & 0x1f) << 15) | (((Bus) & 0xff) << 20))
+}
 
 // #pragma pack(1)
 ///
@@ -50,15 +53,18 @@ public unsafe struct Bits
 ushort Uint16;
 } PCI_REG_PCIE_CAPABILITY;
 
-public const ulong PCIE_DEVICE_PORT_TYPE_PCIE_ENDPOINT = 0;
-public const ulong PCIE_DEVICE_PORT_TYPE_LEGACY_PCIE_ENDPOINT = 1;
-public const ulong PCIE_DEVICE_PORT_TYPE_ROOT_PORT = 4;
-public const ulong PCIE_DEVICE_PORT_TYPE_UPSTREAM_PORT = 5;
-public const ulong PCIE_DEVICE_PORT_TYPE_DOWNSTREAM_PORT = 6;
-public const ulong PCIE_DEVICE_PORT_TYPE_PCIE_TO_PCI_BRIDGE = 7;
-public const ulong PCIE_DEVICE_PORT_TYPE_PCI_TO_PCIE_BRIDGE = 8;
-public const ulong PCIE_DEVICE_PORT_TYPE_ROOT_COMPLEX_INTEGRATED_ENDPOINT = 9;
-public const ulong PCIE_DEVICE_PORT_TYPE_ROOT_COMPLEX_EVENT_COLLECTOR = 10;
+public unsafe partial class EFI
+{
+  public const ulong PCIE_DEVICE_PORT_TYPE_PCIE_ENDPOINT = 0;
+  public const ulong PCIE_DEVICE_PORT_TYPE_LEGACY_PCIE_ENDPOINT = 1;
+  public const ulong PCIE_DEVICE_PORT_TYPE_ROOT_PORT = 4;
+  public const ulong PCIE_DEVICE_PORT_TYPE_UPSTREAM_PORT = 5;
+  public const ulong PCIE_DEVICE_PORT_TYPE_DOWNSTREAM_PORT = 6;
+  public const ulong PCIE_DEVICE_PORT_TYPE_PCIE_TO_PCI_BRIDGE = 7;
+  public const ulong PCIE_DEVICE_PORT_TYPE_PCI_TO_PCIE_BRIDGE = 8;
+  public const ulong PCIE_DEVICE_PORT_TYPE_ROOT_COMPLEX_INTEGRATED_ENDPOINT = 9;
+  public const ulong PCIE_DEVICE_PORT_TYPE_ROOT_COMPLEX_EVENT_COLLECTOR = 10;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -100,23 +106,26 @@ public unsafe struct Bits
 ushort Uint16;
 } PCI_REG_PCIE_DEVICE_CONTROL;
 
-public const ulong PCIE_MAX_PAYLOAD_SIZE_128B = 0;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_256B = 1;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_512B = 2;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_1024B = 3;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_2048B = 4;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_4096B = 5;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_RVSD1 = 6;
-public const ulong PCIE_MAX_PAYLOAD_SIZE_RVSD2 = 7;
+public unsafe partial class EFI
+{
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_128B = 0;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_256B = 1;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_512B = 2;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_1024B = 3;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_2048B = 4;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_4096B = 5;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_RVSD1 = 6;
+  public const ulong PCIE_MAX_PAYLOAD_SIZE_RVSD2 = 7;
 
-public const ulong PCIE_MAX_READ_REQ_SIZE_128B = 0;
-public const ulong PCIE_MAX_READ_REQ_SIZE_256B = 1;
-public const ulong PCIE_MAX_READ_REQ_SIZE_512B = 2;
-public const ulong PCIE_MAX_READ_REQ_SIZE_1024B = 3;
-public const ulong PCIE_MAX_READ_REQ_SIZE_2048B = 4;
-public const ulong PCIE_MAX_READ_REQ_SIZE_4096B = 5;
-public const ulong PCIE_MAX_READ_REQ_SIZE_RVSD1 = 6;
-public const ulong PCIE_MAX_READ_REQ_SIZE_RVSD2 = 7;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_128B = 0;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_256B = 1;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_512B = 2;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_1024B = 3;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_2048B = 4;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_4096B = 5;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_RVSD1 = 6;
+  public const ulong PCIE_MAX_READ_REQ_SIZE_RVSD2 = 7;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -153,8 +162,11 @@ public unsafe struct Bits
 uint Uint32;
 } PCI_REG_PCIE_LINK_CAPABILITY;
 
-public const ulong PCIE_LINK_ASPM_L0S = BIT0;
-public const ulong PCIE_LINK_ASPM_L1 = BIT1;
+public unsafe partial class EFI
+{
+  public const ulong PCIE_LINK_ASPM_L0S = BIT0;
+  public const ulong PCIE_LINK_ASPM_L1 = BIT1;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -314,17 +326,20 @@ public unsafe struct Bits
 uint Uint32;
 } PCI_REG_PCIE_DEVICE_CAPABILITY2;
 
-public const ulong PCIE_COMPLETION_TIMEOUT_NOT_SUPPORTED = 0;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_SUPPORTED = 1;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_B_SUPPORTED = 2;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_B_SUPPORTED = 3;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_B_C_SUPPORTED = 6;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_B_C_SUPPORTED = 7;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_B_C_D_SUPPORTED = 14;
-public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_B_C_D_SUPPORTED = 15;
+public unsafe partial class EFI
+{
+  public const ulong PCIE_COMPLETION_TIMEOUT_NOT_SUPPORTED = 0;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_SUPPORTED = 1;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_B_SUPPORTED = 2;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_B_SUPPORTED = 3;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_B_C_SUPPORTED = 6;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_B_C_SUPPORTED = 7;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_B_C_D_SUPPORTED = 14;
+  public const ulong PCIE_COMPLETION_TIMEOUT_RANGE_A_B_C_D_SUPPORTED = 15;
 
-public const ulong PCIE_DEVICE_CAPABILITY_OBFF_MESSAGE = BIT0;
-public const ulong PCIE_DEVICE_CAPABILITY_OBFF_WAKE = BIT1;
+  public const ulong PCIE_DEVICE_CAPABILITY_OBFF_MESSAGE = BIT0;
+  public const ulong PCIE_DEVICE_CAPABILITY_OBFF_WAKE = BIT1;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -346,20 +361,23 @@ public unsafe struct Bits
 ushort Uint16;
 } PCI_REG_PCIE_DEVICE_CONTROL2;
 
-public const ulong PCIE_COMPLETION_TIMEOUT_50US_50MS = 0;
-public const ulong PCIE_COMPLETION_TIMEOUT_50US_100US = 1;
-public const ulong PCIE_COMPLETION_TIMEOUT_1MS_10MS = 2;
-public const ulong PCIE_COMPLETION_TIMEOUT_16MS_55MS = 5;
-public const ulong PCIE_COMPLETION_TIMEOUT_65MS_210MS = 6;
-public const ulong PCIE_COMPLETION_TIMEOUT_260MS_900MS = 9;
-public const ulong PCIE_COMPLETION_TIMEOUT_1S_3_5S = 10;
-public const ulong PCIE_COMPLETION_TIMEOUT_4S_13S = 13;
-public const ulong PCIE_COMPLETION_TIMEOUT_17S_64S = 14;
+public unsafe partial class EFI
+{
+  public const ulong PCIE_COMPLETION_TIMEOUT_50US_50MS = 0;
+  public const ulong PCIE_COMPLETION_TIMEOUT_50US_100US = 1;
+  public const ulong PCIE_COMPLETION_TIMEOUT_1MS_10MS = 2;
+  public const ulong PCIE_COMPLETION_TIMEOUT_16MS_55MS = 5;
+  public const ulong PCIE_COMPLETION_TIMEOUT_65MS_210MS = 6;
+  public const ulong PCIE_COMPLETION_TIMEOUT_260MS_900MS = 9;
+  public const ulong PCIE_COMPLETION_TIMEOUT_1S_3_5S = 10;
+  public const ulong PCIE_COMPLETION_TIMEOUT_4S_13S = 13;
+  public const ulong PCIE_COMPLETION_TIMEOUT_17S_64S = 14;
 
-public const ulong PCIE_DEVICE_CONTROL_OBFF_DISABLED = 0;
-public const ulong PCIE_DEVICE_CONTROL_OBFF_MESSAGE_A = 1;
-public const ulong PCIE_DEVICE_CONTROL_OBFF_MESSAGE_B = 2;
-public const ulong PCIE_DEVICE_CONTROL_OBFF_WAKE = 3;
+  public const ulong PCIE_DEVICE_CONTROL_OBFF_DISABLED = 0;
+  public const ulong PCIE_DEVICE_CONTROL_OBFF_MESSAGE_A = 1;
+  public const ulong PCIE_DEVICE_CONTROL_OBFF_MESSAGE_B = 2;
+  public const ulong PCIE_DEVICE_CONTROL_OBFF_WAKE = 3;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -432,20 +450,23 @@ public unsafe struct PCI_CAPABILITY_PCIEXP
   public ushort SlotStatus2;
 }
 
-public const ulong EFI_PCIE_CAPABILITY_BASE_OFFSET = 0x100;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_CONTROL_ARI_HIERARCHY = 0x10;
-public const ulong EFI_PCIE_CAPABILITY_DEVICE_CAPABILITIES_2_OFFSET = 0x24;
-public const ulong EFI_PCIE_CAPABILITY_DEVICE_CAPABILITIES_2_ARI_FORWARDING = 0x20;
-public const ulong EFI_PCIE_CAPABILITY_DEVICE_CONTROL_2_OFFSET = 0x28;
-public const ulong EFI_PCIE_CAPABILITY_DEVICE_CONTROL_2_ARI_FORWARDING = 0x20;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PCIE_CAPABILITY_BASE_OFFSET = 0x100;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_CONTROL_ARI_HIERARCHY = 0x10;
+  public const ulong EFI_PCIE_CAPABILITY_DEVICE_CAPABILITIES_2_OFFSET = 0x24;
+  public const ulong EFI_PCIE_CAPABILITY_DEVICE_CAPABILITIES_2_ARI_FORWARDING = 0x20;
+  public const ulong EFI_PCIE_CAPABILITY_DEVICE_CONTROL_2_OFFSET = 0x28;
+  public const ulong EFI_PCIE_CAPABILITY_DEVICE_CONTROL_2_ARI_FORWARDING = 0x20;
 
-//
-// for SR-IOV
-//
-public const ulong EFI_PCIE_CAPABILITY_ID_ARI = 0x0E;
-public const ulong EFI_PCIE_CAPABILITY_ID_ATS = 0x0F;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV = 0x10;
-public const ulong EFI_PCIE_CAPABILITY_ID_MRIOV = 0x11;
+  //
+  // for SR-IOV
+  //
+  public const ulong EFI_PCIE_CAPABILITY_ID_ARI = 0x0E;
+  public const ulong EFI_PCIE_CAPABILITY_ID_ATS = 0x0F;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV = 0x10;
+  public const ulong EFI_PCIE_CAPABILITY_ID_MRIOV = 0x11;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SR_IOV_CAPABILITY_REGISTER
@@ -469,25 +490,28 @@ public unsafe struct SR_IOV_CAPABILITY_REGISTER
   public uint VFMigrationStateArrayOffset;
 }
 
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_CAPABILITIES = 0x04;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_CONTROL = 0x08;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_STATUS = 0x0A;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_INITIALVFS = 0x0C;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_TOTALVFS = 0x0E;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_NUMVFS = 0x10;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_FUNCTION_DEPENDENCY_LINK = 0x12;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_FIRSTVF = 0x14;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_VFSTRIDE = 0x16;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_VFDEVICEID = 0x1A;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_SUPPORTED_PAGE_SIZE = 0x1C;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_SYSTEM_PAGE_SIZE = 0x20;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR0 = 0x24;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR1 = 0x28;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR2 = 0x2C;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR3 = 0x30;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR4 = 0x34;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR5 = 0x38;
-public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_VF_MIGRATION_STATE = 0x3C;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_CAPABILITIES = 0x04;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_CONTROL = 0x08;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_STATUS = 0x0A;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_INITIALVFS = 0x0C;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_TOTALVFS = 0x0E;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_NUMVFS = 0x10;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_FUNCTION_DEPENDENCY_LINK = 0x12;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_FIRSTVF = 0x14;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_VFSTRIDE = 0x16;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_VFDEVICEID = 0x1A;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_SUPPORTED_PAGE_SIZE = 0x1C;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_SYSTEM_PAGE_SIZE = 0x20;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR0 = 0x24;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR1 = 0x28;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR2 = 0x2C;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR3 = 0x30;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR4 = 0x34;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_BAR5 = 0x38;
+  public const ulong EFI_PCIE_CAPABILITY_ID_SRIOV_VF_MIGRATION_STATE = 0x3C;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_HEADER
@@ -497,11 +521,14 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_HEADER
   public uint NextCapabilityOffset = 12;
 }
 
-public const ulong PCI_EXP_EXT_HDR = PCI_EXPRESS_EXTENDED_CAPABILITIES_HEADER;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXP_EXT_HDR = PCI_EXPRESS_EXTENDED_CAPABILITIES_HEADER;
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ADVANCED_ERROR_REPORTING_ID = 0x0001;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ADVANCED_ERROR_REPORTING_VER1 = 0x1;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ADVANCED_ERROR_REPORTING_VER2 = 0x2;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ADVANCED_ERROR_REPORTING_ID = 0x0001;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ADVANCED_ERROR_REPORTING_VER1 = 0x1;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ADVANCED_ERROR_REPORTING_VER2 = 0x2;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -549,9 +576,12 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_ADVANCED_ERROR_REPORTING
   public fixed uint TlpPrefixLog[4];
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VIRTUAL_CHANNEL_ID = 0x0002;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VIRTUAL_CHANNEL_MFVC = 0x0009;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VIRTUAL_CHANNEL_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VIRTUAL_CHANNEL_ID = 0x0002;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VIRTUAL_CHANNEL_MFVC = 0x0009;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VIRTUAL_CHANNEL_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_VIRTUAL_CHANNEL_VC
@@ -576,8 +606,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_VIRTUAL_CHANNEL_CAPABILIT
   public fixed PCI_EXPRESS_EXTENDED_CAPABILITIES_VIRTUAL_CHANNEL_VC Capability[1];
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SERIAL_NUMBER_ID = 0x0003;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SERIAL_NUMBER_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SERIAL_NUMBER_ID = 0x0003;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SERIAL_NUMBER_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_SERIAL_NUMBER
@@ -586,8 +619,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_SERIAL_NUMBER
   public ulong SerialNumber;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_DECLARATION_ID = 0x0005;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_DECLARATION_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_DECLARATION_ID = 0x0005;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_DECLARATION_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_LINK_DECLARATION
@@ -598,10 +634,13 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_LINK_DECLARATION
   public fixed uint LinkEntry[1];
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_DECLARATION_GET_LINK_COUNT = (LINK_DECLARATION)(byte)(((LINK_DECLARATION->ElementSelfDescription) & 0x0000ff00) >> 8);
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_DECLARATION_GET_LINK_COUNT = (LINK_DECLARATION)(byte)(((LINK_DECLARATION->ElementSelfDescription) & 0x0000ff00) >> 8);
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_CONTROL_ID = 0x0006;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_CONTROL_VER1 = 0x1;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_CONTROL_ID = 0x0006;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LINK_CONTROL_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_INTERNAL_LINK_CONTROL
@@ -612,8 +651,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_INTERNAL_LINK_CONTROL
   public ushort RootComplexLinkStatus;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_POWER_BUDGETING_ID = 0x0004;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_POWER_BUDGETING_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_POWER_BUDGETING_ID = 0x0004;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_POWER_BUDGETING_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_POWER_BUDGETING
@@ -627,8 +669,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_POWER_BUDGETING
   public uint Reserved3 = 24;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_ID = 0x000D;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_ID = 0x000D;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_ACS_EXTENDED
@@ -639,11 +684,14 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_ACS_EXTENDED
   public fixed byte EgressControlVectorArray[1];
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_GET_EGRES_CONTROL = (ACS_EXTENDED)(byte)(((ACS_EXTENDED->AcsCapability) & 0x00000020));
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_GET_EGRES_VECTOR_SIZE = (ACS_EXTENDED)(byte)(((ACS_EXTENDED->AcsCapability) & 0x0000FF00));
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_GET_EGRES_CONTROL = (ACS_EXTENDED)(byte)(((ACS_EXTENDED->AcsCapability) & 0x00000020));
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ACS_EXTENDED_GET_EGRES_VECTOR_SIZE = (ACS_EXTENDED)(byte)(((ACS_EXTENDED->AcsCapability) & 0x0000FF00));
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_EVENT_COLLECTOR_ENDPOINT_ASSOCIATION_ID = 0x0007;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_EVENT_COLLECTOR_ENDPOINT_ASSOCIATION_VER1 = 0x1;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_EVENT_COLLECTOR_ENDPOINT_ASSOCIATION_ID = 0x0007;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_EVENT_COLLECTOR_ENDPOINT_ASSOCIATION_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_EVENT_COLLECTOR_ENDPOINT_ASSOCIATION
@@ -652,14 +700,20 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_EVENT_COLLECTOR_ENDPOINT_
   public uint AssociationBitmap;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTI_FUNCTION_VIRTUAL_CHANNEL_ID = 0x0008;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTI_FUNCTION_VIRTUAL_CHANNEL_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTI_FUNCTION_VIRTUAL_CHANNEL_ID = 0x0008;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTI_FUNCTION_VIRTUAL_CHANNEL_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_MULTI_FUNCTION_VIRTUAL_CHANNEL_CAPABILITY { PCI_EXPRESS_EXTENDED_CAPABILITIES_VIRTUAL_CHANNEL_CAPABILITY Value; public static implicit operator PCI_EXPRESS_EXTENDED_CAPABILITIES_MULTI_FUNCTION_VIRTUAL_CHANNEL_CAPABILITY(PCI_EXPRESS_EXTENDED_CAPABILITIES_VIRTUAL_CHANNEL_CAPABILITY value) => new PCI_EXPRESS_EXTENDED_CAPABILITIES_MULTI_FUNCTION_VIRTUAL_CHANNEL_CAPABILITY() { Value = value }; public static implicit operator PCI_EXPRESS_EXTENDED_CAPABILITIES_VIRTUAL_CHANNEL_CAPABILITY(PCI_EXPRESS_EXTENDED_CAPABILITIES_MULTI_FUNCTION_VIRTUAL_CHANNEL_CAPABILITY value) => value.Value; }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VENDOR_SPECIFIC_ID = 0x000B;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VENDOR_SPECIFIC_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VENDOR_SPECIFIC_ID = 0x000B;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VENDOR_SPECIFIC_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_VENDOR_SPECIFIC
@@ -669,10 +723,13 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_VENDOR_SPECIFIC
   public fixed byte VendorSpecific[1];
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VENDOR_SPECIFIC_GET_SIZE = (VENDOR)(ushort)(((VENDOR->VendorSpecificHeader) & 0xFFF00000) >> 20);
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_VENDOR_SPECIFIC_GET_SIZE = (VENDOR)(ushort)(((VENDOR->VendorSpecificHeader) & 0xFFF00000) >> 20);
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RCRB_HEADER_ID = 0x000A;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RCRB_HEADER_VER1 = 0x1;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RCRB_HEADER_ID = 0x000A;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RCRB_HEADER_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_RCRB_HEADER
@@ -685,8 +742,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_RCRB_HEADER
   public uint Reserved;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTICAST_ID = 0x0012;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTICAST_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTICAST_ID = 0x0012;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_MULTICAST_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_MULTICAST
@@ -701,8 +761,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_MULTICAST
   public ulong McOverlayBar;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RESIZABLE_BAR_ID = 0x0015;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RESIZABLE_BAR_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RESIZABLE_BAR_ID = 0x0015;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_RESIZABLE_BAR_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -742,10 +805,13 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR
   public fixed PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR_ENTRY Capability[1];
 }
 
-public const ulong GET_NUMBER_RESIZABLE_BARS = (x)(x->Capability[0].ResizableBarControl.Bits.ResizableBarNumber);
+public unsafe partial class EFI
+{
+  public const ulong GET_NUMBER_RESIZABLE_BARS = (x)(x->Capability[0].ResizableBarControl.Bits.ResizableBarNumber);
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ARI_CAPABILITY_ID = 0x000E;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ARI_CAPABILITY_VER1 = 0x1;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ARI_CAPABILITY_ID = 0x000E;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_ARI_CAPABILITY_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_ARI_CAPABILITY
@@ -755,8 +821,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_ARI_CAPABILITY
   public ushort AriControl;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_DYNAMIC_POWER_ALLOCATION_ID = 0x0016;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_DYNAMIC_POWER_ALLOCATION_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_DYNAMIC_POWER_ALLOCATION_ID = 0x0016;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_DYNAMIC_POWER_ALLOCATION_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_DYNAMIC_POWER_ALLOCATION
@@ -769,10 +838,13 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_DYNAMIC_POWER_ALLOCATION
   public fixed byte DpaPowerAllocationArray[1];
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_DYNAMIC_POWER_ALLOCATION_GET_SUBSTATE_MAX = (POWER)(ushort)(((POWER->DpaCapability) & 0x0000000F));
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_DYNAMIC_POWER_ALLOCATION_GET_SUBSTATE_MAX = (POWER)(ushort)(((POWER->DpaCapability) & 0x0000000F));
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LATENCE_TOLERANCE_REPORTING_ID = 0x0018;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LATENCE_TOLERANCE_REPORTING_VER1 = 0x1;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LATENCE_TOLERANCE_REPORTING_ID = 0x0018;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_LATENCE_TOLERANCE_REPORTING_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_LATENCE_TOLERANCE_REPORTING
@@ -782,8 +854,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_LATENCE_TOLERANCE_REPORTI
   public ushort MaxNoSnoopLatency;
 }
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_TPH_ID = 0x0017;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_TPH_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_TPH_ID = 0x0017;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_TPH_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_TPH
@@ -794,8 +869,11 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_TPH
   public fixed ushort TphStTable[1];
 }
 
-public const ulong GET_TPH_TABLE_SIZE = (x)((x->TphRequesterCapability & 0x7FF0000) >> 16) * sizeof(ushort);
+public unsafe partial class EFI
+{
+  public const ulong GET_TPH_TABLE_SIZE = (x)((x->TphRequesterCapability & 0x7FF0000) >> 16) * sizeof(ushort);
 
-// #pragma pack()
+  // #pragma pack()
+}
 
 // #endif

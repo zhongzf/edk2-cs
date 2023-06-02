@@ -23,126 +23,135 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // Annex A Algorithm Constants
 
 // Table 205 - Defines for SHA1 Hash Values
-public const ulong SHA1_DIGEST_SIZE = 20;
-public const ulong SHA1_BLOCK_SIZE = 64;
+public unsafe partial class EFI
+{
+  public const ulong SHA1_DIGEST_SIZE = 20;
+  public const ulong SHA1_BLOCK_SIZE = 64;
 
-// Table 206 - Defines for SHA256 Hash Values
-public const ulong SHA256_DIGEST_SIZE = 32;
-public const ulong SHA256_BLOCK_SIZE = 64;
+  // Table 206 - Defines for SHA256 Hash Values
+  public const ulong SHA256_DIGEST_SIZE = 32;
+  public const ulong SHA256_BLOCK_SIZE = 64;
 
-// Table 207 - Defines for SHA384 Hash Values
-public const ulong SHA384_DIGEST_SIZE = 48;
-public const ulong SHA384_BLOCK_SIZE = 128;
+  // Table 207 - Defines for SHA384 Hash Values
+  public const ulong SHA384_DIGEST_SIZE = 48;
+  public const ulong SHA384_BLOCK_SIZE = 128;
 
-// Table 208 - Defines for SHA512 Hash Values
-public const ulong SHA512_DIGEST_SIZE = 64;
-public const ulong SHA512_BLOCK_SIZE = 128;
+  // Table 208 - Defines for SHA512 Hash Values
+  public const ulong SHA512_DIGEST_SIZE = 64;
+  public const ulong SHA512_BLOCK_SIZE = 128;
 
-// Table 209 - Defines for SM3_256 Hash Values
-public const ulong SM3_256_DIGEST_SIZE = 32;
-public const ulong SM3_256_BLOCK_SIZE = 64;
+  // Table 209 - Defines for SM3_256 Hash Values
+  public const ulong SM3_256_DIGEST_SIZE = 32;
+  public const ulong SM3_256_BLOCK_SIZE = 64;
 
-// Table 210 - Defines for Architectural Limits Values
-public const ulong MAX_SESSION_NUMBER = 3;
+  // Table 210 - Defines for Architectural Limits Values
+  public const ulong MAX_SESSION_NUMBER = 3;
 
-// Annex B Implementation Definitions
+  // Annex B Implementation Definitions
 
-// Table 211 - Defines for Logic Values
-public const ulong YES = 1;
-public const ulong NO = 0;
-public const ulong SET = 1;
-public const ulong CLEAR = 0;
+  // Table 211 - Defines for Logic Values
+  public const ulong YES = 1;
+  public const ulong NO = 0;
+  public const ulong SET = 1;
+  public const ulong CLEAR = 0;
 
-// Table 215 - Defines for RSA Algorithm Constants
-public const ulong MAX_RSA_KEY_BITS = 2048;
-public const ulong MAX_RSA_KEY_BYTES = ((MAX_RSA_KEY_BITS + 7) / 8);
+  // Table 215 - Defines for RSA Algorithm Constants
+  public const ulong MAX_RSA_KEY_BITS = 2048;
+  public const ulong MAX_RSA_KEY_BYTES = ((MAX_RSA_KEY_BITS + 7) / 8);
 
-// Table 216 - Defines for ECC Algorithm Constants
-public const ulong MAX_ECC_KEY_BITS = 256;
-public const ulong MAX_ECC_KEY_BYTES = ((MAX_ECC_KEY_BITS + 7) / 8);
+  // Table 216 - Defines for ECC Algorithm Constants
+  public const ulong MAX_ECC_KEY_BITS = 256;
+  public const ulong MAX_ECC_KEY_BYTES = ((MAX_ECC_KEY_BITS + 7) / 8);
 
-// Table 217 - Defines for AES Algorithm Constants
-public const ulong MAX_AES_KEY_BITS = 128;
-public const ulong MAX_AES_BLOCK_SIZE_BYTES = 16;
-public const ulong MAX_AES_KEY_BYTES = ((MAX_AES_KEY_BITS + 7) / 8);
+  // Table 217 - Defines for AES Algorithm Constants
+  public const ulong MAX_AES_KEY_BITS = 128;
+  public const ulong MAX_AES_BLOCK_SIZE_BYTES = 16;
+  public const ulong MAX_AES_KEY_BYTES = ((MAX_AES_KEY_BITS + 7) / 8);
 
-// Table 218 - Defines for SM4 Algorithm Constants
-public const ulong MAX_SM4_KEY_BITS = 128;
-public const ulong MAX_SM4_BLOCK_SIZE_BYTES = 16;
-public const ulong MAX_SM4_KEY_BYTES = ((MAX_SM4_KEY_BITS + 7) / 8);
+  // Table 218 - Defines for SM4 Algorithm Constants
+  public const ulong MAX_SM4_KEY_BITS = 128;
+  public const ulong MAX_SM4_BLOCK_SIZE_BYTES = 16;
+  public const ulong MAX_SM4_KEY_BYTES = ((MAX_SM4_KEY_BITS + 7) / 8);
 
-// Table 219 - Defines for Symmetric Algorithm Constants
-public const ulong MAX_SYM_KEY_BITS = MAX_AES_KEY_BITS;
-public const ulong MAX_SYM_KEY_BYTES = MAX_AES_KEY_BYTES;
-public const ulong MAX_SYM_BLOCK_SIZE = MAX_AES_BLOCK_SIZE_BYTES;
+  // Table 219 - Defines for Symmetric Algorithm Constants
+  public const ulong MAX_SYM_KEY_BITS = MAX_AES_KEY_BITS;
+  public const ulong MAX_SYM_KEY_BYTES = MAX_AES_KEY_BYTES;
+  public const ulong MAX_SYM_BLOCK_SIZE = MAX_AES_BLOCK_SIZE_BYTES;
+}
 
 // Table 220 - Defines for Implementation Values
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct BSIZE { ushort Value; public static implicit operator BSIZE(ushort value) => new BSIZE() { Value = value }; public static implicit operator ushort(BSIZE value) => value.Value; }
-public const ulong BUFFER_ALIGNMENT = 4;
-public const ulong IMPLEMENTATION_PCR = 24;
-public const ulong PLATFORM_PCR = 24;
-public const ulong DRTM_PCR = 17;
-public const ulong NUM_LOCALITIES = 5;
-public const ulong MAX_HANDLE_NUM = 3;
-public const ulong MAX_ACTIVE_SESSIONS = 64;
+public unsafe partial class EFI
+{
+  public const ulong BUFFER_ALIGNMENT = 4;
+  public const ulong IMPLEMENTATION_PCR = 24;
+  public const ulong PLATFORM_PCR = 24;
+  public const ulong DRTM_PCR = 17;
+  public const ulong NUM_LOCALITIES = 5;
+  public const ulong MAX_HANDLE_NUM = 3;
+  public const ulong MAX_ACTIVE_SESSIONS = 64;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct CONTEXT_SLOT { ushort Value; public static implicit operator CONTEXT_SLOT(ushort value) => new CONTEXT_SLOT() { Value = value }; public static implicit operator ushort(CONTEXT_SLOT value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct CONTEXT_COUNTER { ulong Value; public static implicit operator CONTEXT_COUNTER(ulong value) => new CONTEXT_COUNTER() { Value = value }; public static implicit operator ulong(CONTEXT_COUNTER value) => value.Value; }
-public const ulong MAX_LOADED_SESSIONS = 3;
-public const ulong MAX_SESSION_NUM = 3;
-public const ulong MAX_LOADED_OBJECTS = 3;
-public const ulong MIN_EVICT_OBJECTS = 2;
-public const ulong PCR_SELECT_MIN = ((PLATFORM_PCR + 7) / 8);
-public const ulong PCR_SELECT_MAX = ((IMPLEMENTATION_PCR + 7) / 8);
-public const ulong NUM_POLICY_PCR_GROUP = 1;
-public const ulong NUM_AUTHVALUE_PCR_GROUP = 1;
-public const ulong MAX_CONTEXT_SIZE = 4000;
-public const ulong MAX_DIGEST_BUFFER = 1024;
-public const ulong MAX_NV_INDEX_SIZE = 1024;
-public const ulong MAX_CAP_BUFFER = 1024;
-public const ulong NV_MEMORY_SIZE = 16384;
-public const ulong NUM_STATIC_PCR = 16;
-public const ulong MAX_ALG_LIST_SIZE = 64;
-public const ulong TIMER_PRESCALE = 100000;
-public const ulong PRIMARY_SEED_SIZE = 32;
-public const ulong CONTEXT_ENCRYPT_ALG = TPM_ALG_AES;
-public const ulong CONTEXT_ENCRYPT_KEY_BITS = MAX_SYM_KEY_BITS;
-public const ulong CONTEXT_ENCRYPT_KEY_BYTES = ((CONTEXT_ENCRYPT_KEY_BITS + 7) / 8);
-public const ulong CONTEXT_INTEGRITY_HASH_ALG = TPM_ALG_SHA256;
-public const ulong CONTEXT_INTEGRITY_HASH_SIZE = SHA256_DIGEST_SIZE;
-public const ulong PROOF_SIZE = CONTEXT_INTEGRITY_HASH_SIZE;
-public const ulong NV_CLOCK_UPDATE_INTERVAL = 12;
-public const ulong NUM_POLICY_PCR = 1;
-public const ulong MAX_COMMAND_SIZE = 4096;
-public const ulong MAX_RESPONSE_SIZE = 4096;
-public const ulong ORDERLY_BITS = 8;
-public const ulong MAX_ORDERLY_COUNT = ((1 << ORDERLY_BITS) - 1);
-public const ulong ALG_ID_FIRST = TPM_ALG_FIRST;
-public const ulong ALG_ID_LAST = TPM_ALG_LAST;
-public const ulong MAX_SYM_DATA = 128;
-public const ulong MAX_RNG_ENTROPY_SIZE = 64;
-public const ulong RAM_INDEX_SPACE = 512;
-public const ulong RSA_DEFAULT_PUBLIC_EXPONENT = 0x00010001;
-public const ulong CRT_FORMAT_RSA = YES;
-public const ulong PRIVATE_VENDOR_SPECIFIC_BYTES = ((MAX_RSA_KEY_BYTES / 2) * (3 + CRT_FORMAT_RSA * 2));
+public unsafe partial class EFI
+{
+  public const ulong MAX_LOADED_SESSIONS = 3;
+  public const ulong MAX_SESSION_NUM = 3;
+  public const ulong MAX_LOADED_OBJECTS = 3;
+  public const ulong MIN_EVICT_OBJECTS = 2;
+  public const ulong PCR_SELECT_MIN = ((PLATFORM_PCR + 7) / 8);
+  public const ulong PCR_SELECT_MAX = ((IMPLEMENTATION_PCR + 7) / 8);
+  public const ulong NUM_POLICY_PCR_GROUP = 1;
+  public const ulong NUM_AUTHVALUE_PCR_GROUP = 1;
+  public const ulong MAX_CONTEXT_SIZE = 4000;
+  public const ulong MAX_DIGEST_BUFFER = 1024;
+  public const ulong MAX_NV_INDEX_SIZE = 1024;
+  public const ulong MAX_CAP_BUFFER = 1024;
+  public const ulong NV_MEMORY_SIZE = 16384;
+  public const ulong NUM_STATIC_PCR = 16;
+  public const ulong MAX_ALG_LIST_SIZE = 64;
+  public const ulong TIMER_PRESCALE = 100000;
+  public const ulong PRIMARY_SEED_SIZE = 32;
+  public const ulong CONTEXT_ENCRYPT_ALG = TPM_ALG_AES;
+  public const ulong CONTEXT_ENCRYPT_KEY_BITS = MAX_SYM_KEY_BITS;
+  public const ulong CONTEXT_ENCRYPT_KEY_BYTES = ((CONTEXT_ENCRYPT_KEY_BITS + 7) / 8);
+  public const ulong CONTEXT_INTEGRITY_HASH_ALG = TPM_ALG_SHA256;
+  public const ulong CONTEXT_INTEGRITY_HASH_SIZE = SHA256_DIGEST_SIZE;
+  public const ulong PROOF_SIZE = CONTEXT_INTEGRITY_HASH_SIZE;
+  public const ulong NV_CLOCK_UPDATE_INTERVAL = 12;
+  public const ulong NUM_POLICY_PCR = 1;
+  public const ulong MAX_COMMAND_SIZE = 4096;
+  public const ulong MAX_RESPONSE_SIZE = 4096;
+  public const ulong ORDERLY_BITS = 8;
+  public const ulong MAX_ORDERLY_COUNT = ((1 << ORDERLY_BITS) - 1);
+  public const ulong ALG_ID_FIRST = TPM_ALG_FIRST;
+  public const ulong ALG_ID_LAST = TPM_ALG_LAST;
+  public const ulong MAX_SYM_DATA = 128;
+  public const ulong MAX_RNG_ENTROPY_SIZE = 64;
+  public const ulong RAM_INDEX_SPACE = 512;
+  public const ulong RSA_DEFAULT_PUBLIC_EXPONENT = 0x00010001;
+  public const ulong CRT_FORMAT_RSA = YES;
+  public const ulong PRIVATE_VENDOR_SPECIFIC_BYTES = ((MAX_RSA_KEY_BYTES / 2) * (3 + CRT_FORMAT_RSA * 2));
 
-// Capability related MAX_ value
-public const ulong MAX_CAP_DATA = (MAX_CAP_BUFFER - sizeof(TPM_CAP) - sizeof(uint));
-public const ulong MAX_CAP_ALGS = (MAX_CAP_DATA / sizeof(TPMS_ALG_PROPERTY));
-public const ulong MAX_CAP_HANDLES = (MAX_CAP_DATA / sizeof(TPM_HANDLE));
-public const ulong MAX_CAP_CC = (MAX_CAP_DATA / sizeof(TPM_CC));
-public const ulong MAX_TPM_PROPERTIES = (MAX_CAP_DATA / sizeof(TPMS_TAGGED_PROPERTY));
-public const ulong MAX_PCR_PROPERTIES = (MAX_CAP_DATA / sizeof(TPMS_TAGGED_PCR_SELECT));
-public const ulong MAX_ECC_CURVES = (MAX_CAP_DATA / sizeof(TPM_ECC_CURVE));
+  // Capability related MAX_ value
+  public const ulong MAX_CAP_DATA = (MAX_CAP_BUFFER - sizeof(TPM_CAP) - sizeof(uint));
+  public const ulong MAX_CAP_ALGS = (MAX_CAP_DATA / sizeof(TPMS_ALG_PROPERTY));
+  public const ulong MAX_CAP_HANDLES = (MAX_CAP_DATA / sizeof(TPM_HANDLE));
+  public const ulong MAX_CAP_CC = (MAX_CAP_DATA / sizeof(TPM_CC));
+  public const ulong MAX_TPM_PROPERTIES = (MAX_CAP_DATA / sizeof(TPMS_TAGGED_PROPERTY));
+  public const ulong MAX_PCR_PROPERTIES = (MAX_CAP_DATA / sizeof(TPMS_TAGGED_PCR_SELECT));
+  public const ulong MAX_ECC_CURVES = (MAX_CAP_DATA / sizeof(TPM_ECC_CURVE));
 
-//
-// Always set 5 here, because we want to support all hash algo in BIOS.
-//
-public const ulong HASH_COUNT = 5;
+  //
+  // Always set 5 here, because we want to support all hash algo in BIOS.
+  //
+  public const ulong HASH_COUNT = 5;
 
-// 5 Base Types
+  // 5 Base Types
+}
 
 // Table 3 - Definition of Base Types
 [StructLayout(LayoutKind.Sequential)]
@@ -170,7 +179,10 @@ public unsafe struct TPM_KEY_BITS { ushort Value; public static implicit operato
 // Table 6 - TPM_GENERATED Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_GENERATED { uint Value; public static implicit operator TPM_GENERATED(uint value) => new TPM_GENERATED() { Value = value }; public static implicit operator uint(TPM_GENERATED value) => value.Value; }
-public const ulong TPM_GENERATED_VALUE = (TPM_GENERATED)(0xff544347);
+public unsafe partial class EFI
+{
+  public const ulong TPM_GENERATED_VALUE = (TPM_GENERATED)(0xff544347);
+}
 
 // Table 7 - TPM_ALG_ID Constants
 [StructLayout(LayoutKind.Sequential)]
@@ -178,488 +190,527 @@ public unsafe struct TPM_ALG_ID { ushort Value; public static implicit operator 
 //
 // NOTE: Comment some algo which has same name as TPM1.2 (value is same, so not runtime issue)
 //
-public const ulong TPM_ALG_ERROR = (TPM_ALG_ID)(0x0000);
-public const ulong TPM_ALG_FIRST = (TPM_ALG_ID)(0x0001);
-public const ulong TPM_ALG_RSA = (TPM_ALG_ID)(0x0001);
-public const ulong TPM_ALG_SHA = (TPM_ALG_ID)(0x0004);
-public const ulong TPM_ALG_SHA1 = (TPM_ALG_ID)(0x0004);
-public const ulong TPM_ALG_HMAC = (TPM_ALG_ID)(0x0005);
-public const ulong TPM_ALG_AES = (TPM_ALG_ID)(0x0006);
-public const ulong TPM_ALG_MGF1 = (TPM_ALG_ID)(0x0007);
-public const ulong TPM_ALG_KEYEDHASH = (TPM_ALG_ID)(0x0008);
-public const ulong TPM_ALG_XOR = (TPM_ALG_ID)(0x000A);
-public const ulong TPM_ALG_SHA256 = (TPM_ALG_ID)(0x000B);
-public const ulong TPM_ALG_SHA384 = (TPM_ALG_ID)(0x000C);
-public const ulong TPM_ALG_SHA512 = (TPM_ALG_ID)(0x000D);
-public const ulong TPM_ALG_NULL = (TPM_ALG_ID)(0x0010);
-public const ulong TPM_ALG_SM3_256 = (TPM_ALG_ID)(0x0012);
-public const ulong TPM_ALG_SM4 = (TPM_ALG_ID)(0x0013);
-public const ulong TPM_ALG_RSASSA = (TPM_ALG_ID)(0x0014);
-public const ulong TPM_ALG_RSAES = (TPM_ALG_ID)(0x0015);
-public const ulong TPM_ALG_RSAPSS = (TPM_ALG_ID)(0x0016);
-public const ulong TPM_ALG_OAEP = (TPM_ALG_ID)(0x0017);
-public const ulong TPM_ALG_ECDSA = (TPM_ALG_ID)(0x0018);
-public const ulong TPM_ALG_ECDH = (TPM_ALG_ID)(0x0019);
-public const ulong TPM_ALG_ECDAA = (TPM_ALG_ID)(0x001A);
-public const ulong TPM_ALG_SM2 = (TPM_ALG_ID)(0x001B);
-public const ulong TPM_ALG_ECSCHNORR = (TPM_ALG_ID)(0x001C);
-public const ulong TPM_ALG_ECMQV = (TPM_ALG_ID)(0x001D);
-public const ulong TPM_ALG_KDF1_SP800_56a = (TPM_ALG_ID)(0x0020);
-public const ulong TPM_ALG_KDF2 = (TPM_ALG_ID)(0x0021);
-public const ulong TPM_ALG_KDF1_SP800_108 = (TPM_ALG_ID)(0x0022);
-public const ulong TPM_ALG_ECC = (TPM_ALG_ID)(0x0023);
-public const ulong TPM_ALG_SYMCIPHER = (TPM_ALG_ID)(0x0025);
-public const ulong TPM_ALG_CTR = (TPM_ALG_ID)(0x0040);
-public const ulong TPM_ALG_OFB = (TPM_ALG_ID)(0x0041);
-public const ulong TPM_ALG_CBC = (TPM_ALG_ID)(0x0042);
-public const ulong TPM_ALG_CFB = (TPM_ALG_ID)(0x0043);
-public const ulong TPM_ALG_ECB = (TPM_ALG_ID)(0x0044);
-public const ulong TPM_ALG_LAST = (TPM_ALG_ID)(0x0044);
+public unsafe partial class EFI
+{
+  public const ulong TPM_ALG_ERROR = (TPM_ALG_ID)(0x0000);
+  public const ulong TPM_ALG_FIRST = (TPM_ALG_ID)(0x0001);
+  public const ulong TPM_ALG_RSA = (TPM_ALG_ID)(0x0001);
+  public const ulong TPM_ALG_SHA = (TPM_ALG_ID)(0x0004);
+  public const ulong TPM_ALG_SHA1 = (TPM_ALG_ID)(0x0004);
+  public const ulong TPM_ALG_HMAC = (TPM_ALG_ID)(0x0005);
+  public const ulong TPM_ALG_AES = (TPM_ALG_ID)(0x0006);
+  public const ulong TPM_ALG_MGF1 = (TPM_ALG_ID)(0x0007);
+  public const ulong TPM_ALG_KEYEDHASH = (TPM_ALG_ID)(0x0008);
+  public const ulong TPM_ALG_XOR = (TPM_ALG_ID)(0x000A);
+  public const ulong TPM_ALG_SHA256 = (TPM_ALG_ID)(0x000B);
+  public const ulong TPM_ALG_SHA384 = (TPM_ALG_ID)(0x000C);
+  public const ulong TPM_ALG_SHA512 = (TPM_ALG_ID)(0x000D);
+  public const ulong TPM_ALG_NULL = (TPM_ALG_ID)(0x0010);
+  public const ulong TPM_ALG_SM3_256 = (TPM_ALG_ID)(0x0012);
+  public const ulong TPM_ALG_SM4 = (TPM_ALG_ID)(0x0013);
+  public const ulong TPM_ALG_RSASSA = (TPM_ALG_ID)(0x0014);
+  public const ulong TPM_ALG_RSAES = (TPM_ALG_ID)(0x0015);
+  public const ulong TPM_ALG_RSAPSS = (TPM_ALG_ID)(0x0016);
+  public const ulong TPM_ALG_OAEP = (TPM_ALG_ID)(0x0017);
+  public const ulong TPM_ALG_ECDSA = (TPM_ALG_ID)(0x0018);
+  public const ulong TPM_ALG_ECDH = (TPM_ALG_ID)(0x0019);
+  public const ulong TPM_ALG_ECDAA = (TPM_ALG_ID)(0x001A);
+  public const ulong TPM_ALG_SM2 = (TPM_ALG_ID)(0x001B);
+  public const ulong TPM_ALG_ECSCHNORR = (TPM_ALG_ID)(0x001C);
+  public const ulong TPM_ALG_ECMQV = (TPM_ALG_ID)(0x001D);
+  public const ulong TPM_ALG_KDF1_SP800_56a = (TPM_ALG_ID)(0x0020);
+  public const ulong TPM_ALG_KDF2 = (TPM_ALG_ID)(0x0021);
+  public const ulong TPM_ALG_KDF1_SP800_108 = (TPM_ALG_ID)(0x0022);
+  public const ulong TPM_ALG_ECC = (TPM_ALG_ID)(0x0023);
+  public const ulong TPM_ALG_SYMCIPHER = (TPM_ALG_ID)(0x0025);
+  public const ulong TPM_ALG_CTR = (TPM_ALG_ID)(0x0040);
+  public const ulong TPM_ALG_OFB = (TPM_ALG_ID)(0x0041);
+  public const ulong TPM_ALG_CBC = (TPM_ALG_ID)(0x0042);
+  public const ulong TPM_ALG_CFB = (TPM_ALG_ID)(0x0043);
+  public const ulong TPM_ALG_ECB = (TPM_ALG_ID)(0x0044);
+  public const ulong TPM_ALG_LAST = (TPM_ALG_ID)(0x0044);
+}
 
 // Table 8 - TPM_ECC_CURVE Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_ECC_CURVE { ushort Value; public static implicit operator TPM_ECC_CURVE(ushort value) => new TPM_ECC_CURVE() { Value = value }; public static implicit operator ushort(TPM_ECC_CURVE value) => value.Value; }
-public const ulong TPM_ECC_NONE = (TPM_ECC_CURVE)(0x0000);
-public const ulong TPM_ECC_NIST_P192 = (TPM_ECC_CURVE)(0x0001);
-public const ulong TPM_ECC_NIST_P224 = (TPM_ECC_CURVE)(0x0002);
-public const ulong TPM_ECC_NIST_P256 = (TPM_ECC_CURVE)(0x0003);
-public const ulong TPM_ECC_NIST_P384 = (TPM_ECC_CURVE)(0x0004);
-public const ulong TPM_ECC_NIST_P521 = (TPM_ECC_CURVE)(0x0005);
-public const ulong TPM_ECC_BN_P256 = (TPM_ECC_CURVE)(0x0010);
-public const ulong TPM_ECC_BN_P638 = (TPM_ECC_CURVE)(0x0011);
-public const ulong TPM_ECC_SM2_P256 = (TPM_ECC_CURVE)(0x0020);
+public unsafe partial class EFI
+{
+  public const ulong TPM_ECC_NONE = (TPM_ECC_CURVE)(0x0000);
+  public const ulong TPM_ECC_NIST_P192 = (TPM_ECC_CURVE)(0x0001);
+  public const ulong TPM_ECC_NIST_P224 = (TPM_ECC_CURVE)(0x0002);
+  public const ulong TPM_ECC_NIST_P256 = (TPM_ECC_CURVE)(0x0003);
+  public const ulong TPM_ECC_NIST_P384 = (TPM_ECC_CURVE)(0x0004);
+  public const ulong TPM_ECC_NIST_P521 = (TPM_ECC_CURVE)(0x0005);
+  public const ulong TPM_ECC_BN_P256 = (TPM_ECC_CURVE)(0x0010);
+  public const ulong TPM_ECC_BN_P638 = (TPM_ECC_CURVE)(0x0011);
+  public const ulong TPM_ECC_SM2_P256 = (TPM_ECC_CURVE)(0x0020);
+}
 
 // Table 11 - TPM_CC Constants (Numeric Order)
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_CC { uint Value; public static implicit operator TPM_CC(uint value) => new TPM_CC() { Value = value }; public static implicit operator uint(TPM_CC value) => value.Value; }
-public const ulong TPM_CC_FIRST = (TPM_CC)(0x0000011F);
-public const ulong TPM_CC_PP_FIRST = (TPM_CC)(0x0000011F);
-public const ulong TPM_CC_NV_UndefineSpaceSpecial = (TPM_CC)(0x0000011F);
-public const ulong TPM_CC_EvictControl = (TPM_CC)(0x00000120);
-public const ulong TPM_CC_HierarchyControl = (TPM_CC)(0x00000121);
-public const ulong TPM_CC_NV_UndefineSpace = (TPM_CC)(0x00000122);
-public const ulong TPM_CC_ChangeEPS = (TPM_CC)(0x00000124);
-public const ulong TPM_CC_ChangePPS = (TPM_CC)(0x00000125);
-public const ulong TPM_CC_Clear = (TPM_CC)(0x00000126);
-public const ulong TPM_CC_ClearControl = (TPM_CC)(0x00000127);
-public const ulong TPM_CC_ClockSet = (TPM_CC)(0x00000128);
-public const ulong TPM_CC_HierarchyChangeAuth = (TPM_CC)(0x00000129);
-public const ulong TPM_CC_NV_DefineSpace = (TPM_CC)(0x0000012A);
-public const ulong TPM_CC_PCR_Allocate = (TPM_CC)(0x0000012B);
-public const ulong TPM_CC_PCR_SetAuthPolicy = (TPM_CC)(0x0000012C);
-public const ulong TPM_CC_PP_Commands = (TPM_CC)(0x0000012D);
-public const ulong TPM_CC_SetPrimaryPolicy = (TPM_CC)(0x0000012E);
-public const ulong TPM_CC_FieldUpgradeStart = (TPM_CC)(0x0000012F);
-public const ulong TPM_CC_ClockRateAdjust = (TPM_CC)(0x00000130);
-public const ulong TPM_CC_CreatePrimary = (TPM_CC)(0x00000131);
-public const ulong TPM_CC_NV_GlobalWriteLock = (TPM_CC)(0x00000132);
-public const ulong TPM_CC_PP_LAST = (TPM_CC)(0x00000132);
-public const ulong TPM_CC_GetCommandAuditDigest = (TPM_CC)(0x00000133);
-public const ulong TPM_CC_NV_Increment = (TPM_CC)(0x00000134);
-public const ulong TPM_CC_NV_SetBits = (TPM_CC)(0x00000135);
-public const ulong TPM_CC_NV_Extend = (TPM_CC)(0x00000136);
-public const ulong TPM_CC_NV_Write = (TPM_CC)(0x00000137);
-public const ulong TPM_CC_NV_WriteLock = (TPM_CC)(0x00000138);
-public const ulong TPM_CC_DictionaryAttackLockReset = (TPM_CC)(0x00000139);
-public const ulong TPM_CC_DictionaryAttackParameters = (TPM_CC)(0x0000013A);
-public const ulong TPM_CC_NV_ChangeAuth = (TPM_CC)(0x0000013B);
-public const ulong TPM_CC_PCR_Event = (TPM_CC)(0x0000013C);
-public const ulong TPM_CC_PCR_Reset = (TPM_CC)(0x0000013D);
-public const ulong TPM_CC_SequenceComplete = (TPM_CC)(0x0000013E);
-public const ulong TPM_CC_SetAlgorithmSet = (TPM_CC)(0x0000013F);
-public const ulong TPM_CC_SetCommandCodeAuditStatus = (TPM_CC)(0x00000140);
-public const ulong TPM_CC_FieldUpgradeData = (TPM_CC)(0x00000141);
-public const ulong TPM_CC_IncrementalSelfTest = (TPM_CC)(0x00000142);
-public const ulong TPM_CC_SelfTest = (TPM_CC)(0x00000143);
-public const ulong TPM_CC_Startup = (TPM_CC)(0x00000144);
-public const ulong TPM_CC_Shutdown = (TPM_CC)(0x00000145);
-public const ulong TPM_CC_StirRandom = (TPM_CC)(0x00000146);
-public const ulong TPM_CC_ActivateCredential = (TPM_CC)(0x00000147);
-public const ulong TPM_CC_Certify = (TPM_CC)(0x00000148);
-public const ulong TPM_CC_PolicyNV = (TPM_CC)(0x00000149);
-public const ulong TPM_CC_CertifyCreation = (TPM_CC)(0x0000014A);
-public const ulong TPM_CC_Duplicate = (TPM_CC)(0x0000014B);
-public const ulong TPM_CC_GetTime = (TPM_CC)(0x0000014C);
-public const ulong TPM_CC_GetSessionAuditDigest = (TPM_CC)(0x0000014D);
-public const ulong TPM_CC_NV_Read = (TPM_CC)(0x0000014E);
-public const ulong TPM_CC_NV_ReadLock = (TPM_CC)(0x0000014F);
-public const ulong TPM_CC_ObjectChangeAuth = (TPM_CC)(0x00000150);
-public const ulong TPM_CC_PolicySecret = (TPM_CC)(0x00000151);
-public const ulong TPM_CC_Rewrap = (TPM_CC)(0x00000152);
-public const ulong TPM_CC_Create = (TPM_CC)(0x00000153);
-public const ulong TPM_CC_ECDH_ZGen = (TPM_CC)(0x00000154);
-public const ulong TPM_CC_HMAC = (TPM_CC)(0x00000155);
-public const ulong TPM_CC_Import = (TPM_CC)(0x00000156);
-public const ulong TPM_CC_Load = (TPM_CC)(0x00000157);
-public const ulong TPM_CC_Quote = (TPM_CC)(0x00000158);
-public const ulong TPM_CC_RSA_Decrypt = (TPM_CC)(0x00000159);
-public const ulong TPM_CC_HMAC_Start = (TPM_CC)(0x0000015B);
-public const ulong TPM_CC_SequenceUpdate = (TPM_CC)(0x0000015C);
-public const ulong TPM_CC_Sign = (TPM_CC)(0x0000015D);
-public const ulong TPM_CC_Unseal = (TPM_CC)(0x0000015E);
-public const ulong TPM_CC_PolicySigned = (TPM_CC)(0x00000160);
-public const ulong TPM_CC_ContextLoad = (TPM_CC)(0x00000161);
-public const ulong TPM_CC_ContextSave = (TPM_CC)(0x00000162);
-public const ulong TPM_CC_ECDH_KeyGen = (TPM_CC)(0x00000163);
-public const ulong TPM_CC_EncryptDecrypt = (TPM_CC)(0x00000164);
-public const ulong TPM_CC_FlushContext = (TPM_CC)(0x00000165);
-public const ulong TPM_CC_LoadExternal = (TPM_CC)(0x00000167);
-public const ulong TPM_CC_MakeCredential = (TPM_CC)(0x00000168);
-public const ulong TPM_CC_NV_ReadPublic = (TPM_CC)(0x00000169);
-public const ulong TPM_CC_PolicyAuthorize = (TPM_CC)(0x0000016A);
-public const ulong TPM_CC_PolicyAuthValue = (TPM_CC)(0x0000016B);
-public const ulong TPM_CC_PolicyCommandCode = (TPM_CC)(0x0000016C);
-public const ulong TPM_CC_PolicyCounterTimer = (TPM_CC)(0x0000016D);
-public const ulong TPM_CC_PolicyCpHash = (TPM_CC)(0x0000016E);
-public const ulong TPM_CC_PolicyLocality = (TPM_CC)(0x0000016F);
-public const ulong TPM_CC_PolicyNameHash = (TPM_CC)(0x00000170);
-public const ulong TPM_CC_PolicyOR = (TPM_CC)(0x00000171);
-public const ulong TPM_CC_PolicyTicket = (TPM_CC)(0x00000172);
-public const ulong TPM_CC_ReadPublic = (TPM_CC)(0x00000173);
-public const ulong TPM_CC_RSA_Encrypt = (TPM_CC)(0x00000174);
-public const ulong TPM_CC_StartAuthSession = (TPM_CC)(0x00000176);
-public const ulong TPM_CC_VerifySignature = (TPM_CC)(0x00000177);
-public const ulong TPM_CC_ECC_Parameters = (TPM_CC)(0x00000178);
-public const ulong TPM_CC_FirmwareRead = (TPM_CC)(0x00000179);
-public const ulong TPM_CC_GetCapability = (TPM_CC)(0x0000017A);
-public const ulong TPM_CC_GetRandom = (TPM_CC)(0x0000017B);
-public const ulong TPM_CC_GetTestResult = (TPM_CC)(0x0000017C);
-public const ulong TPM_CC_Hash = (TPM_CC)(0x0000017D);
-public const ulong TPM_CC_PCR_Read = (TPM_CC)(0x0000017E);
-public const ulong TPM_CC_PolicyPCR = (TPM_CC)(0x0000017F);
-public const ulong TPM_CC_PolicyRestart = (TPM_CC)(0x00000180);
-public const ulong TPM_CC_ReadClock = (TPM_CC)(0x00000181);
-public const ulong TPM_CC_PCR_Extend = (TPM_CC)(0x00000182);
-public const ulong TPM_CC_PCR_SetAuthValue = (TPM_CC)(0x00000183);
-public const ulong TPM_CC_NV_Certify = (TPM_CC)(0x00000184);
-public const ulong TPM_CC_EventSequenceComplete = (TPM_CC)(0x00000185);
-public const ulong TPM_CC_HashSequenceStart = (TPM_CC)(0x00000186);
-public const ulong TPM_CC_PolicyPhysicalPresence = (TPM_CC)(0x00000187);
-public const ulong TPM_CC_PolicyDuplicationSelect = (TPM_CC)(0x00000188);
-public const ulong TPM_CC_PolicyGetDigest = (TPM_CC)(0x00000189);
-public const ulong TPM_CC_TestParms = (TPM_CC)(0x0000018A);
-public const ulong TPM_CC_Commit = (TPM_CC)(0x0000018B);
-public const ulong TPM_CC_PolicyPassword = (TPM_CC)(0x0000018C);
-public const ulong TPM_CC_ZGen_2Phase = (TPM_CC)(0x0000018D);
-public const ulong TPM_CC_EC_Ephemeral = (TPM_CC)(0x0000018E);
-public const ulong TPM_CC_LAST = (TPM_CC)(0x0000018E);
+public unsafe partial class EFI
+{
+  public const ulong TPM_CC_FIRST = (TPM_CC)(0x0000011F);
+  public const ulong TPM_CC_PP_FIRST = (TPM_CC)(0x0000011F);
+  public const ulong TPM_CC_NV_UndefineSpaceSpecial = (TPM_CC)(0x0000011F);
+  public const ulong TPM_CC_EvictControl = (TPM_CC)(0x00000120);
+  public const ulong TPM_CC_HierarchyControl = (TPM_CC)(0x00000121);
+  public const ulong TPM_CC_NV_UndefineSpace = (TPM_CC)(0x00000122);
+  public const ulong TPM_CC_ChangeEPS = (TPM_CC)(0x00000124);
+  public const ulong TPM_CC_ChangePPS = (TPM_CC)(0x00000125);
+  public const ulong TPM_CC_Clear = (TPM_CC)(0x00000126);
+  public const ulong TPM_CC_ClearControl = (TPM_CC)(0x00000127);
+  public const ulong TPM_CC_ClockSet = (TPM_CC)(0x00000128);
+  public const ulong TPM_CC_HierarchyChangeAuth = (TPM_CC)(0x00000129);
+  public const ulong TPM_CC_NV_DefineSpace = (TPM_CC)(0x0000012A);
+  public const ulong TPM_CC_PCR_Allocate = (TPM_CC)(0x0000012B);
+  public const ulong TPM_CC_PCR_SetAuthPolicy = (TPM_CC)(0x0000012C);
+  public const ulong TPM_CC_PP_Commands = (TPM_CC)(0x0000012D);
+  public const ulong TPM_CC_SetPrimaryPolicy = (TPM_CC)(0x0000012E);
+  public const ulong TPM_CC_FieldUpgradeStart = (TPM_CC)(0x0000012F);
+  public const ulong TPM_CC_ClockRateAdjust = (TPM_CC)(0x00000130);
+  public const ulong TPM_CC_CreatePrimary = (TPM_CC)(0x00000131);
+  public const ulong TPM_CC_NV_GlobalWriteLock = (TPM_CC)(0x00000132);
+  public const ulong TPM_CC_PP_LAST = (TPM_CC)(0x00000132);
+  public const ulong TPM_CC_GetCommandAuditDigest = (TPM_CC)(0x00000133);
+  public const ulong TPM_CC_NV_Increment = (TPM_CC)(0x00000134);
+  public const ulong TPM_CC_NV_SetBits = (TPM_CC)(0x00000135);
+  public const ulong TPM_CC_NV_Extend = (TPM_CC)(0x00000136);
+  public const ulong TPM_CC_NV_Write = (TPM_CC)(0x00000137);
+  public const ulong TPM_CC_NV_WriteLock = (TPM_CC)(0x00000138);
+  public const ulong TPM_CC_DictionaryAttackLockReset = (TPM_CC)(0x00000139);
+  public const ulong TPM_CC_DictionaryAttackParameters = (TPM_CC)(0x0000013A);
+  public const ulong TPM_CC_NV_ChangeAuth = (TPM_CC)(0x0000013B);
+  public const ulong TPM_CC_PCR_Event = (TPM_CC)(0x0000013C);
+  public const ulong TPM_CC_PCR_Reset = (TPM_CC)(0x0000013D);
+  public const ulong TPM_CC_SequenceComplete = (TPM_CC)(0x0000013E);
+  public const ulong TPM_CC_SetAlgorithmSet = (TPM_CC)(0x0000013F);
+  public const ulong TPM_CC_SetCommandCodeAuditStatus = (TPM_CC)(0x00000140);
+  public const ulong TPM_CC_FieldUpgradeData = (TPM_CC)(0x00000141);
+  public const ulong TPM_CC_IncrementalSelfTest = (TPM_CC)(0x00000142);
+  public const ulong TPM_CC_SelfTest = (TPM_CC)(0x00000143);
+  public const ulong TPM_CC_Startup = (TPM_CC)(0x00000144);
+  public const ulong TPM_CC_Shutdown = (TPM_CC)(0x00000145);
+  public const ulong TPM_CC_StirRandom = (TPM_CC)(0x00000146);
+  public const ulong TPM_CC_ActivateCredential = (TPM_CC)(0x00000147);
+  public const ulong TPM_CC_Certify = (TPM_CC)(0x00000148);
+  public const ulong TPM_CC_PolicyNV = (TPM_CC)(0x00000149);
+  public const ulong TPM_CC_CertifyCreation = (TPM_CC)(0x0000014A);
+  public const ulong TPM_CC_Duplicate = (TPM_CC)(0x0000014B);
+  public const ulong TPM_CC_GetTime = (TPM_CC)(0x0000014C);
+  public const ulong TPM_CC_GetSessionAuditDigest = (TPM_CC)(0x0000014D);
+  public const ulong TPM_CC_NV_Read = (TPM_CC)(0x0000014E);
+  public const ulong TPM_CC_NV_ReadLock = (TPM_CC)(0x0000014F);
+  public const ulong TPM_CC_ObjectChangeAuth = (TPM_CC)(0x00000150);
+  public const ulong TPM_CC_PolicySecret = (TPM_CC)(0x00000151);
+  public const ulong TPM_CC_Rewrap = (TPM_CC)(0x00000152);
+  public const ulong TPM_CC_Create = (TPM_CC)(0x00000153);
+  public const ulong TPM_CC_ECDH_ZGen = (TPM_CC)(0x00000154);
+  public const ulong TPM_CC_HMAC = (TPM_CC)(0x00000155);
+  public const ulong TPM_CC_Import = (TPM_CC)(0x00000156);
+  public const ulong TPM_CC_Load = (TPM_CC)(0x00000157);
+  public const ulong TPM_CC_Quote = (TPM_CC)(0x00000158);
+  public const ulong TPM_CC_RSA_Decrypt = (TPM_CC)(0x00000159);
+  public const ulong TPM_CC_HMAC_Start = (TPM_CC)(0x0000015B);
+  public const ulong TPM_CC_SequenceUpdate = (TPM_CC)(0x0000015C);
+  public const ulong TPM_CC_Sign = (TPM_CC)(0x0000015D);
+  public const ulong TPM_CC_Unseal = (TPM_CC)(0x0000015E);
+  public const ulong TPM_CC_PolicySigned = (TPM_CC)(0x00000160);
+  public const ulong TPM_CC_ContextLoad = (TPM_CC)(0x00000161);
+  public const ulong TPM_CC_ContextSave = (TPM_CC)(0x00000162);
+  public const ulong TPM_CC_ECDH_KeyGen = (TPM_CC)(0x00000163);
+  public const ulong TPM_CC_EncryptDecrypt = (TPM_CC)(0x00000164);
+  public const ulong TPM_CC_FlushContext = (TPM_CC)(0x00000165);
+  public const ulong TPM_CC_LoadExternal = (TPM_CC)(0x00000167);
+  public const ulong TPM_CC_MakeCredential = (TPM_CC)(0x00000168);
+  public const ulong TPM_CC_NV_ReadPublic = (TPM_CC)(0x00000169);
+  public const ulong TPM_CC_PolicyAuthorize = (TPM_CC)(0x0000016A);
+  public const ulong TPM_CC_PolicyAuthValue = (TPM_CC)(0x0000016B);
+  public const ulong TPM_CC_PolicyCommandCode = (TPM_CC)(0x0000016C);
+  public const ulong TPM_CC_PolicyCounterTimer = (TPM_CC)(0x0000016D);
+  public const ulong TPM_CC_PolicyCpHash = (TPM_CC)(0x0000016E);
+  public const ulong TPM_CC_PolicyLocality = (TPM_CC)(0x0000016F);
+  public const ulong TPM_CC_PolicyNameHash = (TPM_CC)(0x00000170);
+  public const ulong TPM_CC_PolicyOR = (TPM_CC)(0x00000171);
+  public const ulong TPM_CC_PolicyTicket = (TPM_CC)(0x00000172);
+  public const ulong TPM_CC_ReadPublic = (TPM_CC)(0x00000173);
+  public const ulong TPM_CC_RSA_Encrypt = (TPM_CC)(0x00000174);
+  public const ulong TPM_CC_StartAuthSession = (TPM_CC)(0x00000176);
+  public const ulong TPM_CC_VerifySignature = (TPM_CC)(0x00000177);
+  public const ulong TPM_CC_ECC_Parameters = (TPM_CC)(0x00000178);
+  public const ulong TPM_CC_FirmwareRead = (TPM_CC)(0x00000179);
+  public const ulong TPM_CC_GetCapability = (TPM_CC)(0x0000017A);
+  public const ulong TPM_CC_GetRandom = (TPM_CC)(0x0000017B);
+  public const ulong TPM_CC_GetTestResult = (TPM_CC)(0x0000017C);
+  public const ulong TPM_CC_Hash = (TPM_CC)(0x0000017D);
+  public const ulong TPM_CC_PCR_Read = (TPM_CC)(0x0000017E);
+  public const ulong TPM_CC_PolicyPCR = (TPM_CC)(0x0000017F);
+  public const ulong TPM_CC_PolicyRestart = (TPM_CC)(0x00000180);
+  public const ulong TPM_CC_ReadClock = (TPM_CC)(0x00000181);
+  public const ulong TPM_CC_PCR_Extend = (TPM_CC)(0x00000182);
+  public const ulong TPM_CC_PCR_SetAuthValue = (TPM_CC)(0x00000183);
+  public const ulong TPM_CC_NV_Certify = (TPM_CC)(0x00000184);
+  public const ulong TPM_CC_EventSequenceComplete = (TPM_CC)(0x00000185);
+  public const ulong TPM_CC_HashSequenceStart = (TPM_CC)(0x00000186);
+  public const ulong TPM_CC_PolicyPhysicalPresence = (TPM_CC)(0x00000187);
+  public const ulong TPM_CC_PolicyDuplicationSelect = (TPM_CC)(0x00000188);
+  public const ulong TPM_CC_PolicyGetDigest = (TPM_CC)(0x00000189);
+  public const ulong TPM_CC_TestParms = (TPM_CC)(0x0000018A);
+  public const ulong TPM_CC_Commit = (TPM_CC)(0x0000018B);
+  public const ulong TPM_CC_PolicyPassword = (TPM_CC)(0x0000018C);
+  public const ulong TPM_CC_ZGen_2Phase = (TPM_CC)(0x0000018D);
+  public const ulong TPM_CC_EC_Ephemeral = (TPM_CC)(0x0000018E);
+  public const ulong TPM_CC_LAST = (TPM_CC)(0x0000018E);
+}
 
 // Table 15 - TPM_RC Constants (Actions)
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_RC { uint Value; public static implicit operator TPM_RC(uint value) => new TPM_RC() { Value = value }; public static implicit operator uint(TPM_RC value) => value.Value; }
-public const ulong TPM_RC_SUCCESS = (TPM_RC)(0x000);
-public const ulong TPM_RC_BAD_TAG = (TPM_RC)(0x030);
-public const ulong RC_VER1 = (TPM_RC)(0x100);
-public const ulong TPM_RC_INITIALIZE = (TPM_RC)(RC_VER1 + 0x000);
-public const ulong TPM_RC_FAILURE = (TPM_RC)(RC_VER1 + 0x001);
-public const ulong TPM_RC_SEQUENCE = (TPM_RC)(RC_VER1 + 0x003);
-public const ulong TPM_RC_PRIVATE = (TPM_RC)(RC_VER1 + 0x00B);
-public const ulong TPM_RC_HMAC = (TPM_RC)(RC_VER1 + 0x019);
-public const ulong TPM_RC_DISABLED = (TPM_RC)(RC_VER1 + 0x020);
-public const ulong TPM_RC_EXCLUSIVE = (TPM_RC)(RC_VER1 + 0x021);
-public const ulong TPM_RC_AUTH_TYPE = (TPM_RC)(RC_VER1 + 0x024);
-public const ulong TPM_RC_AUTH_MISSING = (TPM_RC)(RC_VER1 + 0x025);
-public const ulong TPM_RC_POLICY = (TPM_RC)(RC_VER1 + 0x026);
-public const ulong TPM_RC_PCR = (TPM_RC)(RC_VER1 + 0x027);
-public const ulong TPM_RC_PCR_CHANGED = (TPM_RC)(RC_VER1 + 0x028);
-public const ulong TPM_RC_UPGRADE = (TPM_RC)(RC_VER1 + 0x02D);
-public const ulong TPM_RC_TOO_MANY_CONTEXTS = (TPM_RC)(RC_VER1 + 0x02E);
-public const ulong TPM_RC_AUTH_UNAVAILABLE = (TPM_RC)(RC_VER1 + 0x02F);
-public const ulong TPM_RC_REBOOT = (TPM_RC)(RC_VER1 + 0x030);
-public const ulong TPM_RC_UNBALANCED = (TPM_RC)(RC_VER1 + 0x031);
-public const ulong TPM_RC_COMMAND_SIZE = (TPM_RC)(RC_VER1 + 0x042);
-public const ulong TPM_RC_COMMAND_CODE = (TPM_RC)(RC_VER1 + 0x043);
-public const ulong TPM_RC_AUTHSIZE = (TPM_RC)(RC_VER1 + 0x044);
-public const ulong TPM_RC_AUTH_CONTEXT = (TPM_RC)(RC_VER1 + 0x045);
-public const ulong TPM_RC_NV_RANGE = (TPM_RC)(RC_VER1 + 0x046);
-public const ulong TPM_RC_NV_SIZE = (TPM_RC)(RC_VER1 + 0x047);
-public const ulong TPM_RC_NV_LOCKED = (TPM_RC)(RC_VER1 + 0x048);
-public const ulong TPM_RC_NV_AUTHORIZATION = (TPM_RC)(RC_VER1 + 0x049);
-public const ulong TPM_RC_NV_UNINITIALIZED = (TPM_RC)(RC_VER1 + 0x04A);
-public const ulong TPM_RC_NV_SPACE = (TPM_RC)(RC_VER1 + 0x04B);
-public const ulong TPM_RC_NV_DEFINED = (TPM_RC)(RC_VER1 + 0x04C);
-public const ulong TPM_RC_BAD_CONTEXT = (TPM_RC)(RC_VER1 + 0x050);
-public const ulong TPM_RC_CPHASH = (TPM_RC)(RC_VER1 + 0x051);
-public const ulong TPM_RC_PARENT = (TPM_RC)(RC_VER1 + 0x052);
-public const ulong TPM_RC_NEEDS_TEST = (TPM_RC)(RC_VER1 + 0x053);
-public const ulong TPM_RC_NO_RESULT = (TPM_RC)(RC_VER1 + 0x054);
-public const ulong TPM_RC_SENSITIVE = (TPM_RC)(RC_VER1 + 0x055);
-public const ulong RC_MAX_FM0 = (TPM_RC)(RC_VER1 + 0x07F);
-public const ulong RC_FMT1 = (TPM_RC)(0x080);
-public const ulong TPM_RC_ASYMMETRIC = (TPM_RC)(RC_FMT1 + 0x001);
-public const ulong TPM_RC_ATTRIBUTES = (TPM_RC)(RC_FMT1 + 0x002);
-public const ulong TPM_RC_HASH = (TPM_RC)(RC_FMT1 + 0x003);
-public const ulong TPM_RC_VALUE = (TPM_RC)(RC_FMT1 + 0x004);
-public const ulong TPM_RC_HIERARCHY = (TPM_RC)(RC_FMT1 + 0x005);
-public const ulong TPM_RC_KEY_SIZE = (TPM_RC)(RC_FMT1 + 0x007);
-public const ulong TPM_RC_MGF = (TPM_RC)(RC_FMT1 + 0x008);
-public const ulong TPM_RC_MODE = (TPM_RC)(RC_FMT1 + 0x009);
-public const ulong TPM_RC_TYPE = (TPM_RC)(RC_FMT1 + 0x00A);
-public const ulong TPM_RC_HANDLE = (TPM_RC)(RC_FMT1 + 0x00B);
-public const ulong TPM_RC_KDF = (TPM_RC)(RC_FMT1 + 0x00C);
-public const ulong TPM_RC_RANGE = (TPM_RC)(RC_FMT1 + 0x00D);
-public const ulong TPM_RC_AUTH_FAIL = (TPM_RC)(RC_FMT1 + 0x00E);
-public const ulong TPM_RC_NONCE = (TPM_RC)(RC_FMT1 + 0x00F);
-public const ulong TPM_RC_PP = (TPM_RC)(RC_FMT1 + 0x010);
-public const ulong TPM_RC_SCHEME = (TPM_RC)(RC_FMT1 + 0x012);
-public const ulong TPM_RC_SIZE = (TPM_RC)(RC_FMT1 + 0x015);
-public const ulong TPM_RC_SYMMETRIC = (TPM_RC)(RC_FMT1 + 0x016);
-public const ulong TPM_RC_TAG = (TPM_RC)(RC_FMT1 + 0x017);
-public const ulong TPM_RC_SELECTOR = (TPM_RC)(RC_FMT1 + 0x018);
-public const ulong TPM_RC_INSUFFICIENT = (TPM_RC)(RC_FMT1 + 0x01A);
-public const ulong TPM_RC_SIGNATURE = (TPM_RC)(RC_FMT1 + 0x01B);
-public const ulong TPM_RC_KEY = (TPM_RC)(RC_FMT1 + 0x01C);
-public const ulong TPM_RC_POLICY_FAIL = (TPM_RC)(RC_FMT1 + 0x01D);
-public const ulong TPM_RC_INTEGRITY = (TPM_RC)(RC_FMT1 + 0x01F);
-public const ulong TPM_RC_TICKET = (TPM_RC)(RC_FMT1 + 0x020);
-public const ulong TPM_RC_RESERVED_BITS = (TPM_RC)(RC_FMT1 + 0x021);
-public const ulong TPM_RC_BAD_AUTH = (TPM_RC)(RC_FMT1 + 0x022);
-public const ulong TPM_RC_EXPIRED = (TPM_RC)(RC_FMT1 + 0x023);
-public const ulong TPM_RC_POLICY_CC = (TPM_RC)(RC_FMT1 + 0x024);
-public const ulong TPM_RC_BINDING = (TPM_RC)(RC_FMT1 + 0x025);
-public const ulong TPM_RC_CURVE = (TPM_RC)(RC_FMT1 + 0x026);
-public const ulong TPM_RC_ECC_POINT = (TPM_RC)(RC_FMT1 + 0x027);
-public const ulong RC_WARN = (TPM_RC)(0x900);
-public const ulong TPM_RC_CONTEXT_GAP = (TPM_RC)(RC_WARN + 0x001);
-public const ulong TPM_RC_OBJECT_MEMORY = (TPM_RC)(RC_WARN + 0x002);
-public const ulong TPM_RC_SESSION_MEMORY = (TPM_RC)(RC_WARN + 0x003);
-public const ulong TPM_RC_MEMORY = (TPM_RC)(RC_WARN + 0x004);
-public const ulong TPM_RC_SESSION_HANDLES = (TPM_RC)(RC_WARN + 0x005);
-public const ulong TPM_RC_OBJECT_HANDLES = (TPM_RC)(RC_WARN + 0x006);
-public const ulong TPM_RC_LOCALITY = (TPM_RC)(RC_WARN + 0x007);
-public const ulong TPM_RC_YIELDED = (TPM_RC)(RC_WARN + 0x008);
-public const ulong TPM_RC_CANCELED = (TPM_RC)(RC_WARN + 0x009);
-public const ulong TPM_RC_TESTING = (TPM_RC)(RC_WARN + 0x00A);
-public const ulong TPM_RC_REFERENCE_H0 = (TPM_RC)(RC_WARN + 0x010);
-public const ulong TPM_RC_REFERENCE_H1 = (TPM_RC)(RC_WARN + 0x011);
-public const ulong TPM_RC_REFERENCE_H2 = (TPM_RC)(RC_WARN + 0x012);
-public const ulong TPM_RC_REFERENCE_H3 = (TPM_RC)(RC_WARN + 0x013);
-public const ulong TPM_RC_REFERENCE_H4 = (TPM_RC)(RC_WARN + 0x014);
-public const ulong TPM_RC_REFERENCE_H5 = (TPM_RC)(RC_WARN + 0x015);
-public const ulong TPM_RC_REFERENCE_H6 = (TPM_RC)(RC_WARN + 0x016);
-public const ulong TPM_RC_REFERENCE_S0 = (TPM_RC)(RC_WARN + 0x018);
-public const ulong TPM_RC_REFERENCE_S1 = (TPM_RC)(RC_WARN + 0x019);
-public const ulong TPM_RC_REFERENCE_S2 = (TPM_RC)(RC_WARN + 0x01A);
-public const ulong TPM_RC_REFERENCE_S3 = (TPM_RC)(RC_WARN + 0x01B);
-public const ulong TPM_RC_REFERENCE_S4 = (TPM_RC)(RC_WARN + 0x01C);
-public const ulong TPM_RC_REFERENCE_S5 = (TPM_RC)(RC_WARN + 0x01D);
-public const ulong TPM_RC_REFERENCE_S6 = (TPM_RC)(RC_WARN + 0x01E);
-public const ulong TPM_RC_NV_RATE = (TPM_RC)(RC_WARN + 0x020);
-public const ulong TPM_RC_LOCKOUT = (TPM_RC)(RC_WARN + 0x021);
-public const ulong TPM_RC_RETRY = (TPM_RC)(RC_WARN + 0x022);
-public const ulong TPM_RC_NV_UNAVAILABLE = (TPM_RC)(RC_WARN + 0x023);
-public const ulong TPM_RC_NOT_USED = (TPM_RC)(RC_WARN + 0x7F);
-public const ulong TPM_RC_H = (TPM_RC)(0x000);
-public const ulong TPM_RC_P = (TPM_RC)(0x040);
-public const ulong TPM_RC_S = (TPM_RC)(0x800);
-public const ulong TPM_RC_1 = (TPM_RC)(0x100);
-public const ulong TPM_RC_2 = (TPM_RC)(0x200);
-public const ulong TPM_RC_3 = (TPM_RC)(0x300);
-public const ulong TPM_RC_4 = (TPM_RC)(0x400);
-public const ulong TPM_RC_5 = (TPM_RC)(0x500);
-public const ulong TPM_RC_6 = (TPM_RC)(0x600);
-public const ulong TPM_RC_7 = (TPM_RC)(0x700);
-public const ulong TPM_RC_8 = (TPM_RC)(0x800);
-public const ulong TPM_RC_9 = (TPM_RC)(0x900);
-public const ulong TPM_RC_A = (TPM_RC)(0xA00);
-public const ulong TPM_RC_B = (TPM_RC)(0xB00);
-public const ulong TPM_RC_C = (TPM_RC)(0xC00);
-public const ulong TPM_RC_D = (TPM_RC)(0xD00);
-public const ulong TPM_RC_E = (TPM_RC)(0xE00);
-public const ulong TPM_RC_F = (TPM_RC)(0xF00);
-public const ulong TPM_RC_N_MASK = (TPM_RC)(0xF00);
+public unsafe partial class EFI
+{
+  public const ulong TPM_RC_SUCCESS = (TPM_RC)(0x000);
+  public const ulong TPM_RC_BAD_TAG = (TPM_RC)(0x030);
+  public const ulong RC_VER1 = (TPM_RC)(0x100);
+  public const ulong TPM_RC_INITIALIZE = (TPM_RC)(RC_VER1 + 0x000);
+  public const ulong TPM_RC_FAILURE = (TPM_RC)(RC_VER1 + 0x001);
+  public const ulong TPM_RC_SEQUENCE = (TPM_RC)(RC_VER1 + 0x003);
+  public const ulong TPM_RC_PRIVATE = (TPM_RC)(RC_VER1 + 0x00B);
+  public const ulong TPM_RC_HMAC = (TPM_RC)(RC_VER1 + 0x019);
+  public const ulong TPM_RC_DISABLED = (TPM_RC)(RC_VER1 + 0x020);
+  public const ulong TPM_RC_EXCLUSIVE = (TPM_RC)(RC_VER1 + 0x021);
+  public const ulong TPM_RC_AUTH_TYPE = (TPM_RC)(RC_VER1 + 0x024);
+  public const ulong TPM_RC_AUTH_MISSING = (TPM_RC)(RC_VER1 + 0x025);
+  public const ulong TPM_RC_POLICY = (TPM_RC)(RC_VER1 + 0x026);
+  public const ulong TPM_RC_PCR = (TPM_RC)(RC_VER1 + 0x027);
+  public const ulong TPM_RC_PCR_CHANGED = (TPM_RC)(RC_VER1 + 0x028);
+  public const ulong TPM_RC_UPGRADE = (TPM_RC)(RC_VER1 + 0x02D);
+  public const ulong TPM_RC_TOO_MANY_CONTEXTS = (TPM_RC)(RC_VER1 + 0x02E);
+  public const ulong TPM_RC_AUTH_UNAVAILABLE = (TPM_RC)(RC_VER1 + 0x02F);
+  public const ulong TPM_RC_REBOOT = (TPM_RC)(RC_VER1 + 0x030);
+  public const ulong TPM_RC_UNBALANCED = (TPM_RC)(RC_VER1 + 0x031);
+  public const ulong TPM_RC_COMMAND_SIZE = (TPM_RC)(RC_VER1 + 0x042);
+  public const ulong TPM_RC_COMMAND_CODE = (TPM_RC)(RC_VER1 + 0x043);
+  public const ulong TPM_RC_AUTHSIZE = (TPM_RC)(RC_VER1 + 0x044);
+  public const ulong TPM_RC_AUTH_CONTEXT = (TPM_RC)(RC_VER1 + 0x045);
+  public const ulong TPM_RC_NV_RANGE = (TPM_RC)(RC_VER1 + 0x046);
+  public const ulong TPM_RC_NV_SIZE = (TPM_RC)(RC_VER1 + 0x047);
+  public const ulong TPM_RC_NV_LOCKED = (TPM_RC)(RC_VER1 + 0x048);
+  public const ulong TPM_RC_NV_AUTHORIZATION = (TPM_RC)(RC_VER1 + 0x049);
+  public const ulong TPM_RC_NV_UNINITIALIZED = (TPM_RC)(RC_VER1 + 0x04A);
+  public const ulong TPM_RC_NV_SPACE = (TPM_RC)(RC_VER1 + 0x04B);
+  public const ulong TPM_RC_NV_DEFINED = (TPM_RC)(RC_VER1 + 0x04C);
+  public const ulong TPM_RC_BAD_CONTEXT = (TPM_RC)(RC_VER1 + 0x050);
+  public const ulong TPM_RC_CPHASH = (TPM_RC)(RC_VER1 + 0x051);
+  public const ulong TPM_RC_PARENT = (TPM_RC)(RC_VER1 + 0x052);
+  public const ulong TPM_RC_NEEDS_TEST = (TPM_RC)(RC_VER1 + 0x053);
+  public const ulong TPM_RC_NO_RESULT = (TPM_RC)(RC_VER1 + 0x054);
+  public const ulong TPM_RC_SENSITIVE = (TPM_RC)(RC_VER1 + 0x055);
+  public const ulong RC_MAX_FM0 = (TPM_RC)(RC_VER1 + 0x07F);
+  public const ulong RC_FMT1 = (TPM_RC)(0x080);
+  public const ulong TPM_RC_ASYMMETRIC = (TPM_RC)(RC_FMT1 + 0x001);
+  public const ulong TPM_RC_ATTRIBUTES = (TPM_RC)(RC_FMT1 + 0x002);
+  public const ulong TPM_RC_HASH = (TPM_RC)(RC_FMT1 + 0x003);
+  public const ulong TPM_RC_VALUE = (TPM_RC)(RC_FMT1 + 0x004);
+  public const ulong TPM_RC_HIERARCHY = (TPM_RC)(RC_FMT1 + 0x005);
+  public const ulong TPM_RC_KEY_SIZE = (TPM_RC)(RC_FMT1 + 0x007);
+  public const ulong TPM_RC_MGF = (TPM_RC)(RC_FMT1 + 0x008);
+  public const ulong TPM_RC_MODE = (TPM_RC)(RC_FMT1 + 0x009);
+  public const ulong TPM_RC_TYPE = (TPM_RC)(RC_FMT1 + 0x00A);
+  public const ulong TPM_RC_HANDLE = (TPM_RC)(RC_FMT1 + 0x00B);
+  public const ulong TPM_RC_KDF = (TPM_RC)(RC_FMT1 + 0x00C);
+  public const ulong TPM_RC_RANGE = (TPM_RC)(RC_FMT1 + 0x00D);
+  public const ulong TPM_RC_AUTH_FAIL = (TPM_RC)(RC_FMT1 + 0x00E);
+  public const ulong TPM_RC_NONCE = (TPM_RC)(RC_FMT1 + 0x00F);
+  public const ulong TPM_RC_PP = (TPM_RC)(RC_FMT1 + 0x010);
+  public const ulong TPM_RC_SCHEME = (TPM_RC)(RC_FMT1 + 0x012);
+  public const ulong TPM_RC_SIZE = (TPM_RC)(RC_FMT1 + 0x015);
+  public const ulong TPM_RC_SYMMETRIC = (TPM_RC)(RC_FMT1 + 0x016);
+  public const ulong TPM_RC_TAG = (TPM_RC)(RC_FMT1 + 0x017);
+  public const ulong TPM_RC_SELECTOR = (TPM_RC)(RC_FMT1 + 0x018);
+  public const ulong TPM_RC_INSUFFICIENT = (TPM_RC)(RC_FMT1 + 0x01A);
+  public const ulong TPM_RC_SIGNATURE = (TPM_RC)(RC_FMT1 + 0x01B);
+  public const ulong TPM_RC_KEY = (TPM_RC)(RC_FMT1 + 0x01C);
+  public const ulong TPM_RC_POLICY_FAIL = (TPM_RC)(RC_FMT1 + 0x01D);
+  public const ulong TPM_RC_INTEGRITY = (TPM_RC)(RC_FMT1 + 0x01F);
+  public const ulong TPM_RC_TICKET = (TPM_RC)(RC_FMT1 + 0x020);
+  public const ulong TPM_RC_RESERVED_BITS = (TPM_RC)(RC_FMT1 + 0x021);
+  public const ulong TPM_RC_BAD_AUTH = (TPM_RC)(RC_FMT1 + 0x022);
+  public const ulong TPM_RC_EXPIRED = (TPM_RC)(RC_FMT1 + 0x023);
+  public const ulong TPM_RC_POLICY_CC = (TPM_RC)(RC_FMT1 + 0x024);
+  public const ulong TPM_RC_BINDING = (TPM_RC)(RC_FMT1 + 0x025);
+  public const ulong TPM_RC_CURVE = (TPM_RC)(RC_FMT1 + 0x026);
+  public const ulong TPM_RC_ECC_POINT = (TPM_RC)(RC_FMT1 + 0x027);
+  public const ulong RC_WARN = (TPM_RC)(0x900);
+  public const ulong TPM_RC_CONTEXT_GAP = (TPM_RC)(RC_WARN + 0x001);
+  public const ulong TPM_RC_OBJECT_MEMORY = (TPM_RC)(RC_WARN + 0x002);
+  public const ulong TPM_RC_SESSION_MEMORY = (TPM_RC)(RC_WARN + 0x003);
+  public const ulong TPM_RC_MEMORY = (TPM_RC)(RC_WARN + 0x004);
+  public const ulong TPM_RC_SESSION_HANDLES = (TPM_RC)(RC_WARN + 0x005);
+  public const ulong TPM_RC_OBJECT_HANDLES = (TPM_RC)(RC_WARN + 0x006);
+  public const ulong TPM_RC_LOCALITY = (TPM_RC)(RC_WARN + 0x007);
+  public const ulong TPM_RC_YIELDED = (TPM_RC)(RC_WARN + 0x008);
+  public const ulong TPM_RC_CANCELED = (TPM_RC)(RC_WARN + 0x009);
+  public const ulong TPM_RC_TESTING = (TPM_RC)(RC_WARN + 0x00A);
+  public const ulong TPM_RC_REFERENCE_H0 = (TPM_RC)(RC_WARN + 0x010);
+  public const ulong TPM_RC_REFERENCE_H1 = (TPM_RC)(RC_WARN + 0x011);
+  public const ulong TPM_RC_REFERENCE_H2 = (TPM_RC)(RC_WARN + 0x012);
+  public const ulong TPM_RC_REFERENCE_H3 = (TPM_RC)(RC_WARN + 0x013);
+  public const ulong TPM_RC_REFERENCE_H4 = (TPM_RC)(RC_WARN + 0x014);
+  public const ulong TPM_RC_REFERENCE_H5 = (TPM_RC)(RC_WARN + 0x015);
+  public const ulong TPM_RC_REFERENCE_H6 = (TPM_RC)(RC_WARN + 0x016);
+  public const ulong TPM_RC_REFERENCE_S0 = (TPM_RC)(RC_WARN + 0x018);
+  public const ulong TPM_RC_REFERENCE_S1 = (TPM_RC)(RC_WARN + 0x019);
+  public const ulong TPM_RC_REFERENCE_S2 = (TPM_RC)(RC_WARN + 0x01A);
+  public const ulong TPM_RC_REFERENCE_S3 = (TPM_RC)(RC_WARN + 0x01B);
+  public const ulong TPM_RC_REFERENCE_S4 = (TPM_RC)(RC_WARN + 0x01C);
+  public const ulong TPM_RC_REFERENCE_S5 = (TPM_RC)(RC_WARN + 0x01D);
+  public const ulong TPM_RC_REFERENCE_S6 = (TPM_RC)(RC_WARN + 0x01E);
+  public const ulong TPM_RC_NV_RATE = (TPM_RC)(RC_WARN + 0x020);
+  public const ulong TPM_RC_LOCKOUT = (TPM_RC)(RC_WARN + 0x021);
+  public const ulong TPM_RC_RETRY = (TPM_RC)(RC_WARN + 0x022);
+  public const ulong TPM_RC_NV_UNAVAILABLE = (TPM_RC)(RC_WARN + 0x023);
+  public const ulong TPM_RC_NOT_USED = (TPM_RC)(RC_WARN + 0x7F);
+  public const ulong TPM_RC_H = (TPM_RC)(0x000);
+  public const ulong TPM_RC_P = (TPM_RC)(0x040);
+  public const ulong TPM_RC_S = (TPM_RC)(0x800);
+  public const ulong TPM_RC_1 = (TPM_RC)(0x100);
+  public const ulong TPM_RC_2 = (TPM_RC)(0x200);
+  public const ulong TPM_RC_3 = (TPM_RC)(0x300);
+  public const ulong TPM_RC_4 = (TPM_RC)(0x400);
+  public const ulong TPM_RC_5 = (TPM_RC)(0x500);
+  public const ulong TPM_RC_6 = (TPM_RC)(0x600);
+  public const ulong TPM_RC_7 = (TPM_RC)(0x700);
+  public const ulong TPM_RC_8 = (TPM_RC)(0x800);
+  public const ulong TPM_RC_9 = (TPM_RC)(0x900);
+  public const ulong TPM_RC_A = (TPM_RC)(0xA00);
+  public const ulong TPM_RC_B = (TPM_RC)(0xB00);
+  public const ulong TPM_RC_C = (TPM_RC)(0xC00);
+  public const ulong TPM_RC_D = (TPM_RC)(0xD00);
+  public const ulong TPM_RC_E = (TPM_RC)(0xE00);
+  public const ulong TPM_RC_F = (TPM_RC)(0xF00);
+  public const ulong TPM_RC_N_MASK = (TPM_RC)(0xF00);
+}
 
 // Table 16 - TPM_CLOCK_ADJUST Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_CLOCK_ADJUST { sbyte Value; public static implicit operator TPM_CLOCK_ADJUST(sbyte value) => new TPM_CLOCK_ADJUST() { Value = value }; public static implicit operator sbyte(TPM_CLOCK_ADJUST value) => value.Value; }
-public const ulong TPM_CLOCK_COARSE_SLOWER = (TPM_CLOCK_ADJUST)(-3);
-public const ulong TPM_CLOCK_MEDIUM_SLOWER = (TPM_CLOCK_ADJUST)(-2);
-public const ulong TPM_CLOCK_FINE_SLOWER = (TPM_CLOCK_ADJUST)(-1);
-public const ulong TPM_CLOCK_NO_CHANGE = (TPM_CLOCK_ADJUST)(0);
-public const ulong TPM_CLOCK_FINE_FASTER = (TPM_CLOCK_ADJUST)(1);
-public const ulong TPM_CLOCK_MEDIUM_FASTER = (TPM_CLOCK_ADJUST)(2);
-public const ulong TPM_CLOCK_COARSE_FASTER = (TPM_CLOCK_ADJUST)(3);
+public unsafe partial class EFI
+{
+  public const ulong TPM_CLOCK_COARSE_SLOWER = (TPM_CLOCK_ADJUST)(-3);
+  public const ulong TPM_CLOCK_MEDIUM_SLOWER = (TPM_CLOCK_ADJUST)(-2);
+  public const ulong TPM_CLOCK_FINE_SLOWER = (TPM_CLOCK_ADJUST)(-1);
+  public const ulong TPM_CLOCK_NO_CHANGE = (TPM_CLOCK_ADJUST)(0);
+  public const ulong TPM_CLOCK_FINE_FASTER = (TPM_CLOCK_ADJUST)(1);
+  public const ulong TPM_CLOCK_MEDIUM_FASTER = (TPM_CLOCK_ADJUST)(2);
+  public const ulong TPM_CLOCK_COARSE_FASTER = (TPM_CLOCK_ADJUST)(3);
+}
 
 // Table 17 - TPM_EO Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_EO { ushort Value; public static implicit operator TPM_EO(ushort value) => new TPM_EO() { Value = value }; public static implicit operator ushort(TPM_EO value) => value.Value; }
-public const ulong TPM_EO_EQ = (TPM_EO)(0x0000);
-public const ulong TPM_EO_NEQ = (TPM_EO)(0x0001);
-public const ulong TPM_EO_SIGNED_GT = (TPM_EO)(0x0002);
-public const ulong TPM_EO_UNSIGNED_GT = (TPM_EO)(0x0003);
-public const ulong TPM_EO_SIGNED_LT = (TPM_EO)(0x0004);
-public const ulong TPM_EO_UNSIGNED_LT = (TPM_EO)(0x0005);
-public const ulong TPM_EO_SIGNED_GE = (TPM_EO)(0x0006);
-public const ulong TPM_EO_UNSIGNED_GE = (TPM_EO)(0x0007);
-public const ulong TPM_EO_SIGNED_LE = (TPM_EO)(0x0008);
-public const ulong TPM_EO_UNSIGNED_LE = (TPM_EO)(0x0009);
-public const ulong TPM_EO_BITSET = (TPM_EO)(0x000A);
-public const ulong TPM_EO_BITCLEAR = (TPM_EO)(0x000B);
+public unsafe partial class EFI
+{
+  public const ulong TPM_EO_EQ = (TPM_EO)(0x0000);
+  public const ulong TPM_EO_NEQ = (TPM_EO)(0x0001);
+  public const ulong TPM_EO_SIGNED_GT = (TPM_EO)(0x0002);
+  public const ulong TPM_EO_UNSIGNED_GT = (TPM_EO)(0x0003);
+  public const ulong TPM_EO_SIGNED_LT = (TPM_EO)(0x0004);
+  public const ulong TPM_EO_UNSIGNED_LT = (TPM_EO)(0x0005);
+  public const ulong TPM_EO_SIGNED_GE = (TPM_EO)(0x0006);
+  public const ulong TPM_EO_UNSIGNED_GE = (TPM_EO)(0x0007);
+  public const ulong TPM_EO_SIGNED_LE = (TPM_EO)(0x0008);
+  public const ulong TPM_EO_UNSIGNED_LE = (TPM_EO)(0x0009);
+  public const ulong TPM_EO_BITSET = (TPM_EO)(0x000A);
+  public const ulong TPM_EO_BITCLEAR = (TPM_EO)(0x000B);
+}
 
 // Table 18 - TPM_ST Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_ST { ushort Value; public static implicit operator TPM_ST(ushort value) => new TPM_ST() { Value = value }; public static implicit operator ushort(TPM_ST value) => value.Value; }
-public const ulong TPM_ST_RSP_COMMAND = (TPM_ST)(0x00C4);
-public const ulong TPM_ST_NULL = (TPM_ST)(0X8000);
-public const ulong TPM_ST_NO_SESSIONS = (TPM_ST)(0x8001);
-public const ulong TPM_ST_SESSIONS = (TPM_ST)(0x8002);
-public const ulong TPM_ST_ATTEST_NV = (TPM_ST)(0x8014);
-public const ulong TPM_ST_ATTEST_COMMAND_AUDIT = (TPM_ST)(0x8015);
-public const ulong TPM_ST_ATTEST_SESSION_AUDIT = (TPM_ST)(0x8016);
-public const ulong TPM_ST_ATTEST_CERTIFY = (TPM_ST)(0x8017);
-public const ulong TPM_ST_ATTEST_QUOTE = (TPM_ST)(0x8018);
-public const ulong TPM_ST_ATTEST_TIME = (TPM_ST)(0x8019);
-public const ulong TPM_ST_ATTEST_CREATION = (TPM_ST)(0x801A);
-public const ulong TPM_ST_CREATION = (TPM_ST)(0x8021);
-public const ulong TPM_ST_VERIFIED = (TPM_ST)(0x8022);
-public const ulong TPM_ST_AUTH_SECRET = (TPM_ST)(0x8023);
-public const ulong TPM_ST_HASHCHECK = (TPM_ST)(0x8024);
-public const ulong TPM_ST_AUTH_SIGNED = (TPM_ST)(0x8025);
-public const ulong TPM_ST_FU_MANIFEST = (TPM_ST)(0x8029);
+public unsafe partial class EFI
+{
+  public const ulong TPM_ST_RSP_COMMAND = (TPM_ST)(0x00C4);
+  public const ulong TPM_ST_NULL = (TPM_ST)(0X8000);
+  public const ulong TPM_ST_NO_SESSIONS = (TPM_ST)(0x8001);
+  public const ulong TPM_ST_SESSIONS = (TPM_ST)(0x8002);
+  public const ulong TPM_ST_ATTEST_NV = (TPM_ST)(0x8014);
+  public const ulong TPM_ST_ATTEST_COMMAND_AUDIT = (TPM_ST)(0x8015);
+  public const ulong TPM_ST_ATTEST_SESSION_AUDIT = (TPM_ST)(0x8016);
+  public const ulong TPM_ST_ATTEST_CERTIFY = (TPM_ST)(0x8017);
+  public const ulong TPM_ST_ATTEST_QUOTE = (TPM_ST)(0x8018);
+  public const ulong TPM_ST_ATTEST_TIME = (TPM_ST)(0x8019);
+  public const ulong TPM_ST_ATTEST_CREATION = (TPM_ST)(0x801A);
+  public const ulong TPM_ST_CREATION = (TPM_ST)(0x8021);
+  public const ulong TPM_ST_VERIFIED = (TPM_ST)(0x8022);
+  public const ulong TPM_ST_AUTH_SECRET = (TPM_ST)(0x8023);
+  public const ulong TPM_ST_HASHCHECK = (TPM_ST)(0x8024);
+  public const ulong TPM_ST_AUTH_SIGNED = (TPM_ST)(0x8025);
+  public const ulong TPM_ST_FU_MANIFEST = (TPM_ST)(0x8029);
+}
 
 // Table 19 - TPM_SU Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_SU { ushort Value; public static implicit operator TPM_SU(ushort value) => new TPM_SU() { Value = value }; public static implicit operator ushort(TPM_SU value) => value.Value; }
-public const ulong TPM_SU_CLEAR = (TPM_SU)(0x0000);
-public const ulong TPM_SU_STATE = (TPM_SU)(0x0001);
+public unsafe partial class EFI
+{
+  public const ulong TPM_SU_CLEAR = (TPM_SU)(0x0000);
+  public const ulong TPM_SU_STATE = (TPM_SU)(0x0001);
+}
 
 // Table 20 - TPM_SE Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_SE { byte Value; public static implicit operator TPM_SE(byte value) => new TPM_SE() { Value = value }; public static implicit operator byte(TPM_SE value) => value.Value; }
-public const ulong TPM_SE_HMAC = (TPM_SE)(0x00);
-public const ulong TPM_SE_POLICY = (TPM_SE)(0x01);
-public const ulong TPM_SE_TRIAL = (TPM_SE)(0x03);
+public unsafe partial class EFI
+{
+  public const ulong TPM_SE_HMAC = (TPM_SE)(0x00);
+  public const ulong TPM_SE_POLICY = (TPM_SE)(0x01);
+  public const ulong TPM_SE_TRIAL = (TPM_SE)(0x03);
+}
 
 // Table 21 - TPM_CAP Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_CAP { uint Value; public static implicit operator TPM_CAP(uint value) => new TPM_CAP() { Value = value }; public static implicit operator uint(TPM_CAP value) => value.Value; }
-public const ulong TPM_CAP_FIRST = (TPM_CAP)(0x00000000);
-public const ulong TPM_CAP_ALGS = (TPM_CAP)(0x00000000);
-public const ulong TPM_CAP_HANDLES = (TPM_CAP)(0x00000001);
-public const ulong TPM_CAP_COMMANDS = (TPM_CAP)(0x00000002);
-public const ulong TPM_CAP_PP_COMMANDS = (TPM_CAP)(0x00000003);
-public const ulong TPM_CAP_AUDIT_COMMANDS = (TPM_CAP)(0x00000004);
-public const ulong TPM_CAP_PCRS = (TPM_CAP)(0x00000005);
-public const ulong TPM_CAP_TPM_PROPERTIES = (TPM_CAP)(0x00000006);
-public const ulong TPM_CAP_PCR_PROPERTIES = (TPM_CAP)(0x00000007);
-public const ulong TPM_CAP_ECC_CURVES = (TPM_CAP)(0x00000008);
-public const ulong TPM_CAP_LAST = (TPM_CAP)(0x00000008);
-public const ulong TPM_CAP_VENDOR_PROPERTY = (TPM_CAP)(0x00000100);
+public unsafe partial class EFI
+{
+  public const ulong TPM_CAP_FIRST = (TPM_CAP)(0x00000000);
+  public const ulong TPM_CAP_ALGS = (TPM_CAP)(0x00000000);
+  public const ulong TPM_CAP_HANDLES = (TPM_CAP)(0x00000001);
+  public const ulong TPM_CAP_COMMANDS = (TPM_CAP)(0x00000002);
+  public const ulong TPM_CAP_PP_COMMANDS = (TPM_CAP)(0x00000003);
+  public const ulong TPM_CAP_AUDIT_COMMANDS = (TPM_CAP)(0x00000004);
+  public const ulong TPM_CAP_PCRS = (TPM_CAP)(0x00000005);
+  public const ulong TPM_CAP_TPM_PROPERTIES = (TPM_CAP)(0x00000006);
+  public const ulong TPM_CAP_PCR_PROPERTIES = (TPM_CAP)(0x00000007);
+  public const ulong TPM_CAP_ECC_CURVES = (TPM_CAP)(0x00000008);
+  public const ulong TPM_CAP_LAST = (TPM_CAP)(0x00000008);
+  public const ulong TPM_CAP_VENDOR_PROPERTY = (TPM_CAP)(0x00000100);
+}
 
 // Table 22 - TPM_PT Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_PT { uint Value; public static implicit operator TPM_PT(uint value) => new TPM_PT() { Value = value }; public static implicit operator uint(TPM_PT value) => value.Value; }
-public const ulong TPM_PT_NONE = (TPM_PT)(0x00000000);
-public const ulong PT_GROUP = (TPM_PT)(0x00000100);
-public const ulong PT_FIXED = (TPM_PT)(PT_GROUP * 1);
-public const ulong TPM_PT_FAMILY_INDICATOR = (TPM_PT)(PT_FIXED + 0);
-public const ulong TPM_PT_LEVEL = (TPM_PT)(PT_FIXED + 1);
-public const ulong TPM_PT_REVISION = (TPM_PT)(PT_FIXED + 2);
-public const ulong TPM_PT_DAY_OF_YEAR = (TPM_PT)(PT_FIXED + 3);
-public const ulong TPM_PT_YEAR = (TPM_PT)(PT_FIXED + 4);
-public const ulong TPM_PT_MANUFACTURER = (TPM_PT)(PT_FIXED + 5);
-public const ulong TPM_PT_VENDOR_STRING_1 = (TPM_PT)(PT_FIXED + 6);
-public const ulong TPM_PT_VENDOR_STRING_2 = (TPM_PT)(PT_FIXED + 7);
-public const ulong TPM_PT_VENDOR_STRING_3 = (TPM_PT)(PT_FIXED + 8);
-public const ulong TPM_PT_VENDOR_STRING_4 = (TPM_PT)(PT_FIXED + 9);
-public const ulong TPM_PT_VENDOR_TPM_TYPE = (TPM_PT)(PT_FIXED + 10);
-public const ulong TPM_PT_FIRMWARE_VERSION_1 = (TPM_PT)(PT_FIXED + 11);
-public const ulong TPM_PT_FIRMWARE_VERSION_2 = (TPM_PT)(PT_FIXED + 12);
-public const ulong TPM_PT_INPUT_BUFFER = (TPM_PT)(PT_FIXED + 13);
-public const ulong TPM_PT_HR_TRANSIENT_MIN = (TPM_PT)(PT_FIXED + 14);
-public const ulong TPM_PT_HR_PERSISTENT_MIN = (TPM_PT)(PT_FIXED + 15);
-public const ulong TPM_PT_HR_LOADED_MIN = (TPM_PT)(PT_FIXED + 16);
-public const ulong TPM_PT_ACTIVE_SESSIONS_MAX = (TPM_PT)(PT_FIXED + 17);
-public const ulong TPM_PT_PCR_COUNT = (TPM_PT)(PT_FIXED + 18);
-public const ulong TPM_PT_PCR_SELECT_MIN = (TPM_PT)(PT_FIXED + 19);
-public const ulong TPM_PT_CONTEXT_GAP_MAX = (TPM_PT)(PT_FIXED + 20);
-public const ulong TPM_PT_NV_COUNTERS_MAX = (TPM_PT)(PT_FIXED + 22);
-public const ulong TPM_PT_NV_INDEX_MAX = (TPM_PT)(PT_FIXED + 23);
-public const ulong TPM_PT_MEMORY = (TPM_PT)(PT_FIXED + 24);
-public const ulong TPM_PT_CLOCK_UPDATE = (TPM_PT)(PT_FIXED + 25);
-public const ulong TPM_PT_CONTEXT_HASH = (TPM_PT)(PT_FIXED + 26);
-public const ulong TPM_PT_CONTEXT_SYM = (TPM_PT)(PT_FIXED + 27);
-public const ulong TPM_PT_CONTEXT_SYM_SIZE = (TPM_PT)(PT_FIXED + 28);
-public const ulong TPM_PT_ORDERLY_COUNT = (TPM_PT)(PT_FIXED + 29);
-public const ulong TPM_PT_MAX_COMMAND_SIZE = (TPM_PT)(PT_FIXED + 30);
-public const ulong TPM_PT_MAX_RESPONSE_SIZE = (TPM_PT)(PT_FIXED + 31);
-public const ulong TPM_PT_MAX_DIGEST = (TPM_PT)(PT_FIXED + 32);
-public const ulong TPM_PT_MAX_OBJECT_CONTEXT = (TPM_PT)(PT_FIXED + 33);
-public const ulong TPM_PT_MAX_SESSION_CONTEXT = (TPM_PT)(PT_FIXED + 34);
-public const ulong TPM_PT_PS_FAMILY_INDICATOR = (TPM_PT)(PT_FIXED + 35);
-public const ulong TPM_PT_PS_LEVEL = (TPM_PT)(PT_FIXED + 36);
-public const ulong TPM_PT_PS_REVISION = (TPM_PT)(PT_FIXED + 37);
-public const ulong TPM_PT_PS_DAY_OF_YEAR = (TPM_PT)(PT_FIXED + 38);
-public const ulong TPM_PT_PS_YEAR = (TPM_PT)(PT_FIXED + 39);
-public const ulong TPM_PT_SPLIT_MAX = (TPM_PT)(PT_FIXED + 40);
-public const ulong TPM_PT_TOTAL_COMMANDS = (TPM_PT)(PT_FIXED + 41);
-public const ulong TPM_PT_LIBRARY_COMMANDS = (TPM_PT)(PT_FIXED + 42);
-public const ulong TPM_PT_VENDOR_COMMANDS = (TPM_PT)(PT_FIXED + 43);
-public const ulong PT_VAR = (TPM_PT)(PT_GROUP * 2);
-public const ulong TPM_PT_PERMANENT = (TPM_PT)(PT_VAR + 0);
-public const ulong TPM_PT_STARTUP_CLEAR = (TPM_PT)(PT_VAR + 1);
-public const ulong TPM_PT_HR_NV_INDEX = (TPM_PT)(PT_VAR + 2);
-public const ulong TPM_PT_HR_LOADED = (TPM_PT)(PT_VAR + 3);
-public const ulong TPM_PT_HR_LOADED_AVAIL = (TPM_PT)(PT_VAR + 4);
-public const ulong TPM_PT_HR_ACTIVE = (TPM_PT)(PT_VAR + 5);
-public const ulong TPM_PT_HR_ACTIVE_AVAIL = (TPM_PT)(PT_VAR + 6);
-public const ulong TPM_PT_HR_TRANSIENT_AVAIL = (TPM_PT)(PT_VAR + 7);
-public const ulong TPM_PT_HR_PERSISTENT = (TPM_PT)(PT_VAR + 8);
-public const ulong TPM_PT_HR_PERSISTENT_AVAIL = (TPM_PT)(PT_VAR + 9);
-public const ulong TPM_PT_NV_COUNTERS = (TPM_PT)(PT_VAR + 10);
-public const ulong TPM_PT_NV_COUNTERS_AVAIL = (TPM_PT)(PT_VAR + 11);
-public const ulong TPM_PT_ALGORITHM_SET = (TPM_PT)(PT_VAR + 12);
-public const ulong TPM_PT_LOADED_CURVES = (TPM_PT)(PT_VAR + 13);
-public const ulong TPM_PT_LOCKOUT_COUNTER = (TPM_PT)(PT_VAR + 14);
-public const ulong TPM_PT_MAX_AUTH_FAIL = (TPM_PT)(PT_VAR + 15);
-public const ulong TPM_PT_LOCKOUT_INTERVAL = (TPM_PT)(PT_VAR + 16);
-public const ulong TPM_PT_LOCKOUT_RECOVERY = (TPM_PT)(PT_VAR + 17);
-public const ulong TPM_PT_NV_WRITE_RECOVERY = (TPM_PT)(PT_VAR + 18);
-public const ulong TPM_PT_AUDIT_COUNTER_0 = (TPM_PT)(PT_VAR + 19);
-public const ulong TPM_PT_AUDIT_COUNTER_1 = (TPM_PT)(PT_VAR + 20);
+public unsafe partial class EFI
+{
+  public const ulong TPM_PT_NONE = (TPM_PT)(0x00000000);
+  public const ulong PT_GROUP = (TPM_PT)(0x00000100);
+  public const ulong PT_FIXED = (TPM_PT)(PT_GROUP * 1);
+  public const ulong TPM_PT_FAMILY_INDICATOR = (TPM_PT)(PT_FIXED + 0);
+  public const ulong TPM_PT_LEVEL = (TPM_PT)(PT_FIXED + 1);
+  public const ulong TPM_PT_REVISION = (TPM_PT)(PT_FIXED + 2);
+  public const ulong TPM_PT_DAY_OF_YEAR = (TPM_PT)(PT_FIXED + 3);
+  public const ulong TPM_PT_YEAR = (TPM_PT)(PT_FIXED + 4);
+  public const ulong TPM_PT_MANUFACTURER = (TPM_PT)(PT_FIXED + 5);
+  public const ulong TPM_PT_VENDOR_STRING_1 = (TPM_PT)(PT_FIXED + 6);
+  public const ulong TPM_PT_VENDOR_STRING_2 = (TPM_PT)(PT_FIXED + 7);
+  public const ulong TPM_PT_VENDOR_STRING_3 = (TPM_PT)(PT_FIXED + 8);
+  public const ulong TPM_PT_VENDOR_STRING_4 = (TPM_PT)(PT_FIXED + 9);
+  public const ulong TPM_PT_VENDOR_TPM_TYPE = (TPM_PT)(PT_FIXED + 10);
+  public const ulong TPM_PT_FIRMWARE_VERSION_1 = (TPM_PT)(PT_FIXED + 11);
+  public const ulong TPM_PT_FIRMWARE_VERSION_2 = (TPM_PT)(PT_FIXED + 12);
+  public const ulong TPM_PT_INPUT_BUFFER = (TPM_PT)(PT_FIXED + 13);
+  public const ulong TPM_PT_HR_TRANSIENT_MIN = (TPM_PT)(PT_FIXED + 14);
+  public const ulong TPM_PT_HR_PERSISTENT_MIN = (TPM_PT)(PT_FIXED + 15);
+  public const ulong TPM_PT_HR_LOADED_MIN = (TPM_PT)(PT_FIXED + 16);
+  public const ulong TPM_PT_ACTIVE_SESSIONS_MAX = (TPM_PT)(PT_FIXED + 17);
+  public const ulong TPM_PT_PCR_COUNT = (TPM_PT)(PT_FIXED + 18);
+  public const ulong TPM_PT_PCR_SELECT_MIN = (TPM_PT)(PT_FIXED + 19);
+  public const ulong TPM_PT_CONTEXT_GAP_MAX = (TPM_PT)(PT_FIXED + 20);
+  public const ulong TPM_PT_NV_COUNTERS_MAX = (TPM_PT)(PT_FIXED + 22);
+  public const ulong TPM_PT_NV_INDEX_MAX = (TPM_PT)(PT_FIXED + 23);
+  public const ulong TPM_PT_MEMORY = (TPM_PT)(PT_FIXED + 24);
+  public const ulong TPM_PT_CLOCK_UPDATE = (TPM_PT)(PT_FIXED + 25);
+  public const ulong TPM_PT_CONTEXT_HASH = (TPM_PT)(PT_FIXED + 26);
+  public const ulong TPM_PT_CONTEXT_SYM = (TPM_PT)(PT_FIXED + 27);
+  public const ulong TPM_PT_CONTEXT_SYM_SIZE = (TPM_PT)(PT_FIXED + 28);
+  public const ulong TPM_PT_ORDERLY_COUNT = (TPM_PT)(PT_FIXED + 29);
+  public const ulong TPM_PT_MAX_COMMAND_SIZE = (TPM_PT)(PT_FIXED + 30);
+  public const ulong TPM_PT_MAX_RESPONSE_SIZE = (TPM_PT)(PT_FIXED + 31);
+  public const ulong TPM_PT_MAX_DIGEST = (TPM_PT)(PT_FIXED + 32);
+  public const ulong TPM_PT_MAX_OBJECT_CONTEXT = (TPM_PT)(PT_FIXED + 33);
+  public const ulong TPM_PT_MAX_SESSION_CONTEXT = (TPM_PT)(PT_FIXED + 34);
+  public const ulong TPM_PT_PS_FAMILY_INDICATOR = (TPM_PT)(PT_FIXED + 35);
+  public const ulong TPM_PT_PS_LEVEL = (TPM_PT)(PT_FIXED + 36);
+  public const ulong TPM_PT_PS_REVISION = (TPM_PT)(PT_FIXED + 37);
+  public const ulong TPM_PT_PS_DAY_OF_YEAR = (TPM_PT)(PT_FIXED + 38);
+  public const ulong TPM_PT_PS_YEAR = (TPM_PT)(PT_FIXED + 39);
+  public const ulong TPM_PT_SPLIT_MAX = (TPM_PT)(PT_FIXED + 40);
+  public const ulong TPM_PT_TOTAL_COMMANDS = (TPM_PT)(PT_FIXED + 41);
+  public const ulong TPM_PT_LIBRARY_COMMANDS = (TPM_PT)(PT_FIXED + 42);
+  public const ulong TPM_PT_VENDOR_COMMANDS = (TPM_PT)(PT_FIXED + 43);
+  public const ulong PT_VAR = (TPM_PT)(PT_GROUP * 2);
+  public const ulong TPM_PT_PERMANENT = (TPM_PT)(PT_VAR + 0);
+  public const ulong TPM_PT_STARTUP_CLEAR = (TPM_PT)(PT_VAR + 1);
+  public const ulong TPM_PT_HR_NV_INDEX = (TPM_PT)(PT_VAR + 2);
+  public const ulong TPM_PT_HR_LOADED = (TPM_PT)(PT_VAR + 3);
+  public const ulong TPM_PT_HR_LOADED_AVAIL = (TPM_PT)(PT_VAR + 4);
+  public const ulong TPM_PT_HR_ACTIVE = (TPM_PT)(PT_VAR + 5);
+  public const ulong TPM_PT_HR_ACTIVE_AVAIL = (TPM_PT)(PT_VAR + 6);
+  public const ulong TPM_PT_HR_TRANSIENT_AVAIL = (TPM_PT)(PT_VAR + 7);
+  public const ulong TPM_PT_HR_PERSISTENT = (TPM_PT)(PT_VAR + 8);
+  public const ulong TPM_PT_HR_PERSISTENT_AVAIL = (TPM_PT)(PT_VAR + 9);
+  public const ulong TPM_PT_NV_COUNTERS = (TPM_PT)(PT_VAR + 10);
+  public const ulong TPM_PT_NV_COUNTERS_AVAIL = (TPM_PT)(PT_VAR + 11);
+  public const ulong TPM_PT_ALGORITHM_SET = (TPM_PT)(PT_VAR + 12);
+  public const ulong TPM_PT_LOADED_CURVES = (TPM_PT)(PT_VAR + 13);
+  public const ulong TPM_PT_LOCKOUT_COUNTER = (TPM_PT)(PT_VAR + 14);
+  public const ulong TPM_PT_MAX_AUTH_FAIL = (TPM_PT)(PT_VAR + 15);
+  public const ulong TPM_PT_LOCKOUT_INTERVAL = (TPM_PT)(PT_VAR + 16);
+  public const ulong TPM_PT_LOCKOUT_RECOVERY = (TPM_PT)(PT_VAR + 17);
+  public const ulong TPM_PT_NV_WRITE_RECOVERY = (TPM_PT)(PT_VAR + 18);
+  public const ulong TPM_PT_AUDIT_COUNTER_0 = (TPM_PT)(PT_VAR + 19);
+  public const ulong TPM_PT_AUDIT_COUNTER_1 = (TPM_PT)(PT_VAR + 20);
+}
 
 // Table 23 - TPM_PT_PCR Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_PT_PCR { uint Value; public static implicit operator TPM_PT_PCR(uint value) => new TPM_PT_PCR() { Value = value }; public static implicit operator uint(TPM_PT_PCR value) => value.Value; }
-public const ulong TPM_PT_PCR_FIRST = (TPM_PT_PCR)(0x00000000);
-public const ulong TPM_PT_PCR_SAVE = (TPM_PT_PCR)(0x00000000);
-public const ulong TPM_PT_PCR_EXTEND_L0 = (TPM_PT_PCR)(0x00000001);
-public const ulong TPM_PT_PCR_RESET_L0 = (TPM_PT_PCR)(0x00000002);
-public const ulong TPM_PT_PCR_EXTEND_L1 = (TPM_PT_PCR)(0x00000003);
-public const ulong TPM_PT_PCR_RESET_L1 = (TPM_PT_PCR)(0x00000004);
-public const ulong TPM_PT_PCR_EXTEND_L2 = (TPM_PT_PCR)(0x00000005);
-public const ulong TPM_PT_PCR_RESET_L2 = (TPM_PT_PCR)(0x00000006);
-public const ulong TPM_PT_PCR_EXTEND_L3 = (TPM_PT_PCR)(0x00000007);
-public const ulong TPM_PT_PCR_RESET_L3 = (TPM_PT_PCR)(0x00000008);
-public const ulong TPM_PT_PCR_EXTEND_L4 = (TPM_PT_PCR)(0x00000009);
-public const ulong TPM_PT_PCR_RESET_L4 = (TPM_PT_PCR)(0x0000000A);
-public const ulong TPM_PT_PCR_NO_INCREMENT = (TPM_PT_PCR)(0x00000011);
-public const ulong TPM_PT_PCR_DRTM_RESET = (TPM_PT_PCR)(0x00000012);
-public const ulong TPM_PT_PCR_POLICY = (TPM_PT_PCR)(0x00000013);
-public const ulong TPM_PT_PCR_AUTH = (TPM_PT_PCR)(0x00000014);
-public const ulong TPM_PT_PCR_LAST = (TPM_PT_PCR)(0x00000014);
+public unsafe partial class EFI
+{
+  public const ulong TPM_PT_PCR_FIRST = (TPM_PT_PCR)(0x00000000);
+  public const ulong TPM_PT_PCR_SAVE = (TPM_PT_PCR)(0x00000000);
+  public const ulong TPM_PT_PCR_EXTEND_L0 = (TPM_PT_PCR)(0x00000001);
+  public const ulong TPM_PT_PCR_RESET_L0 = (TPM_PT_PCR)(0x00000002);
+  public const ulong TPM_PT_PCR_EXTEND_L1 = (TPM_PT_PCR)(0x00000003);
+  public const ulong TPM_PT_PCR_RESET_L1 = (TPM_PT_PCR)(0x00000004);
+  public const ulong TPM_PT_PCR_EXTEND_L2 = (TPM_PT_PCR)(0x00000005);
+  public const ulong TPM_PT_PCR_RESET_L2 = (TPM_PT_PCR)(0x00000006);
+  public const ulong TPM_PT_PCR_EXTEND_L3 = (TPM_PT_PCR)(0x00000007);
+  public const ulong TPM_PT_PCR_RESET_L3 = (TPM_PT_PCR)(0x00000008);
+  public const ulong TPM_PT_PCR_EXTEND_L4 = (TPM_PT_PCR)(0x00000009);
+  public const ulong TPM_PT_PCR_RESET_L4 = (TPM_PT_PCR)(0x0000000A);
+  public const ulong TPM_PT_PCR_NO_INCREMENT = (TPM_PT_PCR)(0x00000011);
+  public const ulong TPM_PT_PCR_DRTM_RESET = (TPM_PT_PCR)(0x00000012);
+  public const ulong TPM_PT_PCR_POLICY = (TPM_PT_PCR)(0x00000013);
+  public const ulong TPM_PT_PCR_AUTH = (TPM_PT_PCR)(0x00000014);
+  public const ulong TPM_PT_PCR_LAST = (TPM_PT_PCR)(0x00000014);
+}
 
 // Table 24 - TPM_PS Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_PS { uint Value; public static implicit operator TPM_PS(uint value) => new TPM_PS() { Value = value }; public static implicit operator uint(TPM_PS value) => value.Value; }
-public const ulong TPM_PS_MAIN = (TPM_PS)(0x00000000);
-public const ulong TPM_PS_PC = (TPM_PS)(0x00000001);
-public const ulong TPM_PS_PDA = (TPM_PS)(0x00000002);
-public const ulong TPM_PS_CELL_PHONE = (TPM_PS)(0x00000003);
-public const ulong TPM_PS_SERVER = (TPM_PS)(0x00000004);
-public const ulong TPM_PS_PERIPHERAL = (TPM_PS)(0x00000005);
-public const ulong TPM_PS_TSS = (TPM_PS)(0x00000006);
-public const ulong TPM_PS_STORAGE = (TPM_PS)(0x00000007);
-public const ulong TPM_PS_AUTHENTICATION = (TPM_PS)(0x00000008);
-public const ulong TPM_PS_EMBEDDED = (TPM_PS)(0x00000009);
-public const ulong TPM_PS_HARDCOPY = (TPM_PS)(0x0000000A);
-public const ulong TPM_PS_INFRASTRUCTURE = (TPM_PS)(0x0000000B);
-public const ulong TPM_PS_VIRTUALIZATION = (TPM_PS)(0x0000000C);
-public const ulong TPM_PS_TNC = (TPM_PS)(0x0000000D);
-public const ulong TPM_PS_MULTI_TENANT = (TPM_PS)(0x0000000E);
-public const ulong TPM_PS_TC = (TPM_PS)(0x0000000F);
+public unsafe partial class EFI
+{
+  public const ulong TPM_PS_MAIN = (TPM_PS)(0x00000000);
+  public const ulong TPM_PS_PC = (TPM_PS)(0x00000001);
+  public const ulong TPM_PS_PDA = (TPM_PS)(0x00000002);
+  public const ulong TPM_PS_CELL_PHONE = (TPM_PS)(0x00000003);
+  public const ulong TPM_PS_SERVER = (TPM_PS)(0x00000004);
+  public const ulong TPM_PS_PERIPHERAL = (TPM_PS)(0x00000005);
+  public const ulong TPM_PS_TSS = (TPM_PS)(0x00000006);
+  public const ulong TPM_PS_STORAGE = (TPM_PS)(0x00000007);
+  public const ulong TPM_PS_AUTHENTICATION = (TPM_PS)(0x00000008);
+  public const ulong TPM_PS_EMBEDDED = (TPM_PS)(0x00000009);
+  public const ulong TPM_PS_HARDCOPY = (TPM_PS)(0x0000000A);
+  public const ulong TPM_PS_INFRASTRUCTURE = (TPM_PS)(0x0000000B);
+  public const ulong TPM_PS_VIRTUALIZATION = (TPM_PS)(0x0000000C);
+  public const ulong TPM_PS_TNC = (TPM_PS)(0x0000000D);
+  public const ulong TPM_PS_MULTI_TENANT = (TPM_PS)(0x0000000E);
+  public const ulong TPM_PS_TC = (TPM_PS)(0x0000000F);
 
-// 7 Handles
+  // 7 Handles
+}
 
 // Table 25 - Handles Types
 //
@@ -671,72 +722,81 @@ public unsafe struct TPM_HANDLE { uint Value; public static implicit operator TP
 // Table 26 - TPM_HT Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_HT { byte Value; public static implicit operator TPM_HT(byte value) => new TPM_HT() { Value = value }; public static implicit operator byte(TPM_HT value) => value.Value; }
-public const ulong TPM_HT_PCR = (TPM_HT)(0x00);
-public const ulong TPM_HT_NV_INDEX = (TPM_HT)(0x01);
-public const ulong TPM_HT_HMAC_SESSION = (TPM_HT)(0x02);
-public const ulong TPM_HT_LOADED_SESSION = (TPM_HT)(0x02);
-public const ulong TPM_HT_POLICY_SESSION = (TPM_HT)(0x03);
-public const ulong TPM_HT_ACTIVE_SESSION = (TPM_HT)(0x03);
-public const ulong TPM_HT_PERMANENT = (TPM_HT)(0x40);
-public const ulong TPM_HT_TRANSIENT = (TPM_HT)(0x80);
-public const ulong TPM_HT_PERSISTENT = (TPM_HT)(0x81);
+public unsafe partial class EFI
+{
+  public const ulong TPM_HT_PCR = (TPM_HT)(0x00);
+  public const ulong TPM_HT_NV_INDEX = (TPM_HT)(0x01);
+  public const ulong TPM_HT_HMAC_SESSION = (TPM_HT)(0x02);
+  public const ulong TPM_HT_LOADED_SESSION = (TPM_HT)(0x02);
+  public const ulong TPM_HT_POLICY_SESSION = (TPM_HT)(0x03);
+  public const ulong TPM_HT_ACTIVE_SESSION = (TPM_HT)(0x03);
+  public const ulong TPM_HT_PERMANENT = (TPM_HT)(0x40);
+  public const ulong TPM_HT_TRANSIENT = (TPM_HT)(0x80);
+  public const ulong TPM_HT_PERSISTENT = (TPM_HT)(0x81);
+}
 
 // Table 27 - TPM_RH Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_RH { uint Value; public static implicit operator TPM_RH(uint value) => new TPM_RH() { Value = value }; public static implicit operator uint(TPM_RH value) => value.Value; }
-public const ulong TPM_RH_FIRST = (TPM_RH)(0x40000000);
-public const ulong TPM_RH_SRK = (TPM_RH)(0x40000000);
-public const ulong TPM_RH_OWNER = (TPM_RH)(0x40000001);
-public const ulong TPM_RH_REVOKE = (TPM_RH)(0x40000002);
-public const ulong TPM_RH_TRANSPORT = (TPM_RH)(0x40000003);
-public const ulong TPM_RH_OPERATOR = (TPM_RH)(0x40000004);
-public const ulong TPM_RH_ADMIN = (TPM_RH)(0x40000005);
-public const ulong TPM_RH_EK = (TPM_RH)(0x40000006);
-public const ulong TPM_RH_NULL = (TPM_RH)(0x40000007);
-public const ulong TPM_RH_UNASSIGNED = (TPM_RH)(0x40000008);
-public const ulong TPM_RS_PW = (TPM_RH)(0x40000009);
-public const ulong TPM_RH_LOCKOUT = (TPM_RH)(0x4000000A);
-public const ulong TPM_RH_ENDORSEMENT = (TPM_RH)(0x4000000B);
-public const ulong TPM_RH_PLATFORM = (TPM_RH)(0x4000000C);
-public const ulong TPM_RH_PLATFORM_NV = (TPM_RH)(0x4000000D);
-public const ulong TPM_RH_AUTH_00 = (TPM_RH)(0x40000010);
-public const ulong TPM_RH_AUTH_FF = (TPM_RH)(0x4000010F);
-public const ulong TPM_RH_LAST = (TPM_RH)(0x4000010F);
+public unsafe partial class EFI
+{
+  public const ulong TPM_RH_FIRST = (TPM_RH)(0x40000000);
+  public const ulong TPM_RH_SRK = (TPM_RH)(0x40000000);
+  public const ulong TPM_RH_OWNER = (TPM_RH)(0x40000001);
+  public const ulong TPM_RH_REVOKE = (TPM_RH)(0x40000002);
+  public const ulong TPM_RH_TRANSPORT = (TPM_RH)(0x40000003);
+  public const ulong TPM_RH_OPERATOR = (TPM_RH)(0x40000004);
+  public const ulong TPM_RH_ADMIN = (TPM_RH)(0x40000005);
+  public const ulong TPM_RH_EK = (TPM_RH)(0x40000006);
+  public const ulong TPM_RH_NULL = (TPM_RH)(0x40000007);
+  public const ulong TPM_RH_UNASSIGNED = (TPM_RH)(0x40000008);
+  public const ulong TPM_RS_PW = (TPM_RH)(0x40000009);
+  public const ulong TPM_RH_LOCKOUT = (TPM_RH)(0x4000000A);
+  public const ulong TPM_RH_ENDORSEMENT = (TPM_RH)(0x4000000B);
+  public const ulong TPM_RH_PLATFORM = (TPM_RH)(0x4000000C);
+  public const ulong TPM_RH_PLATFORM_NV = (TPM_RH)(0x4000000D);
+  public const ulong TPM_RH_AUTH_00 = (TPM_RH)(0x40000010);
+  public const ulong TPM_RH_AUTH_FF = (TPM_RH)(0x4000010F);
+  public const ulong TPM_RH_LAST = (TPM_RH)(0x4000010F);
+}
 
 // Table 28 - TPM_HC Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_HC { TPM_HANDLE Value; public static implicit operator TPM_HC(TPM_HANDLE value) => new TPM_HC() { Value = value }; public static implicit operator TPM_HANDLE(TPM_HC value) => value.Value; }
-public const ulong HR_HANDLE_MASK = (TPM_HC)(0x00FFFFFF);
-public const ulong HR_RANGE_MASK = (TPM_HC)(0xFF000000);
-public const ulong HR_SHIFT = (TPM_HC)(24);
-public const ulong HR_PCR = (TPM_HC)((TPM_HC)TPM_HT_PCR << HR_SHIFT);
-public const ulong HR_HMAC_SESSION = (TPM_HC)((TPM_HC)TPM_HT_HMAC_SESSION << HR_SHIFT);
-public const ulong HR_POLICY_SESSION = (TPM_HC)((TPM_HC)TPM_HT_POLICY_SESSION << HR_SHIFT);
-public const ulong HR_TRANSIENT = (TPM_HC)((TPM_HC)TPM_HT_TRANSIENT << HR_SHIFT);
-public const ulong HR_PERSISTENT = (TPM_HC)((TPM_HC)TPM_HT_PERSISTENT << HR_SHIFT);
-public const ulong HR_NV_INDEX = (TPM_HC)((TPM_HC)TPM_HT_NV_INDEX << HR_SHIFT);
-public const ulong HR_PERMANENT = (TPM_HC)((TPM_HC)TPM_HT_PERMANENT << HR_SHIFT);
-public const ulong PCR_FIRST = (TPM_HC)(HR_PCR + 0);
-public const ulong PCR_LAST = (TPM_HC)(PCR_FIRST + IMPLEMENTATION_PCR - 1);
-public const ulong HMAC_SESSION_FIRST = (TPM_HC)(HR_HMAC_SESSION + 0);
-public const ulong HMAC_SESSION_LAST = (TPM_HC)(HMAC_SESSION_FIRST + MAX_ACTIVE_SESSIONS - 1);
-public const ulong LOADED_SESSION_FIRST = (TPM_HC)(HMAC_SESSION_FIRST);
-public const ulong LOADED_SESSION_LAST = (TPM_HC)(HMAC_SESSION_LAST);
-public const ulong POLICY_SESSION_FIRST = (TPM_HC)(HR_POLICY_SESSION + 0);
-public const ulong POLICY_SESSION_LAST = (TPM_HC)(POLICY_SESSION_FIRST + MAX_ACTIVE_SESSIONS - 1);
-public const ulong TRANSIENT_FIRST = (TPM_HC)(HR_TRANSIENT + 0);
-public const ulong ACTIVE_SESSION_FIRST = (TPM_HC)(POLICY_SESSION_FIRST);
-public const ulong ACTIVE_SESSION_LAST = (TPM_HC)(POLICY_SESSION_LAST);
-public const ulong TRANSIENT_LAST = (TPM_HC)(TRANSIENT_FIRST + MAX_LOADED_OBJECTS - 1);
-public const ulong PERSISTENT_FIRST = (TPM_HC)(HR_PERSISTENT + 0);
-public const ulong PERSISTENT_LAST = (TPM_HC)(PERSISTENT_FIRST + 0x00FFFFFF);
-public const ulong PLATFORM_PERSISTENT = (TPM_HC)(PERSISTENT_FIRST + 0x00800000);
-public const ulong NV_INDEX_FIRST = (TPM_HC)(HR_NV_INDEX + 0);
-public const ulong NV_INDEX_LAST = (TPM_HC)(NV_INDEX_FIRST + 0x00FFFFFF);
-public const ulong PERMANENT_FIRST = (TPM_HC)(TPM_RH_FIRST);
-public const ulong PERMANENT_LAST = (TPM_HC)(TPM_RH_LAST);
+public unsafe partial class EFI
+{
+  public const ulong HR_HANDLE_MASK = (TPM_HC)(0x00FFFFFF);
+  public const ulong HR_RANGE_MASK = (TPM_HC)(0xFF000000);
+  public const ulong HR_SHIFT = (TPM_HC)(24);
+  public const ulong HR_PCR = (TPM_HC)((TPM_HC)TPM_HT_PCR << HR_SHIFT);
+  public const ulong HR_HMAC_SESSION = (TPM_HC)((TPM_HC)TPM_HT_HMAC_SESSION << HR_SHIFT);
+  public const ulong HR_POLICY_SESSION = (TPM_HC)((TPM_HC)TPM_HT_POLICY_SESSION << HR_SHIFT);
+  public const ulong HR_TRANSIENT = (TPM_HC)((TPM_HC)TPM_HT_TRANSIENT << HR_SHIFT);
+  public const ulong HR_PERSISTENT = (TPM_HC)((TPM_HC)TPM_HT_PERSISTENT << HR_SHIFT);
+  public const ulong HR_NV_INDEX = (TPM_HC)((TPM_HC)TPM_HT_NV_INDEX << HR_SHIFT);
+  public const ulong HR_PERMANENT = (TPM_HC)((TPM_HC)TPM_HT_PERMANENT << HR_SHIFT);
+  public const ulong PCR_FIRST = (TPM_HC)(HR_PCR + 0);
+  public const ulong PCR_LAST = (TPM_HC)(PCR_FIRST + IMPLEMENTATION_PCR - 1);
+  public const ulong HMAC_SESSION_FIRST = (TPM_HC)(HR_HMAC_SESSION + 0);
+  public const ulong HMAC_SESSION_LAST = (TPM_HC)(HMAC_SESSION_FIRST + MAX_ACTIVE_SESSIONS - 1);
+  public const ulong LOADED_SESSION_FIRST = (TPM_HC)(HMAC_SESSION_FIRST);
+  public const ulong LOADED_SESSION_LAST = (TPM_HC)(HMAC_SESSION_LAST);
+  public const ulong POLICY_SESSION_FIRST = (TPM_HC)(HR_POLICY_SESSION + 0);
+  public const ulong POLICY_SESSION_LAST = (TPM_HC)(POLICY_SESSION_FIRST + MAX_ACTIVE_SESSIONS - 1);
+  public const ulong TRANSIENT_FIRST = (TPM_HC)(HR_TRANSIENT + 0);
+  public const ulong ACTIVE_SESSION_FIRST = (TPM_HC)(POLICY_SESSION_FIRST);
+  public const ulong ACTIVE_SESSION_LAST = (TPM_HC)(POLICY_SESSION_LAST);
+  public const ulong TRANSIENT_LAST = (TPM_HC)(TRANSIENT_FIRST + MAX_LOADED_OBJECTS - 1);
+  public const ulong PERSISTENT_FIRST = (TPM_HC)(HR_PERSISTENT + 0);
+  public const ulong PERSISTENT_LAST = (TPM_HC)(PERSISTENT_FIRST + 0x00FFFFFF);
+  public const ulong PLATFORM_PERSISTENT = (TPM_HC)(PERSISTENT_FIRST + 0x00800000);
+  public const ulong NV_INDEX_FIRST = (TPM_HC)(HR_NV_INDEX + 0);
+  public const ulong NV_INDEX_LAST = (TPM_HC)(NV_INDEX_FIRST + 0x00FFFFFF);
+  public const ulong PERMANENT_FIRST = (TPM_HC)(TPM_RH_FIRST);
+  public const ulong PERMANENT_LAST = (TPM_HC)(TPM_RH_LAST);
 
-// 8 Attribute Structures
+  // 8 Attribute Structures
+}
 
 // Table 29 - TPMA_ALGORITHM Bits
 [StructLayout(LayoutKind.Sequential)]
@@ -2136,10 +2196,13 @@ public unsafe struct TPM2_RESPONSE_HEADER
 //
 // TCG Algorithm Registry
 //
-public const ulong HASH_ALG_SHA1 = 0x00000001;
-public const ulong HASH_ALG_SHA256 = 0x00000002;
-public const ulong HASH_ALG_SHA384 = 0x00000004;
-public const ulong HASH_ALG_SHA512 = 0x00000008;
-public const ulong HASH_ALG_SM3_256 = 0x00000010;
+public unsafe partial class EFI
+{
+  public const ulong HASH_ALG_SHA1 = 0x00000001;
+  public const ulong HASH_ALG_SHA256 = 0x00000002;
+  public const ulong HASH_ALG_SHA384 = 0x00000004;
+  public const ulong HASH_ALG_SHA512 = 0x00000008;
+  public const ulong HASH_ALG_SM3_256 = 0x00000010;
+}
 
 // #endif

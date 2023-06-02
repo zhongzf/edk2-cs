@@ -15,14 +15,17 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-public static EFI_GUID ADAPTER_INFO_PLATFORM_SECURITY_GUID = new GUID(0x6be272c7, 0x1320, 0x4ccd, new byte[] { 0x90, 0x17, 0xd4, 0x61, 0x2c, 0x01, 0x2b, 0x25 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID ADAPTER_INFO_PLATFORM_SECURITY_GUID = new GUID(0x6be272c7, 0x1320, 0x4ccd, new byte[] { 0x90, 0x17, 0xd4, 0x61, 0x2c, 0x01, 0x2b, 0x25 });
 
-public const ulong PLATFORM_SECURITY_VERSION_VNEXTCS = 0x00000003;
+  public const ulong PLATFORM_SECURITY_VERSION_VNEXTCS = 0x00000003;
 
-public const ulong PLATFORM_SECURITY_ROLE_PLATFORM_REFERENCE = 0x00000001 // IHV;
+  public const ulong PLATFORM_SECURITY_ROLE_PLATFORM_REFERENCE = 0x00000001 // IHV;
 public const ulong PLATFORM_SECURITY_ROLE_PLATFORM_IBV = 0x00000002;
-public const ulong PLATFORM_SECURITY_ROLE_IMPLEMENTOR_OEM = 0x00000003;
-public const ulong PLATFORM_SECURITY_ROLE_IMPLEMENTOR_ODM = 0x00000004;
+  public const ulong PLATFORM_SECURITY_ROLE_IMPLEMENTOR_OEM = 0x00000003;
+  public const ulong PLATFORM_SECURITY_ROLE_IMPLEMENTOR_ODM = 0x00000004;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ADAPTER_INFO_PLATFORM_SECURITY

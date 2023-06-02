@@ -21,13 +21,16 @@ namespace Uefi;
 // #ifndef __EFI_FTP4_PROTOCOL_H__
 // #define __EFI_FTP4_PROTOCOL_H__
 
-public static EFI_GUID EFI_FTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0xfaaecb1, 0x226e, 0x4782, new byte[] { 0xaa, 0xce, 0x7d, 0xb9, 0xbc, 0xbf, 0x4d, 0xaf });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_FTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+      0xfaaecb1, 0x226e, 0x4782, new byte[] { 0xaa, 0xce, 0x7d, 0xb9, 0xbc, 0xbf, 0x4d, 0xaf });
 
-public static EFI_GUID EFI_FTP4_PROTOCOL_GUID = new GUID(
-    0xeb338826, 0x681b, 0x4295, new byte[] { 0xb3, 0x56, 0x2b, 0x36, 0x4c, 0x75, 0x7b, 0x9 });
+  public static EFI_GUID EFI_FTP4_PROTOCOL_GUID = new GUID(
+      0xeb338826, 0x681b, 0x4295, new byte[] { 0xb3, 0x56, 0x2b, 0x36, 0x4c, 0x75, 0x7b, 0x9 });
 
-// typedef struct _EFI_FTP4_PROTOCOL EFI_FTP4_PROTOCOL;
+  // typedef struct _EFI_FTP4_PROTOCOL EFI_FTP4_PROTOCOL;
+}
 
 ///
 /// EFI_FTP4_CONNECTION_TOKEN
@@ -139,29 +142,6 @@ public unsafe struct EFI_FTP4_CONFIG_DATA
 
 // typedef struct _EFI_FTP4_COMMAND_TOKEN EFI_FTP4_COMMAND_TOKEN;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// EFI_FTP4_COMMAND_TOKEN
 ///
@@ -231,272 +211,17 @@ public unsafe struct EFI_FTP4_COMMAND_TOKEN
   ///                           by instance itself or communication peer.
   /// EFI_TIMEOUT:              The connection establishment timer expired and no more
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                  - This is NULL.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                  - This is NULL.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   @retval EFI_NO_MAPPING         When using a default address, configuration(DHCP, BOOTP,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                  - Token.Pathname is NULL.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                  - Token.Pathname is NULL.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                  - Token is NULL.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
 

@@ -18,10 +18,13 @@ namespace Uefi;
 
 // #include <Library/BaseLib.h>
 
-public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
-    0x2f707ebb, 0x4a1a, 0x11d4, new byte[] { 0x9a, 0x38, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
+      0x2f707ebb, 0x4a1a, 0x11d4, new byte[] { 0x9a, 0x38, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-// typedef struct _EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL;
+  // typedef struct _EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL;
+}
 
 ///
 /// *******************************************************
@@ -85,31 +88,34 @@ public enum EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_OPERATION
   EfiPciOperationMaximum
 }
 
-public const ulong EFI_PCI_ATTRIBUTE_ISA_MOTHERBOARD_IO = 0x0001;
-public const ulong EFI_PCI_ATTRIBUTE_ISA_IO = 0x0002;
-public const ulong EFI_PCI_ATTRIBUTE_VGA_PALETTE_IO = 0x0004;
-public const ulong EFI_PCI_ATTRIBUTE_VGA_MEMORY = 0x0008;
-public const ulong EFI_PCI_ATTRIBUTE_VGA_IO = 0x0010;
-public const ulong EFI_PCI_ATTRIBUTE_IDE_PRIMARY_IO = 0x0020;
-public const ulong EFI_PCI_ATTRIBUTE_IDE_SECONDARY_IO = 0x0040;
-public const ulong EFI_PCI_ATTRIBUTE_MEMORY_WRITE_COMBINE = 0x0080;
-public const ulong EFI_PCI_ATTRIBUTE_MEMORY_CACHED = 0x0800;
-public const ulong EFI_PCI_ATTRIBUTE_MEMORY_DISABLE = 0x1000;
-public const ulong EFI_PCI_ATTRIBUTE_DUAL_ADDRESS_CYCLE = 0x8000;
-public const ulong EFI_PCI_ATTRIBUTE_ISA_IO_16 = 0x10000;
-public const ulong EFI_PCI_ATTRIBUTE_VGA_PALETTE_IO_16 = 0x20000;
-public const ulong EFI_PCI_ATTRIBUTE_VGA_IO_16 = 0x40000;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PCI_ATTRIBUTE_ISA_MOTHERBOARD_IO = 0x0001;
+  public const ulong EFI_PCI_ATTRIBUTE_ISA_IO = 0x0002;
+  public const ulong EFI_PCI_ATTRIBUTE_VGA_PALETTE_IO = 0x0004;
+  public const ulong EFI_PCI_ATTRIBUTE_VGA_MEMORY = 0x0008;
+  public const ulong EFI_PCI_ATTRIBUTE_VGA_IO = 0x0010;
+  public const ulong EFI_PCI_ATTRIBUTE_IDE_PRIMARY_IO = 0x0020;
+  public const ulong EFI_PCI_ATTRIBUTE_IDE_SECONDARY_IO = 0x0040;
+  public const ulong EFI_PCI_ATTRIBUTE_MEMORY_WRITE_COMBINE = 0x0080;
+  public const ulong EFI_PCI_ATTRIBUTE_MEMORY_CACHED = 0x0800;
+  public const ulong EFI_PCI_ATTRIBUTE_MEMORY_DISABLE = 0x1000;
+  public const ulong EFI_PCI_ATTRIBUTE_DUAL_ADDRESS_CYCLE = 0x8000;
+  public const ulong EFI_PCI_ATTRIBUTE_ISA_IO_16 = 0x10000;
+  public const ulong EFI_PCI_ATTRIBUTE_VGA_PALETTE_IO_16 = 0x20000;
+  public const ulong EFI_PCI_ATTRIBUTE_VGA_IO_16 = 0x40000;
 
-public const ulong EFI_PCI_ATTRIBUTE_VALID_FOR_ALLOCATE_BUFFER = (EFI_PCI_ATTRIBUTE_MEMORY_WRITE_COMBINE | EFI_PCI_ATTRIBUTE_MEMORY_CACHED | EFI_PCI_ATTRIBUTE_DUAL_ADDRESS_CYCLE);
+  public const ulong EFI_PCI_ATTRIBUTE_VALID_FOR_ALLOCATE_BUFFER = (EFI_PCI_ATTRIBUTE_MEMORY_WRITE_COMBINE | EFI_PCI_ATTRIBUTE_MEMORY_CACHED | EFI_PCI_ATTRIBUTE_DUAL_ADDRESS_CYCLE);
 
-public const ulong EFI_PCI_ATTRIBUTE_INVALID_FOR_ALLOCATE_BUFFER = (~EFI_PCI_ATTRIBUTE_VALID_FOR_ALLOCATE_BUFFER);
+  public const ulong EFI_PCI_ATTRIBUTE_INVALID_FOR_ALLOCATE_BUFFER = (~EFI_PCI_ATTRIBUTE_VALID_FOR_ALLOCATE_BUFFER);
 
-public const ulong EFI_PCI_ADDRESS = (bus, dev, func, reg) \;
+  public const ulong EFI_PCI_ADDRESS = (bus, dev, func, reg) \;
   (ulong) ( \
   (((ulong) bus) << 24) | \
   (((ulong) dev) << 16) | \
   (((ulong) func) << 8) | \
   (((ulong) (reg)) < 256 ? ((ulong) (reg)) : (ulong) (LShiftU64 ((ulong) (reg), 32))))
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_PCI_ADDRESS
@@ -120,61 +126,6 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_PCI_ADDRESS
   public byte Bus;
   public uint ExtendedRegister;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS
@@ -190,222 +141,17 @@ public unsafe struct EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_ACCESS
     @param  Address               The base address of the memory operations.
     @param  Count                 The number of memory operations to perform.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @retval EFI_INVALID_PARAMETER One or more parameters are invalid.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                   MEMORY_WRITE_COMBINE and MEMORY_CACHED.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @param  Pages                 The number of pages to free.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     Flushes all PCI posted write transactions from a PCI host bridge to system memory.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @retval EFI_SUCCESS           If Supports is not NULL, then the attributes that the PCI root
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @retval EFI_UNSUPPORTED       A bit is set in Attributes that is not supported by the PCI Root
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @param  Resources             A pointer to the resource descriptors that describe the current
                                   configuration of this PCI root bridge.

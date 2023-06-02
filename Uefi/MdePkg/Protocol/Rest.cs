@@ -17,60 +17,14 @@ namespace Uefi;
 
 // #include <Protocol/Http.h>
 
-public static EFI_GUID EFI_REST_PROTOCOL_GUID = new GUID(
-    0x0db48a36, 0x4e54, 0xea9c, new byte[] { 0x9b, 0x09, 0x1e, 0xa5, 0xbe, 0x3a, 0x66, 0x0b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_REST_PROTOCOL_GUID = new GUID(
+      0x0db48a36, 0x4e54, 0xea9c, new byte[] { 0x9b, 0x09, 0x1e, 0xa5, 0xbe, 0x3a, 0x66, 0x0b });
 
-// typedef struct _EFI_REST_PROTOCOL EFI_REST_PROTOCOL;
+  // typedef struct _EFI_REST_PROTOCOL EFI_REST_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI REST protocol is designed to be used by EFI drivers and applications to send

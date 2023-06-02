@@ -20,150 +20,59 @@ namespace Uefi;
 ///
 /// Global ID for EFI_DISK_INFO_PROTOCOL
 ///
-public static EFI_GUID EFI_DISK_INFO_PROTOCOL_GUID = new GUID(
-    0xd432a67f, 0x14dc, 0x484b, new byte[] { 0xb3, 0xbb, 0x3f, 0x2, 0x91, 0x84, 0x93, 0x27 });
-
-///
-/// Forward declaration for EFI_DISK_INFO_PROTOCOL
-///
-// typedef struct _EFI_DISK_INFO_PROTOCOL EFI_DISK_INFO_PROTOCOL;
-
-///
-/// Global ID for an IDE interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_IDE_INTERFACE_GUID = new GUID(
-    0x5e948fe3, 0x26d3, 0x42b5, new byte[] { 0xaf, 0x17, 0x61, 0x2, 0x87, 0x18, 0x8d, 0xec });
-
-///
-/// Global ID for a SCSI interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_SCSI_INTERFACE_GUID = new GUID(
-    0x8f74baa, 0xea36, 0x41d9, new byte[] { 0x95, 0x21, 0x21, 0xa7, 0xf, 0x87, 0x80, 0xbc });
-
-///
-/// Global ID for a USB interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_USB_INTERFACE_GUID = new GUID(
-    0xcb871572, 0xc11a, 0x47b5, new byte[] { 0xb4, 0x92, 0x67, 0x5e, 0xaf, 0xa7, 0x77, 0x27 });
-
-///
-/// Global ID for an AHCI interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_AHCI_INTERFACE_GUID = new GUID(
-    0x9e498932, 0x4abc, 0x45af, new byte[] { 0xa3, 0x4d, 0x2, 0x47, 0x78, 0x7b, 0xe7, 0xc6 });
-
-///
-/// Global ID for a NVME interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_NVME_INTERFACE_GUID = new GUID(
-    0x3ab14680, 0x5d3f, 0x4a4d, new byte[] { 0xbc, 0xdc, 0xcc, 0x38, 0x0, 0x18, 0xc7, 0xf7 });
-
-///
-/// Global ID for a UFS interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_UFS_INTERFACE_GUID = new GUID(
-    0x4b3029cc, 0x6b98, 0x47fb, new byte[] { 0xbc, 0x96, 0x76, 0xdc, 0xb8, 0x4, 0x41, 0xf0 });
-
-///
-/// Global ID for an SD/MMC interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
-///
-public static EFI_GUID EFI_DISK_INFO_SD_MMC_INTERFACE_GUID = new GUID(
-    0x8deec992, 0xd39c, 0x4a5c, new byte[] { 0xab, 0x6b, 0x98, 0x6e, 0x14, 0x24, 0x2b, 0x9d });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DISK_INFO_PROTOCOL_GUID = new GUID(
+      0xd432a67f, 0x14dc, 0x484b, new byte[] { 0xb3, 0xbb, 0x3f, 0x2, 0x91, 0x84, 0x93, 0x27 });
+
+  ///
+  /// Forward declaration for EFI_DISK_INFO_PROTOCOL
+  ///
+  // typedef struct _EFI_DISK_INFO_PROTOCOL EFI_DISK_INFO_PROTOCOL;
+
+  ///
+  /// Global ID for an IDE interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_IDE_INTERFACE_GUID = new GUID(
+      0x5e948fe3, 0x26d3, 0x42b5, new byte[] { 0xaf, 0x17, 0x61, 0x2, 0x87, 0x18, 0x8d, 0xec });
+
+  ///
+  /// Global ID for a SCSI interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_SCSI_INTERFACE_GUID = new GUID(
+      0x8f74baa, 0xea36, 0x41d9, new byte[] { 0x95, 0x21, 0x21, 0xa7, 0xf, 0x87, 0x80, 0xbc });
+
+  ///
+  /// Global ID for a USB interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_USB_INTERFACE_GUID = new GUID(
+      0xcb871572, 0xc11a, 0x47b5, new byte[] { 0xb4, 0x92, 0x67, 0x5e, 0xaf, 0xa7, 0x77, 0x27 });
+
+  ///
+  /// Global ID for an AHCI interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_AHCI_INTERFACE_GUID = new GUID(
+      0x9e498932, 0x4abc, 0x45af, new byte[] { 0xa3, 0x4d, 0x2, 0x47, 0x78, 0x7b, 0xe7, 0xc6 });
+
+  ///
+  /// Global ID for a NVME interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_NVME_INTERFACE_GUID = new GUID(
+      0x3ab14680, 0x5d3f, 0x4a4d, new byte[] { 0xbc, 0xdc, 0xcc, 0x38, 0x0, 0x18, 0xc7, 0xf7 });
+
+  ///
+  /// Global ID for a UFS interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_UFS_INTERFACE_GUID = new GUID(
+      0x4b3029cc, 0x6b98, 0x47fb, new byte[] { 0xbc, 0x96, 0x76, 0xdc, 0xb8, 0x4, 0x41, 0xf0 });
+
+  ///
+  /// Global ID for an SD/MMC interface.  Used to fill in EFI_DISK_INFO_PROTOCOL.Interface
+  ///
+  public static EFI_GUID EFI_DISK_INFO_SD_MMC_INTERFACE_GUID = new GUID(
+      0x8deec992, 0xd39c, 0x4a5c, new byte[] { 0xab, 0x6b, 0x98, 0x6e, 0x14, 0x24, 0x2b, 0x9d });
+
+}
 
 ///
 /// The EFI_DISK_INFO_PROTOCOL provides controller specific information.

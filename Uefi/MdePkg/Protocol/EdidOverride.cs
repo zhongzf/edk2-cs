@@ -15,39 +15,17 @@ namespace Uefi;
 // #ifndef __EDID_OVERRIDE_H__
 // #define __EDID_OVERRIDE_H__
 
-public static EFI_GUID EFI_EDID_OVERRIDE_PROTOCOL_GUID = new GUID(
-    0x48ecb431, 0xfb72, 0x45c0, new byte[] { 0xa9, 0x22, 0xf4, 0x58, 0xfe, 0x4, 0xb, 0xd5 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_EDID_OVERRIDE_PROTOCOL_GUID = new GUID(
+      0x48ecb431, 0xfb72, 0x45c0, new byte[] { 0xa9, 0x22, 0xf4, 0x58, 0xfe, 0x4, 0xb, 0xd5 });
 
-// typedef struct _EFI_EDID_OVERRIDE_PROTOCOL EFI_EDID_OVERRIDE_PROTOCOL;
+  // typedef struct _EFI_EDID_OVERRIDE_PROTOCOL EFI_EDID_OVERRIDE_PROTOCOL;
 
-public const ulong EFI_EDID_OVERRIDE_DONT_OVERRIDE = 0x01;
-public const ulong EFI_EDID_OVERRIDE_ENABLE_HOT_PLUG = 0x02;
+  public const ulong EFI_EDID_OVERRIDE_DONT_OVERRIDE = 0x01;
+  public const ulong EFI_EDID_OVERRIDE_ENABLE_HOT_PLUG = 0x02;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This protocol is produced by the platform to allow the platform to provide

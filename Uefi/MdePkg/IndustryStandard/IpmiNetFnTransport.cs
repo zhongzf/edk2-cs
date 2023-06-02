@@ -25,20 +25,23 @@ namespace Uefi;
 //
 // Net function definition for Transport command
 //
-public const ulong IPMI_NETFN_TRANSPORT = 0x0C;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_NETFN_TRANSPORT = 0x0C;
 
-//
-//  Below is Definitions for IPM LAN Commands (Chapter 23)
-//
+  //
+  //  Below is Definitions for IPM LAN Commands (Chapter 23)
+  //
 
-//
-//  Definitions for Set Lan Configuration Parameters command
-//
-public const ulong IPMI_TRANSPORT_SET_LAN_CONFIG_PARAMETERS = 0x01;
+  //
+  //  Definitions for Set Lan Configuration Parameters command
+  //
+  public const ulong IPMI_TRANSPORT_SET_LAN_CONFIG_PARAMETERS = 0x01;
 
-//
-//  Constants and Structure definitions for "Set Lan Configuration Parameters" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set Lan Configuration Parameters" command to follow here
+  //
+}
 
 //
 // LAN Management Structure
@@ -382,7 +385,10 @@ public unsafe struct IPMI_SET_LAN_CONFIGURATION_PARAMETERS_COMMAND_REQUEST
 //
 //  Definitions for Get Lan Configuration Parameters command
 //
-public const ulong IPMI_TRANSPORT_GET_LAN_CONFIG_PARAMETERS = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_TRANSPORT_GET_LAN_CONFIG_PARAMETERS = 0x02;
+}
 
 //
 //  Constants and Structure definitions for "Get Lan Configuration Parameters" command to follow here
@@ -418,33 +424,36 @@ public unsafe struct IPMI_GET_LAN_CONFIGURATION_PARAMETERS_RESPONSE
 //
 //  Definitions for Suspend BMC ARPs command
 //
-public const ulong IPMI_TRANSPORT_SUSPEND_BMC_ARPS = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_TRANSPORT_SUSPEND_BMC_ARPS = 0x03;
 
-//
-//  Constants and Structure definitions for "Suspend BMC ARPs" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Suspend BMC ARPs" command to follow here
+  //
 
-//
-//  Definitions for Get IP-UDP-RMCP Statistics command
-//
-public const ulong IPMI_TRANSPORT_GET_PACKET_STATISTICS = 0x04;
+  //
+  //  Definitions for Get IP-UDP-RMCP Statistics command
+  //
+  public const ulong IPMI_TRANSPORT_GET_PACKET_STATISTICS = 0x04;
 
-//
-//  Constants and Structure definitions for "Get IP-UDP-RMCP Statistics" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get IP-UDP-RMCP Statistics" command to follow here
+  //
 
-//
-//  Below is Definitions for IPMI Serial/Modem Commands (Chapter 25)
-//
+  //
+  //  Below is Definitions for IPMI Serial/Modem Commands (Chapter 25)
+  //
 
-//
-//  Definitions for Set Serial/Modem Configuration command
-//
-public const ulong IPMI_TRANSPORT_SET_SERIAL_CONFIGURATION = 0x10;
+  //
+  //  Definitions for Set Serial/Modem Configuration command
+  //
+  public const ulong IPMI_TRANSPORT_SET_SERIAL_CONFIGURATION = 0x10;
 
-//
-//  Constants and Structure definitions for "Set Serial/Modem Configuration" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set Serial/Modem Configuration" command to follow here
+  //
+}
 
 //
 // EMP OPTION DATA
@@ -804,39 +813,42 @@ public unsafe struct IPMI_EMP_OPTIONS
 //
 //  Definitions for Get Serial/Modem Configuration command
 //
-public const ulong IPMI_TRANSPORT_GET_SERIAL_CONFIGURATION = 0x11;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_TRANSPORT_GET_SERIAL_CONFIGURATION = 0x11;
 
-//
-//  Constants and Structure definitions for "Get Serial/Modem Configuration" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get Serial/Modem Configuration" command to follow here
+  //
 
-//
-//  Definitions for Set Serial/Modem Mux command
-//
-public const ulong IPMI_TRANSPORT_SET_SERIAL_MUX = 0x12;
+  //
+  //  Definitions for Set Serial/Modem Mux command
+  //
+  public const ulong IPMI_TRANSPORT_SET_SERIAL_MUX = 0x12;
 
-//
-//  Constants and Structure definitions for "Set Serial/Modem Mux" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set Serial/Modem Mux" command to follow here
+  //
 
-//
-// Set Serial/Modem Mux command request return status
-//
-public const ulong IPMI_MUX_SETTING_REQUEST_REJECTED = 0x00;
-public const ulong IPMI_MUX_SETTING_REQUEST_ACCEPTED = 0x01;
+  //
+  // Set Serial/Modem Mux command request return status
+  //
+  public const ulong IPMI_MUX_SETTING_REQUEST_REJECTED = 0x00;
+  public const ulong IPMI_MUX_SETTING_REQUEST_ACCEPTED = 0x01;
 
-//
-//  Definitions for serial multiplex settings
-//
-public const ulong IPMI_MUX_SETTING_GET_MUX_SETTING = 0x0;
-public const ulong IPMI_MUX_SETTING_REQUEST_MUX_TO_SYSTEM = 0x1;
-public const ulong IPMI_MUX_SETTING_REQUEST_MUX_TO_BMC = 0x2;
-public const ulong IPMI_MUX_SETTING_FORCE_MUX_TO_SYSTEM = 0x3;
-public const ulong IPMI_MUX_SETTING_FORCE_MUX_TO_BMC = 0x4;
-public const ulong IPMI_MUX_SETTING_BLOCK_REQUEST_MUX_TO_SYSTEM = 0x5;
-public const ulong IPMI_MUX_SETTING_ALLOW_REQUEST_MUX_TO_SYSTEM = 0x6;
-public const ulong IPMI_MUX_SETTING_BLOCK_REQUEST_MUX_TO_BMC = 0x7;
-public const ulong IPMI_MUX_SETTING_ALLOW_REQUEST_MUX_TO_BMC = 0x8;
+  //
+  //  Definitions for serial multiplex settings
+  //
+  public const ulong IPMI_MUX_SETTING_GET_MUX_SETTING = 0x0;
+  public const ulong IPMI_MUX_SETTING_REQUEST_MUX_TO_SYSTEM = 0x1;
+  public const ulong IPMI_MUX_SETTING_REQUEST_MUX_TO_BMC = 0x2;
+  public const ulong IPMI_MUX_SETTING_FORCE_MUX_TO_SYSTEM = 0x3;
+  public const ulong IPMI_MUX_SETTING_FORCE_MUX_TO_BMC = 0x4;
+  public const ulong IPMI_MUX_SETTING_BLOCK_REQUEST_MUX_TO_SYSTEM = 0x5;
+  public const ulong IPMI_MUX_SETTING_ALLOW_REQUEST_MUX_TO_SYSTEM = 0x6;
+  public const ulong IPMI_MUX_SETTING_BLOCK_REQUEST_MUX_TO_BMC = 0x7;
+  public const ulong IPMI_MUX_SETTING_ALLOW_REQUEST_MUX_TO_BMC = 0x8;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -890,92 +902,95 @@ public unsafe struct IPMI_SET_SERIAL_MODEM_MUX_COMMAND_RESPONSE
 //
 //  Definitions for Get TAP Response Code command
 //
-public const ulong IPMI_TRANSPORT_GET_TAP_RESPONSE_CODE = 0x13;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_TRANSPORT_GET_TAP_RESPONSE_CODE = 0x13;
 
-//
-//  Constants and Structure definitions for "Get TAP Response Code" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get TAP Response Code" command to follow here
+  //
 
-//
-//  Definitions for Set PPP UDP Proxy Transmit Data command
-//
-public const ulong IPMI_TRANSPORT_SET_PPP_UDP_PROXY_TXDATA = 0x14;
+  //
+  //  Definitions for Set PPP UDP Proxy Transmit Data command
+  //
+  public const ulong IPMI_TRANSPORT_SET_PPP_UDP_PROXY_TXDATA = 0x14;
 
-//
-//  Constants and Structure definitions for "Set PPP UDP Proxy Transmit Data" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set PPP UDP Proxy Transmit Data" command to follow here
+  //
 
-//
-//  Definitions for Get PPP UDP Proxy Transmit Data command
-//
-public const ulong IPMI_TRANSPORT_GET_PPP_UDP_PROXY_TXDATA = 0x15;
+  //
+  //  Definitions for Get PPP UDP Proxy Transmit Data command
+  //
+  public const ulong IPMI_TRANSPORT_GET_PPP_UDP_PROXY_TXDATA = 0x15;
 
-//
-//  Constants and Structure definitions for "Get PPP UDP Proxy Transmit Data" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get PPP UDP Proxy Transmit Data" command to follow here
+  //
 
-//
-//  Definitions for Send PPP UDP Proxy Packet command
-//
-public const ulong IPMI_TRANSPORT_SEND_PPP_UDP_PROXY_PACKET = 0x16;
+  //
+  //  Definitions for Send PPP UDP Proxy Packet command
+  //
+  public const ulong IPMI_TRANSPORT_SEND_PPP_UDP_PROXY_PACKET = 0x16;
 
-//
-//  Constants and Structure definitions for "Send PPP UDP Proxy Packet" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Send PPP UDP Proxy Packet" command to follow here
+  //
 
-//
-//  Definitions for Get PPP UDP Proxy Receive Data command
-//
-public const ulong IPMI_TRANSPORT_GET_PPP_UDP_PROXY_RX = 0x17;
+  //
+  //  Definitions for Get PPP UDP Proxy Receive Data command
+  //
+  public const ulong IPMI_TRANSPORT_GET_PPP_UDP_PROXY_RX = 0x17;
 
-//
-//  Constants and Structure definitions for "Get PPP UDP Proxy Receive Data" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get PPP UDP Proxy Receive Data" command to follow here
+  //
 
-//
-//  Definitions for Serial/Modem connection active command
-//
-public const ulong IPMI_TRANSPORT_SERIAL_CONNECTION_ACTIVE = 0x18;
+  //
+  //  Definitions for Serial/Modem connection active command
+  //
+  public const ulong IPMI_TRANSPORT_SERIAL_CONNECTION_ACTIVE = 0x18;
 
-//
-//  Constants and Structure definitions for "Serial/Modem connection active" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Serial/Modem connection active" command to follow here
+  //
 
-//
-//  Definitions for Callback command
-//
-public const ulong IPMI_TRANSPORT_CALLBACK = 0x19;
+  //
+  //  Definitions for Callback command
+  //
+  public const ulong IPMI_TRANSPORT_CALLBACK = 0x19;
 
-//
-//  Constants and Structure definitions for "Callback" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Callback" command to follow here
+  //
 
-//
-//  Definitions for Set user Callback Options command
-//
-public const ulong IPMI_TRANSPORT_SET_USER_CALLBACK_OPTIONS = 0x1A;
+  //
+  //  Definitions for Set user Callback Options command
+  //
+  public const ulong IPMI_TRANSPORT_SET_USER_CALLBACK_OPTIONS = 0x1A;
 
-//
-//  Constants and Structure definitions for "Set user Callback Options" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set user Callback Options" command to follow here
+  //
 
-//
-//  Definitions for Get user Callback Options command
-//
-public const ulong IPMI_TRANSPORT_GET_USER_CALLBACK_OPTIONS = 0x1B;
+  //
+  //  Definitions for Get user Callback Options command
+  //
+  public const ulong IPMI_TRANSPORT_GET_USER_CALLBACK_OPTIONS = 0x1B;
 
-//
-//  Constants and Structure definitions for "Get user Callback Options" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Get user Callback Options" command to follow here
+  //
 
-//
-//  Below is Definitions for SOL Commands (Chapter 26)
-//
+  //
+  //  Below is Definitions for SOL Commands (Chapter 26)
+  //
 
-//
-//  Definitions for SOL activating command
-//
-public const ulong IPMI_TRANSPORT_SOL_ACTIVATING = 0x20;
+  //
+  //  Definitions for SOL activating command
+  //
+  public const ulong IPMI_TRANSPORT_SOL_ACTIVATING = 0x20;
+}
 
 //
 //  Constants and Structure definitions for "SOL activating" command to follow here
@@ -1002,24 +1017,27 @@ public unsafe struct IPMI_SOL_ACTIVATING_REQUEST
 //
 //  Definitions for Set SOL Configuration Parameters command
 //
-public const ulong IPMI_TRANSPORT_SET_SOL_CONFIG_PARAM = 0x21;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_TRANSPORT_SET_SOL_CONFIG_PARAM = 0x21;
 
-//
-//  Constants and Structure definitions for "Set SOL Configuration Parameters" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set SOL Configuration Parameters" command to follow here
+  //
 
-//
-// SOL Configuration Parameters selector
-//
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SET_IN_PROGRESS = 0;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_ENABLE = 1;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_AUTHENTICATION = 2;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_CHARACTER_PARAM = 3;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_RETRY = 4;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_NV_BIT_RATE = 5;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_VOLATILE_BIT_RATE = 6;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_PAYLOAD_CHANNEL = 7;
-public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_PAYLOAD_PORT = 8;
+  //
+  // SOL Configuration Parameters selector
+  //
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SET_IN_PROGRESS = 0;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_ENABLE = 1;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_AUTHENTICATION = 2;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_CHARACTER_PARAM = 3;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_RETRY = 4;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_NV_BIT_RATE = 5;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_VOLATILE_BIT_RATE = 6;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_PAYLOAD_CHANNEL = 7;
+  public const ulong IPMI_SOL_CONFIGURATION_PARAMETER_SOL_PAYLOAD_PORT = 8;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -1042,7 +1060,10 @@ public unsafe struct IPMI_SET_SOL_CONFIGURATION_PARAMETERS_REQUEST
 //
 //  Definitions for Get SOL Configuration Parameters command
 //
-public const ulong IPMI_TRANSPORT_GET_SOL_CONFIG_PARAM = 0x22;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_TRANSPORT_GET_SOL_CONFIG_PARAM = 0x22;
+}
 
 //
 //  Constants and Structure definitions for "Get SOL Configuration Parameters" command to follow here

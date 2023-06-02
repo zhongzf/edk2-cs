@@ -14,80 +14,14 @@ namespace Uefi;
 
 // #include <Protocol/DriverDiagnostics.h>
 
-public static EFI_GUID EFI_DRIVER_DIAGNOSTICS2_PROTOCOL_GUID = new GUID(
-    0x4d330321, 0x025f, 0x4aac, new byte[] { 0x90, 0xd8, 0x5e, 0xd9, 0x00, 0x17, 0x3b, 0x63 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DRIVER_DIAGNOSTICS2_PROTOCOL_GUID = new GUID(
+      0x4d330321, 0x025f, 0x4aac, new byte[] { 0x90, 0xd8, 0x5e, 0xd9, 0x00, 0x17, 0x3b, 0x63 });
 
-// typedef struct _EFI_DRIVER_DIAGNOSTICS2_PROTOCOL EFI_DRIVER_DIAGNOSTICS2_PROTOCOL;
+  // typedef struct _EFI_DRIVER_DIAGNOSTICS2_PROTOCOL EFI_DRIVER_DIAGNOSTICS2_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// Used to perform diagnostics on a controller that an EFI Driver is managing.

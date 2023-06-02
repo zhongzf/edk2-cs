@@ -18,18 +18,21 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __SIMPLE_FILE_SYSTEM_H__
 // #define __SIMPLE_FILE_SYSTEM_H__
 
-public static EFI_GUID EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID = new GUID(
-    0x964e5b22, 0x6459, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID = new GUID(
+      0x964e5b22, 0x6459, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
-// typedef struct _EFI_SIMPLE_FILE_SYSTEM_PROTOCOL EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
+  // typedef struct _EFI_SIMPLE_FILE_SYSTEM_PROTOCOL EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
 
-// typedef struct _EFI_FILE_PROTOCOL EFI_FILE_PROTOCOL;
-typedef struct _EFI_FILE_PROTOCOL * EFI_FILE_HANDLE;
+  // typedef struct _EFI_FILE_PROTOCOL EFI_FILE_PROTOCOL;
+  typedef struct _EFI_FILE_PROTOCOL *EFI_FILE_HANDLE;
 
 ///
 /// Protocol GUID name defined in EFI1.1.
 ///
 public const ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
+}
 
 ///
 /// Protocol name defined in EFI1.1.
@@ -39,39 +42,15 @@ public unsafe struct EFI_FILE_IO_INTERFACE { EFI_SIMPLE_FILE_SYSTEM_PROTOCOL Val
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FILE { EFI_FILE_PROTOCOL Value; public static implicit operator EFI_FILE(EFI_FILE_PROTOCOL value) => new EFI_FILE() { Value = value }; public static implicit operator EFI_FILE_PROTOCOL(EFI_FILE value) => value.Value; }
 
+public unsafe partial class EFI
+{
+  public const ulong EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION = 0x00010000;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public const ulong EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION = 0x00010000;
-
-///
-/// Revision defined in EFI1.1
-///
-public const ulong EFI_FILE_IO_INTERFACE_REVISION = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION;
+  ///
+  /// Revision defined in EFI1.1
+  ///
+  public const ulong EFI_FILE_IO_INTERFACE_REVISION = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
@@ -84,45 +63,6 @@ public unsafe struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
   public ulong Revision;
   /**
     Open the root directory on a volume.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @retval EFI_MEDIA_CHANGED    The device has a different medium in it or the medium is no
                                  longer supported.
@@ -144,224 +84,21 @@ public unsafe struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
     IN ulong OpenMode,
     IN ulong Attributes
 
+public unsafe partial class EFI
+  {
+    public const ulong EFI_FILE_SYSTEM = 0x0000000000000004;
 
+    EFI_STATUS
 
+      @param  Buffer The buffer into which the data is read.
 
+      @param Buffer     The buffer of data to write.
 
+      );
 
-
-
-
-
-
-
-
-
-public const ulong EFI_FILE_SYSTEM = 0x0000000000000004;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  EFI_STATUS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @param  Buffer The buffer into which the data is read.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @param Buffer     The buffer of data to write.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @param Buffer          A pointer to the data buffer to return. The buffer's type is
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @param Buffer          A pointer to the data buffer to return. The buffer's type is
 
                                file that is already present.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
   Flushes all modified data associated with a file to a device.
@@ -383,6 +120,7 @@ EFI_STATUS
 (EFIAPI* EFI_FILE_FLUSH)(
   IN EFI_FILE_PROTOCOL  * This
   );
+  }
 
   [StructLayout(LayoutKind.Sequential)]
   public unsafe struct EFI_FILE_IO_TOKEN
@@ -401,124 +139,9 @@ EFI_STATUS
     //
     public EFI_STATUS Status;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     longer supported.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @param  Token A pointer to the token associated with the transaction.
-
 
 @retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
     If Event is not NULL(asynchronous I/O): The request was successfully
@@ -539,14 +162,17 @@ EFI_STATUS
   IN OUT EFI_FILE_IO_TOKEN* Token
   );
 
-    public const ulong EFI_FILE_PROTOCOL_REVISION = 0x00010000;
-    public const ulong EFI_FILE_PROTOCOL_REVISION2 = 0x00020000;
-    public const ulong EFI_FILE_PROTOCOL_LATEST_REVISION = EFI_FILE_PROTOCOL_REVISION2;
+    public unsafe partial class EFI
+    {
+      public const ulong EFI_FILE_PROTOCOL_REVISION = 0x00010000;
+      public const ulong EFI_FILE_PROTOCOL_REVISION2 = 0x00020000;
+      public const ulong EFI_FILE_PROTOCOL_LATEST_REVISION = EFI_FILE_PROTOCOL_REVISION2;
 
-    //
-    // Revision defined in EFI1.1.
-    //
-    public const ulong EFI_FILE_REVISION = EFI_FILE_PROTOCOL_REVISION;
+      //
+      // Revision defined in EFI1.1.
+      //
+      public const ulong EFI_FILE_REVISION = EFI_FILE_PROTOCOL_REVISION;
+    }
 
     ///
     /// The EFI_FILE_PROTOCOL provides file IO access to supported file systems.

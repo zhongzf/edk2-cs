@@ -29,29 +29,32 @@ public unsafe struct EFI_ACPI_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_HEADER
 ///
 /// APMT Revision (as defined in DEN0117.)
 ///
-public const ulong EFI_ACPI_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_REVISION = 0x00;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_REVISION = 0x00;
 
-///
-/// Arm PMU Node Structure
-///
+  ///
+  /// Arm PMU Node Structure
+  ///
 
-// Node Flags
-public const ulong EFI_ACPI_APMT_DUAL_PAGE_EXTENSION_SUPPORTED = BIT0;
-public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_CONTAINER = BIT1;
-public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_PROCESSOR = 0 // BIT 1;
+  // Node Flags
+  public const ulong EFI_ACPI_APMT_DUAL_PAGE_EXTENSION_SUPPORTED = BIT0;
+  public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_CONTAINER = BIT1;
+  public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_PROCESSOR = 0 // BIT 1;
 public const ulong EFI_ACPI_APMT_64BIT_SINGLE_COPY_ATOMICITY_SUPPORTED = BIT2;
 
-// Interrupt Flags
-public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_EDGE_TRIGGERED = BIT0;
-public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_LEVEL_TRIGGERED = 0 // BIT 0;
+  // Interrupt Flags
+  public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_EDGE_TRIGGERED = BIT0;
+  public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_LEVEL_TRIGGERED = 0 // BIT 0;
 public const ulong EFI_ACPI_APMT_INTERRUPT_TYPE_WIRED = 0 // BIT 1;
 
 // Node Type
 public const ulong EFI_ACPI_APMT_NODE_TYPE_MEMORY_CONTROLLER = 0x00;
-public const ulong EFI_ACPI_APMT_NODE_TYPE_SMMU = 0x01;
-public const ulong EFI_ACPI_APMT_NODE_TYPE_PCIE_ROOT_COMPLEX = 0x02;
-public const ulong EFI_ACPI_APMT_NODE_TYPE_ACPI_DEVICE = 0x03;
-public const ulong EFI_ACPI_APMT_NODE_TYPE_CPU_CACHE = 0x04;
+  public const ulong EFI_ACPI_APMT_NODE_TYPE_SMMU = 0x01;
+  public const ulong EFI_ACPI_APMT_NODE_TYPE_PCIE_ROOT_COMPLEX = 0x02;
+  public const ulong EFI_ACPI_APMT_NODE_TYPE_ACPI_DEVICE = 0x03;
+  public const ulong EFI_ACPI_APMT_NODE_TYPE_CPU_CACHE = 0x04;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_ARM_PERFORMANCE_MONITORING_UNIT_NODE

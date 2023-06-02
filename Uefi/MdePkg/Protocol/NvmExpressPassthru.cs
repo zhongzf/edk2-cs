@@ -17,10 +17,13 @@ namespace Uefi;
 // #ifndef _UEFI_NVM_EXPRESS_PASS_THRU_H_
 // #define _UEFI_NVM_EXPRESS_PASS_THRU_H_
 
-public static EFI_GUID EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL_GUID = new GUID(
-    0x52c78312, 0x8edc, 0x4233, new byte[] { 0x98, 0xf2, 0x1a, 0x1a, 0xa5, 0xe3, 0x88, 0xa5 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL_GUID = new GUID(
+      0x52c78312, 0x8edc, 0x4233, new byte[] { 0x98, 0xf2, 0x1a, 0x1a, 0xa5, 0xe3, 0x88, 0xa5 });
 
-// typedef struct _EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL;
+  // typedef struct _EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVM_EXPRESS_PASS_THRU_MODE
@@ -34,29 +37,32 @@ public unsafe struct EFI_NVM_EXPRESS_PASS_THRU_MODE
 // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
 // for directly addressable namespaces.
 //
-public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
-//
-// If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
-// for a single volume logical namespace comprised of multiple namespaces.
-//
-public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
-//
-// If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface
-// supports non-blocking I/O.
-//
-public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
-//
-// If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface
-// supports NVM command set.
-//
-public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_CMD_SET_NVM = 0x0008;
+public unsafe partial class EFI
+{
+  public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
+  //
+  // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
+  // for a single volume logical namespace comprised of multiple namespaces.
+  //
+  public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
+  //
+  // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface
+  // supports non-blocking I/O.
+  //
+  public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
+  //
+  // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface
+  // supports NVM command set.
+  //
+  public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_CMD_SET_NVM = 0x0008;
 
-//
-// FusedOperation
-//
-public const ulong NORMAL_CMD = 0x00;
-public const ulong FUSED_FIRST_CMD = 0x01;
-public const ulong FUSED_SECOND_CMD = 0x02;
+  //
+  // FusedOperation
+  //
+  public const ulong NORMAL_CMD = 0x00;
+  public const ulong FUSED_FIRST_CMD = 0x01;
+  public const ulong FUSED_SECOND_CMD = 0x02;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_CDW0
@@ -69,20 +75,23 @@ public unsafe struct NVME_CDW0
 //
 // Flags
 //
-public const ulong CDW2_VALID = 0x01;
-public const ulong CDW3_VALID = 0x02;
-public const ulong CDW10_VALID = 0x04;
-public const ulong CDW11_VALID = 0x08;
-public const ulong CDW12_VALID = 0x10;
-public const ulong CDW13_VALID = 0x20;
-public const ulong CDW14_VALID = 0x40;
-public const ulong CDW15_VALID = 0x80;
+public unsafe partial class EFI
+{
+  public const ulong CDW2_VALID = 0x01;
+  public const ulong CDW3_VALID = 0x02;
+  public const ulong CDW10_VALID = 0x04;
+  public const ulong CDW11_VALID = 0x08;
+  public const ulong CDW12_VALID = 0x10;
+  public const ulong CDW13_VALID = 0x20;
+  public const ulong CDW14_VALID = 0x40;
+  public const ulong CDW15_VALID = 0x80;
 
-//
-// Queue Type
-//
-public const ulong NVME_ADMIN_QUEUE = 0x00;
-public const ulong NVME_IO_QUEUE = 0x01;
+  //
+  // Queue Type
+  //
+  public const ulong NVME_ADMIN_QUEUE = 0x00;
+  public const ulong NVME_IO_QUEUE = 0x01;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVM_EXPRESS_COMMAND
@@ -126,158 +135,6 @@ public unsafe struct EFI_NVM_EXPRESS_PASS_THRU_COMMAND_PACKET
 // Protocol function prototypes
 //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 // Protocol Interface Structure
 //
@@ -289,7 +146,6 @@ public unsafe struct EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL
     Sends an NVM Express Command Packet to an NVM Express controller or namespace. This function supports
     both blocking I/O and non-blocking I/O. The blocking I/O functionality is required, and the non-blocking
     I/O functionality is optional.
-
 
     @param[in]     This                A pointer to the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL instance.
     @param[in]     NamespaceId         A 32 bit namespace ID as defined in the NVMe specification to which the NVM Express Command

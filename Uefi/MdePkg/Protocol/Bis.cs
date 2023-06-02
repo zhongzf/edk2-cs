@@ -19,7 +19,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_BIS_PROTOCOL_GUID = new GUID(
-    0x0b64aab0, 0x5429, 0x11d4, new byte[] { 0x98, 0x16, 0x00, 0xa0, 0xc9, 0x1f, 0xad, 0xcf });
+      0x0b64aab0, 0x5429, 0x11d4, new byte[] { 0x98, 0x16, 0x00, 0xa0, 0xc9, 0x1f, 0xad, 0xcf });
 
   //
   // X-Intel-BIS-ParameterSet
@@ -29,9 +29,9 @@ public unsafe partial class EFI
   //
   public static EFI_GUID BOOT_OBJECT_AUTHORIZATION_PARMSET_GUID = new GUID(
       0xedd35e31, 0x7b9, 0x11d2, new byte[] { 0x83, 0xa3, 0x0, 0xa0, 0xc9, 0x1f, 0xad, 0xcf });
-}
 
-// typedef struct _EFI_BIS_PROTOCOL EFI_BIS_PROTOCOL;
+  // typedef struct _EFI_BIS_PROTOCOL EFI_BIS_PROTOCOL;
+}
 
 //
 // Basic types
@@ -63,14 +63,14 @@ public unsafe struct EFI_BIS_VERSION
   public uint Minor; ///< A minor BIS version number.
 }
 
+//
+// ----------------------------------------------------//
+// Use these values to initialize EFI_BIS_VERSION.Major
+// and to interpret results of Initialize.
+// ----------------------------------------------------//
+//
 public unsafe partial class EFI
 {
-  //
-  // ----------------------------------------------------//
-  // Use these values to initialize EFI_BIS_VERSION.Major
-  // and to interpret results of Initialize.
-  // ----------------------------------------------------//
-  //
   public const ulong BIS_CURRENT_VERSION_MAJOR = BIS_VERSION_1;
   public const ulong BIS_VERSION_1 = 1;
 }
@@ -86,355 +86,50 @@ public unsafe struct EFI_BIS_SIGNATURE_INFO
   public ushort KeyLength;     ///< The length of alg. keys in bits.
 }
 
+///
+/// values for EFI_BIS_SIGNATURE_INFO.AlgorithmID.
+/// The exact numeric values come from the
+///    "Common Data Security Architecture (CDSA) Specification".
+///
 public unsafe partial class EFI
 {
-  ///
-  /// values for EFI_BIS_SIGNATURE_INFO.AlgorithmID.
-  /// The exact numeric values come from the
-  ///    "Common Data Security Architecture (CDSA) Specification".
-  ///
-  public const ulong BIS_ALG_DSA = (41); // CSSM_ALGID_DSA
-  public const ulong BIS_ALG_RSA_MD5 = (42); // CSSM_ALGID_MD5_WITH_RSA
-  ///
-  /// values for EFI_BIS_SIGNATURE_INFO.CertificateId.
-  ///
-  public const ulong BIS_CERT_ID_DSA = BIS_ALG_DSA;     // CSSM_ALGID_DSA
-  public const ulong BIS_CERT_ID_RSA_MD5 = BIS_ALG_RSA_MD5; // CSSM_ALGID_MD5_WITH_RSA
-  ///
-  /// The mask value that gets applied to the truncated hash of a
-  /// platform  Boot Object Authorization Certificate to create the certificateID.
-  /// A certificateID must not have any bits set to the value 1 other than bits in
-  /// this mask.
-  ///
-  public const ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
+  public const ulong BIS_ALG_DSA = (41) // CSSM_ALGID_DSA;
+public const ulong BIS_ALG_RSA_MD5 = (42) // CSSM_ALGID_MD5_WITH_RSA;
+///
+/// values for EFI_BIS_SIGNATURE_INFO.CertificateId.
+///
+public const ulong BIS_CERT_ID_DSA = BIS_ALG_DSA     // CSSM_ALGID_DSA;
+public const ulong BIS_CERT_ID_RSA_MD5 = BIS_ALG_RSA_MD5 // CSSM_ALGID_MD5_WITH_RSA;
+///
+/// The mask value that gets applied to the truncated hash of a
+/// platform  Boot Object Authorization Certificate to create the certificateID.
+/// A certificateID must not have any bits set to the value 1 other than bits in
+/// this mask.
+///
+public const ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
 
-  /////
-  ///// Macros for dealing with the EFI_BIS_DATA object obtained
-  ///// from BIS_GetSignatureInfo().
-  ///// BIS_GET_SIGINFO_COUNT - tells how many EFI_BIS_SIGNATURE_INFO
-  /////  elements are contained in a EFI_BIS_DATA struct pointed to
-  /////  by the provided EFI_BIS_DATA*.
-  /////
-  //public const ulong BIS_GET_SIGINFO_COUNT = (BisDataPtr)((BisDataPtr)->Length / sizeof(EFI_BIS_SIGNATURE_INFO));
+  ///
+  /// Macros for dealing with the EFI_BIS_DATA object obtained
+  /// from BIS_GetSignatureInfo().
+  /// BIS_GET_SIGINFO_COUNT - tells how many EFI_BIS_SIGNATURE_INFO
+  ///  elements are contained in a EFI_BIS_DATA struct pointed to
+  ///  by the provided EFI_BIS_DATA*.
+  ///
+  public const ulong BIS_GET_SIGINFO_COUNT = (BisDataPtr)((BisDataPtr)->Length / sizeof(EFI_BIS_SIGNATURE_INFO));
 
-  /////
-  ///// BIS_GET_SIGINFO_ARRAY - produces a EFI_BIS_SIGNATURE_INFO*
-  /////  from a given EFI_BIS_DATA*.
-  /////
-  //public const ulong BIS_GET_SIGINFO_ARRAY = (BisDataPtr)((EFI_BIS_SIGNATURE_INFO*)(BisDataPtr)->Data);
+  ///
+  /// BIS_GET_SIGINFO_ARRAY - produces a EFI_BIS_SIGNATURE_INFO*
+  ///  from a given EFI_BIS_DATA*.
+  ///
+  public const ulong BIS_GET_SIGINFO_ARRAY = (BisDataPtr)((EFI_BIS_SIGNATURE_INFO*)(BisDataPtr)->Data);
+
+  ///
+  /// Support an old name for backward compatibility.
+  ///
+#define BOOT_OBJECT_AUTHORIZATION_PARMSET_GUIDVALUE \
+  BOOT_OBJECT_AUTHORIZATION_PARMSET_GUID
+
 }
-
-/////
-///// Support an old name for backward compatibility.
-/////
-//#define BOOT_OBJECT_AUTHORIZATION_PARMSET_GUIDVALUE \
-//BOOT_OBJECT_AUTHORIZATION_PARMSET_GUID
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_BIS_PROTOCOL is used to check a digital signature of a data block against a digital

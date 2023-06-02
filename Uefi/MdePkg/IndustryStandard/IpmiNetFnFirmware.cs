@@ -14,16 +14,19 @@ namespace Uefi;
 //
 // Net function definition for Firmware command
 //
-public const ulong IPMI_NETFN_FIRMWARE = 0x08;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_NETFN_FIRMWARE = 0x08;
 
-//
-// All Firmware commands and their structure definitions to follow here
-//
+  //
+  // All Firmware commands and their structure definitions to follow here
+  //
 
-// ----------------------------------------------------------------------------------------
-//    Definitions for Get BMC Execution Context
-// ----------------------------------------------------------------------------------------
-public const ulong IPMI_GET_BMC_EXECUTION_CONTEXT = 0x23;
+  // ----------------------------------------------------------------------------------------
+  //    Definitions for Get BMC Execution Context
+  // ----------------------------------------------------------------------------------------
+  public const ulong IPMI_GET_BMC_EXECUTION_CONTEXT = 0x23;
+}
 
 //
 //  Constants and Structure definitions for "Get Device ID" command to follow here
@@ -38,6 +41,9 @@ public unsafe struct IPMI_MSG_GET_BMC_EXEC_RSP
 //
 // Current Execution Context responses
 //
-public const ulong IPMI_BMC_IN_FORCED_UPDATE_MODE = 0x11;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_BMC_IN_FORCED_UPDATE_MODE = 0x11;
+}
 
 // #endif

@@ -21,57 +21,6 @@ namespace Uefi;
 ///
 // typedef struct _EFI_SERVICE_BINDING_PROTOCOL EFI_SERVICE_BINDING_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// The EFI_SERVICE_BINDING_PROTOCOL provides member functions to create and destroy
 /// child handles. A driver is responsible for adding protocols to the child handle

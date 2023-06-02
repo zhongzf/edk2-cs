@@ -18,26 +18,29 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// SPDM response code
 ///
-public const ulong SPDM_DIGESTS = 0x01;
-public const ulong SPDM_CERTIFICATE = 0x02;
-public const ulong SPDM_CHALLENGE_AUTH = 0x03;
-public const ulong SPDM_VERSION = 0x04;
-public const ulong SPDM_MEASUREMENTS = 0x60;
-public const ulong SPDM_CAPABILITIES = 0x61;
-public const ulong SPDM_SET_CERT_RESPONSE = 0x62;
-public const ulong SPDM_ALGORITHMS = 0x63;
-public const ulong SPDM_ERROR = 0x7F;
-///
-/// SPDM request code
-///
-public const ulong SPDM_GET_DIGESTS = 0x81;
-public const ulong SPDM_GET_CERTIFICATE = 0x82;
-public const ulong SPDM_CHALLENGE = 0x83;
-public const ulong SPDM_GET_VERSION = 0x84;
-public const ulong SPDM_GET_MEASUREMENTS = 0xE0;
-public const ulong SPDM_GET_CAPABILITIES = 0xE1;
-public const ulong SPDM_NEGOTIATE_ALGORITHMS = 0xE3;
-public const ulong SPDM_RESPOND_IF_READY = 0xFF;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_DIGESTS = 0x01;
+  public const ulong SPDM_CERTIFICATE = 0x02;
+  public const ulong SPDM_CHALLENGE_AUTH = 0x03;
+  public const ulong SPDM_VERSION = 0x04;
+  public const ulong SPDM_MEASUREMENTS = 0x60;
+  public const ulong SPDM_CAPABILITIES = 0x61;
+  public const ulong SPDM_SET_CERT_RESPONSE = 0x62;
+  public const ulong SPDM_ALGORITHMS = 0x63;
+  public const ulong SPDM_ERROR = 0x7F;
+  ///
+  /// SPDM request code
+  ///
+  public const ulong SPDM_GET_DIGESTS = 0x81;
+  public const ulong SPDM_GET_CERTIFICATE = 0x82;
+  public const ulong SPDM_CHALLENGE = 0x83;
+  public const ulong SPDM_GET_VERSION = 0x84;
+  public const ulong SPDM_GET_MEASUREMENTS = 0xE0;
+  public const ulong SPDM_GET_CAPABILITIES = 0xE1;
+  public const ulong SPDM_NEGOTIATE_ALGORITHMS = 0xE3;
+  public const ulong SPDM_RESPOND_IF_READY = 0xFF;
+}
 
 ///
 /// SPDM message header
@@ -51,7 +54,10 @@ public unsafe struct SPDM_MESSAGE_HEADER
   public byte Param2;
 }
 
-public const ulong SPDM_MESSAGE_VERSION = 0x10;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_MESSAGE_VERSION = 0x10;
+}
 
 ///
 /// SPDM GET_VERSION request
@@ -111,13 +117,16 @@ public unsafe struct SPDM_CAPABILITIES_RESPONSE
 ///
 /// SPDM GET_CAPABILITIES response Flags
 ///
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CACHE_CAP = BIT0;
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CERT_CAP = BIT1;
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CHAL_CAP = BIT2;
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_CAP = (BIT3 | BIT4);
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_CAP_NO_SIG = BIT3;
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_CAP_SIG = BIT4;
-public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_FRESH_CAP = BIT5;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CACHE_CAP = BIT0;
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CERT_CAP = BIT1;
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CHAL_CAP = BIT2;
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_CAP = (BIT3 | BIT4);
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_CAP_NO_SIG = BIT3;
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_CAP_SIG = BIT4;
+  public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_MEAS_FRESH_CAP = BIT5;
+}
 
 ///
 /// SPDM NEGOTIATE_ALGORITHMS request
@@ -142,25 +151,28 @@ public unsafe struct SPDM_NEGOTIATE_ALGORITHMS_REQUEST
 ///
 /// SPDM NEGOTIATE_ALGORITHMS request BaseAsymAlgo
 ///
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_2048 = BIT0;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_2048 = BIT1;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_3072 = BIT2;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_3072 = BIT3;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_ECDSA_ECC_NIST_P256 = BIT4;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_4096 = BIT5;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_4096 = BIT6;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_ECDSA_ECC_NIST_P384 = BIT7;
-public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_ECDSA_ECC_NIST_P521 = BIT8;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_2048 = BIT0;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_2048 = BIT1;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_3072 = BIT2;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_3072 = BIT3;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_ECDSA_ECC_NIST_P256 = BIT4;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_4096 = BIT5;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_4096 = BIT6;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_ECDSA_ECC_NIST_P384 = BIT7;
+  public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_ECDSA_ECC_NIST_P521 = BIT8;
 
-///
-/// SPDM NEGOTIATE_ALGORITHMS request BaseHashAlgo
-///
-public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA_256 = BIT0;
-public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA_384 = BIT1;
-public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA_512 = BIT2;
-public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA3_256 = BIT3;
-public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA3_384 = BIT4;
-public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA3_512 = BIT5;
+  ///
+  /// SPDM NEGOTIATE_ALGORITHMS request BaseHashAlgo
+  ///
+  public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA_256 = BIT0;
+  public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA_384 = BIT1;
+  public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA_512 = BIT2;
+  public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA3_256 = BIT3;
+  public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA3_384 = BIT4;
+  public const ulong SPDM_ALGORITHMS_BASE_HASH_ALGO_TPM_ALG_SHA3_512 = BIT5;
+}
 
 ///
 /// SPDM NEGOTIATE_ALGORITHMS response
@@ -186,13 +198,16 @@ public unsafe struct SPDM_ALGORITHMS_RESPONSE
 ///
 /// SPDM NEGOTIATE_ALGORITHMS response MeasurementHashAlgo
 ///
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_RAW_BIT_STREAM_ONLY = BIT0;
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_256 = BIT1;
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_384 = BIT2;
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_512 = BIT3;
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA3_256 = BIT4;
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA3_384 = BIT5;
-public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA3_512 = BIT6;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_RAW_BIT_STREAM_ONLY = BIT0;
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_256 = BIT1;
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_384 = BIT2;
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_512 = BIT3;
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA3_256 = BIT4;
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA3_384 = BIT5;
+  public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA3_512 = BIT6;
+}
 
 ///
 /// SPDM GET_DIGESTS request
@@ -283,7 +298,10 @@ public unsafe struct SPDM_MEASUREMENT_BLOCK_COMMON_HEADER
   // byte                Measurement[MeasurementSize];
 }
 
-public const ulong SPDM_MEASUREMENT_BLOCK_HEADER_SPECIFICATION_DMTF = BIT0;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_MEASUREMENT_BLOCK_HEADER_SPECIFICATION_DMTF = BIT0;
+}
 
 ///
 /// SPDM MEASUREMENTS block DMTF header
@@ -299,11 +317,14 @@ public unsafe struct SPDM_MEASUREMENT_BLOCK_DMTF_HEADER
 ///
 /// SPDM MEASUREMENTS block MeasurementValueType
 ///
-public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_IMMUTABLE_ROM = 0;
-public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_MUTABLE_FIRMWARE = 1;
-public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_HARDWARE_CONFIGURATION = 2;
-public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_FIRMWARE_CONFIGURATION = 3;
-public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_RAW_BIT_STREAM = BIT7;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_IMMUTABLE_ROM = 0;
+  public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_MUTABLE_FIRMWARE = 1;
+  public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_HARDWARE_CONFIGURATION = 2;
+  public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_FIRMWARE_CONFIGURATION = 3;
+  public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_RAW_BIT_STREAM = BIT7;
+}
 
 ///
 /// SPDM GET_MEASUREMENTS response
@@ -336,14 +357,17 @@ public unsafe struct SPDM_ERROR_RESPONSE
 ///
 /// SPDM error code
 ///
-public const ulong SPDM_ERROR_CODE_INVALID_REQUEST = 0x01;
-public const ulong SPDM_ERROR_CODE_BUSY = 0x03;
-public const ulong SPDM_ERROR_CODE_UNEXPECTED_REQUEST = 0x04;
-public const ulong SPDM_ERROR_CODE_UNSPECIFIED = 0x05;
-public const ulong SPDM_ERROR_CODE_UNSUPPORTED_REQUEST = 0x07;
-public const ulong SPDM_ERROR_CODE_MAJOR_VERSION_MISMATCH = 0x41;
-public const ulong SPDM_ERROR_CODE_RESPONSE_NOT_READY = 0x42;
-public const ulong SPDM_ERROR_CODE_REQUEST_RESYNCH = 0x43;
+public unsafe partial class EFI
+{
+  public const ulong SPDM_ERROR_CODE_INVALID_REQUEST = 0x01;
+  public const ulong SPDM_ERROR_CODE_BUSY = 0x03;
+  public const ulong SPDM_ERROR_CODE_UNEXPECTED_REQUEST = 0x04;
+  public const ulong SPDM_ERROR_CODE_UNSPECIFIED = 0x05;
+  public const ulong SPDM_ERROR_CODE_UNSUPPORTED_REQUEST = 0x07;
+  public const ulong SPDM_ERROR_CODE_MAJOR_VERSION_MISMATCH = 0x41;
+  public const ulong SPDM_ERROR_CODE_RESPONSE_NOT_READY = 0x42;
+  public const ulong SPDM_ERROR_CODE_REQUEST_RESYNCH = 0x43;
+}
 
 ///
 /// SPDM RESPONSE_IF_READY request

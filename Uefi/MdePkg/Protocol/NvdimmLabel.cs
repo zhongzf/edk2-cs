@@ -19,10 +19,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_NVDIMM_LABEL_PROTOCOL_H__
 // #define __EFI_NVDIMM_LABEL_PROTOCOL_H__
 
-public static EFI_GUID EFI_NVDIMM_LABEL_PROTOCOL_GUID = new GUID(
-    0xd40b6b80, 0x97d5, 0x4282, new byte[] { 0xbb, 0x1d, 0x22, 0x3a, 0x16, 0x91, 0x80, 0x58 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_NVDIMM_LABEL_PROTOCOL_GUID = new GUID(
+      0xd40b6b80, 0x97d5, 0x4282, new byte[] { 0xbb, 0x1d, 0x22, 0x3a, 0x16, 0x91, 0x80, 0x58 });
 
-// typedef struct _EFI_NVDIMM_LABEL_PROTOCOL EFI_NVDIMM_LABEL_PROTOCOL;
+  // typedef struct _EFI_NVDIMM_LABEL_PROTOCOL EFI_NVDIMM_LABEL_PROTOCOL;
+}
 
 public const ulong EFI_NVDIMM_LABEL_INDEX_SIG_LEN = 16;
 public const ulong EFI_NVDIMM_LABEL_INDEX_ALIGN = 256;
@@ -101,29 +104,32 @@ public unsafe struct EFI_NVDIMM_LABEL_INDEX_BLOCK
   public fixed byte Free[];
 }
 
-public const ulong EFI_NVDIMM_LABEL_NAME_LEN = 64;
+public unsafe partial class EFI
+{
+  public const ulong EFI_NVDIMM_LABEL_NAME_LEN = 64;
 
-///
-/// The label is read-only.
-///
-public const ulong EFI_NVDIMM_LABEL_FLAGS_ROLABEL = 0x00000001;
+  ///
+  /// The label is read-only.
+  ///
+  public const ulong EFI_NVDIMM_LABEL_FLAGS_ROLABEL = 0x00000001;
 
-///
-/// When set, the complete label set is local to a single NVDIMM Label Storage Area.
-/// When clear, the complete label set is contained on multiple NVDIMM Label Storage Areas.
-///
-public const ulong EFI_NVDIMM_LABEL_FLAGS_LOCAL = 0x00000002;
+  ///
+  /// When set, the complete label set is local to a single NVDIMM Label Storage Area.
+  /// When clear, the complete label set is contained on multiple NVDIMM Label Storage Areas.
+  ///
+  public const ulong EFI_NVDIMM_LABEL_FLAGS_LOCAL = 0x00000002;
 
-///
-/// This reserved flag is utilized on older implementations and has been deprecated.
-/// Do not use.
-//
-public const ulong EFI_NVDIMM_LABEL_FLAGS_RESERVED = 0x00000004;
+  ///
+  /// This reserved flag is utilized on older implementations and has been deprecated.
+  /// Do not use.
+  //
+  public const ulong EFI_NVDIMM_LABEL_FLAGS_RESERVED = 0x00000004;
 
-///
-/// When set, the label set is being updated.
-///
-public const ulong EFI_NVDIMM_LABEL_FLAGS_UPDATING = 0x00000008;
+  ///
+  /// When set, the label set is being updated.
+  ///
+  public const ulong EFI_NVDIMM_LABEL_FLAGS_UPDATING = 0x00000008;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVDIMM_LABEL
@@ -253,90 +259,6 @@ public unsafe struct EFI_NVDIMM_LABEL_SET_COOKIE_INFO
   ///
   public fixed EFI_NVDIMM_LABEL_SET_COOKIE_MAP Mapping[0];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Provides services that allow management of labels contained in a Label Storage Area.

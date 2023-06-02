@@ -20,74 +20,61 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0x5639867a, 0x8c8e, 0x408d, new byte[] { 0xac, 0x2f, 0x4b, 0x61, 0xbd, 0xc0, 0xbb, 0xbb });
+      0x5639867a, 0x8c8e, 0x408d, new byte[] { 0xac, 0x2f, 0x4b, 0x61, 0xbd, 0xc0, 0xbb, 0xbb });
 
   public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL_GUID = new GUID(
       0x898890e9, 0x84b2, 0x4f3a, new byte[] { 0x8c, 0x58, 0xd8, 0x57, 0x78, 0x13, 0xe0, 0xac });
+
+  // typedef struct _EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL;
+
+  // #pragma pack(1)
 }
-
-// typedef struct _EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL;
-
-// #pragma pack(1)
 
 //
 // Bluetooth UUID
 //
-[StructLayout(LayoutKind.Explicit)]
-public unsafe struct EFI_BLUETOOTH_UUID
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Data
 {
-  [FieldOffset(0)]
   public byte Length;
-  [FieldOffset(4)]
-  public ushort Uuid16;
-  [FieldOffset(4)]
+  union {
+   public ushort Uuid16;
   public uint Uuid32;
-  [FieldOffset(4)]
   public fixed byte Uuid128[16];
 }
+} EFI_BLUETOOTH_UUID;
 
 public unsafe partial class EFI
 {
   public const ulong UUID_16BIT_TYPE_LEN = 2;
   public const ulong UUID_32BIT_TYPE_LEN = 4;
   public const ulong UUID_128BIT_TYPE_LEN = 16;
-}
 
-//public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
+  public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
+}
 
 //
 // Bluetooth Attribute Permission
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_PERMISSION
+public unsafe struct Permission
 {
-  //[FieldOffset(0)]
-  //public ushort Readable = 1;
-  //[FieldOffset(0)]
-  //public ushort ReadEncryption = 1;
-  //[FieldOffset(0)]
-  //public ushort ReadAuthentication = 1;
-  //[FieldOffset(0)]
-  //public ushort ReadAuthorization = 1;
-  //[FieldOffset(0)]
-  //public ushort ReadKeySize = 5;
-  //[FieldOffset(0)]
-  //public ushort Reserved1 = 7;
-  //[FieldOffset(0)]
-  //public ushort Writeable = 1;
-  //[FieldOffset(0)]
-  //public ushort WriteEncryption = 1;
-  //[FieldOffset(0)]
-  //public ushort WriteAuthentication = 1;
-  //[FieldOffset(0)]
-  //public ushort WriteAuthorization = 1;
-  //[FieldOffset(0)]
-  //public ushort WriteKeySize = 5;
-  //[FieldOffset(0)]
-  //public ushort Reserved2 = 7;
-  [FieldOffset(4)]
-  public uint Data32;
+  struct {
+   [FieldOffset(0)] public ushort Readable = 1;
+  [FieldOffset(0)] public ushort ReadEncryption = 1;
+  [FieldOffset(0)] public ushort ReadAuthentication = 1;
+  [FieldOffset(0)] public ushort ReadAuthorization = 1;
+  [FieldOffset(0)] public ushort ReadKeySize = 5;
+  [FieldOffset(0)] public ushort Reserved1 = 7;
+  [FieldOffset(0)] public ushort Writeable = 1;
+  [FieldOffset(0)] public ushort WriteEncryption = 1;
+  [FieldOffset(0)] public ushort WriteAuthentication = 1;
+  [FieldOffset(0)] public ushort WriteAuthorization = 1;
+  [FieldOffset(0)] public ushort WriteKeySize = 5;
+  [FieldOffset(0)] public ushort Reserved2 = 7;
 }
+uint Data32;
+} EFI_BLUETOOTH_ATTRIBUTE_PERMISSION;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_HEADER
@@ -145,18 +132,16 @@ public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_INDICATION
   public ushort AttributeHandle;
 }
 
-[StructLayout(LayoutKind.Explicit)]
-public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Parameter
 {
-  [FieldOffset(0)]
   public uint Version;
-  [FieldOffset(8)]
   public byte AttributeOpCode;
-  [FieldOffset(12)]
-  public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_NOTIFICATION Notification;
-  [FieldOffset(12)]
+  union {
+   public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_NOTIFICATION Notification;
   public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_INDICATION Indication;
 }
+} EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLUETOOTH_LE_DEVICE_INFO

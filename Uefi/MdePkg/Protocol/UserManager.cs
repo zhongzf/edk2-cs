@@ -17,13 +17,16 @@ namespace Uefi;
 ///
 /// Global ID for the User Manager Protocol
 ///
-public static EFI_GUID EFI_USER_MANAGER_PROTOCOL_GUID = new GUID(
-    0x6fd5b00c, 0xd426, 0x4283, new byte[] { 0x98, 0x87, 0x6c, 0xf5, 0xcf, 0x1c, 0xb1, 0xfe });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_USER_MANAGER_PROTOCOL_GUID = new GUID(
+      0x6fd5b00c, 0xd426, 0x4283, new byte[] { 0x98, 0x87, 0x6c, 0xf5, 0xcf, 0x1c, 0xb1, 0xfe });
 
 #define EFI_EVENT_GROUP_USER_PROFILE_CHANGED \
   { \
     0xbaf1e6de, 0x209e, 0x4adb, { 0x8d, 0x96, 0xfd, 0x8b, 0x71, 0xf3, 0xf6, 0x83 } \
   }
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_PROFILE_HANDLE { void* Value; public static implicit operator EFI_USER_PROFILE_HANDLE(void* value) => new EFI_USER_PROFILE_HANDLE() { Value = value }; public static implicit operator void*(EFI_USER_PROFILE_HANDLE value) => value.Value; }
@@ -35,16 +38,19 @@ public unsafe struct EFI_USER_INFO_HANDLE { void* Value; public static implicit 
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_ATTRIBS { ushort Value; public static implicit operator EFI_USER_INFO_ATTRIBS(ushort value) => new EFI_USER_INFO_ATTRIBS() { Value = value }; public static implicit operator ushort(EFI_USER_INFO_ATTRIBS value) => value.Value; }
-public const ulong EFI_USER_INFO_STORAGE = 0x000F;
-public const ulong EFI_USER_INFO_STORAGE_VOLATILE = 0x0000;
-public const ulong EFI_USER_INFO_STORAGE_CREDENTIAL_NV = 0x0001;
-public const ulong EFI_USER_INFO_STORAGE_PLATFORM_NV = 0x0002;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_STORAGE = 0x000F;
+  public const ulong EFI_USER_INFO_STORAGE_VOLATILE = 0x0000;
+  public const ulong EFI_USER_INFO_STORAGE_CREDENTIAL_NV = 0x0001;
+  public const ulong EFI_USER_INFO_STORAGE_PLATFORM_NV = 0x0002;
 
-public const ulong EFI_USER_INFO_ACCESS = 0x0070;
-public const ulong EFI_USER_INFO_PUBLIC = 0x0010;
-public const ulong EFI_USER_INFO_PRIVATE = 0x0020;
-public const ulong EFI_USER_INFO_PROTECTED = 0x0030;
-public const ulong EFI_USER_INFO_EXCLUSIVE = 0x0080;
+  public const ulong EFI_USER_INFO_ACCESS = 0x0070;
+  public const ulong EFI_USER_INFO_PUBLIC = 0x0010;
+  public const ulong EFI_USER_INFO_PRIVATE = 0x0020;
+  public const ulong EFI_USER_INFO_PROTECTED = 0x0030;
+  public const ulong EFI_USER_INFO_EXCLUSIVE = 0x0080;
+}
 
 ///
 /// User information structure
@@ -93,19 +99,25 @@ public unsafe struct EFI_USER_INFO
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CREDENTIAL_CAPABILITIES { ulong Value; public static implicit operator EFI_CREDENTIAL_CAPABILITIES(ulong value) => new EFI_CREDENTIAL_CAPABILITIES() { Value = value }; public static implicit operator ulong(EFI_CREDENTIAL_CAPABILITIES value) => value.Value; }
-public const ulong EFI_CREDENTIAL_CAPABILITIES_ENROLL = 0x0000000000000001;
+public unsafe partial class EFI
+{
+  public const ulong EFI_CREDENTIAL_CAPABILITIES_ENROLL = 0x0000000000000001;
+}
 
 ///
 /// Credential logon flags
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CREDENTIAL_LOGON_FLAGS { uint Value; public static implicit operator EFI_CREDENTIAL_LOGON_FLAGS(uint value) => new EFI_CREDENTIAL_LOGON_FLAGS() { Value = value }; public static implicit operator uint(EFI_CREDENTIAL_LOGON_FLAGS value) => value.Value; }
-public const ulong EFI_CREDENTIAL_LOGON_FLAG_AUTO = 0x00000001;
-public const ulong EFI_CREDENTIAL_LOGON_FLAG_DEFAULT = 0x00000002;
+public unsafe partial class EFI
+{
+  public const ulong EFI_CREDENTIAL_LOGON_FLAG_AUTO = 0x00000001;
+  public const ulong EFI_CREDENTIAL_LOGON_FLAG_DEFAULT = 0x00000002;
 
-///
-/// User information record types
-///
+  ///
+  /// User information record types
+  ///
+}
 
 ///
 /// No information.
@@ -120,78 +132,111 @@ public unsafe struct EFI_USER_INFO_NAME { char* Value; public static implicit op
 ///
 /// Provides the date and time when the user profile was created.
 ///
-public const ulong EFI_USER_INFO_CREATE_DATE_RECORD = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_CREATE_DATE_RECORD = 0x02;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_CREATE_DATE { EFI_TIME Value; public static implicit operator EFI_USER_INFO_CREATE_DATE(EFI_TIME value) => new EFI_USER_INFO_CREATE_DATE() { Value = value }; public static implicit operator EFI_TIME(EFI_USER_INFO_CREATE_DATE value) => value.Value; }
 ///
 /// Provides the date and time when the user profile was selected.
 ///
-public const ulong EFI_USER_INFO_USAGE_DATE_RECORD = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_USAGE_DATE_RECORD = 0x03;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_USAGE_DATE { EFI_TIME Value; public static implicit operator EFI_USER_INFO_USAGE_DATE(EFI_TIME value) => new EFI_USER_INFO_USAGE_DATE() { Value = value }; public static implicit operator EFI_TIME(EFI_USER_INFO_USAGE_DATE value) => value.Value; }
 ///
 /// Provides the number of times that the user profile has been selected.
 ///
-public const ulong EFI_USER_INFO_USAGE_COUNT_RECORD = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_USAGE_COUNT_RECORD = 0x04;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_USAGE_COUNT { ulong Value; public static implicit operator EFI_USER_INFO_USAGE_COUNT(ulong value) => new EFI_USER_INFO_USAGE_COUNT() { Value = value }; public static implicit operator ulong(EFI_USER_INFO_USAGE_COUNT value) => value.Value; }
 ///
 /// Provides a unique non-volatile user identifier for each enrolled user.
 ///
-public const ulong EFI_USER_INFO_IDENTIFIER_RECORD = 0x05;
-typedef byte EFI_USER_INFO_IDENTIFIER[16] ;
-///
-/// Specifies the type of a particular credential associated with the user profile.
-///
-public const ulong EFI_USER_INFO_CREDENTIAL_TYPE_RECORD = 0x06;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_IDENTIFIER_RECORD = 0x05;
+  typedef byte EFI_USER_INFO_IDENTIFIER[16];
+  ///
+  /// Specifies the type of a particular credential associated with the user profile.
+  ///
+  public const ulong EFI_USER_INFO_CREDENTIAL_TYPE_RECORD = 0x06;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_CREDENTIAL_TYPE { EFI_GUID Value; public static implicit operator EFI_USER_INFO_CREDENTIAL_TYPE(EFI_GUID value) => new EFI_USER_INFO_CREDENTIAL_TYPE() { Value = value }; public static implicit operator EFI_GUID(EFI_USER_INFO_CREDENTIAL_TYPE value) => value.Value; }
 ///
 /// Specifies the user-readable name of a particular credential type.
 ///
-public const ulong EFI_USER_INFO_CREDENTIAL_TYPE_NAME_RECORD = 0x07;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_CREDENTIAL_TYPE_NAME_RECORD = 0x07;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_CREDENTIAL_TYPE_NAME { char* Value; public static implicit operator EFI_USER_INFO_CREDENTIAL_TYPE_NAME(char* value) => new EFI_USER_INFO_CREDENTIAL_TYPE_NAME() { Value = value }; public static implicit operator char*(EFI_USER_INFO_CREDENTIAL_TYPE_NAME value) => value.Value; }
 ///
 /// Specifies the credential provider.
 ///
-public const ulong EFI_USER_INFO_CREDENTIAL_PROVIDER_RECORD = 0x08;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_CREDENTIAL_PROVIDER_RECORD = 0x08;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_CREDENTIAL_PROVIDER { EFI_GUID Value; public static implicit operator EFI_USER_INFO_CREDENTIAL_PROVIDER(EFI_GUID value) => new EFI_USER_INFO_CREDENTIAL_PROVIDER() { Value = value }; public static implicit operator EFI_GUID(EFI_USER_INFO_CREDENTIAL_PROVIDER value) => value.Value; }
 ///
 /// Specifies the user-readable name of a particular credential's provider.
 ///
-public const ulong EFI_USER_INFO_CREDENTIAL_PROVIDER_NAME_RECORD = 0x09;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_CREDENTIAL_PROVIDER_NAME_RECORD = 0x09;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_CREDENTIAL_PROVIDER_NAME { char* Value; public static implicit operator EFI_USER_INFO_CREDENTIAL_PROVIDER_NAME(char* value) => new EFI_USER_INFO_CREDENTIAL_PROVIDER_NAME() { Value = value }; public static implicit operator char*(EFI_USER_INFO_CREDENTIAL_PROVIDER_NAME value) => value.Value; }
 ///
 /// Provides PKCS#11 credential information from a smart card.
 ///
-public const ulong EFI_USER_INFO_PKCS11_RECORD = 0x0A;
-///
-/// Provides standard biometric information in the format specified by the ISO 19785 (Common
-/// Biometric Exchange Formats Framework) specification.
-///
-public const ulong EFI_USER_INFO_CBEFF_RECORD = 0x0B;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_PKCS11_RECORD = 0x0A;
+  ///
+  /// Provides standard biometric information in the format specified by the ISO 19785 (Common
+  /// Biometric Exchange Formats Framework) specification.
+  ///
+  public const ulong EFI_USER_INFO_CBEFF_RECORD = 0x0B;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_CBEFF { void* Value; public static implicit operator EFI_USER_INFO_CBEFF(void* value) => new EFI_USER_INFO_CBEFF() { Value = value }; public static implicit operator void*(EFI_USER_INFO_CBEFF value) => value.Value; }
 ///
 /// Indicates how close of a match the fingerprint must be in order to be considered a match.
 ///
-public const ulong EFI_USER_INFO_FAR_RECORD = 0x0C;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_FAR_RECORD = 0x0C;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_FAR { byte Value; public static implicit operator EFI_USER_INFO_FAR(byte value) => new EFI_USER_INFO_FAR() { Value = value }; public static implicit operator byte(EFI_USER_INFO_FAR value) => value.Value; }
 ///
 /// Indicates how many attempts the user has to with a particular credential before the system prevents
 /// further attempts.
 ///
-public const ulong EFI_USER_INFO_RETRY_RECORD = 0x0D;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_RETRY_RECORD = 0x0D;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_RETRY { byte Value; public static implicit operator EFI_USER_INFO_RETRY(byte value) => new EFI_USER_INFO_RETRY() { Value = value }; public static implicit operator byte(EFI_USER_INFO_RETRY value) => value.Value; }
 ///
 /// Provides the user's pre-OS access rights.
 ///
-public const ulong EFI_USER_INFO_ACCESS_POLICY_RECORD = 0x0E;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_ACCESS_POLICY_RECORD = 0x0E;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_ACCESS_CONTROL
@@ -211,37 +256,40 @@ public unsafe struct EFI_USER_INFO_ACCESS_POLICY { EFI_USER_INFO_ACCESS_CONTROL 
 /// Forbids the user from booting or loading executables from the specified device path or any child
 /// device paths.
 ///
-public const ulong EFI_USER_INFO_ACCESS_FORBID_LOAD = 0x00000001;
-///
-/// Permits the user from booting or loading executables from the specified device path or any child
-/// device paths.
-/// Note: in-consistency between code and the UEFI 2.3 specification here.
-/// The definition EFI_USER_INFO_ACCESS_PERMIT_BOOT in the specification should be typo and wait for
-/// spec update.
-///
-public const ulong EFI_USER_INFO_ACCESS_PERMIT_LOAD = 0x00000002;
-///
-/// Presence of this record indicates that a user can update enrollment information.
-///
-public const ulong EFI_USER_INFO_ACCESS_ENROLL_SELF = 0x00000003;
-///
-/// Presence of this record indicates that a user can enroll new users.
-///
-public const ulong EFI_USER_INFO_ACCESS_ENROLL_OTHERS = 0x00000004;
-///
-/// Presence of this record indicates that a user can update the user information of any user.
-///
-public const ulong EFI_USER_INFO_ACCESS_MANAGE = 0x00000005;
-///
-/// Describes permissions usable when configuring the platform.
-///
-public const ulong EFI_USER_INFO_ACCESS_SETUP = 0x00000006;
-///
-/// Standard GUIDs for access to configure the platform.
-///
-public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_ADMIN_GUID = new GUID(0x85b75607, 0xf7ce, 0x471e, new byte[] { 0xb7, 0xe4, 0x2a, 0xea, 0x5f, 0x72, 0x32, 0xee });
-public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_NORMAL_GUID = new GUID(0x1db29ae0, 0x9dcb, 0x43bc, new byte[] { 0x8d, 0x87, 0x5d, 0xa1, 0x49, 0x64, 0xdd, 0xe2 });
-public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_RESTRICTED_GUID = new GUID(0xbdb38125, 0x4d63, 0x49f4, new byte[] { 0x82, 0x12, 0x61, 0xcf, 0x5a, 0x19, 0xa, 0xf8 });
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_ACCESS_FORBID_LOAD = 0x00000001;
+  ///
+  /// Permits the user from booting or loading executables from the specified device path or any child
+  /// device paths.
+  /// Note: in-consistency between code and the UEFI 2.3 specification here.
+  /// The definition EFI_USER_INFO_ACCESS_PERMIT_BOOT in the specification should be typo and wait for
+  /// spec update.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_PERMIT_LOAD = 0x00000002;
+  ///
+  /// Presence of this record indicates that a user can update enrollment information.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_ENROLL_SELF = 0x00000003;
+  ///
+  /// Presence of this record indicates that a user can enroll new users.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_ENROLL_OTHERS = 0x00000004;
+  ///
+  /// Presence of this record indicates that a user can update the user information of any user.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_MANAGE = 0x00000005;
+  ///
+  /// Describes permissions usable when configuring the platform.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_SETUP = 0x00000006;
+  ///
+  /// Standard GUIDs for access to configure the platform.
+  ///
+  public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_ADMIN_GUID = new GUID(0x85b75607, 0xf7ce, 0x471e, new byte[] { 0xb7, 0xe4, 0x2a, 0xea, 0x5f, 0x72, 0x32, 0xee });
+  public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_NORMAL_GUID = new GUID(0x1db29ae0, 0x9dcb, 0x43bc, new byte[] { 0x8d, 0x87, 0x5d, 0xa1, 0x49, 0x64, 0xdd, 0xe2 });
+  public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_RESTRICTED_GUID = new GUID(0xbdb38125, 0x4d63, 0x49f4, new byte[] { 0x82, 0x12, 0x61, 0xcf, 0x5a, 0x19, 0xa, 0xf8 });
+}
 
 ///
 /// Forbids UEFI drivers from being started from the specified device path(s) or any child device paths.
@@ -258,29 +306,32 @@ public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER = 0x00000009;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR { uint Value; public static implicit operator EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR(uint value) => new EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR() { Value = value }; public static implicit operator uint(EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR value) => value.Value; }
 
-public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_MASK = 0x0000000F;
-///
-/// Insert new boot options at the beginning of the boot order.
-///
-public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_INSERT = 0x00000000;
-///
-/// Append new boot options to the end of the boot order.
-///
-public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_APPEND = 0x00000001;
-///
-/// Replace the entire boot order.
-///
-public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_REPLACE = 0x00000002;
-///
-/// The Boot Manager will not attempt find a default boot device
-/// when the default boot order is does not lead to a bootable device.
-///
-public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_NODEFAULT = 0x00000010;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_MASK = 0x0000000F;
+  ///
+  /// Insert new boot options at the beginning of the boot order.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_INSERT = 0x00000000;
+  ///
+  /// Append new boot options to the end of the boot order.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_APPEND = 0x00000001;
+  ///
+  /// Replace the entire boot order.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_REPLACE = 0x00000002;
+  ///
+  /// The Boot Manager will not attempt find a default boot device
+  /// when the default boot order is does not lead to a bootable device.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER_NODEFAULT = 0x00000010;
 
-///
-/// Provides the expression which determines which credentials are required to assert user identity.
-///
-public const ulong EFI_USER_INFO_IDENTITY_POLICY_RECORD = 0x0F;
+  ///
+  /// Provides the expression which determines which credentials are required to assert user identity.
+  ///
+  public const ulong EFI_USER_INFO_IDENTITY_POLICY_RECORD = 0x0F;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_IDENTITY_POLICY
@@ -292,13 +343,16 @@ public unsafe struct EFI_USER_INFO_IDENTITY_POLICY
 ///
 /// User identity policy expression operators.
 ///
-public const ulong EFI_USER_INFO_IDENTITY_FALSE = 0x00;
-public const ulong EFI_USER_INFO_IDENTITY_TRUE = 0x01;
-public const ulong EFI_USER_INFO_IDENTITY_CREDENTIAL_TYPE = 0x02;
-public const ulong EFI_USER_INFO_IDENTITY_CREDENTIAL_PROVIDER = 0x03;
-public const ulong EFI_USER_INFO_IDENTITY_NOT = 0x10;
-public const ulong EFI_USER_INFO_IDENTITY_AND = 0x11;
-public const ulong EFI_USER_INFO_IDENTITY_OR = 0x12;
+public unsafe partial class EFI
+{
+  public const ulong EFI_USER_INFO_IDENTITY_FALSE = 0x00;
+  public const ulong EFI_USER_INFO_IDENTITY_TRUE = 0x01;
+  public const ulong EFI_USER_INFO_IDENTITY_CREDENTIAL_TYPE = 0x02;
+  public const ulong EFI_USER_INFO_IDENTITY_CREDENTIAL_PROVIDER = 0x03;
+  public const ulong EFI_USER_INFO_IDENTITY_NOT = 0x10;
+  public const ulong EFI_USER_INFO_IDENTITY_AND = 0x11;
+  public const ulong EFI_USER_INFO_IDENTITY_OR = 0x12;
+}
 
 ///
 /// Provides placeholder for additional user profile information identified by a GUID.
@@ -318,298 +372,6 @@ public unsafe struct EFI_USER_INFO_TABLE
 }
 
 // typedef struct _EFI_USER_MANAGER_PROTOCOL EFI_USER_MANAGER_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// This protocol provides the services used to manage user profiles.

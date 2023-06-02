@@ -15,9 +15,12 @@ namespace Uefi;
 // #ifndef _MM_END_OF_DXE_H_
 // #define _MM_END_OF_DXE_H_
 
-public static EFI_GUID EFI_MM_END_OF_DXE_PROTOCOL_GUID = new GUID(
-    0x24e70042, 0xd5c5, 0x4260, new byte[] { 0x8c, 0x39, 0xa, 0xd3, 0xaa, 0x32, 0xe9, 0x3d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_END_OF_DXE_PROTOCOL_GUID = new GUID(
+      0x24e70042, 0xd5c5, 0x4260, new byte[] { 0x8c, 0x39, 0xa, 0xd3, 0xaa, 0x32, 0xe9, 0x3d });
 
-// extern EFI_GUID  gEfiMmEndOfDxeProtocolGuid;
+  // extern EFI_GUID  gEfiMmEndOfDxeProtocolGuid;
+}
 
 // #endif

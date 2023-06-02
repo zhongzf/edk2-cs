@@ -21,18 +21,21 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_MP_PROTOCOL_GUID = new GUID(
-    0x5d5450d7, 0x990c, 0x4180, new byte[] { 0xa8, 0x3, 0x8e, 0x63, 0xf0, 0x60, 0x83, 0x7 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_MP_PROTOCOL_GUID = new GUID(
+      0x5d5450d7, 0x990c, 0x4180, new byte[] { 0xa8, 0x3, 0x8e, 0x63, 0xf0, 0x60, 0x83, 0x7 });
 
-//
-// Revision definition.
-//
-public const ulong EFI_MM_MP_PROTOCOL_REVISION = 0x00;
+  //
+  // Revision definition.
+  //
+  public const ulong EFI_MM_MP_PROTOCOL_REVISION = 0x00;
 
-//
-// Attribute flags
-//
-public const ulong EFI_MM_MP_TIMEOUT_SUPPORTED = 0x01;
+  //
+  // Attribute flags
+  //
+  public const ulong EFI_MM_MP_TIMEOUT_SUPPORTED = 0x01;
+}
 
 //
 // Completion token
@@ -48,270 +51,6 @@ public unsafe struct MM_DISPATCH_COMPLETION_TOKEN
 }
 
 // typedef struct _EFI_MM_MP_PROTOCOL EFI_MM_MP_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The MM MP protocol provides a set of functions to allow execution of procedures on processors that
@@ -403,7 +142,6 @@ public unsafe struct EFI_MM_MP_PROTOCOL
     Processors that are powered down in such a way that they cannot respond to interrupts, may be
     excluded from the broadcast.
 
-
     @param[in]     This                   The EFI_MM_MP_PROTOCOL instance.
     @param[in]     Procedure              A pointer to the code stream to be run on the APs that have
                                           entered MM. Type EFI_AP_PROCEDURE is defined below in related
@@ -469,7 +207,6 @@ public unsafe struct EFI_MM_MP_PROTOCOL
     3. The procedure may run in parallel with other procedures invoked through the functions in this
     protocol, or with processors that are executing an MM handler or running in the operating system.
 
-
     @param[in]      This                 The EFI_MM_MP_PROTOCOL instance.
     @param[in]      Procedure            A pointer to the code stream to be run on the designated target AP
                                          of the system. Type EFI_AP_PROCEDURE is defined below in Volume 2
@@ -528,7 +265,6 @@ public unsafe struct EFI_MM_MP_PROTOCOL
     overall status returned by the procedures that executed on the broadcast AP is used to update the
     token's Status field. The overall status may be EFI_SUCCESS, if all executions succeeded, or the
     first observed failure.
-
 
     @param[in]      This                 The EFI_MM_MP_PROTOCOL instance.
     @param[in]      Token                This parameter describes the token that was passed into

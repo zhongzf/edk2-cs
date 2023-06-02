@@ -16,71 +16,22 @@ namespace Uefi;
 // #ifndef __REPORT_STATUS_CODE_HANDLER_PROTOCOL_H__
 // #define __REPORT_STATUS_CODE_HANDLER_PROTOCOL_H__
 
-public static EFI_GUID EFI_RSC_HANDLER_PROTOCOL_GUID = new GUID(
-    0x86212936, 0xe76, 0x41c8, new byte[] { 0xa0, 0x3a, 0x2a, 0xf2, 0xfc, 0x1c, 0x39, 0xe2 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_RSC_HANDLER_PROTOCOL_GUID = new GUID(
+      0x86212936, 0xe76, 0x41c8, new byte[] { 0xa0, 0x3a, 0x2a, 0xf2, 0xfc, 0x1c, 0x39, 0xe2 });
 
-typedef
-EFI_STATUS
-(EFIAPI* EFI_RSC_HANDLER_CALLBACK)(
-  IN EFI_STATUS_CODE_TYPE   CodeType,
-  IN EFI_STATUS_CODE_VALUE Value,
-  IN uint Instance,
-  IN EFI_GUID* CallerId,
-  IN EFI_STATUS_CODE_DATA* Data
+  typedef
+  EFI_STATUS
+  (EFIAPI* EFI_RSC_HANDLER_CALLBACK)(
+    IN EFI_STATUS_CODE_TYPE   CodeType,
+    IN EFI_STATUS_CODE_VALUE Value,
+    IN uint Instance,
+    IN EFI_GUID* CallerId,
+    IN EFI_STATUS_CODE_DATA* Data
   );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RSC_HANDLER_PROTOCOL

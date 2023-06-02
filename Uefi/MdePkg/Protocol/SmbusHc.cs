@@ -18,254 +18,13 @@ namespace Uefi;
 
 // #include <IndustryStandard/SmBus.h>
 
-public static EFI_GUID EFI_SMBUS_HC_PROTOCOL_GUID = new GUID(0xe49d33ed, 0x513d, 0x4634, new byte[] { 0xb6, 0x98, 0x6f, 0x55, 0xaa, 0x75, 0x1c, 0x1b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SMBUS_HC_PROTOCOL_GUID = new GUID(0xe49d33ed, 0x513d, 0x4634, new byte[] { 0xb6, 0x98, 0x6f, 0x55, 0xaa, 0x75, 0x1c, 0x1b });
 
-// typedef struct _EFI_SMBUS_HC_PROTOCOL EFI_SMBUS_HC_PROTOCOL;
+  // typedef struct _EFI_SMBUS_HC_PROTOCOL EFI_SMBUS_HC_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_SMBUS_HC_PROTOCOL provides SMBus host controller management and basic data
@@ -327,7 +86,6 @@ public unsafe struct EFI_SMBUS_HC_PROTOCOL
                     SMBus slave device. Not all operations require
                     this argument. The length of this buffer is
                     identified by Length.
-
 
     @retval EFI_SUCCESS           The last data that was returned from the
                                   access matched the poll exit criteria.
@@ -455,7 +213,6 @@ public unsafe struct EFI_SMBUS_HC_PROTOCOL
 
     @param  Data            Data that the host controller detects as sending
                             message and calls all the registered function.
-
 
     @param  NotifyFunction  The function to call when the bus
                             driver detects the SlaveAddress and

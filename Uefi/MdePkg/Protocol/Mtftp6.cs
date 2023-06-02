@@ -19,13 +19,15 @@ namespace Uefi;
 // #ifndef __EFI_MTFTP6_PROTOCOL_H__
 // #define __EFI_MTFTP6_PROTOCOL_H__
 
-public static EFI_GUID EFI_MTFTP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0xd9760ff3, 0x3cca, 0x4267, new byte[] { 0x80, 0xf9, 0x75, 0x27, 0xfa, 0xfa, 0x42, 0x23 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MTFTP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+      0xd9760ff3, 0x3cca, 0x4267, new byte[] { 0x80, 0xf9, 0x75, 0x27, 0xfa, 0xfa, 0x42, 0x23 });
 
-public static EFI_GUID EFI_MTFTP6_PROTOCOL_GUID = new GUID(
-    0xbf0a78ba, 0xec29, 0x49cf, new byte[] { 0xa1, 0xc9, 0x7a, 0xe5, 0x4e, 0xab, 0x6a, 0x51 });
+  public static EFI_GUID EFI_MTFTP6_PROTOCOL_GUID = new GUID(
+      0xbf0a78ba, 0xec29, 0x49cf, new byte[] { 0xa1, 0xc9, 0x7a, 0xe5, 0x4e, 0xab, 0x6a, 0x51 });
 
-typedef struct _EFI_MTFTP6_PROTOCOL  EFI_MTFTP6_PROTOCOL;
+  typedef struct _EFI_MTFTP6_PROTOCOL  EFI_MTFTP6_PROTOCOL;
 typedef struct _EFI_MTFTP6_TOKEN     EFI_MTFTP6_TOKEN;
 
 ///
@@ -40,50 +42,51 @@ public const ulong EFI_MTFTP6_OPCODE_OACK = 6   ///< The MTFTPv6 packet is an op
 public const ulong EFI_MTFTP6_OPCODE_DIR = 7   ///< The MTFTPv6 packet is a directory query packet.;
 public const ulong EFI_MTFTP6_OPCODE_DATA8 = 8   ///< The MTFTPv6 packet is a data packet with a big block number.;
 public const ulong EFI_MTFTP6_OPCODE_ACK8 = 9   ///< The MTFTPv6 packet is an acknowledgement packet with a big block number.;
-///@}
+                                                ///@}
 
-///
-/// MTFTP ERROR Packet ErrorCodes
-///@{
-///
-/// The error code is not defined. See the error message in the packet (if any) for details.
-///
+                                                ///
+                                                /// MTFTP ERROR Packet ErrorCodes
+                                                ///@{
+                                                ///
+                                                /// The error code is not defined. See the error message in the packet (if any) for details.
+                                                ///
 public const ulong EFI_MTFTP6_ERRORCODE_NOT_DEFINED = 0;
-///
-/// The file was not found.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_FILE_NOT_FOUND = 1;
-///
-/// There was an access violation.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_ACCESS_VIOLATION = 2;
-///
-/// The disk was full or its allocation was exceeded.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_DISK_FULL = 3;
-///
-/// The MTFTPv6 operation was illegal.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_ILLEGAL_OPERATION = 4;
-///
-/// The transfer ID is unknown.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_UNKNOWN_TRANSFER_ID = 5;
-///
-/// The file already exists.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_FILE_ALREADY_EXISTS = 6;
-///
-/// There is no such user.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_NO_SUCH_USER = 7;
-///
-/// The request has been denied due to option negotiation.
-///
-public const ulong EFI_MTFTP6_ERRORCODE_REQUEST_DENIED = 8;
-///@}
+  ///
+  /// The file was not found.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_FILE_NOT_FOUND = 1;
+  ///
+  /// There was an access violation.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_ACCESS_VIOLATION = 2;
+  ///
+  /// The disk was full or its allocation was exceeded.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_DISK_FULL = 3;
+  ///
+  /// The MTFTPv6 operation was illegal.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_ILLEGAL_OPERATION = 4;
+  ///
+  /// The transfer ID is unknown.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_UNKNOWN_TRANSFER_ID = 5;
+  ///
+  /// The file already exists.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_FILE_ALREADY_EXISTS = 6;
+  ///
+  /// There is no such user.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_NO_SUCH_USER = 7;
+  ///
+  /// The request has been denied due to option negotiation.
+  ///
+  public const ulong EFI_MTFTP6_ERRORCODE_REQUEST_DENIED = 8;
+  ///@}
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 ///
 /// EFI_MTFTP6_REQ_HEADER
@@ -326,88 +329,6 @@ public unsafe struct EFI_MTFTP6_OPTION
   public byte* ValueStr;                ///< Pointer to the null-terminated ASCII MTFTPv6 value string.
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MTFTP6_TOKEN
 {
@@ -481,344 +402,17 @@ public unsafe struct EFI_MTFTP6_TOKEN
     @param[in] Token         The token that the caller provided in the EFI_MTFTP6_PROTOCOl.ReadFile(),
                              WriteFile() or ReadDirectory() function.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                    - MtftpCofigData.ServerIp is not a valid IPv6 unicast address.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @retval  EFI_ICMP_ERROR           Some other ICMP ERROR packet was received and the Packet is set to NULL.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                    OptionList parameters have been updated.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                       downloaded data in downloading process.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                    - Token.Buffer and Token.PacketNeeded are both NULL.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                    - Token.Buffer and Token.CheckPacket are both NULL.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     underlying communications device fast enough to transmit and/or receive all data packets without
     missing incoming packets or dropping outgoing packets. Drivers and applications that are

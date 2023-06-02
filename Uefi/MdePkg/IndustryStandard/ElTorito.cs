@@ -19,39 +19,42 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 //
 // CDROM_VOLUME_DESCRIPTOR.Types, defined in ISO 9660
 //
-public const ulong CDVOL_TYPE_STANDARD = 0x0;
-public const ulong CDVOL_TYPE_CODED = 0x1;
-public const ulong CDVOL_TYPE_END = 0xFF;
+public unsafe partial class EFI
+{
+  public const ulong CDVOL_TYPE_STANDARD = 0x0;
+  public const ulong CDVOL_TYPE_CODED = 0x1;
+  public const ulong CDVOL_TYPE_END = 0xFF;
 
-///
-/// CDROM_VOLUME_DESCRIPTOR.Id
-///
-public const ulong CDVOL_ID = "CD001";
+  ///
+  /// CDROM_VOLUME_DESCRIPTOR.Id
+  ///
+  public const ulong CDVOL_ID = "CD001";
 
-///
-/// CDROM_VOLUME_DESCRIPTOR.SystemId
-///
-public const ulong CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
+  ///
+  /// CDROM_VOLUME_DESCRIPTOR.SystemId
+  ///
+  public const ulong CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
 
-//
-// Indicator types
-//
-public const ulong ELTORITO_ID_CATALOG = 0x01;
-public const ulong ELTORITO_ID_SECTION_BOOTABLE = 0x88;
-public const ulong ELTORITO_ID_SECTION_NOT_BOOTABLE = 0x00;
-public const ulong ELTORITO_ID_SECTION_HEADER = 0x90;
-public const ulong ELTORITO_ID_SECTION_HEADER_FINAL = 0x91;
+  //
+  // Indicator types
+  //
+  public const ulong ELTORITO_ID_CATALOG = 0x01;
+  public const ulong ELTORITO_ID_SECTION_BOOTABLE = 0x88;
+  public const ulong ELTORITO_ID_SECTION_NOT_BOOTABLE = 0x00;
+  public const ulong ELTORITO_ID_SECTION_HEADER = 0x90;
+  public const ulong ELTORITO_ID_SECTION_HEADER_FINAL = 0x91;
 
-//
-// ELTORITO_CATALOG.Boot.MediaTypes
-//
-public const ulong ELTORITO_NO_EMULATION = 0x00;
-public const ulong ELTORITO_12_DISKETTE = 0x01;
-public const ulong ELTORITO_14_DISKETTE = 0x02;
-public const ulong ELTORITO_28_DISKETTE = 0x03;
-public const ulong ELTORITO_HARD_DISK = 0x04;
+  //
+  // ELTORITO_CATALOG.Boot.MediaTypes
+  //
+  public const ulong ELTORITO_NO_EMULATION = 0x00;
+  public const ulong ELTORITO_12_DISKETTE = 0x01;
+  public const ulong ELTORITO_14_DISKETTE = 0x02;
+  public const ulong ELTORITO_28_DISKETTE = 0x03;
+  public const ulong ELTORITO_HARD_DISK = 0x04;
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 ///
 /// CD-ROM Volume Descriptor

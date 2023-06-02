@@ -14,10 +14,13 @@ namespace Uefi;
 // #ifndef __SIMPLE_POINTER_H__
 // #define __SIMPLE_POINTER_H__
 
-public static EFI_GUID EFI_SIMPLE_POINTER_PROTOCOL_GUID = new GUID(
-    0x31878c87, 0xb75, 0x11d5, new byte[] { 0x9a, 0x4f, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SIMPLE_POINTER_PROTOCOL_GUID = new GUID(
+      0x31878c87, 0xb75, 0x11d5, new byte[] { 0x9a, 0x4f, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-// typedef struct _EFI_SIMPLE_POINTER_PROTOCOL EFI_SIMPLE_POINTER_PROTOCOL;
+  // typedef struct _EFI_SIMPLE_POINTER_PROTOCOL EFI_SIMPLE_POINTER_PROTOCOL;
+}
 
 //
 // Data structures
@@ -76,46 +79,6 @@ public unsafe struct EFI_SIMPLE_POINTER_MODE
   ///
   public bool RightButton;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_SIMPLE_POINTER_PROTOCOL provides a set of services for a pointer

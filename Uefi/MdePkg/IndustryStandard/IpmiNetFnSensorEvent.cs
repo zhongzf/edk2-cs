@@ -23,16 +23,19 @@ namespace Uefi;
 //
 // Net function definition for Sensor command
 //
-public const ulong IPMI_NETFN_SENSOR_EVENT = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_NETFN_SENSOR_EVENT = 0x04;
 
-//
-// All Sensor commands and their structure definitions to follow here
-//
+  //
+  // All Sensor commands and their structure definitions to follow here
+  //
 
-//
-//  Definitions for Send Platform Event Message command
-//
-public const ulong IPMI_SENSOR_PLATFORM_EVENT_MESSAGE = 0x02;
+  //
+  //  Definitions for Send Platform Event Message command
+  //
+  public const ulong IPMI_SENSOR_PLATFORM_EVENT_MESSAGE = 0x02;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_PLATFORM_EVENT_MESSAGE_DATA_REQUEST

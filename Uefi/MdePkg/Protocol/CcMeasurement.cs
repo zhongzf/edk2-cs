@@ -22,10 +22,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <IndustryStandard/UefiTcgPlatform.h>
 
-public static EFI_GUID EFI_CC_MEASUREMENT_PROTOCOL_GUID = new GUID(0x96751a3d, 0x72f4, 0x41a6, new byte[] { 0xa7, 0x94, 0xed, 0x5d, 0x0e, 0x67, 0xae, 0x6b });
-// extern EFI_GUID  gEfiCcMeasurementProtocolGuid;
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_CC_MEASUREMENT_PROTOCOL_GUID = new GUID(0x96751a3d, 0x72f4, 0x41a6, new byte[] { 0xa7, 0x94, 0xed, 0x5d, 0x0e, 0x67, 0xae, 0x6b });
+  // extern EFI_GUID  gEfiCcMeasurementProtocolGuid;
 
-// typedef struct _EFI_CC_MEASUREMENT_PROTOCOL EFI_CC_MEASUREMENT_PROTOCOL;
+  // typedef struct _EFI_CC_MEASUREMENT_PROTOCOL EFI_CC_MEASUREMENT_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_VERSION
@@ -37,9 +40,12 @@ public unsafe struct EFI_CC_VERSION
 //
 // EFI_CC Type/SubType definition
 //
-public const ulong EFI_CC_TYPE_NONE = 0;
-public const ulong EFI_CC_TYPE_SEV = 1;
-public const ulong EFI_CC_TYPE_TDX = 2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_CC_TYPE_NONE = 0;
+  public const ulong EFI_CC_TYPE_SEV = 1;
+  public const ulong EFI_CC_TYPE_TDX = 2;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_TYPE
@@ -60,27 +66,30 @@ public unsafe struct EFI_CC_MR_INDEX { uint Value; public static implicit operat
 //
 // Intel TDX measure register index
 //
-public const ulong TDX_MR_INDEX_MRTD = 0;
-public const ulong TDX_MR_INDEX_RTMR0 = 1;
-public const ulong TDX_MR_INDEX_RTMR1 = 2;
-public const ulong TDX_MR_INDEX_RTMR2 = 3;
-public const ulong TDX_MR_INDEX_RTMR3 = 4;
+public unsafe partial class EFI
+{
+  public const ulong TDX_MR_INDEX_MRTD = 0;
+  public const ulong TDX_MR_INDEX_RTMR0 = 1;
+  public const ulong TDX_MR_INDEX_RTMR1 = 2;
+  public const ulong TDX_MR_INDEX_RTMR2 = 3;
+  public const ulong TDX_MR_INDEX_RTMR3 = 4;
 
-public const ulong EFI_CC_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
-public const ulong EFI_CC_BOOT_HASH_ALG_SHA384 = 0x00000004;
+  public const ulong EFI_CC_EVENT_LOG_FORMAT_TCG_2 = 0x00000002;
+  public const ulong EFI_CC_BOOT_HASH_ALG_SHA384 = 0x00000004;
 
-//
-// This bit is shall be set when an event shall be extended but not logged.
-//
-public const ulong EFI_CC_FLAG_EXTEND_ONLY = 0x0000000000000001;
-//
-// This bit shall be set when the intent is to measure a PE/COFF image.
-//
-public const ulong EFI_CC_FLAG_PE_COFF_IMAGE = 0x0000000000000010;
+  //
+  // This bit is shall be set when an event shall be extended but not logged.
+  //
+  public const ulong EFI_CC_FLAG_EXTEND_ONLY = 0x0000000000000001;
+  //
+  // This bit shall be set when the intent is to measure a PE/COFF image.
+  //
+  public const ulong EFI_CC_FLAG_PE_COFF_IMAGE = 0x0000000000000010;
 
-// #pragma pack (1)
+  // #pragma pack (1)
 
-public const ulong EFI_CC_EVENT_HEADER_VERSION = 1;
+  public const ulong EFI_CC_EVENT_HEADER_VERSION = 1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_EVENT_HEADER
@@ -149,107 +158,6 @@ public unsafe struct EFI_CC_BOOT_SERVICE_CAPABILITY
   //
   public EFI_CC_TYPE CcType;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_MEASUREMENT_PROTOCOL
@@ -365,7 +273,10 @@ public unsafe struct CC_EVENT_HDR
 // Log entries after Get Event Log service
 //
 
-public const ulong EFI_CC_FINAL_EVENTS_TABLE_VERSION = 1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_CC_FINAL_EVENTS_TABLE_VERSION = 1;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_FINAL_EVENTS_TABLE
@@ -384,14 +295,17 @@ public unsafe struct EFI_CC_FINAL_EVENTS_TABLE
   // CC_EVENT              Event[1];
 }
 
-public static EFI_GUID EFI_CC_FINAL_EVENTS_TABLE_GUID = new GUID(0xdd4a4648, 0x2de7, 0x4665, new byte[] { 0x96, 0x4d, 0x21, 0xd9, 0xef, 0x5f, 0xb4, 0x46 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_CC_FINAL_EVENTS_TABLE_GUID = new GUID(0xdd4a4648, 0x2de7, 0x4665, new byte[] { 0x96, 0x4d, 0x21, 0xd9, 0xef, 0x5f, 0xb4, 0x46 });
 
-// extern EFI_GUID  gEfiCcFinalEventsTableGuid;
+  // extern EFI_GUID  gEfiCcFinalEventsTableGuid;
 
-//
-// Define the CC Measure EventLog ACPI Table
-//
-// #pragma pack(1)
+  //
+  // Define the CC Measure EventLog ACPI Table
+  //
+  // #pragma pack(1)
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_EVENTLOG_ACPI_TABLE
@@ -408,7 +322,10 @@ public unsafe struct EFI_CC_EVENTLOG_ACPI_TABLE
 //
 // Define the signature and revision of CC Measurement EventLog ACPI Table
 //
-public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
-public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
+  public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
+}
 
 // #endif

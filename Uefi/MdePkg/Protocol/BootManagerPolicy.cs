@@ -14,103 +14,25 @@ namespace Uefi;
 // #ifndef __BOOT_MANAGER_POLICY_H__
 // #define __BOOT_MANAGER_POLICY_H__
 
-public static EFI_GUID EFI_BOOT_MANAGER_POLICY_PROTOCOL_GUID = new GUID(
-    0xFEDF8E0C, 0xE147, 0x11E3, new byte[] { 0x99, 0x03, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BOOT_MANAGER_POLICY_PROTOCOL_GUID = new GUID(
+      0xFEDF8E0C, 0xE147, 0x11E3, new byte[] { 0x99, 0x03, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
 
-public static EFI_GUID EFI_BOOT_MANAGER_POLICY_CONSOLE_GUID = new GUID(
-    0xCAB0E94C, 0xE15F, 0x11E3, new byte[] { 0x91, 0x8D, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
+  public static EFI_GUID EFI_BOOT_MANAGER_POLICY_CONSOLE_GUID = new GUID(
+      0xCAB0E94C, 0xE15F, 0x11E3, new byte[] { 0x91, 0x8D, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
 
-public static EFI_GUID EFI_BOOT_MANAGER_POLICY_NETWORK_GUID = new GUID(
-    0xD04159DC, 0xE15F, 0x11E3, new byte[] { 0xB2, 0x61, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
+  public static EFI_GUID EFI_BOOT_MANAGER_POLICY_NETWORK_GUID = new GUID(
+      0xD04159DC, 0xE15F, 0x11E3, new byte[] { 0xB2, 0x61, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
 
-public static EFI_GUID EFI_BOOT_MANAGER_POLICY_CONNECT_ALL_GUID = new GUID(
-    0x113B2126, 0xFC8A, 0x11E3, new byte[] { 0xBD, 0x6C, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
+  public static EFI_GUID EFI_BOOT_MANAGER_POLICY_CONNECT_ALL_GUID = new GUID(
+      0x113B2126, 0xFC8A, 0x11E3, new byte[] { 0xBD, 0x6C, 0xB8, 0xE8, 0x56, 0x2C, 0xBA, 0xFA });
 
-// typedef struct _EFI_BOOT_MANAGER_POLICY_PROTOCOL EFI_BOOT_MANAGER_POLICY_PROTOCOL;
+  // typedef struct _EFI_BOOT_MANAGER_POLICY_PROTOCOL EFI_BOOT_MANAGER_POLICY_PROTOCOL;
 
-public const ulong EFI_BOOT_MANAGER_POLICY_PROTOCOL_REVISION = 0x00010000;
+  public const ulong EFI_BOOT_MANAGER_POLICY_PROTOCOL_REVISION = 0x00010000;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BOOT_MANAGER_POLICY_PROTOCOL

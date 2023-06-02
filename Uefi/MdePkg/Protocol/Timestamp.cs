@@ -16,12 +16,15 @@ namespace Uefi;
 // #ifndef __EFI_TIME_STAMP_PROTOCOL_H__
 // #define __EFI_TIME_STAMP_PROTOCOL_H__
 
-public static EFI_GUID EFI_TIMESTAMP_PROTOCOL_GUID = new GUID(0xafbfde41, 0x2e6e, 0x4262, new byte[] { 0xba, 0x65, 0x62, 0xb9, 0x23, 0x6e, 0x54, 0x95 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_TIMESTAMP_PROTOCOL_GUID = new GUID(0xafbfde41, 0x2e6e, 0x4262, new byte[] { 0xba, 0x65, 0x62, 0xb9, 0x23, 0x6e, 0x54, 0x95 });
 
-///
-/// Declare forward reference for the Time Stamp Protocol
-///
-// typedef struct _EFI_TIMESTAMP_PROTOCOL EFI_TIMESTAMP_PROTOCOL;
+  ///
+  /// Declare forward reference for the Time Stamp Protocol
+  ///
+  // typedef struct _EFI_TIMESTAMP_PROTOCOL EFI_TIMESTAMP_PROTOCOL;
+}
 
 ///
 /// EFI_TIMESTAMP_PROPERTIES
@@ -40,45 +43,6 @@ public unsafe struct EFI_TIMESTAMP_PROPERTIES
   ///
   public ulong EndValue;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI_TIMESTAMP_PROTOCOL

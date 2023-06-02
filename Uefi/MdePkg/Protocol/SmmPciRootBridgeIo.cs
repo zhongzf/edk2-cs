@@ -16,7 +16,10 @@ namespace Uefi;
 
 // #include <Protocol/MmPciRootBridgeIo.h>
 
-public const ulong EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID;
+}
 
 ///
 /// This protocol provides the same functionality as the PCI Root Bridge I/O Protocol defined in the

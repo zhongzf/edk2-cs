@@ -18,54 +18,19 @@ namespace Uefi;
 // #ifndef __EFI_LOAD_FILE2_PROTOCOL_H__
 // #define __EFI_LOAD_FILE2_PROTOCOL_H__
 
-public static EFI_GUID EFI_LOAD_FILE2_PROTOCOL_GUID = new GUID(
-    0x4006c0c1, 0xfcb3, 0x403e, new byte[] { 0x99, 0x6d, 0x4a, 0x6c, 0x87, 0x24, 0xe0, 0x6d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_LOAD_FILE2_PROTOCOL_GUID = new GUID(
+      0x4006c0c1, 0xfcb3, 0x403e, new byte[] { 0x99, 0x6d, 0x4a, 0x6c, 0x87, 0x24, 0xe0, 0x6d });
 
-///
-/// Protocol Guid defined by UEFI2.1.
-///
-public const ulong LOAD_FILE2_PROTOCOL = EFI_LOAD_FILE2_PROTOCOL_GUID;
+  ///
+  /// Protocol Guid defined by UEFI2.1.
+  ///
+  public const ulong LOAD_FILE2_PROTOCOL = EFI_LOAD_FILE2_PROTOCOL_GUID;
 
-// typedef struct _EFI_LOAD_FILE2_PROTOCOL EFI_LOAD_FILE2_PROTOCOL;
+  // typedef struct _EFI_LOAD_FILE2_PROTOCOL EFI_LOAD_FILE2_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_LOAD_FILE_PROTOCOL is a simple protocol used to obtain files from arbitrary devices.
@@ -99,7 +64,6 @@ public unsafe struct EFI_LOAD_FILE2_PROTOCOL
     @retval EFI_BUFFER_TOO_SMALL  The BufferSize is too small to read the current
                                   directory entry. BufferSize has been updated with
                                   the size needed to complete the request.
-
 
   **/
   public readonly delegate* unmanaged<EFI_LOAD_FILE2_PROTOCOL*, EFI_DEVICE_PATH_PROTOCOL*, bool, ulong*, void*, EFI_STATUS> LoadFile;

@@ -18,8 +18,11 @@ namespace Uefi;
 ///
 /// Global ID for the Reset Architectural Protocol
 ///
-public static EFI_GUID EFI_RESET_ARCH_PROTOCOL_GUID = new GUID(0x27CFAC88, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_RESET_ARCH_PROTOCOL_GUID = new GUID(0x27CFAC88, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
 
-// extern EFI_GUID  gEfiResetArchProtocolGuid;
+  // extern EFI_GUID  gEfiResetArchProtocolGuid;
+}
 
 // #endif

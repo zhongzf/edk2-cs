@@ -20,8 +20,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #pragma pack(1)
 
-public const ulong PXE_BUSTYPE = (a, b, c, d) \;
-    ( \
+public unsafe partial class EFI
+{
+  public const ulong PXE_BUSTYPE = (a, b, c, d) \;
+  ( \
       (((PXE_UINT32) (d) & 0xFF) << 24) | (((PXE_UINT32) (c) & 0xFF) << 16) | (((PXE_UINT32) (b) & 0xFF) << 8) | \
         ((PXE_UINT32) (a) & 0xFF) \
     )
@@ -31,17 +33,17 @@ public const ulong PXE_BUSTYPE = (a, b, c, d) \;
 ///
 public const ulong PXE_BUSTYPE_PXE = PXE_BUSTYPE('!', 'P', 'X', 'E');
 
-///
-/// BUS ROM ID signatures.
-///
-public const ulong PXE_BUSTYPE_PCI = PXE_BUSTYPE('P', 'C', 'I', 'R');
-public const ulong PXE_BUSTYPE_PC_CARD = PXE_BUSTYPE('P', 'C', 'C', 'R');
-public const ulong PXE_BUSTYPE_USB = PXE_BUSTYPE('U', 'S', 'B', 'R');
-public const ulong PXE_BUSTYPE_1394 = PXE_BUSTYPE('1', '3', '9', '4');
+  ///
+  /// BUS ROM ID signatures.
+  ///
+  public const ulong PXE_BUSTYPE_PCI = PXE_BUSTYPE('P', 'C', 'I', 'R');
+  public const ulong PXE_BUSTYPE_PC_CARD = PXE_BUSTYPE('P', 'C', 'C', 'R');
+  public const ulong PXE_BUSTYPE_USB = PXE_BUSTYPE('U', 'S', 'B', 'R');
+  public const ulong PXE_BUSTYPE_1394 = PXE_BUSTYPE('1', '3', '9', '4');
 
-public const ulong PXE_SWAP_UINT16 = (n)((((PXE_UINT16)(n) & 0x00FF) << 8) | (((PXE_UINT16)(n) & 0xFF00) >> 8));
+  public const ulong PXE_SWAP_UINT16 = (n)((((PXE_UINT16)(n) & 0x00FF) << 8) | (((PXE_UINT16)(n) & 0xFF00) >> 8));
 
-public const ulong PXE_SWAP_UINT32 = (n) \;
+  public const ulong PXE_SWAP_UINT32 = (n) \;
   ((((PXE_UINT32)(n) & 0x000000FF) << 24) | \
    (((PXE_UINT32)(n) & 0x0000FF00) << 8)  | \
    (((PXE_UINT32)(n) & 0x00FF0000) >> 8)  | \
@@ -63,7 +65,8 @@ public const ulong PXE_CPBADDR_NOT_USED = (PXE_UINT64)0  ///< zero;
 public const ulong PXE_DBADDR_NOT_USED = (PXE_UINT64)0  ///< zero;
 public const ulong PXE_CONST = CONST;
 
-public const ulong PXE_VOLATILE = volatile;
+  public const ulong PXE_VOLATILE = volatile;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_VOID { void Value; public static implicit operator PXE_VOID(void value) => new PXE_VOID() { Value = value }; public static implicit operator void(PXE_VOID value) => value.Value; }
@@ -84,8 +87,11 @@ public unsafe struct PXE_UINT64 { ulong Value; public static implicit operator P
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_BOOL { PXE_UINT8 Value; public static implicit operator PXE_BOOL(PXE_UINT8 value) => new PXE_BOOL() { Value = value }; public static implicit operator PXE_UINT8(PXE_BOOL value) => value.Value; }
-public const ulong PXE_FALSE = 0           ///< zero;
+public unsafe partial class EFI
+{
+  public const ulong PXE_FALSE = 0           ///< zero;
 public const ulong PXE_TRUE = (!PXE_FALSE);
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_OPCODE { PXE_UINT16 Value; public static implicit operator PXE_OPCODE(PXE_UINT16 value) => new PXE_OPCODE() { Value = value }; public static implicit operator PXE_UINT16(PXE_OPCODE value) => value.Value; }
@@ -93,319 +99,325 @@ public unsafe struct PXE_OPCODE { PXE_UINT16 Value; public static implicit opera
 ///
 /// Return UNDI operational state.
 ///
-public const ulong PXE_OPCODE_GET_STATE = 0x0000;
+public unsafe partial class EFI
+{
+  public const ulong PXE_OPCODE_GET_STATE = 0x0000;
 
-///
-/// Change UNDI operational state from Stopped to Started.
-///
-public const ulong PXE_OPCODE_START = 0x0001;
+  ///
+  /// Change UNDI operational state from Stopped to Started.
+  ///
+  public const ulong PXE_OPCODE_START = 0x0001;
 
-///
-/// Change UNDI operational state from Started to Stopped.
-///
-public const ulong PXE_OPCODE_STOP = 0x0002;
+  ///
+  /// Change UNDI operational state from Started to Stopped.
+  ///
+  public const ulong PXE_OPCODE_STOP = 0x0002;
 
-///
-/// Get UNDI initialization information.
-///
-public const ulong PXE_OPCODE_GET_INIT_INFO = 0x0003;
+  ///
+  /// Get UNDI initialization information.
+  ///
+  public const ulong PXE_OPCODE_GET_INIT_INFO = 0x0003;
 
-///
-/// Get NIC configuration information.
-///
-public const ulong PXE_OPCODE_GET_CONFIG_INFO = 0x0004;
+  ///
+  /// Get NIC configuration information.
+  ///
+  public const ulong PXE_OPCODE_GET_CONFIG_INFO = 0x0004;
 
-///
-/// Changed UNDI operational state from Started to Initialized.
-///
-public const ulong PXE_OPCODE_INITIALIZE = 0x0005;
+  ///
+  /// Changed UNDI operational state from Started to Initialized.
+  ///
+  public const ulong PXE_OPCODE_INITIALIZE = 0x0005;
 
-///
-/// Re-initialize the NIC H/W.
-///
-public const ulong PXE_OPCODE_RESET = 0x0006;
+  ///
+  /// Re-initialize the NIC H/W.
+  ///
+  public const ulong PXE_OPCODE_RESET = 0x0006;
 
-///
-/// Change the UNDI operational state from Initialized to Started.
-///
-public const ulong PXE_OPCODE_SHUTDOWN = 0x0007;
+  ///
+  /// Change the UNDI operational state from Initialized to Started.
+  ///
+  public const ulong PXE_OPCODE_SHUTDOWN = 0x0007;
 
-///
-/// Read & change state of external interrupt enables.
-///
-public const ulong PXE_OPCODE_INTERRUPT_ENABLES = 0x0008;
+  ///
+  /// Read & change state of external interrupt enables.
+  ///
+  public const ulong PXE_OPCODE_INTERRUPT_ENABLES = 0x0008;
 
-///
-/// Read & change state of packet receive filters.
-///
-public const ulong PXE_OPCODE_RECEIVE_FILTERS = 0x0009;
+  ///
+  /// Read & change state of packet receive filters.
+  ///
+  public const ulong PXE_OPCODE_RECEIVE_FILTERS = 0x0009;
 
-///
-/// Read & change station MAC address.
-///
-public const ulong PXE_OPCODE_STATION_ADDRESS = 0x000A;
+  ///
+  /// Read & change station MAC address.
+  ///
+  public const ulong PXE_OPCODE_STATION_ADDRESS = 0x000A;
 
-///
-/// Read traffic statistics.
-///
-public const ulong PXE_OPCODE_STATISTICS = 0x000B;
+  ///
+  /// Read traffic statistics.
+  ///
+  public const ulong PXE_OPCODE_STATISTICS = 0x000B;
 
-///
-/// Convert multicast IP address to multicast MAC address.
-///
-public const ulong PXE_OPCODE_MCAST_IP_TO_MAC = 0x000C;
+  ///
+  /// Convert multicast IP address to multicast MAC address.
+  ///
+  public const ulong PXE_OPCODE_MCAST_IP_TO_MAC = 0x000C;
 
-///
-/// Read or change non-volatile storage on the NIC.
-///
-public const ulong PXE_OPCODE_NVDATA = 0x000D;
+  ///
+  /// Read or change non-volatile storage on the NIC.
+  ///
+  public const ulong PXE_OPCODE_NVDATA = 0x000D;
 
-///
-/// Get & clear interrupt status.
-///
-public const ulong PXE_OPCODE_GET_STATUS = 0x000E;
+  ///
+  /// Get & clear interrupt status.
+  ///
+  public const ulong PXE_OPCODE_GET_STATUS = 0x000E;
 
-///
-/// Fill media header in packet for transmit.
-///
-public const ulong PXE_OPCODE_FILL_HEADER = 0x000F;
+  ///
+  /// Fill media header in packet for transmit.
+  ///
+  public const ulong PXE_OPCODE_FILL_HEADER = 0x000F;
 
-///
-/// Transmit packet(s).
-///
-public const ulong PXE_OPCODE_TRANSMIT = 0x0010;
+  ///
+  /// Transmit packet(s).
+  ///
+  public const ulong PXE_OPCODE_TRANSMIT = 0x0010;
 
-///
-/// Receive packet.
-///
-public const ulong PXE_OPCODE_RECEIVE = 0x0011;
+  ///
+  /// Receive packet.
+  ///
+  public const ulong PXE_OPCODE_RECEIVE = 0x0011;
 
-///
-/// Last valid PXE UNDI OpCode number.
-///
-public const ulong PXE_OPCODE_LAST_VALID = 0x0011;
+  ///
+  /// Last valid PXE UNDI OpCode number.
+  ///
+  public const ulong PXE_OPCODE_LAST_VALID = 0x0011;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_OPFLAGS { PXE_UINT16 Value; public static implicit operator PXE_OPFLAGS(PXE_UINT16 value) => new PXE_OPFLAGS() { Value = value }; public static implicit operator PXE_UINT16(PXE_OPFLAGS value) => value.Value; }
 
-public const ulong PXE_OPFLAGS_NOT_USED = 0x0000;
+public unsafe partial class EFI
+{
+  public const ulong PXE_OPFLAGS_NOT_USED = 0x0000;
 
-//
-// //////////////////////////////////////
-// UNDI Get State
-//
-// No OpFlags
+  //
+  // //////////////////////////////////////
+  // UNDI Get State
+  //
+  // No OpFlags
 
-////////////////////////////////////////
-// UNDI Start
-//
-// No OpFlags
+  ////////////////////////////////////////
+  // UNDI Start
+  //
+  // No OpFlags
 
-////////////////////////////////////////
-// UNDI Stop
-//
-// No OpFlags
+  ////////////////////////////////////////
+  // UNDI Stop
+  //
+  // No OpFlags
 
-////////////////////////////////////////
-// UNDI Get Init Info
-//
-// No Opflags
+  ////////////////////////////////////////
+  // UNDI Get Init Info
+  //
+  // No Opflags
 
-////////////////////////////////////////
-// UNDI Get Config Info
-//
-// No Opflags
+  ////////////////////////////////////////
+  // UNDI Get Config Info
+  //
+  // No Opflags
 
-///
-/// UNDI Initialize
-///
-public const ulong PXE_OPFLAGS_INITIALIZE_CABLE_DETECT_MASK = 0x0001;
-public const ulong PXE_OPFLAGS_INITIALIZE_DETECT_CABLE = 0x0000;
-public const ulong PXE_OPFLAGS_INITIALIZE_DO_NOT_DETECT_CABLE = 0x0001;
+  ///
+  /// UNDI Initialize
+  ///
+  public const ulong PXE_OPFLAGS_INITIALIZE_CABLE_DETECT_MASK = 0x0001;
+  public const ulong PXE_OPFLAGS_INITIALIZE_DETECT_CABLE = 0x0000;
+  public const ulong PXE_OPFLAGS_INITIALIZE_DO_NOT_DETECT_CABLE = 0x0001;
 
-///
-///
-/// UNDI Reset
-///
-public const ulong PXE_OPFLAGS_RESET_DISABLE_INTERRUPTS = 0x0001;
-public const ulong PXE_OPFLAGS_RESET_DISABLE_FILTERS = 0x0002;
+  ///
+  ///
+  /// UNDI Reset
+  ///
+  public const ulong PXE_OPFLAGS_RESET_DISABLE_INTERRUPTS = 0x0001;
+  public const ulong PXE_OPFLAGS_RESET_DISABLE_FILTERS = 0x0002;
 
-///
-/// UNDI Shutdown.
-///
-/// No OpFlags.
+  ///
+  /// UNDI Shutdown.
+  ///
+  /// No OpFlags.
 
-///
-/// UNDI Interrupt Enables.
-///
-///
-/// Select whether to enable or disable external interrupt signals.
-/// Setting both enable and disable will return PXE_STATCODE_INVALID_OPFLAGS.
-///
-public const ulong PXE_OPFLAGS_INTERRUPT_OPMASK = 0xC000;
-public const ulong PXE_OPFLAGS_INTERRUPT_ENABLE = 0x8000;
-public const ulong PXE_OPFLAGS_INTERRUPT_DISABLE = 0x4000;
-public const ulong PXE_OPFLAGS_INTERRUPT_READ = 0x0000;
+  ///
+  /// UNDI Interrupt Enables.
+  ///
+  ///
+  /// Select whether to enable or disable external interrupt signals.
+  /// Setting both enable and disable will return PXE_STATCODE_INVALID_OPFLAGS.
+  ///
+  public const ulong PXE_OPFLAGS_INTERRUPT_OPMASK = 0xC000;
+  public const ulong PXE_OPFLAGS_INTERRUPT_ENABLE = 0x8000;
+  public const ulong PXE_OPFLAGS_INTERRUPT_DISABLE = 0x4000;
+  public const ulong PXE_OPFLAGS_INTERRUPT_READ = 0x0000;
 
-///
-/// Enable receive interrupts.  An external interrupt will be generated
-/// after a complete non-error packet has been received.
-///
-public const ulong PXE_OPFLAGS_INTERRUPT_RECEIVE = 0x0001;
+  ///
+  /// Enable receive interrupts.  An external interrupt will be generated
+  /// after a complete non-error packet has been received.
+  ///
+  public const ulong PXE_OPFLAGS_INTERRUPT_RECEIVE = 0x0001;
 
-///
-/// Enable transmit interrupts.  An external interrupt will be generated
-/// after a complete non-error packet has been transmitted.
-///
-public const ulong PXE_OPFLAGS_INTERRUPT_TRANSMIT = 0x0002;
+  ///
+  /// Enable transmit interrupts.  An external interrupt will be generated
+  /// after a complete non-error packet has been transmitted.
+  ///
+  public const ulong PXE_OPFLAGS_INTERRUPT_TRANSMIT = 0x0002;
 
-///
-/// Enable command interrupts.  An external interrupt will be generated
-/// when command execution stops.
-///
-public const ulong PXE_OPFLAGS_INTERRUPT_COMMAND = 0x0004;
+  ///
+  /// Enable command interrupts.  An external interrupt will be generated
+  /// when command execution stops.
+  ///
+  public const ulong PXE_OPFLAGS_INTERRUPT_COMMAND = 0x0004;
 
-///
-/// Generate software interrupt.  Setting this bit generates an external
-/// interrupt, if it is supported by the hardware.
-///
-public const ulong PXE_OPFLAGS_INTERRUPT_SOFTWARE = 0x0008;
+  ///
+  /// Generate software interrupt.  Setting this bit generates an external
+  /// interrupt, if it is supported by the hardware.
+  ///
+  public const ulong PXE_OPFLAGS_INTERRUPT_SOFTWARE = 0x0008;
 
-///
-/// UNDI Receive Filters.
-///
-///
-/// Select whether to enable or disable receive filters.
-/// Setting both enable and disable will return PXE_STATCODE_INVALID_OPCODE.
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_OPMASK = 0xC000;
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_ENABLE = 0x8000;
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_DISABLE = 0x4000;
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_READ = 0x0000;
+  ///
+  /// UNDI Receive Filters.
+  ///
+  ///
+  /// Select whether to enable or disable receive filters.
+  /// Setting both enable and disable will return PXE_STATCODE_INVALID_OPCODE.
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_OPMASK = 0xC000;
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_ENABLE = 0x8000;
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_DISABLE = 0x4000;
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_READ = 0x0000;
 
-///
-/// To reset the contents of the multicast MAC address filter list,
-/// set this OpFlag:
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_RESET_MCAST_LIST = 0x2000;
+  ///
+  /// To reset the contents of the multicast MAC address filter list,
+  /// set this OpFlag:
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_RESET_MCAST_LIST = 0x2000;
 
-///
-/// Enable unicast packet receiving.  Packets sent to the current station
-/// MAC address will be received.
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_UNICAST = 0x0001;
+  ///
+  /// Enable unicast packet receiving.  Packets sent to the current station
+  /// MAC address will be received.
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_UNICAST = 0x0001;
 
-///
-/// Enable broadcast packet receiving.  Packets sent to the broadcast
-/// MAC address will be received.
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_BROADCAST = 0x0002;
+  ///
+  /// Enable broadcast packet receiving.  Packets sent to the broadcast
+  /// MAC address will be received.
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_BROADCAST = 0x0002;
 
-///
-/// Enable filtered multicast packet receiving.  Packets sent to any
-/// of the multicast MAC addresses in the multicast MAC address filter
-/// list will be received.  If the filter list is empty, no multicast
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_FILTERED_MULTICAST = 0x0004;
+  ///
+  /// Enable filtered multicast packet receiving.  Packets sent to any
+  /// of the multicast MAC addresses in the multicast MAC address filter
+  /// list will be received.  If the filter list is empty, no multicast
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_FILTERED_MULTICAST = 0x0004;
 
-///
-/// Enable promiscuous packet receiving.  All packets will be received.
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_PROMISCUOUS = 0x0008;
+  ///
+  /// Enable promiscuous packet receiving.  All packets will be received.
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_PROMISCUOUS = 0x0008;
 
-///
-/// Enable promiscuous multicast packet receiving.  All multicast
-/// packets will be received.
-///
-public const ulong PXE_OPFLAGS_RECEIVE_FILTER_ALL_MULTICAST = 0x0010;
+  ///
+  /// Enable promiscuous multicast packet receiving.  All multicast
+  /// packets will be received.
+  ///
+  public const ulong PXE_OPFLAGS_RECEIVE_FILTER_ALL_MULTICAST = 0x0010;
 
-///
-/// UNDI Station Address.
-///
-public const ulong PXE_OPFLAGS_STATION_ADDRESS_READ = 0x0000;
-public const ulong PXE_OPFLAGS_STATION_ADDRESS_WRITE = 0x0000;
-public const ulong PXE_OPFLAGS_STATION_ADDRESS_RESET = 0x0001;
+  ///
+  /// UNDI Station Address.
+  ///
+  public const ulong PXE_OPFLAGS_STATION_ADDRESS_READ = 0x0000;
+  public const ulong PXE_OPFLAGS_STATION_ADDRESS_WRITE = 0x0000;
+  public const ulong PXE_OPFLAGS_STATION_ADDRESS_RESET = 0x0001;
 
-///
-/// UNDI Statistics.
-///
-public const ulong PXE_OPFLAGS_STATISTICS_READ = 0x0000;
-public const ulong PXE_OPFLAGS_STATISTICS_RESET = 0x0001;
+  ///
+  /// UNDI Statistics.
+  ///
+  public const ulong PXE_OPFLAGS_STATISTICS_READ = 0x0000;
+  public const ulong PXE_OPFLAGS_STATISTICS_RESET = 0x0001;
 
-///
-/// UNDI MCast IP to MAC.
-///
-///
-/// Identify the type of IP address in the CPB.
-///
-public const ulong PXE_OPFLAGS_MCAST_IP_TO_MAC_OPMASK = 0x0003;
-public const ulong PXE_OPFLAGS_MCAST_IPV4_TO_MAC = 0x0000;
-public const ulong PXE_OPFLAGS_MCAST_IPV6_TO_MAC = 0x0001;
+  ///
+  /// UNDI MCast IP to MAC.
+  ///
+  ///
+  /// Identify the type of IP address in the CPB.
+  ///
+  public const ulong PXE_OPFLAGS_MCAST_IP_TO_MAC_OPMASK = 0x0003;
+  public const ulong PXE_OPFLAGS_MCAST_IPV4_TO_MAC = 0x0000;
+  public const ulong PXE_OPFLAGS_MCAST_IPV6_TO_MAC = 0x0001;
 
-///
-/// UNDI NvData.
-///
-///
-/// Select the type of non-volatile data operation.
-///
-public const ulong PXE_OPFLAGS_NVDATA_OPMASK = 0x0001;
-public const ulong PXE_OPFLAGS_NVDATA_READ = 0x0000;
-public const ulong PXE_OPFLAGS_NVDATA_WRITE = 0x0001;
+  ///
+  /// UNDI NvData.
+  ///
+  ///
+  /// Select the type of non-volatile data operation.
+  ///
+  public const ulong PXE_OPFLAGS_NVDATA_OPMASK = 0x0001;
+  public const ulong PXE_OPFLAGS_NVDATA_READ = 0x0000;
+  public const ulong PXE_OPFLAGS_NVDATA_WRITE = 0x0001;
 
-///
-/// UNDI Get Status.
-///
-///
-/// Return current interrupt status.  This will also clear any interrupts
-/// that are currently set.  This can be used in a polling routine.  The
-/// interrupt flags are still set and cleared even when the interrupts
-/// are disabled.
-///
-public const ulong PXE_OPFLAGS_GET_INTERRUPT_STATUS = 0x0001;
+  ///
+  /// UNDI Get Status.
+  ///
+  ///
+  /// Return current interrupt status.  This will also clear any interrupts
+  /// that are currently set.  This can be used in a polling routine.  The
+  /// interrupt flags are still set and cleared even when the interrupts
+  /// are disabled.
+  ///
+  public const ulong PXE_OPFLAGS_GET_INTERRUPT_STATUS = 0x0001;
 
-///
-/// Return list of transmitted buffers for recycling.  Transmit buffers
-/// must not be changed or unallocated until they have recycled.  After
-/// issuing a transmit command, wait for a transmit complete interrupt.
-/// When a transmit complete interrupt is received, read the transmitted
-/// buffers.  Do not plan on getting one buffer per interrupt.  Some
-/// NICs and UNDIs may transmit multiple buffers per interrupt.
-///
-public const ulong PXE_OPFLAGS_GET_TRANSMITTED_BUFFERS = 0x0002;
+  ///
+  /// Return list of transmitted buffers for recycling.  Transmit buffers
+  /// must not be changed or unallocated until they have recycled.  After
+  /// issuing a transmit command, wait for a transmit complete interrupt.
+  /// When a transmit complete interrupt is received, read the transmitted
+  /// buffers.  Do not plan on getting one buffer per interrupt.  Some
+  /// NICs and UNDIs may transmit multiple buffers per interrupt.
+  ///
+  public const ulong PXE_OPFLAGS_GET_TRANSMITTED_BUFFERS = 0x0002;
 
-///
-/// Return current media status.
-///
-public const ulong PXE_OPFLAGS_GET_MEDIA_STATUS = 0x0004;
+  ///
+  /// Return current media status.
+  ///
+  public const ulong PXE_OPFLAGS_GET_MEDIA_STATUS = 0x0004;
 
-///
-/// UNDI Fill Header.
-///
-public const ulong PXE_OPFLAGS_FILL_HEADER_OPMASK = 0x0001;
-public const ulong PXE_OPFLAGS_FILL_HEADER_FRAGMENTED = 0x0001;
-public const ulong PXE_OPFLAGS_FILL_HEADER_WHOLE = 0x0000;
+  ///
+  /// UNDI Fill Header.
+  ///
+  public const ulong PXE_OPFLAGS_FILL_HEADER_OPMASK = 0x0001;
+  public const ulong PXE_OPFLAGS_FILL_HEADER_FRAGMENTED = 0x0001;
+  public const ulong PXE_OPFLAGS_FILL_HEADER_WHOLE = 0x0000;
 
-///
-/// UNDI Transmit.
-///
-///
-/// S/W UNDI only.  Return after the packet has been transmitted.  A
-/// transmit complete interrupt will still be generated and the transmit
-/// buffer will have to be recycled.
-///
-public const ulong PXE_OPFLAGS_SWUNDI_TRANSMIT_OPMASK = 0x0001;
-public const ulong PXE_OPFLAGS_TRANSMIT_BLOCK = 0x0001;
-public const ulong PXE_OPFLAGS_TRANSMIT_DONT_BLOCK = 0x0000;
+  ///
+  /// UNDI Transmit.
+  ///
+  ///
+  /// S/W UNDI only.  Return after the packet has been transmitted.  A
+  /// transmit complete interrupt will still be generated and the transmit
+  /// buffer will have to be recycled.
+  ///
+  public const ulong PXE_OPFLAGS_SWUNDI_TRANSMIT_OPMASK = 0x0001;
+  public const ulong PXE_OPFLAGS_TRANSMIT_BLOCK = 0x0001;
+  public const ulong PXE_OPFLAGS_TRANSMIT_DONT_BLOCK = 0x0000;
 
-public const ulong PXE_OPFLAGS_TRANSMIT_OPMASK = 0x0002;
-public const ulong PXE_OPFLAGS_TRANSMIT_FRAGMENTED = 0x0002;
-public const ulong PXE_OPFLAGS_TRANSMIT_WHOLE = 0x0000;
+  public const ulong PXE_OPFLAGS_TRANSMIT_OPMASK = 0x0002;
+  public const ulong PXE_OPFLAGS_TRANSMIT_FRAGMENTED = 0x0002;
+  public const ulong PXE_OPFLAGS_TRANSMIT_WHOLE = 0x0000;
 
-///
-/// UNDI Receive.
-///
-/// No OpFlags.
-///
+  ///
+  /// UNDI Receive.
+  ///
+  /// No OpFlags.
+  ///
+}
 
 ///
 /// PXE STATFLAGS.
@@ -413,193 +425,196 @@ public const ulong PXE_OPFLAGS_TRANSMIT_WHOLE = 0x0000;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_STATFLAGS { PXE_UINT16 Value; public static implicit operator PXE_STATFLAGS(PXE_UINT16 value) => new PXE_STATFLAGS() { Value = value }; public static implicit operator PXE_UINT16(PXE_STATFLAGS value) => value.Value; }
 
-public const ulong PXE_STATFLAGS_INITIALIZE = 0x0000;
+public unsafe partial class EFI
+{
+  public const ulong PXE_STATFLAGS_INITIALIZE = 0x0000;
 
-///
-/// Common StatFlags that can be returned by all commands.
-///
-///
-/// The COMMAND_COMPLETE and COMMAND_FAILED status flags must be
-/// implemented by all UNDIs.  COMMAND_QUEUED is only needed by UNDIs
-/// that support command queuing.
-///
-public const ulong PXE_STATFLAGS_STATUS_MASK = 0xC000;
-public const ulong PXE_STATFLAGS_COMMAND_COMPLETE = 0xC000;
-public const ulong PXE_STATFLAGS_COMMAND_FAILED = 0x8000;
-public const ulong PXE_STATFLAGS_COMMAND_QUEUED = 0x4000;
+  ///
+  /// Common StatFlags that can be returned by all commands.
+  ///
+  ///
+  /// The COMMAND_COMPLETE and COMMAND_FAILED status flags must be
+  /// implemented by all UNDIs.  COMMAND_QUEUED is only needed by UNDIs
+  /// that support command queuing.
+  ///
+  public const ulong PXE_STATFLAGS_STATUS_MASK = 0xC000;
+  public const ulong PXE_STATFLAGS_COMMAND_COMPLETE = 0xC000;
+  public const ulong PXE_STATFLAGS_COMMAND_FAILED = 0x8000;
+  public const ulong PXE_STATFLAGS_COMMAND_QUEUED = 0x4000;
 
-///
-/// UNDI Get State.
-///
-public const ulong PXE_STATFLAGS_GET_STATE_MASK = 0x0003;
-public const ulong PXE_STATFLAGS_GET_STATE_INITIALIZED = 0x0002;
-public const ulong PXE_STATFLAGS_GET_STATE_STARTED = 0x0001;
-public const ulong PXE_STATFLAGS_GET_STATE_STOPPED = 0x0000;
+  ///
+  /// UNDI Get State.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATE_MASK = 0x0003;
+  public const ulong PXE_STATFLAGS_GET_STATE_INITIALIZED = 0x0002;
+  public const ulong PXE_STATFLAGS_GET_STATE_STARTED = 0x0001;
+  public const ulong PXE_STATFLAGS_GET_STATE_STOPPED = 0x0000;
 
-///
-/// UNDI Start.
-///
-/// No additional StatFlags.
-///
+  ///
+  /// UNDI Start.
+  ///
+  /// No additional StatFlags.
+  ///
 
-///
-/// UNDI Get Init Info.
-///
-public const ulong PXE_STATFLAGS_CABLE_DETECT_MASK = 0x0001;
-public const ulong PXE_STATFLAGS_CABLE_DETECT_NOT_SUPPORTED = 0x0000;
-public const ulong PXE_STATFLAGS_CABLE_DETECT_SUPPORTED = 0x0001;
+  ///
+  /// UNDI Get Init Info.
+  ///
+  public const ulong PXE_STATFLAGS_CABLE_DETECT_MASK = 0x0001;
+  public const ulong PXE_STATFLAGS_CABLE_DETECT_NOT_SUPPORTED = 0x0000;
+  public const ulong PXE_STATFLAGS_CABLE_DETECT_SUPPORTED = 0x0001;
 
-public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA_MASK = 0x0002;
-public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA_NOT_SUPPORTED = 0x0000;
-public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA_SUPPORTED = 0x0002;
+  public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA_MASK = 0x0002;
+  public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA_NOT_SUPPORTED = 0x0000;
+  public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA_SUPPORTED = 0x0002;
 
-///
-/// UNDI Initialize.
-///
-public const ulong PXE_STATFLAGS_INITIALIZED_NO_MEDIA = 0x0001;
+  ///
+  /// UNDI Initialize.
+  ///
+  public const ulong PXE_STATFLAGS_INITIALIZED_NO_MEDIA = 0x0001;
 
-///
-/// UNDI Reset.
-///
-public const ulong PXE_STATFLAGS_RESET_NO_MEDIA = 0x0001;
+  ///
+  /// UNDI Reset.
+  ///
+  public const ulong PXE_STATFLAGS_RESET_NO_MEDIA = 0x0001;
 
-///
-/// UNDI Shutdown.
-///
-/// No additional StatFlags.
+  ///
+  /// UNDI Shutdown.
+  ///
+  /// No additional StatFlags.
 
-///
-/// UNDI Interrupt Enables.
-///
-///
-/// If set, receive interrupts are enabled.
-///
-public const ulong PXE_STATFLAGS_INTERRUPT_RECEIVE = 0x0001;
+  ///
+  /// UNDI Interrupt Enables.
+  ///
+  ///
+  /// If set, receive interrupts are enabled.
+  ///
+  public const ulong PXE_STATFLAGS_INTERRUPT_RECEIVE = 0x0001;
 
-///
-/// If set, transmit interrupts are enabled.
-///
-public const ulong PXE_STATFLAGS_INTERRUPT_TRANSMIT = 0x0002;
+  ///
+  /// If set, transmit interrupts are enabled.
+  ///
+  public const ulong PXE_STATFLAGS_INTERRUPT_TRANSMIT = 0x0002;
 
-///
-/// If set, command interrupts are enabled.
-///
-public const ulong PXE_STATFLAGS_INTERRUPT_COMMAND = 0x0004;
+  ///
+  /// If set, command interrupts are enabled.
+  ///
+  public const ulong PXE_STATFLAGS_INTERRUPT_COMMAND = 0x0004;
 
-///
-/// UNDI Receive Filters.
-///
+  ///
+  /// UNDI Receive Filters.
+  ///
 
-///
-/// If set, unicast packets will be received.
-///
-public const ulong PXE_STATFLAGS_RECEIVE_FILTER_UNICAST = 0x0001;
+  ///
+  /// If set, unicast packets will be received.
+  ///
+  public const ulong PXE_STATFLAGS_RECEIVE_FILTER_UNICAST = 0x0001;
 
-///
-/// If set, broadcast packets will be received.
-///
-public const ulong PXE_STATFLAGS_RECEIVE_FILTER_BROADCAST = 0x0002;
+  ///
+  /// If set, broadcast packets will be received.
+  ///
+  public const ulong PXE_STATFLAGS_RECEIVE_FILTER_BROADCAST = 0x0002;
 
-///
-/// If set, multicast packets that match up with the multicast address
-/// filter list will be received.
-///
-public const ulong PXE_STATFLAGS_RECEIVE_FILTER_FILTERED_MULTICAST = 0x0004;
+  ///
+  /// If set, multicast packets that match up with the multicast address
+  /// filter list will be received.
+  ///
+  public const ulong PXE_STATFLAGS_RECEIVE_FILTER_FILTERED_MULTICAST = 0x0004;
 
-///
-/// If set, all packets will be received.
-///
-public const ulong PXE_STATFLAGS_RECEIVE_FILTER_PROMISCUOUS = 0x0008;
+  ///
+  /// If set, all packets will be received.
+  ///
+  public const ulong PXE_STATFLAGS_RECEIVE_FILTER_PROMISCUOUS = 0x0008;
 
-///
-/// If set, all multicast packets will be received.
-///
-public const ulong PXE_STATFLAGS_RECEIVE_FILTER_ALL_MULTICAST = 0x0010;
+  ///
+  /// If set, all multicast packets will be received.
+  ///
+  public const ulong PXE_STATFLAGS_RECEIVE_FILTER_ALL_MULTICAST = 0x0010;
 
-///
-/// UNDI Station Address.
-///
-/// No additional StatFlags.
-///
+  ///
+  /// UNDI Station Address.
+  ///
+  /// No additional StatFlags.
+  ///
 
-///
-/// UNDI Statistics.
-///
-/// No additional StatFlags.
-///
+  ///
+  /// UNDI Statistics.
+  ///
+  /// No additional StatFlags.
+  ///
 
-///
-//// UNDI MCast IP to MAC.
-////
-//// No additional StatFlags.
+  ///
+  //// UNDI MCast IP to MAC.
+  ////
+  //// No additional StatFlags.
 
-///
-/// UNDI NvData.
-///
-/// No additional StatFlags.
-///
+  ///
+  /// UNDI NvData.
+  ///
+  /// No additional StatFlags.
+  ///
 
-///
-/// UNDI Get Status.
-///
+  ///
+  /// UNDI Get Status.
+  ///
 
-///
-/// Use to determine if an interrupt has occurred.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_INTERRUPT_MASK = 0x000F;
-public const ulong PXE_STATFLAGS_GET_STATUS_NO_INTERRUPTS = 0x0000;
+  ///
+  /// Use to determine if an interrupt has occurred.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_INTERRUPT_MASK = 0x000F;
+  public const ulong PXE_STATFLAGS_GET_STATUS_NO_INTERRUPTS = 0x0000;
 
-///
-/// If set, at least one receive interrupt occurred.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_RECEIVE = 0x0001;
+  ///
+  /// If set, at least one receive interrupt occurred.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_RECEIVE = 0x0001;
 
-///
-/// If set, at least one transmit interrupt occurred.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_TRANSMIT = 0x0002;
+  ///
+  /// If set, at least one transmit interrupt occurred.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_TRANSMIT = 0x0002;
 
-///
-/// If set, at least one command interrupt occurred.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_COMMAND = 0x0004;
+  ///
+  /// If set, at least one command interrupt occurred.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_COMMAND = 0x0004;
 
-///
-/// If set, at least one software interrupt occurred.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_SOFTWARE = 0x0008;
+  ///
+  /// If set, at least one software interrupt occurred.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_SOFTWARE = 0x0008;
 
-///
-/// This flag is set if the transmitted buffer queue is empty.  This flag
-/// will be set if all transmitted buffer addresses get written into the DB.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_TXBUF_QUEUE_EMPTY = 0x0010;
+  ///
+  /// This flag is set if the transmitted buffer queue is empty.  This flag
+  /// will be set if all transmitted buffer addresses get written into the DB.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_TXBUF_QUEUE_EMPTY = 0x0010;
 
-///
-/// This flag is set if no transmitted buffer addresses were written
-/// into the DB.  (This could be because DBsize was too small.)
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_NO_TXBUFS_WRITTEN = 0x0020;
+  ///
+  /// This flag is set if no transmitted buffer addresses were written
+  /// into the DB.  (This could be because DBsize was too small.)
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_NO_TXBUFS_WRITTEN = 0x0020;
 
-///
-/// This flag is set if there is no media detected.
-///
-public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA = 0x0040;
+  ///
+  /// This flag is set if there is no media detected.
+  ///
+  public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA = 0x0040;
 
-///
-/// UNDI Fill Header.
-///
-/// No additional StatFlags.
-///
+  ///
+  /// UNDI Fill Header.
+  ///
+  /// No additional StatFlags.
+  ///
 
-///
-/// UNDI Transmit.
-///
-/// No additional StatFlags.
+  ///
+  /// UNDI Transmit.
+  ///
+  /// No additional StatFlags.
 
-///
-/// UNDI Receive
-/// .
+  ///
+  /// UNDI Receive
+  /// .
+}
 
 ///
 /// No additional StatFlags.
@@ -607,33 +622,36 @@ public const ulong PXE_STATFLAGS_GET_STATUS_NO_MEDIA = 0x0040;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_STATCODE { PXE_UINT16 Value; public static implicit operator PXE_STATCODE(PXE_UINT16 value) => new PXE_STATCODE() { Value = value }; public static implicit operator PXE_UINT16(PXE_STATCODE value) => value.Value; }
 
-public const ulong PXE_STATCODE_INITIALIZE = 0x0000;
+public unsafe partial class EFI
+{
+  public const ulong PXE_STATCODE_INITIALIZE = 0x0000;
 
-///
-/// Common StatCodes returned by all UNDI commands, UNDI protocol functions
-/// and BC protocol functions.
-///
-public const ulong PXE_STATCODE_SUCCESS = 0x0000;
+  ///
+  /// Common StatCodes returned by all UNDI commands, UNDI protocol functions
+  /// and BC protocol functions.
+  ///
+  public const ulong PXE_STATCODE_SUCCESS = 0x0000;
 
-public const ulong PXE_STATCODE_INVALID_CDB = 0x0001;
-public const ulong PXE_STATCODE_INVALID_CPB = 0x0002;
-public const ulong PXE_STATCODE_BUSY = 0x0003;
-public const ulong PXE_STATCODE_QUEUE_FULL = 0x0004;
-public const ulong PXE_STATCODE_ALREADY_STARTED = 0x0005;
-public const ulong PXE_STATCODE_NOT_STARTED = 0x0006;
-public const ulong PXE_STATCODE_NOT_SHUTDOWN = 0x0007;
-public const ulong PXE_STATCODE_ALREADY_INITIALIZED = 0x0008;
-public const ulong PXE_STATCODE_NOT_INITIALIZED = 0x0009;
-public const ulong PXE_STATCODE_DEVICE_FAILURE = 0x000A;
-public const ulong PXE_STATCODE_NVDATA_FAILURE = 0x000B;
-public const ulong PXE_STATCODE_UNSUPPORTED = 0x000C;
-public const ulong PXE_STATCODE_BUFFER_FULL = 0x000D;
-public const ulong PXE_STATCODE_INVALID_PARAMETER = 0x000E;
-public const ulong PXE_STATCODE_INVALID_UNDI = 0x000F;
-public const ulong PXE_STATCODE_IPV4_NOT_SUPPORTED = 0x0010;
-public const ulong PXE_STATCODE_IPV6_NOT_SUPPORTED = 0x0011;
-public const ulong PXE_STATCODE_NOT_ENOUGH_MEMORY = 0x0012;
-public const ulong PXE_STATCODE_NO_DATA = 0x0013;
+  public const ulong PXE_STATCODE_INVALID_CDB = 0x0001;
+  public const ulong PXE_STATCODE_INVALID_CPB = 0x0002;
+  public const ulong PXE_STATCODE_BUSY = 0x0003;
+  public const ulong PXE_STATCODE_QUEUE_FULL = 0x0004;
+  public const ulong PXE_STATCODE_ALREADY_STARTED = 0x0005;
+  public const ulong PXE_STATCODE_NOT_STARTED = 0x0006;
+  public const ulong PXE_STATCODE_NOT_SHUTDOWN = 0x0007;
+  public const ulong PXE_STATCODE_ALREADY_INITIALIZED = 0x0008;
+  public const ulong PXE_STATCODE_NOT_INITIALIZED = 0x0009;
+  public const ulong PXE_STATCODE_DEVICE_FAILURE = 0x000A;
+  public const ulong PXE_STATCODE_NVDATA_FAILURE = 0x000B;
+  public const ulong PXE_STATCODE_UNSUPPORTED = 0x000C;
+  public const ulong PXE_STATCODE_BUFFER_FULL = 0x000D;
+  public const ulong PXE_STATCODE_INVALID_PARAMETER = 0x000E;
+  public const ulong PXE_STATCODE_INVALID_UNDI = 0x000F;
+  public const ulong PXE_STATCODE_IPV4_NOT_SUPPORTED = 0x0010;
+  public const ulong PXE_STATCODE_IPV6_NOT_SUPPORTED = 0x0011;
+  public const ulong PXE_STATCODE_NOT_ENOUGH_MEMORY = 0x0012;
+  public const ulong PXE_STATCODE_NO_DATA = 0x0013;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_IFNUM { PXE_UINT16 Value; public static implicit operator PXE_IFNUM(PXE_UINT16 value) => new PXE_IFNUM() { Value = value }; public static implicit operator PXE_UINT16(PXE_IFNUM value) => value.Value; }
@@ -641,13 +659,16 @@ public unsafe struct PXE_IFNUM { PXE_UINT16 Value; public static implicit operat
 ///
 /// This interface number must be passed to the S/W UNDI Start command.
 ///
-public const ulong PXE_IFNUM_START = 0x0000;
+public unsafe partial class EFI
+{
+  public const ulong PXE_IFNUM_START = 0x0000;
 
-///
-/// This interface number is returned by the S/W UNDI Get State and
-/// Start commands if information in the CDB, CPB or DB is invalid.
-///
-public const ulong PXE_IFNUM_INVALID = 0x0000;
+  ///
+  /// This interface number is returned by the S/W UNDI Get State and
+  /// Start commands if information in the CDB, CPB or DB is invalid.
+  ///
+  public const ulong PXE_IFNUM_INVALID = 0x0000;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_CONTROL { PXE_UINT16 Value; public static implicit operator PXE_CONTROL(PXE_UINT16 value) => new PXE_CONTROL() { Value = value }; public static implicit operator PXE_UINT16(PXE_CONTROL value) => value.Value; }
@@ -659,37 +680,46 @@ public unsafe struct PXE_CONTROL { PXE_UINT16 Value; public static implicit oper
 /// is returned.  If the queue is full, a PXE_STATCODE_CDB_QUEUE_FULL
 /// error is returned.
 ///
-public const ulong PXE_CONTROL_QUEUE_IF_BUSY = 0x0002;
+public unsafe partial class EFI
+{
+  public const ulong PXE_CONTROL_QUEUE_IF_BUSY = 0x0002;
 
-///
-/// These two bit values are used to determine if there are more UNDI
-/// CDB structures following this one.  If the link bit is set, there
-/// must be a CDB structure following this one.  Execution will start
-/// on the next CDB structure as soon as this one completes successfully.
-/// If an error is generated by this command, execution will stop.
-///
-public const ulong PXE_CONTROL_LINK = 0x0001;
-public const ulong PXE_CONTROL_LAST_CDB_IN_LIST = 0x0000;
+  ///
+  /// These two bit values are used to determine if there are more UNDI
+  /// CDB structures following this one.  If the link bit is set, there
+  /// must be a CDB structure following this one.  Execution will start
+  /// on the next CDB structure as soon as this one completes successfully.
+  /// If an error is generated by this command, execution will stop.
+  ///
+  public const ulong PXE_CONTROL_LINK = 0x0001;
+  public const ulong PXE_CONTROL_LAST_CDB_IN_LIST = 0x0000;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_FRAME_TYPE { PXE_UINT8 Value; public static implicit operator PXE_FRAME_TYPE(PXE_UINT8 value) => new PXE_FRAME_TYPE() { Value = value }; public static implicit operator PXE_UINT8(PXE_FRAME_TYPE value) => value.Value; }
 
-public const ulong PXE_FRAME_TYPE_NONE = 0x00;
-public const ulong PXE_FRAME_TYPE_UNICAST = 0x01;
-public const ulong PXE_FRAME_TYPE_BROADCAST = 0x02;
-public const ulong PXE_FRAME_TYPE_FILTERED_MULTICAST = 0x03;
-public const ulong PXE_FRAME_TYPE_PROMISCUOUS = 0x04;
-public const ulong PXE_FRAME_TYPE_PROMISCUOUS_MULTICAST = 0x05;
+public unsafe partial class EFI
+{
+  public const ulong PXE_FRAME_TYPE_NONE = 0x00;
+  public const ulong PXE_FRAME_TYPE_UNICAST = 0x01;
+  public const ulong PXE_FRAME_TYPE_BROADCAST = 0x02;
+  public const ulong PXE_FRAME_TYPE_FILTERED_MULTICAST = 0x03;
+  public const ulong PXE_FRAME_TYPE_PROMISCUOUS = 0x04;
+  public const ulong PXE_FRAME_TYPE_PROMISCUOUS_MULTICAST = 0x05;
 
-public const ulong PXE_FRAME_TYPE_MULTICAST = PXE_FRAME_TYPE_FILTERED_MULTICAST;
+  public const ulong PXE_FRAME_TYPE_MULTICAST = PXE_FRAME_TYPE_FILTERED_MULTICAST;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_IPV4 { PXE_UINT32 Value; public static implicit operator PXE_IPV4(PXE_UINT32 value) => new PXE_IPV4() { Value = value }; public static implicit operator PXE_UINT32(PXE_IPV4 value) => value.Value; }
 
 typedef PXE_UINT32 PXE_IPV6[4];
-public const ulong PXE_MAC_LENGTH = 32;
+public unsafe partial class EFI
+{
+  public const ulong PXE_MAC_LENGTH = 32;
 
-typedef PXE_UINT8 PXE_MAC_ADDR[PXE_MAC_LENGTH];
+  typedef PXE_UINT8 PXE_MAC_ADDR[PXE_MAC_LENGTH];
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_IFTYPE { PXE_UINT8 Value; public static implicit operator PXE_IFTYPE(PXE_UINT8 value) => new PXE_IFTYPE() { Value = value }; public static implicit operator PXE_UINT8(PXE_IFTYPE value) => value.Value; }
@@ -723,29 +753,31 @@ public unsafe struct PXE_MEDIA_PROTOCOL { ushort Value; public static implicit o
 ///
 /// * Other names and brands may be claimed as the property of others.
 ///
-public const ulong PXE_IFTYPE_ETHERNET = 0x01;
-public const ulong PXE_IFTYPE_TOKENRING = 0x04;
-public const ulong PXE_IFTYPE_FIBRE_CHANNEL = 0x12;
-
-typedef struct s_pxe_hw_undi
+public unsafe partial class EFI
 {
-  PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
-  PXE_UINT8 Len;            ///< sizeof(PXE_HW_UNDI).
-  PXE_UINT8 Fudge;          ///< makes 8-bit cksum equal zero.
-  PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
-  PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
-  PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
-  PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
-  PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
-  PXE_UINT8 reserved;       ///< zero, not used.
-  PXE_UINT32 Implementation; ///< implementation flags.
-                             ///< reserved             ///< vendor use.
-                             ///< uint Status;       ///< status port.
-                             ///< uint Command;      ///< command port.
-                             ///< ulong CDBaddr;      ///< CDB address port.
-                             ///<
-}
-PXE_HW_UNDI;
+  public const ulong PXE_IFTYPE_ETHERNET = 0x01;
+  public const ulong PXE_IFTYPE_TOKENRING = 0x04;
+  public const ulong PXE_IFTYPE_FIBRE_CHANNEL = 0x12;
+
+  typedef struct s_pxe_hw_undi
+  {
+    PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
+    PXE_UINT8 Len;            ///< sizeof(PXE_HW_UNDI).
+    PXE_UINT8 Fudge;          ///< makes 8-bit cksum equal zero.
+    PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
+    PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
+    PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
+    PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
+    PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
+    PXE_UINT8 reserved;       ///< zero, not used.
+    PXE_UINT32 Implementation; ///< implementation flags.
+                               ///< reserved             ///< vendor use.
+                               ///< uint Status;       ///< status port.
+                               ///< uint Command;      ///< command port.
+                               ///< ulong CDBaddr;      ///< CDB address port.
+                               ///<
+  }
+  PXE_HW_UNDI;
 
 ///
 /// Status port bit definitions.
@@ -755,100 +787,101 @@ PXE_HW_UNDI;
 /// UNDI operation state.
 ///
 public const ulong PXE_HWSTAT_STATE_MASK = 0xC0000000;
-public const ulong PXE_HWSTAT_BUSY = 0xC0000000;
-public const ulong PXE_HWSTAT_INITIALIZED = 0x80000000;
-public const ulong PXE_HWSTAT_STARTED = 0x40000000;
-public const ulong PXE_HWSTAT_STOPPED = 0x00000000;
+  public const ulong PXE_HWSTAT_BUSY = 0xC0000000;
+  public const ulong PXE_HWSTAT_INITIALIZED = 0x80000000;
+  public const ulong PXE_HWSTAT_STARTED = 0x40000000;
+  public const ulong PXE_HWSTAT_STOPPED = 0x00000000;
 
-///
-/// If set, last command failed.
-///
-public const ulong PXE_HWSTAT_COMMAND_FAILED = 0x20000000;
+  ///
+  /// If set, last command failed.
+  ///
+  public const ulong PXE_HWSTAT_COMMAND_FAILED = 0x20000000;
 
-///
-/// If set, identifies enabled receive filters.
-///
-public const ulong PXE_HWSTAT_PROMISCUOUS_MULTICAST_RX_ENABLED = 0x00001000;
-public const ulong PXE_HWSTAT_PROMISCUOUS_RX_ENABLED = 0x00000800;
-public const ulong PXE_HWSTAT_BROADCAST_RX_ENABLED = 0x00000400;
-public const ulong PXE_HWSTAT_MULTICAST_RX_ENABLED = 0x00000200;
-public const ulong PXE_HWSTAT_UNICAST_RX_ENABLED = 0x00000100;
+  ///
+  /// If set, identifies enabled receive filters.
+  ///
+  public const ulong PXE_HWSTAT_PROMISCUOUS_MULTICAST_RX_ENABLED = 0x00001000;
+  public const ulong PXE_HWSTAT_PROMISCUOUS_RX_ENABLED = 0x00000800;
+  public const ulong PXE_HWSTAT_BROADCAST_RX_ENABLED = 0x00000400;
+  public const ulong PXE_HWSTAT_MULTICAST_RX_ENABLED = 0x00000200;
+  public const ulong PXE_HWSTAT_UNICAST_RX_ENABLED = 0x00000100;
 
-///
-/// If set, identifies enabled external interrupts.
-///
-public const ulong PXE_HWSTAT_SOFTWARE_INT_ENABLED = 0x00000080;
-public const ulong PXE_HWSTAT_TX_COMPLETE_INT_ENABLED = 0x00000040;
-public const ulong PXE_HWSTAT_PACKET_RX_INT_ENABLED = 0x00000020;
-public const ulong PXE_HWSTAT_CMD_COMPLETE_INT_ENABLED = 0x00000010;
+  ///
+  /// If set, identifies enabled external interrupts.
+  ///
+  public const ulong PXE_HWSTAT_SOFTWARE_INT_ENABLED = 0x00000080;
+  public const ulong PXE_HWSTAT_TX_COMPLETE_INT_ENABLED = 0x00000040;
+  public const ulong PXE_HWSTAT_PACKET_RX_INT_ENABLED = 0x00000020;
+  public const ulong PXE_HWSTAT_CMD_COMPLETE_INT_ENABLED = 0x00000010;
 
-///
-/// If set, identifies pending interrupts.
-///
-public const ulong PXE_HWSTAT_SOFTWARE_INT_PENDING = 0x00000008;
-public const ulong PXE_HWSTAT_TX_COMPLETE_INT_PENDING = 0x00000004;
-public const ulong PXE_HWSTAT_PACKET_RX_INT_PENDING = 0x00000002;
-public const ulong PXE_HWSTAT_CMD_COMPLETE_INT_PENDING = 0x00000001;
+  ///
+  /// If set, identifies pending interrupts.
+  ///
+  public const ulong PXE_HWSTAT_SOFTWARE_INT_PENDING = 0x00000008;
+  public const ulong PXE_HWSTAT_TX_COMPLETE_INT_PENDING = 0x00000004;
+  public const ulong PXE_HWSTAT_PACKET_RX_INT_PENDING = 0x00000002;
+  public const ulong PXE_HWSTAT_CMD_COMPLETE_INT_PENDING = 0x00000001;
 
-///
-/// Command port definitions.
-///
+  ///
+  /// Command port definitions.
+  ///
 
-///
-/// If set, CDB identified in CDBaddr port is given to UNDI.
-/// If not set, other bits in this word will be processed.
-///
-public const ulong PXE_HWCMD_ISSUE_COMMAND = 0x80000000;
-public const ulong PXE_HWCMD_INTS_AND_FILTS = 0x00000000;
+  ///
+  /// If set, CDB identified in CDBaddr port is given to UNDI.
+  /// If not set, other bits in this word will be processed.
+  ///
+  public const ulong PXE_HWCMD_ISSUE_COMMAND = 0x80000000;
+  public const ulong PXE_HWCMD_INTS_AND_FILTS = 0x00000000;
 
-///
-/// Use these to enable/disable receive filters.
-///
-public const ulong PXE_HWCMD_PROMISCUOUS_MULTICAST_RX_ENABLE = 0x00001000;
-public const ulong PXE_HWCMD_PROMISCUOUS_RX_ENABLE = 0x00000800;
-public const ulong PXE_HWCMD_BROADCAST_RX_ENABLE = 0x00000400;
-public const ulong PXE_HWCMD_MULTICAST_RX_ENABLE = 0x00000200;
-public const ulong PXE_HWCMD_UNICAST_RX_ENABLE = 0x00000100;
+  ///
+  /// Use these to enable/disable receive filters.
+  ///
+  public const ulong PXE_HWCMD_PROMISCUOUS_MULTICAST_RX_ENABLE = 0x00001000;
+  public const ulong PXE_HWCMD_PROMISCUOUS_RX_ENABLE = 0x00000800;
+  public const ulong PXE_HWCMD_BROADCAST_RX_ENABLE = 0x00000400;
+  public const ulong PXE_HWCMD_MULTICAST_RX_ENABLE = 0x00000200;
+  public const ulong PXE_HWCMD_UNICAST_RX_ENABLE = 0x00000100;
 
-///
-/// Use these to enable/disable external interrupts.
-///
-public const ulong PXE_HWCMD_SOFTWARE_INT_ENABLE = 0x00000080;
-public const ulong PXE_HWCMD_TX_COMPLETE_INT_ENABLE = 0x00000040;
-public const ulong PXE_HWCMD_PACKET_RX_INT_ENABLE = 0x00000020;
-public const ulong PXE_HWCMD_CMD_COMPLETE_INT_ENABLE = 0x00000010;
+  ///
+  /// Use these to enable/disable external interrupts.
+  ///
+  public const ulong PXE_HWCMD_SOFTWARE_INT_ENABLE = 0x00000080;
+  public const ulong PXE_HWCMD_TX_COMPLETE_INT_ENABLE = 0x00000040;
+  public const ulong PXE_HWCMD_PACKET_RX_INT_ENABLE = 0x00000020;
+  public const ulong PXE_HWCMD_CMD_COMPLETE_INT_ENABLE = 0x00000010;
 
-///
-/// Use these to clear pending external interrupts.
-///
-public const ulong PXE_HWCMD_CLEAR_SOFTWARE_INT = 0x00000008;
-public const ulong PXE_HWCMD_CLEAR_TX_COMPLETE_INT = 0x00000004;
-public const ulong PXE_HWCMD_CLEAR_PACKET_RX_INT = 0x00000002;
-public const ulong PXE_HWCMD_CLEAR_CMD_COMPLETE_INT = 0x00000001;
+  ///
+  /// Use these to clear pending external interrupts.
+  ///
+  public const ulong PXE_HWCMD_CLEAR_SOFTWARE_INT = 0x00000008;
+  public const ulong PXE_HWCMD_CLEAR_TX_COMPLETE_INT = 0x00000004;
+  public const ulong PXE_HWCMD_CLEAR_PACKET_RX_INT = 0x00000002;
+  public const ulong PXE_HWCMD_CLEAR_CMD_COMPLETE_INT = 0x00000001;
 
-typedef struct s_pxe_sw_undi
-{
-  PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
-  PXE_UINT8 Len;            ///< sizeof(PXE_SW_UNDI).
-  PXE_UINT8 Fudge;          ///< makes 8-bit cksum zero.
-  PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
-  PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
-  PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
-  PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
-  PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
-  PXE_UINT8 reserved1;      ///< zero, not used.
-  PXE_UINT32 Implementation; ///< Implementation flags.
-  PXE_UINT64 EntryPoint;     ///< API entry point.
-  PXE_UINT8 reserved2[3];   ///< zero, not used.
-  PXE_UINT8 BusCnt;         ///< number of bustypes supported.
-  PXE_UINT32 BusType[1];     ///< list of supported bustypes.
-}
-PXE_SW_UNDI;
+  typedef struct s_pxe_sw_undi
+  {
+    PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
+    PXE_UINT8 Len;            ///< sizeof(PXE_SW_UNDI).
+    PXE_UINT8 Fudge;          ///< makes 8-bit cksum zero.
+    PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
+    PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
+    PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
+    PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
+    PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
+    PXE_UINT8 reserved1;      ///< zero, not used.
+    PXE_UINT32 Implementation; ///< Implementation flags.
+    PXE_UINT64 EntryPoint;     ///< API entry point.
+    PXE_UINT8 reserved2[3];   ///< zero, not used.
+    PXE_UINT8 BusCnt;         ///< number of bustypes supported.
+    PXE_UINT32 BusType[1];     ///< list of supported bustypes.
+  }
+  PXE_SW_UNDI;
 
 typedef union u_pxe_undi {
   PXE_HW_UNDI hw;
-PXE_SW_UNDI sw;
-} PXE_UNDI;
+  PXE_SW_UNDI sw;
+}
+PXE_UNDI;
 
 ///
 /// Signature of !PXE structure.
@@ -910,7 +943,7 @@ typedef struct s_pxe_cdb
 PXE_CDB;
 
 typedef union u_pxe_ip_addr {
-  PXE_IPV6    IPv6;
+  PXE_IPV6 IPv6;
 PXE_IPV4 IPv4;
 } PXE_IP_ADDR;
 
@@ -1848,5 +1881,6 @@ typedef struct s_pxe_db_receive
 PXE_DB_RECEIVE;
 
 // #pragma pack()
+}
 
 // #endif

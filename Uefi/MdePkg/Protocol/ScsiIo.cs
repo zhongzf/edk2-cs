@@ -15,18 +15,20 @@ namespace Uefi;
 // #ifndef __EFI_SCSI_IO_PROTOCOL_H__
 // #define __EFI_SCSI_IO_PROTOCOL_H__
 
-public static EFI_GUID EFI_SCSI_IO_PROTOCOL_GUID = new GUID(
-    0x932f47e6, 0x2362, 0x4002, new byte[] { 0x80, 0x3e, 0x3c, 0xd5, 0x4b, 0x13, 0x8f, 0x85 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SCSI_IO_PROTOCOL_GUID = new GUID(
+      0x932f47e6, 0x2362, 0x4002, new byte[] { 0x80, 0x3e, 0x3c, 0xd5, 0x4b, 0x13, 0x8f, 0x85 });
 
-///
-/// Forward reference for pure ANSI compatability
-///
-// typedef struct _EFI_SCSI_IO_PROTOCOL EFI_SCSI_IO_PROTOCOL;
+  ///
+  /// Forward reference for pure ANSI compatability
+  ///
+  // typedef struct _EFI_SCSI_IO_PROTOCOL EFI_SCSI_IO_PROTOCOL;
 
-//
-// SCSI Device type information, defined in the SCSI Primary Commands standard (e.g., SPC-4)
-//
-public const ulong EFI_SCSI_IO_TYPE_DISK = 0x00                           ///< Disk device;
+  //
+  // SCSI Device type information, defined in the SCSI Primary Commands standard (e.g., SPC-4)
+  //
+  public const ulong EFI_SCSI_IO_TYPE_DISK = 0x00                           ///< Disk device;
 public const ulong EFI_SCSI_IO_TYPE_TAPE = 0x01                           ///< Tape device;
 public const ulong EFI_SCSI_IO_TYPE_PRINTER = 0x02                           ///< Printer;
 public const ulong EFI_SCSI_IO_TYPE_PROCESSOR = 0x03                           ///< Processor;
@@ -48,34 +50,34 @@ public const ulong EFI_SCSI_IO_TYPE_RESERVED_LOW = 0x12                         
 public const ulong EFI_SCSI_IO_TYPE_RESERVED_HIGH = 0x1E                           ///< Reserved (high);
 public const ulong EFI_SCSI_IO_TYPE_UNKNOWN = 0x1F                           ///< Unknown no device type;
 
-//
-// SCSI Data Direction definition
-//
+  //
+  // SCSI Data Direction definition
+  //
 public const ulong EFI_SCSI_IO_DATA_DIRECTION_READ = 0;
-public const ulong EFI_SCSI_IO_DATA_DIRECTION_WRITE = 1;
-public const ulong EFI_SCSI_IO_DATA_DIRECTION_BIDIRECTIONAL = 2;
+  public const ulong EFI_SCSI_IO_DATA_DIRECTION_WRITE = 1;
+  public const ulong EFI_SCSI_IO_DATA_DIRECTION_BIDIRECTIONAL = 2;
 
-//
-// SCSI Host Adapter Status definition
-//
-public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_OK = 0x00;
-public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_TIMEOUT_COMMAND = 0x09    ///< timeout when processing the command;
+  //
+  // SCSI Host Adapter Status definition
+  //
+  public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_OK = 0x00;
+  public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_TIMEOUT_COMMAND = 0x09    ///< timeout when processing the command;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_TIMEOUT = 0x0b    ///< timeout when waiting for the command processing;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_MESSAGE_REJECT = 0x0d    ///< a message reject was received when processing command;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_BUS_RESET = 0x0e    ///< a bus reset was detected;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_PARITY_ERROR = 0x0f;
-public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_REQUEST_SENSE_FAILED = 0x10    ///< the adapter failed in issuing request sense command;
+  public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_REQUEST_SENSE_FAILED = 0x10    ///< the adapter failed in issuing request sense command;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_SELECTION_TIMEOUT = 0x11    ///< selection timeout;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_DATA_OVERRUN_UNDERRUN = 0x12    ///< data overrun or data underrun;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_BUS_FREE = 0x13    ///< Unexepected bus free;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_PHASE_ERROR = 0x14    ///< Target bus phase sequence failure;
 public const ulong EFI_SCSI_IO_STATUS_HOST_ADAPTER_OTHER = 0x7f;
 
-//
-// SCSI Target Status definition
-//
-public const ulong EFI_SCSI_IO_STATUS_TARGET_GOOD = 0x00;
-public const ulong EFI_SCSI_IO_STATUS_TARGET_CHECK_CONDITION = 0x02     ///< check condition;
+  //
+  // SCSI Target Status definition
+  //
+  public const ulong EFI_SCSI_IO_STATUS_TARGET_GOOD = 0x00;
+  public const ulong EFI_SCSI_IO_STATUS_TARGET_CHECK_CONDITION = 0x02     ///< check condition;
 public const ulong EFI_SCSI_IO_STATUS_TARGET_CONDITION_MET = 0x04     ///< condition met;
 public const ulong EFI_SCSI_IO_STATUS_TARGET_BUSY = 0x08     ///< busy;
 public const ulong EFI_SCSI_IO_STATUS_TARGET_INTERMEDIATE = 0x10     ///< intermediate;
@@ -83,6 +85,7 @@ public const ulong EFI_SCSI_IO_STATUS_TARGET_INTERMEDIATE_CONDITION_MET = 0x14  
 public const ulong EFI_SCSI_IO_STATUS_TARGET_RESERVATION_CONFLICT = 0x18     ///< reservation conflict;
 public const ulong EFI_SCSI_IO_STATUS_TARGET_COMMOND_TERMINATED = 0x22     ///< command terminated;
 public const ulong EFI_SCSI_IO_STATUS_TARGET_QUEUE_FULL = 0x28     ///< queue full;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SCSI_IO_SCSI_REQUEST_PACKET
@@ -153,140 +156,6 @@ public unsafe struct EFI_SCSI_IO_SCSI_REQUEST_PACKET
   ///
   public byte SenseDataLength;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Provides services to manage and communicate with SCSI devices.

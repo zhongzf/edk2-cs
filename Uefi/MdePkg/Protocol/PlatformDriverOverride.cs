@@ -15,104 +15,18 @@ namespace Uefi;
 ///
 /// Global ID for the Platform Driver Override Protocol
 ///
-public static EFI_GUID EFI_PLATFORM_DRIVER_OVERRIDE_PROTOCOL_GUID = new GUID(
-    0x6b30c738, 0xa391, 0x11d4, new byte[] { 0x9a, 0x3b, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PLATFORM_DRIVER_OVERRIDE_PROTOCOL_GUID = new GUID(
+      0x6b30c738, 0xa391, 0x11d4, new byte[] { 0x9a, 0x3b, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-// typedef struct _EFI_PLATFORM_DRIVER_OVERRIDE_PROTOCOL EFI_PLATFORM_DRIVER_OVERRIDE_PROTOCOL;
+  // typedef struct _EFI_PLATFORM_DRIVER_OVERRIDE_PROTOCOL EFI_PLATFORM_DRIVER_OVERRIDE_PROTOCOL;
 
-//
-// Prototypes for the Platform Driver Override Protocol
-//
+  //
+  // Prototypes for the Platform Driver Override Protocol
+  //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This protocol matches one or more drivers to a controller. A platform driver

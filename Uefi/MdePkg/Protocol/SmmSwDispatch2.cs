@@ -18,7 +18,10 @@ namespace Uefi;
 // #include <Protocol/MmSwDispatch.h>
 // #include <Pi/PiSmmCis.h>
 
-public const ulong EFI_SMM_SW_DISPATCH2_PROTOCOL_GUID = EFI_MM_SW_DISPATCH_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_SW_DISPATCH2_PROTOCOL_GUID = EFI_MM_SW_DISPATCH_PROTOCOL_GUID;
+}
 
 ///
 /// A particular chipset may not support all possible software SMI input values.
@@ -55,63 +58,6 @@ public unsafe struct EFI_SMM_SW_CONTEXT
 }
 
 // typedef struct _EFI_SMM_SW_DISPATCH2_PROTOCOL EFI_SMM_SW_DISPATCH2_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the SMM Software SMI Dispatch Protocol.

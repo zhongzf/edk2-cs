@@ -46,13 +46,16 @@ namespace Uefi;
 ///
 /// Global ID for EFI_PCI_HOTPLUG_REQUEST_PROTOCOL
 ///
-public static EFI_GUID EFI_PCI_HOTPLUG_REQUEST_PROTOCOL_GUID = new GUID(
-    0x19cb87ab, 0x2cb9, 0x4665, new byte[] { 0x83, 0x60, 0xdd, 0xcf, 0x60, 0x54, 0xf7, 0x9d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PCI_HOTPLUG_REQUEST_PROTOCOL_GUID = new GUID(
+      0x19cb87ab, 0x2cb9, 0x4665, new byte[] { 0x83, 0x60, 0xdd, 0xcf, 0x60, 0x54, 0xf7, 0x9d });
 
-///
-/// Forward declaration for EFI_PCI_HOTPLUG_REQUEST_PROTOCOL
-///
-// typedef struct _EFI_PCI_HOTPLUG_REQUEST_PROTOCOL EFI_PCI_HOTPLUG_REQUEST_PROTOCOL;
+  ///
+  /// Forward declaration for EFI_PCI_HOTPLUG_REQUEST_PROTOCOL
+  ///
+  // typedef struct _EFI_PCI_HOTPLUG_REQUEST_PROTOCOL EFI_PCI_HOTPLUG_REQUEST_PROTOCOL;
+}
 
 ///
 /// Enumeration of PCI hot plug operations
@@ -71,80 +74,6 @@ public enum EFI_PCI_HOTPLUG_OPERATION
   ///
   EfiPciHotplugRequestRemove
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Provides services to notify PCI bus driver that some events have happened in

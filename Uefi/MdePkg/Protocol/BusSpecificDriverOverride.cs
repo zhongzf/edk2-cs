@@ -20,38 +20,18 @@ namespace Uefi;
 ///
 /// Global ID for the Bus Specific Driver Override Protocol
 ///
-public static EFI_GUID EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL_GUID = new GUID(
-    0x3bc1b285, 0x8a15, 0x4a82, new byte[] { 0xaa, 0xbf, 0x4d, 0x7d, 0x13, 0xfb, 0x32, 0x65 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL_GUID = new GUID(
+      0x3bc1b285, 0x8a15, 0x4a82, new byte[] { 0xaa, 0xbf, 0x4d, 0x7d, 0x13, 0xfb, 0x32, 0x65 });
 
-// typedef struct _EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL;
+  // typedef struct _EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL;
 
-//
-// Prototypes for the Bus Specific Driver Override Protocol
-//
+  //
+  // Prototypes for the Bus Specific Driver Override Protocol
+  //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This protocol matches one or more drivers to a controller. This protocol is produced by a bus driver,

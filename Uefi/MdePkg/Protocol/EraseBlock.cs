@@ -15,12 +15,15 @@ namespace Uefi;
 // #ifndef __EFI_ERASE_BLOCK_PROTOCOL_H__
 // #define __EFI_ERASE_BLOCK_PROTOCOL_H__
 
-public static EFI_GUID EFI_ERASE_BLOCK_PROTOCOL_GUID = new GUID(
-    0x95a9a93e, 0xa86e, 0x4926, new byte[] { 0xaa, 0xef, 0x99, 0x18, 0xe7, 0x72, 0xd9, 0x87 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_ERASE_BLOCK_PROTOCOL_GUID = new GUID(
+      0x95a9a93e, 0xa86e, 0x4926, new byte[] { 0xaa, 0xef, 0x99, 0x18, 0xe7, 0x72, 0xd9, 0x87 });
 
-// typedef struct _EFI_ERASE_BLOCK_PROTOCOL EFI_ERASE_BLOCK_PROTOCOL;
+  // typedef struct _EFI_ERASE_BLOCK_PROTOCOL EFI_ERASE_BLOCK_PROTOCOL;
 
-public const ulong EFI_ERASE_BLOCK_PROTOCOL_REVISION = ((2 << 16) | (60));
+  public const ulong EFI_ERASE_BLOCK_PROTOCOL_REVISION = ((2 << 16) | (60));
+}
 
 ///
 /// EFI_ERASE_BLOCK_TOKEN
@@ -39,43 +42,6 @@ public unsafe struct EFI_ERASE_BLOCK_TOKEN
   //
   public EFI_STATUS TransactionStatus;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI Erase Block Protocol provides the ability for a device to expose

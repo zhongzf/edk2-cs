@@ -18,59 +18,24 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_LOAD_FILE_PROTOCOL_H__
 // #define __EFI_LOAD_FILE_PROTOCOL_H__
 
-public static EFI_GUID EFI_LOAD_FILE_PROTOCOL_GUID = new GUID(
-    0x56EC3091, 0x954C, 0x11d2, new byte[] { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_LOAD_FILE_PROTOCOL_GUID = new GUID(
+      0x56EC3091, 0x954C, 0x11d2, new byte[] { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B });
 
-///
-/// Protocol Guid defined by EFI1.1.
-///
-public const ulong LOAD_FILE_PROTOCOL = EFI_LOAD_FILE_PROTOCOL_GUID;
+  ///
+  /// Protocol Guid defined by EFI1.1.
+  ///
+  public const ulong LOAD_FILE_PROTOCOL = EFI_LOAD_FILE_PROTOCOL_GUID;
 
-// typedef struct _EFI_LOAD_FILE_PROTOCOL EFI_LOAD_FILE_PROTOCOL;
+  // typedef struct _EFI_LOAD_FILE_PROTOCOL EFI_LOAD_FILE_PROTOCOL;
+}
 
 ///
 /// Backward-compatible with EFI1.1
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LOAD_FILE_INTERFACE { EFI_LOAD_FILE_PROTOCOL Value; public static implicit operator EFI_LOAD_FILE_INTERFACE(EFI_LOAD_FILE_PROTOCOL value) => new EFI_LOAD_FILE_INTERFACE() { Value = value }; public static implicit operator EFI_LOAD_FILE_PROTOCOL(EFI_LOAD_FILE_INTERFACE value) => value.Value; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_LOAD_FILE_PROTOCOL is a simple protocol used to obtain files from arbitrary devices.

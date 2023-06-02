@@ -20,8 +20,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_IO_TRAP_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x58dc368d, 0x7bfa, 0x4e77, new byte[] { 0xab, 0xbc, 0xe, 0x29, 0x41, 0x8d, 0xf9, 0x30 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_IO_TRAP_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x58dc368d, 0x7bfa, 0x4e77, new byte[] { 0xab, 0xbc, 0xe, 0x29, 0x41, 0x8d, 0xf9, 0x30 });
+}
 
 ///
 /// IO Trap valid types
@@ -56,69 +59,6 @@ public unsafe struct EFI_MM_IO_TRAP_CONTEXT
 }
 
 // typedef struct _EFI_MM_IO_TRAP_DISPATCH_PROTOCOL EFI_MM_IO_TRAP_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM IO Trap Dispatch Protocol.

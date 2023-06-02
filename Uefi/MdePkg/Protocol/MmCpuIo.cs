@@ -14,10 +14,13 @@ namespace Uefi;
 // #ifndef _MM_CPU_IO_H_
 // #define _MM_CPU_IO_H_
 
-public static EFI_GUID EFI_MM_CPU_IO_PROTOCOL_GUID = new GUID(
-    0x3242A9D8, 0xCE70, 0x4AA0, new byte[] { 0x95, 0x5D, 0x5E, 0x7B, 0x14, 0x0D, 0xE4, 0xD2 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_CPU_IO_PROTOCOL_GUID = new GUID(
+      0x3242A9D8, 0xCE70, 0x4AA0, new byte[] { 0x95, 0x5D, 0x5E, 0x7B, 0x14, 0x0D, 0xE4, 0xD2 });
 
-// typedef struct _EFI_MM_CPU_IO_PROTOCOL EFI_MM_CPU_IO_PROTOCOL;
+  // typedef struct _EFI_MM_CPU_IO_PROTOCOL EFI_MM_CPU_IO_PROTOCOL;
+}
 
 ///
 /// Width of the MM CPU I/O operations
@@ -29,38 +32,6 @@ public enum EFI_MM_IO_WIDTH
   MM_IO_UINT32 = 2,
   MM_IO_UINT64 = 3
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_IO_ACCESS

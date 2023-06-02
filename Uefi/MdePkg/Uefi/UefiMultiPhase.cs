@@ -15,23 +15,26 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// Attributes of variable.
 ///
-public const ulong EFI_VARIABLE_NON_VOLATILE = 0x00000001;
-public const ulong EFI_VARIABLE_BOOTSERVICE_ACCESS = 0x00000002;
-public const ulong EFI_VARIABLE_RUNTIME_ACCESS = 0x00000004;
-///
-/// This attribute is identified by the mnemonic 'HR'
-/// elsewhere in this specification.
-///
-public const ulong EFI_VARIABLE_HARDWARE_ERROR_RECORD = 0x00000008;
-///
-/// Attributes of Authenticated Variable
-///
-public const ulong EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS = 0x00000020;
-public const ulong EFI_VARIABLE_APPEND_WRITE = 0x00000040;
-///
-/// NOTE: EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS is deprecated and should be considered reserved.
-///
-public const ulong EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS = 0x00000010;
+public unsafe partial class EFI
+{
+  public const ulong EFI_VARIABLE_NON_VOLATILE = 0x00000001;
+  public const ulong EFI_VARIABLE_BOOTSERVICE_ACCESS = 0x00000002;
+  public const ulong EFI_VARIABLE_RUNTIME_ACCESS = 0x00000004;
+  ///
+  /// This attribute is identified by the mnemonic 'HR'
+  /// elsewhere in this specification.
+  ///
+  public const ulong EFI_VARIABLE_HARDWARE_ERROR_RECORD = 0x00000008;
+  ///
+  /// Attributes of Authenticated Variable
+  ///
+  public const ulong EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS = 0x00000020;
+  public const ulong EFI_VARIABLE_APPEND_WRITE = 0x00000040;
+  ///
+  /// NOTE: EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS is deprecated and should be considered reserved.
+  ///
+  public const ulong EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS = 0x00000010;
+}
 
 // #ifndef VFRCOMPILE
 # include <Guid/WinCertificate.h>

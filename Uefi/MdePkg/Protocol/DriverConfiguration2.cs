@@ -15,10 +15,13 @@ namespace Uefi;
 ///
 /// Global ID for the Driver Configuration Protocol defined in UEFI 2.0
 ///
-public static EFI_GUID EFI_DRIVER_CONFIGURATION2_PROTOCOL_GUID = new GUID(
-    0xbfd7dc1d, 0x24f1, 0x40d9, new byte[] { 0x82, 0xe7, 0x2e, 0x09, 0xbb, 0x6b, 0x4e, 0xbe });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DRIVER_CONFIGURATION2_PROTOCOL_GUID = new GUID(
+      0xbfd7dc1d, 0x24f1, 0x40d9, new byte[] { 0x82, 0xe7, 0x2e, 0x09, 0xbb, 0x6b, 0x4e, 0xbe });
 
-// typedef struct _EFI_DRIVER_CONFIGURATION2_PROTOCOL EFI_DRIVER_CONFIGURATION2_PROTOCOL;
+  // typedef struct _EFI_DRIVER_CONFIGURATION2_PROTOCOL EFI_DRIVER_CONFIGURATION2_PROTOCOL;
+}
 
 public enum EFI_DRIVER_CONFIGURATION_ACTION_REQUIRED
 {
@@ -45,127 +48,14 @@ public enum EFI_DRIVER_CONFIGURATION_ACTION_REQUIRED
   EfiDriverConfigurationActionMaximum
 }
 
-public const ulong EFI_DRIVER_CONFIGURATION_SAFE_DEFAULTS = 0x00000000;
-public const ulong EFI_DRIVER_CONFIGURATION_MANUFACTURING_DEFAULTS = 0x00000001;
-public const ulong EFI_DRIVER_CONFIGURATION_CUSTOM_DEFAULTS = 0x00000002;
-public const ulong EFI_DRIVER_CONFIGURATION_PERORMANCE_DEFAULTS = 0x00000003;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_DRIVER_CONFIGURATION_SAFE_DEFAULTS = 0x00000000;
+  public const ulong EFI_DRIVER_CONFIGURATION_MANUFACTURING_DEFAULTS = 0x00000001;
+  public const ulong EFI_DRIVER_CONFIGURATION_CUSTOM_DEFAULTS = 0x00000002;
+  public const ulong EFI_DRIVER_CONFIGURATION_PERORMANCE_DEFAULTS = 0x00000003;
+
+}
 
 ///
 /// Used to set configuration options for a controller that an EFI Driver is managing.

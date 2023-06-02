@@ -27,28 +27,31 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// Global ID for the EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.
 ///
-public static EFI_GUID EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL_GUID = new GUID(
-    0xCF8034BE, 0x6768, 0x4d8b, new byte[] { 0xB7, 0x39, 0x7C, 0xCE, 0x68, 0x3A, 0x9F, 0xBE });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL_GUID = new GUID(
+      0xCF8034BE, 0x6768, 0x4d8b, new byte[] { 0xB7, 0x39, 0x7C, 0xCE, 0x68, 0x3A, 0x9F, 0xBE });
 
-///
-/// Forward declaration for EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.
-///
-// typedef struct _EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL;
+  ///
+  /// Forward declaration for EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.
+  ///
+  // typedef struct _EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL;
 
-/// If this bit is set, then the PCI Root Bridge does not
-/// support separate windows for Non-prefetchable and Prefetchable
-/// memory. A PCI bus driver needs to include requests for Prefetchable
-/// memory in the Non-prefetchable memory pool.
-///
-public const ulong EFI_PCI_HOST_BRIDGE_COMBINE_MEM_PMEM = 1;
+  /// If this bit is set, then the PCI Root Bridge does not
+  /// support separate windows for Non-prefetchable and Prefetchable
+  /// memory. A PCI bus driver needs to include requests for Prefetchable
+  /// memory in the Non-prefetchable memory pool.
+  ///
+  public const ulong EFI_PCI_HOST_BRIDGE_COMBINE_MEM_PMEM = 1;
 
-///
-/// If this bit is set, then the PCI Root Bridge supports
-/// 64 bit memory windows.  If this bit is not set,
-/// the PCI bus driver needs to include requests for 64 bit
-/// memory address in the corresponding 32 bit memory pool.
-///
-public const ulong EFI_PCI_HOST_BRIDGE_MEM64_DECODE = 2;
+  ///
+  /// If this bit is set, then the PCI Root Bridge supports
+  /// 64 bit memory windows.  If this bit is not set,
+  /// the PCI bus driver needs to include requests for 64 bit
+  /// memory address in the corresponding 32 bit memory pool.
+  ///
+  public const ulong EFI_PCI_HOST_BRIDGE_MEM64_DECODE = 2;
+}
 
 ///
 /// A ulong value that contains the status of a PCI resource requested
@@ -63,15 +66,18 @@ public unsafe struct EFI_RESOURCE_ALLOCATION_STATUS { ulong Value; public static
 /// Configuration parameter returned by GetProposedResources() to identify
 /// a PCI resources request that can be satisfied.
 ///
-public const ulong EFI_RESOURCE_SATISFIED = 0x0000000000000000;
+public unsafe partial class EFI
+{
+  public const ulong EFI_RESOURCE_SATISFIED = 0x0000000000000000;
 
-///
-/// The request of this resource type could not be fulfilled for its
-/// absence in the host bridge resource pool.  Used in the Configuration parameter
-/// returned by GetProposedResources() to identify a PCI resources request that
-/// can not be satisfied.
-///
-public const ulong EFI_RESOURCE_NOT_SATISFIED = 0xFFFFFFFFFFFFFFFF;
+  ///
+  /// The request of this resource type could not be fulfilled for its
+  /// absence in the host bridge resource pool.  Used in the Configuration parameter
+  /// returned by GetProposedResources() to identify a PCI resources request that
+  /// can not be satisfied.
+  ///
+  public const ulong EFI_RESOURCE_NOT_SATISFIED = 0xFFFFFFFFFFFFFFFF;
+}
 
 ///
 /// This  enum is used to specify the phase of the PCI enumaeration process.
@@ -160,216 +166,6 @@ public enum EFI_PCI_CONTROLLER_RESOURCE_ALLOCATION_PHASE
   ///
   EfiPciBeforeResourceCollection
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Provides the basic interfaces to abstract a PCI host bridge resource allocation.

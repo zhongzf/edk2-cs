@@ -28,31 +28,34 @@ namespace Uefi;
 //
 // Generic Completion Codes definitions
 //
-public const ulong IPMI_COMP_CODE_NORMAL = 0x00;
-public const ulong IPMI_COMP_CODE_NODE_BUSY = 0xC0;
-public const ulong IPMI_COMP_CODE_INVALID_COMMAND = 0xC1;
-public const ulong IPMI_COMP_CODE_INVALID_FOR_GIVEN_LUN = 0xC2;
-public const ulong IPMI_COMP_CODE_TIMEOUT = 0xC3;
-public const ulong IPMI_COMP_CODE_OUT_OF_SPACE = 0xC4;
-public const ulong IPMI_COMP_CODE_RESERVATION_CANCELED_OR_INVALID = 0xC5;
-public const ulong IPMI_COMP_CODE_REQUEST_DATA_TRUNCATED = 0xC6;
-public const ulong IPMI_COMP_CODE_INVALID_REQUEST_DATA_LENGTH = 0xC7;
-public const ulong IPMI_COMP_CODE_REQUEST_EXCEED_LIMIT = 0xC8;
-public const ulong IPMI_COMP_CODE_OUT_OF_RANGE = 0xC9;
-public const ulong IPMI_COMP_CODE_CANNOT_RETURN = 0xCA;
-public const ulong IPMI_COMP_CODE_NOT_PRESENT = 0xCB;
-public const ulong IPMI_COMP_CODE_INVALID_DATA_FIELD = 0xCC;
-public const ulong IPMI_COMP_CODE_COMMAND_ILLEGAL = 0xCD;
-public const ulong IPMI_COMP_CODE_CMD_RESP_NOT_PROVIDED = 0xCE;
-public const ulong IPMI_COMP_CODE_FAIL_DUP_REQUEST = 0xCF;
-public const ulong IPMI_COMP_CODE_SDR_REP_IN_UPDATE_MODE = 0xD0;
-public const ulong IPMI_COMP_CODE_DEV_IN_FW_UPDATE_MODE = 0xD1;
-public const ulong IPMI_COMP_CODE_BMC_INIT_IN_PROGRESS = 0xD2;
-public const ulong IPMI_COMP_CODE_DEST_UNAVAILABLE = 0xD3;
-public const ulong IPMI_COMP_CODE_INSUFFICIENT_PRIVILEGE = 0xD4;
-public const ulong IPMI_COMP_CODE_UNSUPPORTED_IN_PRESENT_STATE = 0xD5;
-public const ulong IPMI_COMP_CODE_SUBFUNCTION_DISABLED = 0xD6;
-public const ulong IPMI_COMP_CODE_UNSPECIFIED = 0xFF;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_COMP_CODE_NORMAL = 0x00;
+  public const ulong IPMI_COMP_CODE_NODE_BUSY = 0xC0;
+  public const ulong IPMI_COMP_CODE_INVALID_COMMAND = 0xC1;
+  public const ulong IPMI_COMP_CODE_INVALID_FOR_GIVEN_LUN = 0xC2;
+  public const ulong IPMI_COMP_CODE_TIMEOUT = 0xC3;
+  public const ulong IPMI_COMP_CODE_OUT_OF_SPACE = 0xC4;
+  public const ulong IPMI_COMP_CODE_RESERVATION_CANCELED_OR_INVALID = 0xC5;
+  public const ulong IPMI_COMP_CODE_REQUEST_DATA_TRUNCATED = 0xC6;
+  public const ulong IPMI_COMP_CODE_INVALID_REQUEST_DATA_LENGTH = 0xC7;
+  public const ulong IPMI_COMP_CODE_REQUEST_EXCEED_LIMIT = 0xC8;
+  public const ulong IPMI_COMP_CODE_OUT_OF_RANGE = 0xC9;
+  public const ulong IPMI_COMP_CODE_CANNOT_RETURN = 0xCA;
+  public const ulong IPMI_COMP_CODE_NOT_PRESENT = 0xCB;
+  public const ulong IPMI_COMP_CODE_INVALID_DATA_FIELD = 0xCC;
+  public const ulong IPMI_COMP_CODE_COMMAND_ILLEGAL = 0xCD;
+  public const ulong IPMI_COMP_CODE_CMD_RESP_NOT_PROVIDED = 0xCE;
+  public const ulong IPMI_COMP_CODE_FAIL_DUP_REQUEST = 0xCF;
+  public const ulong IPMI_COMP_CODE_SDR_REP_IN_UPDATE_MODE = 0xD0;
+  public const ulong IPMI_COMP_CODE_DEV_IN_FW_UPDATE_MODE = 0xD1;
+  public const ulong IPMI_COMP_CODE_BMC_INIT_IN_PROGRESS = 0xD2;
+  public const ulong IPMI_COMP_CODE_DEST_UNAVAILABLE = 0xD3;
+  public const ulong IPMI_COMP_CODE_INSUFFICIENT_PRIVILEGE = 0xD4;
+  public const ulong IPMI_COMP_CODE_UNSUPPORTED_IN_PRESENT_STATE = 0xD5;
+  public const ulong IPMI_COMP_CODE_SUBFUNCTION_DISABLED = 0xD6;
+  public const ulong IPMI_COMP_CODE_UNSPECIFIED = 0xFF;
+}
 
 public const ulong IPMI_CHANNEL_NUMBER_PRIMARY_IPMB = 0x00;
 public const ulong IPMI_CHANNEL_NUMBER_IMPLEMENTATION_SPECIFIC_1 = 0x01;

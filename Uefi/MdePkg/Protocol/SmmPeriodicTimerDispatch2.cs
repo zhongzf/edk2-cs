@@ -21,7 +21,10 @@ namespace Uefi;
 // #include <Pi/PiSmmCis.h>
 // #include <Protocol/MmPeriodicTimerDispatch.h>
 
-public const ulong EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL_GUID = EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL_GUID = EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID;
+}
 
 ///
 /// Example: A chipset supports periodic SMIs on every 64ms or 2 seconds.
@@ -67,83 +70,6 @@ public unsafe struct EFI_SMM_PERIODIC_TIMER_REGISTER_CONTEXT
 public unsafe struct EFI_SMM_PERIODIC_TIMER_CONTEXT { EFI_MM_PERIODIC_TIMER_CONTEXT Value; public static implicit operator EFI_SMM_PERIODIC_TIMER_CONTEXT(EFI_MM_PERIODIC_TIMER_CONTEXT value) => new EFI_SMM_PERIODIC_TIMER_CONTEXT() { Value = value }; public static implicit operator EFI_MM_PERIODIC_TIMER_CONTEXT(EFI_SMM_PERIODIC_TIMER_CONTEXT value) => value.Value; }
 
 // typedef struct _EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the SMM Periodic Timer Dispatch Protocol

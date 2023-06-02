@@ -20,687 +20,180 @@ namespace Uefi;
 // #ifndef __SMART_CARD_EDGE_H__
 // #define __SMART_CARD_EDGE_H__
 
-public static EFI_GUID EFI_SMART_CARD_EDGE_PROTOCOL_GUID = new GUID(
-      0xd317f29b, 0xa325, 0x4712, new byte[] { 0x9b, 0xf1, 0xc6, 0x19, 0x54, 0xdc, 0x19, 0x8c });
-
-// typedef struct _EFI_SMART_CARD_EDGE_PROTOCOL EFI_SMART_CARD_EDGE_PROTOCOL;
-
-//
-// Maximum size for a Smart Card AID (Application IDentifier)
-//
-public const ulong SCARD_AID_MAXSIZE = 0x0010;
-//
-// Size of CSN (Card Serial Number)
-//
-public const ulong SCARD_CSN_SIZE = 0x0010;
-//
-// Current specification version 1.00
-//
-public const ulong SMART_CARD_EDGE_PROTOCOL_VERSION_1 = 0x00000100;
-//
-// Parameters type definition
-//
-typedef byte SMART_CARD_AID[SCARD_AID_MAXSIZE];
-typedef byte SMART_CARD_CSN[SCARD_CSN_SIZE];
-
-//
-// Type of data elements in credentials list
-//
-// value of tag field for header, the number of containers
-//
-public const ulong SC_EDGE_TAG_HEADER = 0x0000;
-//
-// value of tag field for certificate
-//
-public const ulong SC_EDGE_TAG_CERT = 0x0001;
-//
-// value of tag field for key index associated with certificate
-//
-public const ulong SC_EDGE_TAG_KEY_ID = 0x0002;
-//
-// value of tag field for key type
-//
-public const ulong SC_EDGE_TAG_KEY_TYPE = 0x0003;
-//
-// value of tag field for key size
-//
-public const ulong SC_EDGE_TAG_KEY_SIZE = 0x0004;
-
-//
-// Length of L fields of TLV items
-//
-//
-// size of L field for header
-//
-public const ulong SC_EDGE_L_SIZE_HEADER = 1;
-//
-// size of L field for certificate (big endian)
-//
-public const ulong SC_EDGE_L_SIZE_CERT = 2;
-//
-// size of L field for key index
-//
-public const ulong SC_EDGE_L_SIZE_KEY_ID = 1;
-//
-// size of L field for key type
-//
-public const ulong SC_EDGE_L_SIZE_KEY_TYPE = 1;
-//
-// size of L field for key size (big endian)
-//
-public const ulong SC_EDGE_L_SIZE_KEY_SIZE = 2;
-
-//
-// Some TLV items have a fixed value for L field
-//
-// value of L field for header
-//
-public const ulong SC_EDGE_L_VALUE_HEADER = 1;
-//
-// value of L field for key index
-//
-public const ulong SC_EDGE_L_VALUE_KEY_ID = 1;
-//
-// value of L field for key type
-//
-public const ulong SC_EDGE_L_VALUE_KEY_TYPE = 1;
-//
-// value of L field for key size
-//
-public const ulong SC_EDGE_L_VALUE_KEY_SIZE = 2;
-
-//
-// Possible values for key type
-//
-//
-// RSA decryption
-//
-public const ulong SC_EDGE_RSA_EXCHANGE = 0x01;
-//
-// RSA signature
-//
-public const ulong SC_EDGE_RSA_SIGNATURE = 0x02;
-//
-// ECDSA signature
-//
-public const ulong SC_EDGE_ECDSA_256 = 0x03;
-//
-// ECDSA signature
-//
-public const ulong SC_EDGE_ECDSA_384 = 0x04;
-//
-// ECDSA signature
-//
-public const ulong SC_EDGE_ECDSA_521 = 0x05;
-//
-// ECDH agreement
-//
-public const ulong SC_EDGE_ECDH_256 = 0x06;
-//
-// ECDH agreement
-//
-public const ulong SC_EDGE_ECDH_384 = 0x07;
-//
-// ECDH agreement
-//
-public const ulong SC_EDGE_ECDH_521 = 0x08;
-
-//
-// Padding methods GUIDs for signature
-//
-//
-// RSASSA- PKCS#1-V1.5 padding method, for signature
-//
-public static EFI_GUID EFI_PADDING_RSASSA_PKCS1V1P5_GUID = new GUID(
-    0x9317ec24, 0x7cb0, 0x4d0e, new byte[] { 0x8b, 0x32, 0x2e, 0xd9, 0x20, 0x9c, 0xd8, 0xaf });
-
-// extern EFI_GUID  gEfiPaddingRsassaPkcs1V1P5Guid;
-
-//
-// RSASSA-PSS padding method, for signature
-//
-public static EFI_GUID EFI_PADDING_RSASSA_PSS_GUID = new GUID(
-    0x7b2349e0, 0x522d, 0x4f8e, new byte[] { 0xb9, 0x27, 0x69, 0xd9, 0x7c, 0x9e, 0x79, 0x5f });
-
-// extern EFI_GUID  gEfiPaddingRsassaPssGuid;
-
-//
-// Padding methods GUIDs for decryption
-//
-//
-// No padding, for decryption
-//
-public static EFI_GUID EFI_PADDING_NONE_GUID = new GUID(
-    0x3629ddb1, 0x228c, 0x452e, new byte[] { 0xb6, 0x16, 0x09, 0xed, 0x31, 0x6a, 0x97, 0x00 });
-
-// extern EFI_GUID  gEfiPaddingNoneGuid;
-
-//
-// RSAES-PKCS#1-V1.5 padding, for decryption
-//
-public static EFI_GUID EFI_PADDING_RSAES_PKCS1V1P5_GUID = new GUID(
-    0xe1c1d0a9, 0x40b1, 0x4632, new byte[] { 0xbd, 0xcc, 0xd9, 0xd6, 0xe5, 0x29, 0x56, 0x31 });
-
-// extern EFI_GUID  gEfiPaddingRsaesPkcs1V1P5Guid;
-
-//
-// RSAES-OAEP padding, for decryption
-//
-public static EFI_GUID EFI_PADDING_RSAES_OAEP_GUID = new GUID(
-    0xc1e63ac4, 0xd0cf, 0x4ce6, new byte[] { 0x83, 0x5b, 0xee, 0xd0, 0xe6, 0xa8, 0xa4, 0x5b });
-
-// extern EFI_GUID  gEfiPaddingRsaesOaepGuid;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SMART_CARD_EDGE_PROTOCOL_GUID = new GUID(
+        0xd317f29b, 0xa325, 0x4712, new byte[] { 0x9b, 0xf1, 0xc6, 0x19, 0x54, 0xdc, 0x19, 0x8c });
+
+  // typedef struct _EFI_SMART_CARD_EDGE_PROTOCOL EFI_SMART_CARD_EDGE_PROTOCOL;
+
+  //
+  // Maximum size for a Smart Card AID (Application IDentifier)
+  //
+  public const ulong SCARD_AID_MAXSIZE = 0x0010;
+  //
+  // Size of CSN (Card Serial Number)
+  //
+  public const ulong SCARD_CSN_SIZE = 0x0010;
+  //
+  // Current specification version 1.00
+  //
+  public const ulong SMART_CARD_EDGE_PROTOCOL_VERSION_1 = 0x00000100;
+  //
+  // Parameters type definition
+  //
+  typedef byte SMART_CARD_AID[SCARD_AID_MAXSIZE];
+  typedef byte SMART_CARD_CSN[SCARD_CSN_SIZE];
+
+  //
+  // Type of data elements in credentials list
+  //
+  // value of tag field for header, the number of containers
+  //
+  public const ulong SC_EDGE_TAG_HEADER = 0x0000;
+  //
+  // value of tag field for certificate
+  //
+  public const ulong SC_EDGE_TAG_CERT = 0x0001;
+  //
+  // value of tag field for key index associated with certificate
+  //
+  public const ulong SC_EDGE_TAG_KEY_ID = 0x0002;
+  //
+  // value of tag field for key type
+  //
+  public const ulong SC_EDGE_TAG_KEY_TYPE = 0x0003;
+  //
+  // value of tag field for key size
+  //
+  public const ulong SC_EDGE_TAG_KEY_SIZE = 0x0004;
+
+  //
+  // Length of L fields of TLV items
+  //
+  //
+  // size of L field for header
+  //
+  public const ulong SC_EDGE_L_SIZE_HEADER = 1;
+  //
+  // size of L field for certificate (big endian)
+  //
+  public const ulong SC_EDGE_L_SIZE_CERT = 2;
+  //
+  // size of L field for key index
+  //
+  public const ulong SC_EDGE_L_SIZE_KEY_ID = 1;
+  //
+  // size of L field for key type
+  //
+  public const ulong SC_EDGE_L_SIZE_KEY_TYPE = 1;
+  //
+  // size of L field for key size (big endian)
+  //
+  public const ulong SC_EDGE_L_SIZE_KEY_SIZE = 2;
+
+  //
+  // Some TLV items have a fixed value for L field
+  //
+  // value of L field for header
+  //
+  public const ulong SC_EDGE_L_VALUE_HEADER = 1;
+  //
+  // value of L field for key index
+  //
+  public const ulong SC_EDGE_L_VALUE_KEY_ID = 1;
+  //
+  // value of L field for key type
+  //
+  public const ulong SC_EDGE_L_VALUE_KEY_TYPE = 1;
+  //
+  // value of L field for key size
+  //
+  public const ulong SC_EDGE_L_VALUE_KEY_SIZE = 2;
+
+  //
+  // Possible values for key type
+  //
+  //
+  // RSA decryption
+  //
+  public const ulong SC_EDGE_RSA_EXCHANGE = 0x01;
+  //
+  // RSA signature
+  //
+  public const ulong SC_EDGE_RSA_SIGNATURE = 0x02;
+  //
+  // ECDSA signature
+  //
+  public const ulong SC_EDGE_ECDSA_256 = 0x03;
+  //
+  // ECDSA signature
+  //
+  public const ulong SC_EDGE_ECDSA_384 = 0x04;
+  //
+  // ECDSA signature
+  //
+  public const ulong SC_EDGE_ECDSA_521 = 0x05;
+  //
+  // ECDH agreement
+  //
+  public const ulong SC_EDGE_ECDH_256 = 0x06;
+  //
+  // ECDH agreement
+  //
+  public const ulong SC_EDGE_ECDH_384 = 0x07;
+  //
+  // ECDH agreement
+  //
+  public const ulong SC_EDGE_ECDH_521 = 0x08;
+
+  //
+  // Padding methods GUIDs for signature
+  //
+  //
+  // RSASSA- PKCS#1-V1.5 padding method, for signature
+  //
+  public static EFI_GUID EFI_PADDING_RSASSA_PKCS1V1P5_GUID = new GUID(
+      0x9317ec24, 0x7cb0, 0x4d0e, new byte[] { 0x8b, 0x32, 0x2e, 0xd9, 0x20, 0x9c, 0xd8, 0xaf });
+
+  // extern EFI_GUID  gEfiPaddingRsassaPkcs1V1P5Guid;
+
+  //
+  // RSASSA-PSS padding method, for signature
+  //
+  public static EFI_GUID EFI_PADDING_RSASSA_PSS_GUID = new GUID(
+      0x7b2349e0, 0x522d, 0x4f8e, new byte[] { 0xb9, 0x27, 0x69, 0xd9, 0x7c, 0x9e, 0x79, 0x5f });
+
+  // extern EFI_GUID  gEfiPaddingRsassaPssGuid;
+
+  //
+  // Padding methods GUIDs for decryption
+  //
+  //
+  // No padding, for decryption
+  //
+  public static EFI_GUID EFI_PADDING_NONE_GUID = new GUID(
+      0x3629ddb1, 0x228c, 0x452e, new byte[] { 0xb6, 0x16, 0x09, 0xed, 0x31, 0x6a, 0x97, 0x00 });
+
+  // extern EFI_GUID  gEfiPaddingNoneGuid;
+
+  //
+  // RSAES-PKCS#1-V1.5 padding, for decryption
+  //
+  public static EFI_GUID EFI_PADDING_RSAES_PKCS1V1P5_GUID = new GUID(
+      0xe1c1d0a9, 0x40b1, 0x4632, new byte[] { 0xbd, 0xcc, 0xd9, 0xd6, 0xe5, 0x29, 0x56, 0x31 });
+
+  // extern EFI_GUID  gEfiPaddingRsaesPkcs1V1P5Guid;
+
+  //
+  // RSAES-OAEP padding, for decryption
+  //
+  public static EFI_GUID EFI_PADDING_RSAES_OAEP_GUID = new GUID(
+      0xc1e63ac4, 0xd0cf, 0x4ce6, new byte[] { 0x83, 0x5b, 0xee, 0xd0, 0xe6, 0xa8, 0xa4, 0x5b });
+
+  // extern EFI_GUID  gEfiPaddingRsaesOaepGuid;
+
+}
 
 ///
 /// Smart card aware application invokes this protocol to get access to an inserted

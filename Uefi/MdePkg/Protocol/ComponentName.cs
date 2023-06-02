@@ -17,90 +17,14 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// The global ID for the Component Name Protocol.
 ///
-public static EFI_GUID EFI_COMPONENT_NAME_PROTOCOL_GUID = new GUID(
-    0x107a772c, 0xd5e1, 0x11d4, new byte[] { 0x9a, 0x46, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_COMPONENT_NAME_PROTOCOL_GUID = new GUID(
+      0x107a772c, 0xd5e1, 0x11d4, new byte[] { 0x9a, 0x46, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-// typedef struct _EFI_COMPONENT_NAME_PROTOCOL EFI_COMPONENT_NAME_PROTOCOL;
+  // typedef struct _EFI_COMPONENT_NAME_PROTOCOL EFI_COMPONENT_NAME_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This protocol is used to retrieve user readable names of drivers

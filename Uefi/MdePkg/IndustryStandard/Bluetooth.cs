@@ -58,8 +58,11 @@ public unsafe struct BLUETOOTH_LE_ADDRESS
 
 // #pragma pack()
 
-public const ulong BLUETOOTH_HCI_COMMAND_LOCAL_READABLE_NAME_MAX_SIZE = 248;
+public unsafe partial class EFI
+{
+  public const ulong BLUETOOTH_HCI_COMMAND_LOCAL_READABLE_NAME_MAX_SIZE = 248;
 
-public const ulong BLUETOOTH_HCI_LINK_KEY_SIZE = 16;
+  public const ulong BLUETOOTH_HCI_LINK_KEY_SIZE = 16;
+}
 
 // #endif

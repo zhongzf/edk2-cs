@@ -14,8 +14,11 @@ namespace Uefi;
 
 // #include <Protocol/Shell.h>
 
-public static EFI_GUID EFI_SHELL_PARAMETERS_PROTOCOL_GUID = new GUID(
-  0x752f3136, 0x4e16, 0x4fdc, new byte[] { 0xa2, 0x2a, 0xe5, 0xf4, 0x68, 0x12, 0xf4, 0xca });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SHELL_PARAMETERS_PROTOCOL_GUID = new GUID(
+    0x752f3136, 0x4e16, 0x4fdc, new byte[] { 0xa2, 0x2a, 0xe5, 0xf4, 0x68, 0x12, 0xf4, 0xca });
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SHELL_PARAMETERS_PROTOCOL

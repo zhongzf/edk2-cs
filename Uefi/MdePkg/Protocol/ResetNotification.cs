@@ -16,59 +16,13 @@ namespace Uefi;
 // #ifndef __EFI_RESET_NOTIFICATION_H__
 // #define __EFI_RESET_NOTIFICATION_H__
 
-public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID = new GUID(0x9da34ae0, 0xeaf9, 0x4bbf, new byte[] { 0x8e, 0xc3, 0xfd, 0x60, 0x22, 0x6c, 0x44, 0xbe });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID = new GUID(0x9da34ae0, 0xeaf9, 0x4bbf, new byte[] { 0x8e, 0xc3, 0xfd, 0x60, 0x22, 0x6c, 0x44, 0xbe });
 
-// typedef struct _EFI_RESET_NOTIFICATION_PROTOCOL EFI_RESET_NOTIFICATION_PROTOCOL;
+  // typedef struct _EFI_RESET_NOTIFICATION_PROTOCOL EFI_RESET_NOTIFICATION_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RESET_NOTIFICATION_PROTOCOL

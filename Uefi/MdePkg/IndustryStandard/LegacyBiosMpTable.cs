@@ -15,12 +15,15 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef _LEGACY_BIOS_MPTABLE_H_
 // #define _LEGACY_BIOS_MPTABLE_H_
 
-public const ulong EFI_LEGACY_MP_TABLE_REV_1_4 = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_REV_1_4 = 0x04;
 
-//
-// Define MP table structures. All are packed.
-//
-// #pragma pack(1)
+  //
+  // Define MP table structures. All are packed.
+  //
+  // #pragma pack(1)
+}
 
 public const ulong EFI_LEGACY_MP_TABLE_FLOATING_POINTER_SIGNATURE = SIGNATURE_32('_', 'M', 'P', '_');
 [StructLayout(LayoutKind.Sequential)]
@@ -44,7 +47,10 @@ public unsafe struct EFI_LEGACY_MP_TABLE_FLOATING_POINTER
   public FEATUREBYTE2_5 FeatureByte2_5;
 }
 
-public const ulong EFI_LEGACY_MP_TABLE_HEADER_SIGNATURE = SIGNATURE_32('P', 'C', 'M', 'P');
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_HEADER_SIGNATURE = SIGNATURE_32('P', 'C', 'M', 'P');
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_HEADER
 {
@@ -72,7 +78,10 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_TYPE
 //
 // Entry Type 0: Processor.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_PROCESSOR = 0x00;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_PROCESSOR = 0x00;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_PROCESSOR_FLAGS
 {
@@ -117,7 +126,10 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_PROCESSOR
 //
 // Entry Type 1: Bus.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_BUS = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_BUS = 0x01;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_BUS
 {
@@ -126,7 +138,9 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_BUS
   public fixed byte TypeString[6];
 }
 
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUS = "CBUS  " // Corollary CBus;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUS = "CBUS  " // Corollary CBus;
 public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUSII = "CBUSII" // Corollary CBUS II;
 public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_EISA = "EISA  " // Extended ISA;
 public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_FUTURE = "FUTURE" // IEEE FutureBus;
@@ -148,6 +162,7 @@ public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_XPRESS = "XPRESS" // Exp
 // Entry Type 2: I/O APIC.
 //
 public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_IOAPIC = 0x02;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_IOAPIC_FLAGS
 {
@@ -168,7 +183,10 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_IOAPIC
 //
 // Entry Type 3: I/O Interrupt Assignment.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_IO_INT = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_IO_INT = 0x03;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_INT_FLAGS
 {
@@ -231,7 +249,10 @@ public enum EFI_LEGACY_MP_TABLE_ENTRY_IO_INT_FLAGS_TRIGGER
 //
 // Entry Type 4: Local Interrupt Assignment.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_LOCAL_INT = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_LOCAL_INT = 0x04;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_LOCAL_INT
 {
@@ -271,7 +292,10 @@ public enum EFI_LEGACY_MP_TABLE_ENTRY_LOCAL_INT_FLAGS_TRIGGER
 //
 // Entry Type 128: System Address Space Mapping.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_SYS_ADDR_SPACE_MAPPING = 0x80;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_SYS_ADDR_SPACE_MAPPING = 0x80;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_EXT_SYS_ADDR_SPACE_MAPPING
 {
@@ -293,7 +317,10 @@ public enum EFI_LEGACY_MP_TABLE_ENTRY_EXT_SYS_ADDR_SPACE_MAPPING_TYPE
 //
 // Entry Type 129: Bus Hierarchy.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_BUS_HIERARCHY = 0x81;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_BUS_HIERARCHY = 0x81;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_EXT_BUS_HIERARCHY_BUSINFO
 {
@@ -317,7 +344,10 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_EXT_BUS_HIERARCHY
 //
 // Entry Type 130: Compatibility Bus Address Space Modifier.
 //
-public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_COMPAT_BUS_ADDR_SPACE_MODIFIER = 0x82;
+public unsafe partial class EFI
+{
+  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_COMPAT_BUS_ADDR_SPACE_MODIFIER = 0x82;
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_EXT_COMPAT_BUS_ADDR_SPACE_MODIFIER_ADDR_MODE
 {

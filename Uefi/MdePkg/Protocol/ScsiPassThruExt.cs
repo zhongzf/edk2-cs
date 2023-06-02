@@ -14,51 +14,54 @@ namespace Uefi;
 // #ifndef __EXT_SCSI_PASS_THROUGH_PROTOCOL_H__
 // #define __EXT_SCSI_PASS_THROUGH_PROTOCOL_H__
 
-public static EFI_GUID EFI_EXT_SCSI_PASS_THRU_PROTOCOL_GUID = new GUID(
-    0x143b7632, 0xb81b, 0x4cb7, new byte[] { 0xab, 0xd3, 0xb6, 0x25, 0xa5, 0xb9, 0xbf, 0xfe });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_EXT_SCSI_PASS_THRU_PROTOCOL_GUID = new GUID(
+      0x143b7632, 0xb81b, 0x4cb7, new byte[] { 0xab, 0xd3, 0xb6, 0x25, 0xa5, 0xb9, 0xbf, 0xfe });
 
-// typedef struct _EFI_EXT_SCSI_PASS_THRU_PROTOCOL EFI_EXT_SCSI_PASS_THRU_PROTOCOL;
+  // typedef struct _EFI_EXT_SCSI_PASS_THRU_PROTOCOL EFI_EXT_SCSI_PASS_THRU_PROTOCOL;
 
-public const ulong TARGET_MAX_BYTES = 0x10;
+  public const ulong TARGET_MAX_BYTES = 0x10;
 
-public const ulong EFI_EXT_SCSI_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
-public const ulong EFI_EXT_SCSI_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
-public const ulong EFI_EXT_SCSI_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
+  public const ulong EFI_EXT_SCSI_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
+  public const ulong EFI_EXT_SCSI_PASS_THRU_ATTRIBUTES_LOGICAL = 0x0002;
+  public const ulong EFI_EXT_SCSI_PASS_THRU_ATTRIBUTES_NONBLOCKIO = 0x0004;
 
-//
-// DataDirection
-//
-public const ulong EFI_EXT_SCSI_DATA_DIRECTION_READ = 0;
-public const ulong EFI_EXT_SCSI_DATA_DIRECTION_WRITE = 1;
-public const ulong EFI_EXT_SCSI_DATA_DIRECTION_BIDIRECTIONAL = 2;
-//
-// HostAdapterStatus
-//
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_OK = 0x00;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_TIMEOUT_COMMAND = 0x09;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_TIMEOUT = 0x0b;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_MESSAGE_REJECT = 0x0d;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_BUS_RESET = 0x0e;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_PARITY_ERROR = 0x0f;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_REQUEST_SENSE_FAILED = 0x10;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_SELECTION_TIMEOUT = 0x11;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_DATA_OVERRUN_UNDERRUN = 0x12;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_BUS_FREE = 0x13;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_PHASE_ERROR = 0x14;
-public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_OTHER = 0x7f;
-//
-// TargetStatus
-//
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_GOOD = 0x00;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_CHECK_CONDITION = 0x02;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_CONDITION_MET = 0x04;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_BUSY = 0x08;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_INTERMEDIATE = 0x10;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_INTERMEDIATE_CONDITION_MET = 0x14;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_RESERVATION_CONFLICT = 0x18;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_TASK_SET_FULL = 0x28;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_ACA_ACTIVE = 0x30;
-public const ulong EFI_EXT_SCSI_STATUS_TARGET_TASK_ABORTED = 0x40;
+  //
+  // DataDirection
+  //
+  public const ulong EFI_EXT_SCSI_DATA_DIRECTION_READ = 0;
+  public const ulong EFI_EXT_SCSI_DATA_DIRECTION_WRITE = 1;
+  public const ulong EFI_EXT_SCSI_DATA_DIRECTION_BIDIRECTIONAL = 2;
+  //
+  // HostAdapterStatus
+  //
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_OK = 0x00;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_TIMEOUT_COMMAND = 0x09;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_TIMEOUT = 0x0b;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_MESSAGE_REJECT = 0x0d;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_BUS_RESET = 0x0e;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_PARITY_ERROR = 0x0f;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_REQUEST_SENSE_FAILED = 0x10;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_SELECTION_TIMEOUT = 0x11;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_DATA_OVERRUN_UNDERRUN = 0x12;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_BUS_FREE = 0x13;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_PHASE_ERROR = 0x14;
+  public const ulong EFI_EXT_SCSI_STATUS_HOST_ADAPTER_OTHER = 0x7f;
+  //
+  // TargetStatus
+  //
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_GOOD = 0x00;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_CHECK_CONDITION = 0x02;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_CONDITION_MET = 0x04;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_BUSY = 0x08;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_INTERMEDIATE = 0x10;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_INTERMEDIATE_CONDITION_MET = 0x14;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_RESERVATION_CONFLICT = 0x18;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_TASK_SET_FULL = 0x28;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_ACA_ACTIVE = 0x30;
+  public const ulong EFI_EXT_SCSI_STATUS_TARGET_TASK_ABORTED = 0x40;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EXT_SCSI_PASS_THRU_MODE
@@ -145,228 +148,6 @@ public unsafe struct EFI_EXT_SCSI_PASS_THRU_SCSI_REQUEST_PACKET
   ///
   public byte SenseDataLength;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_EXT_SCSI_PASS_THRU_PROTOCOL provides information about a SCSI channel

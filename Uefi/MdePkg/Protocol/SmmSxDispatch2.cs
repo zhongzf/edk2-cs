@@ -17,7 +17,10 @@ namespace Uefi;
 
 // #include <Protocol/MmSxDispatch.h>
 
-public const ulong EFI_SMM_SX_DISPATCH2_PROTOCOL_GUID = EFI_MM_SX_DISPATCH_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_SX_DISPATCH2_PROTOCOL_GUID = EFI_MM_SX_DISPATCH_PROTOCOL_GUID;
+}
 
 ///
 /// The dispatch function's context

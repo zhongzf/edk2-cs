@@ -18,8 +18,11 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SECONDARY_PCIE_ID = 0x0019;
-public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SECONDARY_PCIE_VER1 = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SECONDARY_PCIE_ID = 0x0019;
+  public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_SECONDARY_PCIE_VER1 = 0x1;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits

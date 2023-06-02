@@ -18,13 +18,16 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <Protocol/Ip4.h>
 
-public static EFI_GUID EFI_IP4_CONFIG_PROTOCOL_GUID = new GUID(
-    0x3b95aa31, 0x3793, 0x434b, new byte[] { 0x86, 0x67, 0xc8, 0x07, 0x08, 0x92, 0xe0, 0x5e });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IP4_CONFIG_PROTOCOL_GUID = new GUID(
+      0x3b95aa31, 0x3793, 0x434b, new byte[] { 0x86, 0x67, 0xc8, 0x07, 0x08, 0x92, 0xe0, 0x5e });
 
-// typedef struct _EFI_IP4_CONFIG_PROTOCOL EFI_IP4_CONFIG_PROTOCOL;
+  // typedef struct _EFI_IP4_CONFIG_PROTOCOL EFI_IP4_CONFIG_PROTOCOL;
 
 #define IP4_CONFIG_VARIABLE_ATTRIBUTES \
-(EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS)
+  (EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS)
+}
 
 ///
 /// EFI_IP4_IPCONFIG_DATA contains the minimum IPv4 configuration data
@@ -55,114 +58,6 @@ public unsafe struct EFI_IP4_IPCONFIG_DATA
   ///
   public EFI_IP4_ROUTE_TABLE* RouteTable;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_IP4_CONFIG_PROTOCOL driver performs platform-dependent and policy-dependent

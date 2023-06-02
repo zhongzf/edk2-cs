@@ -15,45 +15,48 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_MTFTP4_PROTOCOL_H__
 // #define __EFI_MTFTP4_PROTOCOL_H__
 
-public static EFI_GUID EFI_MTFTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0x2FE800BE, 0x8F01, 0x4aa6, new byte[] { 0x94, 0x6B, 0xD7, 0x13, 0x88, 0xE1, 0x83, 0x3F });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MTFTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+      0x2FE800BE, 0x8F01, 0x4aa6, new byte[] { 0x94, 0x6B, 0xD7, 0x13, 0x88, 0xE1, 0x83, 0x3F });
 
-public static EFI_GUID EFI_MTFTP4_PROTOCOL_GUID = new GUID(
-    0x78247c57, 0x63db, 0x4708, new byte[] { 0x99, 0xc2, 0xa8, 0xb4, 0xa9, 0xa6, 0x1f, 0x6b });
+  public static EFI_GUID EFI_MTFTP4_PROTOCOL_GUID = new GUID(
+      0x78247c57, 0x63db, 0x4708, new byte[] { 0x99, 0xc2, 0xa8, 0xb4, 0xa9, 0xa6, 0x1f, 0x6b });
 
-typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
+  typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
 typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
 
 //
 // MTFTP4 packet opcode definition
 //
 public const ulong EFI_MTFTP4_OPCODE_RRQ = 1;
-public const ulong EFI_MTFTP4_OPCODE_WRQ = 2;
-public const ulong EFI_MTFTP4_OPCODE_DATA = 3;
-public const ulong EFI_MTFTP4_OPCODE_ACK = 4;
-public const ulong EFI_MTFTP4_OPCODE_ERROR = 5;
-public const ulong EFI_MTFTP4_OPCODE_OACK = 6;
-public const ulong EFI_MTFTP4_OPCODE_DIR = 7;
-public const ulong EFI_MTFTP4_OPCODE_DATA8 = 8;
-public const ulong EFI_MTFTP4_OPCODE_ACK8 = 9;
+  public const ulong EFI_MTFTP4_OPCODE_WRQ = 2;
+  public const ulong EFI_MTFTP4_OPCODE_DATA = 3;
+  public const ulong EFI_MTFTP4_OPCODE_ACK = 4;
+  public const ulong EFI_MTFTP4_OPCODE_ERROR = 5;
+  public const ulong EFI_MTFTP4_OPCODE_OACK = 6;
+  public const ulong EFI_MTFTP4_OPCODE_DIR = 7;
+  public const ulong EFI_MTFTP4_OPCODE_DATA8 = 8;
+  public const ulong EFI_MTFTP4_OPCODE_ACK8 = 9;
 
-//
-// MTFTP4 error code definition
-//
-public const ulong EFI_MTFTP4_ERRORCODE_NOT_DEFINED = 0;
-public const ulong EFI_MTFTP4_ERRORCODE_FILE_NOT_FOUND = 1;
-public const ulong EFI_MTFTP4_ERRORCODE_ACCESS_VIOLATION = 2;
-public const ulong EFI_MTFTP4_ERRORCODE_DISK_FULL = 3;
-public const ulong EFI_MTFTP4_ERRORCODE_ILLEGAL_OPERATION = 4;
-public const ulong EFI_MTFTP4_ERRORCODE_UNKNOWN_TRANSFER_ID = 5;
-public const ulong EFI_MTFTP4_ERRORCODE_FILE_ALREADY_EXISTS = 6;
-public const ulong EFI_MTFTP4_ERRORCODE_NO_SUCH_USER = 7;
-public const ulong EFI_MTFTP4_ERRORCODE_REQUEST_DENIED = 8;
+  //
+  // MTFTP4 error code definition
+  //
+  public const ulong EFI_MTFTP4_ERRORCODE_NOT_DEFINED = 0;
+  public const ulong EFI_MTFTP4_ERRORCODE_FILE_NOT_FOUND = 1;
+  public const ulong EFI_MTFTP4_ERRORCODE_ACCESS_VIOLATION = 2;
+  public const ulong EFI_MTFTP4_ERRORCODE_DISK_FULL = 3;
+  public const ulong EFI_MTFTP4_ERRORCODE_ILLEGAL_OPERATION = 4;
+  public const ulong EFI_MTFTP4_ERRORCODE_UNKNOWN_TRANSFER_ID = 5;
+  public const ulong EFI_MTFTP4_ERRORCODE_FILE_ALREADY_EXISTS = 6;
+  public const ulong EFI_MTFTP4_ERRORCODE_NO_SUCH_USER = 7;
+  public const ulong EFI_MTFTP4_ERRORCODE_REQUEST_DENIED = 8;
 
-//
-// MTFTP4 pacekt definitions
-//
-// #pragma pack(1)
+  //
+  // MTFTP4 pacekt definitions
+  //
+  // #pragma pack(1)
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MTFTP4_REQ_HEADER
@@ -197,322 +200,6 @@ public unsafe struct EFI_MTFTP4_OVERRIDE_DATA
 //
 // Protocol interfaces definition
 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_MTFTP4_PROTOCOL is designed to be used by UEFI drivers and applications

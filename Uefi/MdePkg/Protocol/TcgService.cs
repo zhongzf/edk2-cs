@@ -15,9 +15,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <IndustryStandard/UefiTcgPlatform.h>
 
-public static EFI_GUID EFI_TCG_PROTOCOL_GUID = new GUID(0xf541796d, 0xa62e, 0x4954, new byte[] { 0xa7, 0x75, 0x95, 0x84, 0xf6, 0x1b, 0x9c, 0xdd });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_TCG_PROTOCOL_GUID = new GUID(0xf541796d, 0xa62e, 0x4954, new byte[] { 0xa7, 0x75, 0x95, 0x84, 0xf6, 0x1b, 0x9c, 0xdd });
 
-// typedef struct _EFI_TCG_PROTOCOL EFI_TCG_PROTOCOL;
+  // typedef struct _EFI_TCG_PROTOCOL EFI_TCG_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_VERSION
@@ -42,149 +45,6 @@ public unsafe struct TCG_EFI_BOOT_SERVICE_CAPABILITY
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_ALGORITHM_ID { uint Value; public static implicit operator TCG_ALGORITHM_ID(uint value) => new TCG_ALGORITHM_ID() { Value = value }; public static implicit operator uint(TCG_ALGORITHM_ID value) => value.Value; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_TCG Protocol abstracts TCG activity.

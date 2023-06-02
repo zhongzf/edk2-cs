@@ -28,62 +28,13 @@ namespace Uefi;
 ///
 /// Global ID for the Security Code Architectural Protocol
 ///
-public static EFI_GUID EFI_SECURITY_ARCH_PROTOCOL_GUID = new GUID(0xA46423E3, 0x4617, 0x49f1, new byte[] { 0xB9, 0xFF, 0xD1, 0xBF, 0xA9, 0x11, 0x58, 0x39 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SECURITY_ARCH_PROTOCOL_GUID = new GUID(0xA46423E3, 0x4617, 0x49f1, new byte[] { 0xB9, 0xFF, 0xD1, 0xBF, 0xA9, 0x11, 0x58, 0x39 });
 
-// typedef struct _EFI_SECURITY_ARCH_PROTOCOL EFI_SECURITY_ARCH_PROTOCOL;
+  // typedef struct _EFI_SECURITY_ARCH_PROTOCOL EFI_SECURITY_ARCH_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_SECURITY_ARCH_PROTOCOL is used to abstract platform-specific policy

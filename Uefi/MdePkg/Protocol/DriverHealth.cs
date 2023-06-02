@@ -35,10 +35,13 @@ namespace Uefi;
 // #ifndef __EFI_DRIVER_HEALTH_H__
 // #define __EFI_DRIVER_HEALTH_H__
 
-public static EFI_GUID EFI_DRIVER_HEALTH_PROTOCOL_GUID = new GUID(
-    0x2a534210, 0x9280, 0x41d8, new byte[] { 0xae, 0x79, 0xca, 0xda, 0x1, 0xa2, 0xb1, 0x27 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DRIVER_HEALTH_PROTOCOL_GUID = new GUID(
+      0x2a534210, 0x9280, 0x41d8, new byte[] { 0xae, 0x79, 0xca, 0xda, 0x1, 0xa2, 0xb1, 0x27 });
 
-// typedef struct _EFI_DRIVER_HEALTH_PROTOCOL EFI_DRIVER_HEALTH_PROTOCOL;
+  // typedef struct _EFI_DRIVER_HEALTH_PROTOCOL EFI_DRIVER_HEALTH_PROTOCOL;
+}
 
 ///
 /// EFI_DRIVER_HEALTH_HEALTH_STATUS
@@ -72,157 +75,6 @@ public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE
   ///
   public ulong MessageCode;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// When installed, the Driver Health Protocol produces a collection of services

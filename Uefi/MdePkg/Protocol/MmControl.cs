@@ -24,59 +24,15 @@ namespace Uefi;
 
 // #include <PiDxe.h>
 
-public static EFI_GUID EFI_MM_CONTROL_PROTOCOL_GUID = new GUID(
-    0x843dc720, 0xab1e, 0x42cb, new byte[] { 0x93, 0x57, 0x8a, 0x0, 0x78, 0xf3, 0x56, 0x1b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_CONTROL_PROTOCOL_GUID = new GUID(
+      0x843dc720, 0xab1e, 0x42cb, new byte[] { 0x93, 0x57, 0x8a, 0x0, 0x78, 0xf3, 0x56, 0x1b });
+}
 
 typedef struct _EFI_MM_CONTROL_PROTOCOL  EFI_MM_CONTROL_PROTOCOL;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_PERIOD { ulong Value; public static implicit operator EFI_MM_PERIOD(ulong value) => new EFI_MM_PERIOD() { Value = value }; public static implicit operator ulong(EFI_MM_PERIOD value) => value.Value; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_MM_CONTROL_PROTOCOL is produced by a runtime driver. It provides  an

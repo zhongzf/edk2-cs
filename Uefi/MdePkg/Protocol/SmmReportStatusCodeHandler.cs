@@ -17,7 +17,10 @@ namespace Uefi;
 
 // #include <Protocol/MmReportStatusCodeHandler.h>
 
-public const ulong EFI_SMM_RSC_HANDLER_PROTOCOL_GUID = EFI_MM_RSC_HANDLER_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_RSC_HANDLER_PROTOCOL_GUID = EFI_MM_RSC_HANDLER_PROTOCOL_GUID;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_RSC_HANDLER_CALLBACK { EFI_MM_RSC_HANDLER_CALLBACK Value; public static implicit operator EFI_SMM_RSC_HANDLER_CALLBACK(EFI_MM_RSC_HANDLER_CALLBACK value) => new EFI_SMM_RSC_HANDLER_CALLBACK() { Value = value }; public static implicit operator EFI_MM_RSC_HANDLER_CALLBACK(EFI_SMM_RSC_HANDLER_CALLBACK value) => value.Value; }

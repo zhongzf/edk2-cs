@@ -16,17 +16,20 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 /// The primary GUID Partition Table Header must be
 /// located in LBA 1 (i.e., the second logical block).
 ///
-public const ulong PRIMARY_PART_HEADER_LBA = 1;
-///
-/// EFI Partition Table Signature: "EFI PART".
-///
-public const ulong EFI_PTAB_HEADER_ID = SIGNATURE_64('E', 'F', 'I', ' ', 'P', 'A', 'R', 'T');
-///
-/// Minimum bytes reserve for EFI entry array buffer.
-///
-public const ulong EFI_GPT_PART_ENTRY_MIN_SIZE = 16384;
+public unsafe partial class EFI
+{
+  public const ulong PRIMARY_PART_HEADER_LBA = 1;
+  ///
+  /// EFI Partition Table Signature: "EFI PART".
+  ///
+  public const ulong EFI_PTAB_HEADER_ID = SIGNATURE_64('E', 'F', 'I', ' ', 'P', 'A', 'R', 'T');
+  ///
+  /// Minimum bytes reserve for EFI entry array buffer.
+  ///
+  public const ulong EFI_GPT_PART_ENTRY_MIN_SIZE = 16384;
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 ///
 /// GPT Partition Table Header.

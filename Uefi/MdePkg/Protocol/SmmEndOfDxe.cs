@@ -20,8 +20,11 @@ namespace Uefi;
 
 // #include <Protocol/MmEndOfDxe.h>
 
-public const ulong EFI_SMM_END_OF_DXE_PROTOCOL_GUID = EFI_MM_END_OF_DXE_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_END_OF_DXE_PROTOCOL_GUID = EFI_MM_END_OF_DXE_PROTOCOL_GUID;
 
-// extern EFI_GUID  gEfiSmmEndOfDxeProtocolGuid;
+  // extern EFI_GUID  gEfiSmmEndOfDxeProtocolGuid;
+}
 
 // #endif

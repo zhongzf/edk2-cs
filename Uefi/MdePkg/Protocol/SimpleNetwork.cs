@@ -23,10 +23,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __SIMPLE_NETWORK_H__
 // #define __SIMPLE_NETWORK_H__
 
-public static EFI_GUID EFI_SIMPLE_NETWORK_PROTOCOL_GUID = new GUID(
-    0xA19832B9, 0xAC25, 0x11D3, new byte[] { 0x9A, 0x2D, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SIMPLE_NETWORK_PROTOCOL_GUID = new GUID(
+      0xA19832B9, 0xAC25, 0x11D3, new byte[] { 0x9A, 0x2D, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
 
-// typedef struct _EFI_SIMPLE_NETWORK_PROTOCOL EFI_SIMPLE_NETWORK_PROTOCOL;
+  // typedef struct _EFI_SIMPLE_NETWORK_PROTOCOL EFI_SIMPLE_NETWORK_PROTOCOL;
+}
 
 ///
 /// Protocol defined in EFI1.1.
@@ -152,16 +155,19 @@ public enum EFI_SIMPLE_NETWORK_STATE
   EfiSimpleNetworkMaxState
 }
 
-public const ulong EFI_SIMPLE_NETWORK_RECEIVE_UNICAST = 0x01;
-public const ulong EFI_SIMPLE_NETWORK_RECEIVE_MULTICAST = 0x02;
-public const ulong EFI_SIMPLE_NETWORK_RECEIVE_BROADCAST = 0x04;
-public const ulong EFI_SIMPLE_NETWORK_RECEIVE_PROMISCUOUS = 0x08;
-public const ulong EFI_SIMPLE_NETWORK_RECEIVE_PROMISCUOUS_MULTICAST = 0x10;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SIMPLE_NETWORK_RECEIVE_UNICAST = 0x01;
+  public const ulong EFI_SIMPLE_NETWORK_RECEIVE_MULTICAST = 0x02;
+  public const ulong EFI_SIMPLE_NETWORK_RECEIVE_BROADCAST = 0x04;
+  public const ulong EFI_SIMPLE_NETWORK_RECEIVE_PROMISCUOUS = 0x08;
+  public const ulong EFI_SIMPLE_NETWORK_RECEIVE_PROMISCUOUS_MULTICAST = 0x10;
 
-public const ulong EFI_SIMPLE_NETWORK_RECEIVE_INTERRUPT = 0x01;
-public const ulong EFI_SIMPLE_NETWORK_TRANSMIT_INTERRUPT = 0x02;
-public const ulong EFI_SIMPLE_NETWORK_COMMAND_INTERRUPT = 0x04;
-public const ulong EFI_SIMPLE_NETWORK_SOFTWARE_INTERRUPT = 0x08;
+  public const ulong EFI_SIMPLE_NETWORK_RECEIVE_INTERRUPT = 0x01;
+  public const ulong EFI_SIMPLE_NETWORK_TRANSMIT_INTERRUPT = 0x02;
+  public const ulong EFI_SIMPLE_NETWORK_COMMAND_INTERRUPT = 0x04;
+  public const ulong EFI_SIMPLE_NETWORK_SOFTWARE_INTERRUPT = 0x08;
+}
 
 public const ulong MAX_MCAST_FILTER_CNT = 16;
 [StructLayout(LayoutKind.Sequential)]
@@ -252,394 +258,15 @@ public unsafe struct EFI_SIMPLE_NETWORK_MODE
 // Protocol Member Functions
 //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public const ulong EFI_SIMPLE_NETWORK_PROTOCOL_REVISION = 0x00010000;
-
-//
-// Revision defined in EFI1.1
-//
-public const ulong EFI_SIMPLE_NETWORK_INTERFACE_REVISION = EFI_SIMPLE_NETWORK_PROTOCOL_REVISION;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SIMPLE_NETWORK_PROTOCOL_REVISION = 0x00010000;
+
+  //
+  // Revision defined in EFI1.1
+  //
+  public const ulong EFI_SIMPLE_NETWORK_INTERFACE_REVISION = EFI_SIMPLE_NETWORK_PROTOCOL_REVISION;
+}
 
 ///
 /// The EFI_SIMPLE_NETWORK_PROTOCOL protocol is used to initialize access

@@ -25,8 +25,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_GPI_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x25566b03, 0xb577, 0x4cbf, new byte[] { 0x95, 0x8c, 0xed, 0x66, 0x3e, 0xa2, 0x43, 0x80 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_GPI_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x25566b03, 0xb577, 0x4cbf, new byte[] { 0x95, 0x8c, 0xed, 0x66, 0x3e, 0xa2, 0x43, 0x80 });
+}
 
 ///
 /// The dispatch function's context.
@@ -43,63 +46,6 @@ public unsafe struct EFI_MM_GPI_REGISTER_CONTEXT
 }
 
 // typedef struct _EFI_MM_GPI_DISPATCH_PROTOCOL EFI_MM_GPI_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM GPI MMI Dispatch Protocol

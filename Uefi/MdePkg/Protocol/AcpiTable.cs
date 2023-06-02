@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Uefi;
 /** @file
   The file provides the protocol to install or remove an ACPI
@@ -17,98 +19,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_ACPI_TABLE_PROTOCOL_GUID = new GUID(0xffe06bdd, 0x6107, 0x46a6, new byte[] { 0x7b, 0xb2, 0x5a, 0x9c, 0x7e, 0xc5, 0x27, 0x5c });
+
+  // typedef struct _EFI_ACPI_TABLE_PROTOCOL EFI_ACPI_TABLE_PROTOCOL;
+
 }
-
-// typedef struct _EFI_ACPI_TABLE_PROTOCOL EFI_ACPI_TABLE_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_ACPI_TABLE_PROTOCOL provides the ability for a component
@@ -138,7 +52,6 @@ public unsafe struct EFI_ACPI_TABLE_PROTOCOL
     relevant EFI_CONFIGURATION_TABLE pointer to the RSDT is no
     longer considered valid.
 
-
     @param This                 A pointer to a EFI_ACPI_TABLE_PROTOCOL.
 
     @param AcpiTableBuffer      A pointer to a buffer containing the
@@ -146,7 +59,6 @@ public unsafe struct EFI_ACPI_TABLE_PROTOCOL
 
     @param AcpiTableBufferSize  Specifies the size, in bytes, of
                                 the AcpiTableBuffer buffer.
-
 
     @param TableKey             Returns a key to refer to the ACPI table.
 

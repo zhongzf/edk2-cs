@@ -37,31 +37,34 @@ public unsafe struct EFI_ACPI_6_5_GENERIC_ADDRESS_STRUCTURE
 //
 // Generic Address Space Address IDs
 //
-public const ulong EFI_ACPI_6_5_SYSTEM_MEMORY = 0x00;
-public const ulong EFI_ACPI_6_5_SYSTEM_IO = 0x01;
-public const ulong EFI_ACPI_6_5_PCI_CONFIGURATION_SPACE = 0x02;
-public const ulong EFI_ACPI_6_5_EMBEDDED_CONTROLLER = 0x03;
-public const ulong EFI_ACPI_6_5_SMBUS = 0x04;
-public const ulong EFI_ACPI_6_5_SYSTEM_CMOS = 0x05;
-public const ulong EFI_ACPI_6_5_PCI_BAR_TARGET = 0x06;
-public const ulong EFI_ACPI_6_5_IPMI = 0x07;
-public const ulong EFI_ACPI_6_5_GENERAL_PURPOSE_IO = 0x08;
-public const ulong EFI_ACPI_6_5_GENERIC_SERIAL_BUS = 0x09;
-public const ulong EFI_ACPI_6_5_PLATFORM_COMMUNICATION_CHANNEL = 0x0A;
-public const ulong EFI_ACPI_6_5_FUNCTIONAL_FIXED_HARDWARE = 0x7F;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SYSTEM_MEMORY = 0x00;
+  public const ulong EFI_ACPI_6_5_SYSTEM_IO = 0x01;
+  public const ulong EFI_ACPI_6_5_PCI_CONFIGURATION_SPACE = 0x02;
+  public const ulong EFI_ACPI_6_5_EMBEDDED_CONTROLLER = 0x03;
+  public const ulong EFI_ACPI_6_5_SMBUS = 0x04;
+  public const ulong EFI_ACPI_6_5_SYSTEM_CMOS = 0x05;
+  public const ulong EFI_ACPI_6_5_PCI_BAR_TARGET = 0x06;
+  public const ulong EFI_ACPI_6_5_IPMI = 0x07;
+  public const ulong EFI_ACPI_6_5_GENERAL_PURPOSE_IO = 0x08;
+  public const ulong EFI_ACPI_6_5_GENERIC_SERIAL_BUS = 0x09;
+  public const ulong EFI_ACPI_6_5_PLATFORM_COMMUNICATION_CHANNEL = 0x0A;
+  public const ulong EFI_ACPI_6_5_FUNCTIONAL_FIXED_HARDWARE = 0x7F;
 
-//
-// Generic Address Space Access Sizes
-//
-public const ulong EFI_ACPI_6_5_UNDEFINED = 0;
-public const ulong EFI_ACPI_6_5_BYTE = 1;
-public const ulong EFI_ACPI_6_5_WORD = 2;
-public const ulong EFI_ACPI_6_5_DWORD = 3;
-public const ulong EFI_ACPI_6_5_QWORD = 4;
+  //
+  // Generic Address Space Access Sizes
+  //
+  public const ulong EFI_ACPI_6_5_UNDEFINED = 0;
+  public const ulong EFI_ACPI_6_5_BYTE = 1;
+  public const ulong EFI_ACPI_6_5_WORD = 2;
+  public const ulong EFI_ACPI_6_5_DWORD = 3;
+  public const ulong EFI_ACPI_6_5_QWORD = 4;
 
-//
-// ACPI 6.5 table structures
-//
+  //
+  // ACPI 6.5 table structures
+  //
+}
 
 ///
 /// Root System Description Pointer Structure
@@ -83,7 +86,10 @@ public unsafe struct EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER
 ///
 /// RSD_PTR Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER_REVISION = 0x02 ///< ACPISpec (Revision 6.5) says current value is 2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER_REVISION = 0x02 ///< ACPISpec (Revision 6.5) says current value is 2;
+}
 
 ///
 /// Common table header, this prefaces all ACPI tables, including FACS, but
@@ -105,18 +111,21 @@ public unsafe struct EFI_ACPI_6_5_COMMON_HEADER
 ///
 /// RSDT Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
 
-//
-// Extended System Description Table
-// No definition needed as it is a common description table header, the same with
-// EFI_ACPI_DESCRIPTION_HEADER, followed by a variable number of ulong table pointers.
-//
+  //
+  // Extended System Description Table
+  // No definition needed as it is a common description table header, the same with
+  // EFI_ACPI_DESCRIPTION_HEADER, followed by a variable number of ulong table pointers.
+  //
 
-///
-/// XSDT Revision (as defined in ACPI 6.5 spec.)
-///
-public const ulong EFI_ACPI_6_5_EXTENDED_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
+  ///
+  /// XSDT Revision (as defined in ACPI 6.5 spec.)
+  ///
+  public const ulong EFI_ACPI_6_5_EXTENDED_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
+}
 
 ///
 /// Fixed ACPI Description Table Structure (FADT)
@@ -185,66 +194,69 @@ public unsafe struct EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE
 ///
 /// FADT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_REVISION = 0x06;
-public const ulong EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_MINOR_REVISION = 0x05;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_REVISION = 0x06;
+  public const ulong EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_MINOR_REVISION = 0x05;
 
-//
-// Fixed ACPI Description Table Preferred Power Management Profile
-//
-public const ulong EFI_ACPI_6_5_PM_PROFILE_UNSPECIFIED = 0;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_DESKTOP = 1;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_MOBILE = 2;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_WORKSTATION = 3;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_ENTERPRISE_SERVER = 4;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_SOHO_SERVER = 5;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_APPLIANCE_PC = 6;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_PERFORMANCE_SERVER = 7;
-public const ulong EFI_ACPI_6_5_PM_PROFILE_TABLET = 8;
+  //
+  // Fixed ACPI Description Table Preferred Power Management Profile
+  //
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_UNSPECIFIED = 0;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_DESKTOP = 1;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_MOBILE = 2;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_WORKSTATION = 3;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_ENTERPRISE_SERVER = 4;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_SOHO_SERVER = 5;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_APPLIANCE_PC = 6;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_PERFORMANCE_SERVER = 7;
+  public const ulong EFI_ACPI_6_5_PM_PROFILE_TABLET = 8;
 
-//
-// Fixed ACPI Description Table Boot Architecture Flags
-// All other bits are reserved and must be set to 0.
-//
-public const ulong EFI_ACPI_6_5_LEGACY_DEVICES = BIT0;
-public const ulong EFI_ACPI_6_5_8042 = BIT1;
-public const ulong EFI_ACPI_6_5_VGA_NOT_PRESENT = BIT2;
-public const ulong EFI_ACPI_6_5_MSI_NOT_SUPPORTED = BIT3;
-public const ulong EFI_ACPI_6_5_PCIE_ASPM_CONTROLS = BIT4;
-public const ulong EFI_ACPI_6_5_CMOS_RTC_NOT_PRESENT = BIT5;
+  //
+  // Fixed ACPI Description Table Boot Architecture Flags
+  // All other bits are reserved and must be set to 0.
+  //
+  public const ulong EFI_ACPI_6_5_LEGACY_DEVICES = BIT0;
+  public const ulong EFI_ACPI_6_5_8042 = BIT1;
+  public const ulong EFI_ACPI_6_5_VGA_NOT_PRESENT = BIT2;
+  public const ulong EFI_ACPI_6_5_MSI_NOT_SUPPORTED = BIT3;
+  public const ulong EFI_ACPI_6_5_PCIE_ASPM_CONTROLS = BIT4;
+  public const ulong EFI_ACPI_6_5_CMOS_RTC_NOT_PRESENT = BIT5;
 
-//
-// Fixed ACPI Description Table Arm Boot Architecture Flags
-// All other bits are reserved and must be set to 0.
-//
-public const ulong EFI_ACPI_6_5_ARM_PSCI_COMPLIANT = BIT0;
-public const ulong EFI_ACPI_6_5_ARM_PSCI_USE_HVC = BIT1;
+  //
+  // Fixed ACPI Description Table Arm Boot Architecture Flags
+  // All other bits are reserved and must be set to 0.
+  //
+  public const ulong EFI_ACPI_6_5_ARM_PSCI_COMPLIANT = BIT0;
+  public const ulong EFI_ACPI_6_5_ARM_PSCI_USE_HVC = BIT1;
 
-//
-// Fixed ACPI Description Table Fixed Feature Flags
-// All other bits are reserved and must be set to 0.
-//
-public const ulong EFI_ACPI_6_5_WBINVD = BIT0;
-public const ulong EFI_ACPI_6_5_WBINVD_FLUSH = BIT1;
-public const ulong EFI_ACPI_6_5_PROC_C1 = BIT2;
-public const ulong EFI_ACPI_6_5_P_LVL2_UP = BIT3;
-public const ulong EFI_ACPI_6_5_PWR_BUTTON = BIT4;
-public const ulong EFI_ACPI_6_5_SLP_BUTTON = BIT5;
-public const ulong EFI_ACPI_6_5_FIX_RTC = BIT6;
-public const ulong EFI_ACPI_6_5_RTC_S4 = BIT7;
-public const ulong EFI_ACPI_6_5_TMR_VAL_EXT = BIT8;
-public const ulong EFI_ACPI_6_5_DCK_CAP = BIT9;
-public const ulong EFI_ACPI_6_5_RESET_REG_SUP = BIT10;
-public const ulong EFI_ACPI_6_5_SEALED_CASE = BIT11;
-public const ulong EFI_ACPI_6_5_HEADLESS = BIT12;
-public const ulong EFI_ACPI_6_5_CPU_SW_SLP = BIT13;
-public const ulong EFI_ACPI_6_5_PCI_EXP_WAK = BIT14;
-public const ulong EFI_ACPI_6_5_USE_PLATFORM_CLOCK = BIT15;
-public const ulong EFI_ACPI_6_5_S4_RTC_STS_VALID = BIT16;
-public const ulong EFI_ACPI_6_5_REMOTE_POWER_ON_CAPABLE = BIT17;
-public const ulong EFI_ACPI_6_5_FORCE_APIC_CLUSTER_MODEL = BIT18;
-public const ulong EFI_ACPI_6_5_FORCE_APIC_PHYSICAL_DESTINATION_MODE = BIT19;
-public const ulong EFI_ACPI_6_5_HW_REDUCED_ACPI = BIT20;
-public const ulong EFI_ACPI_6_5_LOW_POWER_S0_IDLE_CAPABLE = BIT21;
+  //
+  // Fixed ACPI Description Table Fixed Feature Flags
+  // All other bits are reserved and must be set to 0.
+  //
+  public const ulong EFI_ACPI_6_5_WBINVD = BIT0;
+  public const ulong EFI_ACPI_6_5_WBINVD_FLUSH = BIT1;
+  public const ulong EFI_ACPI_6_5_PROC_C1 = BIT2;
+  public const ulong EFI_ACPI_6_5_P_LVL2_UP = BIT3;
+  public const ulong EFI_ACPI_6_5_PWR_BUTTON = BIT4;
+  public const ulong EFI_ACPI_6_5_SLP_BUTTON = BIT5;
+  public const ulong EFI_ACPI_6_5_FIX_RTC = BIT6;
+  public const ulong EFI_ACPI_6_5_RTC_S4 = BIT7;
+  public const ulong EFI_ACPI_6_5_TMR_VAL_EXT = BIT8;
+  public const ulong EFI_ACPI_6_5_DCK_CAP = BIT9;
+  public const ulong EFI_ACPI_6_5_RESET_REG_SUP = BIT10;
+  public const ulong EFI_ACPI_6_5_SEALED_CASE = BIT11;
+  public const ulong EFI_ACPI_6_5_HEADLESS = BIT12;
+  public const ulong EFI_ACPI_6_5_CPU_SW_SLP = BIT13;
+  public const ulong EFI_ACPI_6_5_PCI_EXP_WAK = BIT14;
+  public const ulong EFI_ACPI_6_5_USE_PLATFORM_CLOCK = BIT15;
+  public const ulong EFI_ACPI_6_5_S4_RTC_STS_VALID = BIT16;
+  public const ulong EFI_ACPI_6_5_REMOTE_POWER_ON_CAPABLE = BIT17;
+  public const ulong EFI_ACPI_6_5_FORCE_APIC_CLUSTER_MODEL = BIT18;
+  public const ulong EFI_ACPI_6_5_FORCE_APIC_PHYSICAL_DESTINATION_MODE = BIT19;
+  public const ulong EFI_ACPI_6_5_HW_REDUCED_ACPI = BIT20;
+  public const ulong EFI_ACPI_6_5_LOW_POWER_S0_IDLE_CAPABLE = BIT21;
+}
 
 ///
 /// Firmware ACPI Control Structure
@@ -268,30 +280,33 @@ public unsafe struct EFI_ACPI_6_5_FIRMWARE_ACPI_CONTROL_STRUCTURE
 ///
 /// FACS Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_FIRMWARE_ACPI_CONTROL_STRUCTURE_VERSION = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_FIRMWARE_ACPI_CONTROL_STRUCTURE_VERSION = 0x02;
 
-///
-/// Firmware Control Structure Feature Flags
-/// All other bits are reserved and must be set to 0.
-///
-public const ulong EFI_ACPI_6_5_S4BIOS_F = BIT0;
-public const ulong EFI_ACPI_6_5_64BIT_WAKE_SUPPORTED_F = BIT1;
+  ///
+  /// Firmware Control Structure Feature Flags
+  /// All other bits are reserved and must be set to 0.
+  ///
+  public const ulong EFI_ACPI_6_5_S4BIOS_F = BIT0;
+  public const ulong EFI_ACPI_6_5_64BIT_WAKE_SUPPORTED_F = BIT1;
 
-///
-/// OSPM Enabled Firmware Control Structure Flags
-/// All other bits are reserved and must be set to 0.
-///
-public const ulong EFI_ACPI_6_5_OSPM_64BIT_WAKE_F = BIT0;
+  ///
+  /// OSPM Enabled Firmware Control Structure Flags
+  /// All other bits are reserved and must be set to 0.
+  ///
+  public const ulong EFI_ACPI_6_5_OSPM_64BIT_WAKE_F = BIT0;
 
-//
-// Differentiated System Description Table,
-// Secondary System Description Table
-// and Persistent System Description Table,
-// no definition needed as they are common description table header, the same with
-// EFI_ACPI_DESCRIPTION_HEADER, followed by a definition block.
-//
-public const ulong EFI_ACPI_6_5_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x02;
-public const ulong EFI_ACPI_6_5_SECONDARY_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x02;
+  //
+  // Differentiated System Description Table,
+  // Secondary System Description Table
+  // and Persistent System Description Table,
+  // no definition needed as they are common description table header, the same with
+  // EFI_ACPI_DESCRIPTION_HEADER, followed by a definition block.
+  //
+  public const ulong EFI_ACPI_6_5_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x02;
+  public const ulong EFI_ACPI_6_5_SECONDARY_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x02;
+}
 
 ///
 /// Multiple APIC Description Table header definition.  The rest of the table
@@ -308,47 +323,50 @@ public unsafe struct EFI_ACPI_6_5_MULTIPLE_APIC_DESCRIPTION_TABLE_HEADER
 ///
 /// MADT Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_MULTIPLE_APIC_DESCRIPTION_TABLE_REVISION = 0x05;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MULTIPLE_APIC_DESCRIPTION_TABLE_REVISION = 0x05;
 
-///
-/// Multiple APIC Flags
-/// All other bits are reserved and must be set to 0.
-///
-public const ulong EFI_ACPI_6_5_PCAT_COMPAT = BIT0;
+  ///
+  /// Multiple APIC Flags
+  /// All other bits are reserved and must be set to 0.
+  ///
+  public const ulong EFI_ACPI_6_5_PCAT_COMPAT = BIT0;
 
-//
-// Multiple APIC Description Table APIC structure types
-// All other values between 0x18 and 0x7F are reserved and
-// will be ignored by OSPM. 0x80 ~ 0xFF are reserved for OEM.
-//
-public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC = 0x00;
-public const ulong EFI_ACPI_6_5_IO_APIC = 0x01;
-public const ulong EFI_ACPI_6_5_INTERRUPT_SOURCE_OVERRIDE = 0x02;
-public const ulong EFI_ACPI_6_5_NON_MASKABLE_INTERRUPT_SOURCE = 0x03;
-public const ulong EFI_ACPI_6_5_LOCAL_APIC_NMI = 0x04;
-public const ulong EFI_ACPI_6_5_LOCAL_APIC_ADDRESS_OVERRIDE = 0x05;
-public const ulong EFI_ACPI_6_5_IO_SAPIC = 0x06;
-public const ulong EFI_ACPI_6_5_LOCAL_SAPIC = 0x07;
-public const ulong EFI_ACPI_6_5_PLATFORM_INTERRUPT_SOURCES = 0x08;
-public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_X2APIC = 0x09;
-public const ulong EFI_ACPI_6_5_LOCAL_X2APIC_NMI = 0x0A;
-public const ulong EFI_ACPI_6_5_GIC = 0x0B;
-public const ulong EFI_ACPI_6_5_GICD = 0x0C;
-public const ulong EFI_ACPI_6_5_GIC_MSI_FRAME = 0x0D;
-public const ulong EFI_ACPI_6_5_GICR = 0x0E;
-public const ulong EFI_ACPI_6_5_GIC_ITS = 0x0F;
-public const ulong EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP = 0x10;
-public const ulong EFI_ACPI_6_5_CORE_PIC = 0x11;
-public const ulong EFI_ACPI_6_5_LIO_PIC = 0x12;
-public const ulong EFI_ACPI_6_5_HT_PIC = 0x13;
-public const ulong EFI_ACPI_6_5_EIO_PIC = 0x14;
-public const ulong EFI_ACPI_6_5_MSI_PIC = 0x15;
-public const ulong EFI_ACPI_6_5_BIO_PIC = 0x16;
-public const ulong EFI_ACPI_6_5_LPC_PIC = 0x17;
+  //
+  // Multiple APIC Description Table APIC structure types
+  // All other values between 0x18 and 0x7F are reserved and
+  // will be ignored by OSPM. 0x80 ~ 0xFF are reserved for OEM.
+  //
+  public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC = 0x00;
+  public const ulong EFI_ACPI_6_5_IO_APIC = 0x01;
+  public const ulong EFI_ACPI_6_5_INTERRUPT_SOURCE_OVERRIDE = 0x02;
+  public const ulong EFI_ACPI_6_5_NON_MASKABLE_INTERRUPT_SOURCE = 0x03;
+  public const ulong EFI_ACPI_6_5_LOCAL_APIC_NMI = 0x04;
+  public const ulong EFI_ACPI_6_5_LOCAL_APIC_ADDRESS_OVERRIDE = 0x05;
+  public const ulong EFI_ACPI_6_5_IO_SAPIC = 0x06;
+  public const ulong EFI_ACPI_6_5_LOCAL_SAPIC = 0x07;
+  public const ulong EFI_ACPI_6_5_PLATFORM_INTERRUPT_SOURCES = 0x08;
+  public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_X2APIC = 0x09;
+  public const ulong EFI_ACPI_6_5_LOCAL_X2APIC_NMI = 0x0A;
+  public const ulong EFI_ACPI_6_5_GIC = 0x0B;
+  public const ulong EFI_ACPI_6_5_GICD = 0x0C;
+  public const ulong EFI_ACPI_6_5_GIC_MSI_FRAME = 0x0D;
+  public const ulong EFI_ACPI_6_5_GICR = 0x0E;
+  public const ulong EFI_ACPI_6_5_GIC_ITS = 0x0F;
+  public const ulong EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP = 0x10;
+  public const ulong EFI_ACPI_6_5_CORE_PIC = 0x11;
+  public const ulong EFI_ACPI_6_5_LIO_PIC = 0x12;
+  public const ulong EFI_ACPI_6_5_HT_PIC = 0x13;
+  public const ulong EFI_ACPI_6_5_EIO_PIC = 0x14;
+  public const ulong EFI_ACPI_6_5_MSI_PIC = 0x15;
+  public const ulong EFI_ACPI_6_5_BIO_PIC = 0x16;
+  public const ulong EFI_ACPI_6_5_LPC_PIC = 0x17;
 
-//
-// APIC Structure Definitions
-//
+  //
+  // APIC Structure Definitions
+  //
+}
 
 ///
 /// Processor Local APIC Structure Definition
@@ -366,8 +384,11 @@ public unsafe struct EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC_STRUCTURE
 ///
 /// Local APIC Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_LOCAL_APIC_ENABLED = BIT0;
-public const ulong EFI_ACPI_6_5_LOCAL_APIC_ONLINE_CAPABLE = BIT1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_LOCAL_APIC_ENABLED = BIT0;
+  public const ulong EFI_ACPI_6_5_LOCAL_APIC_ONLINE_CAPABLE = BIT1;
+}
 
 ///
 /// IO APIC Structure
@@ -420,8 +441,11 @@ public unsafe struct EFI_ACPI_6_5_PLATFORM_INTERRUPT_APIC_STRUCTURE
 // MPS INTI flags.
 // All other bits are reserved and must be set to 0.
 //
-public const ulong EFI_ACPI_6_5_POLARITY = (3 << 0);
-public const ulong EFI_ACPI_6_5_TRIGGER_MODE = (3 << 2);
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_POLARITY = (3 << 0);
+  public const ulong EFI_ACPI_6_5_TRIGGER_MODE = (3 << 2);
+}
 
 ///
 /// Non-Maskable Interrupt Source Structure
@@ -512,7 +536,10 @@ public unsafe struct EFI_ACPI_6_5_PLATFORM_INTERRUPT_SOURCES_STRUCTURE
 /// Platform Interrupt Source Flags.
 /// All other bits are reserved and must be set to 0.
 ///
-public const ulong EFI_ACPI_6_5_CPEI_PROCESSOR_OVERRIDE = BIT0;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_CPEI_PROCESSOR_OVERRIDE = BIT0;
+}
 
 ///
 /// Processor Local x2APIC Structure Definition
@@ -571,9 +598,12 @@ public unsafe struct EFI_ACPI_6_5_GIC_STRUCTURE
 ///
 /// GIC Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_GIC_ENABLED = BIT0;
-public const ulong EFI_ACPI_6_5_PERFORMANCE_INTERRUPT_MODEL = BIT1;
-public const ulong EFI_ACPI_6_5_VGIC_MAINTENANCE_INTERRUPT_MODE_FLAGS = BIT2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GIC_ENABLED = BIT0;
+  public const ulong EFI_ACPI_6_5_PERFORMANCE_INTERRUPT_MODEL = BIT1;
+  public const ulong EFI_ACPI_6_5_VGIC_MAINTENANCE_INTERRUPT_MODE_FLAGS = BIT2;
+}
 
 ///
 /// GIC Distributor Structure
@@ -594,10 +624,13 @@ public unsafe struct EFI_ACPI_6_5_GIC_DISTRIBUTOR_STRUCTURE
 ///
 /// GIC Version
 ///
-public const ulong EFI_ACPI_6_5_GIC_V1 = 0x01;
-public const ulong EFI_ACPI_6_5_GIC_V2 = 0x02;
-public const ulong EFI_ACPI_6_5_GIC_V3 = 0x03;
-public const ulong EFI_ACPI_6_5_GIC_V4 = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GIC_V1 = 0x01;
+  public const ulong EFI_ACPI_6_5_GIC_V2 = 0x02;
+  public const ulong EFI_ACPI_6_5_GIC_V3 = 0x03;
+  public const ulong EFI_ACPI_6_5_GIC_V4 = 0x04;
+}
 
 ///
 /// GIC MSI Frame Structure
@@ -618,7 +651,10 @@ public unsafe struct EFI_ACPI_6_5_GIC_MSI_FRAME_STRUCTURE
 ///
 /// GIC MSI Frame Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_SPI_COUNT_BASE_SELECT = BIT0;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SPI_COUNT_BASE_SELECT = BIT0;
+}
 
 ///
 /// GICR Structure
@@ -674,8 +710,11 @@ public unsafe struct EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP_MAILBOX_STRUCTURE
   public fixed byte ReservedForFirmware[2048];
 }
 
-public const ulong EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP_MAILBOX_COMMAND_NOOP = 0x0000;
-public const ulong EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP_MAILBOX_COMMAND_WAKEUP = 0x0001;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP_MAILBOX_COMMAND_NOOP = 0x0000;
+  public const ulong EFI_ACPI_6_5_MULTIPROCESSOR_WAKEUP_MAILBOX_COMMAND_WAKEUP = 0x0001;
+}
 
 ///
 /// Core Programmable Interrupt Controller
@@ -792,7 +831,10 @@ public unsafe struct EFI_ACPI_6_5_SMART_BATTERY_DESCRIPTION_TABLE
 ///
 /// SBST Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_SMART_BATTERY_DESCRIPTION_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SMART_BATTERY_DESCRIPTION_TABLE_REVISION = 0x01;
+}
 
 ///
 /// Embedded Controller Boot Resources Table (ECDT)
@@ -812,7 +854,10 @@ public unsafe struct EFI_ACPI_6_5_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE
 ///
 /// ECDT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_REVISION = 0x01;
+}
 
 ///
 /// System Resource Affinity Table (SRAT).  The rest of the table
@@ -829,19 +874,22 @@ public unsafe struct EFI_ACPI_6_5_SYSTEM_RESOURCE_AFFINITY_TABLE_HEADER
 ///
 /// SRAT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_SYSTEM_RESOURCE_AFFINITY_TABLE_REVISION = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SYSTEM_RESOURCE_AFFINITY_TABLE_REVISION = 0x03;
 
-//
-// SRAT structure types.
-// All other values between 0x06 an 0xFF are reserved and
-// will be ignored by OSPM.
-//
-public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC_SAPIC_AFFINITY = 0x00;
-public const ulong EFI_ACPI_6_5_MEMORY_AFFINITY = 0x01;
-public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_X2APIC_AFFINITY = 0x02;
-public const ulong EFI_ACPI_6_5_GICC_AFFINITY = 0x03;
-public const ulong EFI_ACPI_6_5_GIC_ITS_AFFINITY = 0x04;
-public const ulong EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY = 0x05;
+  //
+  // SRAT structure types.
+  // All other values between 0x06 an 0xFF are reserved and
+  // will be ignored by OSPM.
+  //
+  public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC_SAPIC_AFFINITY = 0x00;
+  public const ulong EFI_ACPI_6_5_MEMORY_AFFINITY = 0x01;
+  public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_X2APIC_AFFINITY = 0x02;
+  public const ulong EFI_ACPI_6_5_GICC_AFFINITY = 0x03;
+  public const ulong EFI_ACPI_6_5_GIC_ITS_AFFINITY = 0x04;
+  public const ulong EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY = 0x05;
+}
 
 ///
 /// Processor Local APIC/SAPIC Affinity Structure Definition
@@ -862,7 +910,10 @@ public unsafe struct EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC_SAPIC_AFFINITY_STRUCTURE
 ///
 /// Local APIC/SAPIC Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC_SAPIC_ENABLED = (1 << 0);
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PROCESSOR_LOCAL_APIC_SAPIC_ENABLED = (1 << 0);
+}
 
 ///
 /// Memory Affinity Structure Definition
@@ -886,9 +937,12 @@ public unsafe struct EFI_ACPI_6_5_MEMORY_AFFINITY_STRUCTURE
 //
 // Memory Flags.  All other bits are reserved and must be 0.
 //
-public const ulong EFI_ACPI_6_5_MEMORY_ENABLED = (1 << 0);
-public const ulong EFI_ACPI_6_5_MEMORY_HOT_PLUGGABLE = (1 << 1);
-public const ulong EFI_ACPI_6_5_MEMORY_NONVOLATILE = (1 << 2);
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MEMORY_ENABLED = (1 << 0);
+  public const ulong EFI_ACPI_6_5_MEMORY_HOT_PLUGGABLE = (1 << 1);
+  public const ulong EFI_ACPI_6_5_MEMORY_NONVOLATILE = (1 << 2);
+}
 
 ///
 /// Processor Local x2APIC Affinity Structure Definition
@@ -923,7 +977,10 @@ public unsafe struct EFI_ACPI_6_5_GICC_AFFINITY_STRUCTURE
 ///
 /// GICC Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_GICC_ENABLED = (1 << 0);
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GICC_ENABLED = (1 << 0);
+}
 
 ///
 /// GIC Interrupt Translation Service (ITS) Affinity Structure Definition
@@ -943,8 +1000,11 @@ public unsafe struct EFI_ACPI_6_5_GIC_ITS_AFFINITY_STRUCTURE
 // All other values between 0x02 an 0xFF are reserved and
 // will be ignored by OSPM.
 //
-public const ulong EFI_ACPI_6_5_ACPI_DEVICE_HANDLE = 0x00;
-public const ulong EFI_ACPI_6_5_PCI_DEVICE_HANDLE = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_ACPI_DEVICE_HANDLE = 0x00;
+  public const ulong EFI_ACPI_6_5_PCI_DEVICE_HANDLE = 0x01;
+}
 
 ///
 /// Device Handle - ACPI
@@ -998,8 +1058,11 @@ public unsafe struct EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY_STRUCTURE
 /// Generic Initiator Affinity Structure Flags. All other bits are reserved
 /// and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY_STRUCTURE_ENABLED = BIT0;
-public const ulong EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY_STRUCTURE_ARCHITECTURAL_TRANSACTIONS = BIT1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY_STRUCTURE_ENABLED = BIT0;
+  public const ulong EFI_ACPI_6_5_GENERIC_INITIATOR_AFFINITY_STRUCTURE_ARCHITECTURAL_TRANSACTIONS = BIT1;
+}
 
 ///
 /// System Locality Distance Information Table (SLIT).
@@ -1015,7 +1078,10 @@ public unsafe struct EFI_ACPI_6_5_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_HEA
 ///
 /// SLIT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_REVISION = 0x01;
+}
 
 ///
 /// Corrected Platform Error Polling Table (CPEP)
@@ -1030,12 +1096,15 @@ public unsafe struct EFI_ACPI_6_5_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_HEADER
 ///
 /// CPEP Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_REVISION = 0x01;
 
-//
-// CPEP processor structure types.
-//
-public const ulong EFI_ACPI_6_5_CPEP_PROCESSOR_APIC_SAPIC = 0x00;
+  //
+  // CPEP processor structure types.
+  //
+  public const ulong EFI_ACPI_6_5_CPEP_PROCESSOR_APIC_SAPIC = 0x00;
+}
 
 ///
 /// Corrected Platform Error Polling Processor Structure Definition
@@ -1066,7 +1135,10 @@ public unsafe struct EFI_ACPI_6_5_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_HEADER
 ///
 /// MSCT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_REVISION = 0x01;
+}
 
 ///
 /// Maximum Proximity Domain Information Structure Definition
@@ -1095,7 +1167,10 @@ public unsafe struct EFI_ACPI_6_5_RAS_FEATURE_TABLE
 ///
 /// RASF Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_RAS_FEATURE_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_RAS_FEATURE_TABLE_REVISION = 0x01;
+}
 
 ///
 /// ACPI RASF Platform Communication Channel Shared Memory Region definition.
@@ -1116,16 +1191,19 @@ public unsafe struct EFI_ACPI_6_5_RASF_PLATFORM_COMMUNICATION_CHANNEL_SHARED_MEM
 ///
 /// ACPI RASF PCC command code
 ///
-public const ulong EFI_ACPI_6_5_RASF_PCC_COMMAND_CODE_EXECUTE_RASF_COMMAND = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_RASF_PCC_COMMAND_CODE_EXECUTE_RASF_COMMAND = 0x01;
 
-///
-/// ACPI RASF Platform RAS Capabilities
-///
-public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_HARDWARE_BASED_PATROL_SCRUB_SUPPORTED = BIT0;
-public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_HARDWARE_BASED_PATROL_SCRUB_SUPPORTED_AND_EXPOSED_TO_SOFTWARE = BIT1;
-public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_CPU_CACHE_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT2;
-public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_MEMORY_CONTROLLER_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT3;
-public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_HARDWARE_MIRRORING = BIT4;
+  ///
+  /// ACPI RASF Platform RAS Capabilities
+  ///
+  public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_HARDWARE_BASED_PATROL_SCRUB_SUPPORTED = BIT0;
+  public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_HARDWARE_BASED_PATROL_SCRUB_SUPPORTED_AND_EXPOSED_TO_SOFTWARE = BIT1;
+  public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_CPU_CACHE_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT2;
+  public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_MEMORY_CONTROLLER_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT3;
+  public const ulong EFI_ACPI_6_5_RASF_PLATFORM_RAS_CAPABILITY_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_HARDWARE_MIRRORING = BIT4;
+}
 
 ///
 /// ACPI RASF Parameter Block structure for PATROL_SCRUB
@@ -1146,9 +1224,12 @@ public unsafe struct EFI_ACPI_6_5_RASF_PATROL_SCRUB_PLATFORM_BLOCK_STRUCTURE
 ///
 /// ACPI RASF Patrol Scrub command
 ///
-public const ulong EFI_ACPI_6_5_RASF_PATROL_SCRUB_COMMAND_GET_PATROL_PARAMETERS = 0x01;
-public const ulong EFI_ACPI_6_5_RASF_PATROL_SCRUB_COMMAND_START_PATROL_SCRUBBER = 0x02;
-public const ulong EFI_ACPI_6_5_RASF_PATROL_SCRUB_COMMAND_STOP_PATROL_SCRUBBER = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_RASF_PATROL_SCRUB_COMMAND_GET_PATROL_PARAMETERS = 0x01;
+  public const ulong EFI_ACPI_6_5_RASF_PATROL_SCRUB_COMMAND_START_PATROL_SCRUBBER = 0x02;
+  public const ulong EFI_ACPI_6_5_RASF_PATROL_SCRUB_COMMAND_STOP_PATROL_SCRUBBER = 0x03;
+}
 
 ///
 /// Memory Power State Table definition.
@@ -1166,7 +1247,10 @@ public unsafe struct EFI_ACPI_6_5_MEMORY_POWER_STATUS_TABLE
 ///
 /// MPST Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_MEMORY_POWER_STATE_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MEMORY_POWER_STATE_TABLE_REVISION = 0x01;
+}
 
 ///
 /// MPST Platform Communication Channel Shared Memory Region definition.
@@ -1188,15 +1272,18 @@ public unsafe struct EFI_ACPI_6_5_MPST_PLATFORM_COMMUNICATION_CHANNEL_SHARED_MEM
 ///
 /// ACPI MPST PCC command code
 ///
-public const ulong EFI_ACPI_6_5_MPST_PCC_COMMAND_CODE_EXECUTE_MPST_COMMAND = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MPST_PCC_COMMAND_CODE_EXECUTE_MPST_COMMAND = 0x03;
 
-///
-/// ACPI MPST Memory Power command
-///
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_GET_MEMORY_POWER_STATE = 0x01;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_SET_MEMORY_POWER_STATE = 0x02;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_GET_AVERAGE_POWER_CONSUMED = 0x03;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_GET_MEMORY_ENERGY_CONSUMED = 0x04;
+  ///
+  /// ACPI MPST Memory Power command
+  ///
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_GET_MEMORY_POWER_STATE = 0x01;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_SET_MEMORY_POWER_STATE = 0x02;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_GET_AVERAGE_POWER_CONSUMED = 0x03;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_COMMAND_GET_MEMORY_ENERGY_CONSUMED = 0x04;
+}
 
 ///
 /// MPST Memory Power Node Table
@@ -1223,9 +1310,12 @@ public unsafe struct EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE
   // ushort                                            PhysicalComponentIdentifier[NumberOfPhysicalComponents];
 }
 
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE_FLAG_ENABLE = 0x01;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE_FLAG_POWER_MANAGED = 0x02;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE_FLAG_HOT_PLUGGABLE = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE_FLAG_ENABLE = 0x01;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE_FLAG_POWER_MANAGED = 0x02;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STRUCTURE_FLAG_HOT_PLUGGABLE = 0x04;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_MPST_MEMORY_POWER_NODE_TABLE
@@ -1248,9 +1338,12 @@ public unsafe struct EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCT
   public ulong ExitLatencyToMPS0;
 }
 
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCTURE_FLAG_MEMORY_CONTENT_PRESERVED = 0x01;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCTURE_FLAG_AUTONOMOUS_MEMORY_POWER_STATE_ENTRY = 0x02;
-public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCTURE_FLAG_AUTONOMOUS_MEMORY_POWER_STATE_EXIT = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCTURE_FLAG_MEMORY_CONTENT_PRESERVED = 0x01;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCTURE_FLAG_AUTONOMOUS_MEMORY_POWER_STATE_ENTRY = 0x02;
+  public const ulong EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_STRUCTURE_FLAG_AUTONOMOUS_MEMORY_POWER_STATE_EXIT = 0x04;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_MPST_MEMORY_POWER_STATE_CHARACTERISTICS_TABLE
@@ -1273,7 +1366,10 @@ public unsafe struct EFI_ACPI_6_5_PLATFORM_MEMORY_TOPOLOGY_TABLE
 ///
 /// PMTT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_MEMORY_TOPOLOGY_TABLE_REVISION = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_MEMORY_TOPOLOGY_TABLE_REVISION = 0x02;
+}
 
 ///
 /// Common Memory Device.
@@ -1294,10 +1390,13 @@ public unsafe struct EFI_ACPI_6_5_PMTT_COMMON_MEMORY_DEVICE
 ///
 /// Memory Device Type.
 ///
-public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_SOCKET = 0x0;
-public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_MEMORY_CONTROLLER = 0x1;
-public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_DIMM = 0x2;
-public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_VENDOR_SPECIFIC_TYPE = 0xFF;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_SOCKET = 0x0;
+  public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_MEMORY_CONTROLLER = 0x1;
+  public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_DIMM = 0x2;
+  public const ulong EFI_ACPI_6_5_PMTT_MEMORY_DEVICE_TYPE_VENDOR_SPECIFIC_TYPE = 0xFF;
+}
 
 ///
 /// Socket Type Data.
@@ -1397,54 +1496,57 @@ public unsafe struct EFI_ACPI_6_5_BOOT_GRAPHICS_RESOURCE_TABLE
 ///
 /// BGRT Revision
 ///
-public const ulong EFI_ACPI_6_5_BOOT_GRAPHICS_RESOURCE_TABLE_REVISION = 1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_BOOT_GRAPHICS_RESOURCE_TABLE_REVISION = 1;
 
-///
-/// BGRT Version
-///
-public const ulong EFI_ACPI_6_5_BGRT_VERSION = 0x01;
+  ///
+  /// BGRT Version
+  ///
+  public const ulong EFI_ACPI_6_5_BGRT_VERSION = 0x01;
 
-///
-/// BGRT Status
-///
-public const ulong EFI_ACPI_6_5_BGRT_STATUS_NOT_DISPLAYED = 0x00;
-public const ulong EFI_ACPI_6_5_BGRT_STATUS_DISPLAYED = 0x01;
+  ///
+  /// BGRT Status
+  ///
+  public const ulong EFI_ACPI_6_5_BGRT_STATUS_NOT_DISPLAYED = 0x00;
+  public const ulong EFI_ACPI_6_5_BGRT_STATUS_DISPLAYED = 0x01;
 
-///
-/// BGRT Image Type
-///
-public const ulong EFI_ACPI_6_5_BGRT_IMAGE_TYPE_BMP = 0x00;
+  ///
+  /// BGRT Image Type
+  ///
+  public const ulong EFI_ACPI_6_5_BGRT_IMAGE_TYPE_BMP = 0x00;
 
-///
-/// FPDT Version (as defined in ACPI 6.5 spec.)
-///
-public const ulong EFI_ACPI_6_5_FIRMWARE_PERFORMANCE_DATA_TABLE_REVISION = 0x01;
+  ///
+  /// FPDT Version (as defined in ACPI 6.5 spec.)
+  ///
+  public const ulong EFI_ACPI_6_5_FIRMWARE_PERFORMANCE_DATA_TABLE_REVISION = 0x01;
 
-///
-/// FPDT Performance Record Types
-///
-public const ulong EFI_ACPI_6_5_FPDT_RECORD_TYPE_FIRMWARE_BASIC_BOOT_POINTER = 0x0000;
-public const ulong EFI_ACPI_6_5_FPDT_RECORD_TYPE_S3_PERFORMANCE_TABLE_POINTER = 0x0001;
+  ///
+  /// FPDT Performance Record Types
+  ///
+  public const ulong EFI_ACPI_6_5_FPDT_RECORD_TYPE_FIRMWARE_BASIC_BOOT_POINTER = 0x0000;
+  public const ulong EFI_ACPI_6_5_FPDT_RECORD_TYPE_S3_PERFORMANCE_TABLE_POINTER = 0x0001;
 
-///
-/// FPDT Performance Record Revision
-///
-public const ulong EFI_ACPI_6_5_FPDT_RECORD_REVISION_FIRMWARE_BASIC_BOOT_POINTER = 0x01;
-public const ulong EFI_ACPI_6_5_FPDT_RECORD_REVISION_S3_PERFORMANCE_TABLE_POINTER = 0x01;
+  ///
+  /// FPDT Performance Record Revision
+  ///
+  public const ulong EFI_ACPI_6_5_FPDT_RECORD_REVISION_FIRMWARE_BASIC_BOOT_POINTER = 0x01;
+  public const ulong EFI_ACPI_6_5_FPDT_RECORD_REVISION_S3_PERFORMANCE_TABLE_POINTER = 0x01;
 
-///
-/// FPDT Runtime Performance Record Types
-///
-public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_TYPE_S3_RESUME = 0x0000;
-public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_TYPE_S3_SUSPEND = 0x0001;
-public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_TYPE_FIRMWARE_BASIC_BOOT = 0x0002;
+  ///
+  /// FPDT Runtime Performance Record Types
+  ///
+  public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_TYPE_S3_RESUME = 0x0000;
+  public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_TYPE_S3_SUSPEND = 0x0001;
+  public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_TYPE_FIRMWARE_BASIC_BOOT = 0x0002;
 
-///
-/// FPDT Runtime Performance Record Revision
-///
-public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_REVISION_S3_RESUME = 0x01;
-public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_REVISION_S3_SUSPEND = 0x01;
-public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_REVISION_FIRMWARE_BASIC_BOOT = 0x02;
+  ///
+  /// FPDT Runtime Performance Record Revision
+  ///
+  public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_REVISION_S3_RESUME = 0x01;
+  public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_REVISION_S3_SUSPEND = 0x01;
+  public const ulong EFI_ACPI_6_5_FPDT_RUNTIME_RECORD_REVISION_FIRMWARE_BASIC_BOOT = 0x02;
+}
 
 ///
 /// FPDT Performance Record header
@@ -1536,7 +1638,10 @@ public unsafe struct EFI_ACPI_6_5_FPDT_FIRMWARE_BASIC_BOOT_RECORD
 ///
 /// FPDT Firmware Basic Boot Performance Table signature
 ///
-public const ulong EFI_ACPI_6_5_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
+}
 
 //
 // FPDT Firmware Basic Boot Performance Table
@@ -1553,7 +1658,10 @@ public unsafe struct EFI_ACPI_6_5_FPDT_FIRMWARE_BASIC_BOOT_TABLE
 ///
 /// FPDT "S3PT" S3 Performance Table
 ///
-public const ulong EFI_ACPI_6_5_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
+}
 
 //
 // FPDT Firmware S3 Boot Performance Table
@@ -1647,20 +1755,23 @@ public unsafe struct EFI_ACPI_6_5_GENERIC_TIMER_DESCRIPTION_TABLE
 ///
 /// GTDT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_GENERIC_TIMER_DESCRIPTION_TABLE_REVISION = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GENERIC_TIMER_DESCRIPTION_TABLE_REVISION = 0x03;
 
-///
-/// Timer Flags.  All other bits are reserved and must be 0.
-///
-public const ulong EFI_ACPI_6_5_GTDT_TIMER_FLAG_TIMER_INTERRUPT_MODE = BIT0;
-public const ulong EFI_ACPI_6_5_GTDT_TIMER_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
-public const ulong EFI_ACPI_6_5_GTDT_TIMER_FLAG_ALWAYS_ON_CAPABILITY = BIT2;
+  ///
+  /// Timer Flags.  All other bits are reserved and must be 0.
+  ///
+  public const ulong EFI_ACPI_6_5_GTDT_TIMER_FLAG_TIMER_INTERRUPT_MODE = BIT0;
+  public const ulong EFI_ACPI_6_5_GTDT_TIMER_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
+  public const ulong EFI_ACPI_6_5_GTDT_TIMER_FLAG_ALWAYS_ON_CAPABILITY = BIT2;
 
-///
-/// Platform Timer Type
-///
-public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK = 0;
-public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG = 1;
+  ///
+  /// Platform Timer Type
+  ///
+  public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK = 0;
+  public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG = 1;
+}
 
 ///
 /// GT Block Structure
@@ -1696,14 +1807,17 @@ public unsafe struct EFI_ACPI_6_5_GTDT_GT_BLOCK_TIMER_STRUCTURE
 ///
 /// GT Block Physical Timers and Virtual Timers Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_TIMER_FLAG_TIMER_INTERRUPT_MODE = BIT0;
-public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_TIMER_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_TIMER_FLAG_TIMER_INTERRUPT_MODE = BIT0;
+  public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_TIMER_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
 
-///
-/// Common Flags Flags.  All other bits are reserved and must be 0.
-///
-public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_COMMON_FLAG_SECURE_TIMER = BIT0;
-public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_COMMON_FLAG_ALWAYS_ON_CAPABILITY = BIT1;
+  ///
+  /// Common Flags Flags.  All other bits are reserved and must be 0.
+  ///
+  public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_COMMON_FLAG_SECURE_TIMER = BIT0;
+  public const ulong EFI_ACPI_6_5_GTDT_GT_BLOCK_COMMON_FLAG_ALWAYS_ON_CAPABILITY = BIT1;
+}
 
 ///
 /// Arm Generic Watchdog Structure
@@ -1723,9 +1837,12 @@ public unsafe struct EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_STRUCTURE
 ///
 /// Arm Generic Watchdog Timer Flags.  All other bits are reserved and must be 0.
 ///
-public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_FLAG_TIMER_INTERRUPT_MODE = BIT0;
-public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
-public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_FLAG_SECURE_TIMER = BIT2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_FLAG_TIMER_INTERRUPT_MODE = BIT0;
+  public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
+  public const ulong EFI_ACPI_6_5_GTDT_ARM_GENERIC_WATCHDOG_FLAG_SECURE_TIMER = BIT2;
+}
 
 //
 // NVDIMM Firmware Interface Table definition.
@@ -1740,19 +1857,22 @@ public unsafe struct EFI_ACPI_6_5_NVDIMM_FIRMWARE_INTERFACE_TABLE
 //
 // NFIT Version (as defined in ACPI 6.5 spec.)
 //
-public const ulong EFI_ACPI_6_5_NVDIMM_FIRMWARE_INTERFACE_TABLE_REVISION = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_NVDIMM_FIRMWARE_INTERFACE_TABLE_REVISION = 0x1;
 
-//
-// Definition for NFIT Table Structure Types
-//
-public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_STRUCTURE_TYPE = 0;
-public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_REGION_MAPPING_STRUCTURE_TYPE = 1;
-public const ulong EFI_ACPI_6_5_NFIT_INTERLEAVE_STRUCTURE_TYPE = 2;
-public const ulong EFI_ACPI_6_5_NFIT_SMBIOS_MANAGEMENT_INFORMATION_STRUCTURE_TYPE = 3;
-public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_STRUCTURE_TYPE = 4;
-public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_BLOCK_DATA_WINDOW_REGION_STRUCTURE_TYPE = 5;
-public const ulong EFI_ACPI_6_5_NFIT_FLUSH_HINT_ADDRESS_STRUCTURE_TYPE = 6;
-public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITIES_STRUCTURE_TYPE = 7;
+  //
+  // Definition for NFIT Table Structure Types
+  //
+  public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_STRUCTURE_TYPE = 0;
+  public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_REGION_MAPPING_STRUCTURE_TYPE = 1;
+  public const ulong EFI_ACPI_6_5_NFIT_INTERLEAVE_STRUCTURE_TYPE = 2;
+  public const ulong EFI_ACPI_6_5_NFIT_SMBIOS_MANAGEMENT_INFORMATION_STRUCTURE_TYPE = 3;
+  public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_STRUCTURE_TYPE = 4;
+  public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_BLOCK_DATA_WINDOW_REGION_STRUCTURE_TYPE = 5;
+  public const ulong EFI_ACPI_6_5_NFIT_FLUSH_HINT_ADDRESS_STRUCTURE_TYPE = 6;
+  public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITIES_STRUCTURE_TYPE = 7;
+}
 
 //
 // Definition for NFIT Structure Header
@@ -1767,18 +1887,21 @@ public unsafe struct EFI_ACPI_6_5_NFIT_STRUCTURE_HEADER
 //
 // Definition for System Physical Address Range Structure
 //
-public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_CONTROL_REGION_FOR_MANAGEMENT = BIT0;
-public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_PROXIMITY_DOMAIN_VALID = BIT1;
-public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_SPA_LOCATION_COOKIE_VALID = BIT2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_CONTROL_REGION_FOR_MANAGEMENT = BIT0;
+  public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_PROXIMITY_DOMAIN_VALID = BIT1;
+  public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_SPA_LOCATION_COOKIE_VALID = BIT2;
 
-public const ulong EFI_ACPI_6_5_NFIT_GUID_VOLATILE_MEMORY_REGION = { 0x7305944F, 0xFDDA, 0x44E3, { 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0 } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_REGION = { 0x66F0D379, 0xB4F3, 0x4074, { 0xAC, 0x43, 0x0D, 0x33, 0x18, 0xB7, 0x8C, 0xDB } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_CONTROL_REGION = { 0x92F701F6, 0x13B4, 0x405D, { 0x91, 0x0B, 0x29, 0x93, 0x67, 0xE8, 0x23, 0x4C } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_BLOCK_DATA_WINDOW_REGION = { 0x91AF0530, 0x5D86, 0x470E, { 0xA6, 0xB0, 0x0A, 0x2D, 0xB9, 0x40, 0x82, 0x49 } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE = { 0x77AB535A, 0x45FC, 0x6.5B, { 0x55, 0x60, 0xF7, 0xB2, 0x81, 0xD1, 0xF9, 0x6E } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE = { 0x3D5ABD30, 0x4175, 0x87CE, { 0x6D, 0x64, 0xD2, 0xAD, 0xE5, 0x23, 0xC4, 0xBB } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT = { 0x5CEA02C9, 0x4D07, 0x69D3, { 0x26, 0x9F, 0x44, 0x96, 0xFB, 0xE0, 0x96, 0xF9 } };
-public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT = { 0x08018188, 0x42CD, 0xBB48, { 0x10, 0x0F, 0x53, 0x87, 0xD5, 0x3D, 0xED, 0x3D } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_VOLATILE_MEMORY_REGION = { 0x7305944F, 0xFDDA, 0x44E3, { 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0 } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_REGION = { 0x66F0D379, 0xB4F3, 0x4074, { 0xAC, 0x43, 0x0D, 0x33, 0x18, 0xB7, 0x8C, 0xDB } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_CONTROL_REGION = { 0x92F701F6, 0x13B4, 0x405D, { 0x91, 0x0B, 0x29, 0x93, 0x67, 0xE8, 0x23, 0x4C } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_BLOCK_DATA_WINDOW_REGION = { 0x91AF0530, 0x5D86, 0x470E, { 0xA6, 0xB0, 0x0A, 0x2D, 0xB9, 0x40, 0x82, 0x49 } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE = { 0x77AB535A, 0x45FC, 0x6.5B, { 0x55, 0x60, 0xF7, 0xB2, 0x81, 0xD1, 0xF9, 0x6E } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE = { 0x3D5ABD30, 0x4175, 0x87CE, { 0x6D, 0x64, 0xD2, 0xAD, 0xE5, 0x23, 0xC4, 0xBB } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT = { 0x5CEA02C9, 0x4D07, 0x69D3, { 0x26, 0x9F, 0x44, 0x96, 0xFB, 0xE0, 0x96, 0xF9 } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT = { 0x08018188, 0x42CD, 0xBB48, { 0x10, 0x0F, 0x53, 0x87, 0xD5, 0x3D, 0xED, 0x3D } };
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_STRUCTURE
@@ -1810,13 +1933,16 @@ public unsafe struct EFI_ACPI_6_5_NFIT_DEVICE_HANDLE
   public uint Reserved_28 = 4;
 }
 
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_PREVIOUS_SAVE_FAIL = BIT0;
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_LAST_RESTORE_FAIL = BIT1;
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_PLATFORM_FLUSH_FAIL = BIT2;
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_NOT_ARMED_PRIOR_TO_OSPM_HAND_OFF = BIT3;
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_SMART_HEALTH_EVENTS_PRIOR_OSPM_HAND_OFF = BIT4;
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_FIRMWARE_ENABLED_TO_NOTIFY_OSPM_ON_SMART_HEALTH_EVENTS = BIT5;
-public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_FIRMWARE_NOT_MAP_NVDIMM_TO_SPA = BIT6;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_PREVIOUS_SAVE_FAIL = BIT0;
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_LAST_RESTORE_FAIL = BIT1;
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_PLATFORM_FLUSH_FAIL = BIT2;
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_NOT_ARMED_PRIOR_TO_OSPM_HAND_OFF = BIT3;
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_SMART_HEALTH_EVENTS_PRIOR_OSPM_HAND_OFF = BIT4;
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_FIRMWARE_ENABLED_TO_NOTIFY_OSPM_ON_SMART_HEALTH_EVENTS = BIT5;
+  public const ulong EFI_ACPI_6_5_NFIT_MEMORY_DEVICE_STATE_FLAGS_FIRMWARE_NOT_MAP_NVDIMM_TO_SPA = BIT6;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_NFIT_NVDIMM_REGION_MAPPING_STRUCTURE
@@ -1867,9 +1993,12 @@ public unsafe struct EFI_ACPI_6_5_NFIT_SMBIOS_MANAGEMENT_INFORMATION_STRUCTURE
 //
 // Definition for NVDIMM Control Region Structure
 //
-public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_VALID_FIELDS_MANUFACTURING = BIT0;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_VALID_FIELDS_MANUFACTURING = BIT0;
 
-public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_FLAGS_BLOCK_DATA_WINDOWS_BUFFERED = BIT0;
+  public const ulong EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_FLAGS_BLOCK_DATA_WINDOWS_BUFFERED = BIT0;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_NFIT_NVDIMM_CONTROL_REGION_STRUCTURE
@@ -1943,9 +2072,12 @@ public unsafe struct EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITIES_STRUCTURE
   public fixed byte Reserved_12[4];
 }
 
-public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITY_CPU_CACHE_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT0;
-public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITY_MEMORY_CONTROLLER_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT1;
-public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITY_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_HARDWARE_MIRRORING = BIT2;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITY_CPU_CACHE_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT0;
+  public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITY_MEMORY_CONTROLLER_FLUSH_TO_NVDIMM_DURABILITY_ON_POWER_LOSS = BIT1;
+  public const ulong EFI_ACPI_6_5_NFIT_PLATFORM_CAPABILITY_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_HARDWARE_MIRRORING = BIT2;
+}
 
 ///
 /// Secure DEVices Table (SDEV)
@@ -1959,19 +2091,22 @@ public unsafe struct EFI_ACPI_6_5_SECURE_DEVICES_TABLE_HEADER
 ///
 /// SDEV Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_SECURE_DEVICES_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SECURE_DEVICES_TABLE_REVISION = 0x01;
 
-///
-/// Secure Device types
-///
-public const ulong EFI_ACPI_6_5_SDEV_TYPE_ACPI_NAMESPACE_DEVICE = 0x00;
-public const ulong EFI_ACPI_6_5_SDEV_TYPE_PCIE_ENDPOINT_DEVICE = 0x01;
+  ///
+  /// Secure Device types
+  ///
+  public const ulong EFI_ACPI_6_5_SDEV_TYPE_ACPI_NAMESPACE_DEVICE = 0x00;
+  public const ulong EFI_ACPI_6_5_SDEV_TYPE_PCIE_ENDPOINT_DEVICE = 0x01;
 
-///
-/// Secure Device flags
-///
-public const ulong EFI_ACPI_6_5_SDEV_FLAG_ALLOW_HANDOFF = BIT0;
-public const ulong EFI_ACPI_6_5_SDEV_FLAG_SECURE_ACCESS_COMPONENTS_PRESENT = BIT1;
+  ///
+  /// Secure Device flags
+  ///
+  public const ulong EFI_ACPI_6_5_SDEV_FLAG_ALLOW_HANDOFF = BIT0;
+  public const ulong EFI_ACPI_6_5_SDEV_FLAG_SECURE_ACCESS_COMPONENTS_PRESENT = BIT1;
+}
 
 ///
 /// SDEV Structure Header
@@ -2002,8 +2137,11 @@ public unsafe struct EFI_ACPI_6_5_SDEV_STRUCTURE_ACPI_NAMESPACE_DEVICE
 ///
 /// Secure Access Component Types
 ///
-public const ulong EFI_ACPI_6_5_SDEV_SECURE_ACCESS_COMPONENT_TYPE_IDENTIFICATION = 0x00;
-public const ulong EFI_ACPI_6_5_SDEV_SECURE_ACCESS_COMPONENT_TYPE_MEMORY = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_SDEV_SECURE_ACCESS_COMPONENT_TYPE_IDENTIFICATION = 0x00;
+  public const ulong EFI_ACPI_6_5_SDEV_SECURE_ACCESS_COMPONENT_TYPE_MEMORY = 0x01;
+}
 
 ///
 /// Identification Based Secure Access Component
@@ -2065,7 +2203,10 @@ public unsafe struct EFI_ACPI_6_5_BOOT_ERROR_RECORD_TABLE_HEADER
 ///
 /// BERT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_BOOT_ERROR_RECORD_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_BOOT_ERROR_RECORD_TABLE_REVISION = 0x01;
+}
 
 ///
 /// Boot Error Region Block Status Definition
@@ -2097,16 +2238,19 @@ public unsafe struct EFI_ACPI_6_5_BOOT_ERROR_REGION_STRUCTURE
 //
 // Boot Error Severity types
 //
-public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_RECOVERABLE = 0x00;
-public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_FATAL = 0x01;
-public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_CORRECTED = 0x02;
-public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_NONE = 0x03;
-//
-// The term 'Correctable' is no longer being used as an error severity of the
-// reported error since ACPI Specification Version 5.1 Errata B.
-// The below macro is considered as deprecated and should no longer be used.
-//
-public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_CORRECTABLE = 0x00;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_RECOVERABLE = 0x00;
+  public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_FATAL = 0x01;
+  public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_CORRECTED = 0x02;
+  public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_NONE = 0x03;
+  //
+  // The term 'Correctable' is no longer being used as an error severity of the
+  // reported error since ACPI Specification Version 5.1 Errata B.
+  // The below macro is considered as deprecated and should no longer be used.
+  //
+  public const ulong EFI_ACPI_6_5_ERROR_SEVERITY_CORRECTABLE = 0x00;
+}
 
 ///
 /// Generic Error Data Entry Definition
@@ -2128,7 +2272,10 @@ public unsafe struct EFI_ACPI_6_5_GENERIC_ERROR_DATA_ENTRY_STRUCTURE
 ///
 /// Generic Error Data Entry Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_GENERIC_ERROR_DATA_ENTRY_REVISION = 0x0300;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_GENERIC_ERROR_DATA_ENTRY_REVISION = 0x0300;
+}
 
 ///
 /// HEST - Hardware Error Source Table
@@ -2143,27 +2290,30 @@ public unsafe struct EFI_ACPI_6_5_HARDWARE_ERROR_SOURCE_TABLE_HEADER
 ///
 /// HEST Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_SOURCE_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_SOURCE_TABLE_REVISION = 0x01;
 
-//
-// Error Source structure types.
-//
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_EXCEPTION = 0x00;
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_CORRECTED_MACHINE_CHECK = 0x01;
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_NMI_ERROR = 0x02;
-public const ulong EFI_ACPI_6_5_PCI_EXPRESS_ROOT_PORT_AER = 0x06;
-public const ulong EFI_ACPI_6_5_PCI_EXPRESS_DEVICE_AER = 0x07;
-public const ulong EFI_ACPI_6_5_PCI_EXPRESS_BRIDGE_AER = 0x08;
-public const ulong EFI_ACPI_6_5_GENERIC_HARDWARE_ERROR = 0x09;
-public const ulong EFI_ACPI_6_5_GENERIC_HARDWARE_ERROR_VERSION_2 = 0x0A;
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_DEFERRED_MACHINE_CHECK = 0x0B;
+  //
+  // Error Source structure types.
+  //
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_EXCEPTION = 0x00;
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_CORRECTED_MACHINE_CHECK = 0x01;
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_NMI_ERROR = 0x02;
+  public const ulong EFI_ACPI_6_5_PCI_EXPRESS_ROOT_PORT_AER = 0x06;
+  public const ulong EFI_ACPI_6_5_PCI_EXPRESS_DEVICE_AER = 0x07;
+  public const ulong EFI_ACPI_6_5_PCI_EXPRESS_BRIDGE_AER = 0x08;
+  public const ulong EFI_ACPI_6_5_GENERIC_HARDWARE_ERROR = 0x09;
+  public const ulong EFI_ACPI_6_5_GENERIC_HARDWARE_ERROR_VERSION_2 = 0x0A;
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_DEFERRED_MACHINE_CHECK = 0x0B;
 
-//
-// Error Source structure flags.
-//
-public const ulong EFI_ACPI_6_5_ERROR_SOURCE_FLAG_FIRMWARE_FIRST = (1 << 0);
-public const ulong EFI_ACPI_6_5_ERROR_SOURCE_FLAG_GLOBAL = (1 << 1);
-public const ulong EFI_ACPI_6_5_ERROR_SOURCE_FLAG_GHES_ASSIST = (1 << 2);
+  //
+  // Error Source structure flags.
+  //
+  public const ulong EFI_ACPI_6_5_ERROR_SOURCE_FLAG_FIRMWARE_FIRST = (1 << 0);
+  public const ulong EFI_ACPI_6_5_ERROR_SOURCE_FLAG_GLOBAL = (1 << 1);
+  public const ulong EFI_ACPI_6_5_ERROR_SOURCE_FLAG_GHES_ASSIST = (1 << 2);
+}
 
 ///
 /// IA-32 Architecture Machine Check Exception Structure Definition
@@ -2204,25 +2354,28 @@ public unsafe struct EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_BANK_STR
 ///
 /// IA-32 Architecture Machine Check Bank Structure MCA data format
 ///
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_IA32 = 0x00;
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_INTEL64 = 0x01;
-public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_AMD64 = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_IA32 = 0x00;
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_INTEL64 = 0x01;
+  public const ulong EFI_ACPI_6_5_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_AMD64 = 0x02;
 
-//
-// Hardware Error Notification types. All other values are reserved
-//
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_POLLED = 0x00;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_EXTERNAL_INTERRUPT = 0x01;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_LOCAL_INTERRUPT = 0x02;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_SCI = 0x03;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_NMI = 0x04;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_CMCI = 0x05;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_MCE = 0x06;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_GPIO_SIGNAL = 0x07;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_ARMV8_SEA = 0x08;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_ARMV8_SEI = 0x09;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_GSIV = 0x0A;
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_SOFTWARE_DELEGATED_EXCEPTION = 0x0B;
+  //
+  // Hardware Error Notification types. All other values are reserved
+  //
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_POLLED = 0x00;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_EXTERNAL_INTERRUPT = 0x01;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_LOCAL_INTERRUPT = 0x02;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_SCI = 0x03;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_NMI = 0x04;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_CMCI = 0x05;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_MCE = 0x06;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_GPIO_SIGNAL = 0x07;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_ARMV8_SEA = 0x08;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_ARMV8_SEI = 0x09;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_GSIV = 0x0A;
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_SOFTWARE_DELEGATED_EXCEPTION = 0x0B;
+}
 
 ///
 /// Hardware Error Notification Configuration Write Enable Structure Definition
@@ -2449,14 +2602,17 @@ public unsafe struct EFI_ACPI_6_5_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_HEADER
 ///
 /// HMAT Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_REVISION = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_REVISION = 0x02;
 
-///
-/// HMAT types
-///
-public const ulong EFI_ACPI_6_5_HMAT_TYPE_MEMORY_PROXIMITY_DOMAIN_ATTRIBUTES = 0x00;
-public const ulong EFI_ACPI_6_5_HMAT_TYPE_SYSTEM_LOCALITY_LATENCY_AND_BANDWIDTH_INFO = 0x01;
-public const ulong EFI_ACPI_6_5_HMAT_TYPE_MEMORY_SIDE_CACHE_INFO = 0x02;
+  ///
+  /// HMAT types
+  ///
+  public const ulong EFI_ACPI_6_5_HMAT_TYPE_MEMORY_PROXIMITY_DOMAIN_ATTRIBUTES = 0x00;
+  public const ulong EFI_ACPI_6_5_HMAT_TYPE_SYSTEM_LOCALITY_LATENCY_AND_BANDWIDTH_INFO = 0x01;
+  public const ulong EFI_ACPI_6_5_HMAT_TYPE_MEMORY_SIDE_CACHE_INFO = 0x02;
+}
 
 ///
 /// HMAT Structure Header
@@ -2570,65 +2726,68 @@ public unsafe struct EFI_ACPI_6_5_ERROR_RECORD_SERIALIZATION_TABLE_HEADER
 ///
 /// ERST Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_ERROR_RECORD_SERIALIZATION_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_ERROR_RECORD_SERIALIZATION_TABLE_REVISION = 0x01;
 
-///
-/// ERST Serialization Actions
-///
-public const ulong EFI_ACPI_6_5_ERST_BEGIN_WRITE_OPERATION = 0x00;
-public const ulong EFI_ACPI_6_5_ERST_BEGIN_READ_OPERATION = 0x01;
-public const ulong EFI_ACPI_6_5_ERST_BEGIN_CLEAR_OPERATION = 0x02;
-public const ulong EFI_ACPI_6_5_ERST_END_OPERATION = 0x03;
-public const ulong EFI_ACPI_6_5_ERST_SET_RECORD_OFFSET = 0x04;
-public const ulong EFI_ACPI_6_5_ERST_EXECUTE_OPERATION = 0x05;
-public const ulong EFI_ACPI_6_5_ERST_CHECK_BUSY_STATUS = 0x06;
-public const ulong EFI_ACPI_6_5_ERST_GET_COMMAND_STATUS = 0x07;
-public const ulong EFI_ACPI_6_5_ERST_GET_RECORD_IDENTIFIER = 0x08;
-public const ulong EFI_ACPI_6_5_ERST_SET_RECORD_IDENTIFIER = 0x09;
-public const ulong EFI_ACPI_6_5_ERST_GET_RECORD_COUNT = 0x0A;
-public const ulong EFI_ACPI_6_5_ERST_BEGIN_DUMMY_WRITE_OPERATION = 0x0B;
-public const ulong EFI_ACPI_6_5_ERST_GET_ERROR_LOG_ADDRESS_RANGE = 0x0D;
-public const ulong EFI_ACPI_6_5_ERST_GET_ERROR_LOG_ADDRESS_RANGE_LENGTH = 0x0E;
-public const ulong EFI_ACPI_6_5_ERST_GET_ERROR_LOG_ADDRESS_RANGE_ATTRIBUTES = 0x0F;
-public const ulong EFI_ACPI_6_5_ERST_GET_EXECUTE_OPERATION_TIMINGS = 0x10;
+  ///
+  /// ERST Serialization Actions
+  ///
+  public const ulong EFI_ACPI_6_5_ERST_BEGIN_WRITE_OPERATION = 0x00;
+  public const ulong EFI_ACPI_6_5_ERST_BEGIN_READ_OPERATION = 0x01;
+  public const ulong EFI_ACPI_6_5_ERST_BEGIN_CLEAR_OPERATION = 0x02;
+  public const ulong EFI_ACPI_6_5_ERST_END_OPERATION = 0x03;
+  public const ulong EFI_ACPI_6_5_ERST_SET_RECORD_OFFSET = 0x04;
+  public const ulong EFI_ACPI_6_5_ERST_EXECUTE_OPERATION = 0x05;
+  public const ulong EFI_ACPI_6_5_ERST_CHECK_BUSY_STATUS = 0x06;
+  public const ulong EFI_ACPI_6_5_ERST_GET_COMMAND_STATUS = 0x07;
+  public const ulong EFI_ACPI_6_5_ERST_GET_RECORD_IDENTIFIER = 0x08;
+  public const ulong EFI_ACPI_6_5_ERST_SET_RECORD_IDENTIFIER = 0x09;
+  public const ulong EFI_ACPI_6_5_ERST_GET_RECORD_COUNT = 0x0A;
+  public const ulong EFI_ACPI_6_5_ERST_BEGIN_DUMMY_WRITE_OPERATION = 0x0B;
+  public const ulong EFI_ACPI_6_5_ERST_GET_ERROR_LOG_ADDRESS_RANGE = 0x0D;
+  public const ulong EFI_ACPI_6_5_ERST_GET_ERROR_LOG_ADDRESS_RANGE_LENGTH = 0x0E;
+  public const ulong EFI_ACPI_6_5_ERST_GET_ERROR_LOG_ADDRESS_RANGE_ATTRIBUTES = 0x0F;
+  public const ulong EFI_ACPI_6_5_ERST_GET_EXECUTE_OPERATION_TIMINGS = 0x10;
 
-///
-/// ERST Action Command Status
-///
-public const ulong EFI_ACPI_6_5_ERST_STATUS_SUCCESS = 0x00;
-public const ulong EFI_ACPI_6_5_ERST_STATUS_NOT_ENOUGH_SPACE = 0x01;
-public const ulong EFI_ACPI_6_5_ERST_STATUS_HARDWARE_NOT_AVAILABLE = 0x02;
-public const ulong EFI_ACPI_6_5_ERST_STATUS_FAILED = 0x03;
-public const ulong EFI_ACPI_6_5_ERST_STATUS_RECORD_STORE_EMPTY = 0x04;
-public const ulong EFI_ACPI_6_5_ERST_STATUS_RECORD_NOT_FOUND = 0x05;
+  ///
+  /// ERST Action Command Status
+  ///
+  public const ulong EFI_ACPI_6_5_ERST_STATUS_SUCCESS = 0x00;
+  public const ulong EFI_ACPI_6_5_ERST_STATUS_NOT_ENOUGH_SPACE = 0x01;
+  public const ulong EFI_ACPI_6_5_ERST_STATUS_HARDWARE_NOT_AVAILABLE = 0x02;
+  public const ulong EFI_ACPI_6_5_ERST_STATUS_FAILED = 0x03;
+  public const ulong EFI_ACPI_6_5_ERST_STATUS_RECORD_STORE_EMPTY = 0x04;
+  public const ulong EFI_ACPI_6_5_ERST_STATUS_RECORD_NOT_FOUND = 0x05;
 
-///
-/// ERST Serialization Instructions
-///
-public const ulong EFI_ACPI_6_5_ERST_READ_REGISTER = 0x00;
-public const ulong EFI_ACPI_6_5_ERST_READ_REGISTER_VALUE = 0x01;
-public const ulong EFI_ACPI_6_5_ERST_WRITE_REGISTER = 0x02;
-public const ulong EFI_ACPI_6_5_ERST_WRITE_REGISTER_VALUE = 0x03;
-public const ulong EFI_ACPI_6_5_ERST_NOOP = 0x04;
-public const ulong EFI_ACPI_6_5_ERST_LOAD_VAR1 = 0x05;
-public const ulong EFI_ACPI_6_5_ERST_LOAD_VAR2 = 0x06;
-public const ulong EFI_ACPI_6_5_ERST_STORE_VAR1 = 0x07;
-public const ulong EFI_ACPI_6_5_ERST_ADD = 0x08;
-public const ulong EFI_ACPI_6_5_ERST_SUBTRACT = 0x09;
-public const ulong EFI_ACPI_6_5_ERST_ADD_VALUE = 0x0A;
-public const ulong EFI_ACPI_6_5_ERST_SUBTRACT_VALUE = 0x0B;
-public const ulong EFI_ACPI_6_5_ERST_STALL = 0x0C;
-public const ulong EFI_ACPI_6_5_ERST_STALL_WHILE_TRUE = 0x0D;
-public const ulong EFI_ACPI_6_5_ERST_SKIP_NEXT_INSTRUCTION_IF_TRUE = 0x0E;
-public const ulong EFI_ACPI_6_5_ERST_GOTO = 0x0F;
-public const ulong EFI_ACPI_6_5_ERST_SET_SRC_ADDRESS_BASE = 0x10;
-public const ulong EFI_ACPI_6_5_ERST_SET_DST_ADDRESS_BASE = 0x11;
-public const ulong EFI_ACPI_6_5_ERST_MOVE_DATA = 0x12;
+  ///
+  /// ERST Serialization Instructions
+  ///
+  public const ulong EFI_ACPI_6_5_ERST_READ_REGISTER = 0x00;
+  public const ulong EFI_ACPI_6_5_ERST_READ_REGISTER_VALUE = 0x01;
+  public const ulong EFI_ACPI_6_5_ERST_WRITE_REGISTER = 0x02;
+  public const ulong EFI_ACPI_6_5_ERST_WRITE_REGISTER_VALUE = 0x03;
+  public const ulong EFI_ACPI_6_5_ERST_NOOP = 0x04;
+  public const ulong EFI_ACPI_6_5_ERST_LOAD_VAR1 = 0x05;
+  public const ulong EFI_ACPI_6_5_ERST_LOAD_VAR2 = 0x06;
+  public const ulong EFI_ACPI_6_5_ERST_STORE_VAR1 = 0x07;
+  public const ulong EFI_ACPI_6_5_ERST_ADD = 0x08;
+  public const ulong EFI_ACPI_6_5_ERST_SUBTRACT = 0x09;
+  public const ulong EFI_ACPI_6_5_ERST_ADD_VALUE = 0x0A;
+  public const ulong EFI_ACPI_6_5_ERST_SUBTRACT_VALUE = 0x0B;
+  public const ulong EFI_ACPI_6_5_ERST_STALL = 0x0C;
+  public const ulong EFI_ACPI_6_5_ERST_STALL_WHILE_TRUE = 0x0D;
+  public const ulong EFI_ACPI_6_5_ERST_SKIP_NEXT_INSTRUCTION_IF_TRUE = 0x0E;
+  public const ulong EFI_ACPI_6_5_ERST_GOTO = 0x0F;
+  public const ulong EFI_ACPI_6_5_ERST_SET_SRC_ADDRESS_BASE = 0x10;
+  public const ulong EFI_ACPI_6_5_ERST_SET_DST_ADDRESS_BASE = 0x11;
+  public const ulong EFI_ACPI_6_5_ERST_MOVE_DATA = 0x12;
 
-///
-/// ERST Instruction Flags
-///
-public const ulong EFI_ACPI_6_5_ERST_PRESERVE_REGISTER = 0x01;
+  ///
+  /// ERST Instruction Flags
+  ///
+  public const ulong EFI_ACPI_6_5_ERST_PRESERVE_REGISTER = 0x01;
+}
 
 ///
 /// ERST Serialization Instruction Entry
@@ -2661,57 +2820,60 @@ public unsafe struct EFI_ACPI_6_5_ERROR_INJECTION_TABLE_HEADER
 ///
 /// EINJ Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_ERROR_INJECTION_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_ERROR_INJECTION_TABLE_REVISION = 0x01;
 
-///
-/// EINJ Error Injection Actions
-///
-public const ulong EFI_ACPI_6_5_EINJ_BEGIN_INJECTION_OPERATION = 0x00;
-public const ulong EFI_ACPI_6_5_EINJ_GET_TRIGGER_ERROR_ACTION_TABLE = 0x01;
-public const ulong EFI_ACPI_6_5_EINJ_SET_ERROR_TYPE = 0x02;
-public const ulong EFI_ACPI_6_5_EINJ_GET_ERROR_TYPE = 0x03;
-public const ulong EFI_ACPI_6_5_EINJ_END_OPERATION = 0x04;
-public const ulong EFI_ACPI_6_5_EINJ_EXECUTE_OPERATION = 0x05;
-public const ulong EFI_ACPI_6_5_EINJ_CHECK_BUSY_STATUS = 0x06;
-public const ulong EFI_ACPI_6_5_EINJ_GET_COMMAND_STATUS = 0x07;
-public const ulong EFI_ACPI_6_5_EINJ_TRIGGER_ERROR = 0xFF;
+  ///
+  /// EINJ Error Injection Actions
+  ///
+  public const ulong EFI_ACPI_6_5_EINJ_BEGIN_INJECTION_OPERATION = 0x00;
+  public const ulong EFI_ACPI_6_5_EINJ_GET_TRIGGER_ERROR_ACTION_TABLE = 0x01;
+  public const ulong EFI_ACPI_6_5_EINJ_SET_ERROR_TYPE = 0x02;
+  public const ulong EFI_ACPI_6_5_EINJ_GET_ERROR_TYPE = 0x03;
+  public const ulong EFI_ACPI_6_5_EINJ_END_OPERATION = 0x04;
+  public const ulong EFI_ACPI_6_5_EINJ_EXECUTE_OPERATION = 0x05;
+  public const ulong EFI_ACPI_6_5_EINJ_CHECK_BUSY_STATUS = 0x06;
+  public const ulong EFI_ACPI_6_5_EINJ_GET_COMMAND_STATUS = 0x07;
+  public const ulong EFI_ACPI_6_5_EINJ_TRIGGER_ERROR = 0xFF;
 
-///
-/// EINJ Action Command Status
-///
-public const ulong EFI_ACPI_6_5_EINJ_STATUS_SUCCESS = 0x00;
-public const ulong EFI_ACPI_6_5_EINJ_STATUS_UNKNOWN_FAILURE = 0x01;
-public const ulong EFI_ACPI_6_5_EINJ_STATUS_INVALID_ACCESS = 0x02;
+  ///
+  /// EINJ Action Command Status
+  ///
+  public const ulong EFI_ACPI_6_5_EINJ_STATUS_SUCCESS = 0x00;
+  public const ulong EFI_ACPI_6_5_EINJ_STATUS_UNKNOWN_FAILURE = 0x01;
+  public const ulong EFI_ACPI_6_5_EINJ_STATUS_INVALID_ACCESS = 0x02;
 
-///
-/// EINJ Error Type Definition
-///
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PROCESSOR_CORRECTABLE = (1 << 0);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PROCESSOR_UNCORRECTABLE_NONFATAL = (1 << 1);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PROCESSOR_UNCORRECTABLE_FATAL = (1 << 2);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_MEMORY_CORRECTABLE = (1 << 3);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_MEMORY_UNCORRECTABLE_NONFATAL = (1 << 4);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_MEMORY_UNCORRECTABLE_FATAL = (1 << 5);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PCI_EXPRESS_CORRECTABLE = (1 << 6);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PCI_EXPRESS_UNCORRECTABLE_NONFATAL = (1 << 7);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PCI_EXPRESS_UNCORRECTABLE_FATAL = (1 << 8);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PLATFORM_CORRECTABLE = (1 << 9);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PLATFORM_UNCORRECTABLE_NONFATAL = (1 << 10);
-public const ulong EFI_ACPI_6_5_EINJ_ERROR_PLATFORM_UNCORRECTABLE_FATAL = (1 << 11);
+  ///
+  /// EINJ Error Type Definition
+  ///
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PROCESSOR_CORRECTABLE = (1 << 0);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PROCESSOR_UNCORRECTABLE_NONFATAL = (1 << 1);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PROCESSOR_UNCORRECTABLE_FATAL = (1 << 2);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_MEMORY_CORRECTABLE = (1 << 3);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_MEMORY_UNCORRECTABLE_NONFATAL = (1 << 4);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_MEMORY_UNCORRECTABLE_FATAL = (1 << 5);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PCI_EXPRESS_CORRECTABLE = (1 << 6);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PCI_EXPRESS_UNCORRECTABLE_NONFATAL = (1 << 7);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PCI_EXPRESS_UNCORRECTABLE_FATAL = (1 << 8);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PLATFORM_CORRECTABLE = (1 << 9);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PLATFORM_UNCORRECTABLE_NONFATAL = (1 << 10);
+  public const ulong EFI_ACPI_6_5_EINJ_ERROR_PLATFORM_UNCORRECTABLE_FATAL = (1 << 11);
 
-///
-/// EINJ Injection Instructions
-///
-public const ulong EFI_ACPI_6_5_EINJ_READ_REGISTER = 0x00;
-public const ulong EFI_ACPI_6_5_EINJ_READ_REGISTER_VALUE = 0x01;
-public const ulong EFI_ACPI_6_5_EINJ_WRITE_REGISTER = 0x02;
-public const ulong EFI_ACPI_6_5_EINJ_WRITE_REGISTER_VALUE = 0x03;
-public const ulong EFI_ACPI_6_5_EINJ_NOOP = 0x04;
+  ///
+  /// EINJ Injection Instructions
+  ///
+  public const ulong EFI_ACPI_6_5_EINJ_READ_REGISTER = 0x00;
+  public const ulong EFI_ACPI_6_5_EINJ_READ_REGISTER_VALUE = 0x01;
+  public const ulong EFI_ACPI_6_5_EINJ_WRITE_REGISTER = 0x02;
+  public const ulong EFI_ACPI_6_5_EINJ_WRITE_REGISTER_VALUE = 0x03;
+  public const ulong EFI_ACPI_6_5_EINJ_NOOP = 0x04;
 
-///
-/// EINJ Instruction Flags
-///
-public const ulong EFI_ACPI_6_5_EINJ_PRESERVE_REGISTER = 0x01;
+  ///
+  /// EINJ Instruction Flags
+  ///
+  public const ulong EFI_ACPI_6_5_EINJ_PRESERVE_REGISTER = 0x01;
+}
 
 ///
 /// EINJ Injection Instruction Entry
@@ -2754,22 +2916,25 @@ public unsafe struct EFI_ACPI_6_5_PLATFORM_COMMUNICATION_CHANNEL_TABLE_HEADER
 ///
 /// PCCT Version (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_PLATFORM_COMMUNICATION_CHANNEL_TABLE_REVISION = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PLATFORM_COMMUNICATION_CHANNEL_TABLE_REVISION = 0x02;
 
-///
-/// PCCT Global Flags
-///
-public const ulong EFI_ACPI_6_5_PCCT_FLAGS_PLATFORM_INTERRUPT = BIT0;
+  ///
+  /// PCCT Global Flags
+  ///
+  public const ulong EFI_ACPI_6_5_PCCT_FLAGS_PLATFORM_INTERRUPT = BIT0;
 
-//
-// PCCT Subspace type
-//
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_GENERIC = 0x00;
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_1_HW_REDUCED_COMMUNICATIONS = 0x01;
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_2_HW_REDUCED_COMMUNICATIONS = 0x02;
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_3_EXTENDED_PCC = 0x03;
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_4_EXTENDED_PCC = 0x04;
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_5_HW_REGISTERS_COMMUNICATIONS = 0x05;
+  //
+  // PCCT Subspace type
+  //
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_GENERIC = 0x00;
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_1_HW_REDUCED_COMMUNICATIONS = 0x01;
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_2_HW_REDUCED_COMMUNICATIONS = 0x02;
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_3_EXTENDED_PCC = 0x03;
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_4_EXTENDED_PCC = 0x04;
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_TYPE_5_HW_REGISTERS_COMMUNICATIONS = 0x05;
+}
 
 ///
 /// PCC Subspace Structure Header
@@ -2831,8 +2996,11 @@ public unsafe struct EFI_ACPI_6_5_PCCT_GENERIC_SHARED_MEMORY_REGION_HEADER
   public EFI_ACPI_6_5_PCCT_GENERIC_SHARED_MEMORY_REGION_STATUS Status;
 }
 
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_PLATFORM_INTERRUPT_FLAGS_POLARITY = BIT0;
-public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_PLATFORM_INTERRUPT_FLAGS_MODE = BIT1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_PLATFORM_INTERRUPT_FLAGS_POLARITY = BIT0;
+  public const ulong EFI_ACPI_6_5_PCCT_SUBSPACE_PLATFORM_INTERRUPT_FLAGS_MODE = BIT1;
+}
 
 ///
 /// Type 1 HW-Reduced Communications Subspace Structure
@@ -2917,7 +3085,10 @@ public unsafe struct EFI_ACPI_6_5_PCCT_SUBSPACE_3_EXTENDED_PCC
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PCCT_SUBSPACE_4_EXTENDED_PCC { EFI_ACPI_6_5_PCCT_SUBSPACE_3_EXTENDED_PCC Value; public static implicit operator EFI_ACPI_6_5_PCCT_SUBSPACE_4_EXTENDED_PCC(EFI_ACPI_6_5_PCCT_SUBSPACE_3_EXTENDED_PCC value) => new EFI_ACPI_6_5_PCCT_SUBSPACE_4_EXTENDED_PCC() { Value = value }; public static implicit operator EFI_ACPI_6_5_PCCT_SUBSPACE_3_EXTENDED_PCC(EFI_ACPI_6_5_PCCT_SUBSPACE_4_EXTENDED_PCC value) => value.Value; }
 
-public const ulong EFI_ACPI_6_5_PCCT_MASTER_SLAVE_COMMUNICATIONS_CHANNEL_FLAGS_NOTIFY_ON_COMPLETION = BIT0;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PCCT_MASTER_SLAVE_COMMUNICATIONS_CHANNEL_FLAGS_NOTIFY_ON_COMPLETION = BIT0;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PCCT_EXTENDED_PCC_SHARED_MEMORY_REGION_HEADER
@@ -2975,7 +3146,10 @@ public unsafe struct EFI_ACPI_6_5_PLATFORM_DEBUG_TRIGGER_TABLE_HEADER
 ///
 /// PDTT Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_PLATFORM_DEBUG_TRIGGER_TABLE_REVISION = 0x00;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PLATFORM_DEBUG_TRIGGER_TABLE_REVISION = 0x00;
+}
 
 ///
 /// PDTT Platform Communication Channel Identifier Structure
@@ -2993,8 +3167,11 @@ public unsafe struct EFI_ACPI_6_5_PDTT_PCC_IDENTIFIER
 ///
 /// PCC Commands Codes used by Platform Debug Trigger Table
 ///
-public const ulong EFI_ACPI_6_5_PDTT_PCC_COMMAND_DOORBELL_ONLY = 0x00;
-public const ulong EFI_ACPI_6_5_PDTT_PCC_COMMAND_VENDOR_SPECIFIC = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PDTT_PCC_COMMAND_DOORBELL_ONLY = 0x00;
+  public const ulong EFI_ACPI_6_5_PDTT_PCC_COMMAND_VENDOR_SPECIFIC = 0x01;
+}
 
 ///
 /// PDTT Platform Communication Channel
@@ -3014,13 +3191,16 @@ public unsafe struct EFI_ACPI_6_5_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_HEADER
 ///
 /// PPTT Revision (as defined in ACPI 6.5 spec.)
 ///
-public const ulong EFI_ACPI_6_5_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_REVISION = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_REVISION = 0x03;
 
-///
-/// PPTT types
-///
-public const ulong EFI_ACPI_6_5_PPTT_TYPE_PROCESSOR = 0x00;
-public const ulong EFI_ACPI_6_5_PPTT_TYPE_CACHE = 0x01;
+  ///
+  /// PPTT types
+  ///
+  public const ulong EFI_ACPI_6_5_PPTT_TYPE_PROCESSOR = 0x00;
+  public const ulong EFI_ACPI_6_5_PPTT_TYPE_CACHE = 0x01;
+}
 
 ///
 /// PPTT Structure Header
@@ -3036,16 +3216,19 @@ public unsafe struct EFI_ACPI_6_5_PPTT_STRUCTURE_HEADER
 ///
 /// For PPTT struct processor flags
 ///
-public const ulong EFI_ACPI_6_5_PPTT_PACKAGE_NOT_PHYSICAL = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_PACKAGE_PHYSICAL = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_ID_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_ID_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_IS_NOT_THREAD = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_IS_THREAD = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_NODE_IS_NOT_LEAF = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_NODE_IS_LEAF = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_IMPLEMENTATION_NOT_IDENTICAL = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_IMPLEMENTATION_IDENTICAL = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PPTT_PACKAGE_NOT_PHYSICAL = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_PACKAGE_PHYSICAL = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_ID_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_ID_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_IS_NOT_THREAD = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_PROCESSOR_IS_THREAD = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_NODE_IS_NOT_LEAF = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_NODE_IS_LEAF = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_IMPLEMENTATION_NOT_IDENTICAL = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_IMPLEMENTATION_IDENTICAL = 0x1;
+}
 
 ///
 /// Processor hierarchy node structure flags
@@ -3079,22 +3262,25 @@ public unsafe struct EFI_ACPI_6_5_PPTT_STRUCTURE_PROCESSOR
 ///
 /// For PPTT struct cache flags
 ///
-public const ulong EFI_ACPI_6_5_PPTT_CACHE_SIZE_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_CACHE_SIZE_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_NUMBER_OF_SETS_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_NUMBER_OF_SETS_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_ASSOCIATIVITY_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_ASSOCIATIVITY_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_ALLOCATION_TYPE_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_ALLOCATION_TYPE_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_CACHE_TYPE_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_CACHE_TYPE_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_WRITE_POLICY_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_WRITE_POLICY_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_LINE_SIZE_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_LINE_SIZE_VALID = 0x1;
-public const ulong EFI_ACPI_6_5_PPTT_CACHE_ID_INVALID = 0x0;
-public const ulong EFI_ACPI_6_5_PPTT_CACHE_ID_VALID = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PPTT_CACHE_SIZE_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_CACHE_SIZE_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_NUMBER_OF_SETS_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_NUMBER_OF_SETS_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_ASSOCIATIVITY_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_ASSOCIATIVITY_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_ALLOCATION_TYPE_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_ALLOCATION_TYPE_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_CACHE_TYPE_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_CACHE_TYPE_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_WRITE_POLICY_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_WRITE_POLICY_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_LINE_SIZE_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_LINE_SIZE_VALID = 0x1;
+  public const ulong EFI_ACPI_6_5_PPTT_CACHE_ID_INVALID = 0x0;
+  public const ulong EFI_ACPI_6_5_PPTT_CACHE_ID_VALID = 0x1;
+}
 
 ///
 /// Cache Type Structure flags
@@ -3116,14 +3302,17 @@ public unsafe struct EFI_ACPI_6_5_PPTT_STRUCTURE_CACHE_FLAGS
 ///
 /// For cache attributes
 ///
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_ALLOCATION_READ = 0x0;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_ALLOCATION_WRITE = 0x1;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_ALLOCATION_READ_WRITE = 0x2;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_CACHE_TYPE_DATA = 0x0;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_CACHE_TYPE_INSTRUCTION = 0x1;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_CACHE_TYPE_UNIFIED = 0x2;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_WRITE_POLICY_WRITE_BACK = 0x0;
-public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_WRITE_POLICY_WRITE_THROUGH = 0x1;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_ALLOCATION_READ = 0x0;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_ALLOCATION_WRITE = 0x1;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_ALLOCATION_READ_WRITE = 0x2;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_CACHE_TYPE_DATA = 0x0;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_CACHE_TYPE_INSTRUCTION = 0x1;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_CACHE_TYPE_UNIFIED = 0x2;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_WRITE_POLICY_WRITE_BACK = 0x0;
+  public const ulong EFI_ACPI_6_5_CACHE_ATTRIBUTES_WRITE_POLICY_WRITE_THROUGH = 0x1;
+}
 
 ///
 /// Cache Type Structure cache attributes
@@ -3166,7 +3355,10 @@ public unsafe struct EFI_ACPI_6_5_PLATFORM_HEALTH_ASSESSMENT_TABLE
   // byte                         PlatformTelemetryRecords[];
 }
 
-public const ulong EFI_ACPI_6_5_PLATFORM_HEALTH_ASSESSMENT_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PLATFORM_HEALTH_ASSESSMENT_TABLE_REVISION = 0x01;
+}
 
 ///
 /// PHAT Record Format
@@ -3183,8 +3375,11 @@ public unsafe struct EFI_ACPI_6_5_PHAT_RECORD
 ///
 /// PHAT Record Type Format
 ///
-public const ulong EFI_ACPI_6_5_PHAT_RECORD_TYPE_FIRMWARE_VERSION_DATA_RECORD = 0x0000;
-public const ulong EFI_ACPI_6_5_PHAT_RECORD_TYPE_FIRMWARE_HEALTH_DATA_RECORD = 0x0001;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PHAT_RECORD_TYPE_FIRMWARE_VERSION_DATA_RECORD = 0x0000;
+  public const ulong EFI_ACPI_6_5_PHAT_RECORD_TYPE_FIRMWARE_HEALTH_DATA_RECORD = 0x0001;
+}
 
 ///
 /// PHAT Version Element
@@ -3211,7 +3406,10 @@ public unsafe struct EFI_ACPI_6_5_PHAT_FIRMWARE_VERISON_DATA_RECORD
   // byte   PhatVersionElement[];
 }
 
-public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_VERSION_DATA_RECORD_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_VERSION_DATA_RECORD_REVISION = 0x01;
+}
 
 ///
 /// Firmware Health Data Record Structure
@@ -3230,340 +3428,343 @@ public unsafe struct EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_STRUCTURE
   // byte   DeviceSpecificData[];
 }
 
-public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_REVISION = 0x01;
-
-///
-/// Firmware Health Data Record device health state
-///
-public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_ERRORS_FOUND = 0x00;
-public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_NO_ERRORS_FOUND = 0x01;
-public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_UNKNOWN = 0x02;
-public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_ADVISORY = 0x03;
-
-//
-// Known table signatures
-//
-
-///
-/// "RSD PTR " Root System Description Pointer
-///
-public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
-
-///
-/// "APIC" Multiple APIC Description Table
-///
-public const ulong EFI_ACPI_6_5_MULTIPLE_APIC_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'P', 'I', 'C');
-
-///
-/// "APMT" Arm Performance Monitoring Unit Table
-///
-public const ulong EFI_ACPI_6_5_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_SIGNATURE = SIGNATURE_32('A', 'P', 'M', 'T');
-
-///
-/// "BERT" Boot Error Record Table
-///
-public const ulong EFI_ACPI_6_5_BOOT_ERROR_RECORD_TABLE_SIGNATURE = SIGNATURE_32('B', 'E', 'R', 'T');
-
-///
-/// "BGRT" Boot Graphics Resource Table
-///
-public const ulong EFI_ACPI_6_5_BOOT_GRAPHICS_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('B', 'G', 'R', 'T');
-
-///
-/// "CDIT" Component Distance Information Table
-///
-public const ulong EFI_ACPI_6_5_COMPONENT_DISTANCE_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('C', 'D', 'I', 'T');
-
-///
-/// "CPEP" Corrected Platform Error Polling Table
-///
-public const ulong EFI_ACPI_6_5_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_SIGNATURE = SIGNATURE_32('C', 'P', 'E', 'P');
-
-///
-/// "CRAT" Component Resource Attribute Table
-///
-public const ulong EFI_ACPI_6_5_COMPONENT_RESOURCE_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('C', 'R', 'A', 'T');
-
-///
-/// "DSDT" Differentiated System Description Table
-///
-public const ulong EFI_ACPI_6_5_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('D', 'S', 'D', 'T');
-
-///
-/// "ECDT" Embedded Controller Boot Resources Table
-///
-public const ulong EFI_ACPI_6_5_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_SIGNATURE = SIGNATURE_32('E', 'C', 'D', 'T');
-
-///
-/// "EINJ" Error Injection Table
-///
-public const ulong EFI_ACPI_6_5_ERROR_INJECTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'I', 'N', 'J');
-
-///
-/// "ERST" Error Record Serialization Table
-///
-public const ulong EFI_ACPI_6_5_ERROR_RECORD_SERIALIZATION_TABLE_SIGNATURE = SIGNATURE_32('E', 'R', 'S', 'T');
-
-///
-/// "FACP" Fixed ACPI Description Table
-///
-public const ulong EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'P');
-
-///
-/// "FACS" Firmware ACPI Control Structure
-///
-public const ulong EFI_ACPI_6_5_FIRMWARE_ACPI_CONTROL_STRUCTURE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'S');
-
-///
-/// "FPDT" Firmware Performance Data Table
-///
-public const ulong EFI_ACPI_6_5_FIRMWARE_PERFORMANCE_DATA_TABLE_SIGNATURE = SIGNATURE_32('F', 'P', 'D', 'T');
-
-///
-/// "GTDT" Generic Timer Description Table
-///
-public const ulong EFI_ACPI_6_5_GENERIC_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('G', 'T', 'D', 'T');
-
-///
-/// "HEST" Hardware Error Source Table
-///
-public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('H', 'E', 'S', 'T');
-
-///
-/// "HMAT" Heterogeneous Memory Attribute Table
-///
-public const ulong EFI_ACPI_6_5_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('H', 'M', 'A', 'T');
-
-///
-/// "MPST" Memory Power State Table
-///
-public const ulong EFI_ACPI_6_5_MEMORY_POWER_STATE_TABLE_SIGNATURE = SIGNATURE_32('M', 'P', 'S', 'T');
-
-///
-/// "MSCT" Maximum System Characteristics Table
-///
-public const ulong EFI_ACPI_6_5_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'C', 'T');
-
-///
-/// "NFIT" NVDIMM Firmware Interface Table
-///
-public const ulong EFI_ACPI_6_5_NVDIMM_FIRMWARE_INTERFACE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('N', 'F', 'I', 'T');
-
-///
-/// "PDTT" Platform Debug Trigger Table
-///
-public const ulong EFI_ACPI_6_5_PLATFORM_DEBUG_TRIGGER_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'D', 'T', 'T');
-
-///
-/// "PMTT" Platform Memory Topology Table
-///
-public const ulong EFI_ACPI_6_5_PLATFORM_MEMORY_TOPOLOGY_TABLE_SIGNATURE = SIGNATURE_32('P', 'M', 'T', 'T');
-
-///
-/// "PPTT" Processor Properties Topology Table
-///
-public const ulong EFI_ACPI_6_5_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'P', 'T', 'T');
-
-///
-/// "PSDT" Persistent System Description Table
-///
-public const ulong EFI_ACPI_6_5_PERSISTENT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('P', 'S', 'D', 'T');
-
-///
-/// "RASF" ACPI RAS Feature Table
-///
-public const ulong EFI_ACPI_6_5_ACPI_RAS_FEATURE_TABLE_SIGNATURE = SIGNATURE_32('R', 'A', 'S', 'F');
-
-///
-/// "RSDT" Root System Description Table
-///
-public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('R', 'S', 'D', 'T');
-
-///
-/// "SBST" Smart Battery Specification Table
-///
-public const ulong EFI_ACPI_6_5_SMART_BATTERY_SPECIFICATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'B', 'S', 'T');
-
-///
-/// "SDEV" Secure DEVices Table
-///
-public const ulong EFI_ACPI_6_5_SECURE_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'V');
-
-///
-/// "SLIT" System Locality Information Table
-///
-public const ulong EFI_ACPI_6_5_SYSTEM_LOCALITY_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'T');
-
-///
-/// "SRAT" System Resource Affinity Table
-///
-public const ulong EFI_ACPI_6_5_SYSTEM_RESOURCE_AFFINITY_TABLE_SIGNATURE = SIGNATURE_32('S', 'R', 'A', 'T');
-
-///
-/// "SSDT" Secondary System Description Table
-///
-public const ulong EFI_ACPI_6_5_SECONDARY_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'S', 'D', 'T');
-
-///
-/// "XSDT" Extended System Description Table
-///
-public const ulong EFI_ACPI_6_5_EXTENDED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('X', 'S', 'D', 'T');
-
-///
-/// "BOOT" MS Simple Boot Spec
-///
-public const ulong EFI_ACPI_6_5_SIMPLE_BOOT_FLAG_TABLE_SIGNATURE = SIGNATURE_32('B', 'O', 'O', 'T');
-
-///
-/// "CSRT" MS Core System Resource Table
-///
-public const ulong EFI_ACPI_6_5_CORE_SYSTEM_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('C', 'S', 'R', 'T');
-
-///
-/// "DBG2" MS Debug Port 2 Spec
-///
-public const ulong EFI_ACPI_6_5_DEBUG_PORT_2_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', '2');
-
-///
-/// "DBGP" MS Debug Port Spec
-///
-public const ulong EFI_ACPI_6_5_DEBUG_PORT_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', 'P');
-
-///
-/// "DMAR" DMA Remapping Table
-///
-public const ulong EFI_ACPI_6_5_DMA_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('D', 'M', 'A', 'R');
-
-///
-/// "DRTM" Dynamic Root of Trust for Measurement Table
-///
-public const ulong EFI_ACPI_6_5_DYNAMIC_ROOT_OF_TRUST_FOR_MEASUREMENT_TABLE_SIGNATURE = SIGNATURE_32('D', 'R', 'T', 'M');
-
-///
-/// "ETDT" Event Timer Description Table
-///
-public const ulong EFI_ACPI_6_5_EVENT_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'T', 'D', 'T');
-
-///
-/// "HPET" IA-PC High Precision Event Timer Table
-///
-public const ulong EFI_ACPI_6_5_HIGH_PRECISION_EVENT_TIMER_TABLE_SIGNATURE = SIGNATURE_32('H', 'P', 'E', 'T');
-
-///
-/// "iBFT" iSCSI Boot Firmware Table
-///
-public const ulong EFI_ACPI_6_5_ISCSI_BOOT_FIRMWARE_TABLE_SIGNATURE = SIGNATURE_32('i', 'B', 'F', 'T');
-
-///
-/// "IORT" I/O Remapping Table
-///
-public const ulong EFI_ACPI_6_5_IO_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('I', 'O', 'R', 'T');
-
-///
-/// "IVRS" I/O Virtualization Reporting Structure
-///
-public const ulong EFI_ACPI_6_5_IO_VIRTUALIZATION_REPORTING_STRUCTURE_SIGNATURE = SIGNATURE_32('I', 'V', 'R', 'S');
-
-///
-/// "LPIT" Low Power Idle Table
-///
-public const ulong EFI_ACPI_6_5_LOW_POWER_IDLE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('L', 'P', 'I', 'T');
-
-///
-/// "MCFG" PCI Express Memory Mapped Configuration Space Base Address Description Table
-///
-public const ulong EFI_ACPI_6_5_PCI_EXPRESS_MEMORY_MAPPED_CONFIGURATION_SPACE_BASE_ADDRESS_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'F', 'G');
-
-///
-/// "MCHI" Management Controller Host Interface Table
-///
-public const ulong EFI_ACPI_6_5_MANAGEMENT_CONTROLLER_HOST_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'H', 'I');
-
-///
-/// "MSDM" MS Data Management Table
-///
-public const ulong EFI_ACPI_6_5_DATA_MANAGEMENT_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'D', 'M');
-
-///
-/// "PCCT" Platform Communications Channel Table
-///
-public const ulong EFI_ACPI_6_5_PLATFORM_COMMUNICATIONS_CHANNEL_TABLE_SIGNATURE = SIGNATURE_32('P', 'C', 'C', 'T');
-
-///
-/// "PHAT" Platform Health Assessment Table
-///
-public const ulong EFI_ACPI_6_5_PLATFORM_HEALTH_ASSESSMENT_TABLE_SIGNATURE = SIGNATURE_32('P', 'H', 'A', 'T');
-
-///
-/// "SDEI" Software Delegated Exceptions Interface Table
-///
-public const ulong EFI_ACPI_6_5_SOFTWARE_DELEGATED_EXCEPTIONS_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'I');
-
-///
-/// "SLIC" MS Software Licensing Table Specification
-///
-public const ulong EFI_ACPI_6_5_SOFTWARE_LICENSING_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'C');
-
-///
-/// "SPCR" Serial Port Concole Redirection Table
-///
-public const ulong EFI_ACPI_6_5_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'C', 'R');
-
-///
-/// "SPMI" Server Platform Management Interface Table
-///
-public const ulong EFI_ACPI_6_5_SERVER_PLATFORM_MANAGEMENT_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'M', 'I');
-
-///
-/// "STAO" _STA Override Table
-///
-public const ulong EFI_ACPI_6_5_STA_OVERRIDE_TABLE_SIGNATURE = SIGNATURE_32('S', 'T', 'A', 'O');
-
-///
-/// "TCPA" Trusted Computing Platform Alliance Capabilities Table
-///
-public const ulong EFI_ACPI_6_5_TRUSTED_COMPUTING_PLATFORM_ALLIANCE_CAPABILITIES_TABLE_SIGNATURE = SIGNATURE_32('T', 'C', 'P', 'A');
-
-///
-/// "TPM2" Trusted Computing Platform 1 Table
-///
-public const ulong EFI_ACPI_6_5_TRUSTED_COMPUTING_PLATFORM_2_TABLE_SIGNATURE = SIGNATURE_32('T', 'P', 'M', '2');
-
-///
-/// "UEFI" UEFI ACPI Data Table
-///
-public const ulong EFI_ACPI_6_5_UEFI_ACPI_DATA_TABLE_SIGNATURE = SIGNATURE_32('U', 'E', 'F', 'I');
-
-///
-/// "WAET" Windows ACPI Emulated Devices Table
-///
-public const ulong EFI_ACPI_6_5_WINDOWS_ACPI_EMULATED_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('W', 'A', 'E', 'T');
-
-///
-/// "WDAT" Watchdog Action Table
-///
-public const ulong EFI_ACPI_6_5_WATCHDOG_ACTION_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'A', 'T');
-
-///
-/// "WDRT" Watchdog Resource Table
-///
-public const ulong EFI_ACPI_6_5_WATCHDOG_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'R', 'T');
-
-///
-/// "WPBT" MS Platform Binary Table
-///
-public const ulong EFI_ACPI_6_5_PLATFORM_BINARY_TABLE_SIGNATURE = SIGNATURE_32('W', 'P', 'B', 'T');
-
-///
-/// "WSMT" Windows SMM Security Mitigation Table
-///
-public const ulong EFI_ACPI_6_5_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
-
-///
-/// "XENV" Xen Project Table
-///
-public const ulong EFI_ACPI_6_5_XEN_PROJECT_TABLE_SIGNATURE = SIGNATURE_32('X', 'E', 'N', 'V');
-
-// #pragma pack()
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_REVISION = 0x01;
+
+  ///
+  /// Firmware Health Data Record device health state
+  ///
+  public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_ERRORS_FOUND = 0x00;
+  public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_NO_ERRORS_FOUND = 0x01;
+  public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_UNKNOWN = 0x02;
+  public const ulong EFI_ACPI_6_5_PHAT_FIRMWARE_HEALTH_DATA_RECORD_ADVISORY = 0x03;
+
+  //
+  // Known table signatures
+  //
+
+  ///
+  /// "RSD PTR " Root System Description Pointer
+  ///
+  public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
+
+  ///
+  /// "APIC" Multiple APIC Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_MULTIPLE_APIC_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'P', 'I', 'C');
+
+  ///
+  /// "APMT" Arm Performance Monitoring Unit Table
+  ///
+  public const ulong EFI_ACPI_6_5_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_SIGNATURE = SIGNATURE_32('A', 'P', 'M', 'T');
+
+  ///
+  /// "BERT" Boot Error Record Table
+  ///
+  public const ulong EFI_ACPI_6_5_BOOT_ERROR_RECORD_TABLE_SIGNATURE = SIGNATURE_32('B', 'E', 'R', 'T');
+
+  ///
+  /// "BGRT" Boot Graphics Resource Table
+  ///
+  public const ulong EFI_ACPI_6_5_BOOT_GRAPHICS_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('B', 'G', 'R', 'T');
+
+  ///
+  /// "CDIT" Component Distance Information Table
+  ///
+  public const ulong EFI_ACPI_6_5_COMPONENT_DISTANCE_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('C', 'D', 'I', 'T');
+
+  ///
+  /// "CPEP" Corrected Platform Error Polling Table
+  ///
+  public const ulong EFI_ACPI_6_5_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_SIGNATURE = SIGNATURE_32('C', 'P', 'E', 'P');
+
+  ///
+  /// "CRAT" Component Resource Attribute Table
+  ///
+  public const ulong EFI_ACPI_6_5_COMPONENT_RESOURCE_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('C', 'R', 'A', 'T');
+
+  ///
+  /// "DSDT" Differentiated System Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('D', 'S', 'D', 'T');
+
+  ///
+  /// "ECDT" Embedded Controller Boot Resources Table
+  ///
+  public const ulong EFI_ACPI_6_5_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_SIGNATURE = SIGNATURE_32('E', 'C', 'D', 'T');
+
+  ///
+  /// "EINJ" Error Injection Table
+  ///
+  public const ulong EFI_ACPI_6_5_ERROR_INJECTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'I', 'N', 'J');
+
+  ///
+  /// "ERST" Error Record Serialization Table
+  ///
+  public const ulong EFI_ACPI_6_5_ERROR_RECORD_SERIALIZATION_TABLE_SIGNATURE = SIGNATURE_32('E', 'R', 'S', 'T');
+
+  ///
+  /// "FACP" Fixed ACPI Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'P');
+
+  ///
+  /// "FACS" Firmware ACPI Control Structure
+  ///
+  public const ulong EFI_ACPI_6_5_FIRMWARE_ACPI_CONTROL_STRUCTURE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'S');
+
+  ///
+  /// "FPDT" Firmware Performance Data Table
+  ///
+  public const ulong EFI_ACPI_6_5_FIRMWARE_PERFORMANCE_DATA_TABLE_SIGNATURE = SIGNATURE_32('F', 'P', 'D', 'T');
+
+  ///
+  /// "GTDT" Generic Timer Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_GENERIC_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('G', 'T', 'D', 'T');
+
+  ///
+  /// "HEST" Hardware Error Source Table
+  ///
+  public const ulong EFI_ACPI_6_5_HARDWARE_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('H', 'E', 'S', 'T');
+
+  ///
+  /// "HMAT" Heterogeneous Memory Attribute Table
+  ///
+  public const ulong EFI_ACPI_6_5_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('H', 'M', 'A', 'T');
+
+  ///
+  /// "MPST" Memory Power State Table
+  ///
+  public const ulong EFI_ACPI_6_5_MEMORY_POWER_STATE_TABLE_SIGNATURE = SIGNATURE_32('M', 'P', 'S', 'T');
+
+  ///
+  /// "MSCT" Maximum System Characteristics Table
+  ///
+  public const ulong EFI_ACPI_6_5_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'C', 'T');
+
+  ///
+  /// "NFIT" NVDIMM Firmware Interface Table
+  ///
+  public const ulong EFI_ACPI_6_5_NVDIMM_FIRMWARE_INTERFACE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('N', 'F', 'I', 'T');
+
+  ///
+  /// "PDTT" Platform Debug Trigger Table
+  ///
+  public const ulong EFI_ACPI_6_5_PLATFORM_DEBUG_TRIGGER_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'D', 'T', 'T');
+
+  ///
+  /// "PMTT" Platform Memory Topology Table
+  ///
+  public const ulong EFI_ACPI_6_5_PLATFORM_MEMORY_TOPOLOGY_TABLE_SIGNATURE = SIGNATURE_32('P', 'M', 'T', 'T');
+
+  ///
+  /// "PPTT" Processor Properties Topology Table
+  ///
+  public const ulong EFI_ACPI_6_5_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'P', 'T', 'T');
+
+  ///
+  /// "PSDT" Persistent System Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_PERSISTENT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('P', 'S', 'D', 'T');
+
+  ///
+  /// "RASF" ACPI RAS Feature Table
+  ///
+  public const ulong EFI_ACPI_6_5_ACPI_RAS_FEATURE_TABLE_SIGNATURE = SIGNATURE_32('R', 'A', 'S', 'F');
+
+  ///
+  /// "RSDT" Root System Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('R', 'S', 'D', 'T');
+
+  ///
+  /// "SBST" Smart Battery Specification Table
+  ///
+  public const ulong EFI_ACPI_6_5_SMART_BATTERY_SPECIFICATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'B', 'S', 'T');
+
+  ///
+  /// "SDEV" Secure DEVices Table
+  ///
+  public const ulong EFI_ACPI_6_5_SECURE_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'V');
+
+  ///
+  /// "SLIT" System Locality Information Table
+  ///
+  public const ulong EFI_ACPI_6_5_SYSTEM_LOCALITY_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'T');
+
+  ///
+  /// "SRAT" System Resource Affinity Table
+  ///
+  public const ulong EFI_ACPI_6_5_SYSTEM_RESOURCE_AFFINITY_TABLE_SIGNATURE = SIGNATURE_32('S', 'R', 'A', 'T');
+
+  ///
+  /// "SSDT" Secondary System Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_SECONDARY_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'S', 'D', 'T');
+
+  ///
+  /// "XSDT" Extended System Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_EXTENDED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('X', 'S', 'D', 'T');
+
+  ///
+  /// "BOOT" MS Simple Boot Spec
+  ///
+  public const ulong EFI_ACPI_6_5_SIMPLE_BOOT_FLAG_TABLE_SIGNATURE = SIGNATURE_32('B', 'O', 'O', 'T');
+
+  ///
+  /// "CSRT" MS Core System Resource Table
+  ///
+  public const ulong EFI_ACPI_6_5_CORE_SYSTEM_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('C', 'S', 'R', 'T');
+
+  ///
+  /// "DBG2" MS Debug Port 2 Spec
+  ///
+  public const ulong EFI_ACPI_6_5_DEBUG_PORT_2_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', '2');
+
+  ///
+  /// "DBGP" MS Debug Port Spec
+  ///
+  public const ulong EFI_ACPI_6_5_DEBUG_PORT_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', 'P');
+
+  ///
+  /// "DMAR" DMA Remapping Table
+  ///
+  public const ulong EFI_ACPI_6_5_DMA_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('D', 'M', 'A', 'R');
+
+  ///
+  /// "DRTM" Dynamic Root of Trust for Measurement Table
+  ///
+  public const ulong EFI_ACPI_6_5_DYNAMIC_ROOT_OF_TRUST_FOR_MEASUREMENT_TABLE_SIGNATURE = SIGNATURE_32('D', 'R', 'T', 'M');
+
+  ///
+  /// "ETDT" Event Timer Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_EVENT_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'T', 'D', 'T');
+
+  ///
+  /// "HPET" IA-PC High Precision Event Timer Table
+  ///
+  public const ulong EFI_ACPI_6_5_HIGH_PRECISION_EVENT_TIMER_TABLE_SIGNATURE = SIGNATURE_32('H', 'P', 'E', 'T');
+
+  ///
+  /// "iBFT" iSCSI Boot Firmware Table
+  ///
+  public const ulong EFI_ACPI_6_5_ISCSI_BOOT_FIRMWARE_TABLE_SIGNATURE = SIGNATURE_32('i', 'B', 'F', 'T');
+
+  ///
+  /// "IORT" I/O Remapping Table
+  ///
+  public const ulong EFI_ACPI_6_5_IO_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('I', 'O', 'R', 'T');
+
+  ///
+  /// "IVRS" I/O Virtualization Reporting Structure
+  ///
+  public const ulong EFI_ACPI_6_5_IO_VIRTUALIZATION_REPORTING_STRUCTURE_SIGNATURE = SIGNATURE_32('I', 'V', 'R', 'S');
+
+  ///
+  /// "LPIT" Low Power Idle Table
+  ///
+  public const ulong EFI_ACPI_6_5_LOW_POWER_IDLE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('L', 'P', 'I', 'T');
+
+  ///
+  /// "MCFG" PCI Express Memory Mapped Configuration Space Base Address Description Table
+  ///
+  public const ulong EFI_ACPI_6_5_PCI_EXPRESS_MEMORY_MAPPED_CONFIGURATION_SPACE_BASE_ADDRESS_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'F', 'G');
+
+  ///
+  /// "MCHI" Management Controller Host Interface Table
+  ///
+  public const ulong EFI_ACPI_6_5_MANAGEMENT_CONTROLLER_HOST_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'H', 'I');
+
+  ///
+  /// "MSDM" MS Data Management Table
+  ///
+  public const ulong EFI_ACPI_6_5_DATA_MANAGEMENT_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'D', 'M');
+
+  ///
+  /// "PCCT" Platform Communications Channel Table
+  ///
+  public const ulong EFI_ACPI_6_5_PLATFORM_COMMUNICATIONS_CHANNEL_TABLE_SIGNATURE = SIGNATURE_32('P', 'C', 'C', 'T');
+
+  ///
+  /// "PHAT" Platform Health Assessment Table
+  ///
+  public const ulong EFI_ACPI_6_5_PLATFORM_HEALTH_ASSESSMENT_TABLE_SIGNATURE = SIGNATURE_32('P', 'H', 'A', 'T');
+
+  ///
+  /// "SDEI" Software Delegated Exceptions Interface Table
+  ///
+  public const ulong EFI_ACPI_6_5_SOFTWARE_DELEGATED_EXCEPTIONS_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'I');
+
+  ///
+  /// "SLIC" MS Software Licensing Table Specification
+  ///
+  public const ulong EFI_ACPI_6_5_SOFTWARE_LICENSING_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'C');
+
+  ///
+  /// "SPCR" Serial Port Concole Redirection Table
+  ///
+  public const ulong EFI_ACPI_6_5_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'C', 'R');
+
+  ///
+  /// "SPMI" Server Platform Management Interface Table
+  ///
+  public const ulong EFI_ACPI_6_5_SERVER_PLATFORM_MANAGEMENT_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'M', 'I');
+
+  ///
+  /// "STAO" _STA Override Table
+  ///
+  public const ulong EFI_ACPI_6_5_STA_OVERRIDE_TABLE_SIGNATURE = SIGNATURE_32('S', 'T', 'A', 'O');
+
+  ///
+  /// "TCPA" Trusted Computing Platform Alliance Capabilities Table
+  ///
+  public const ulong EFI_ACPI_6_5_TRUSTED_COMPUTING_PLATFORM_ALLIANCE_CAPABILITIES_TABLE_SIGNATURE = SIGNATURE_32('T', 'C', 'P', 'A');
+
+  ///
+  /// "TPM2" Trusted Computing Platform 1 Table
+  ///
+  public const ulong EFI_ACPI_6_5_TRUSTED_COMPUTING_PLATFORM_2_TABLE_SIGNATURE = SIGNATURE_32('T', 'P', 'M', '2');
+
+  ///
+  /// "UEFI" UEFI ACPI Data Table
+  ///
+  public const ulong EFI_ACPI_6_5_UEFI_ACPI_DATA_TABLE_SIGNATURE = SIGNATURE_32('U', 'E', 'F', 'I');
+
+  ///
+  /// "WAET" Windows ACPI Emulated Devices Table
+  ///
+  public const ulong EFI_ACPI_6_5_WINDOWS_ACPI_EMULATED_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('W', 'A', 'E', 'T');
+
+  ///
+  /// "WDAT" Watchdog Action Table
+  ///
+  public const ulong EFI_ACPI_6_5_WATCHDOG_ACTION_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'A', 'T');
+
+  ///
+  /// "WDRT" Watchdog Resource Table
+  ///
+  public const ulong EFI_ACPI_6_5_WATCHDOG_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'R', 'T');
+
+  ///
+  /// "WPBT" MS Platform Binary Table
+  ///
+  public const ulong EFI_ACPI_6_5_PLATFORM_BINARY_TABLE_SIGNATURE = SIGNATURE_32('W', 'P', 'B', 'T');
+
+  ///
+  /// "WSMT" Windows SMM Security Mitigation Table
+  ///
+  public const ulong EFI_ACPI_6_5_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
+
+  ///
+  /// "XENV" Xen Project Table
+  ///
+  public const ulong EFI_ACPI_6_5_XEN_PROJECT_TABLE_SIGNATURE = SIGNATURE_32('X', 'E', 'N', 'V');
+
+  // #pragma pack()
+}
 
 // #endif

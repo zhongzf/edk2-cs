@@ -18,52 +18,55 @@ namespace Uefi;
 //
 // SD command index
 //
-public const ulong SD_GO_IDLE_STATE = 0;
-public const ulong SD_ALL_SEND_CID = 2;
-public const ulong SD_SET_RELATIVE_ADDR = 3;
-public const ulong SD_SET_DSR = 4;
-public const ulong SDIO_SEND_OP_COND = 5;
-public const ulong SD_SWITCH_FUNC = 6;
-public const ulong SD_SELECT_DESELECT_CARD = 7;
-public const ulong SD_SEND_IF_COND = 8;
-public const ulong SD_SEND_CSD = 9;
-public const ulong SD_SEND_CID = 10;
-public const ulong SD_VOLTAGE_SWITCH = 11;
-public const ulong SD_STOP_TRANSMISSION = 12;
-public const ulong SD_SEND_STATUS = 13;
-public const ulong SD_GO_INACTIVE_STATE = 15;
-public const ulong SD_SET_BLOCKLEN = 16;
-public const ulong SD_READ_SINGLE_BLOCK = 17;
-public const ulong SD_READ_MULTIPLE_BLOCK = 18;
-public const ulong SD_SEND_TUNING_BLOCK = 19;
-public const ulong SD_SPEED_CLASS_CONTROL = 20;
-public const ulong SD_SET_BLOCK_COUNT = 23;
-public const ulong SD_WRITE_SINGLE_BLOCK = 24;
-public const ulong SD_WRITE_MULTIPLE_BLOCK = 25;
-public const ulong SD_PROGRAM_CSD = 27;
-public const ulong SD_SET_WRITE_PROT = 28;
-public const ulong SD_CLR_WRITE_PROT = 29;
-public const ulong SD_SEND_WRITE_PROT = 30;
-public const ulong SD_ERASE_WR_BLK_START = 32;
-public const ulong SD_ERASE_WR_BLK_END = 33;
-public const ulong SD_ERASE = 38;
-public const ulong SD_LOCK_UNLOCK = 42;
-public const ulong SD_READ_EXTR_SINGLE = 48;
-public const ulong SD_WRITE_EXTR_SINGLE = 49;
-public const ulong SDIO_RW_DIRECT = 52;
-public const ulong SDIO_RW_EXTENDED = 53;
-public const ulong SD_APP_CMD = 55;
-public const ulong SD_GEN_CMD = 56;
-public const ulong SD_READ_EXTR_MULTI = 58;
-public const ulong SD_WRITE_EXTR_MULTI = 59;
+public unsafe partial class EFI
+{
+  public const ulong SD_GO_IDLE_STATE = 0;
+  public const ulong SD_ALL_SEND_CID = 2;
+  public const ulong SD_SET_RELATIVE_ADDR = 3;
+  public const ulong SD_SET_DSR = 4;
+  public const ulong SDIO_SEND_OP_COND = 5;
+  public const ulong SD_SWITCH_FUNC = 6;
+  public const ulong SD_SELECT_DESELECT_CARD = 7;
+  public const ulong SD_SEND_IF_COND = 8;
+  public const ulong SD_SEND_CSD = 9;
+  public const ulong SD_SEND_CID = 10;
+  public const ulong SD_VOLTAGE_SWITCH = 11;
+  public const ulong SD_STOP_TRANSMISSION = 12;
+  public const ulong SD_SEND_STATUS = 13;
+  public const ulong SD_GO_INACTIVE_STATE = 15;
+  public const ulong SD_SET_BLOCKLEN = 16;
+  public const ulong SD_READ_SINGLE_BLOCK = 17;
+  public const ulong SD_READ_MULTIPLE_BLOCK = 18;
+  public const ulong SD_SEND_TUNING_BLOCK = 19;
+  public const ulong SD_SPEED_CLASS_CONTROL = 20;
+  public const ulong SD_SET_BLOCK_COUNT = 23;
+  public const ulong SD_WRITE_SINGLE_BLOCK = 24;
+  public const ulong SD_WRITE_MULTIPLE_BLOCK = 25;
+  public const ulong SD_PROGRAM_CSD = 27;
+  public const ulong SD_SET_WRITE_PROT = 28;
+  public const ulong SD_CLR_WRITE_PROT = 29;
+  public const ulong SD_SEND_WRITE_PROT = 30;
+  public const ulong SD_ERASE_WR_BLK_START = 32;
+  public const ulong SD_ERASE_WR_BLK_END = 33;
+  public const ulong SD_ERASE = 38;
+  public const ulong SD_LOCK_UNLOCK = 42;
+  public const ulong SD_READ_EXTR_SINGLE = 48;
+  public const ulong SD_WRITE_EXTR_SINGLE = 49;
+  public const ulong SDIO_RW_DIRECT = 52;
+  public const ulong SDIO_RW_EXTENDED = 53;
+  public const ulong SD_APP_CMD = 55;
+  public const ulong SD_GEN_CMD = 56;
+  public const ulong SD_READ_EXTR_MULTI = 58;
+  public const ulong SD_WRITE_EXTR_MULTI = 59;
 
-public const ulong SD_SET_BUS_WIDTH = 6           // ACMD6;
+  public const ulong SD_SET_BUS_WIDTH = 6           // ACMD6;
 public const ulong SD_STATUS = 13          // ACMD13;
 public const ulong SD_SEND_NUM_WR_BLOCKS = 22          // ACMD22;
 public const ulong SD_SET_WR_BLK_ERASE_COUNT = 23          // ACMD23;
 public const ulong SD_SEND_OP_COND = 41          // ACMD41;
 public const ulong SD_SET_CLR_CARD_DETECT = 42          // ACMD42;
 public const ulong SD_SEND_SCR = 51          // ACMD51;
+}
 
 // #pragma pack(1)
 [StructLayout(LayoutKind.Sequential)]

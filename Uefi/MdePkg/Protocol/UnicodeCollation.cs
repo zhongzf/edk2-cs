@@ -14,18 +14,21 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __UNICODE_COLLATION_H__
 // #define __UNICODE_COLLATION_H__
 
-public static EFI_GUID EFI_UNICODE_COLLATION_PROTOCOL_GUID = new GUID(
-    0x1d85cd7f, 0xf43d, 0x11d2, new byte[] { 0x9a, 0xc, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_UNICODE_COLLATION_PROTOCOL_GUID = new GUID(
+      0x1d85cd7f, 0xf43d, 0x11d2, new byte[] { 0x9a, 0xc, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-public static EFI_GUID EFI_UNICODE_COLLATION_PROTOCOL2_GUID = new GUID(
-    0xa4c751fc, 0x23ae, 0x4c3e, new byte[] { 0x92, 0xe9, 0x49, 0x64, 0xcf, 0x63, 0xf3, 0x49 });
+  public static EFI_GUID EFI_UNICODE_COLLATION_PROTOCOL2_GUID = new GUID(
+      0xa4c751fc, 0x23ae, 0x4c3e, new byte[] { 0x92, 0xe9, 0x49, 0x64, 0xcf, 0x63, 0xf3, 0x49 });
 
-// typedef struct _EFI_UNICODE_COLLATION_PROTOCOL EFI_UNICODE_COLLATION_PROTOCOL;
+  // typedef struct _EFI_UNICODE_COLLATION_PROTOCOL EFI_UNICODE_COLLATION_PROTOCOL;
 
-///
-/// Protocol GUID name defined in EFI1.1.
-///
-public const ulong UNICODE_COLLATION_PROTOCOL = EFI_UNICODE_COLLATION_PROTOCOL_GUID;
+  ///
+  /// Protocol GUID name defined in EFI1.1.
+  ///
+  public const ulong UNICODE_COLLATION_PROTOCOL = EFI_UNICODE_COLLATION_PROTOCOL_GUID;
+}
 
 ///
 /// Protocol defined in EFI1.1.
@@ -36,125 +39,15 @@ public unsafe struct UNICODE_COLLATION_INTERFACE { EFI_UNICODE_COLLATION_PROTOCO
 ///
 /// Protocol data structures and defines
 ///
-public const ulong EFI_UNICODE_BYTE_ORDER_MARK = (char)(0xfeff);
-
-//
-// Protocol member functions
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_UNICODE_BYTE_ORDER_MARK = (char)(0xfeff);
+
+  //
+  // Protocol member functions
+  //
+
+}
 
 ///
 /// The EFI_UNICODE_COLLATION_PROTOCOL is used to perform case-insensitive

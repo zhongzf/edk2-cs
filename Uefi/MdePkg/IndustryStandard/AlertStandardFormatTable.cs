@@ -147,13 +147,16 @@ public unsafe struct EFI_ACPI_ASF_DESCRIPTION_HEADER { EFI_ACPI_DESCRIPTION_HEAD
 ///
 /// The revision stored in ASF! DESCRIPTION TABLE as BCD value
 ///
-public const ulong EFI_ACPI_2_0_ASF_DESCRIPTION_TABLE_REVISION = 0x20;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_2_0_ASF_DESCRIPTION_TABLE_REVISION = 0x20;
 
-///
-/// "ASF!" ASF Description Table Signature
-///
-public const ulong EFI_ACPI_ASF_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'S', 'F', '!');
+  ///
+  /// "ASF!" ASF Description Table Signature
+  ///
+  public const ulong EFI_ACPI_ASF_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'S', 'F', '!');
 
-// #pragma pack ()
+  // #pragma pack ()
+}
 
 // #endif // _ALERT_STANDARD_FORMAT_TABLE_H

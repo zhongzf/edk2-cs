@@ -19,11 +19,14 @@ namespace Uefi;
 // #ifndef _PCI22_H_
 // #define _PCI22_H_
 
-public const ulong PCI_MAX_BUS = 255;
-public const ulong PCI_MAX_DEVICE = 31;
-public const ulong PCI_MAX_FUNC = 7;
+public unsafe partial class EFI
+{
+  public const ulong PCI_MAX_BUS = 255;
+  public const ulong PCI_MAX_DEVICE = 31;
+  public const ulong PCI_MAX_FUNC = 7;
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 ///
 /// Common header region in PCI Configuration Space
@@ -156,437 +159,440 @@ public unsafe struct PCI_CARDBUS_CONTROL_REGISTER
 //
 // Definitions of PCI class bytes and manipulation macros.
 //
-public const ulong PCI_CLASS_OLD = 0x00;
-public const ulong PCI_CLASS_OLD_OTHER = 0x00;
-public const ulong PCI_CLASS_OLD_VGA = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong PCI_CLASS_OLD = 0x00;
+  public const ulong PCI_CLASS_OLD_OTHER = 0x00;
+  public const ulong PCI_CLASS_OLD_VGA = 0x01;
 
-public const ulong PCI_CLASS_MASS_STORAGE = 0x01;
-public const ulong PCI_CLASS_MASS_STORAGE_SCSI = 0x00;
-public const ulong PCI_CLASS_MASS_STORAGE_IDE = 0x01;
-public const ulong PCI_CLASS_MASS_STORAGE_FLOPPY = 0x02;
-public const ulong PCI_CLASS_MASS_STORAGE_IPI = 0x03;
-public const ulong PCI_CLASS_MASS_STORAGE_RAID = 0x04;
-public const ulong PCI_CLASS_MASS_STORAGE_OTHER = 0x80;
+  public const ulong PCI_CLASS_MASS_STORAGE = 0x01;
+  public const ulong PCI_CLASS_MASS_STORAGE_SCSI = 0x00;
+  public const ulong PCI_CLASS_MASS_STORAGE_IDE = 0x01;
+  public const ulong PCI_CLASS_MASS_STORAGE_FLOPPY = 0x02;
+  public const ulong PCI_CLASS_MASS_STORAGE_IPI = 0x03;
+  public const ulong PCI_CLASS_MASS_STORAGE_RAID = 0x04;
+  public const ulong PCI_CLASS_MASS_STORAGE_OTHER = 0x80;
 
-public const ulong PCI_CLASS_NETWORK = 0x02;
-public const ulong PCI_CLASS_NETWORK_ETHERNET = 0x00;
-public const ulong PCI_CLASS_NETWORK_TOKENRING = 0x01;
-public const ulong PCI_CLASS_NETWORK_FDDI = 0x02;
-public const ulong PCI_CLASS_NETWORK_ATM = 0x03;
-public const ulong PCI_CLASS_NETWORK_ISDN = 0x04;
-public const ulong PCI_CLASS_NETWORK_OTHER = 0x80;
+  public const ulong PCI_CLASS_NETWORK = 0x02;
+  public const ulong PCI_CLASS_NETWORK_ETHERNET = 0x00;
+  public const ulong PCI_CLASS_NETWORK_TOKENRING = 0x01;
+  public const ulong PCI_CLASS_NETWORK_FDDI = 0x02;
+  public const ulong PCI_CLASS_NETWORK_ATM = 0x03;
+  public const ulong PCI_CLASS_NETWORK_ISDN = 0x04;
+  public const ulong PCI_CLASS_NETWORK_OTHER = 0x80;
 
-public const ulong PCI_CLASS_DISPLAY = 0x03;
-public const ulong PCI_CLASS_DISPLAY_VGA = 0x00;
-public const ulong PCI_IF_VGA_VGA = 0x00;
-public const ulong PCI_IF_VGA_8514 = 0x01;
-public const ulong PCI_CLASS_DISPLAY_XGA = 0x01;
-public const ulong PCI_CLASS_DISPLAY_3D = 0x02;
-public const ulong PCI_CLASS_DISPLAY_OTHER = 0x80;
+  public const ulong PCI_CLASS_DISPLAY = 0x03;
+  public const ulong PCI_CLASS_DISPLAY_VGA = 0x00;
+  public const ulong PCI_IF_VGA_VGA = 0x00;
+  public const ulong PCI_IF_VGA_8514 = 0x01;
+  public const ulong PCI_CLASS_DISPLAY_XGA = 0x01;
+  public const ulong PCI_CLASS_DISPLAY_3D = 0x02;
+  public const ulong PCI_CLASS_DISPLAY_OTHER = 0x80;
 
-public const ulong PCI_CLASS_MEDIA = 0x04;
-public const ulong PCI_CLASS_MEDIA_VIDEO = 0x00;
-public const ulong PCI_CLASS_MEDIA_AUDIO = 0x01;
-public const ulong PCI_CLASS_MEDIA_TELEPHONE = 0x02;
-public const ulong PCI_CLASS_MEDIA_OTHER = 0x80;
+  public const ulong PCI_CLASS_MEDIA = 0x04;
+  public const ulong PCI_CLASS_MEDIA_VIDEO = 0x00;
+  public const ulong PCI_CLASS_MEDIA_AUDIO = 0x01;
+  public const ulong PCI_CLASS_MEDIA_TELEPHONE = 0x02;
+  public const ulong PCI_CLASS_MEDIA_OTHER = 0x80;
 
-public const ulong PCI_CLASS_MEMORY_CONTROLLER = 0x05;
-public const ulong PCI_CLASS_MEMORY_RAM = 0x00;
-public const ulong PCI_CLASS_MEMORY_FLASH = 0x01;
-public const ulong PCI_CLASS_MEMORY_OTHER = 0x80;
+  public const ulong PCI_CLASS_MEMORY_CONTROLLER = 0x05;
+  public const ulong PCI_CLASS_MEMORY_RAM = 0x00;
+  public const ulong PCI_CLASS_MEMORY_FLASH = 0x01;
+  public const ulong PCI_CLASS_MEMORY_OTHER = 0x80;
 
-public const ulong PCI_CLASS_BRIDGE = 0x06;
-public const ulong PCI_CLASS_BRIDGE_HOST = 0x00;
-public const ulong PCI_CLASS_BRIDGE_ISA = 0x01;
-public const ulong PCI_CLASS_BRIDGE_EISA = 0x02;
-public const ulong PCI_CLASS_BRIDGE_MCA = 0x03;
-public const ulong PCI_CLASS_BRIDGE_P2P = 0x04;
-public const ulong PCI_IF_BRIDGE_P2P = 0x00;
-public const ulong PCI_IF_BRIDGE_P2P_SUBTRACTIVE = 0x01;
-public const ulong PCI_CLASS_BRIDGE_PCMCIA = 0x05;
-public const ulong PCI_CLASS_BRIDGE_NUBUS = 0x06;
-public const ulong PCI_CLASS_BRIDGE_CARDBUS = 0x07;
-public const ulong PCI_CLASS_BRIDGE_RACEWAY = 0x08;
-public const ulong PCI_CLASS_BRIDGE_OTHER = 0x80;
-public const ulong PCI_CLASS_BRIDGE_ISA_PDECODE = 0x80;
+  public const ulong PCI_CLASS_BRIDGE = 0x06;
+  public const ulong PCI_CLASS_BRIDGE_HOST = 0x00;
+  public const ulong PCI_CLASS_BRIDGE_ISA = 0x01;
+  public const ulong PCI_CLASS_BRIDGE_EISA = 0x02;
+  public const ulong PCI_CLASS_BRIDGE_MCA = 0x03;
+  public const ulong PCI_CLASS_BRIDGE_P2P = 0x04;
+  public const ulong PCI_IF_BRIDGE_P2P = 0x00;
+  public const ulong PCI_IF_BRIDGE_P2P_SUBTRACTIVE = 0x01;
+  public const ulong PCI_CLASS_BRIDGE_PCMCIA = 0x05;
+  public const ulong PCI_CLASS_BRIDGE_NUBUS = 0x06;
+  public const ulong PCI_CLASS_BRIDGE_CARDBUS = 0x07;
+  public const ulong PCI_CLASS_BRIDGE_RACEWAY = 0x08;
+  public const ulong PCI_CLASS_BRIDGE_OTHER = 0x80;
+  public const ulong PCI_CLASS_BRIDGE_ISA_PDECODE = 0x80;
 
-public const ulong PCI_CLASS_SCC = 0x07///< Simple communications controllers;
+  public const ulong PCI_CLASS_SCC = 0x07///< Simple communications controllers;
 public const ulong PCI_SUBCLASS_SERIAL = 0x00;
-public const ulong PCI_IF_GENERIC_XT = 0x00;
-public const ulong PCI_IF_16450 = 0x01;
-public const ulong PCI_IF_16550 = 0x02;
-public const ulong PCI_IF_16650 = 0x03;
-public const ulong PCI_IF_16750 = 0x04;
-public const ulong PCI_IF_16850 = 0x05;
-public const ulong PCI_IF_16950 = 0x06;
-public const ulong PCI_SUBCLASS_PARALLEL = 0x01;
-public const ulong PCI_IF_PARALLEL_PORT = 0x00;
-public const ulong PCI_IF_BI_DIR_PARALLEL_PORT = 0x01;
-public const ulong PCI_IF_ECP_PARALLEL_PORT = 0x02;
-public const ulong PCI_IF_1284_CONTROLLER = 0x03;
-public const ulong PCI_IF_1284_DEVICE = 0xFE;
-public const ulong PCI_SUBCLASS_MULTIPORT_SERIAL = 0x02;
-public const ulong PCI_SUBCLASS_MODEM = 0x03;
-public const ulong PCI_IF_GENERIC_MODEM = 0x00;
-public const ulong PCI_IF_16450_MODEM = 0x01;
-public const ulong PCI_IF_16550_MODEM = 0x02;
-public const ulong PCI_IF_16650_MODEM = 0x03;
-public const ulong PCI_IF_16750_MODEM = 0x04;
-public const ulong PCI_SUBCLASS_SCC_OTHER = 0x80;
+  public const ulong PCI_IF_GENERIC_XT = 0x00;
+  public const ulong PCI_IF_16450 = 0x01;
+  public const ulong PCI_IF_16550 = 0x02;
+  public const ulong PCI_IF_16650 = 0x03;
+  public const ulong PCI_IF_16750 = 0x04;
+  public const ulong PCI_IF_16850 = 0x05;
+  public const ulong PCI_IF_16950 = 0x06;
+  public const ulong PCI_SUBCLASS_PARALLEL = 0x01;
+  public const ulong PCI_IF_PARALLEL_PORT = 0x00;
+  public const ulong PCI_IF_BI_DIR_PARALLEL_PORT = 0x01;
+  public const ulong PCI_IF_ECP_PARALLEL_PORT = 0x02;
+  public const ulong PCI_IF_1284_CONTROLLER = 0x03;
+  public const ulong PCI_IF_1284_DEVICE = 0xFE;
+  public const ulong PCI_SUBCLASS_MULTIPORT_SERIAL = 0x02;
+  public const ulong PCI_SUBCLASS_MODEM = 0x03;
+  public const ulong PCI_IF_GENERIC_MODEM = 0x00;
+  public const ulong PCI_IF_16450_MODEM = 0x01;
+  public const ulong PCI_IF_16550_MODEM = 0x02;
+  public const ulong PCI_IF_16650_MODEM = 0x03;
+  public const ulong PCI_IF_16750_MODEM = 0x04;
+  public const ulong PCI_SUBCLASS_SCC_OTHER = 0x80;
 
-public const ulong PCI_CLASS_SYSTEM_PERIPHERAL = 0x08;
-public const ulong PCI_SUBCLASS_PIC = 0x00;
-public const ulong PCI_IF_8259_PIC = 0x00;
-public const ulong PCI_IF_ISA_PIC = 0x01;
-public const ulong PCI_IF_EISA_PIC = 0x02;
-public const ulong PCI_IF_APIC_CONTROLLER = 0x10   ///< I/O APIC interrupt controller , 32 byte none-prefetchable memory.;
+  public const ulong PCI_CLASS_SYSTEM_PERIPHERAL = 0x08;
+  public const ulong PCI_SUBCLASS_PIC = 0x00;
+  public const ulong PCI_IF_8259_PIC = 0x00;
+  public const ulong PCI_IF_ISA_PIC = 0x01;
+  public const ulong PCI_IF_EISA_PIC = 0x02;
+  public const ulong PCI_IF_APIC_CONTROLLER = 0x10   ///< I/O APIC interrupt controller , 32 byte none-prefetchable memory.;
 public const ulong PCI_IF_APIC_CONTROLLER2 = 0x20;
-public const ulong PCI_SUBCLASS_DMA = 0x01;
-public const ulong PCI_IF_8237_DMA = 0x00;
-public const ulong PCI_IF_ISA_DMA = 0x01;
-public const ulong PCI_IF_EISA_DMA = 0x02;
-public const ulong PCI_SUBCLASS_TIMER = 0x02;
-public const ulong PCI_IF_8254_TIMER = 0x00;
-public const ulong PCI_IF_ISA_TIMER = 0x01;
-public const ulong PCI_IF_EISA_TIMER = 0x02;
-public const ulong PCI_SUBCLASS_RTC = 0x03;
-public const ulong PCI_IF_GENERIC_RTC = 0x00;
-public const ulong PCI_IF_ISA_RTC = 0x01;
-public const ulong PCI_SUBCLASS_PNP_CONTROLLER = 0x04   ///< HotPlug Controller;
+  public const ulong PCI_SUBCLASS_DMA = 0x01;
+  public const ulong PCI_IF_8237_DMA = 0x00;
+  public const ulong PCI_IF_ISA_DMA = 0x01;
+  public const ulong PCI_IF_EISA_DMA = 0x02;
+  public const ulong PCI_SUBCLASS_TIMER = 0x02;
+  public const ulong PCI_IF_8254_TIMER = 0x00;
+  public const ulong PCI_IF_ISA_TIMER = 0x01;
+  public const ulong PCI_IF_EISA_TIMER = 0x02;
+  public const ulong PCI_SUBCLASS_RTC = 0x03;
+  public const ulong PCI_IF_GENERIC_RTC = 0x00;
+  public const ulong PCI_IF_ISA_RTC = 0x01;
+  public const ulong PCI_SUBCLASS_PNP_CONTROLLER = 0x04   ///< HotPlug Controller;
 public const ulong PCI_SUBCLASS_PERIPHERAL_OTHER = 0x80;
 
-public const ulong PCI_CLASS_INPUT_DEVICE = 0x09;
-public const ulong PCI_SUBCLASS_KEYBOARD = 0x00;
-public const ulong PCI_SUBCLASS_PEN = 0x01;
-public const ulong PCI_SUBCLASS_MOUSE_CONTROLLER = 0x02;
-public const ulong PCI_SUBCLASS_SCAN_CONTROLLER = 0x03;
-public const ulong PCI_SUBCLASS_GAMEPORT = 0x04;
-public const ulong PCI_IF_GAMEPORT = 0x00;
-public const ulong PCI_IF_GAMEPORT1 = 0x10;
-public const ulong PCI_SUBCLASS_INPUT_OTHER = 0x80;
+  public const ulong PCI_CLASS_INPUT_DEVICE = 0x09;
+  public const ulong PCI_SUBCLASS_KEYBOARD = 0x00;
+  public const ulong PCI_SUBCLASS_PEN = 0x01;
+  public const ulong PCI_SUBCLASS_MOUSE_CONTROLLER = 0x02;
+  public const ulong PCI_SUBCLASS_SCAN_CONTROLLER = 0x03;
+  public const ulong PCI_SUBCLASS_GAMEPORT = 0x04;
+  public const ulong PCI_IF_GAMEPORT = 0x00;
+  public const ulong PCI_IF_GAMEPORT1 = 0x10;
+  public const ulong PCI_SUBCLASS_INPUT_OTHER = 0x80;
 
-public const ulong PCI_CLASS_DOCKING_STATION = 0x0A;
-public const ulong PCI_SUBCLASS_DOCKING_GENERIC = 0x00;
-public const ulong PCI_SUBCLASS_DOCKING_OTHER = 0x80;
+  public const ulong PCI_CLASS_DOCKING_STATION = 0x0A;
+  public const ulong PCI_SUBCLASS_DOCKING_GENERIC = 0x00;
+  public const ulong PCI_SUBCLASS_DOCKING_OTHER = 0x80;
 
-public const ulong PCI_CLASS_PROCESSOR = 0x0B;
-public const ulong PCI_SUBCLASS_PROC_386 = 0x00;
-public const ulong PCI_SUBCLASS_PROC_486 = 0x01;
-public const ulong PCI_SUBCLASS_PROC_PENTIUM = 0x02;
-public const ulong PCI_SUBCLASS_PROC_ALPHA = 0x10;
-public const ulong PCI_SUBCLASS_PROC_POWERPC = 0x20;
-public const ulong PCI_SUBCLASS_PROC_MIPS = 0x30;
-public const ulong PCI_SUBCLASS_PROC_CO_PORC = 0x40    ///< Co-Processor;
+  public const ulong PCI_CLASS_PROCESSOR = 0x0B;
+  public const ulong PCI_SUBCLASS_PROC_386 = 0x00;
+  public const ulong PCI_SUBCLASS_PROC_486 = 0x01;
+  public const ulong PCI_SUBCLASS_PROC_PENTIUM = 0x02;
+  public const ulong PCI_SUBCLASS_PROC_ALPHA = 0x10;
+  public const ulong PCI_SUBCLASS_PROC_POWERPC = 0x20;
+  public const ulong PCI_SUBCLASS_PROC_MIPS = 0x30;
+  public const ulong PCI_SUBCLASS_PROC_CO_PORC = 0x40    ///< Co-Processor;
 
 public const ulong PCI_CLASS_SERIAL = 0x0C;
-public const ulong PCI_CLASS_SERIAL_FIREWIRE = 0x00;
-public const ulong PCI_IF_1394 = 0x00;
-public const ulong PCI_IF_1394_OPEN_HCI = 0x10;
-public const ulong PCI_CLASS_SERIAL_ACCESS_BUS = 0x01;
-public const ulong PCI_CLASS_SERIAL_SSA = 0x02;
-public const ulong PCI_CLASS_SERIAL_USB = 0x03;
-public const ulong PCI_IF_UHCI = 0x00;
-public const ulong PCI_IF_OHCI = 0x10;
-public const ulong PCI_IF_USB_OTHER = 0x80;
-public const ulong PCI_IF_USB_DEVICE = 0xFE;
-public const ulong PCI_CLASS_SERIAL_FIBRECHANNEL = 0x04;
-public const ulong PCI_CLASS_SERIAL_SMB = 0x05;
+  public const ulong PCI_CLASS_SERIAL_FIREWIRE = 0x00;
+  public const ulong PCI_IF_1394 = 0x00;
+  public const ulong PCI_IF_1394_OPEN_HCI = 0x10;
+  public const ulong PCI_CLASS_SERIAL_ACCESS_BUS = 0x01;
+  public const ulong PCI_CLASS_SERIAL_SSA = 0x02;
+  public const ulong PCI_CLASS_SERIAL_USB = 0x03;
+  public const ulong PCI_IF_UHCI = 0x00;
+  public const ulong PCI_IF_OHCI = 0x10;
+  public const ulong PCI_IF_USB_OTHER = 0x80;
+  public const ulong PCI_IF_USB_DEVICE = 0xFE;
+  public const ulong PCI_CLASS_SERIAL_FIBRECHANNEL = 0x04;
+  public const ulong PCI_CLASS_SERIAL_SMB = 0x05;
 
-public const ulong PCI_CLASS_WIRELESS = 0x0D;
-public const ulong PCI_SUBCLASS_IRDA = 0x00;
-public const ulong PCI_SUBCLASS_IR = 0x01;
-public const ulong PCI_SUBCLASS_RF = 0x10;
-public const ulong PCI_SUBCLASS_WIRELESS_OTHER = 0x80;
+  public const ulong PCI_CLASS_WIRELESS = 0x0D;
+  public const ulong PCI_SUBCLASS_IRDA = 0x00;
+  public const ulong PCI_SUBCLASS_IR = 0x01;
+  public const ulong PCI_SUBCLASS_RF = 0x10;
+  public const ulong PCI_SUBCLASS_WIRELESS_OTHER = 0x80;
 
-public const ulong PCI_CLASS_INTELLIGENT_IO = 0x0E;
+  public const ulong PCI_CLASS_INTELLIGENT_IO = 0x0E;
 
-public const ulong PCI_CLASS_SATELLITE = 0x0F;
-public const ulong PCI_SUBCLASS_TV = 0x01;
-public const ulong PCI_SUBCLASS_AUDIO = 0x02;
-public const ulong PCI_SUBCLASS_VOICE = 0x03;
-public const ulong PCI_SUBCLASS_DATA = 0x04;
+  public const ulong PCI_CLASS_SATELLITE = 0x0F;
+  public const ulong PCI_SUBCLASS_TV = 0x01;
+  public const ulong PCI_SUBCLASS_AUDIO = 0x02;
+  public const ulong PCI_SUBCLASS_VOICE = 0x03;
+  public const ulong PCI_SUBCLASS_DATA = 0x04;
 
-public const ulong PCI_SECURITY_CONTROLLER = 0x10  ///< Encryption and decryption controller;
+  public const ulong PCI_SECURITY_CONTROLLER = 0x10  ///< Encryption and decryption controller;
 public const ulong PCI_SUBCLASS_NET_COMPUT = 0x00;
-public const ulong PCI_SUBCLASS_ENTERTAINMENT = 0x10;
-public const ulong PCI_SUBCLASS_SECURITY_OTHER = 0x80;
+  public const ulong PCI_SUBCLASS_ENTERTAINMENT = 0x10;
+  public const ulong PCI_SUBCLASS_SECURITY_OTHER = 0x80;
 
-public const ulong PCI_CLASS_DPIO = 0x11;
-public const ulong PCI_SUBCLASS_DPIO = 0x00;
-public const ulong PCI_SUBCLASS_DPIO_OTHER = 0x80;
+  public const ulong PCI_CLASS_DPIO = 0x11;
+  public const ulong PCI_SUBCLASS_DPIO = 0x00;
+  public const ulong PCI_SUBCLASS_DPIO_OTHER = 0x80;
 
-/**
-  Macro that checks whether the Base Class code of device matched.
+  /**
+    Macro that checks whether the Base Class code of device matched.
 
-  @param  _p      Specified device.
-  @param  c       Base Class code needs matching.
+    @param  _p      Specified device.
+    @param  c       Base Class code needs matching.
 
-  @retval TRUE    Base Class code matches the specified device.
-  @retval FALSE   Base Class code doesn't match the specified device.
+    @retval TRUE    Base Class code matches the specified device.
+    @retval FALSE   Base Class code doesn't match the specified device.
 
-**/
-public const ulong IS_CLASS1 = (_p, c)((_p)->Hdr.ClassCode[2] == (c));
+  **/
+  public const ulong IS_CLASS1 = (_p, c)((_p)->Hdr.ClassCode[2] == (c));
 
-/**
-  Macro that checks whether the Base Class code and Sub-Class code of device matched.
+  /**
+    Macro that checks whether the Base Class code and Sub-Class code of device matched.
 
-  @param  _p      Specified device.
-  @param  c       Base Class code needs matching.
-  @param  s       Sub-Class code needs matching.
+    @param  _p      Specified device.
+    @param  c       Base Class code needs matching.
+    @param  s       Sub-Class code needs matching.
 
-  @retval TRUE    Base Class code and Sub-Class code match the specified device.
-  @retval FALSE   Base Class code and Sub-Class code don't match the specified device.
+    @retval TRUE    Base Class code and Sub-Class code match the specified device.
+    @retval FALSE   Base Class code and Sub-Class code don't match the specified device.
 
-**/
-public const ulong IS_CLASS2 = (_p, c, s)(IS_CLASS1(_p, c) && ((_p)->Hdr.ClassCode[1] == (s)));
+  **/
+  public const ulong IS_CLASS2 = (_p, c, s)(IS_CLASS1(_p, c) && ((_p)->Hdr.ClassCode[1] == (s)));
 
-/**
-  Macro that checks whether the Base Class code, Sub-Class code and Interface code of device matched.
+  /**
+    Macro that checks whether the Base Class code, Sub-Class code and Interface code of device matched.
 
-  @param  _p      Specified device.
-  @param  c       Base Class code needs matching.
-  @param  s       Sub-Class code needs matching.
-  @param  p       Interface code needs matching.
+    @param  _p      Specified device.
+    @param  c       Base Class code needs matching.
+    @param  s       Sub-Class code needs matching.
+    @param  p       Interface code needs matching.
 
-  @retval TRUE    Base Class code, Sub-Class code and Interface code match the specified device.
-  @retval FALSE   Base Class code, Sub-Class code and Interface code don't match the specified device.
+    @retval TRUE    Base Class code, Sub-Class code and Interface code match the specified device.
+    @retval FALSE   Base Class code, Sub-Class code and Interface code don't match the specified device.
 
-**/
-public const ulong IS_CLASS3 = (_p, c, s, p)(IS_CLASS2(_p, c, s) && ((_p)->Hdr.ClassCode[0] == (p)));
+  **/
+  public const ulong IS_CLASS3 = (_p, c, s, p)(IS_CLASS2(_p, c, s) && ((_p)->Hdr.ClassCode[0] == (p)));
 
-/**
-  Macro that checks whether device is a display controller.
+  /**
+    Macro that checks whether device is a display controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a display controller.
-  @retval FALSE   Device is not a display controller.
+    @retval TRUE    Device is a display controller.
+    @retval FALSE   Device is not a display controller.
 
-**/
-public const ulong IS_PCI_DISPLAY = (_p)IS_CLASS1(_p, PCI_CLASS_DISPLAY);
+  **/
+  public const ulong IS_PCI_DISPLAY = (_p)IS_CLASS1(_p, PCI_CLASS_DISPLAY);
 
-/**
-  Macro that checks whether device is a VGA-compatible controller.
+  /**
+    Macro that checks whether device is a VGA-compatible controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a VGA-compatible controller.
-  @retval FALSE   Device is not a VGA-compatible controller.
+    @retval TRUE    Device is a VGA-compatible controller.
+    @retval FALSE   Device is not a VGA-compatible controller.
 
-**/
-public const ulong IS_PCI_VGA = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_VGA);
+  **/
+  public const ulong IS_PCI_VGA = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_VGA);
 
-/**
-  Macro that checks whether device is an 8514-compatible controller.
+  /**
+    Macro that checks whether device is an 8514-compatible controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is an 8514-compatible controller.
-  @retval FALSE   Device is not an 8514-compatible controller.
+    @retval TRUE    Device is an 8514-compatible controller.
+    @retval FALSE   Device is not an 8514-compatible controller.
 
-**/
-public const ulong IS_PCI_8514 = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_8514);
+  **/
+  public const ulong IS_PCI_8514 = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_8514);
 
-/**
-  Macro that checks whether device is built before the Class Code field was defined.
+  /**
+    Macro that checks whether device is built before the Class Code field was defined.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is an old device.
-  @retval FALSE   Device is not an old device.
+    @retval TRUE    Device is an old device.
+    @retval FALSE   Device is not an old device.
 
-**/
-public const ulong IS_PCI_OLD = (_p)IS_CLASS1(_p, PCI_CLASS_OLD);
+  **/
+  public const ulong IS_PCI_OLD = (_p)IS_CLASS1(_p, PCI_CLASS_OLD);
 
-/**
-  Macro that checks whether device is a VGA-compatible device built before the Class Code field was defined.
+  /**
+    Macro that checks whether device is a VGA-compatible device built before the Class Code field was defined.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is an old VGA-compatible device.
-  @retval FALSE   Device is not an old VGA-compatible device.
+    @retval TRUE    Device is an old VGA-compatible device.
+    @retval FALSE   Device is not an old VGA-compatible device.
 
-**/
-public const ulong IS_PCI_OLD_VGA = (_p)IS_CLASS2(_p, PCI_CLASS_OLD, PCI_CLASS_OLD_VGA);
+  **/
+  public const ulong IS_PCI_OLD_VGA = (_p)IS_CLASS2(_p, PCI_CLASS_OLD, PCI_CLASS_OLD_VGA);
 
-/**
-  Macro that checks whether device is an IDE controller.
+  /**
+    Macro that checks whether device is an IDE controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is an IDE controller.
-  @retval FALSE   Device is not an IDE controller.
+    @retval TRUE    Device is an IDE controller.
+    @retval FALSE   Device is not an IDE controller.
 
-**/
-public const ulong IS_PCI_IDE = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_IDE);
+  **/
+  public const ulong IS_PCI_IDE = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_IDE);
 
-/**
-  Macro that checks whether device is a SCSI bus controller.
+  /**
+    Macro that checks whether device is a SCSI bus controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a SCSI bus controller.
-  @retval FALSE   Device is not a SCSI bus controller.
+    @retval TRUE    Device is a SCSI bus controller.
+    @retval FALSE   Device is not a SCSI bus controller.
 
-**/
-public const ulong IS_PCI_SCSI = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SCSI);
+  **/
+  public const ulong IS_PCI_SCSI = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SCSI);
 
-/**
-  Macro that checks whether device is a RAID controller.
+  /**
+    Macro that checks whether device is a RAID controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a RAID controller.
-  @retval FALSE   Device is not a RAID controller.
+    @retval TRUE    Device is a RAID controller.
+    @retval FALSE   Device is not a RAID controller.
 
-**/
-public const ulong IS_PCI_RAID = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_RAID);
+  **/
+  public const ulong IS_PCI_RAID = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_RAID);
 
-/**
-  Macro that checks whether device is an ISA bridge.
+  /**
+    Macro that checks whether device is an ISA bridge.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is an ISA bridge.
-  @retval FALSE   Device is not an ISA bridge.
+    @retval TRUE    Device is an ISA bridge.
+    @retval FALSE   Device is not an ISA bridge.
 
-**/
-public const ulong IS_PCI_LPC = (_p)IS_CLASS2(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_ISA);
+  **/
+  public const ulong IS_PCI_LPC = (_p)IS_CLASS2(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_ISA);
 
-/**
-  Macro that checks whether device is a PCI-to-PCI bridge.
+  /**
+    Macro that checks whether device is a PCI-to-PCI bridge.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a PCI-to-PCI bridge.
-  @retval FALSE   Device is not a PCI-to-PCI bridge.
+    @retval TRUE    Device is a PCI-to-PCI bridge.
+    @retval FALSE   Device is not a PCI-to-PCI bridge.
 
-**/
-public const ulong IS_PCI_P2P = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P);
+  **/
+  public const ulong IS_PCI_P2P = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P);
 
-/**
-  Macro that checks whether device is a Subtractive Decode PCI-to-PCI bridge.
+  /**
+    Macro that checks whether device is a Subtractive Decode PCI-to-PCI bridge.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a Subtractive Decode PCI-to-PCI bridge.
-  @retval FALSE   Device is not a Subtractive Decode PCI-to-PCI bridge.
+    @retval TRUE    Device is a Subtractive Decode PCI-to-PCI bridge.
+    @retval FALSE   Device is not a Subtractive Decode PCI-to-PCI bridge.
 
-**/
-public const ulong IS_PCI_P2P_SUB = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P_SUBTRACTIVE);
+  **/
+  public const ulong IS_PCI_P2P_SUB = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P_SUBTRACTIVE);
 
-/**
-  Macro that checks whether device is a 16550-compatible serial controller.
+  /**
+    Macro that checks whether device is a 16550-compatible serial controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a 16550-compatible serial controller.
-  @retval FALSE   Device is not a 16550-compatible serial controller.
+    @retval TRUE    Device is a 16550-compatible serial controller.
+    @retval FALSE   Device is not a 16550-compatible serial controller.
 
-**/
-public const ulong IS_PCI_16550_SERIAL = (_p)IS_CLASS3(_p, PCI_CLASS_SCC, PCI_SUBCLASS_SERIAL, PCI_IF_16550);
+  **/
+  public const ulong IS_PCI_16550_SERIAL = (_p)IS_CLASS3(_p, PCI_CLASS_SCC, PCI_SUBCLASS_SERIAL, PCI_IF_16550);
 
-/**
-  Macro that checks whether device is a Universal Serial Bus controller.
+  /**
+    Macro that checks whether device is a Universal Serial Bus controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a Universal Serial Bus controller.
-  @retval FALSE   Device is not a Universal Serial Bus controller.
+    @retval TRUE    Device is a Universal Serial Bus controller.
+    @retval FALSE   Device is not a Universal Serial Bus controller.
 
-**/
-public const ulong IS_PCI_USB = (_p)IS_CLASS2(_p, PCI_CLASS_SERIAL, PCI_CLASS_SERIAL_USB);
+  **/
+  public const ulong IS_PCI_USB = (_p)IS_CLASS2(_p, PCI_CLASS_SERIAL, PCI_CLASS_SERIAL_USB);
 
-//
-// the definition of Header Type
-//
-public const ulong HEADER_TYPE_DEVICE = 0x00;
-public const ulong HEADER_TYPE_PCI_TO_PCI_BRIDGE = 0x01;
-public const ulong HEADER_TYPE_CARDBUS_BRIDGE = 0x02;
-public const ulong HEADER_TYPE_MULTI_FUNCTION = 0x80;
-//
-// Mask of Header type
-//
-public const ulong HEADER_LAYOUT_CODE = 0x7f;
+  //
+  // the definition of Header Type
+  //
+  public const ulong HEADER_TYPE_DEVICE = 0x00;
+  public const ulong HEADER_TYPE_PCI_TO_PCI_BRIDGE = 0x01;
+  public const ulong HEADER_TYPE_CARDBUS_BRIDGE = 0x02;
+  public const ulong HEADER_TYPE_MULTI_FUNCTION = 0x80;
+  //
+  // Mask of Header type
+  //
+  public const ulong HEADER_LAYOUT_CODE = 0x7f;
 
-/**
-  Macro that checks whether device is a PCI-PCI bridge.
+  /**
+    Macro that checks whether device is a PCI-PCI bridge.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a PCI-PCI bridge.
-  @retval FALSE   Device is not a PCI-PCI bridge.
+    @retval TRUE    Device is a PCI-PCI bridge.
+    @retval FALSE   Device is not a PCI-PCI bridge.
 
-**/
-public const ulong IS_PCI_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_PCI_TO_PCI_BRIDGE));
+  **/
+  public const ulong IS_PCI_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_PCI_TO_PCI_BRIDGE));
 
-/**
-  Macro that checks whether device is a CardBus bridge.
+  /**
+    Macro that checks whether device is a CardBus bridge.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a CardBus bridge.
-  @retval FALSE   Device is not a CardBus bridge.
+    @retval TRUE    Device is a CardBus bridge.
+    @retval FALSE   Device is not a CardBus bridge.
 
-**/
-public const ulong IS_CARDBUS_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_CARDBUS_BRIDGE));
+  **/
+  public const ulong IS_CARDBUS_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_CARDBUS_BRIDGE));
 
-/**
-  Macro that checks whether device is a multiple functions device.
+  /**
+    Macro that checks whether device is a multiple functions device.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a multiple functions device.
-  @retval FALSE   Device is not a multiple functions device.
+    @retval TRUE    Device is a multiple functions device.
+    @retval FALSE   Device is not a multiple functions device.
 
-**/
-public const ulong IS_PCI_MULTI_FUNC = (_p)((_p)->Hdr.HeaderType & HEADER_TYPE_MULTI_FUNCTION);
+  **/
+  public const ulong IS_PCI_MULTI_FUNC = (_p)((_p)->Hdr.HeaderType & HEADER_TYPE_MULTI_FUNCTION);
 
-///
-/// Rom Base Address in Bridge, defined in PCI-to-PCI Bridge Architecture Specification,
-///
-public const ulong PCI_BRIDGE_ROMBAR = 0x38;
+  ///
+  /// Rom Base Address in Bridge, defined in PCI-to-PCI Bridge Architecture Specification,
+  ///
+  public const ulong PCI_BRIDGE_ROMBAR = 0x38;
 
-public const ulong PCI_MAX_BAR = 0x0006;
-public const ulong PCI_MAX_CONFIG_OFFSET = 0x0100;
+  public const ulong PCI_MAX_BAR = 0x0006;
+  public const ulong PCI_MAX_CONFIG_OFFSET = 0x0100;
 
-public const ulong PCI_VENDOR_ID_OFFSET = 0x00;
-public const ulong PCI_DEVICE_ID_OFFSET = 0x02;
-public const ulong PCI_COMMAND_OFFSET = 0x04;
-public const ulong PCI_PRIMARY_STATUS_OFFSET = 0x06;
-public const ulong PCI_REVISION_ID_OFFSET = 0x08;
-public const ulong PCI_CLASSCODE_OFFSET = 0x09;
-public const ulong PCI_CACHELINE_SIZE_OFFSET = 0x0C;
-public const ulong PCI_LATENCY_TIMER_OFFSET = 0x0D;
-public const ulong PCI_HEADER_TYPE_OFFSET = 0x0E;
-public const ulong PCI_BIST_OFFSET = 0x0F;
-public const ulong PCI_BASE_ADDRESSREG_OFFSET = 0x10;
-public const ulong PCI_CARDBUS_CIS_OFFSET = 0x28;
-public const ulong PCI_SVID_OFFSET = 0x2C             ///< SubSystem Vendor id;
+  public const ulong PCI_VENDOR_ID_OFFSET = 0x00;
+  public const ulong PCI_DEVICE_ID_OFFSET = 0x02;
+  public const ulong PCI_COMMAND_OFFSET = 0x04;
+  public const ulong PCI_PRIMARY_STATUS_OFFSET = 0x06;
+  public const ulong PCI_REVISION_ID_OFFSET = 0x08;
+  public const ulong PCI_CLASSCODE_OFFSET = 0x09;
+  public const ulong PCI_CACHELINE_SIZE_OFFSET = 0x0C;
+  public const ulong PCI_LATENCY_TIMER_OFFSET = 0x0D;
+  public const ulong PCI_HEADER_TYPE_OFFSET = 0x0E;
+  public const ulong PCI_BIST_OFFSET = 0x0F;
+  public const ulong PCI_BASE_ADDRESSREG_OFFSET = 0x10;
+  public const ulong PCI_CARDBUS_CIS_OFFSET = 0x28;
+  public const ulong PCI_SVID_OFFSET = 0x2C             ///< SubSystem Vendor id;
 public const ulong PCI_SUBSYSTEM_VENDOR_ID_OFFSET = 0x2C;
-public const ulong PCI_SID_OFFSET = 0x2E             ///< SubSystem ID;
+  public const ulong PCI_SID_OFFSET = 0x2E             ///< SubSystem ID;
 public const ulong PCI_SUBSYSTEM_ID_OFFSET = 0x2E;
-public const ulong PCI_EXPANSION_ROM_BASE = 0x30;
-public const ulong PCI_CAPBILITY_POINTER_OFFSET = 0x34;
-public const ulong PCI_INT_LINE_OFFSET = 0x3C             ///< Interrupt Line Register;
+  public const ulong PCI_EXPANSION_ROM_BASE = 0x30;
+  public const ulong PCI_CAPBILITY_POINTER_OFFSET = 0x34;
+  public const ulong PCI_INT_LINE_OFFSET = 0x3C             ///< Interrupt Line Register;
 public const ulong PCI_INT_PIN_OFFSET = 0x3D             ///< Interrupt Pin Register;
 public const ulong PCI_MAXGNT_OFFSET = 0x3E             ///< Max Grant Register;
 public const ulong PCI_MAXLAT_OFFSET = 0x3F             ///< Max Latency Register;
 
-//
-// defined in PCI-to-PCI Bridge Architecture Specification
-//
+  //
+  // defined in PCI-to-PCI Bridge Architecture Specification
+  //
 public const ulong PCI_BRIDGE_PRIMARY_BUS_REGISTER_OFFSET = 0x18;
-public const ulong PCI_BRIDGE_SECONDARY_BUS_REGISTER_OFFSET = 0x19;
-public const ulong PCI_BRIDGE_SUBORDINATE_BUS_REGISTER_OFFSET = 0x1a;
-public const ulong PCI_BRIDGE_SECONDARY_LATENCY_TIMER_OFFSET = 0x1b;
-public const ulong PCI_BRIDGE_STATUS_REGISTER_OFFSET = 0x1E;
-public const ulong PCI_BRIDGE_CONTROL_REGISTER_OFFSET = 0x3E;
+  public const ulong PCI_BRIDGE_SECONDARY_BUS_REGISTER_OFFSET = 0x19;
+  public const ulong PCI_BRIDGE_SUBORDINATE_BUS_REGISTER_OFFSET = 0x1a;
+  public const ulong PCI_BRIDGE_SECONDARY_LATENCY_TIMER_OFFSET = 0x1b;
+  public const ulong PCI_BRIDGE_STATUS_REGISTER_OFFSET = 0x1E;
+  public const ulong PCI_BRIDGE_CONTROL_REGISTER_OFFSET = 0x3E;
 
-///
-/// Interrupt Line "Unknown" or "No connection" value defined for x86 based system
-///
-public const ulong PCI_INT_LINE_UNKNOWN = 0xFF;
+  ///
+  /// Interrupt Line "Unknown" or "No connection" value defined for x86 based system
+  ///
+  public const ulong PCI_INT_LINE_UNKNOWN = 0xFF;
+}
 
 ///
 /// PCI Access Data Format
@@ -607,7 +613,9 @@ uint Uint32;
 
 // #pragma pack()
 
-public const ulong EFI_PCI_COMMAND_IO_SPACE = BIT0      ///< 0x0001;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PCI_COMMAND_IO_SPACE = BIT0      ///< 0x0001;
 public const ulong EFI_PCI_COMMAND_MEMORY_SPACE = BIT1      ///< 0x0002;
 public const ulong EFI_PCI_COMMAND_BUS_MASTER = BIT2      ///< 0x0004;
 public const ulong EFI_PCI_COMMAND_SPECIAL_CYCLE = BIT3      ///< 0x0008;
@@ -618,9 +626,9 @@ public const ulong EFI_PCI_COMMAND_STEPPING_CONTROL = BIT7      ///< 0x0080;
 public const ulong EFI_PCI_COMMAND_SERR = BIT8      ///< 0x0100;
 public const ulong EFI_PCI_COMMAND_FAST_BACK_TO_BACK = BIT9      ///< 0x0200;
 
-//
-// defined in PCI-to-PCI Bridge Architecture Specification
-//
+  //
+  // defined in PCI-to-PCI Bridge Architecture Specification
+  //
 public const ulong EFI_PCI_BRIDGE_CONTROL_PARITY_ERROR_RESPONSE = BIT0   ///< 0x0001;
 public const ulong EFI_PCI_BRIDGE_CONTROL_SERR = BIT1   ///< 0x0002;
 public const ulong EFI_PCI_BRIDGE_CONTROL_ISA = BIT2   ///< 0x0004;
@@ -634,38 +642,39 @@ public const ulong EFI_PCI_BRIDGE_CONTROL_SECONDARY_DISCARD_TIMER = BIT9   ///< 
 public const ulong EFI_PCI_BRIDGE_CONTROL_TIMER_STATUS = BIT10  ///< 0x0400;
 public const ulong EFI_PCI_BRIDGE_CONTROL_DISCARD_TIMER_SERR = BIT11  ///< 0x0800;
 
-//
-// Following are the PCI-CARDBUS bridge control bit, defined in PC Card Standard
-//
+  //
+  // Following are the PCI-CARDBUS bridge control bit, defined in PC Card Standard
+  //
 public const ulong EFI_PCI_BRIDGE_CONTROL_IREQINT_ENABLE = BIT7      ///< 0x0080;
 public const ulong EFI_PCI_BRIDGE_CONTROL_RANGE0_MEMORY_TYPE = BIT8      ///< 0x0100;
 public const ulong EFI_PCI_BRIDGE_CONTROL_RANGE1_MEMORY_TYPE = BIT9      ///< 0x0200;
 public const ulong EFI_PCI_BRIDGE_CONTROL_WRITE_POSTING_ENABLE = BIT10     ///< 0x0400;
 
-//
-// Following are the PCI status control bit
-//
+  //
+  // Following are the PCI status control bit
+  //
 public const ulong EFI_PCI_STATUS_CAPABILITY = BIT4                ///< 0x0010;
 public const ulong EFI_PCI_STATUS_66MZ_CAPABLE = BIT5                ///< 0x0020;
 public const ulong EFI_PCI_FAST_BACK_TO_BACK_CAPABLE = BIT7                ///< 0x0080;
 public const ulong EFI_PCI_MASTER_DATA_PARITY_ERROR = BIT8                ///< 0x0100;
 
-///
-/// defined in PC Card Standard
-///
+                                                                          ///
+                                                                          /// defined in PC Card Standard
+                                                                          ///
 public const ulong EFI_PCI_CARDBUS_BRIDGE_CAPABILITY_PTR = 0x14;
 
-// #pragma pack(1)
-//
-// PCI Capability List IDs and records
-//
-public const ulong EFI_PCI_CAPABILITY_ID_PMI = 0x01;
-public const ulong EFI_PCI_CAPABILITY_ID_AGP = 0x02;
-public const ulong EFI_PCI_CAPABILITY_ID_VPD = 0x03;
-public const ulong EFI_PCI_CAPABILITY_ID_SLOTID = 0x04;
-public const ulong EFI_PCI_CAPABILITY_ID_MSI = 0x05;
-public const ulong EFI_PCI_CAPABILITY_ID_HOTPLUG = 0x06;
-public const ulong EFI_PCI_CAPABILITY_ID_SHPC = 0x0C;
+  // #pragma pack(1)
+  //
+  // PCI Capability List IDs and records
+  //
+  public const ulong EFI_PCI_CAPABILITY_ID_PMI = 0x01;
+  public const ulong EFI_PCI_CAPABILITY_ID_AGP = 0x02;
+  public const ulong EFI_PCI_CAPABILITY_ID_VPD = 0x03;
+  public const ulong EFI_PCI_CAPABILITY_ID_SLOTID = 0x04;
+  public const ulong EFI_PCI_CAPABILITY_ID_MSI = 0x05;
+  public const ulong EFI_PCI_CAPABILITY_ID_HOTPLUG = 0x06;
+  public const ulong EFI_PCI_CAPABILITY_ID_SHPC = 0x0C;
+}
 
 ///
 /// Capabilities List Header
@@ -698,7 +707,10 @@ public unsafe struct Bits
 ushort Data;
 } EFI_PCI_PMC;
 
-public const ulong EFI_PCI_PMC_D3_COLD_MASK = (BIT15);
+public unsafe partial class EFI
+{
+  public const ulong EFI_PCI_PMC_D3_COLD_MASK = (BIT15);
+}
 
 ///
 /// PMCSR - Power Management Control/Status
@@ -720,10 +732,13 @@ public unsafe struct Bits
 ushort Data;
 } EFI_PCI_PMCSR;
 
-public const ulong PCI_POWER_STATE_D0 = 0;
-public const ulong PCI_POWER_STATE_D1 = 1;
-public const ulong PCI_POWER_STATE_D2 = 2;
-public const ulong PCI_POWER_STATE_D3_HOT = 3;
+public unsafe partial class EFI
+{
+  public const ulong PCI_POWER_STATE_D0 = 0;
+  public const ulong PCI_POWER_STATE_D1 = 1;
+  public const ulong PCI_POWER_STATE_D2 = 2;
+  public const ulong PCI_POWER_STATE_D3_HOT = 3;
+}
 
 ///
 /// PMCSR_BSE - PMCSR PCI-to-PCI Bridge Support Extensions
@@ -832,23 +847,26 @@ public unsafe struct EFI_PCI_CAPABILITY_HOTPLUG
   ///
 }
 
-public const ulong PCI_BAR_IDX0 = 0x00;
-public const ulong PCI_BAR_IDX1 = 0x01;
-public const ulong PCI_BAR_IDX2 = 0x02;
-public const ulong PCI_BAR_IDX3 = 0x03;
-public const ulong PCI_BAR_IDX4 = 0x04;
-public const ulong PCI_BAR_IDX5 = 0x05;
+public unsafe partial class EFI
+{
+  public const ulong PCI_BAR_IDX0 = 0x00;
+  public const ulong PCI_BAR_IDX1 = 0x01;
+  public const ulong PCI_BAR_IDX2 = 0x02;
+  public const ulong PCI_BAR_IDX3 = 0x03;
+  public const ulong PCI_BAR_IDX4 = 0x04;
+  public const ulong PCI_BAR_IDX5 = 0x05;
 
-///
-/// EFI PCI Option ROM definitions
-///
-public const ulong EFI_ROOT_BRIDGE_LIST = 'eprb';
-public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1       ///< defined in UEFI Spec.;
+  ///
+  /// EFI PCI Option ROM definitions
+  ///
+  public const ulong EFI_ROOT_BRIDGE_LIST = 'eprb';
+  public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1       ///< defined in UEFI Spec.;
 
 public const ulong PCI_EXPANSION_ROM_HEADER_SIGNATURE = 0xaa55;
-public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
-public const ulong PCI_CODE_TYPE_PCAT_IMAGE = 0x00;
-public const ulong EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED = 0x0001         ///< defined in UEFI spec.;
+  public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
+  public const ulong PCI_CODE_TYPE_PCAT_IMAGE = 0x00;
+  public const ulong EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED = 0x0001         ///< defined in UEFI spec.;
+}
 
 ///
 /// Standard PCI Expansion ROM Header

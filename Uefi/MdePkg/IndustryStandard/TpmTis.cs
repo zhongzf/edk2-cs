@@ -113,75 +113,78 @@ public unsafe struct TIS_PC_REGISTERS_PTR { TIS_PC_REGISTERS* Value; public stat
 ///
 /// This bit is a 1 to indicate that the other bits in this register are valid.
 ///
-public const ulong TIS_PC_VALID = BIT7;
-///
-/// Indicate that this locality is active.
-///
-public const ulong TIS_PC_ACC_ACTIVE = BIT5;
-///
-/// Set to 1 to indicate that this locality had the TPM taken away while
-/// this locality had the TIS_PC_ACC_ACTIVE bit set.
-///
-public const ulong TIS_PC_ACC_SEIZED = BIT4;
-///
-/// Set to 1 to indicate that TPM MUST reset the
-/// TIS_PC_ACC_ACTIVE bit and remove ownership for localities less than the
-/// locality that is writing this bit.
-///
-public const ulong TIS_PC_ACC_SEIZE = BIT3;
-///
-/// When this bit is 1, another locality is requesting usage of the TPM.
-///
-public const ulong TIS_PC_ACC_PENDIND = BIT2;
-///
-/// Set to 1 to indicate that this locality is requesting to use TPM.
-///
-public const ulong TIS_PC_ACC_RQUUSE = BIT1;
-///
-/// A value of 1 indicates that a T/OS has not been established on the platform
-///
-public const ulong TIS_PC_ACC_ESTABLISH = BIT0;
+public unsafe partial class EFI
+{
+  public const ulong TIS_PC_VALID = BIT7;
+  ///
+  /// Indicate that this locality is active.
+  ///
+  public const ulong TIS_PC_ACC_ACTIVE = BIT5;
+  ///
+  /// Set to 1 to indicate that this locality had the TPM taken away while
+  /// this locality had the TIS_PC_ACC_ACTIVE bit set.
+  ///
+  public const ulong TIS_PC_ACC_SEIZED = BIT4;
+  ///
+  /// Set to 1 to indicate that TPM MUST reset the
+  /// TIS_PC_ACC_ACTIVE bit and remove ownership for localities less than the
+  /// locality that is writing this bit.
+  ///
+  public const ulong TIS_PC_ACC_SEIZE = BIT3;
+  ///
+  /// When this bit is 1, another locality is requesting usage of the TPM.
+  ///
+  public const ulong TIS_PC_ACC_PENDIND = BIT2;
+  ///
+  /// Set to 1 to indicate that this locality is requesting to use TPM.
+  ///
+  public const ulong TIS_PC_ACC_RQUUSE = BIT1;
+  ///
+  /// A value of 1 indicates that a T/OS has not been established on the platform
+  ///
+  public const ulong TIS_PC_ACC_ESTABLISH = BIT0;
 
-///
-/// Write a 1 to this bit to notify TPM to cancel currently executing command
-///
-public const ulong TIS_PC_STS_CANCEL = BIT24;
-///
-/// This field indicates that STS_DATA and STS_EXPECT are valid
-///
-public const ulong TIS_PC_STS_VALID = BIT7;
-///
-/// When this bit is 1, TPM is in the Ready state,
-/// indicating it is ready to receive a new command.
-///
-public const ulong TIS_PC_STS_READY = BIT6;
-///
-/// Write a 1 to this bit to cause the TPM to execute that command.
-///
-public const ulong TIS_PC_STS_GO = BIT5;
-///
-/// This bit indicates that the TPM has data available as a response.
-///
-public const ulong TIS_PC_STS_DATA = BIT4;
-///
-/// The TPM sets this bit to a value of 1 when it expects another byte of data for a command.
-///
-public const ulong TIS_PC_STS_EXPECT = BIT3;
-///
-/// Indicates that the TPM has completed all self-test actions following a TPM_ContinueSelfTest command.
-///
-public const ulong TIS_PC_STS_SELFTEST_DONE = BIT2;
-///
-/// Writes a 1 to this bit to force the TPM to re-send the response.
-///
-public const ulong TIS_PC_STS_RETRY = BIT1;
+  ///
+  /// Write a 1 to this bit to notify TPM to cancel currently executing command
+  ///
+  public const ulong TIS_PC_STS_CANCEL = BIT24;
+  ///
+  /// This field indicates that STS_DATA and STS_EXPECT are valid
+  ///
+  public const ulong TIS_PC_STS_VALID = BIT7;
+  ///
+  /// When this bit is 1, TPM is in the Ready state,
+  /// indicating it is ready to receive a new command.
+  ///
+  public const ulong TIS_PC_STS_READY = BIT6;
+  ///
+  /// Write a 1 to this bit to cause the TPM to execute that command.
+  ///
+  public const ulong TIS_PC_STS_GO = BIT5;
+  ///
+  /// This bit indicates that the TPM has data available as a response.
+  ///
+  public const ulong TIS_PC_STS_DATA = BIT4;
+  ///
+  /// The TPM sets this bit to a value of 1 when it expects another byte of data for a command.
+  ///
+  public const ulong TIS_PC_STS_EXPECT = BIT3;
+  ///
+  /// Indicates that the TPM has completed all self-test actions following a TPM_ContinueSelfTest command.
+  ///
+  public const ulong TIS_PC_STS_SELFTEST_DONE = BIT2;
+  ///
+  /// Writes a 1 to this bit to force the TPM to re-send the response.
+  ///
+  public const ulong TIS_PC_STS_RETRY = BIT1;
 
-//
-// Default TimeOut value
-//
-public const ulong TIS_TIMEOUT_A = (750 * 1000)               // 750ms;
+  //
+  // Default TimeOut value
+  //
+  public const ulong TIS_TIMEOUT_A = (750 * 1000)               // 750ms;
 public const ulong TIS_TIMEOUT_B = (2000 * 1000)               // 2s;
 public const ulong TIS_TIMEOUT_C = (750 * 1000)               // 750ms;
 public const ulong TIS_TIMEOUT_D = (750 * 1000)               // 750ms;
+}
 
 // #endif

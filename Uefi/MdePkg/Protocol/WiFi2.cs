@@ -15,10 +15,13 @@ namespace Uefi;
 // #ifndef __EFI_WIFI2_PROTOCOL_H__
 // #define __EFI_WIFI2_PROTOCOL_H__
 
-public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL_GUID = new GUID(
-    0x1b0fb9bf, 0x699d, 0x4fdd, new byte[] { 0xa7, 0xc3, 0x25, 0x46, 0x68, 0x1b, 0xf6, 0x3b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL_GUID = new GUID(
+      0x1b0fb9bf, 0x699d, 0x4fdd, new byte[] { 0xa7, 0xc3, 0x25, 0x46, 0x68, 0x1b, 0xf6, 0x3b });
 
-// typedef struct _EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL;
+  // typedef struct _EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL;
+}
 
 ///
 /// EFI_80211_BSS_TYPE
@@ -68,7 +71,10 @@ public unsafe struct EFI_80211_MAC_ADDRESS
   public fixed byte Addr[6];
 }
 
-public const ulong EFI_MAX_SSID_LEN = 32;
+public unsafe partial class EFI
+{
+  public const ulong EFI_MAX_SSID_LEN = 32;
+}
 
 ///
 /// EFI_80211_SSID
@@ -327,97 +333,6 @@ public unsafe struct EFI_80211_DISCONNECT_NETWORK_TOKEN
   //
   public EFI_STATUS Status;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL provides network management

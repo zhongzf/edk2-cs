@@ -26,7 +26,10 @@ namespace Uefi;
 ///
 /// LPI Structure Types
 ///
-public const ulong ACPI_LPI_STRUCTURE_TYPE_NATIVE_CSTATE = 0x00;
+public unsafe partial class EFI
+{
+  public const ulong ACPI_LPI_STRUCTURE_TYPE_NATIVE_CSTATE = 0x00;
+}
 
 ///
 /// Low Power Idle (LPI) State Flags

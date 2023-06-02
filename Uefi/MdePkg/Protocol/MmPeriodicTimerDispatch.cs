@@ -20,8 +20,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x4cec368e, 0x8e8e, 0x4d71, new byte[] { 0x8b, 0xe1, 0x95, 0x8c, 0x45, 0xfc, 0x8a, 0x53 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x4cec368e, 0x8e8e, 0x4d71, new byte[] { 0x8b, 0xe1, 0x95, 0x8c, 0x45, 0xfc, 0x8a, 0x53 });
+}
 
 ///
 /// Example: A chipset supports periodic MMIs on every 64ms or 2 seconds.
@@ -74,83 +77,6 @@ public unsafe struct EFI_MM_PERIODIC_TIMER_CONTEXT
 }
 
 // typedef struct _EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM Periodic Timer Dispatch Protocol

@@ -77,32 +77,35 @@ public unsafe struct EFI_HII_PACKAGE_HEADER
 //
 // Value of HII package type
 //
-public const ulong EFI_HII_PACKAGE_TYPE_ALL = 0x00;
-public const ulong EFI_HII_PACKAGE_TYPE_GUID = 0x01;
-public const ulong EFI_HII_PACKAGE_FORMS = 0x02;
-public const ulong EFI_HII_PACKAGE_STRINGS = 0x04;
-public const ulong EFI_HII_PACKAGE_FONTS = 0x05;
-public const ulong EFI_HII_PACKAGE_IMAGES = 0x06;
-public const ulong EFI_HII_PACKAGE_SIMPLE_FONTS = 0x07;
-public const ulong EFI_HII_PACKAGE_DEVICE_PATH = 0x08;
-public const ulong EFI_HII_PACKAGE_KEYBOARD_LAYOUT = 0x09;
-public const ulong EFI_HII_PACKAGE_ANIMATIONS = 0x0A;
-public const ulong EFI_HII_PACKAGE_END = 0xDF;
-public const ulong EFI_HII_PACKAGE_TYPE_SYSTEM_BEGIN = 0xE0;
-public const ulong EFI_HII_PACKAGE_TYPE_SYSTEM_END = 0xFF;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_PACKAGE_TYPE_ALL = 0x00;
+  public const ulong EFI_HII_PACKAGE_TYPE_GUID = 0x01;
+  public const ulong EFI_HII_PACKAGE_FORMS = 0x02;
+  public const ulong EFI_HII_PACKAGE_STRINGS = 0x04;
+  public const ulong EFI_HII_PACKAGE_FONTS = 0x05;
+  public const ulong EFI_HII_PACKAGE_IMAGES = 0x06;
+  public const ulong EFI_HII_PACKAGE_SIMPLE_FONTS = 0x07;
+  public const ulong EFI_HII_PACKAGE_DEVICE_PATH = 0x08;
+  public const ulong EFI_HII_PACKAGE_KEYBOARD_LAYOUT = 0x09;
+  public const ulong EFI_HII_PACKAGE_ANIMATIONS = 0x0A;
+  public const ulong EFI_HII_PACKAGE_END = 0xDF;
+  public const ulong EFI_HII_PACKAGE_TYPE_SYSTEM_BEGIN = 0xE0;
+  public const ulong EFI_HII_PACKAGE_TYPE_SYSTEM_END = 0xFF;
 
-//
-// Definitions for Simplified Font Package
-//
+  //
+  // Definitions for Simplified Font Package
+  //
 
-///
-/// Contents of EFI_NARROW_GLYPH.Attributes.
-///@{
-public const ulong EFI_GLYPH_NON_SPACING = 0x01;
-public const ulong EFI_GLYPH_WIDE = 0x02;
-public const ulong EFI_GLYPH_HEIGHT = 19;
-public const ulong EFI_GLYPH_WIDTH = 8;
-///@}
+  ///
+  /// Contents of EFI_NARROW_GLYPH.Attributes.
+  ///@{
+  public const ulong EFI_GLYPH_NON_SPACING = 0x01;
+  public const ulong EFI_GLYPH_WIDE = 0x02;
+  public const ulong EFI_GLYPH_HEIGHT = 19;
+  public const ulong EFI_GLYPH_WIDTH = 8;
+  ///@}
+}
 
 ///
 /// The EFI_NARROW_GLYPH has a preferred dimension (w x h) of 8 x 19 pixels.
@@ -185,14 +188,17 @@ public unsafe struct EFI_HII_SIMPLE_FONT_PACKAGE_HDR
 //
 // Value for font style
 //
-public const ulong EFI_HII_FONT_STYLE_NORMAL = 0x00000000;
-public const ulong EFI_HII_FONT_STYLE_BOLD = 0x00000001;
-public const ulong EFI_HII_FONT_STYLE_ITALIC = 0x00000002;
-public const ulong EFI_HII_FONT_STYLE_EMBOSS = 0x00010000;
-public const ulong EFI_HII_FONT_STYLE_OUTLINE = 0x00020000;
-public const ulong EFI_HII_FONT_STYLE_SHADOW = 0x00040000;
-public const ulong EFI_HII_FONT_STYLE_UNDERLINE = 0x00080000;
-public const ulong EFI_HII_FONT_STYLE_DBL_UNDER = 0x00100000;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_FONT_STYLE_NORMAL = 0x00000000;
+  public const ulong EFI_HII_FONT_STYLE_BOLD = 0x00000001;
+  public const ulong EFI_HII_FONT_STYLE_ITALIC = 0x00000002;
+  public const ulong EFI_HII_FONT_STYLE_EMBOSS = 0x00010000;
+  public const ulong EFI_HII_FONT_STYLE_OUTLINE = 0x00020000;
+  public const ulong EFI_HII_FONT_STYLE_SHADOW = 0x00040000;
+  public const ulong EFI_HII_FONT_STYLE_UNDERLINE = 0x00080000;
+  public const ulong EFI_HII_FONT_STYLE_DBL_UNDER = 0x00100000;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_GLYPH_INFO
@@ -224,19 +230,22 @@ public unsafe struct EFI_HII_FONT_PACKAGE_HDR
 //
 // Value of different glyph info block types
 //
-public const ulong EFI_HII_GIBT_END = 0x00;
-public const ulong EFI_HII_GIBT_GLYPH = 0x10;
-public const ulong EFI_HII_GIBT_GLYPHS = 0x11;
-public const ulong EFI_HII_GIBT_GLYPH_DEFAULT = 0x12;
-public const ulong EFI_HII_GIBT_GLYPHS_DEFAULT = 0x13;
-public const ulong EFI_HII_GIBT_GLYPH_VARIABILITY = 0x14;
-public const ulong EFI_HII_GIBT_DUPLICATE = 0x20;
-public const ulong EFI_HII_GIBT_SKIP2 = 0x21;
-public const ulong EFI_HII_GIBT_SKIP1 = 0x22;
-public const ulong EFI_HII_GIBT_DEFAULTS = 0x23;
-public const ulong EFI_HII_GIBT_EXT1 = 0x30;
-public const ulong EFI_HII_GIBT_EXT2 = 0x31;
-public const ulong EFI_HII_GIBT_EXT4 = 0x32;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_GIBT_END = 0x00;
+  public const ulong EFI_HII_GIBT_GLYPH = 0x10;
+  public const ulong EFI_HII_GIBT_GLYPHS = 0x11;
+  public const ulong EFI_HII_GIBT_GLYPH_DEFAULT = 0x12;
+  public const ulong EFI_HII_GIBT_GLYPHS_DEFAULT = 0x13;
+  public const ulong EFI_HII_GIBT_GLYPH_VARIABILITY = 0x14;
+  public const ulong EFI_HII_GIBT_DUPLICATE = 0x20;
+  public const ulong EFI_HII_GIBT_SKIP2 = 0x21;
+  public const ulong EFI_HII_GIBT_SKIP1 = 0x22;
+  public const ulong EFI_HII_GIBT_DEFAULTS = 0x23;
+  public const ulong EFI_HII_GIBT_EXT1 = 0x30;
+  public const ulong EFI_HII_GIBT_EXT2 = 0x31;
+  public const ulong EFI_HII_GIBT_EXT4 = 0x32;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_GLYPH_BLOCK
@@ -384,8 +393,11 @@ public unsafe struct EFI_HII_GUID_PACKAGE_HDR
 // Section 27.3.6
 //
 
-public const ulong UEFI_CONFIG_LANG = "x-UEFI";
-public const ulong UEFI_CONFIG_LANG_2 = "x-i-UEFI";
+public unsafe partial class EFI
+{
+  public const ulong UEFI_CONFIG_LANG = "x-UEFI";
+  public const ulong UEFI_CONFIG_LANG_2 = "x-i-UEFI";
+}
 
 ///
 /// The fixed header consists of a standard record header and then the string identifiers
@@ -411,26 +423,29 @@ public unsafe struct EFI_HII_STRING_BLOCK
 //
 // Value of different string information block types
 //
-public const ulong EFI_HII_SIBT_END = 0x00;
-public const ulong EFI_HII_SIBT_STRING_SCSU = 0x10;
-public const ulong EFI_HII_SIBT_STRING_SCSU_FONT = 0x11;
-public const ulong EFI_HII_SIBT_STRINGS_SCSU = 0x12;
-public const ulong EFI_HII_SIBT_STRINGS_SCSU_FONT = 0x13;
-public const ulong EFI_HII_SIBT_STRING_UCS2 = 0x14;
-public const ulong EFI_HII_SIBT_STRING_UCS2_FONT = 0x15;
-public const ulong EFI_HII_SIBT_STRINGS_UCS2 = 0x16;
-public const ulong EFI_HII_SIBT_STRINGS_UCS2_FONT = 0x17;
-public const ulong EFI_HII_SIBT_DUPLICATE = 0x20;
-public const ulong EFI_HII_SIBT_SKIP2 = 0x21;
-public const ulong EFI_HII_SIBT_SKIP1 = 0x22;
-public const ulong EFI_HII_SIBT_EXT1 = 0x30;
-public const ulong EFI_HII_SIBT_EXT2 = 0x31;
-public const ulong EFI_HII_SIBT_EXT4 = 0x32;
-public const ulong EFI_HII_SIBT_FONT = 0x40;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_SIBT_END = 0x00;
+  public const ulong EFI_HII_SIBT_STRING_SCSU = 0x10;
+  public const ulong EFI_HII_SIBT_STRING_SCSU_FONT = 0x11;
+  public const ulong EFI_HII_SIBT_STRINGS_SCSU = 0x12;
+  public const ulong EFI_HII_SIBT_STRINGS_SCSU_FONT = 0x13;
+  public const ulong EFI_HII_SIBT_STRING_UCS2 = 0x14;
+  public const ulong EFI_HII_SIBT_STRING_UCS2_FONT = 0x15;
+  public const ulong EFI_HII_SIBT_STRINGS_UCS2 = 0x16;
+  public const ulong EFI_HII_SIBT_STRINGS_UCS2_FONT = 0x17;
+  public const ulong EFI_HII_SIBT_DUPLICATE = 0x20;
+  public const ulong EFI_HII_SIBT_SKIP2 = 0x21;
+  public const ulong EFI_HII_SIBT_SKIP1 = 0x22;
+  public const ulong EFI_HII_SIBT_EXT1 = 0x30;
+  public const ulong EFI_HII_SIBT_EXT2 = 0x31;
+  public const ulong EFI_HII_SIBT_EXT4 = 0x32;
+  public const ulong EFI_HII_SIBT_FONT = 0x40;
 
-//
-// Definition of different string information block types
-//
+  //
+  // Definition of different string information block types
+  //
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_SIBT_DUPLICATE_BLOCK
@@ -579,27 +594,30 @@ public unsafe struct EFI_HII_IMAGE_BLOCK
 //
 // Value of different image information block types
 //
-public const ulong EFI_HII_IIBT_END = 0x00;
-public const ulong EFI_HII_IIBT_IMAGE_1BIT = 0x10;
-public const ulong EFI_HII_IIBT_IMAGE_1BIT_TRANS = 0x11;
-public const ulong EFI_HII_IIBT_IMAGE_4BIT = 0x12;
-public const ulong EFI_HII_IIBT_IMAGE_4BIT_TRANS = 0x13;
-public const ulong EFI_HII_IIBT_IMAGE_8BIT = 0x14;
-public const ulong EFI_HII_IIBT_IMAGE_8BIT_TRANS = 0x15;
-public const ulong EFI_HII_IIBT_IMAGE_24BIT = 0x16;
-public const ulong EFI_HII_IIBT_IMAGE_24BIT_TRANS = 0x17;
-public const ulong EFI_HII_IIBT_IMAGE_JPEG = 0x18;
-public const ulong EFI_HII_IIBT_IMAGE_PNG = 0x19;
-public const ulong EFI_HII_IIBT_DUPLICATE = 0x20;
-public const ulong EFI_HII_IIBT_SKIP2 = 0x21;
-public const ulong EFI_HII_IIBT_SKIP1 = 0x22;
-public const ulong EFI_HII_IIBT_EXT1 = 0x30;
-public const ulong EFI_HII_IIBT_EXT2 = 0x31;
-public const ulong EFI_HII_IIBT_EXT4 = 0x32;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_IIBT_END = 0x00;
+  public const ulong EFI_HII_IIBT_IMAGE_1BIT = 0x10;
+  public const ulong EFI_HII_IIBT_IMAGE_1BIT_TRANS = 0x11;
+  public const ulong EFI_HII_IIBT_IMAGE_4BIT = 0x12;
+  public const ulong EFI_HII_IIBT_IMAGE_4BIT_TRANS = 0x13;
+  public const ulong EFI_HII_IIBT_IMAGE_8BIT = 0x14;
+  public const ulong EFI_HII_IIBT_IMAGE_8BIT_TRANS = 0x15;
+  public const ulong EFI_HII_IIBT_IMAGE_24BIT = 0x16;
+  public const ulong EFI_HII_IIBT_IMAGE_24BIT_TRANS = 0x17;
+  public const ulong EFI_HII_IIBT_IMAGE_JPEG = 0x18;
+  public const ulong EFI_HII_IIBT_IMAGE_PNG = 0x19;
+  public const ulong EFI_HII_IIBT_DUPLICATE = 0x20;
+  public const ulong EFI_HII_IIBT_SKIP2 = 0x21;
+  public const ulong EFI_HII_IIBT_SKIP1 = 0x22;
+  public const ulong EFI_HII_IIBT_EXT1 = 0x30;
+  public const ulong EFI_HII_IIBT_EXT2 = 0x31;
+  public const ulong EFI_HII_IIBT_EXT4 = 0x32;
 
-//
-// Definition of different image information block types
-//
+  //
+  // Definition of different image information block types
+  //
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_IIBT_END_BLOCK
@@ -846,111 +864,114 @@ public unsafe struct EFI_IFR_TYPE_VALUE
 //
 // IFR Opcodes
 //
-public const ulong EFI_IFR_FORM_OP = 0x01;
-public const ulong EFI_IFR_SUBTITLE_OP = 0x02;
-public const ulong EFI_IFR_TEXT_OP = 0x03;
-public const ulong EFI_IFR_IMAGE_OP = 0x04;
-public const ulong EFI_IFR_ONE_OF_OP = 0x05;
-public const ulong EFI_IFR_CHECKBOX_OP = 0x06;
-public const ulong EFI_IFR_NUMERIC_OP = 0x07;
-public const ulong EFI_IFR_PASSWORD_OP = 0x08;
-public const ulong EFI_IFR_ONE_OF_OPTION_OP = 0x09;
-public const ulong EFI_IFR_SUPPRESS_IF_OP = 0x0A;
-public const ulong EFI_IFR_LOCKED_OP = 0x0B;
-public const ulong EFI_IFR_ACTION_OP = 0x0C;
-public const ulong EFI_IFR_RESET_BUTTON_OP = 0x0D;
-public const ulong EFI_IFR_FORM_SET_OP = 0x0E;
-public const ulong EFI_IFR_REF_OP = 0x0F;
-public const ulong EFI_IFR_NO_SUBMIT_IF_OP = 0x10;
-public const ulong EFI_IFR_INCONSISTENT_IF_OP = 0x11;
-public const ulong EFI_IFR_EQ_ID_VAL_OP = 0x12;
-public const ulong EFI_IFR_EQ_ID_ID_OP = 0x13;
-public const ulong EFI_IFR_EQ_ID_VAL_LIST_OP = 0x14;
-public const ulong EFI_IFR_AND_OP = 0x15;
-public const ulong EFI_IFR_OR_OP = 0x16;
-public const ulong EFI_IFR_NOT_OP = 0x17;
-public const ulong EFI_IFR_RULE_OP = 0x18;
-public const ulong EFI_IFR_GRAY_OUT_IF_OP = 0x19;
-public const ulong EFI_IFR_DATE_OP = 0x1A;
-public const ulong EFI_IFR_TIME_OP = 0x1B;
-public const ulong EFI_IFR_STRING_OP = 0x1C;
-public const ulong EFI_IFR_REFRESH_OP = 0x1D;
-public const ulong EFI_IFR_DISABLE_IF_OP = 0x1E;
-public const ulong EFI_IFR_ANIMATION_OP = 0x1F;
-public const ulong EFI_IFR_TO_LOWER_OP = 0x20;
-public const ulong EFI_IFR_TO_UPPER_OP = 0x21;
-public const ulong EFI_IFR_MAP_OP = 0x22;
-public const ulong EFI_IFR_ORDERED_LIST_OP = 0x23;
-public const ulong EFI_IFR_VARSTORE_OP = 0x24;
-public const ulong EFI_IFR_VARSTORE_NAME_VALUE_OP = 0x25;
-public const ulong EFI_IFR_VARSTORE_EFI_OP = 0x26;
-public const ulong EFI_IFR_VARSTORE_DEVICE_OP = 0x27;
-public const ulong EFI_IFR_VERSION_OP = 0x28;
-public const ulong EFI_IFR_END_OP = 0x29;
-public const ulong EFI_IFR_MATCH_OP = 0x2A;
-public const ulong EFI_IFR_GET_OP = 0x2B;
-public const ulong EFI_IFR_SET_OP = 0x2C;
-public const ulong EFI_IFR_READ_OP = 0x2D;
-public const ulong EFI_IFR_WRITE_OP = 0x2E;
-public const ulong EFI_IFR_EQUAL_OP = 0x2F;
-public const ulong EFI_IFR_NOT_EQUAL_OP = 0x30;
-public const ulong EFI_IFR_GREATER_THAN_OP = 0x31;
-public const ulong EFI_IFR_GREATER_EQUAL_OP = 0x32;
-public const ulong EFI_IFR_LESS_THAN_OP = 0x33;
-public const ulong EFI_IFR_LESS_EQUAL_OP = 0x34;
-public const ulong EFI_IFR_BITWISE_AND_OP = 0x35;
-public const ulong EFI_IFR_BITWISE_OR_OP = 0x36;
-public const ulong EFI_IFR_BITWISE_NOT_OP = 0x37;
-public const ulong EFI_IFR_SHIFT_LEFT_OP = 0x38;
-public const ulong EFI_IFR_SHIFT_RIGHT_OP = 0x39;
-public const ulong EFI_IFR_ADD_OP = 0x3A;
-public const ulong EFI_IFR_SUBTRACT_OP = 0x3B;
-public const ulong EFI_IFR_MULTIPLY_OP = 0x3C;
-public const ulong EFI_IFR_DIVIDE_OP = 0x3D;
-public const ulong EFI_IFR_MODULO_OP = 0x3E;
-public const ulong EFI_IFR_RULE_REF_OP = 0x3F;
-public const ulong EFI_IFR_QUESTION_REF1_OP = 0x40;
-public const ulong EFI_IFR_QUESTION_REF2_OP = 0x41;
-public const ulong EFI_IFR_UINT8_OP = 0x42;
-public const ulong EFI_IFR_UINT16_OP = 0x43;
-public const ulong EFI_IFR_UINT32_OP = 0x44;
-public const ulong EFI_IFR_UINT64_OP = 0x45;
-public const ulong EFI_IFR_TRUE_OP = 0x46;
-public const ulong EFI_IFR_FALSE_OP = 0x47;
-public const ulong EFI_IFR_TO_UINT_OP = 0x48;
-public const ulong EFI_IFR_TO_STRING_OP = 0x49;
-public const ulong EFI_IFR_TO_BOOLEAN_OP = 0x4A;
-public const ulong EFI_IFR_MID_OP = 0x4B;
-public const ulong EFI_IFR_FIND_OP = 0x4C;
-public const ulong EFI_IFR_TOKEN_OP = 0x4D;
-public const ulong EFI_IFR_STRING_REF1_OP = 0x4E;
-public const ulong EFI_IFR_STRING_REF2_OP = 0x4F;
-public const ulong EFI_IFR_CONDITIONAL_OP = 0x50;
-public const ulong EFI_IFR_QUESTION_REF3_OP = 0x51;
-public const ulong EFI_IFR_ZERO_OP = 0x52;
-public const ulong EFI_IFR_ONE_OP = 0x53;
-public const ulong EFI_IFR_ONES_OP = 0x54;
-public const ulong EFI_IFR_UNDEFINED_OP = 0x55;
-public const ulong EFI_IFR_LENGTH_OP = 0x56;
-public const ulong EFI_IFR_DUP_OP = 0x57;
-public const ulong EFI_IFR_THIS_OP = 0x58;
-public const ulong EFI_IFR_SPAN_OP = 0x59;
-public const ulong EFI_IFR_VALUE_OP = 0x5A;
-public const ulong EFI_IFR_DEFAULT_OP = 0x5B;
-public const ulong EFI_IFR_DEFAULTSTORE_OP = 0x5C;
-public const ulong EFI_IFR_FORM_MAP_OP = 0x5D;
-public const ulong EFI_IFR_CATENATE_OP = 0x5E;
-public const ulong EFI_IFR_GUID_OP = 0x5F;
-public const ulong EFI_IFR_SECURITY_OP = 0x60;
-public const ulong EFI_IFR_MODAL_TAG_OP = 0x61;
-public const ulong EFI_IFR_REFRESH_ID_OP = 0x62;
-public const ulong EFI_IFR_WARNING_IF_OP = 0x63;
-public const ulong EFI_IFR_MATCH2_OP = 0x64;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_FORM_OP = 0x01;
+  public const ulong EFI_IFR_SUBTITLE_OP = 0x02;
+  public const ulong EFI_IFR_TEXT_OP = 0x03;
+  public const ulong EFI_IFR_IMAGE_OP = 0x04;
+  public const ulong EFI_IFR_ONE_OF_OP = 0x05;
+  public const ulong EFI_IFR_CHECKBOX_OP = 0x06;
+  public const ulong EFI_IFR_NUMERIC_OP = 0x07;
+  public const ulong EFI_IFR_PASSWORD_OP = 0x08;
+  public const ulong EFI_IFR_ONE_OF_OPTION_OP = 0x09;
+  public const ulong EFI_IFR_SUPPRESS_IF_OP = 0x0A;
+  public const ulong EFI_IFR_LOCKED_OP = 0x0B;
+  public const ulong EFI_IFR_ACTION_OP = 0x0C;
+  public const ulong EFI_IFR_RESET_BUTTON_OP = 0x0D;
+  public const ulong EFI_IFR_FORM_SET_OP = 0x0E;
+  public const ulong EFI_IFR_REF_OP = 0x0F;
+  public const ulong EFI_IFR_NO_SUBMIT_IF_OP = 0x10;
+  public const ulong EFI_IFR_INCONSISTENT_IF_OP = 0x11;
+  public const ulong EFI_IFR_EQ_ID_VAL_OP = 0x12;
+  public const ulong EFI_IFR_EQ_ID_ID_OP = 0x13;
+  public const ulong EFI_IFR_EQ_ID_VAL_LIST_OP = 0x14;
+  public const ulong EFI_IFR_AND_OP = 0x15;
+  public const ulong EFI_IFR_OR_OP = 0x16;
+  public const ulong EFI_IFR_NOT_OP = 0x17;
+  public const ulong EFI_IFR_RULE_OP = 0x18;
+  public const ulong EFI_IFR_GRAY_OUT_IF_OP = 0x19;
+  public const ulong EFI_IFR_DATE_OP = 0x1A;
+  public const ulong EFI_IFR_TIME_OP = 0x1B;
+  public const ulong EFI_IFR_STRING_OP = 0x1C;
+  public const ulong EFI_IFR_REFRESH_OP = 0x1D;
+  public const ulong EFI_IFR_DISABLE_IF_OP = 0x1E;
+  public const ulong EFI_IFR_ANIMATION_OP = 0x1F;
+  public const ulong EFI_IFR_TO_LOWER_OP = 0x20;
+  public const ulong EFI_IFR_TO_UPPER_OP = 0x21;
+  public const ulong EFI_IFR_MAP_OP = 0x22;
+  public const ulong EFI_IFR_ORDERED_LIST_OP = 0x23;
+  public const ulong EFI_IFR_VARSTORE_OP = 0x24;
+  public const ulong EFI_IFR_VARSTORE_NAME_VALUE_OP = 0x25;
+  public const ulong EFI_IFR_VARSTORE_EFI_OP = 0x26;
+  public const ulong EFI_IFR_VARSTORE_DEVICE_OP = 0x27;
+  public const ulong EFI_IFR_VERSION_OP = 0x28;
+  public const ulong EFI_IFR_END_OP = 0x29;
+  public const ulong EFI_IFR_MATCH_OP = 0x2A;
+  public const ulong EFI_IFR_GET_OP = 0x2B;
+  public const ulong EFI_IFR_SET_OP = 0x2C;
+  public const ulong EFI_IFR_READ_OP = 0x2D;
+  public const ulong EFI_IFR_WRITE_OP = 0x2E;
+  public const ulong EFI_IFR_EQUAL_OP = 0x2F;
+  public const ulong EFI_IFR_NOT_EQUAL_OP = 0x30;
+  public const ulong EFI_IFR_GREATER_THAN_OP = 0x31;
+  public const ulong EFI_IFR_GREATER_EQUAL_OP = 0x32;
+  public const ulong EFI_IFR_LESS_THAN_OP = 0x33;
+  public const ulong EFI_IFR_LESS_EQUAL_OP = 0x34;
+  public const ulong EFI_IFR_BITWISE_AND_OP = 0x35;
+  public const ulong EFI_IFR_BITWISE_OR_OP = 0x36;
+  public const ulong EFI_IFR_BITWISE_NOT_OP = 0x37;
+  public const ulong EFI_IFR_SHIFT_LEFT_OP = 0x38;
+  public const ulong EFI_IFR_SHIFT_RIGHT_OP = 0x39;
+  public const ulong EFI_IFR_ADD_OP = 0x3A;
+  public const ulong EFI_IFR_SUBTRACT_OP = 0x3B;
+  public const ulong EFI_IFR_MULTIPLY_OP = 0x3C;
+  public const ulong EFI_IFR_DIVIDE_OP = 0x3D;
+  public const ulong EFI_IFR_MODULO_OP = 0x3E;
+  public const ulong EFI_IFR_RULE_REF_OP = 0x3F;
+  public const ulong EFI_IFR_QUESTION_REF1_OP = 0x40;
+  public const ulong EFI_IFR_QUESTION_REF2_OP = 0x41;
+  public const ulong EFI_IFR_UINT8_OP = 0x42;
+  public const ulong EFI_IFR_UINT16_OP = 0x43;
+  public const ulong EFI_IFR_UINT32_OP = 0x44;
+  public const ulong EFI_IFR_UINT64_OP = 0x45;
+  public const ulong EFI_IFR_TRUE_OP = 0x46;
+  public const ulong EFI_IFR_FALSE_OP = 0x47;
+  public const ulong EFI_IFR_TO_UINT_OP = 0x48;
+  public const ulong EFI_IFR_TO_STRING_OP = 0x49;
+  public const ulong EFI_IFR_TO_BOOLEAN_OP = 0x4A;
+  public const ulong EFI_IFR_MID_OP = 0x4B;
+  public const ulong EFI_IFR_FIND_OP = 0x4C;
+  public const ulong EFI_IFR_TOKEN_OP = 0x4D;
+  public const ulong EFI_IFR_STRING_REF1_OP = 0x4E;
+  public const ulong EFI_IFR_STRING_REF2_OP = 0x4F;
+  public const ulong EFI_IFR_CONDITIONAL_OP = 0x50;
+  public const ulong EFI_IFR_QUESTION_REF3_OP = 0x51;
+  public const ulong EFI_IFR_ZERO_OP = 0x52;
+  public const ulong EFI_IFR_ONE_OP = 0x53;
+  public const ulong EFI_IFR_ONES_OP = 0x54;
+  public const ulong EFI_IFR_UNDEFINED_OP = 0x55;
+  public const ulong EFI_IFR_LENGTH_OP = 0x56;
+  public const ulong EFI_IFR_DUP_OP = 0x57;
+  public const ulong EFI_IFR_THIS_OP = 0x58;
+  public const ulong EFI_IFR_SPAN_OP = 0x59;
+  public const ulong EFI_IFR_VALUE_OP = 0x5A;
+  public const ulong EFI_IFR_DEFAULT_OP = 0x5B;
+  public const ulong EFI_IFR_DEFAULTSTORE_OP = 0x5C;
+  public const ulong EFI_IFR_FORM_MAP_OP = 0x5D;
+  public const ulong EFI_IFR_CATENATE_OP = 0x5E;
+  public const ulong EFI_IFR_GUID_OP = 0x5F;
+  public const ulong EFI_IFR_SECURITY_OP = 0x60;
+  public const ulong EFI_IFR_MODAL_TAG_OP = 0x61;
+  public const ulong EFI_IFR_REFRESH_ID_OP = 0x62;
+  public const ulong EFI_IFR_WARNING_IF_OP = 0x63;
+  public const ulong EFI_IFR_MATCH2_OP = 0x64;
 
-//
-// Definitions of IFR Standard Headers
-// Section 27.3.8.2
-//
+  //
+  // Definitions of IFR Standard Headers
+  // Section 27.3.8.2
+  //
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_OP_HEADER
@@ -983,12 +1004,15 @@ byte Flags;
 //
 // Flag values of EFI_IFR_QUESTION_HEADER
 //
-public const ulong EFI_IFR_FLAG_READ_ONLY = 0x01;
-public const ulong EFI_IFR_FLAG_CALLBACK = 0x04;
-public const ulong EFI_IFR_FLAG_RESET_REQUIRED = 0x10;
-public const ulong EFI_IFR_FLAG_REST_STYLE = 0x20;
-public const ulong EFI_IFR_FLAG_RECONNECT_REQUIRED = 0x40;
-public const ulong EFI_IFR_FLAG_OPTIONS_ONLY = 0x80;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_FLAG_READ_ONLY = 0x01;
+  public const ulong EFI_IFR_FLAG_CALLBACK = 0x04;
+  public const ulong EFI_IFR_FLAG_RESET_REQUIRED = 0x10;
+  public const ulong EFI_IFR_FLAG_REST_STYLE = 0x20;
+  public const ulong EFI_IFR_FLAG_RECONNECT_REQUIRED = 0x40;
+  public const ulong EFI_IFR_FLAG_OPTIONS_ONLY = 0x80;
+}
 
 //
 // Definition for Opcode Reference
@@ -1005,15 +1029,18 @@ public unsafe struct EFI_IFR_DEFAULTSTORE
 //
 // Default Identifier of default store
 //
-public const ulong EFI_HII_DEFAULT_CLASS_STANDARD = 0x0000;
-public const ulong EFI_HII_DEFAULT_CLASS_MANUFACTURING = 0x0001;
-public const ulong EFI_HII_DEFAULT_CLASS_SAFE = 0x0002;
-public const ulong EFI_HII_DEFAULT_CLASS_PLATFORM_BEGIN = 0x4000;
-public const ulong EFI_HII_DEFAULT_CLASS_PLATFORM_END = 0x7fff;
-public const ulong EFI_HII_DEFAULT_CLASS_HARDWARE_BEGIN = 0x8000;
-public const ulong EFI_HII_DEFAULT_CLASS_HARDWARE_END = 0xbfff;
-public const ulong EFI_HII_DEFAULT_CLASS_FIRMWARE_BEGIN = 0xc000;
-public const ulong EFI_HII_DEFAULT_CLASS_FIRMWARE_END = 0xffff;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_DEFAULT_CLASS_STANDARD = 0x0000;
+  public const ulong EFI_HII_DEFAULT_CLASS_MANUFACTURING = 0x0001;
+  public const ulong EFI_HII_DEFAULT_CLASS_SAFE = 0x0002;
+  public const ulong EFI_HII_DEFAULT_CLASS_PLATFORM_BEGIN = 0x4000;
+  public const ulong EFI_HII_DEFAULT_CLASS_PLATFORM_END = 0x7fff;
+  public const ulong EFI_HII_DEFAULT_CLASS_HARDWARE_BEGIN = 0x8000;
+  public const ulong EFI_HII_DEFAULT_CLASS_HARDWARE_END = 0xbfff;
+  public const ulong EFI_HII_DEFAULT_CLASS_FIRMWARE_BEGIN = 0xc000;
+  public const ulong EFI_HII_DEFAULT_CLASS_FIRMWARE_END = 0xffff;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_VARSTORE
@@ -1126,7 +1153,10 @@ public unsafe struct EFI_IFR_SUBTITLE
   public byte Flags;
 }
 
-public const ulong EFI_IFR_FLAGS_HORIZONTAL = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_FLAGS_HORIZONTAL = 0x01;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_CHECKBOX
@@ -1136,8 +1166,11 @@ public unsafe struct EFI_IFR_CHECKBOX
   public byte Flags;
 }
 
-public const ulong EFI_IFR_CHECKBOX_DEFAULT = 0x01;
-public const ulong EFI_IFR_CHECKBOX_DEFAULT_MFG = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_CHECKBOX_DEFAULT = 0x01;
+  public const ulong EFI_IFR_CHECKBOX_DEFAULT_MFG = 0x02;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_TEXT
@@ -1226,14 +1259,17 @@ public unsafe struct EFI_IFR_DATE
 //
 // Flags that describe the behavior of the question.
 //
-public const ulong EFI_QF_DATE_YEAR_SUPPRESS = 0x01;
-public const ulong EFI_QF_DATE_MONTH_SUPPRESS = 0x02;
-public const ulong EFI_QF_DATE_DAY_SUPPRESS = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong EFI_QF_DATE_YEAR_SUPPRESS = 0x01;
+  public const ulong EFI_QF_DATE_MONTH_SUPPRESS = 0x02;
+  public const ulong EFI_QF_DATE_DAY_SUPPRESS = 0x04;
 
-public const ulong EFI_QF_DATE_STORAGE = 0x30;
-public const ulong QF_DATE_STORAGE_NORMAL = 0x00;
-public const ulong QF_DATE_STORAGE_TIME = 0x10;
-public const ulong QF_DATE_STORAGE_WAKEUP = 0x20;
+  public const ulong EFI_QF_DATE_STORAGE = 0x30;
+  public const ulong QF_DATE_STORAGE_NORMAL = 0x00;
+  public const ulong QF_DATE_STORAGE_TIME = 0x10;
+  public const ulong QF_DATE_STORAGE_WAKEUP = 0x20;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct u8
@@ -1272,16 +1308,19 @@ public unsafe struct EFI_IFR_NUMERIC
 //
 // Flags related to the numeric question
 //
-public const ulong EFI_IFR_NUMERIC_SIZE = 0x03;
-public const ulong EFI_IFR_NUMERIC_SIZE_1 = 0x00;
-public const ulong EFI_IFR_NUMERIC_SIZE_2 = 0x01;
-public const ulong EFI_IFR_NUMERIC_SIZE_4 = 0x02;
-public const ulong EFI_IFR_NUMERIC_SIZE_8 = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_NUMERIC_SIZE = 0x03;
+  public const ulong EFI_IFR_NUMERIC_SIZE_1 = 0x00;
+  public const ulong EFI_IFR_NUMERIC_SIZE_2 = 0x01;
+  public const ulong EFI_IFR_NUMERIC_SIZE_4 = 0x02;
+  public const ulong EFI_IFR_NUMERIC_SIZE_8 = 0x03;
 
-public const ulong EFI_IFR_DISPLAY = 0x30;
-public const ulong EFI_IFR_DISPLAY_INT_DEC = 0x00;
-public const ulong EFI_IFR_DISPLAY_UINT_DEC = 0x10;
-public const ulong EFI_IFR_DISPLAY_UINT_HEX = 0x20;
+  public const ulong EFI_IFR_DISPLAY = 0x30;
+  public const ulong EFI_IFR_DISPLAY_INT_DEC = 0x00;
+  public const ulong EFI_IFR_DISPLAY_UINT_DEC = 0x10;
+  public const ulong EFI_IFR_DISPLAY_UINT_HEX = 0x20;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_ONE_OF
@@ -1302,7 +1341,10 @@ public unsafe struct EFI_IFR_STRING
   public byte Flags;
 }
 
-public const ulong EFI_IFR_STRING_MULTI_LINE = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_STRING_MULTI_LINE = 0x01;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_PASSWORD
@@ -1322,8 +1364,11 @@ public unsafe struct EFI_IFR_ORDERED_LIST
   public byte Flags;
 }
 
-public const ulong EFI_IFR_UNIQUE_SET = 0x01;
-public const ulong EFI_IFR_NO_EMPTY_SET = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_UNIQUE_SET = 0x01;
+  public const ulong EFI_IFR_NO_EMPTY_SET = 0x02;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_TIME
@@ -1336,14 +1381,17 @@ public unsafe struct EFI_IFR_TIME
 //
 // A bit-mask that determines which unique settings are active for this opcode.
 //
-public const ulong QF_TIME_HOUR_SUPPRESS = 0x01;
-public const ulong QF_TIME_MINUTE_SUPPRESS = 0x02;
-public const ulong QF_TIME_SECOND_SUPPRESS = 0x04;
+public unsafe partial class EFI
+{
+  public const ulong QF_TIME_HOUR_SUPPRESS = 0x01;
+  public const ulong QF_TIME_MINUTE_SUPPRESS = 0x02;
+  public const ulong QF_TIME_SECOND_SUPPRESS = 0x04;
 
-public const ulong QF_TIME_STORAGE = 0x30;
-public const ulong QF_TIME_STORAGE_NORMAL = 0x00;
-public const ulong QF_TIME_STORAGE_TIME = 0x10;
-public const ulong QF_TIME_STORAGE_WAKEUP = 0x20;
+  public const ulong QF_TIME_STORAGE = 0x30;
+  public const ulong QF_TIME_STORAGE_NORMAL = 0x00;
+  public const ulong QF_TIME_STORAGE_TIME = 0x10;
+  public const ulong QF_TIME_STORAGE_WAKEUP = 0x20;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_DISABLE_IF
@@ -1412,22 +1460,25 @@ public unsafe struct EFI_IFR_ONE_OF_OPTION
 //
 // Types of the option's value.
 //
-public const ulong EFI_IFR_TYPE_NUM_SIZE_8 = 0x00;
-public const ulong EFI_IFR_TYPE_NUM_SIZE_16 = 0x01;
-public const ulong EFI_IFR_TYPE_NUM_SIZE_32 = 0x02;
-public const ulong EFI_IFR_TYPE_NUM_SIZE_64 = 0x03;
-public const ulong EFI_IFR_TYPE_BOOLEAN = 0x04;
-public const ulong EFI_IFR_TYPE_TIME = 0x05;
-public const ulong EFI_IFR_TYPE_DATE = 0x06;
-public const ulong EFI_IFR_TYPE_STRING = 0x07;
-public const ulong EFI_IFR_TYPE_OTHER = 0x08;
-public const ulong EFI_IFR_TYPE_UNDEFINED = 0x09;
-public const ulong EFI_IFR_TYPE_ACTION = 0x0A;
-public const ulong EFI_IFR_TYPE_BUFFER = 0x0B;
-public const ulong EFI_IFR_TYPE_REF = 0x0C;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_TYPE_NUM_SIZE_8 = 0x00;
+  public const ulong EFI_IFR_TYPE_NUM_SIZE_16 = 0x01;
+  public const ulong EFI_IFR_TYPE_NUM_SIZE_32 = 0x02;
+  public const ulong EFI_IFR_TYPE_NUM_SIZE_64 = 0x03;
+  public const ulong EFI_IFR_TYPE_BOOLEAN = 0x04;
+  public const ulong EFI_IFR_TYPE_TIME = 0x05;
+  public const ulong EFI_IFR_TYPE_DATE = 0x06;
+  public const ulong EFI_IFR_TYPE_STRING = 0x07;
+  public const ulong EFI_IFR_TYPE_OTHER = 0x08;
+  public const ulong EFI_IFR_TYPE_UNDEFINED = 0x09;
+  public const ulong EFI_IFR_TYPE_ACTION = 0x0A;
+  public const ulong EFI_IFR_TYPE_BUFFER = 0x0B;
+  public const ulong EFI_IFR_TYPE_REF = 0x0C;
 
-public const ulong EFI_IFR_OPTION_DEFAULT = 0x10;
-public const ulong EFI_IFR_OPTION_DEFAULT_MFG = 0x20;
+  public const ulong EFI_IFR_OPTION_DEFAULT = 0x10;
+  public const ulong EFI_IFR_OPTION_DEFAULT_MFG = 0x20;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_GUID
@@ -1637,20 +1688,23 @@ public unsafe struct EFI_IFR_TO_BOOLEAN
 /// 2 = hexadecimal (lower-case alpha).
 /// 3 = hexadecimal (upper-case alpha).
 ///@{
-public const ulong EFI_IFR_STRING_UNSIGNED_DEC = 0;
-public const ulong EFI_IFR_STRING_SIGNED_DEC = 1;
-public const ulong EFI_IFR_STRING_LOWERCASE_HEX = 2;
-public const ulong EFI_IFR_STRING_UPPERCASE_HEX = 3;
-///@}
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_STRING_UNSIGNED_DEC = 0;
+  public const ulong EFI_IFR_STRING_SIGNED_DEC = 1;
+  public const ulong EFI_IFR_STRING_LOWERCASE_HEX = 2;
+  public const ulong EFI_IFR_STRING_UPPERCASE_HEX = 3;
+  ///@}
 
-///
-/// When converting from a buffer, these flags control the format:
-/// 0 = ASCII.
-/// 8 = Unicode.
-///@{
-public const ulong EFI_IFR_STRING_ASCII = 0;
-public const ulong EFI_IFR_STRING_UNICODE = 8;
-///@}
+  ///
+  /// When converting from a buffer, these flags control the format:
+  /// 0 = ASCII.
+  /// 8 = Unicode.
+  ///@{
+  public const ulong EFI_IFR_STRING_ASCII = 0;
+  public const ulong EFI_IFR_STRING_UNICODE = 8;
+  ///@}
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_TO_STRING
@@ -1807,8 +1861,11 @@ public unsafe struct EFI_IFR_CONDITIONAL
 //
 // Flags governing the matching criteria of EFI_IFR_FIND
 //
-public const ulong EFI_IFR_FF_CASE_SENSITIVE = 0x00;
-public const ulong EFI_IFR_FF_CASE_INSENSITIVE = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_FF_CASE_SENSITIVE = 0x00;
+  public const ulong EFI_IFR_FF_CASE_INSENSITIVE = 0x01;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_FIND
@@ -1833,8 +1890,11 @@ public unsafe struct EFI_IFR_TOKEN
 // Flags specifying whether to find the first matching string
 // or the first non-matching string.
 //
-public const ulong EFI_IFR_FLAGS_FIRST_MATCHING = 0x00;
-public const ulong EFI_IFR_FLAGS_FIRST_NON_MATCHING = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IFR_FLAGS_FIRST_MATCHING = 0x00;
+  public const ulong EFI_IFR_FLAGS_FIRST_NON_MATCHING = 0x01;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_SPAN
@@ -2117,21 +2177,24 @@ public unsafe struct EFI_KEY_DESCRIPTOR
 /// A key which is affected by all the standard shift modifiers.
 /// Most keys would be expected to have this bit active.
 ///
-public const ulong EFI_AFFECTED_BY_STANDARD_SHIFT = 0x0001;
+public unsafe partial class EFI
+{
+  public const ulong EFI_AFFECTED_BY_STANDARD_SHIFT = 0x0001;
 
-///
-/// This key is affected by the caps lock so that if a keyboard driver
-/// would need to disambiguate between a key which had a "1" defined
-/// versus an "a" character.  Having this bit turned on would tell
-/// the keyboard driver to use the appropriate shifted state or not.
-///
-public const ulong EFI_AFFECTED_BY_CAPS_LOCK = 0x0002;
+  ///
+  /// This key is affected by the caps lock so that if a keyboard driver
+  /// would need to disambiguate between a key which had a "1" defined
+  /// versus an "a" character.  Having this bit turned on would tell
+  /// the keyboard driver to use the appropriate shifted state or not.
+  ///
+  public const ulong EFI_AFFECTED_BY_CAPS_LOCK = 0x0002;
 
-///
-/// Similar to the case of CAPS lock, if this bit is active, the key
-/// is affected by the num lock being turned on.
-///
-public const ulong EFI_AFFECTED_BY_NUM_LOCK = 0x0004;
+  ///
+  /// Similar to the case of CAPS lock, if this bit is active, the key
+  /// is affected by the num lock being turned on.
+  ///
+  public const ulong EFI_AFFECTED_BY_NUM_LOCK = 0x0004;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_KEYBOARD_LAYOUT
@@ -2154,57 +2217,60 @@ public unsafe struct EFI_HII_KEYBOARD_PACKAGE_HDR
 //
 // Modifier values
 //
-public const ulong EFI_NULL_MODIFIER = 0x0000;
-public const ulong EFI_LEFT_CONTROL_MODIFIER = 0x0001;
-public const ulong EFI_RIGHT_CONTROL_MODIFIER = 0x0002;
-public const ulong EFI_LEFT_ALT_MODIFIER = 0x0003;
-public const ulong EFI_RIGHT_ALT_MODIFIER = 0x0004;
-public const ulong EFI_ALT_GR_MODIFIER = 0x0005;
-public const ulong EFI_INSERT_MODIFIER = 0x0006;
-public const ulong EFI_DELETE_MODIFIER = 0x0007;
-public const ulong EFI_PAGE_DOWN_MODIFIER = 0x0008;
-public const ulong EFI_PAGE_UP_MODIFIER = 0x0009;
-public const ulong EFI_HOME_MODIFIER = 0x000A;
-public const ulong EFI_END_MODIFIER = 0x000B;
-public const ulong EFI_LEFT_SHIFT_MODIFIER = 0x000C;
-public const ulong EFI_RIGHT_SHIFT_MODIFIER = 0x000D;
-public const ulong EFI_CAPS_LOCK_MODIFIER = 0x000E;
-public const ulong EFI_NUM_LOCK_MODIFIER = 0x000F;
-public const ulong EFI_LEFT_ARROW_MODIFIER = 0x0010;
-public const ulong EFI_RIGHT_ARROW_MODIFIER = 0x0011;
-public const ulong EFI_DOWN_ARROW_MODIFIER = 0x0012;
-public const ulong EFI_UP_ARROW_MODIFIER = 0x0013;
-public const ulong EFI_NS_KEY_MODIFIER = 0x0014;
-public const ulong EFI_NS_KEY_DEPENDENCY_MODIFIER = 0x0015;
-public const ulong EFI_FUNCTION_KEY_ONE_MODIFIER = 0x0016;
-public const ulong EFI_FUNCTION_KEY_TWO_MODIFIER = 0x0017;
-public const ulong EFI_FUNCTION_KEY_THREE_MODIFIER = 0x0018;
-public const ulong EFI_FUNCTION_KEY_FOUR_MODIFIER = 0x0019;
-public const ulong EFI_FUNCTION_KEY_FIVE_MODIFIER = 0x001A;
-public const ulong EFI_FUNCTION_KEY_SIX_MODIFIER = 0x001B;
-public const ulong EFI_FUNCTION_KEY_SEVEN_MODIFIER = 0x001C;
-public const ulong EFI_FUNCTION_KEY_EIGHT_MODIFIER = 0x001D;
-public const ulong EFI_FUNCTION_KEY_NINE_MODIFIER = 0x001E;
-public const ulong EFI_FUNCTION_KEY_TEN_MODIFIER = 0x001F;
-public const ulong EFI_FUNCTION_KEY_ELEVEN_MODIFIER = 0x0020;
-public const ulong EFI_FUNCTION_KEY_TWELVE_MODIFIER = 0x0021;
+public unsafe partial class EFI
+{
+  public const ulong EFI_NULL_MODIFIER = 0x0000;
+  public const ulong EFI_LEFT_CONTROL_MODIFIER = 0x0001;
+  public const ulong EFI_RIGHT_CONTROL_MODIFIER = 0x0002;
+  public const ulong EFI_LEFT_ALT_MODIFIER = 0x0003;
+  public const ulong EFI_RIGHT_ALT_MODIFIER = 0x0004;
+  public const ulong EFI_ALT_GR_MODIFIER = 0x0005;
+  public const ulong EFI_INSERT_MODIFIER = 0x0006;
+  public const ulong EFI_DELETE_MODIFIER = 0x0007;
+  public const ulong EFI_PAGE_DOWN_MODIFIER = 0x0008;
+  public const ulong EFI_PAGE_UP_MODIFIER = 0x0009;
+  public const ulong EFI_HOME_MODIFIER = 0x000A;
+  public const ulong EFI_END_MODIFIER = 0x000B;
+  public const ulong EFI_LEFT_SHIFT_MODIFIER = 0x000C;
+  public const ulong EFI_RIGHT_SHIFT_MODIFIER = 0x000D;
+  public const ulong EFI_CAPS_LOCK_MODIFIER = 0x000E;
+  public const ulong EFI_NUM_LOCK_MODIFIER = 0x000F;
+  public const ulong EFI_LEFT_ARROW_MODIFIER = 0x0010;
+  public const ulong EFI_RIGHT_ARROW_MODIFIER = 0x0011;
+  public const ulong EFI_DOWN_ARROW_MODIFIER = 0x0012;
+  public const ulong EFI_UP_ARROW_MODIFIER = 0x0013;
+  public const ulong EFI_NS_KEY_MODIFIER = 0x0014;
+  public const ulong EFI_NS_KEY_DEPENDENCY_MODIFIER = 0x0015;
+  public const ulong EFI_FUNCTION_KEY_ONE_MODIFIER = 0x0016;
+  public const ulong EFI_FUNCTION_KEY_TWO_MODIFIER = 0x0017;
+  public const ulong EFI_FUNCTION_KEY_THREE_MODIFIER = 0x0018;
+  public const ulong EFI_FUNCTION_KEY_FOUR_MODIFIER = 0x0019;
+  public const ulong EFI_FUNCTION_KEY_FIVE_MODIFIER = 0x001A;
+  public const ulong EFI_FUNCTION_KEY_SIX_MODIFIER = 0x001B;
+  public const ulong EFI_FUNCTION_KEY_SEVEN_MODIFIER = 0x001C;
+  public const ulong EFI_FUNCTION_KEY_EIGHT_MODIFIER = 0x001D;
+  public const ulong EFI_FUNCTION_KEY_NINE_MODIFIER = 0x001E;
+  public const ulong EFI_FUNCTION_KEY_TEN_MODIFIER = 0x001F;
+  public const ulong EFI_FUNCTION_KEY_ELEVEN_MODIFIER = 0x0020;
+  public const ulong EFI_FUNCTION_KEY_TWELVE_MODIFIER = 0x0021;
 
-//
-// Keys that have multiple control functions based on modifier
-// settings are handled in the keyboard driver implementation.
-// For instance, PRINT_KEY might have a modifier held down and
-// is still a nonprinting character, but might have an alternate
-// control function like SYSREQUEST
-//
-public const ulong EFI_PRINT_MODIFIER = 0x0022;
-public const ulong EFI_SYS_REQUEST_MODIFIER = 0x0023;
-public const ulong EFI_SCROLL_LOCK_MODIFIER = 0x0024;
-public const ulong EFI_PAUSE_MODIFIER = 0x0025;
-public const ulong EFI_BREAK_MODIFIER = 0x0026;
+  //
+  // Keys that have multiple control functions based on modifier
+  // settings are handled in the keyboard driver implementation.
+  // For instance, PRINT_KEY might have a modifier held down and
+  // is still a nonprinting character, but might have an alternate
+  // control function like SYSREQUEST
+  //
+  public const ulong EFI_PRINT_MODIFIER = 0x0022;
+  public const ulong EFI_SYS_REQUEST_MODIFIER = 0x0023;
+  public const ulong EFI_SCROLL_LOCK_MODIFIER = 0x0024;
+  public const ulong EFI_PAUSE_MODIFIER = 0x0025;
+  public const ulong EFI_BREAK_MODIFIER = 0x0026;
 
-public const ulong EFI_LEFT_LOGO_MODIFIER = 0x0027;
-public const ulong EFI_RIGHT_LOGO_MODIFIER = 0x0028;
-public const ulong EFI_MENU_MODIFIER = 0x0029;
+  public const ulong EFI_LEFT_LOGO_MODIFIER = 0x0027;
+  public const ulong EFI_RIGHT_LOGO_MODIFIER = 0x0028;
+  public const ulong EFI_MENU_MODIFIER = 0x0029;
+}
 
 ///
 /// Animation IFR opcode
@@ -2254,24 +2320,27 @@ public unsafe struct EFI_HII_ANIMATION_BLOCK
 ///
 /// Animation block types.
 ///
-public const ulong EFI_HII_AIBT_END = 0x00;
-public const ulong EFI_HII_AIBT_OVERLAY_IMAGES = 0x10;
-public const ulong EFI_HII_AIBT_CLEAR_IMAGES = 0x11;
-public const ulong EFI_HII_AIBT_RESTORE_SCRN = 0x12;
-public const ulong EFI_HII_AIBT_OVERLAY_IMAGES_LOOP = 0x18;
-public const ulong EFI_HII_AIBT_CLEAR_IMAGES_LOOP = 0x19;
-public const ulong EFI_HII_AIBT_RESTORE_SCRN_LOOP = 0x1A;
-public const ulong EFI_HII_AIBT_DUPLICATE = 0x20;
-public const ulong EFI_HII_AIBT_SKIP2 = 0x21;
-public const ulong EFI_HII_AIBT_SKIP1 = 0x22;
-public const ulong EFI_HII_AIBT_EXT1 = 0x30;
-public const ulong EFI_HII_AIBT_EXT2 = 0x31;
-public const ulong EFI_HII_AIBT_EXT4 = 0x32;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HII_AIBT_END = 0x00;
+  public const ulong EFI_HII_AIBT_OVERLAY_IMAGES = 0x10;
+  public const ulong EFI_HII_AIBT_CLEAR_IMAGES = 0x11;
+  public const ulong EFI_HII_AIBT_RESTORE_SCRN = 0x12;
+  public const ulong EFI_HII_AIBT_OVERLAY_IMAGES_LOOP = 0x18;
+  public const ulong EFI_HII_AIBT_CLEAR_IMAGES_LOOP = 0x19;
+  public const ulong EFI_HII_AIBT_RESTORE_SCRN_LOOP = 0x1A;
+  public const ulong EFI_HII_AIBT_DUPLICATE = 0x20;
+  public const ulong EFI_HII_AIBT_SKIP2 = 0x21;
+  public const ulong EFI_HII_AIBT_SKIP1 = 0x22;
+  public const ulong EFI_HII_AIBT_EXT1 = 0x30;
+  public const ulong EFI_HII_AIBT_EXT2 = 0x31;
+  public const ulong EFI_HII_AIBT_EXT4 = 0x32;
 
-///
-/// Extended block headers used for variable sized animation records
-/// which need an explicit length.
-///
+  ///
+  /// Extended block headers used for variable sized animation records
+  /// which need an explicit length.
+  ///
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_AIBT_EXT1_BLOCK
@@ -2532,12 +2601,15 @@ public unsafe struct EFI_HII_AIBT_SKIP2_BLOCK
 /// STRING_TOKEN is not defined in UEFI specification. But it is placed
 /// here for the easy access by C files and VFR source files.
 ///
-public const ulong STRING_TOKEN = (t)t;
+public unsafe partial class EFI
+{
+  public const ulong STRING_TOKEN = (t)t;
 
-///
-/// IMAGE_TOKEN is not defined in UEFI specification. But it is placed
-/// here for the easy access by C files and VFR source files.
-///
-public const ulong IMAGE_TOKEN = (t)t;
+  ///
+  /// IMAGE_TOKEN is not defined in UEFI specification. But it is placed
+  /// here for the easy access by C files and VFR source files.
+  ///
+  public const ulong IMAGE_TOKEN = (t)t;
+}
 
 // #endif

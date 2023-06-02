@@ -18,13 +18,16 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <Protocol/SimpleNetwork.h>
 
-public static EFI_GUID EFI_MANAGED_NETWORK_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0xf36ff770, 0xa7e1, 0x42cf, new byte[] { 0x9e, 0xd2, 0x56, 0xf0, 0xf2, 0x71, 0xf4, 0x4c });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MANAGED_NETWORK_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+      0xf36ff770, 0xa7e1, 0x42cf, new byte[] { 0x9e, 0xd2, 0x56, 0xf0, 0xf2, 0x71, 0xf4, 0x4c });
 
-public static EFI_GUID EFI_MANAGED_NETWORK_PROTOCOL_GUID = new GUID(
-    0x7ab33a91, 0xace5, 0x4326, new byte[] { 0xb5, 0x72, 0xe7, 0xee, 0x33, 0xd3, 0x9f, 0x16 });
+  public static EFI_GUID EFI_MANAGED_NETWORK_PROTOCOL_GUID = new GUID(
+      0x7ab33a91, 0xace5, 0x4326, new byte[] { 0xb5, 0x72, 0xe7, 0xee, 0x33, 0xd3, 0x9f, 0x16 });
 
-// typedef struct _EFI_MANAGED_NETWORK_PROTOCOL EFI_MANAGED_NETWORK_PROTOCOL;
+  // typedef struct _EFI_MANAGED_NETWORK_PROTOCOL EFI_MANAGED_NETWORK_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MANAGED_NETWORK_CONFIG_DATA
@@ -148,209 +151,6 @@ public unsafe struct Packet
   public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
 }
 } EFI_MANAGED_NETWORK_COMPLETION_TOKEN;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The MNP is used by network applications (and drivers) to

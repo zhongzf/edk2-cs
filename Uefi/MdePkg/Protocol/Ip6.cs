@@ -26,13 +26,16 @@ namespace Uefi;
 
 // #include <Protocol/ManagedNetwork.h>
 
-public static EFI_GUID EFI_IP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0xec835dd3, 0xfe0f, 0x617b, new byte[] { 0xa6, 0x21, 0xb3, 0x50, 0xc3, 0xe1, 0x33, 0x88 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+      0xec835dd3, 0xfe0f, 0x617b, new byte[] { 0xa6, 0x21, 0xb3, 0x50, 0xc3, 0xe1, 0x33, 0x88 });
 
-public static EFI_GUID EFI_IP6_PROTOCOL_GUID = new GUID(
-    0x2c8759d5, 0x5c2d, 0x66ef, new byte[] { 0x92, 0x5f, 0xb6, 0x6c, 0x10, 0x19, 0x57, 0xe2 });
+  public static EFI_GUID EFI_IP6_PROTOCOL_GUID = new GUID(
+      0x2c8759d5, 0x5c2d, 0x66ef, new byte[] { 0x92, 0x5f, 0xb6, 0x6c, 0x10, 0x19, 0x57, 0xe2 });
 
-// typedef struct _EFI_IP6_PROTOCOL EFI_IP6_PROTOCOL;
+  // typedef struct _EFI_IP6_PROTOCOL EFI_IP6_PROTOCOL;
+}
 
 ///
 /// EFI_IP6_ADDRESS_PAIR is deprecated in the UEFI 2.4B and should not be used any more.
@@ -80,58 +83,61 @@ public unsafe struct EFI_IP6_VARIABLE_DATA
 /// ICMPv6 type definitions for error messages
 ///
 ///@{
-public const ulong ICMP_V6_DEST_UNREACHABLE = 0x1;
-public const ulong ICMP_V6_PACKET_TOO_BIG = 0x2;
-public const ulong ICMP_V6_TIME_EXCEEDED = 0x3;
-public const ulong ICMP_V6_PARAMETER_PROBLEM = 0x4;
-///@}
+public unsafe partial class EFI
+{
+  public const ulong ICMP_V6_DEST_UNREACHABLE = 0x1;
+  public const ulong ICMP_V6_PACKET_TOO_BIG = 0x2;
+  public const ulong ICMP_V6_TIME_EXCEEDED = 0x3;
+  public const ulong ICMP_V6_PARAMETER_PROBLEM = 0x4;
+  ///@}
 
-///
-/// ICMPv6 type definition for informational messages
-///
-///@{
-public const ulong ICMP_V6_ECHO_REQUEST = 0x80;
-public const ulong ICMP_V6_ECHO_REPLY = 0x81;
-public const ulong ICMP_V6_LISTENER_QUERY = 0x82;
-public const ulong ICMP_V6_LISTENER_REPORT = 0x83;
-public const ulong ICMP_V6_LISTENER_DONE = 0x84;
-public const ulong ICMP_V6_ROUTER_SOLICIT = 0x85;
-public const ulong ICMP_V6_ROUTER_ADVERTISE = 0x86;
-public const ulong ICMP_V6_NEIGHBOR_SOLICIT = 0x87;
-public const ulong ICMP_V6_NEIGHBOR_ADVERTISE = 0x88;
-public const ulong ICMP_V6_REDIRECT = 0x89;
-public const ulong ICMP_V6_LISTENER_REPORT_2 = 0x8F;
-///@}
+  ///
+  /// ICMPv6 type definition for informational messages
+  ///
+  ///@{
+  public const ulong ICMP_V6_ECHO_REQUEST = 0x80;
+  public const ulong ICMP_V6_ECHO_REPLY = 0x81;
+  public const ulong ICMP_V6_LISTENER_QUERY = 0x82;
+  public const ulong ICMP_V6_LISTENER_REPORT = 0x83;
+  public const ulong ICMP_V6_LISTENER_DONE = 0x84;
+  public const ulong ICMP_V6_ROUTER_SOLICIT = 0x85;
+  public const ulong ICMP_V6_ROUTER_ADVERTISE = 0x86;
+  public const ulong ICMP_V6_NEIGHBOR_SOLICIT = 0x87;
+  public const ulong ICMP_V6_NEIGHBOR_ADVERTISE = 0x88;
+  public const ulong ICMP_V6_REDIRECT = 0x89;
+  public const ulong ICMP_V6_LISTENER_REPORT_2 = 0x8F;
+  ///@}
 
-///
-/// ICMPv6 code definitions for ICMP_V6_DEST_UNREACHABLE
-///
-///@{
-public const ulong ICMP_V6_NO_ROUTE_TO_DEST = 0x0;
-public const ulong ICMP_V6_COMM_PROHIBITED = 0x1;
-public const ulong ICMP_V6_BEYOND_SCOPE = 0x2;
-public const ulong ICMP_V6_ADDR_UNREACHABLE = 0x3;
-public const ulong ICMP_V6_PORT_UNREACHABLE = 0x4;
-public const ulong ICMP_V6_SOURCE_ADDR_FAILED = 0x5;
-public const ulong ICMP_V6_ROUTE_REJECTED = 0x6;
-///@}
+  ///
+  /// ICMPv6 code definitions for ICMP_V6_DEST_UNREACHABLE
+  ///
+  ///@{
+  public const ulong ICMP_V6_NO_ROUTE_TO_DEST = 0x0;
+  public const ulong ICMP_V6_COMM_PROHIBITED = 0x1;
+  public const ulong ICMP_V6_BEYOND_SCOPE = 0x2;
+  public const ulong ICMP_V6_ADDR_UNREACHABLE = 0x3;
+  public const ulong ICMP_V6_PORT_UNREACHABLE = 0x4;
+  public const ulong ICMP_V6_SOURCE_ADDR_FAILED = 0x5;
+  public const ulong ICMP_V6_ROUTE_REJECTED = 0x6;
+  ///@}
 
-///
-/// ICMPv6 code definitions for ICMP_V6_TIME_EXCEEDED
-///
-///@{
-public const ulong ICMP_V6_TIMEOUT_HOP_LIMIT = 0x0;
-public const ulong ICMP_V6_TIMEOUT_REASSEMBLE = 0x1;
-///@}
+  ///
+  /// ICMPv6 code definitions for ICMP_V6_TIME_EXCEEDED
+  ///
+  ///@{
+  public const ulong ICMP_V6_TIMEOUT_HOP_LIMIT = 0x0;
+  public const ulong ICMP_V6_TIMEOUT_REASSEMBLE = 0x1;
+  ///@}
 
-///
-/// ICMPv6 code definitions for ICMP_V6_PARAMETER_PROBLEM
-///
-///@{
-public const ulong ICMP_V6_ERRONEOUS_HEADER = 0x0;
-public const ulong ICMP_V6_UNRECOGNIZE_NEXT_HDR = 0x1;
-public const ulong ICMP_V6_UNRECOGNIZE_OPTION = 0x2;
-///@}
+  ///
+  /// ICMPv6 code definitions for ICMP_V6_PARAMETER_PROBLEM
+  ///
+  ///@{
+  public const ulong ICMP_V6_ERRONEOUS_HEADER = 0x0;
+  public const ulong ICMP_V6_UNRECOGNIZE_NEXT_HDR = 0x1;
+  public const ulong ICMP_V6_UNRECOGNIZE_OPTION = 0x2;
+  ///@}
+}
 
 ///
 /// EFI_IP6_CONFIG_DATA
@@ -573,384 +579,6 @@ public unsafe struct Packet
   public EFI_IP6_TRANSMIT_DATA* TxData;
 }
 } EFI_IP6_COMPLETION_TOKEN;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI IPv6 Protocol implements a simple packet-oriented interface that can be

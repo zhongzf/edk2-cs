@@ -32,7 +32,10 @@ public unsafe struct TREE_EVENT_LOG_BITMAP { uint Value; public static implicit 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TREE_EVENT_LOG_FORMAT { uint Value; public static implicit operator TREE_EVENT_LOG_FORMAT(uint value) => new TREE_EVENT_LOG_FORMAT() { Value = value }; public static implicit operator uint(TREE_EVENT_LOG_FORMAT value) => value.Value; }
 
-public const ulong TREE_EVENT_LOG_FORMAT_TCG_1_2 = 0x00000001;
+public unsafe partial class EFI
+{
+  public const ulong TREE_EVENT_LOG_FORMAT_TCG_1_2 = 0x00000001;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TREE_BOOT_SERVICE_CAPABILITY_1_0
@@ -83,29 +86,35 @@ public unsafe struct TREE_BOOT_SERVICE_CAPABILITY_1_0
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TREE_BOOT_SERVICE_CAPABILITY { TREE_BOOT_SERVICE_CAPABILITY_1_0 Value; public static implicit operator TREE_BOOT_SERVICE_CAPABILITY(TREE_BOOT_SERVICE_CAPABILITY_1_0 value) => new TREE_BOOT_SERVICE_CAPABILITY() { Value = value }; public static implicit operator TREE_BOOT_SERVICE_CAPABILITY_1_0(TREE_BOOT_SERVICE_CAPABILITY value) => value.Value; }
 
-public const ulong TREE_BOOT_HASH_ALG_SHA1 = 0x00000001;
-public const ulong TREE_BOOT_HASH_ALG_SHA256 = 0x00000002;
-public const ulong TREE_BOOT_HASH_ALG_SHA384 = 0x00000004;
-public const ulong TREE_BOOT_HASH_ALG_SHA512 = 0x00000008;
+public unsafe partial class EFI
+{
+  public const ulong TREE_BOOT_HASH_ALG_SHA1 = 0x00000001;
+  public const ulong TREE_BOOT_HASH_ALG_SHA256 = 0x00000002;
+  public const ulong TREE_BOOT_HASH_ALG_SHA384 = 0x00000004;
+  public const ulong TREE_BOOT_HASH_ALG_SHA512 = 0x00000008;
 
-//
-// This bit is shall be set when an event shall be extended but not logged.
-//
-public const ulong TREE_EXTEND_ONLY = 0x0000000000000001;
-//
-// This bit shall be set when the intent is to measure a PE/COFF image.
-//
-public const ulong PE_COFF_IMAGE = 0x0000000000000010;
+  //
+  // This bit is shall be set when an event shall be extended but not logged.
+  //
+  public const ulong TREE_EXTEND_ONLY = 0x0000000000000001;
+  //
+  // This bit shall be set when the intent is to measure a PE/COFF image.
+  //
+  public const ulong PE_COFF_IMAGE = 0x0000000000000010;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TrEE_PCRINDEX { uint Value; public static implicit operator TrEE_PCRINDEX(uint value) => new TrEE_PCRINDEX() { Value = value }; public static implicit operator uint(TrEE_PCRINDEX value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TrEE_EVENTTYPE { uint Value; public static implicit operator TrEE_EVENTTYPE(uint value) => new TrEE_EVENTTYPE() { Value = value }; public static implicit operator uint(TrEE_EVENTTYPE value) => value.Value; }
 
-public const ulong MAX_PCR_INDEX = 23;
-public const ulong TREE_EVENT_HEADER_VERSION = 1;
+public unsafe partial class EFI
+{
+  public const ulong MAX_PCR_INDEX = 23;
+  public const ulong TREE_EVENT_HEADER_VERSION = 1;
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TrEE_EVENT_HEADER
@@ -140,112 +149,6 @@ public unsafe struct TrEE_EVENT
 }
 
 // #pragma pack()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TREE_PROTOCOL

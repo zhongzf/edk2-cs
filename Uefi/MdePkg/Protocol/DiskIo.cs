@@ -16,15 +16,18 @@ namespace Uefi;
 // #ifndef __DISK_IO_H__
 // #define __DISK_IO_H__
 
-public static EFI_GUID EFI_DISK_IO_PROTOCOL_GUID = new GUID(
-    0xce345171, 0xba0b, 0x11d2, new byte[] { 0x8e, 0x4f, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DISK_IO_PROTOCOL_GUID = new GUID(
+      0xce345171, 0xba0b, 0x11d2, new byte[] { 0x8e, 0x4f, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
-///
-/// Protocol GUID name defined in EFI1.1.
-///
-public const ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
+  ///
+  /// Protocol GUID name defined in EFI1.1.
+  ///
+  public const ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
 
-// typedef struct _EFI_DISK_IO_PROTOCOL EFI_DISK_IO_PROTOCOL;
+  // typedef struct _EFI_DISK_IO_PROTOCOL EFI_DISK_IO_PROTOCOL;
+}
 
 ///
 /// Protocol defined in EFI1.1.
@@ -32,67 +35,15 @@ public const ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DISK_IO { EFI_DISK_IO_PROTOCOL Value; public static implicit operator EFI_DISK_IO(EFI_DISK_IO_PROTOCOL value) => new EFI_DISK_IO() { Value = value }; public static implicit operator EFI_DISK_IO_PROTOCOL(EFI_DISK_IO value) => value.Value; }
 
+public unsafe partial class EFI
+{
+  public const ulong EFI_DISK_IO_PROTOCOL_REVISION = 0x00010000;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public const ulong EFI_DISK_IO_PROTOCOL_REVISION = 0x00010000;
-
-///
-/// Revision defined in EFI1.1
-///
-public const ulong EFI_DISK_IO_INTERFACE_REVISION = EFI_DISK_IO_PROTOCOL_REVISION;
+  ///
+  /// Revision defined in EFI1.1
+  ///
+  public const ulong EFI_DISK_IO_INTERFACE_REVISION = EFI_DISK_IO_PROTOCOL_REVISION;
+}
 
 ///
 /// This protocol is used to abstract Block I/O interfaces.

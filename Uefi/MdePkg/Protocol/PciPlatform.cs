@@ -28,13 +28,16 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// Global ID for the EFI_PCI_PLATFORM_PROTOCOL.
 ///
-public static EFI_GUID EFI_PCI_PLATFORM_PROTOCOL_GUID = new GUID(
-    0x7d75280, 0x27d4, 0x4d69, new byte[] { 0x90, 0xd0, 0x56, 0x43, 0xe2, 0x38, 0xb3, 0x41 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PCI_PLATFORM_PROTOCOL_GUID = new GUID(
+      0x7d75280, 0x27d4, 0x4d69, new byte[] { 0x90, 0xd0, 0x56, 0x43, 0xe2, 0x38, 0xb3, 0x41 });
 
-///
-/// Forward declaration for EFI_PCI_PLATFORM_PROTOCOL.
-///
-// typedef struct _EFI_PCI_PLATFORM_PROTOCOL EFI_PCI_PLATFORM_PROTOCOL;
+  ///
+  /// Forward declaration for EFI_PCI_PLATFORM_PROTOCOL.
+  ///
+  // typedef struct _EFI_PCI_PLATFORM_PROTOCOL EFI_PCI_PLATFORM_PROTOCOL;
+}
 
 ///
 /// EFI_PCI_PLATFORM_POLICY that is a bitmask with the following legal combinations:
@@ -118,31 +121,34 @@ public unsafe struct EFI_PCI_PLATFORM_POLICY { uint Value; public static implici
 /// Does not set aside either ISA or VGA I/O resources during PCI
 /// enumeration.
 ///
-public const ulong EFI_RESERVE_NONE_IO_ALIAS = 0x0000;
+public unsafe partial class EFI
+{
+  public const ulong EFI_RESERVE_NONE_IO_ALIAS = 0x0000;
 
-///
-/// Sets aside ISA I/O range and all aliases:
-///   - n100..n3FF
-///   - n500..n7FF
-///   - n900..nBFF
-///   - nD00..nFFF.
-///
-public const ulong EFI_RESERVE_ISA_IO_ALIAS = 0x0001;
+  ///
+  /// Sets aside ISA I/O range and all aliases:
+  ///   - n100..n3FF
+  ///   - n500..n7FF
+  ///   - n900..nBFF
+  ///   - nD00..nFFF.
+  ///
+  public const ulong EFI_RESERVE_ISA_IO_ALIAS = 0x0001;
 
-///
-/// Sets aside ISA I/O range 0x100-0x3FF.
-///
-public const ulong EFI_RESERVE_ISA_IO_NO_ALIAS = 0x0002;
+  ///
+  /// Sets aside ISA I/O range 0x100-0x3FF.
+  ///
+  public const ulong EFI_RESERVE_ISA_IO_NO_ALIAS = 0x0002;
 
-///
-/// Sets aside VGA I/O ranges and all aliases.
-///
-public const ulong EFI_RESERVE_VGA_IO_ALIAS = 0x0004;
+  ///
+  /// Sets aside VGA I/O ranges and all aliases.
+  ///
+  public const ulong EFI_RESERVE_VGA_IO_ALIAS = 0x0004;
 
-///
-/// Sets aside VGA I/O ranges
-///
-public const ulong EFI_RESERVE_VGA_IO_NO_ALIAS = 0x0008;
+  ///
+  /// Sets aside VGA I/O ranges
+  ///
+  public const ulong EFI_RESERVE_VGA_IO_NO_ALIAS = 0x0008;
+}
 
 ///
 /// EFI_PCI_EXECUTION_PHASE is used to call a platform protocol and execute
@@ -181,135 +187,6 @@ public enum EFI_PCI_EXECUTION_PHASE
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PCI_CHIPSET_EXECUTION_PHASE { EFI_PCI_EXECUTION_PHASE Value; public static implicit operator EFI_PCI_CHIPSET_EXECUTION_PHASE(EFI_PCI_EXECUTION_PHASE value) => new EFI_PCI_CHIPSET_EXECUTION_PHASE() { Value = value }; public static implicit operator EFI_PCI_EXECUTION_PHASE(EFI_PCI_CHIPSET_EXECUTION_PHASE value) => value.Value; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// This protocol provides the interface between the PCI bus driver/PCI Host

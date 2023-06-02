@@ -21,16 +21,19 @@ namespace Uefi;
 //
 // Net function definition for Chassis command
 //
-public const ulong IPMI_NETFN_CHASSIS = 0x00;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_NETFN_CHASSIS = 0x00;
 
-//
-//  Below is Definitions for Chassis commands (Chapter 28)
-//
+  //
+  //  Below is Definitions for Chassis commands (Chapter 28)
+  //
 
-//
-//  Definitions for Get Chassis Capabilities command
-//
-public const ulong IPMI_CHASSIS_GET_CAPABILITIES = 0x00;
+  //
+  //  Definitions for Get Chassis Capabilities command
+  //
+  public const ulong IPMI_CHASSIS_GET_CAPABILITIES = 0x00;
+}
 
 //
 //  Constants and Structure definitions for "Get Chassis Capabilities" command to follow here
@@ -50,7 +53,10 @@ public unsafe struct IPMI_GET_CHASSIS_CAPABILITIES_RESPONSE
 //
 //  Definitions for Get Chassis Status command
 //
-public const ulong IPMI_CHASSIS_GET_STATUS = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_GET_STATUS = 0x01;
+}
 
 //
 //  Constants and Structure definitions for "Get Chassis Status" command to follow here
@@ -68,7 +74,10 @@ public unsafe struct IPMI_GET_CHASSIS_STATUS_RESPONSE
 //
 //  Definitions for Chassis Control command
 //
-public const ulong IPMI_CHASSIS_CONTROL = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_CONTROL = 0x02;
+}
 
 //
 //  Constants and Structure definitions for "Chassis Control" command to follow here
@@ -92,34 +101,37 @@ public unsafe struct IPMI_CHASSIS_CONTROL_REQUEST
 //
 //  Definitions for Chassis Reset command
 //
-public const ulong IPMI_CHASSIS_RESET = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_RESET = 0x03;
 
-//
-//  Constants and Structure definitions for "Chassis Reset" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Chassis Reset" command to follow here
+  //
 
-//
-//  Definitions for Chassis Identify command
-//
-public const ulong IPMI_CHASSIS_IDENTIFY = 0x04;
+  //
+  //  Definitions for Chassis Identify command
+  //
+  public const ulong IPMI_CHASSIS_IDENTIFY = 0x04;
 
-//
-//  Constants and Structure definitions for "Chassis Identify" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Chassis Identify" command to follow here
+  //
 
-//
-//  Definitions for Set Chassis Capabilities command
-//
-public const ulong IPMI_CHASSIS_SET_CAPABILITIES = 0x05;
+  //
+  //  Definitions for Set Chassis Capabilities command
+  //
+  public const ulong IPMI_CHASSIS_SET_CAPABILITIES = 0x05;
 
-//
-//  Constants and Structure definitions for "Set Chassis Capabilities" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set Chassis Capabilities" command to follow here
+  //
 
-//
-//  Definitions for Set Power Restore Policy command
-//
-public const ulong IPMI_CHASSIS_SET_POWER_RESTORE_POLICY = 0x06;
+  //
+  //  Definitions for Set Power Restore Policy command
+  //
+  public const ulong IPMI_CHASSIS_SET_POWER_RESTORE_POLICY = 0x06;
+}
 
 //
 //  Constants and Structure definitions for "Set Power Restore Policy" command to follow here
@@ -150,23 +162,26 @@ public unsafe struct IPMI_SET_POWER_RESTORE_POLICY_RESPONSE
 //
 //  Definitions for Get System Restart Cause command
 //
-public const ulong IPMI_CHASSIS_GET_SYSTEM_RESTART_CAUSE = 0x07;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_GET_SYSTEM_RESTART_CAUSE = 0x07;
 
-//
-//  Constants and Structure definitions for "Get System Restart Cause" command to follow here
-//
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_UNKNOWN = 0x0;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_CHASSIS_CONTROL_COMMAND = 0x1;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_PUSHBUTTON_RESET = 0x2;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_PUSHBUTTON_POWERUP = 0x3;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_WATCHDOG_EXPIRE = 0x4;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_OEM = 0x5;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_AUTO_POWER_ALWAYS_RESTORE = 0x6;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_AUTO_POWER_RESTORE_PREV = 0x7;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_PEF_RESET = 0x8;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_PEF_POWERCYCLE = 0x9;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_SOFT_RESET = 0xA;
-public const ulong IPMI_SYSTEM_RESTART_CAUSE_RTC_POWERUP = 0xB;
+  //
+  //  Constants and Structure definitions for "Get System Restart Cause" command to follow here
+  //
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_UNKNOWN = 0x0;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_CHASSIS_CONTROL_COMMAND = 0x1;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_PUSHBUTTON_RESET = 0x2;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_PUSHBUTTON_POWERUP = 0x3;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_WATCHDOG_EXPIRE = 0x4;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_OEM = 0x5;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_AUTO_POWER_ALWAYS_RESTORE = 0x6;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_AUTO_POWER_RESTORE_PREV = 0x7;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_PEF_RESET = 0x8;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_PEF_POWERCYCLE = 0x9;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_SOFT_RESET = 0xA;
+  public const ulong IPMI_SYSTEM_RESTART_CAUSE_RTC_POWERUP = 0xB;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -189,7 +204,10 @@ public unsafe struct IPMI_GET_SYSTEM_RESTART_CAUSE_RESPONSE
 //
 //  Definitions for Set System BOOT options command
 //
-public const ulong IPMI_CHASSIS_SET_SYSTEM_BOOT_OPTIONS = 0x08;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_SET_SYSTEM_BOOT_OPTIONS = 0x08;
+}
 
 //
 //  Constants and Structure definitions for "Set System boot options" command to follow here
@@ -220,7 +238,10 @@ public unsafe struct IPMI_SET_BOOT_OPTIONS_RESPONSE
 //
 //  Definitions for Get System Boot options command
 //
-public const ulong IPMI_CHASSIS_GET_SYSTEM_BOOT_OPTIONS = 0x09;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_GET_SYSTEM_BOOT_OPTIONS = 0x09;
+}
 
 //
 //  Constants and Structure definitions for "Get System boot options" command to follow here
@@ -269,16 +290,19 @@ public unsafe struct IPMI_BOOT_INITIATOR
 //
 // Definitions for boot option parameter selector
 //
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SET_IN_PROGRESS = 0x0;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SERVICE_PARTITION_SELECTOR = 0x1;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SERVICE_PARTITION_SCAN = 0x2;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_BMC_BOOT_FLAG = 0x3;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_INFO_ACK = 0x4;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_FLAGS = 0x5;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_INITIATOR_INFO = 0x6;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_INITIATOR_MAILBOX = 0x7;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_OEM_BEGIN = 0x60;
-public const ulong IPMI_BOOT_OPTIONS_PARAMETER_OEM_END = 0x7F;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SET_IN_PROGRESS = 0x0;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SERVICE_PARTITION_SELECTOR = 0x1;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SERVICE_PARTITION_SCAN = 0x2;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_BMC_BOOT_FLAG = 0x3;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_INFO_ACK = 0x4;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_FLAGS = 0x5;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_INITIATOR_INFO = 0x6;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_BOOT_INITIATOR_MAILBOX = 0x7;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_OEM_BEGIN = 0x60;
+  public const ulong IPMI_BOOT_OPTIONS_PARAMETER_OEM_END = 0x7F;
+}
 
 //
 // Response Parameters for IPMI Get Boot Options
@@ -330,27 +354,30 @@ public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_4
 //
 //  Definitions for the 'Boot device selector' field of Boot Option Parameters #5
 //
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_NO_OVERRIDE = 0x0;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_PXE = 0x1;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_HARDDRIVE = 0x2;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_HARDDRIVE_SAFE_MODE = 0x3;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_DIAGNOSTIC_PARTITION = 0x4;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_CD_DVD = 0x5;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_BIOS_SETUP = 0x6;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_REMOTE_FLOPPY = 0x7;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_REMOTE_CD_DVD = 0x8;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_PRIMARY_REMOTE_MEDIA = 0x9;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_REMOTE_HARDDRIVE = 0xB;
-public const ulong IPMI_BOOT_DEVICE_SELECTOR_FLOPPY = 0xF;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_NO_OVERRIDE = 0x0;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_PXE = 0x1;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_HARDDRIVE = 0x2;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_HARDDRIVE_SAFE_MODE = 0x3;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_DIAGNOSTIC_PARTITION = 0x4;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_CD_DVD = 0x5;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_BIOS_SETUP = 0x6;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_REMOTE_FLOPPY = 0x7;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_REMOTE_CD_DVD = 0x8;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_PRIMARY_REMOTE_MEDIA = 0x9;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_REMOTE_HARDDRIVE = 0xB;
+  public const ulong IPMI_BOOT_DEVICE_SELECTOR_FLOPPY = 0xF;
 
-public const ulong BOOT_OPTION_HANDLED_BY_BIOS = 0x01;
+  public const ulong BOOT_OPTION_HANDLED_BY_BIOS = 0x01;
 
-//
-//  Constant definitions for the 'BIOS Mux Control Override' field of Boot Option Parameters #5
-//
-public const ulong BIOS_MUX_CONTROL_OVERRIDE_RECOMMEND_SETTING = 0x00;
-public const ulong BIOS_MUX_CONTROL_OVERRIDE_FORCE_TO_BMC = 0x01;
-public const ulong BIOS_MUX_CONTROL_OVERRIDE_FORCE_TO_SYSTEM = 0x02;
+  //
+  //  Constant definitions for the 'BIOS Mux Control Override' field of Boot Option Parameters #5
+  //
+  public const ulong BIOS_MUX_CONTROL_OVERRIDE_RECOMMEND_SETTING = 0x00;
+  public const ulong BIOS_MUX_CONTROL_OVERRIDE_FORCE_TO_BMC = 0x01;
+  public const ulong BIOS_MUX_CONTROL_OVERRIDE_FORCE_TO_SYSTEM = 0x02;
+}
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct Bits
@@ -492,7 +519,10 @@ public unsafe struct IPMI_GET_BOOT_OPTIONS_RESPONSE
 //
 //  Definitions for Set front panel button enables command
 //
-public const ulong IPMI_CHASSIS_SET_FRONT_PANEL_BUTTON_ENABLES = 0x0A;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_SET_FRONT_PANEL_BUTTON_ENABLES = 0x0A;
+}
 
 //
 //  Constants and Structure definitions for "Set front panel button enables" command to follow here
@@ -519,16 +549,19 @@ public unsafe struct IPMI_CHASSIS_SET_FRONT_PANEL_BUTTON_ENABLES_REQUEST
 //
 //  Definitions for Set Power Cycle Interval command
 //
-public const ulong IPMI_CHASSIS_SET_POWER_CYCLE_INTERVALS = 0x0B;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_CHASSIS_SET_POWER_CYCLE_INTERVALS = 0x0B;
 
-//
-//  Constants and Structure definitions for "Set Power Cycle Interval" command to follow here
-//
+  //
+  //  Constants and Structure definitions for "Set Power Cycle Interval" command to follow here
+  //
 
-//
-//  Definitions for Get POH Counter command
-//
-public const ulong IPMI_CHASSIS_GET_POH_COUNTER = 0x0F;
+  //
+  //  Definitions for Get POH Counter command
+  //
+  public const ulong IPMI_CHASSIS_GET_POH_COUNTER = 0x0F;
+}
 
 //
 //  Constants and Structure definitions for "Get POH Counter" command to follow here

@@ -21,65 +21,68 @@ namespace Uefi;
 ///
 /// Definitions of endpoint ID
 ///
-public const ulong MCTP_NULL_DESTINATION_ENDPOINT_ID = 0;
-public const ulong MCTP_NULL_SOURCE_ENDPOINT_ID = 0;
-public const ulong MCTP_RESERVED_ENDPOINT_START_ID = 1;
-public const ulong MCTP_RESERVED_ENDPOINT_END_ID = 7;
-public const ulong MCTP_BROADCAST_ENDPOINT_ID = 0xFF;
+public unsafe partial class EFI
+{
+  public const ulong MCTP_NULL_DESTINATION_ENDPOINT_ID = 0;
+  public const ulong MCTP_NULL_SOURCE_ENDPOINT_ID = 0;
+  public const ulong MCTP_RESERVED_ENDPOINT_START_ID = 1;
+  public const ulong MCTP_RESERVED_ENDPOINT_END_ID = 7;
+  public const ulong MCTP_BROADCAST_ENDPOINT_ID = 0xFF;
 
-///
-/// MCTP Control Commands
-///
-public const ulong MCTP_CONTROL_RESERVED = 0x00;
-public const ulong MCTP_CONTROL_SET_ENDPOINT_ID = 0x01;
-public const ulong MCTP_CONTROL_GET_ENDPOINT_ID = 0x02;
-public const ulong MCTP_CONTROL_GET_ENDPOINT_UUID = 0x03;
-public const ulong MCTP_CONTROL_GET_MCTP_VERSION_SUPPORT = 0x04;
-public const ulong MCTP_CONTROL_GET_MESSAGE_TYPE_SUPPORT = 0x05;
-public const ulong MCTP_CONTROL_GET_VENDOR_DEFINED_MESSAGE_SUPPORT = 0x06;
-public const ulong MCTP_CONTROL_RESOLVE_ENDPOINT_ID = 0x07;
-public const ulong MCTP_CONTROL_ALLOCATE_ENDPOINT_IDS = 0x08;
-public const ulong MCTP_CONTROL_ROUTING_INFORMATION_UPDATE = 0x09;
-public const ulong MCTP_CONTROL_GET_ROUTINE_TABLE_ENTRIES = 0x0A;
-public const ulong MCTP_CONTROL_PREPARE_FOR_ENDPOINT_DISCOVERY = 0x0B;
-public const ulong MCTP_CONTROL_ENDPOINT_DISCOVERY = 0x0C;
-public const ulong MCTP_CONTROL_DISCOVERY_NOTIFY = 0x0D;
-public const ulong MCTP_CONTROL_GET_NETWORK_ID = 0x0E;
-public const ulong MCTP_CONTROL_QUERY_HOP = 0x0F;
-public const ulong MCTP_CONTROL_RESOLVE_UUID = 0x10;
-public const ulong MCTP_CONTROL_QUERY_RATE_LIMIT = 0x11;
-public const ulong MCTP_CONTROL_REQUEST_TX_RATE_LIMIT = 0x12;
-public const ulong MCTP_CONTROL_UPDATE_RATE_LIMIT = 0x13;
-public const ulong MCTP_CONTROL_QUERY_SUPPORTED_INTERFACES = 0x14;
-public const ulong MCTP_CONTROL_TRANSPORT_SPECIFIC_START = 0xF0;
-public const ulong MCTP_CONTROL_TRANSPORT_SPECIFIC_END = 0xFF;
+  ///
+  /// MCTP Control Commands
+  ///
+  public const ulong MCTP_CONTROL_RESERVED = 0x00;
+  public const ulong MCTP_CONTROL_SET_ENDPOINT_ID = 0x01;
+  public const ulong MCTP_CONTROL_GET_ENDPOINT_ID = 0x02;
+  public const ulong MCTP_CONTROL_GET_ENDPOINT_UUID = 0x03;
+  public const ulong MCTP_CONTROL_GET_MCTP_VERSION_SUPPORT = 0x04;
+  public const ulong MCTP_CONTROL_GET_MESSAGE_TYPE_SUPPORT = 0x05;
+  public const ulong MCTP_CONTROL_GET_VENDOR_DEFINED_MESSAGE_SUPPORT = 0x06;
+  public const ulong MCTP_CONTROL_RESOLVE_ENDPOINT_ID = 0x07;
+  public const ulong MCTP_CONTROL_ALLOCATE_ENDPOINT_IDS = 0x08;
+  public const ulong MCTP_CONTROL_ROUTING_INFORMATION_UPDATE = 0x09;
+  public const ulong MCTP_CONTROL_GET_ROUTINE_TABLE_ENTRIES = 0x0A;
+  public const ulong MCTP_CONTROL_PREPARE_FOR_ENDPOINT_DISCOVERY = 0x0B;
+  public const ulong MCTP_CONTROL_ENDPOINT_DISCOVERY = 0x0C;
+  public const ulong MCTP_CONTROL_DISCOVERY_NOTIFY = 0x0D;
+  public const ulong MCTP_CONTROL_GET_NETWORK_ID = 0x0E;
+  public const ulong MCTP_CONTROL_QUERY_HOP = 0x0F;
+  public const ulong MCTP_CONTROL_RESOLVE_UUID = 0x10;
+  public const ulong MCTP_CONTROL_QUERY_RATE_LIMIT = 0x11;
+  public const ulong MCTP_CONTROL_REQUEST_TX_RATE_LIMIT = 0x12;
+  public const ulong MCTP_CONTROL_UPDATE_RATE_LIMIT = 0x13;
+  public const ulong MCTP_CONTROL_QUERY_SUPPORTED_INTERFACES = 0x14;
+  public const ulong MCTP_CONTROL_TRANSPORT_SPECIFIC_START = 0xF0;
+  public const ulong MCTP_CONTROL_TRANSPORT_SPECIFIC_END = 0xFF;
 
-///
-/// MCTP Control Message Completion Codes
-///
-public const ulong MCTP_CONTROL_COMPLETION_CODES_SUCCESS = 0x00;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR = 0x01;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_INVALID_DATA = 0x02;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_INVALID_LENGTH = 0x03;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_NOT_READY = 0x04;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_UNSUPPORTED_CMD = 0x05;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_COMMAND_SPECIFIC_START = 0x80;
-public const ulong MCTP_CONTROL_COMPLETION_CODES_COMMAND_SPECIFIC_END = 0xFF;
+  ///
+  /// MCTP Control Message Completion Codes
+  ///
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_SUCCESS = 0x00;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR = 0x01;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_INVALID_DATA = 0x02;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_INVALID_LENGTH = 0x03;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_NOT_READY = 0x04;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_ERROR_UNSUPPORTED_CMD = 0x05;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_COMMAND_SPECIFIC_START = 0x80;
+  public const ulong MCTP_CONTROL_COMPLETION_CODES_COMMAND_SPECIFIC_END = 0xFF;
 
-///
-/// MCTP Control Message Types
-///
-public const ulong MCTP_MESSAGE_TYPE_CONTROL = 0x00;
-public const ulong MCTP_MESSAGE_TYPE_PLDM = 0x01;
-public const ulong MCTP_MESSAGE_TYPE_NCSI = 0x02;
-public const ulong MCTP_MESSAGE_TYPE_ETHERNET = 0x03;
-public const ulong MCTP_MESSAGE_TYPE_NVME = 0x04;
-public const ulong MCTP_MESSAGE_TYPE_SPDM = 0x05;
-public const ulong MCTP_MESSAGE_TYPE_SECURE_MESSAGE = 0x06;
-public const ulong MCTP_MESSAGE_TYPE_CXL_FM_API = 0x07;
-public const ulong MCTP_MESSAGE_TYPE_CXL_CCI = 0x08;
-public const ulong MCTP_MESSAGE_TYPE_VENDOR_DEFINED_PCI = 0x7E;
-public const ulong MCTP_MESSAGE_TYPE_VENDOR_DEFINED_IANA = 0x7F;
+  ///
+  /// MCTP Control Message Types
+  ///
+  public const ulong MCTP_MESSAGE_TYPE_CONTROL = 0x00;
+  public const ulong MCTP_MESSAGE_TYPE_PLDM = 0x01;
+  public const ulong MCTP_MESSAGE_TYPE_NCSI = 0x02;
+  public const ulong MCTP_MESSAGE_TYPE_ETHERNET = 0x03;
+  public const ulong MCTP_MESSAGE_TYPE_NVME = 0x04;
+  public const ulong MCTP_MESSAGE_TYPE_SPDM = 0x05;
+  public const ulong MCTP_MESSAGE_TYPE_SECURE_MESSAGE = 0x06;
+  public const ulong MCTP_MESSAGE_TYPE_CXL_FM_API = 0x07;
+  public const ulong MCTP_MESSAGE_TYPE_CXL_CCI = 0x08;
+  public const ulong MCTP_MESSAGE_TYPE_VENDOR_DEFINED_PCI = 0x7E;
+  public const ulong MCTP_MESSAGE_TYPE_VENDOR_DEFINED_IANA = 0x7F;
+}
 
 public const ulong MCTP_ENDPOINT_ID_NULL = 0;
 public const ulong MCTP_ENDPOINT_ID_RESERVED_START = 1;
@@ -106,7 +109,10 @@ uint BodyHeader;
 
 /// Minimum transmission size is 64 bytes.
 /// The value of 64 is defined in MCTP Base Specification.
-public const ulong MCTP_BASELINE_MINIMUM_UNIT_TRANSMISSION_SIZE = 0x40;
+public unsafe partial class EFI
+{
+  public const ulong MCTP_BASELINE_MINIMUM_UNIT_TRANSMISSION_SIZE = 0x40;
+}
 
 ///
 /// The 32-bit Header of MCTP packet.

@@ -14,40 +14,14 @@ namespace Uefi;
 // #ifndef _MM_STATUS_CODE_H__
 // #define _MM_STATUS_CODE_H__
 
-public static EFI_GUID EFI_MM_STATUS_CODE_PROTOCOL_GUID = new GUID(
-    0x6afd2b77, 0x98c1, 0x4acd, new byte[] { 0xa6, 0xf9, 0x8a, 0x94, 0x39, 0xde, 0xf, 0xb1 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_STATUS_CODE_PROTOCOL_GUID = new GUID(
+      0x6afd2b77, 0x98c1, 0x4acd, new byte[] { 0xa6, 0xf9, 0x8a, 0x94, 0x39, 0xde, 0xf, 0xb1 });
 
-// typedef struct _EFI_MM_STATUS_CODE_PROTOCOL EFI_MM_STATUS_CODE_PROTOCOL;
+  // typedef struct _EFI_MM_STATUS_CODE_PROTOCOL EFI_MM_STATUS_CODE_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_STATUS_CODE_PROTOCOL

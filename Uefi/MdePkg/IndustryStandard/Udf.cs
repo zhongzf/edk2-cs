@@ -12,14 +12,17 @@ namespace Uefi;
 // #ifndef __UDF_H__
 // #define __UDF_H__
 
-public const ulong UDF_BEA_IDENTIFIER = "BEA01";
-public const ulong UDF_NSR2_IDENTIFIER = "NSR02";
-public const ulong UDF_NSR3_IDENTIFIER = "NSR03";
-public const ulong UDF_TEA_IDENTIFIER = "TEA01";
+public unsafe partial class EFI
+{
+  public const ulong UDF_BEA_IDENTIFIER = "BEA01";
+  public const ulong UDF_NSR2_IDENTIFIER = "NSR02";
+  public const ulong UDF_NSR3_IDENTIFIER = "NSR03";
+  public const ulong UDF_TEA_IDENTIFIER = "TEA01";
 
-public const ulong UDF_LOGICAL_SECTOR_SHIFT = 11;
-public const ulong UDF_LOGICAL_SECTOR_SIZE = ((ulong)(1ULL << UDF_LOGICAL_SECTOR_SHIFT));
+  public const ulong UDF_LOGICAL_SECTOR_SHIFT = 11;
+  public const ulong UDF_LOGICAL_SECTOR_SIZE = ((ulong)(1ULL << UDF_LOGICAL_SECTOR_SHIFT));
 public const ulong UDF_VRS_START_OFFSET = ((ulong)(16ULL << UDF_LOGICAL_SECTOR_SHIFT));
+}
 
 public enum UDF_VOLUME_DESCRIPTOR_ID
 {

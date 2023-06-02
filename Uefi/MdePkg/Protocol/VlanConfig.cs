@@ -15,10 +15,13 @@ namespace Uefi;
 // #ifndef __EFI_VLANCONFIG_PROTOCOL_H__
 // #define __EFI_VLANCONFIG_PROTOCOL_H__
 
-public static EFI_GUID EFI_VLAN_CONFIG_PROTOCOL_GUID = new GUID(
-    0x9e23d768, 0xd2f3, 0x4366, new byte[] { 0x9f, 0xc3, 0x3a, 0x7a, 0xba, 0x86, 0x43, 0x74 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_VLAN_CONFIG_PROTOCOL_GUID = new GUID(
+      0x9e23d768, 0xd2f3, 0x4366, new byte[] { 0x9f, 0xc3, 0x3a, 0x7a, 0xba, 0x86, 0x43, 0x74 });
 
-// typedef struct _EFI_VLAN_CONFIG_PROTOCOL EFI_VLAN_CONFIG_PROTOCOL;
+  // typedef struct _EFI_VLAN_CONFIG_PROTOCOL EFI_VLAN_CONFIG_PROTOCOL;
+}
 
 ///
 /// EFI_VLAN_FIND_DATA
@@ -29,97 +32,6 @@ public unsafe struct EFI_VLAN_FIND_DATA
   public ushort VlanId;           ///< Vlan Identifier.
   public byte Priority;         ///< Priority of this VLAN.
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI_VLAN_CONFIG_PROTOCOL

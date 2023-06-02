@@ -12,35 +12,11 @@ namespace Uefi;
 // #ifndef __STATUS_CODE_RUNTIME_PROTOCOL_H__
 // #define __STATUS_CODE_RUNTIME_PROTOCOL_H__
 
-public static EFI_GUID EFI_STATUS_CODE_RUNTIME_PROTOCOL_GUID = new GUID(0xd2b2b828, 0x826, 0x48a7, new byte[] { 0xb3, 0xdf, 0x98, 0x3c, 0x0, 0x60, 0x24, 0xf0 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_STATUS_CODE_RUNTIME_PROTOCOL_GUID = new GUID(0xd2b2b828, 0x826, 0x48a7, new byte[] { 0xb3, 0xdf, 0x98, 0x3c, 0x0, 0x60, 0x24, 0xf0 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// Provides the service required to report a status code to the platform firmware.

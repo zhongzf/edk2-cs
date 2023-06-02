@@ -26,10 +26,13 @@ namespace Uefi;
 // #include <Protocol/MmGpiDispatch.h>
 // #include <Pi/PiSmmCis.h>
 
-public const ulong EFI_SMM_GPI_DISPATCH2_PROTOCOL_GUID = EFI_MM_GPI_DISPATCH_PROTOCOL_GUID;
-///
-/// The dispatch function's context.
-///
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_GPI_DISPATCH2_PROTOCOL_GUID = EFI_MM_GPI_DISPATCH_PROTOCOL_GUID;
+  ///
+  /// The dispatch function's context.
+  ///
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_GPI_REGISTER_CONTEXT { EFI_MM_GPI_REGISTER_CONTEXT Value; public static implicit operator EFI_SMM_GPI_REGISTER_CONTEXT(EFI_MM_GPI_REGISTER_CONTEXT value) => new EFI_SMM_GPI_REGISTER_CONTEXT() { Value = value }; public static implicit operator EFI_MM_GPI_REGISTER_CONTEXT(EFI_SMM_GPI_REGISTER_CONTEXT value) => value.Value; }
 

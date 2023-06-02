@@ -16,8 +16,11 @@ namespace Uefi;
 
 // #include <Protocol/PciRootBridgeIo.h>
 
-public static EFI_GUID EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
-    0x8bc1714d, 0xffcb, 0x41c3, new byte[] { 0x89, 0xdc, 0x6c, 0x74, 0xd0, 0x6d, 0x98, 0xea });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
+      0x8bc1714d, 0xffcb, 0x41c3, new byte[] { 0x89, 0xdc, 0x6c, 0x74, 0xd0, 0x6d, 0x98, 0xea });
+}
 
 ///
 /// This protocol provides the same functionality as the PCI Root Bridge I/O Protocol defined in the

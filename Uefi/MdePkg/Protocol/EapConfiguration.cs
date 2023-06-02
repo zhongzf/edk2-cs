@@ -18,15 +18,18 @@ namespace Uefi;
 ///
 /// EFI EAP Configuration protocol provides a way to set and get EAP configuration.
 ///
-public static EFI_GUID EFI_EAP_CONFIGURATION_PROTOCOL_GUID = new GUID(
-    0xe5b58dbb, 0x7688, 0x44b4, new byte[] { 0x97, 0xbf, 0x5f, 0x1d, 0x4b, 0x7c, 0xc8, 0xdb });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_EAP_CONFIGURATION_PROTOCOL_GUID = new GUID(
+      0xe5b58dbb, 0x7688, 0x44b4, new byte[] { 0x97, 0xbf, 0x5f, 0x1d, 0x4b, 0x7c, 0xc8, 0xdb });
 
-// typedef struct _EFI_EAP_CONFIGURATION_PROTOCOL EFI_EAP_CONFIGURATION_PROTOCOL;
+  // typedef struct _EFI_EAP_CONFIGURATION_PROTOCOL EFI_EAP_CONFIGURATION_PROTOCOL;
 
-///
-/// Make sure it not conflict with any real EapTypeXXX
-///
-public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
+  ///
+  /// Make sure it not conflict with any real EapTypeXXX
+  ///
+  public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
+}
 
 public enum EFI_EAP_CONFIG_DATA_TYPE
 {
@@ -66,80 +69,23 @@ public enum EFI_EAP_CONFIG_DATA_TYPE
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EAP_TYPE { byte Value; public static implicit operator EFI_EAP_TYPE(byte value) => new EFI_EAP_TYPE() { Value = value }; public static implicit operator byte(EFI_EAP_TYPE value) => value.Value; }
-public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
-public const ulong EFI_EAP_TYPE_IDENTITY = 1;
-public const ulong EFI_EAP_TYPE_NOTIFICATION = 2;
-public const ulong EFI_EAP_TYPE_NAK = 3;
-public const ulong EFI_EAP_TYPE_MD5CHALLENGE = 4;
-public const ulong EFI_EAP_TYPE_OTP = 5;
-public const ulong EFI_EAP_TYPE_GTC = 6;
-public const ulong EFI_EAP_TYPE_EAPTLS = 13;
-public const ulong EFI_EAP_TYPE_EAPSIM = 18;
-public const ulong EFI_EAP_TYPE_TTLS = 21;
-public const ulong EFI_EAP_TYPE_PEAP = 25;
-public const ulong EFI_EAP_TYPE_MSCHAPV2 = 26;
-public const ulong EFI_EAP_TYPE_EAP_EXTENSION = 33;
+public unsafe partial class EFI
+{
+  public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
+  public const ulong EFI_EAP_TYPE_IDENTITY = 1;
+  public const ulong EFI_EAP_TYPE_NOTIFICATION = 2;
+  public const ulong EFI_EAP_TYPE_NAK = 3;
+  public const ulong EFI_EAP_TYPE_MD5CHALLENGE = 4;
+  public const ulong EFI_EAP_TYPE_OTP = 5;
+  public const ulong EFI_EAP_TYPE_GTC = 6;
+  public const ulong EFI_EAP_TYPE_EAPTLS = 13;
+  public const ulong EFI_EAP_TYPE_EAPSIM = 18;
+  public const ulong EFI_EAP_TYPE_TTLS = 21;
+  public const ulong EFI_EAP_TYPE_PEAP = 25;
+  public const ulong EFI_EAP_TYPE_MSCHAPV2 = 26;
+  public const ulong EFI_EAP_TYPE_EAP_EXTENSION = 33;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_EAP_CONFIGURATION_PROTOCOL

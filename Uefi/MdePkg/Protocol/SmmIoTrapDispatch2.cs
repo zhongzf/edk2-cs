@@ -20,7 +20,10 @@ namespace Uefi;
 
 // #include <Protocol/MmIoTrapDispatch.h>
 
-public const ulong EFI_SMM_IO_TRAP_DISPATCH2_PROTOCOL_GUID = EFI_MM_IO_TRAP_DISPATCH_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_IO_TRAP_DISPATCH2_PROTOCOL_GUID = EFI_MM_IO_TRAP_DISPATCH_PROTOCOL_GUID;
+}
 
 ///
 /// IO Trap valid types

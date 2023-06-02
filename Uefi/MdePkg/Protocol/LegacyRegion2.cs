@@ -17,136 +17,14 @@ namespace Uefi;
 // #ifndef __LEGACY_REGION2_H__
 // #define __LEGACY_REGION2_H__
 
-public static EFI_GUID EFI_LEGACY_REGION2_PROTOCOL_GUID = new GUID(
-  0x70101eaf, 0x85, 0x440c, new byte[] { 0xb3, 0x56, 0x8e, 0xe3, 0x6f, 0xef, 0x24, 0xf0 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_LEGACY_REGION2_PROTOCOL_GUID = new GUID(
+    0x70101eaf, 0x85, 0x440c, new byte[] { 0xb3, 0x56, 0x8e, 0xe3, 0x6f, 0xef, 0x24, 0xf0 });
 
-// typedef struct _EFI_LEGACY_REGION2_PROTOCOL EFI_LEGACY_REGION2_PROTOCOL;
+  // typedef struct _EFI_LEGACY_REGION2_PROTOCOL EFI_LEGACY_REGION2_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 public enum EFI_LEGACY_REGION_ATTRIBUTE
 {
@@ -182,33 +60,6 @@ public unsafe struct EFI_LEGACY_REGION_DESCRIPTOR
   /// Attribute setting.
   public uint Granularity;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_LEGACY_REGION2_PROTOCOL is used to abstract the hardware control of the memory

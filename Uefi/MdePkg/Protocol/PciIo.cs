@@ -16,10 +16,13 @@ namespace Uefi;
 ///
 /// Global ID for the PCI I/O Protocol
 ///
-public static EFI_GUID EFI_PCI_IO_PROTOCOL_GUID = new GUID(
-    0x4cf5b200, 0x68b8, 0x4ca5, new byte[] { 0x9e, 0xec, 0xb2, 0x3e, 0x3f, 0x50, 0x2, 0x9a });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PCI_IO_PROTOCOL_GUID = new GUID(
+      0x4cf5b200, 0x68b8, 0x4ca5, new byte[] { 0x9e, 0xec, 0xb2, 0x3e, 0x3f, 0x50, 0x2, 0x9a });
 
-// typedef struct _EFI_PCI_IO_PROTOCOL EFI_PCI_IO_PROTOCOL;
+  // typedef struct _EFI_PCI_IO_PROTOCOL EFI_PCI_IO_PROTOCOL;
+}
 
 ///
 /// *******************************************************
@@ -46,7 +49,9 @@ public enum EFI_PCI_IO_PROTOCOL_WIDTH
 //
 // Complete PCI address generater
 //
-public const ulong EFI_PCI_IO_PASS_THROUGH_BAR = 0xff    ///< Special BAR that passes a memory or I/O cycle through unchanged;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PCI_IO_PASS_THROUGH_BAR = 0xff    ///< Special BAR that passes a memory or I/O cycle through unchanged;
 public const ulong EFI_PCI_IO_ATTRIBUTE_MASK = 0x077f  ///< All the following I/O and Memory cycles;
 public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_MOTHERBOARD_IO = 0x0001  ///< I/O cycles 0x0000-0x00FF (10 bit decode);
 public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_IO = 0x0002  ///< I/O cycles 0x0100-0x03FF or greater (10 bit decode);
@@ -69,7 +74,8 @@ public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO_16 = 0x20000 ///< I/O cyc
 public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_IO_16 = 0x40000 ///< I/O cycles 0x3B0-0x3BB and 0x3C0-0x3DF (16 bit decode);
 
 public const ulong EFI_PCI_DEVICE_ENABLE = (EFI_PCI_IO_ATTRIBUTE_IO | EFI_PCI_IO_ATTRIBUTE_MEMORY | EFI_PCI_IO_ATTRIBUTE_BUS_MASTER);
-public const ulong EFI_VGA_DEVICE_ENABLE = (EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO | EFI_PCI_IO_ATTRIBUTE_VGA_MEMORY | EFI_PCI_IO_ATTRIBUTE_VGA_IO | EFI_PCI_IO_ATTRIBUTE_IO);
+  public const ulong EFI_VGA_DEVICE_ENABLE = (EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO | EFI_PCI_IO_ATTRIBUTE_VGA_MEMORY | EFI_PCI_IO_ATTRIBUTE_VGA_IO | EFI_PCI_IO_ATTRIBUTE_IO);
+}
 
 ///
 /// *******************************************************
@@ -124,72 +130,6 @@ public enum EFI_PCI_IO_PROTOCOL_ATTRIBUTE_OPERATION
   EfiPciIoAttributeOperationMaximum
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PCI_IO_PROTOCOL_ACCESS
 {
@@ -204,35 +144,8 @@ public unsafe struct EFI_PCI_IO_PROTOCOL_ACCESS
     @param  BarIndex              The BAR index of the standard PCI Configuration header to use as the
                                   base address for the memory or I/O operation to perform.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @param  Buffer                For read operations, the destination buffer to store the results. For write
                                   operations, the source buffer to write data from.
-
 
     @retval EFI_SUCCESS           The data was read from or written to the PCI controller.
     @retval EFI_UNSUPPORTED       The address range specified by Offset, Width, and Count is not
@@ -243,285 +156,24 @@ public unsafe struct EFI_PCI_IO_PROTOCOL_ACCESS
   **/
   typedef
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @retval EFI_UNSUPPORTED SrcBarIndex not valid for this PCI controller.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                   access the hosts HostAddress.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     OUT EFI_PHYSICAL_ADDRESS           *DeviceAddress,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                   allocated range.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     IN  ulong Pages,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @param Attributes            The mask of attributes that are used for Set, Enable, and Disable
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @param Resources             A pointer to the resource descriptors that describe the current
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @retval EFI_SUCCESS           The set of attributes specified by Attributes for the resource
 
-
                                   range specified by BarIndex, Offset, and Length were
                                   set on the PCI controller, and the actual resource range is returned
-
 
                                   in Offset and Length.
     @retval EFI_INVALID_PARAMETER Offset or Length is NULL.

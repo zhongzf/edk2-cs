@@ -17,7 +17,9 @@ namespace Uefi;
 ///
 /// Dhcpv4 Options, definitions from RFC 2132
 ///
-public const ulong DHCP4_TAG_PAD = 0      /// Pad Option;
+public unsafe partial class EFI
+{
+  public const ulong DHCP4_TAG_PAD = 0      /// Pad Option;
 public const ulong DHCP4_TAG_EOP = 255    /// End Option;
 public const ulong DHCP4_TAG_NETMASK = 1      /// Subnet Mask;
 public const ulong DHCP4_TAG_TIME_OFFSET = 2      /// Time Offset from UTC;
@@ -98,6 +100,7 @@ public const ulong DHCP4_TAG_ARCH = 93     /// Client System Architecture Type, 
 public const ulong DHCP4_TAG_UNDI = 94     /// Client Network Interface Identifier, RFC 4578;
 public const ulong DHCP4_TAG_UUID = 97     /// Client Machine Identifier, RFC 4578;
 public const ulong DHCP4_TAG_CLASSLESS_ROUTE = 121    /// Classless Route;
+}
 
 ///
 /// Dynamic Host Configuration Protocol for IPv6 (DHCPv6)
@@ -175,67 +178,69 @@ public enum DHCP6_DUID_TYPE
 ///
 /// Transmit parameters of solicit message, refers to section-5.5 of rfc-3315.
 ///
-public const ulong DHCP6_SOL_MAX_DELAY = 1;
-public const ulong DHCP6_SOL_IRT = 1;
-public const ulong DHCP6_SOL_MRC = 0;
-public const ulong DHCP6_SOL_MRT = 120;
-public const ulong DHCP6_SOL_MRD = 0;
-///
-/// Transmit parameters of request message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_REQ_IRT = 1;
-public const ulong DHCP6_REQ_MRC = 10;
-public const ulong DHCP6_REQ_MRT = 30;
-public const ulong DHCP6_REQ_MRD = 0;
-///
-/// Transmit parameters of confirm message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_CNF_MAX_DELAY = 1;
-public const ulong DHCP6_CNF_IRT = 1;
-public const ulong DHCP6_CNF_MRC = 0;
-public const ulong DHCP6_CNF_MRT = 4;
-public const ulong DHCP6_CNF_MRD = 10;
-///
-/// Transmit parameters of renew message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_REN_IRT = 10;
-public const ulong DHCP6_REN_MRC = 0;
-public const ulong DHCP6_REN_MRT = 600;
-public const ulong DHCP6_REN_MRD = 0;
-///
-/// Transmit parameters of rebind message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_REB_IRT = 10;
-public const ulong DHCP6_REB_MRC = 0;
-public const ulong DHCP6_REB_MRT = 600;
-public const ulong DHCP6_REB_MRD = 0;
-///
-/// Transmit parameters of information request message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_INF_MAX_DELAY = 1;
-public const ulong DHCP6_INF_IRT = 1;
-public const ulong DHCP6_INF_MRC = 0;
-public const ulong DHCP6_INF_MRT = 120;
-public const ulong DHCP6_INF_MRD = 0;
-///
-/// Transmit parameters of release message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_REL_IRT = 1;
-public const ulong DHCP6_REL_MRC = 5;
-public const ulong DHCP6_REL_MRT = 0;
-public const ulong DHCP6_REL_MRD = 0;
-///
-/// Transmit parameters of decline message, refers to section-5.5 of rfc-3315.
-///
-public const ulong DHCP6_DEC_IRT = 1;
-public const ulong DHCP6_DEC_MRC = 5;
-public const ulong DHCP6_DEC_MRT = 0;
-public const ulong DHCP6_DEC_MRD = 0;
+public unsafe partial class EFI
+{
+  public const ulong DHCP6_SOL_MAX_DELAY = 1;
+  public const ulong DHCP6_SOL_IRT = 1;
+  public const ulong DHCP6_SOL_MRC = 0;
+  public const ulong DHCP6_SOL_MRT = 120;
+  public const ulong DHCP6_SOL_MRD = 0;
+  ///
+  /// Transmit parameters of request message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_REQ_IRT = 1;
+  public const ulong DHCP6_REQ_MRC = 10;
+  public const ulong DHCP6_REQ_MRT = 30;
+  public const ulong DHCP6_REQ_MRD = 0;
+  ///
+  /// Transmit parameters of confirm message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_CNF_MAX_DELAY = 1;
+  public const ulong DHCP6_CNF_IRT = 1;
+  public const ulong DHCP6_CNF_MRC = 0;
+  public const ulong DHCP6_CNF_MRT = 4;
+  public const ulong DHCP6_CNF_MRD = 10;
+  ///
+  /// Transmit parameters of renew message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_REN_IRT = 10;
+  public const ulong DHCP6_REN_MRC = 0;
+  public const ulong DHCP6_REN_MRT = 600;
+  public const ulong DHCP6_REN_MRD = 0;
+  ///
+  /// Transmit parameters of rebind message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_REB_IRT = 10;
+  public const ulong DHCP6_REB_MRC = 0;
+  public const ulong DHCP6_REB_MRT = 600;
+  public const ulong DHCP6_REB_MRD = 0;
+  ///
+  /// Transmit parameters of information request message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_INF_MAX_DELAY = 1;
+  public const ulong DHCP6_INF_IRT = 1;
+  public const ulong DHCP6_INF_MRC = 0;
+  public const ulong DHCP6_INF_MRT = 120;
+  public const ulong DHCP6_INF_MRD = 0;
+  ///
+  /// Transmit parameters of release message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_REL_IRT = 1;
+  public const ulong DHCP6_REL_MRC = 5;
+  public const ulong DHCP6_REL_MRT = 0;
+  public const ulong DHCP6_REL_MRD = 0;
+  ///
+  /// Transmit parameters of decline message, refers to section-5.5 of rfc-3315.
+  ///
+  public const ulong DHCP6_DEC_IRT = 1;
+  public const ulong DHCP6_DEC_MRC = 5;
+  public const ulong DHCP6_DEC_MRT = 0;
+  public const ulong DHCP6_DEC_MRD = 0;
 
-////
-//// DHCPv6 Options, definitions from RFC 3315,RFC 5970 and RFC 3646.
-////
-public const ulong DHCP6_OPT_CLIENT_ID = 1     /// Client Identifier Option;
+  ////
+  //// DHCPv6 Options, definitions from RFC 3315,RFC 5970 and RFC 3646.
+  ////
+  public const ulong DHCP6_OPT_CLIENT_ID = 1     /// Client Identifier Option;
 public const ulong DHCP6_OPT_SERVER_ID = 2     /// Server Identifier Option;
 public const ulong DHCP6_OPT_IA_NA = 3     /// The Identity Association for Non-temporary Addresses option;
 public const ulong DHCP6_OPT_IA_TA = 4     /// The Identity Association for the Temporary Addresses;
@@ -260,11 +265,11 @@ public const ulong DHCP6_OPT_BOOT_FILE_PARAM = 60    /// Assigned by IANA, RFC 5
 public const ulong DHCP6_OPT_ARCH = 61    /// Assigned by IANA, RFC 5970;
 public const ulong DHCP6_OPT_UNDI = 62    /// Assigned by IANA, RFC 5970;
 
-///
-/// Processor Architecture Types
-/// These identifiers are defined by IANA:
-/// https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
-///
+                                          ///
+                                          /// Processor Architecture Types
+                                          /// These identifiers are defined by IANA:
+                                          /// https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
+                                          ///
 public const ulong PXE_CLIENT_ARCH_X86_BIOS = 0x0000          /// x86 BIOS for PXE;
 public const ulong PXE_CLIENT_ARCH_IPF = 0x0002          /// Itanium for PXE;
 public const ulong PXE_CLIENT_ARCH_IA32 = 0x0006          /// x86 uefi for PXE;
@@ -288,5 +293,6 @@ public const ulong HTTP_CLIENT_ARCH_RISCV64 = 0x001C          /// RISC-V uefi 64
 public const ulong HTTP_CLIENT_ARCH_RISCV128 = 0x001E          /// RISC-V uefi 128 boot from http;
 public const ulong HTTP_CLIENT_ARCH_LOONGARCH32 = 0x0026          /// LoongArch uefi 32 boot from http;
 public const ulong HTTP_CLIENT_ARCH_LOONGARCH64 = 0x0028          /// LoongArch uefi 64 boot from http;
+}
 
 // #endif

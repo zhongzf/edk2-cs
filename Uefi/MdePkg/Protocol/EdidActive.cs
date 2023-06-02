@@ -14,8 +14,11 @@ namespace Uefi;
 // #ifndef __EDID_ACTIVE_H__
 // #define __EDID_ACTIVE_H__
 
-public static EFI_GUID EFI_EDID_ACTIVE_PROTOCOL_GUID = new GUID(
-    0xbd8c1056, 0x9f36, 0x44ec, new byte[] { 0x92, 0xa8, 0xa6, 0x33, 0x7f, 0x81, 0x79, 0x86 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_EDID_ACTIVE_PROTOCOL_GUID = new GUID(
+      0xbd8c1056, 0x9f36, 0x44ec, new byte[] { 0x92, 0xa8, 0xa6, 0x33, 0x7f, 0x81, 0x79, 0x86 });
+}
 
 ///
 /// This protocol contains the EDID information for an active video output device. This is either the

@@ -21,120 +21,123 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 /// For v2.1 and later, handle values in the range 0FF00h to 0FFFFh are reserved for
 /// use by this specification.
 ///
-public const ulong SMBIOS_HANDLE_RESERVED_BEGIN = 0xFF00;
+public unsafe partial class EFI
+{
+  public const ulong SMBIOS_HANDLE_RESERVED_BEGIN = 0xFF00;
 
-///
-/// Reference SMBIOS 2.7, chapter 6.1.2.
-/// The UEFI Platform Initialization Specification reserves handle number FFFEh for its
-/// EFI_SMBIOS_PROTOCOL.Add() function to mean "assign an unused handle number automatically."
-/// This number is not used for any other purpose by the SMBIOS specification.
-///
-public const ulong SMBIOS_HANDLE_PI_RESERVED = 0xFFFE;
+  ///
+  /// Reference SMBIOS 2.7, chapter 6.1.2.
+  /// The UEFI Platform Initialization Specification reserves handle number FFFEh for its
+  /// EFI_SMBIOS_PROTOCOL.Add() function to mean "assign an unused handle number automatically."
+  /// This number is not used for any other purpose by the SMBIOS specification.
+  ///
+  public const ulong SMBIOS_HANDLE_PI_RESERVED = 0xFFFE;
 
-///
-/// Reference SMBIOS 2.6, chapter 3.1.3.
-/// Each text string is limited to 64 significant characters due to system MIF limitations.
-/// Reference SMBIOS 2.7, chapter 6.1.3.
-/// It will have no limit on the length of each individual text string.
-///
-public const ulong SMBIOS_STRING_MAX_LENGTH = 64;
+  ///
+  /// Reference SMBIOS 2.6, chapter 3.1.3.
+  /// Each text string is limited to 64 significant characters due to system MIF limitations.
+  /// Reference SMBIOS 2.7, chapter 6.1.3.
+  /// It will have no limit on the length of each individual text string.
+  ///
+  public const ulong SMBIOS_STRING_MAX_LENGTH = 64;
 
-//
-// The length of the entire structure table (including all strings) must be reported
-// in the Structure Table Length field of the SMBIOS Structure Table Entry Point,
-// which is a WORD field limited to 65,535 bytes.
-//
-public const ulong SMBIOS_TABLE_MAX_LENGTH = 0xFFFF;
+  //
+  // The length of the entire structure table (including all strings) must be reported
+  // in the Structure Table Length field of the SMBIOS Structure Table Entry Point,
+  // which is a WORD field limited to 65,535 bytes.
+  //
+  public const ulong SMBIOS_TABLE_MAX_LENGTH = 0xFFFF;
 
-//
-// For SMBIOS 3.0, Structure table maximum size in Entry Point structure is DWORD field limited to 0xFFFFFFFF bytes.
-//
-public const ulong SMBIOS_3_0_TABLE_MAX_LENGTH = 0xFFFFFFFF;
+  //
+  // For SMBIOS 3.0, Structure table maximum size in Entry Point structure is DWORD field limited to 0xFFFFFFFF bytes.
+  //
+  public const ulong SMBIOS_3_0_TABLE_MAX_LENGTH = 0xFFFFFFFF;
 
-///
-/// Reference SMBIOS 3.4, chapter 5.2.1 SMBIOS 2.1 (32-bit) Entry Point
-/// Table 1 - SMBIOS 2.1 (32-bit) Entry Point structure, offset 00h
-/// _SM_, specified as four ASCII characters (5F 53 4D 5F).
-///@{
-public const ulong SMBIOS_ANCHOR_STRING = "_SM_";
-public const ulong SMBIOS_ANCHOR_STRING_LENGTH = 4;
-///@}
+  ///
+  /// Reference SMBIOS 3.4, chapter 5.2.1 SMBIOS 2.1 (32-bit) Entry Point
+  /// Table 1 - SMBIOS 2.1 (32-bit) Entry Point structure, offset 00h
+  /// _SM_, specified as four ASCII characters (5F 53 4D 5F).
+  ///@{
+  public const ulong SMBIOS_ANCHOR_STRING = "_SM_";
+  public const ulong SMBIOS_ANCHOR_STRING_LENGTH = 4;
+  ///@}
 
-///
-/// Reference SMBIOS 3.4, chapter 5.2.2 SMBIOS 3.0 (64-bit) Entry Point
-/// Table 2 - SMBIOS 3.0 (64-bit) Entry Point structure, offset 00h
-/// _SM3_, specified as five ASCII characters (5F 53 4D 33 5F).
-///@{
-public const ulong SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
-public const ulong SMBIOS_3_0_ANCHOR_STRING_LENGTH = 5;
-///@}
+  ///
+  /// Reference SMBIOS 3.4, chapter 5.2.2 SMBIOS 3.0 (64-bit) Entry Point
+  /// Table 2 - SMBIOS 3.0 (64-bit) Entry Point structure, offset 00h
+  /// _SM3_, specified as five ASCII characters (5F 53 4D 33 5F).
+  ///@{
+  public const ulong SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
+  public const ulong SMBIOS_3_0_ANCHOR_STRING_LENGTH = 5;
+  ///@}
 
-//
-// SMBIOS type macros which is according to SMBIOS 3.3.0 specification.
-//
-public const ulong SMBIOS_TYPE_BIOS_INFORMATION = 0;
-public const ulong SMBIOS_TYPE_SYSTEM_INFORMATION = 1;
-public const ulong SMBIOS_TYPE_BASEBOARD_INFORMATION = 2;
-public const ulong SMBIOS_TYPE_SYSTEM_ENCLOSURE = 3;
-public const ulong SMBIOS_TYPE_PROCESSOR_INFORMATION = 4;
-public const ulong SMBIOS_TYPE_MEMORY_CONTROLLER_INFORMATION = 5;
-public const ulong SMBIOS_TYPE_MEMORY_MODULE_INFORMATON = 6;
-public const ulong SMBIOS_TYPE_CACHE_INFORMATION = 7;
-public const ulong SMBIOS_TYPE_PORT_CONNECTOR_INFORMATION = 8;
-public const ulong SMBIOS_TYPE_SYSTEM_SLOTS = 9;
-public const ulong SMBIOS_TYPE_ONBOARD_DEVICE_INFORMATION = 10;
-public const ulong SMBIOS_TYPE_OEM_STRINGS = 11;
-public const ulong SMBIOS_TYPE_SYSTEM_CONFIGURATION_OPTIONS = 12;
-public const ulong SMBIOS_TYPE_BIOS_LANGUAGE_INFORMATION = 13;
-public const ulong SMBIOS_TYPE_GROUP_ASSOCIATIONS = 14;
-public const ulong SMBIOS_TYPE_SYSTEM_EVENT_LOG = 15;
-public const ulong SMBIOS_TYPE_PHYSICAL_MEMORY_ARRAY = 16;
-public const ulong SMBIOS_TYPE_MEMORY_DEVICE = 17;
-public const ulong SMBIOS_TYPE_32BIT_MEMORY_ERROR_INFORMATION = 18;
-public const ulong SMBIOS_TYPE_MEMORY_ARRAY_MAPPED_ADDRESS = 19;
-public const ulong SMBIOS_TYPE_MEMORY_DEVICE_MAPPED_ADDRESS = 20;
-public const ulong SMBIOS_TYPE_BUILT_IN_POINTING_DEVICE = 21;
-public const ulong SMBIOS_TYPE_PORTABLE_BATTERY = 22;
-public const ulong SMBIOS_TYPE_SYSTEM_RESET = 23;
-public const ulong SMBIOS_TYPE_HARDWARE_SECURITY = 24;
-public const ulong SMBIOS_TYPE_SYSTEM_POWER_CONTROLS = 25;
-public const ulong SMBIOS_TYPE_VOLTAGE_PROBE = 26;
-public const ulong SMBIOS_TYPE_COOLING_DEVICE = 27;
-public const ulong SMBIOS_TYPE_TEMPERATURE_PROBE = 28;
-public const ulong SMBIOS_TYPE_ELECTRICAL_CURRENT_PROBE = 29;
-public const ulong SMBIOS_TYPE_OUT_OF_BAND_REMOTE_ACCESS = 30;
-public const ulong SMBIOS_TYPE_BOOT_INTEGRITY_SERVICE = 31;
-public const ulong SMBIOS_TYPE_SYSTEM_BOOT_INFORMATION = 32;
-public const ulong SMBIOS_TYPE_64BIT_MEMORY_ERROR_INFORMATION = 33;
-public const ulong SMBIOS_TYPE_MANAGEMENT_DEVICE = 34;
-public const ulong SMBIOS_TYPE_MANAGEMENT_DEVICE_COMPONENT = 35;
-public const ulong SMBIOS_TYPE_MANAGEMENT_DEVICE_THRESHOLD_DATA = 36;
-public const ulong SMBIOS_TYPE_MEMORY_CHANNEL = 37;
-public const ulong SMBIOS_TYPE_IPMI_DEVICE_INFORMATION = 38;
-public const ulong SMBIOS_TYPE_SYSTEM_POWER_SUPPLY = 39;
-public const ulong SMBIOS_TYPE_ADDITIONAL_INFORMATION = 40;
-public const ulong SMBIOS_TYPE_ONBOARD_DEVICES_EXTENDED_INFORMATION = 41;
-public const ulong SMBIOS_TYPE_MANAGEMENT_CONTROLLER_HOST_INTERFACE = 42;
-public const ulong SMBIOS_TYPE_TPM_DEVICE = 43;
-public const ulong SMBIOS_TYPE_PROCESSOR_ADDITIONAL_INFORMATION = 44;
-public const ulong SMBIOS_TYPE_FIRMWARE_INVENTORY_INFORMATION = 45;
-public const ulong SMBIOS_TYPE_STRING_PROPERTY_INFORMATION = 46;
+  //
+  // SMBIOS type macros which is according to SMBIOS 3.3.0 specification.
+  //
+  public const ulong SMBIOS_TYPE_BIOS_INFORMATION = 0;
+  public const ulong SMBIOS_TYPE_SYSTEM_INFORMATION = 1;
+  public const ulong SMBIOS_TYPE_BASEBOARD_INFORMATION = 2;
+  public const ulong SMBIOS_TYPE_SYSTEM_ENCLOSURE = 3;
+  public const ulong SMBIOS_TYPE_PROCESSOR_INFORMATION = 4;
+  public const ulong SMBIOS_TYPE_MEMORY_CONTROLLER_INFORMATION = 5;
+  public const ulong SMBIOS_TYPE_MEMORY_MODULE_INFORMATON = 6;
+  public const ulong SMBIOS_TYPE_CACHE_INFORMATION = 7;
+  public const ulong SMBIOS_TYPE_PORT_CONNECTOR_INFORMATION = 8;
+  public const ulong SMBIOS_TYPE_SYSTEM_SLOTS = 9;
+  public const ulong SMBIOS_TYPE_ONBOARD_DEVICE_INFORMATION = 10;
+  public const ulong SMBIOS_TYPE_OEM_STRINGS = 11;
+  public const ulong SMBIOS_TYPE_SYSTEM_CONFIGURATION_OPTIONS = 12;
+  public const ulong SMBIOS_TYPE_BIOS_LANGUAGE_INFORMATION = 13;
+  public const ulong SMBIOS_TYPE_GROUP_ASSOCIATIONS = 14;
+  public const ulong SMBIOS_TYPE_SYSTEM_EVENT_LOG = 15;
+  public const ulong SMBIOS_TYPE_PHYSICAL_MEMORY_ARRAY = 16;
+  public const ulong SMBIOS_TYPE_MEMORY_DEVICE = 17;
+  public const ulong SMBIOS_TYPE_32BIT_MEMORY_ERROR_INFORMATION = 18;
+  public const ulong SMBIOS_TYPE_MEMORY_ARRAY_MAPPED_ADDRESS = 19;
+  public const ulong SMBIOS_TYPE_MEMORY_DEVICE_MAPPED_ADDRESS = 20;
+  public const ulong SMBIOS_TYPE_BUILT_IN_POINTING_DEVICE = 21;
+  public const ulong SMBIOS_TYPE_PORTABLE_BATTERY = 22;
+  public const ulong SMBIOS_TYPE_SYSTEM_RESET = 23;
+  public const ulong SMBIOS_TYPE_HARDWARE_SECURITY = 24;
+  public const ulong SMBIOS_TYPE_SYSTEM_POWER_CONTROLS = 25;
+  public const ulong SMBIOS_TYPE_VOLTAGE_PROBE = 26;
+  public const ulong SMBIOS_TYPE_COOLING_DEVICE = 27;
+  public const ulong SMBIOS_TYPE_TEMPERATURE_PROBE = 28;
+  public const ulong SMBIOS_TYPE_ELECTRICAL_CURRENT_PROBE = 29;
+  public const ulong SMBIOS_TYPE_OUT_OF_BAND_REMOTE_ACCESS = 30;
+  public const ulong SMBIOS_TYPE_BOOT_INTEGRITY_SERVICE = 31;
+  public const ulong SMBIOS_TYPE_SYSTEM_BOOT_INFORMATION = 32;
+  public const ulong SMBIOS_TYPE_64BIT_MEMORY_ERROR_INFORMATION = 33;
+  public const ulong SMBIOS_TYPE_MANAGEMENT_DEVICE = 34;
+  public const ulong SMBIOS_TYPE_MANAGEMENT_DEVICE_COMPONENT = 35;
+  public const ulong SMBIOS_TYPE_MANAGEMENT_DEVICE_THRESHOLD_DATA = 36;
+  public const ulong SMBIOS_TYPE_MEMORY_CHANNEL = 37;
+  public const ulong SMBIOS_TYPE_IPMI_DEVICE_INFORMATION = 38;
+  public const ulong SMBIOS_TYPE_SYSTEM_POWER_SUPPLY = 39;
+  public const ulong SMBIOS_TYPE_ADDITIONAL_INFORMATION = 40;
+  public const ulong SMBIOS_TYPE_ONBOARD_DEVICES_EXTENDED_INFORMATION = 41;
+  public const ulong SMBIOS_TYPE_MANAGEMENT_CONTROLLER_HOST_INTERFACE = 42;
+  public const ulong SMBIOS_TYPE_TPM_DEVICE = 43;
+  public const ulong SMBIOS_TYPE_PROCESSOR_ADDITIONAL_INFORMATION = 44;
+  public const ulong SMBIOS_TYPE_FIRMWARE_INVENTORY_INFORMATION = 45;
+  public const ulong SMBIOS_TYPE_STRING_PROPERTY_INFORMATION = 46;
 
-///
-/// Inactive type is added from SMBIOS 2.2. Reference SMBIOS 2.6, chapter 3.3.43.
-/// Upper-level software that interprets the SMBIOS structure-table should bypass an
-/// Inactive structure just like a structure type that the software does not recognize.
-///
-public const ulong SMBIOS_TYPE_INACTIVE = 0x007E;
+  ///
+  /// Inactive type is added from SMBIOS 2.2. Reference SMBIOS 2.6, chapter 3.3.43.
+  /// Upper-level software that interprets the SMBIOS structure-table should bypass an
+  /// Inactive structure just like a structure type that the software does not recognize.
+  ///
+  public const ulong SMBIOS_TYPE_INACTIVE = 0x007E;
 
-///
-/// End-of-table type is added from SMBIOS 2.2. Reference SMBIOS 2.6, chapter 3.3.44.
-/// The end-of-table indicator is used in the last physical structure in a table
-///
-public const ulong SMBIOS_TYPE_END_OF_TABLE = 0x007F;
+  ///
+  /// End-of-table type is added from SMBIOS 2.2. Reference SMBIOS 2.6, chapter 3.3.44.
+  /// The end-of-table indicator is used in the last physical structure in a table
+  ///
+  public const ulong SMBIOS_TYPE_END_OF_TABLE = 0x007F;
 
-public const ulong SMBIOS_OEM_BEGIN = 128;
-public const ulong SMBIOS_OEM_END = 255;
+  public const ulong SMBIOS_OEM_BEGIN = 128;
+  public const ulong SMBIOS_OEM_END = 255;
+}
 
 ///
 /// Types 0 through 127 (7Fh) are reserved for and defined by this

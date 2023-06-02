@@ -12,10 +12,13 @@ namespace Uefi;
 //
 // Net function definition for Group Extension command
 //
-public const ulong IPMI_NETFN_GROUP_EXT = 0x2C;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_NETFN_GROUP_EXT = 0x2C;
 
-//
-// All Group Extension commands and their structure definitions to follow here
-//
+  //
+  // All Group Extension commands and their structure definitions to follow here
+  //
+}
 
 // #endif

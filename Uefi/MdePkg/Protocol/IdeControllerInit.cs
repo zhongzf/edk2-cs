@@ -33,13 +33,16 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// Global ID for the EFI_IDE_CONTROLLER_INIT_PROTOCOL.
 ///
-public static EFI_GUID EFI_IDE_CONTROLLER_INIT_PROTOCOL_GUID = new GUID(
-    0xa1e37052, 0x80d9, 0x4e65, new byte[] { 0xa3, 0x17, 0x3e, 0x9a, 0x55, 0xc4, 0x3e, 0xc9 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IDE_CONTROLLER_INIT_PROTOCOL_GUID = new GUID(
+      0xa1e37052, 0x80d9, 0x4e65, new byte[] { 0xa3, 0x17, 0x3e, 0x9a, 0x55, 0xc4, 0x3e, 0xc9 });
 
-///
-/// Forward declaration for EFI_IDE_CONTROLLER_INIT_PROTOCOL.
-///
-// typedef struct _EFI_IDE_CONTROLLER_INIT_PROTOCOL EFI_IDE_CONTROLLER_INIT_PROTOCOL;
+  ///
+  /// Forward declaration for EFI_IDE_CONTROLLER_INIT_PROTOCOL.
+  ///
+  // typedef struct _EFI_IDE_CONTROLLER_INIT_PROTOCOL EFI_IDE_CONTROLLER_INIT_PROTOCOL;
+}
 
 ///
 /// The phase of the IDE Controller enumeration.
@@ -106,17 +109,20 @@ public enum EFI_ATA_EXT_TRANSFER_PROTOCOL
 ///
 /// Automatically detects the optimum SATA speed.
 ///
-public const ulong EFI_SATA_AUTO_SPEED = 0;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SATA_AUTO_SPEED = 0;
 
-///
-/// Indicates a first-generation (Gen1) SATA speed.
-///
-public const ulong EFI_SATA_GEN1_SPEED = 1;
+  ///
+  /// Indicates a first-generation (Gen1) SATA speed.
+  ///
+  public const ulong EFI_SATA_GEN1_SPEED = 1;
 
-///
-/// Indicates a second-generation (Gen2) SATA speed.
-///
-public const ulong EFI_SATA_GEN2_SPEED = 2;
+  ///
+  /// Indicates a second-generation (Gen2) SATA speed.
+  ///
+  public const ulong EFI_SATA_GEN2_SPEED = 2;
+}
 
 ///
 /// EFI_ATA_MODE structure.
@@ -223,7 +229,10 @@ public unsafe struct EFI_ATAPI_IDENTIFY_DATA { ATAPI_IDENTIFY_DATA Value; public
 /// The Config field is common to both EFI_ATA_IDENTIFY_DATA and
 /// EFI_ATAPI_IDENTIFY_DATA.
 ///
-public const ulong EFI_ATAPI_DEVICE_IDENTIFY_DATA = 0x8000;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ATAPI_DEVICE_IDENTIFY_DATA = 0x8000;
+}
 
 ///
 /// EFI_IDENTIFY_DATA structure.
@@ -242,275 +251,6 @@ public unsafe struct EFI_IDENTIFY_DATA
   ///
   [FieldOffset(0)] public EFI_ATAPI_IDENTIFY_DATA AtapiData;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Provides the basic interfaces to abstract an IDE controller.

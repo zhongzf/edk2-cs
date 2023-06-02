@@ -17,10 +17,13 @@ namespace Uefi;
 // #ifndef __EFI_IPSE_CCONFIG_PROTOCOL_H__
 // #define __EFI_IPSE_CCONFIG_PROTOCOL_H__
 
-public static EFI_GUID EFI_IPSEC_CONFIG_PROTOCOL_GUID = new GUID(
-    0xce5e5929, 0xc7a3, 0x4602, new byte[] { 0xad, 0x9e, 0xc9, 0xda, 0xf9, 0x4e, 0xbf, 0xcf });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IPSEC_CONFIG_PROTOCOL_GUID = new GUID(
+      0xce5e5929, 0xc7a3, 0x4602, new byte[] { 0xad, 0x9e, 0xc9, 0xda, 0xf9, 0x4e, 0xbf, 0xcf });
 
-// typedef struct _EFI_IPSEC_CONFIG_PROTOCOL EFI_IPSEC_CONFIG_PROTOCOL;
+  // typedef struct _EFI_IPSEC_CONFIG_PROTOCOL EFI_IPSEC_CONFIG_PROTOCOL;
+}
 
 ///
 /// EFI_IPSEC_CONFIG_DATA_TYPE
@@ -334,7 +337,10 @@ public unsafe struct EFI_IPSEC_SA_ID
   public EFI_IP_ADDRESS DestAddress;
 }
 
-public const ulong MAX_PEERID_LEN = 128;
+public unsafe partial class EFI
+{
+  public const ulong MAX_PEERID_LEN = 128;
+}
 
 ///
 /// EFI_IPSEC_SPD_DATA
@@ -635,183 +641,6 @@ public unsafe struct EFI_IPSEC_PAD_DATA
   ///
   public void* RevocationData;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI_IPSEC_CONFIG_PROTOCOL

@@ -37,12 +37,15 @@ public unsafe struct EFI_ACPI_DEBUG_PORT_DESCRIPTION_TABLE
 //
 // DBGP Revision (defined in spec)
 //
-public const ulong EFI_ACPI_DEBUG_PORT_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_DEBUG_PORT_TABLE_REVISION = 0x01;
 
-//
-// Interface Type
-//
-public const ulong EFI_ACPI_DBGP_INTERFACE_TYPE_FULL_16550 = 0;
-public const ulong EFI_ACPI_DBGP_INTERFACE_TYPE_16550_SUBSET_COMPATIBLE_WITH_MS_DBGP_SPEC = 1;
+  //
+  // Interface Type
+  //
+  public const ulong EFI_ACPI_DBGP_INTERFACE_TYPE_FULL_16550 = 0;
+  public const ulong EFI_ACPI_DBGP_INTERFACE_TYPE_16550_SUBSET_COMPATIBLE_WITH_MS_DBGP_SPEC = 1;
+}
 
 // #endif

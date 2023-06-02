@@ -28,50 +28,53 @@ namespace Uefi;
 ///
 /// DMA-Remapping Reporting Structure definitions from section 8.1
 ///@{
-public const ulong EFI_ACPI_DMAR_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_DMAR_REVISION = 0x01;
 
-public const ulong EFI_ACPI_DMAR_FLAGS_INTR_REMAP = BIT0;
-public const ulong EFI_ACPI_DMAR_FLAGS_X2APIC_OPT_OUT = BIT1;
-public const ulong EFI_ACPI_DMAR_FLAGS_DMA_CTRL_PLATFORM_OPT_IN_FLAG = BIT2;
-///@}
+  public const ulong EFI_ACPI_DMAR_FLAGS_INTR_REMAP = BIT0;
+  public const ulong EFI_ACPI_DMAR_FLAGS_X2APIC_OPT_OUT = BIT1;
+  public const ulong EFI_ACPI_DMAR_FLAGS_DMA_CTRL_PLATFORM_OPT_IN_FLAG = BIT2;
+  ///@}
 
-///
-/// Remapping Structure Types definitions from section 8.2
-///@{
-public const ulong EFI_ACPI_DMAR_TYPE_DRHD = 0x00;
-public const ulong EFI_ACPI_DMAR_TYPE_RMRR = 0x01;
-public const ulong EFI_ACPI_DMAR_TYPE_ATSR = 0x02;
-public const ulong EFI_ACPI_DMAR_TYPE_RHSA = 0x03;
-public const ulong EFI_ACPI_DMAR_TYPE_ANDD = 0x04;
-public const ulong EFI_ACPI_DMAR_TYPE_SATC = 0x05;
-public const ulong EFI_ACPI_DMAR_TYPE_SIDP = 0x06;
-///@}
+  ///
+  /// Remapping Structure Types definitions from section 8.2
+  ///@{
+  public const ulong EFI_ACPI_DMAR_TYPE_DRHD = 0x00;
+  public const ulong EFI_ACPI_DMAR_TYPE_RMRR = 0x01;
+  public const ulong EFI_ACPI_DMAR_TYPE_ATSR = 0x02;
+  public const ulong EFI_ACPI_DMAR_TYPE_RHSA = 0x03;
+  public const ulong EFI_ACPI_DMAR_TYPE_ANDD = 0x04;
+  public const ulong EFI_ACPI_DMAR_TYPE_SATC = 0x05;
+  public const ulong EFI_ACPI_DMAR_TYPE_SIDP = 0x06;
+  ///@}
 
-///
-/// DMA-Remapping Hardware Unit definitions from section 8.3
-///
-public const ulong EFI_ACPI_DMAR_DRHD_FLAGS_INCLUDE_PCI_ALL = BIT0;
+  ///
+  /// DMA-Remapping Hardware Unit definitions from section 8.3
+  ///
+  public const ulong EFI_ACPI_DMAR_DRHD_FLAGS_INCLUDE_PCI_ALL = BIT0;
 
-///
-/// DMA-Remapping Device Scope Entry Structure definitions from section 8.3.1
-///@{
-public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_PCI_ENDPOINT = 0x01;
-public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_PCI_BRIDGE = 0x02;
-public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_IOAPIC = 0x03;
-public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_MSI_CAPABLE_HPET = 0x04;
-public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_ACPI_NAMESPACE_DEVICE = 0x05;
+  ///
+  /// DMA-Remapping Device Scope Entry Structure definitions from section 8.3.1
+  ///@{
+  public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_PCI_ENDPOINT = 0x01;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_PCI_BRIDGE = 0x02;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_IOAPIC = 0x03;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_MSI_CAPABLE_HPET = 0x04;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_ENTRY_TYPE_ACPI_NAMESPACE_DEVICE = 0x05;
 
-public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_NESTED_NOTALLOWED = BIT0;
-public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_PWSNP_NOTALLOWED = BIT1;
-public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_PGSNP_NOTALLOWED = BIT2;
-public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_ATC_HARDENED = BIT3;
-public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_ATC_REQUIRED = BIT4;
-///@}
+  public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_NESTED_NOTALLOWED = BIT0;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_PWSNP_NOTALLOWED = BIT1;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_PGSNP_NOTALLOWED = BIT2;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_ATC_HARDENED = BIT3;
+  public const ulong EFI_ACPI_DEVICE_SCOPE_REQ_WO_PASID_ATC_REQUIRED = BIT4;
+  ///@}
 
-///
-/// Root Port ATS Capability Reporting Structure definitions from section 8.5
-///
-public const ulong EFI_ACPI_DMAR_ATSR_FLAGS_ALL_PORTS = BIT0;
+  ///
+  /// Root Port ATS Capability Reporting Structure definitions from section 8.5
+  ///
+  public const ulong EFI_ACPI_DMAR_ATSR_FLAGS_ALL_PORTS = BIT0;
+}
 
 ///
 /// Definition for DMA Remapping Structure Header

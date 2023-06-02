@@ -18,46 +18,16 @@ namespace Uefi;
 
 // extern EFI_GUID  gEfiGetPcdInfoProtocolGuid;
 
-public static EFI_GUID EFI_GET_PCD_INFO_PROTOCOL_GUID = new GUID(0xfd0f4478, 0xefd, 0x461d, new byte[] { 0xba, 0x2d, 0xe5, 0x8c, 0x45, 0xfd, 0x5f, 0x5e });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_GET_PCD_INFO_PROTOCOL_GUID = new GUID(0xfd0f4478, 0xefd, 0x461d, new byte[] { 0xba, 0x2d, 0xe5, 0x8c, 0x45, 0xfd, 0x5f, 0x5e });
 
-///
-/// The forward declaration for EFI_GET_PCD_INFO_PROTOCOL.
-///
-// typedef struct _EFI_GET_PCD_INFO_PROTOCOL EFI_GET_PCD_INFO_PROTOCOL;
+  ///
+  /// The forward declaration for EFI_GET_PCD_INFO_PROTOCOL.
+  ///
+  // typedef struct _EFI_GET_PCD_INFO_PROTOCOL EFI_GET_PCD_INFO_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// Callers to this protocol must be at a TPL_APPLICATION task priority level.

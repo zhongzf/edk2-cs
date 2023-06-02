@@ -19,8 +19,11 @@ namespace Uefi;
 ///
 /// GUID definitions
 ///
-public static EFI_GUID EFI_REST_JSON_STRUCTURE_PROTOCOL_GUID = new GUID(
-    0xa9a048f6, 0x48a0, 0x4714, new byte[] { 0xb7, 0xda, 0xa9, 0xad, 0x87, 0xd4, 0xda, 0xc9 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_REST_JSON_STRUCTURE_PROTOCOL_GUID = new GUID(
+      0xa9a048f6, 0x48a0, 0x4714, new byte[] { 0xb7, 0xda, 0xa9, 0xad, 0x87, 0xd4, 0xda, 0xc9 });
+}
 
 typedef struct _EFI_REST_JSON_STRUCTURE_PROTOCOL  EFI_REST_JSON_STRUCTURE_PROTOCOL;
 [StructLayout(LayoutKind.Sequential)]
@@ -77,87 +80,6 @@ public unsafe struct EFI_REST_JSON_STRUCTURE_HEADER
                                                                     ///< JSON structure is implementation-specific according to converter producer.
   public void* JsonStructurePointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI REST JSON to C structure protocol definition.

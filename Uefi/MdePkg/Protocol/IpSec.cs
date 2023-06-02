@@ -26,14 +26,17 @@ namespace Uefi;
 
 // #include <Protocol/IpSecConfig.h>
 
-public static EFI_GUID EFI_IPSEC_PROTOCOL_GUID = new GUID(
-    0xdfb386f7, 0xe100, 0x43ad, new byte[] { 0x9c, 0x9a, 0xed, 0x90, 0xd0, 0x8a, 0x5e, 0x12 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IPSEC_PROTOCOL_GUID = new GUID(
+      0xdfb386f7, 0xe100, 0x43ad, new byte[] { 0x9c, 0x9a, 0xed, 0x90, 0xd0, 0x8a, 0x5e, 0x12 });
 
-public static EFI_GUID EFI_IPSEC2_PROTOCOL_GUID = new GUID(
-    0xa3979e64, 0xace8, 0x4ddc, new byte[] { 0xbc, 0x7, 0x4d, 0x66, 0xb8, 0xfd, 0x9, 0x77 });
+  public static EFI_GUID EFI_IPSEC2_PROTOCOL_GUID = new GUID(
+      0xa3979e64, 0xace8, 0x4ddc, new byte[] { 0xbc, 0x7, 0x4d, 0x66, 0xb8, 0xfd, 0x9, 0x77 });
 
-typedef struct _EFI_IPSEC_PROTOCOL   EFI_IPSEC_PROTOCOL;
+  typedef struct _EFI_IPSEC_PROTOCOL   EFI_IPSEC_PROTOCOL;
 typedef struct _EFI_IPSEC2_PROTOCOL  EFI_IPSEC2_PROTOCOL;
+}
 
 ///
 /// EFI_IPSEC_FRAGMENT_DATA
@@ -45,46 +48,6 @@ public unsafe struct EFI_IPSEC_FRAGMENT_DATA
   public uint FragmentLength;
   public void* FragmentBuffer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI_IPSEC_PROTOCOL
@@ -101,105 +64,6 @@ public unsafe struct EFI_IPSEC_PROTOCOL
   public EFI_EVENT DisabledEvent;       ///< Event signaled when the interface is disabled.
   public bool DisabledFlag;        ///< State of the interface.
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI_IPSEC2_PROTOCOL

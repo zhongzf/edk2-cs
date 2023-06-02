@@ -23,7 +23,9 @@ namespace Uefi;
 //
 // controller register offsets
 //
-public const ulong NVME_CAP_OFFSET = 0x0000        // Controller Capabilities;
+public unsafe partial class EFI
+{
+  public const ulong NVME_CAP_OFFSET = 0x0000        // Controller Capabilities;
 public const ulong NVME_VER_OFFSET = 0x0008        // Version;
 public const ulong NVME_INTMS_OFFSET = 0x000c        // Interrupt Mask Set;
 public const ulong NVME_INTMC_OFFSET = 0x0010        // Interrupt Mask Clear;
@@ -47,6 +49,7 @@ public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4
 public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   // Completion Queue y (NVM) Head Doorbell;
 
 // #pragma pack(1)
+}
 
 //
 // 3.1.1 Offset 00h: CAP - Controller Capabilities
@@ -97,8 +100,11 @@ public unsafe struct NVME_CC
   public byte Iocqes = 4; // I/O Completion Queue Entry Size
   public byte Rsvd2;
 }
-public const ulong NVME_CC_SHN_NORMAL_SHUTDOWN = 1;
-public const ulong NVME_CC_SHN_ABRUPT_SHUTDOWN = 2;
+public unsafe partial class EFI
+{
+  public const ulong NVME_CC_SHN_NORMAL_SHUTDOWN = 1;
+  public const ulong NVME_CC_SHN_ABRUPT_SHUTDOWN = 2;
+}
 
 //
 // 3.1.6 Offset 1Ch: CSTS - Controller Status
@@ -112,11 +118,14 @@ public unsafe struct NVME_CSTS
   public uint Nssro = 1; // NVM Subsystem Reset Occurred
   public uint Rsvd1 = 27;
 }
-public const ulong NVME_CSTS_SHST_SHUTDOWN_OCCURRING = 1;
-public const ulong NVME_CSTS_SHST_SHUTDOWN_COMPLETED = 2;
-//
-// 3.1.8 Offset 24h: AQA - Admin Queue Attributes
-//
+public unsafe partial class EFI
+{
+  public const ulong NVME_CSTS_SHST_SHUTDOWN_OCCURRING = 1;
+  public const ulong NVME_CSTS_SHST_SHUTDOWN_COMPLETED = 2;
+  //
+  // 3.1.8 Offset 24h: AQA - Admin Queue Attributes
+  //
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_AQA
 {
@@ -129,11 +138,14 @@ public unsafe struct NVME_AQA
 //
 // 3.1.9 Offset 28h: ASQ - Admin Submission Queue Base Address
 //
-public const ulong NVME_ASQ = UINT64;
-//
-// 3.1.10 Offset 30h: ACQ - Admin Completion Queue Base Address
-//
-public const ulong NVME_ACQ = UINT64;
+public unsafe partial class EFI
+{
+  public const ulong NVME_ASQ = UINT64;
+  //
+  // 3.1.10 Offset 30h: ACQ - Admin Completion Queue Base Address
+  //
+  public const ulong NVME_ACQ = UINT64;
+}
 
 //
 // 3.1.13 Offset 40h: BPINFO - Boot Partition Information
@@ -418,62 +430,65 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
   // Admin Command Set Attributes
   //
   public ushort Oacs;  /* Optional Admin Command Support */
-  public const ulong NAMESPACE_MANAGEMENT_SUPPORTED = BIT3;
-  public const ulong FW_DOWNLOAD_ACTIVATE_SUPPORTED = BIT2;
-  public const ulong FORMAT_NVM_SUPPORTED = BIT1;
-  public const ulong SECURITY_SEND_RECEIVE_SUPPORTED = BIT0;
-  public byte Acl;   /* Abort Command Limit */
-  public byte Aerl;  /* Async Event Request Limit */
-  public byte Frmw;  /* Firmware updates */
-  public byte Lpa;   /* Log Page Attributes */
-  public byte Elpe;  /* Error Log Page Entries */
-  public byte Npss;  /* Number of Power States Support */
-  public byte Avscc; /* Admin Vendor Specific Command Configuration */
-  public byte Apsta; /* Autonomous Power State Transition Attributes */
-  //
-  // Below fields before Rsvd2 are defined in NVM Express 1.4 Spec
-  //
-  public ushort Wctemp;      /* Warning Composite Temperature Threshold */
-  public ushort Cctemp;      /* Critical Composite Temperature Threshold */
-  public ushort Mtfa;        /* Maximum Time for Firmware Activation */
-  public uint Hmpre;       /* Host Memory Buffer Preferred Size */
-  public uint Hmmin;       /* Host Memory Buffer Minimum Size */
-  public fixed byte Tnvmcap[16]; /* Total NVM Capacity */
-  public fixed byte Unvmcap[16]; /* Unallocated NVM Capacity */
-  public uint Rpmbs;       /* Replay Protected Memory Block Support */
-  public ushort Edstt;       /* Extended Device Self-test Time */
-  public byte Dsto;        /* Device Self-test Options  */
-  public byte Fwug;        /* Firmware Update Granularity */
-  public fixed byte Rsvd2[192];  /* Reserved as of Nvm Express 1.4 Spec */
-  //
-  // NVM Command Set Attributes
-  //
-  public byte Sqes;       /* Submission Queue Entry Size */
-  public byte Cqes;       /* Completion Queue Entry Size */
-  public ushort Rsvd3;      /* Reserved as of Nvm Express 1.1 Spec */
-  public uint Nn;         /* Number of Namespaces */
-  public ushort Oncs;       /* Optional NVM Command Support */
-  public ushort Fuses;      /* Fused Operation Support */
-  public byte Fna;        /* Format NVM Attributes */
-  public byte Vwc;        /* Volatile Write Cache */
-  public ushort Awun;       /* Atomic Write Unit Normal */
-  public ushort Awupf;      /* Atomic Write Unit Power Fail */
-  public byte Nvscc;      /* NVM Vendor Specific Command Configuration */
-  public byte Rsvd4;      /* Reserved as of Nvm Express 1.1 Spec */
-  public ushort Acwu;       /* Atomic Compare & Write Unit */
-  public ushort Rsvd5;      /* Reserved as of Nvm Express 1.1 Spec */
-  public uint Sgls;       /* SGL Support  */
-  public fixed byte Rsvd6[164]; /* Reserved as of Nvm Express 1.1 Spec */
-  //
-  // I/O Command set Attributes
-  //
-  public fixed byte Rsvd7[1344]; /* Reserved as of Nvm Express 1.1 Spec */
-  //
-  // Power State Descriptors
-  //
-  NVME_PSDESCRIPTOR PsDescriptor[32];
+  public unsafe partial class EFI
+  {
+    public const ulong NAMESPACE_MANAGEMENT_SUPPORTED = BIT3;
+    public const ulong FW_DOWNLOAD_ACTIVATE_SUPPORTED = BIT2;
+    public const ulong FORMAT_NVM_SUPPORTED = BIT1;
+    public const ulong SECURITY_SEND_RECEIVE_SUPPORTED = BIT0;
+    public byte Acl;   /* Abort Command Limit */
+    public byte Aerl;  /* Async Event Request Limit */
+    public byte Frmw;  /* Firmware updates */
+    public byte Lpa;   /* Log Page Attributes */
+    public byte Elpe;  /* Error Log Page Entries */
+    public byte Npss;  /* Number of Power States Support */
+    public byte Avscc; /* Admin Vendor Specific Command Configuration */
+    public byte Apsta; /* Autonomous Power State Transition Attributes */
+    //
+    // Below fields before Rsvd2 are defined in NVM Express 1.4 Spec
+    //
+    public ushort Wctemp;      /* Warning Composite Temperature Threshold */
+    public ushort Cctemp;      /* Critical Composite Temperature Threshold */
+    public ushort Mtfa;        /* Maximum Time for Firmware Activation */
+    public uint Hmpre;       /* Host Memory Buffer Preferred Size */
+    public uint Hmmin;       /* Host Memory Buffer Minimum Size */
+    public fixed byte Tnvmcap[16]; /* Total NVM Capacity */
+    public fixed byte Unvmcap[16]; /* Unallocated NVM Capacity */
+    public uint Rpmbs;       /* Replay Protected Memory Block Support */
+    public ushort Edstt;       /* Extended Device Self-test Time */
+    public byte Dsto;        /* Device Self-test Options  */
+    public byte Fwug;        /* Firmware Update Granularity */
+    public fixed byte Rsvd2[192];  /* Reserved as of Nvm Express 1.4 Spec */
+    //
+    // NVM Command Set Attributes
+    //
+    public byte Sqes;       /* Submission Queue Entry Size */
+    public byte Cqes;       /* Completion Queue Entry Size */
+    public ushort Rsvd3;      /* Reserved as of Nvm Express 1.1 Spec */
+    public uint Nn;         /* Number of Namespaces */
+    public ushort Oncs;       /* Optional NVM Command Support */
+    public ushort Fuses;      /* Fused Operation Support */
+    public byte Fna;        /* Format NVM Attributes */
+    public byte Vwc;        /* Volatile Write Cache */
+    public ushort Awun;       /* Atomic Write Unit Normal */
+    public ushort Awupf;      /* Atomic Write Unit Power Fail */
+    public byte Nvscc;      /* NVM Vendor Specific Command Configuration */
+    public byte Rsvd4;      /* Reserved as of Nvm Express 1.1 Spec */
+    public ushort Acwu;       /* Atomic Compare & Write Unit */
+    public ushort Rsvd5;      /* Reserved as of Nvm Express 1.1 Spec */
+    public uint Sgls;       /* SGL Support  */
+    public fixed byte Rsvd6[164]; /* Reserved as of Nvm Express 1.1 Spec */
+    //
+    // I/O Command set Attributes
+    //
+    public fixed byte Rsvd7[1344]; /* Reserved as of Nvm Express 1.1 Spec */
+    //
+    // Power State Descriptors
+    //
+    NVME_PSDESCRIPTOR PsDescriptor[32];
 
-  public fixed byte VendorData[1024]; /* Vendor specific data */
+    public fixed byte VendorData[1024]; /* Vendor specific data */
+  }
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -482,11 +497,14 @@ public unsafe struct NVME_LBAFORMAT
   public ushort Ms;             /* Metadata Size */
   public byte Lbads;          /* LBA Data Size */
   public byte Rp = 2;      /* Relative Performance */
-  public const ulong LBAF_RP_BEST = 00b;
+  public unsafe partial class EFI
+  {
+    public const ulong LBAF_RP_BEST = 00b;
 public const ulong LBAF_RP_BETTER = 01b;
 public const ulong LBAF_RP_GOOD = 10b;
 public const ulong LBAF_RP_DEGRADED = 11b;
  public byte Rsvd1 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
+  }
 }
 
 //
@@ -532,7 +550,10 @@ public unsafe struct NVME_RPMB_CONFIGURATION_DATA
   public fixed byte Rsvd1[509]; /* Reserved as of Nvm Express 1.4 Spec */
 }
 
-public const ulong RPMB_FRAME_STUFF_BYTES = 223;
+public unsafe partial class EFI
+{
+  public const ulong RPMB_FRAME_STUFF_BYTES = 223;
+}
 
 //
 // RPMB Data Frame as of Nvm Express 1.4 Spec
@@ -569,33 +590,36 @@ public unsafe struct NVME_RPMB_DCB
 // RPMB Request and Response Message Types.
 // (ref. NVMe Base spec. v2.0 Figure 461).
 //
-public const ulong NVME_RPMB_AUTHKEY_PROGRAM = 0x0001;
-public const ulong NVME_RPMB_COUNTER_READ = 0x0002;
-public const ulong NVME_RPMB_AUTHDATA_WRITE = 0x0003;
-public const ulong NVME_RPMB_AUTHDATA_READ = 0x0004;
-public const ulong NVME_RPMB_RESULT_READ = 0x0005;
-public const ulong NVME_RPMB_DCB_WRITE = 0x0006;
-public const ulong NVME_RPMB_DCB_READ = 0x0007;
-public const ulong NVME_RPMB_AUTHKEY_PROGRAM_RESPONSE = 0x0100;
-public const ulong NVME_RPMB_COUNTER_READ_RESPONSE = 0x0200;
-public const ulong NVME_RPMB_AUTHDATA_WRITE_RESPONSE = 0x0300;
-public const ulong NVME_RPMB_AUTHDATA_READ_RESPONSE = 0x0400;
-public const ulong NVME_RPMB_DCB_WRITE_RESPONSE = 0x0600;
-public const ulong NVME_RPMB_DCB_READ_RESPONSE = 0x0700;
+public unsafe partial class EFI
+{
+  public const ulong NVME_RPMB_AUTHKEY_PROGRAM = 0x0001;
+  public const ulong NVME_RPMB_COUNTER_READ = 0x0002;
+  public const ulong NVME_RPMB_AUTHDATA_WRITE = 0x0003;
+  public const ulong NVME_RPMB_AUTHDATA_READ = 0x0004;
+  public const ulong NVME_RPMB_RESULT_READ = 0x0005;
+  public const ulong NVME_RPMB_DCB_WRITE = 0x0006;
+  public const ulong NVME_RPMB_DCB_READ = 0x0007;
+  public const ulong NVME_RPMB_AUTHKEY_PROGRAM_RESPONSE = 0x0100;
+  public const ulong NVME_RPMB_COUNTER_READ_RESPONSE = 0x0200;
+  public const ulong NVME_RPMB_AUTHDATA_WRITE_RESPONSE = 0x0300;
+  public const ulong NVME_RPMB_AUTHDATA_READ_RESPONSE = 0x0400;
+  public const ulong NVME_RPMB_DCB_WRITE_RESPONSE = 0x0600;
+  public const ulong NVME_RPMB_DCB_READ_RESPONSE = 0x0700;
 
-//
-// RPMB Operation Result.
-// (ref. NVMe Base spec. v2.0 Figure 462).
-//
-public const ulong NVME_RPMB_RESULT_SUCCESS = 0x00;
-public const ulong NVME_RPMB_RESULT_GENERAL_FAILURE = 0x01;
-public const ulong NVME_RPMB_RESULT_AHTHENTICATION_FAILURE = 0x02;
-public const ulong NVME_RPMB_RESULT_COUNTER_FAILURE = 0x03;
-public const ulong NVME_RPMB_RESULT_ADDRESS_FAILURE = 0x04;
-public const ulong NVME_RPMB_RESULT_WRITE_FAILURE = 0x05;
-public const ulong NVME_RPMB_RESULT_READ_FAILURE = 0x06;
-public const ulong NVME_RPMB_RESULT_AUTHKEY_NOT_PROGRAMMED = 0x07;
-public const ulong NVME_RPMB_RESULT_INVALID_DCB = 0x08;
+  //
+  // RPMB Operation Result.
+  // (ref. NVMe Base spec. v2.0 Figure 462).
+  //
+  public const ulong NVME_RPMB_RESULT_SUCCESS = 0x00;
+  public const ulong NVME_RPMB_RESULT_GENERAL_FAILURE = 0x01;
+  public const ulong NVME_RPMB_RESULT_AHTHENTICATION_FAILURE = 0x02;
+  public const ulong NVME_RPMB_RESULT_COUNTER_FAILURE = 0x03;
+  public const ulong NVME_RPMB_RESULT_ADDRESS_FAILURE = 0x04;
+  public const ulong NVME_RPMB_RESULT_WRITE_FAILURE = 0x05;
+  public const ulong NVME_RPMB_RESULT_READ_FAILURE = 0x06;
+  public const ulong NVME_RPMB_RESULT_AUTHKEY_NOT_PROGRAMMED = 0x07;
+  public const ulong NVME_RPMB_RESULT_INVALID_DCB = 0x08;
+}
 
 //
 // Get Log Page - Boot Partition Log Header.
@@ -760,13 +784,16 @@ public unsafe struct NVME_ADMIN_GET_LOG_PAGE
   // CDW 10
   //
   public uint Lid = 8;        /* Log Page Identifier */
-  public const ulong LID_ERROR_INFO = 0x1;
-  public const ulong LID_SMART_INFO = 0x2;
-  public const ulong LID_FW_SLOT_INFO = 0x3;
-  public const ulong LID_BP_INFO = 0x15;
-  public uint Rsvd1 = 8;
-  public uint Numd = 12;       /* Number of Dwords */
-  public uint Rsvd2 = 4;        /* Reserved as of Nvm Express 1.1 Spec */
+  public unsafe partial class EFI
+  {
+    public const ulong LID_ERROR_INFO = 0x1;
+    public const ulong LID_SMART_INFO = 0x2;
+    public const ulong LID_FW_SLOT_INFO = 0x3;
+    public const ulong LID_BP_INFO = 0x15;
+    public uint Rsvd1 = 8;
+    public uint Numd = 12;       /* Number of Dwords */
+    public uint Rsvd2 = 4;        /* Reserved as of Nvm Express 1.1 Spec */
+  }
 }
 
 //
@@ -946,27 +973,30 @@ public unsafe struct NVME_CQ
 //
 // Nvm Express Admin cmd opcodes
 //
-public const ulong NVME_ADMIN_DEIOSQ_CMD = 0x00;
-public const ulong NVME_ADMIN_CRIOSQ_CMD = 0x01;
-public const ulong NVME_ADMIN_GET_LOG_PAGE_CMD = 0x02;
-public const ulong NVME_ADMIN_DEIOCQ_CMD = 0x04;
-public const ulong NVME_ADMIN_CRIOCQ_CMD = 0x05;
-public const ulong NVME_ADMIN_IDENTIFY_CMD = 0x06;
-public const ulong NVME_ADMIN_ABORT_CMD = 0x08;
-public const ulong NVME_ADMIN_SET_FEATURES_CMD = 0x09;
-public const ulong NVME_ADMIN_GET_FEATURES_CMD = 0x0A;
-public const ulong NVME_ADMIN_ASYNC_EVENT_REQUEST_CMD = 0x0C;
-public const ulong NVME_ADMIN_NAMESACE_MANAGEMENT_CMD = 0x0D;
-public const ulong NVME_ADMIN_FW_COMMIT_CMD = 0x10;
-public const ulong NVME_ADMIN_FW_IAMGE_DOWNLOAD_CMD = 0x11;
-public const ulong NVME_ADMIN_NAMESACE_ATTACHMENT_CMD = 0x15;
-public const ulong NVME_ADMIN_FORMAT_NVM_CMD = 0x80;
-public const ulong NVME_ADMIN_SECURITY_SEND_CMD = 0x81;
-public const ulong NVME_ADMIN_SECURITY_RECEIVE_CMD = 0x82;
+public unsafe partial class EFI
+{
+  public const ulong NVME_ADMIN_DEIOSQ_CMD = 0x00;
+  public const ulong NVME_ADMIN_CRIOSQ_CMD = 0x01;
+  public const ulong NVME_ADMIN_GET_LOG_PAGE_CMD = 0x02;
+  public const ulong NVME_ADMIN_DEIOCQ_CMD = 0x04;
+  public const ulong NVME_ADMIN_CRIOCQ_CMD = 0x05;
+  public const ulong NVME_ADMIN_IDENTIFY_CMD = 0x06;
+  public const ulong NVME_ADMIN_ABORT_CMD = 0x08;
+  public const ulong NVME_ADMIN_SET_FEATURES_CMD = 0x09;
+  public const ulong NVME_ADMIN_GET_FEATURES_CMD = 0x0A;
+  public const ulong NVME_ADMIN_ASYNC_EVENT_REQUEST_CMD = 0x0C;
+  public const ulong NVME_ADMIN_NAMESACE_MANAGEMENT_CMD = 0x0D;
+  public const ulong NVME_ADMIN_FW_COMMIT_CMD = 0x10;
+  public const ulong NVME_ADMIN_FW_IAMGE_DOWNLOAD_CMD = 0x11;
+  public const ulong NVME_ADMIN_NAMESACE_ATTACHMENT_CMD = 0x15;
+  public const ulong NVME_ADMIN_FORMAT_NVM_CMD = 0x80;
+  public const ulong NVME_ADMIN_SECURITY_SEND_CMD = 0x81;
+  public const ulong NVME_ADMIN_SECURITY_RECEIVE_CMD = 0x82;
 
-public const ulong NVME_IO_FLUSH_OPC = 0;
-public const ulong NVME_IO_WRITE_OPC = 1;
-public const ulong NVME_IO_READ_OPC = 2;
+  public const ulong NVME_IO_FLUSH_OPC = 0;
+  public const ulong NVME_IO_WRITE_OPC = 1;
+  public const ulong NVME_IO_READ_OPC = 2;
+}
 
 public enum NVME_ADMIN_COMMAND_OPCODE
 {

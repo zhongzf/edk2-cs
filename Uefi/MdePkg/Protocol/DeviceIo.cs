@@ -15,15 +15,18 @@ namespace Uefi;
 // #ifndef __DEVICE_IO_H__
 // #define __DEVICE_IO_H__
 
-public static EFI_GUID EFI_DEVICE_IO_PROTOCOL_GUID = new GUID(
-    0xaf6ac311, 0x84c3, 0x11d2, new byte[] { 0x8e, 0x3c, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DEVICE_IO_PROTOCOL_GUID = new GUID(
+      0xaf6ac311, 0x84c3, 0x11d2, new byte[] { 0x8e, 0x3c, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
-// typedef struct _EFI_DEVICE_IO_PROTOCOL EFI_DEVICE_IO_PROTOCOL;
+  // typedef struct _EFI_DEVICE_IO_PROTOCOL EFI_DEVICE_IO_PROTOCOL;
 
-///
-/// Protocol GUID name defined in EFI1.1.
-///
-public const ulong DEVICE_IO_PROTOCOL = EFI_DEVICE_IO_PROTOCOL_GUID;
+  ///
+  /// Protocol GUID name defined in EFI1.1.
+  ///
+  public const ulong DEVICE_IO_PROTOCOL = EFI_DEVICE_IO_PROTOCOL_GUID;
+}
 
 ///
 /// Protocol defined in EFI1.1.
@@ -50,34 +53,6 @@ public enum EFI_IO_WIDTH
   MMIO_COPY_UINT64 = 7
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IO_ACCESS
 {
@@ -85,26 +60,6 @@ public unsafe struct EFI_IO_ACCESS
     Enables a driver to access device registers in the appropriate memory or I/O space.
 
     @param  This                  A pointer to the EFI_DEVICE_IO_INTERFACE instance.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @param  This                  A pointer to the EFI_DEVICE_IO_INTERFACE instance.
     @param  PciAddress            The PCI configuration space address of the device whose Device Path
@@ -129,114 +84,11 @@ public enum EFI_IO_OPERATION_TYPE
   {
   ///
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @param  HostAddress           A pointer to store the base address of the allocated range.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   IN ulong Pages,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   @param  This A pointer to the EFI_DEVICE_IO_INTERFACE instance.
   @param Pages                 The number of pages to free.

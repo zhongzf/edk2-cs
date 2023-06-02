@@ -53,16 +53,19 @@ public unsafe struct EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_TABLE_HEADER
 ///
 /// HPET Revision (defined in spec)
 ///
-public const ulong EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_TABLE_REVISION = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_TABLE_REVISION = 0x01;
 
-//
-// Page protection setting
-// Values 3 through 15 are reserved for use by the specification
-//
-public const ulong EFI_ACPI_NO_PAGE_PROTECTION = 0;
-public const ulong EFI_ACPI_4KB_PAGE_PROTECTION = 1;
-public const ulong EFI_ACPI_64KB_PAGE_PROTECTION = 2;
+  //
+  // Page protection setting
+  // Values 3 through 15 are reserved for use by the specification
+  //
+  public const ulong EFI_ACPI_NO_PAGE_PROTECTION = 0;
+  public const ulong EFI_ACPI_4KB_PAGE_PROTECTION = 1;
+  public const ulong EFI_ACPI_64KB_PAGE_PROTECTION = 2;
 
-// #pragma pack()
+  // #pragma pack()
+}
 
 // #endif

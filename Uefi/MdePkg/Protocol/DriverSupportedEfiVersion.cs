@@ -15,7 +15,10 @@ namespace Uefi;
 // #ifndef __DRIVER_SUPPORTED_EFI_VERSION_H__
 // #define __DRIVER_SUPPORTED_EFI_VERSION_H__
 
-public static EFI_GUID EFI_DRIVER_SUPPORTED_EFI_VERSION_PROTOCOL_GUID = new GUID(0x5c198761, 0x16a8, 0x4e69, new byte[] { 0x97, 0x2c, 0x89, 0xd6, 0x79, 0x54, 0xf8, 0x1d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DRIVER_SUPPORTED_EFI_VERSION_PROTOCOL_GUID = new GUID(0x5c198761, 0x16a8, 0x4e69, new byte[] { 0x97, 0x2c, 0x89, 0xd6, 0x79, 0x54, 0xf8, 0x1d });
+}
 
 ///
 /// The EFI_DRIVER_SUPPORTED_EFI_VERSION_PROTOCOL provides a

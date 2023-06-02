@@ -21,187 +21,68 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <Protocol/FormBrowser2.h>
 
-public static EFI_GUID EFI_HII_CONFIG_ACCESS_PROTOCOL_GUID = new GUID(0x330d4706, 0xf2a0, 0x4e4f, new byte[] { 0xa3, 0x69, 0xb6, 0x6f, 0xa8, 0xd5, 0x43, 0x85 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_HII_CONFIG_ACCESS_PROTOCOL_GUID = new GUID(0x330d4706, 0xf2a0, 0x4e4f, new byte[] { 0xa3, 0x69, 0xb6, 0x6f, 0xa8, 0xd5, 0x43, 0x85 });
 
-// typedef struct _EFI_HII_CONFIG_ACCESS_PROTOCOL EFI_HII_CONFIG_ACCESS_PROTOCOL;
+  // typedef struct _EFI_HII_CONFIG_ACCESS_PROTOCOL EFI_HII_CONFIG_ACCESS_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BROWSER_ACTION { ulong Value; public static implicit operator EFI_BROWSER_ACTION(ulong value) => new EFI_BROWSER_ACTION() { Value = value }; public static implicit operator ulong(EFI_BROWSER_ACTION value) => value.Value; }
 
-public const ulong EFI_BROWSER_ACTION_CHANGING = 0;
-public const ulong EFI_BROWSER_ACTION_CHANGED = 1;
-public const ulong EFI_BROWSER_ACTION_RETRIEVE = 2;
-public const ulong EFI_BROWSER_ACTION_FORM_OPEN = 3;
-public const ulong EFI_BROWSER_ACTION_FORM_CLOSE = 4;
-public const ulong EFI_BROWSER_ACTION_SUBMITTED = 5;
-public const ulong EFI_BROWSER_ACTION_DEFAULT_STANDARD = 0x1000;
-public const ulong EFI_BROWSER_ACTION_DEFAULT_MANUFACTURING = 0x1001;
-public const ulong EFI_BROWSER_ACTION_DEFAULT_SAFE = 0x1002;
-public const ulong EFI_BROWSER_ACTION_DEFAULT_PLATFORM = 0x2000;
-public const ulong EFI_BROWSER_ACTION_DEFAULT_HARDWARE = 0x3000;
-public const ulong EFI_BROWSER_ACTION_DEFAULT_FIRMWARE = 0x4000;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-
-  This function is called to provide results data to the driver.
-  This data consists of a unique key that is used to identify
-  which data is either being passed back or being asked for.
-
-  @param  This                   Points to the EFI_HII_CONFIG_ACCESS_PROTOCOL.
-  @param  Action                 Specifies the type of action taken by the browser.
-  @param  QuestionId             A unique value which is sent to the original
-                                 exporting driver so that it can identify the type
-                                 of data to expect. The format of the data tends to
-                                 vary based on the opcode that generated the callback.
-  @param  Type                   The type of value for the question.
-  @param  Value                  A pointer to the data being sent to the original
-                                 exporting driver.
-  @param  ActionRequest          On return, points to the action requested by the
-                                 callback function.
-
-  @retval EFI_SUCCESS            The callback successfully handled the action.
-  @retval EFI_OUT_OF_RESOURCES   Not enough storage is available to hold the
-                                 variable and its data.
-  @retval EFI_DEVICE_ERROR       The variable could not be saved.
-  @retval EFI_UNSUPPORTED        The specified Action is not supported by the
-                                 callback.
-**/
-typedef
-EFI_STATUS
-(EFIAPI* EFI_HII_ACCESS_FORM_CALLBACK)(
-  IN CONST EFI_HII_CONFIG_ACCESS_PROTOCOL   * This,
-  IN     EFI_BROWSER_ACTION Action,
-  IN     EFI_QUESTION_ID QuestionId,
-  IN     byte Type,
-  IN OUT EFI_IFR_TYPE_VALUE                     * Value,
-  OUT    EFI_BROWSER_ACTION_REQUEST* ActionRequest
+public unsafe partial class EFI
+{
+  public const ulong EFI_BROWSER_ACTION_CHANGING = 0;
+  public const ulong EFI_BROWSER_ACTION_CHANGED = 1;
+  public const ulong EFI_BROWSER_ACTION_RETRIEVE = 2;
+  public const ulong EFI_BROWSER_ACTION_FORM_OPEN = 3;
+  public const ulong EFI_BROWSER_ACTION_FORM_CLOSE = 4;
+  public const ulong EFI_BROWSER_ACTION_SUBMITTED = 5;
+  public const ulong EFI_BROWSER_ACTION_DEFAULT_STANDARD = 0x1000;
+  public const ulong EFI_BROWSER_ACTION_DEFAULT_MANUFACTURING = 0x1001;
+  public const ulong EFI_BROWSER_ACTION_DEFAULT_SAFE = 0x1002;
+  public const ulong EFI_BROWSER_ACTION_DEFAULT_PLATFORM = 0x2000;
+  public const ulong EFI_BROWSER_ACTION_DEFAULT_HARDWARE = 0x3000;
+  public const ulong EFI_BROWSER_ACTION_DEFAULT_FIRMWARE = 0x4000;
+
+  /**
+
+    This function is called to provide results data to the driver.
+    This data consists of a unique key that is used to identify
+    which data is either being passed back or being asked for.
+
+    @param  This                   Points to the EFI_HII_CONFIG_ACCESS_PROTOCOL.
+    @param  Action                 Specifies the type of action taken by the browser.
+    @param  QuestionId             A unique value which is sent to the original
+                                   exporting driver so that it can identify the type
+                                   of data to expect. The format of the data tends to
+                                   vary based on the opcode that generated the callback.
+    @param  Type                   The type of value for the question.
+    @param  Value                  A pointer to the data being sent to the original
+                                   exporting driver.
+    @param  ActionRequest          On return, points to the action requested by the
+                                   callback function.
+
+    @retval EFI_SUCCESS            The callback successfully handled the action.
+    @retval EFI_OUT_OF_RESOURCES   Not enough storage is available to hold the
+                                   variable and its data.
+    @retval EFI_DEVICE_ERROR       The variable could not be saved.
+    @retval EFI_UNSUPPORTED        The specified Action is not supported by the
+                                   callback.
+  **/
+  typedef
+  EFI_STATUS
+  (EFIAPI* EFI_HII_ACCESS_FORM_CALLBACK)(
+    IN CONST EFI_HII_CONFIG_ACCESS_PROTOCOL   *This,
+  IN EFI_BROWSER_ACTION                     Action,
+  IN EFI_QUESTION_ID                        QuestionId,
+  IN byte Type,
+  IN OUT EFI_IFR_TYPE_VALUE                     *Value,
+  OUT EFI_BROWSER_ACTION_REQUEST             *ActionRequest
   )
 ;
+}
 
 ///
 /// This protocol provides a callable interface between the HII and

@@ -14,10 +14,13 @@ namespace Uefi;
 // #ifndef __GRAPHICS_OUTPUT_H__
 // #define __GRAPHICS_OUTPUT_H__
 
-public static EFI_GUID EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID = new GUID(
-    0x9042a9de, 0x23dc, 0x4a38, new byte[] { 0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID = new GUID(
+      0x9042a9de, 0x23dc, 0x4a38, new byte[] { 0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a });
 
-// typedef struct _EFI_GRAPHICS_OUTPUT_PROTOCOL EFI_GRAPHICS_OUTPUT_PROTOCOL;
+  // typedef struct _EFI_GRAPHICS_OUTPUT_PROTOCOL EFI_GRAPHICS_OUTPUT_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PIXEL_BITMASK
@@ -92,48 +95,6 @@ public unsafe struct EFI_GRAPHICS_OUTPUT_MODE_INFORMATION
   public uint PixelsPerScanLine;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_GRAPHICS_OUTPUT_BLT_PIXEL
 {
@@ -193,44 +154,6 @@ public enum EFI_GRAPHICS_OUTPUT_BLT_OPERATION
 
   EfiGraphicsOutputBltOperationMax
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE

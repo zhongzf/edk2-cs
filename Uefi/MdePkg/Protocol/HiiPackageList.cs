@@ -16,7 +16,10 @@ namespace Uefi;
 // #ifndef __HII_PACKAGE_LIST_H__
 // #define __HII_PACKAGE_LIST_H__
 
-public static EFI_GUID EFI_HII_PACKAGE_LIST_PROTOCOL_GUID = new GUID(0x6a1ee763, 0xd47a, 0x43b4, new byte[] { 0xaa, 0xbe, 0xef, 0x1d, 0xe2, 0xab, 0x56, 0xfc });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_HII_PACKAGE_LIST_PROTOCOL_GUID = new GUID(0x6a1ee763, 0xd47a, 0x43b4, new byte[] { 0xaa, 0xbe, 0xef, 0x1d, 0xe2, 0xab, 0x56, 0xfc });
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_PACKAGE_LIST_PROTOCOL { EFI_HII_PACKAGE_LIST_HEADER* Value; public static implicit operator EFI_HII_PACKAGE_LIST_PROTOCOL(EFI_HII_PACKAGE_LIST_HEADER* value) => new EFI_HII_PACKAGE_LIST_PROTOCOL() { Value = value }; public static implicit operator EFI_HII_PACKAGE_LIST_HEADER*(EFI_HII_PACKAGE_LIST_PROTOCOL value) => value.Value; }

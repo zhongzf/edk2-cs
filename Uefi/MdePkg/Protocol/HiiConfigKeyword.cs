@@ -12,181 +12,35 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
   @par Revision Reference:
   This Protocol was introduced in UEFI Specification 2.5.
 
-
 **/
 
 // #ifndef __EFI_CONFIG_KEYWORD_HANDLER_H__
 // #define __EFI_CONFIG_KEYWORD_HANDLER_H__
 
-public static EFI_GUID EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL_GUID = new GUID(
-  0x0a8badd5, 0x03b8, 0x4d19, new byte[] { 0xb1, 0x28, 0x7b, 0x8f, 0x0e, 0xda, 0xa5, 0x96 });
-
-// ***********************************************************
-// Progress Errors
-// ***********************************************************
-public const ulong KEYWORD_HANDLER_NO_ERROR = 0x00000000;
-public const ulong KEYWORD_HANDLER_NAMESPACE_ID_NOT_FOUND = 0x00000001;
-public const ulong KEYWORD_HANDLER_MALFORMED_STRING = 0x00000002;
-public const ulong KEYWORD_HANDLER_KEYWORD_NOT_FOUND = 0x00000004;
-public const ulong KEYWORD_HANDLER_INCOMPATIBLE_VALUE_DETECTED = 0x00000008;
-public const ulong KEYWORD_HANDLER_ACCESS_NOT_PERMITTED = 0x00000010;
-public const ulong KEYWORD_HANDLER_UNDEFINED_PROCESSING_ERROR = 0x80000000;
-
-// typedef struct _EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///
-/// The EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL provides the mechanism
-/// to set and get the values associated with a keyword exposed
-/// through a x-UEFI- prefixed configuration language namespace
-///
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL_GUID = new GUID(
+    0x0a8badd5, 0x03b8, 0x4d19, new byte[] { 0xb1, 0x28, 0x7b, 0x8f, 0x0e, 0xda, 0xa5, 0x96 });
+
+  // ***********************************************************
+  // Progress Errors
+  // ***********************************************************
+  public const ulong KEYWORD_HANDLER_NO_ERROR = 0x00000000;
+  public const ulong KEYWORD_HANDLER_NAMESPACE_ID_NOT_FOUND = 0x00000001;
+  public const ulong KEYWORD_HANDLER_MALFORMED_STRING = 0x00000002;
+  public const ulong KEYWORD_HANDLER_KEYWORD_NOT_FOUND = 0x00000004;
+  public const ulong KEYWORD_HANDLER_INCOMPATIBLE_VALUE_DETECTED = 0x00000008;
+  public const ulong KEYWORD_HANDLER_ACCESS_NOT_PERMITTED = 0x00000010;
+  public const ulong KEYWORD_HANDLER_UNDEFINED_PROCESSING_ERROR = 0x80000000;
+
+  // typedef struct _EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL;
+
+  ///
+  /// The EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL provides the mechanism
+  /// to set and get the values associated with a keyword exposed
+  /// through a x-UEFI- prefixed configuration language namespace
+  ///
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL
@@ -212,7 +66,6 @@ public unsafe struct EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL
     containing multiple keywords, the state of storage associated with earlier keywords
     is undefined.
 
-
     @param This             Pointer to the EFI_KEYWORD_HANDLER _PROTOCOL instance.
 
     @param KeywordString    A null-terminated string in <MultiKeywordResp> format.
@@ -228,7 +81,6 @@ public unsafe struct EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL
                             a failure, this parameter gives additional information
                             about the possible source of the problem. The various
                             errors are defined in "Related Definitions" below.
-
 
     @retval EFI_SUCCESS             The specified action was completed successfully.
 
@@ -267,7 +119,6 @@ public unsafe struct EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL
     contains values returned for all keywords processed prior to the keyword generating the
     error but no values for the keyword with error or any following keywords.
 
-
     @param This           Pointer to the EFI_KEYWORD_HANDLER _PROTOCOL instance.
 
     @param NameSpaceId    A null-terminated string containing the platform configuration
@@ -302,7 +153,6 @@ public unsafe struct EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL
                                     1.Progress, ProgressErr, or Results is NULL.
                                     2.Parsing of the KeywordString resulted in an error. See
                                       Progress and ProgressErr for more data.
-
 
     @retval EFI_NOT_FOUND           An element of the KeywordString was not found. See
                                     ProgressErr for more data.

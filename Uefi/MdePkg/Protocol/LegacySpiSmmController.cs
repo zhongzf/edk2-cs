@@ -18,13 +18,16 @@ namespace Uefi;
 ///
 /// Global ID for the Legacy SPI SMM Controller Protocol
 ///
-public static EFI_GUID EFI_LEGACY_SPI_SMM_CONTROLLER_PROTOCOL_GUID = new GUID(0x62331b78, 0xd8d0, 0x4c8c,
-    { 0x8c, 0xcb, 0xd2, 0x7d, 0xfe, 0x32, 0xdb, 0x9b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_LEGACY_SPI_SMM_CONTROLLER_PROTOCOL_GUID = new GUID(0x62331b78, 0xd8d0, 0x4c8c,
+      { 0x8c, 0xcb, 0xd2, 0x7d, 0xfe, 0x32, 0xdb, 0x9b });
 
 typedef
   struct _EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
 EFI_LEGACY_SPI_SMM_CONTROLLER_PROTOCOL;
 
 // extern EFI_GUID  gEfiLegacySpiSmmControllerProtocolGuid;
+}
 
 // #endif // __LEGACY_SPI_SMM_CONTROLLER_PROTOCOL_H__

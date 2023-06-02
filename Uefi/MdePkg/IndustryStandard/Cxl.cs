@@ -17,6 +17,9 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 //
 // CXL assigned new Vendor ID
 //
-public const ulong CXL_DVSEC_VENDOR_ID = 0x1E98;
+public unsafe partial class EFI
+{
+  public const ulong CXL_DVSEC_VENDOR_ID = 0x1E98;
+}
 
 // #endif

@@ -17,46 +17,49 @@ namespace Uefi;
 //
 // EMMC command index
 //
-public const ulong EMMC_GO_IDLE_STATE = 0;
-public const ulong EMMC_SEND_OP_COND = 1;
-public const ulong EMMC_ALL_SEND_CID = 2;
-public const ulong EMMC_SET_RELATIVE_ADDR = 3;
-public const ulong EMMC_SET_DSR = 4;
-public const ulong EMMC_SLEEP_AWAKE = 5;
-public const ulong EMMC_SWITCH = 6;
-public const ulong EMMC_SELECT_DESELECT_CARD = 7;
-public const ulong EMMC_SEND_EXT_CSD = 8;
-public const ulong EMMC_SEND_CSD = 9;
-public const ulong EMMC_SEND_CID = 10;
-public const ulong EMMC_STOP_TRANSMISSION = 12;
-public const ulong EMMC_SEND_STATUS = 13;
-public const ulong EMMC_BUSTEST_R = 14;
-public const ulong EMMC_GO_INACTIVE_STATE = 15;
-public const ulong EMMC_SET_BLOCKLEN = 16;
-public const ulong EMMC_READ_SINGLE_BLOCK = 17;
-public const ulong EMMC_READ_MULTIPLE_BLOCK = 18;
-public const ulong EMMC_BUSTEST_W = 19;
-public const ulong EMMC_SEND_TUNING_BLOCK = 21;
-public const ulong EMMC_SET_BLOCK_COUNT = 23;
-public const ulong EMMC_WRITE_BLOCK = 24;
-public const ulong EMMC_WRITE_MULTIPLE_BLOCK = 25;
-public const ulong EMMC_PROGRAM_CID = 26;
-public const ulong EMMC_PROGRAM_CSD = 27;
-public const ulong EMMC_SET_WRITE_PROT = 28;
-public const ulong EMMC_CLR_WRITE_PROT = 29;
-public const ulong EMMC_SEND_WRITE_PROT = 30;
-public const ulong EMMC_SEND_WRITE_PROT_TYPE = 31;
-public const ulong EMMC_ERASE_GROUP_START = 35;
-public const ulong EMMC_ERASE_GROUP_END = 36;
-public const ulong EMMC_ERASE = 38;
-public const ulong EMMC_FAST_IO = 39;
-public const ulong EMMC_GO_IRQ_STATE = 40;
-public const ulong EMMC_LOCK_UNLOCK = 42;
-public const ulong EMMC_SET_TIME = 49;
-public const ulong EMMC_PROTOCOL_RD = 53;
-public const ulong EMMC_PROTOCOL_WR = 54;
-public const ulong EMMC_APP_CMD = 55;
-public const ulong EMMC_GEN_CMD = 56;
+public unsafe partial class EFI
+{
+  public const ulong EMMC_GO_IDLE_STATE = 0;
+  public const ulong EMMC_SEND_OP_COND = 1;
+  public const ulong EMMC_ALL_SEND_CID = 2;
+  public const ulong EMMC_SET_RELATIVE_ADDR = 3;
+  public const ulong EMMC_SET_DSR = 4;
+  public const ulong EMMC_SLEEP_AWAKE = 5;
+  public const ulong EMMC_SWITCH = 6;
+  public const ulong EMMC_SELECT_DESELECT_CARD = 7;
+  public const ulong EMMC_SEND_EXT_CSD = 8;
+  public const ulong EMMC_SEND_CSD = 9;
+  public const ulong EMMC_SEND_CID = 10;
+  public const ulong EMMC_STOP_TRANSMISSION = 12;
+  public const ulong EMMC_SEND_STATUS = 13;
+  public const ulong EMMC_BUSTEST_R = 14;
+  public const ulong EMMC_GO_INACTIVE_STATE = 15;
+  public const ulong EMMC_SET_BLOCKLEN = 16;
+  public const ulong EMMC_READ_SINGLE_BLOCK = 17;
+  public const ulong EMMC_READ_MULTIPLE_BLOCK = 18;
+  public const ulong EMMC_BUSTEST_W = 19;
+  public const ulong EMMC_SEND_TUNING_BLOCK = 21;
+  public const ulong EMMC_SET_BLOCK_COUNT = 23;
+  public const ulong EMMC_WRITE_BLOCK = 24;
+  public const ulong EMMC_WRITE_MULTIPLE_BLOCK = 25;
+  public const ulong EMMC_PROGRAM_CID = 26;
+  public const ulong EMMC_PROGRAM_CSD = 27;
+  public const ulong EMMC_SET_WRITE_PROT = 28;
+  public const ulong EMMC_CLR_WRITE_PROT = 29;
+  public const ulong EMMC_SEND_WRITE_PROT = 30;
+  public const ulong EMMC_SEND_WRITE_PROT_TYPE = 31;
+  public const ulong EMMC_ERASE_GROUP_START = 35;
+  public const ulong EMMC_ERASE_GROUP_END = 36;
+  public const ulong EMMC_ERASE = 38;
+  public const ulong EMMC_FAST_IO = 39;
+  public const ulong EMMC_GO_IRQ_STATE = 40;
+  public const ulong EMMC_LOCK_UNLOCK = 42;
+  public const ulong EMMC_SET_TIME = 49;
+  public const ulong EMMC_PROTOCOL_RD = 53;
+  public const ulong EMMC_PROTOCOL_WR = 54;
+  public const ulong EMMC_APP_CMD = 55;
+  public const ulong EMMC_GEN_CMD = 56;
+}
 
 public enum EMMC_PARTITION_TYPE
 {

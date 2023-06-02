@@ -18,8 +18,10 @@ namespace Uefi;
 ///
 /// Global ID for the SPI Configuration Protocol
 ///
-public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
-    { 0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
+      { 0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8 });
 
 ///
 /// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
@@ -30,67 +32,7 @@ public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
 
 // typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// The EFI_SPI_PART data structure provides a description of a SPI part which

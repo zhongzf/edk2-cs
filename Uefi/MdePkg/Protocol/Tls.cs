@@ -25,16 +25,19 @@ namespace Uefi;
 /// create and destroy child of the driver to communicate with other host using TLS
 /// protocol.
 ///
-public static EFI_GUID EFI_TLS_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-    0x952cb795, 0xff36, 0x48cf, new byte[] { 0xa2, 0x49, 0x4d, 0xf4, 0x86, 0xd6, 0xab, 0x8d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_TLS_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+      0x952cb795, 0xff36, 0x48cf, new byte[] { 0xa2, 0x49, 0x4d, 0xf4, 0x86, 0xd6, 0xab, 0x8d });
 
-///
-/// The EFI TLS protocol provides the ability to manage TLS session.
-///
-public static EFI_GUID EFI_TLS_PROTOCOL_GUID = new GUID(
-    0xca959f, 0x6cfa, 0x4db1, new byte[] { 0x95, 0xbc, 0xe4, 0x6c, 0x47, 0x51, 0x43, 0x90 });
+  ///
+  /// The EFI TLS protocol provides the ability to manage TLS session.
+  ///
+  public static EFI_GUID EFI_TLS_PROTOCOL_GUID = new GUID(
+      0xca959f, 0x6cfa, 0x4db1, new byte[] { 0x95, 0xbc, 0xe4, 0x6c, 0x47, 0x51, 0x43, 0x90 });
 
-// typedef struct _EFI_TLS_PROTOCOL EFI_TLS_PROTOCOL;
+  // typedef struct _EFI_TLS_PROTOCOL EFI_TLS_PROTOCOL;
+}
 
 ///
 /// EFI_TLS_SESSION_DATA_TYPE
@@ -177,22 +180,25 @@ public unsafe struct EFI_TLS_VERIFY { uint Value; public static implicit operato
 /// No certificates will be sent or the TLS/SSL handshake will be continued regardless
 /// of the certificate verification result.
 ///
-public const ulong EFI_TLS_VERIFY_NONE = 0x0;
-///
-/// The TLS/SSL handshake is immediately terminated with an alert message containing
-/// the reason for the certificate verification failure.
-///
-public const ulong EFI_TLS_VERIFY_PEER = 0x1;
-///
-/// EFI_TLS_VERIFY_FAIL_IF_NO_PEER_CERT is only meaningful in the server mode.
-/// TLS session will fail if client certificate is absent.
-///
-public const ulong EFI_TLS_VERIFY_FAIL_IF_NO_PEER_CERT = 0x2;
-///
-/// TLS session only verify client once, and doesn't request certificate during
-/// re-negotiation.
-///
-public const ulong EFI_TLS_VERIFY_CLIENT_ONCE = 0x4;
+public unsafe partial class EFI
+{
+  public const ulong EFI_TLS_VERIFY_NONE = 0x0;
+  ///
+  /// The TLS/SSL handshake is immediately terminated with an alert message containing
+  /// the reason for the certificate verification failure.
+  ///
+  public const ulong EFI_TLS_VERIFY_PEER = 0x1;
+  ///
+  /// EFI_TLS_VERIFY_FAIL_IF_NO_PEER_CERT is only meaningful in the server mode.
+  /// TLS session will fail if client certificate is absent.
+  ///
+  public const ulong EFI_TLS_VERIFY_FAIL_IF_NO_PEER_CERT = 0x2;
+  ///
+  /// TLS session only verify client once, and doesn't request certificate during
+  /// re-negotiation.
+  ///
+  public const ulong EFI_TLS_VERIFY_CLIENT_ONCE = 0x4;
+}
 
 ///
 /// EFI_TLS_VERIFY_HOST_FLAG
@@ -203,35 +209,38 @@ public unsafe struct EFI_TLS_VERIFY_HOST_FLAG { uint Value; public static implic
 /// There is no additional flags set for hostname validation.
 /// Wildcards are supported and they match only in the left-most label.
 ///
-public const ulong EFI_TLS_VERIFY_FLAG_NONE = 0x00;
-///
-/// Always check the Subject Distinguished Name (DN) in the peer certificate even if the
-/// certificate contains Subject Alternative Name (SAN).
-///
-public const ulong EFI_TLS_VERIFY_FLAG_ALWAYS_CHECK_SUBJECT = 0x01;
-///
-/// Disable the match of all wildcards.
-///
-public const ulong EFI_TLS_VERIFY_FLAG_NO_WILDCARDS = 0x02;
-///
-/// Disable the "*" as wildcard in labels that have a prefix or suffix (e.g. "www*" or "*www").
-///
-public const ulong EFI_TLS_VERIFY_FLAG_NO_PARTIAL_WILDCARDS = 0x04;
-///
-/// Allow the "*" to match more than one labels. Otherwise, only matches a single label.
-///
-public const ulong EFI_TLS_VERIFY_FLAG_MULTI_LABEL_WILDCARDS = 0x08;
-///
-/// Restrict to only match direct child sub-domains which start with ".".
-/// For example, a name of ".example.com" would match "www.example.com" with this flag,
-/// but would not match "www.sub.example.com".
-///
-public const ulong EFI_TLS_VERIFY_FLAG_SINGLE_LABEL_SUBDOMAINS = 0x10;
-///
-/// Never check the Subject Distinguished Name (DN) even there is no
-/// Subject Alternative Name (SAN) in the certificate.
-///
-public const ulong EFI_TLS_VERIFY_FLAG_NEVER_CHECK_SUBJECT = 0x20;
+public unsafe partial class EFI
+{
+  public const ulong EFI_TLS_VERIFY_FLAG_NONE = 0x00;
+  ///
+  /// Always check the Subject Distinguished Name (DN) in the peer certificate even if the
+  /// certificate contains Subject Alternative Name (SAN).
+  ///
+  public const ulong EFI_TLS_VERIFY_FLAG_ALWAYS_CHECK_SUBJECT = 0x01;
+  ///
+  /// Disable the match of all wildcards.
+  ///
+  public const ulong EFI_TLS_VERIFY_FLAG_NO_WILDCARDS = 0x02;
+  ///
+  /// Disable the "*" as wildcard in labels that have a prefix or suffix (e.g. "www*" or "*www").
+  ///
+  public const ulong EFI_TLS_VERIFY_FLAG_NO_PARTIAL_WILDCARDS = 0x04;
+  ///
+  /// Allow the "*" to match more than one labels. Otherwise, only matches a single label.
+  ///
+  public const ulong EFI_TLS_VERIFY_FLAG_MULTI_LABEL_WILDCARDS = 0x08;
+  ///
+  /// Restrict to only match direct child sub-domains which start with ".".
+  /// For example, a name of ".example.com" would match "www.example.com" with this flag,
+  /// but would not match "www.sub.example.com".
+  ///
+  public const ulong EFI_TLS_VERIFY_FLAG_SINGLE_LABEL_SUBDOMAINS = 0x10;
+  ///
+  /// Never check the Subject Distinguished Name (DN) even there is no
+  /// Subject Alternative Name (SAN) in the certificate.
+  ///
+  public const ulong EFI_TLS_VERIFY_FLAG_NEVER_CHECK_SUBJECT = 0x20;
+}
 
 ///
 /// EFI_TLS_VERIFY_HOST
@@ -276,8 +285,11 @@ public unsafe struct EFI_TLS_MASTER_SECRET
 /// EFI_TLS_SESSION_ID
 /// Note: The definition of EFI_TLS_SESSION_ID is from "RFC 5246 A.4.1. Hello Messages".
 ///
-public const ulong MAX_TLS_SESSION_ID_LENGTH = 32;
-// #pragma pack (1)
+public unsafe partial class EFI
+{
+  public const ulong MAX_TLS_SESSION_ID_LENGTH = 32;
+  // #pragma pack (1)
+}
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TLS_SESSION_ID
 {
@@ -356,163 +368,6 @@ public enum EFI_TLS_CRYPT_MODE
   ///
   EfiTlsDecrypt,
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_TLS_PROTOCOL is used to create, destroy and manage TLS session.

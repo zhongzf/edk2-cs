@@ -22,10 +22,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 /// PXE Base Code protocol.
 ///
-public static EFI_GUID EFI_PXE_BASE_CODE_PROTOCOL_GUID = new GUID(
-    0x03c4e603, 0xac28, 0x11d3, new byte[] { 0x9a, 0x2d, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PXE_BASE_CODE_PROTOCOL_GUID = new GUID(
+      0x03c4e603, 0xac28, 0x11d3, new byte[] { 0x9a, 0x2d, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-// typedef struct _EFI_PXE_BASE_CODE_PROTOCOL EFI_PXE_BASE_CODE_PROTOCOL;
+  // typedef struct _EFI_PXE_BASE_CODE_PROTOCOL EFI_PXE_BASE_CODE_PROTOCOL;
+}
 
 ///
 /// Protocol defined in EFI1.1.
@@ -36,8 +39,11 @@ public unsafe struct EFI_PXE_BASE_CODE { EFI_PXE_BASE_CODE_PROTOCOL Value; publi
 ///
 /// Default IP TTL and ToS.
 ///
-public const ulong DEFAULT_TTL = 16;
-public const ulong DEFAULT_ToS = 0;
+public unsafe partial class EFI
+{
+  public const ulong DEFAULT_TTL = 16;
+  public const ulong DEFAULT_ToS = 0;
+}
 
 ///
 /// ICMP error format.
@@ -73,7 +79,10 @@ public unsafe struct EFI_PXE_BASE_CODE_TFTP_ERROR
 ///
 /// IP Receive Filter definitions.
 ///
-public const ulong EFI_PXE_BASE_CODE_MAX_IPCNT = 8;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PXE_BASE_CODE_MAX_IPCNT = 8;
+}
 
 ///
 /// IP Receive Filter structure.
@@ -87,10 +96,13 @@ public unsafe struct EFI_PXE_BASE_CODE_IP_FILTER
   public fixed EFI_IP_ADDRESS IpList[EFI_PXE_BASE_CODE_MAX_IPCNT];
 }
 
-public const ulong EFI_PXE_BASE_CODE_IP_FILTER_STATION_IP = 0x0001;
-public const ulong EFI_PXE_BASE_CODE_IP_FILTER_BROADCAST = 0x0002;
-public const ulong EFI_PXE_BASE_CODE_IP_FILTER_PROMISCUOUS = 0x0004;
-public const ulong EFI_PXE_BASE_CODE_IP_FILTER_PROMISCUOUS_MULTICAST = 0x0008;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PXE_BASE_CODE_IP_FILTER_STATION_IP = 0x0001;
+  public const ulong EFI_PXE_BASE_CODE_IP_FILTER_BROADCAST = 0x0002;
+  public const ulong EFI_PXE_BASE_CODE_IP_FILTER_PROMISCUOUS = 0x0004;
+  public const ulong EFI_PXE_BASE_CODE_IP_FILTER_PROMISCUOUS_MULTICAST = 0x0008;
+}
 
 ///
 /// ARP cache entries.
@@ -119,42 +131,44 @@ public unsafe struct EFI_PXE_BASE_CODE_ROUTE_ENTRY
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PXE_BASE_CODE_UDP_PORT { ushort Value; public static implicit operator EFI_PXE_BASE_CODE_UDP_PORT(ushort value) => new EFI_PXE_BASE_CODE_UDP_PORT() { Value = value }; public static implicit operator ushort(EFI_PXE_BASE_CODE_UDP_PORT value) => value.Value; }
 
-public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_SRC_IP = 0x0001;
-public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_SRC_PORT = 0x0002;
-public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_DEST_IP = 0x0004;
-public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_DEST_PORT = 0x0008;
-public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_USE_FILTER = 0x0010;
-public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_MAY_FRAGMENT = 0x0020;
+public unsafe partial class EFI
+{
+  public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_SRC_IP = 0x0001;
+  public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_SRC_PORT = 0x0002;
+  public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_DEST_IP = 0x0004;
+  public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_ANY_DEST_PORT = 0x0008;
+  public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_USE_FILTER = 0x0010;
+  public const ulong EFI_PXE_BASE_CODE_UDP_OPFLAGS_MAY_FRAGMENT = 0x0020;
 
-//
-// Discover() definitions
-//
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_BOOTSTRAP = 0;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_MS_WINNT_RIS = 1;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_INTEL_LCM = 2;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_DOSUNDI = 3;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_NEC_ESMPRO = 4;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_IBM_WSoD = 5;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_IBM_LCCM = 6;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_CA_UNICENTER_TNG = 7;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_HP_OPENVIEW = 8;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_ALTIRIS_9 = 9;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_ALTIRIS_10 = 10;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_ALTIRIS_11 = 11;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_NOT_USED_12 = 12;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_REDHAT_INSTALL = 13;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_REDHAT_BOOT = 14;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_REMBO = 15;
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_BEOBOOT = 16;
-//
-// 17 through 32767 are reserved
-// 32768 through 65279 are for vendor use
-// 65280 through 65534 are reserved
-//
-public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_PXETEST = 65535;
+  //
+  // Discover() definitions
+  //
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_BOOTSTRAP = 0;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_MS_WINNT_RIS = 1;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_INTEL_LCM = 2;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_DOSUNDI = 3;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_NEC_ESMPRO = 4;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_IBM_WSoD = 5;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_IBM_LCCM = 6;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_CA_UNICENTER_TNG = 7;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_HP_OPENVIEW = 8;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_ALTIRIS_9 = 9;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_ALTIRIS_10 = 10;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_ALTIRIS_11 = 11;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_NOT_USED_12 = 12;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_REDHAT_INSTALL = 13;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_REDHAT_BOOT = 14;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_REMBO = 15;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_BEOBOOT = 16;
+  //
+  // 17 through 32767 are reserved
+  // 32768 through 65279 are for vendor use
+  // 65280 through 65534 are reserved
+  //
+  public const ulong EFI_PXE_BASE_CODE_BOOT_TYPE_PXETEST = 65535;
 
-public const ulong EFI_PXE_BASE_CODE_BOOT_LAYER_MASK = 0x7FFF;
-public const ulong EFI_PXE_BASE_CODE_BOOT_LAYER_INITIAL = 0x0000;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_LAYER_MASK = 0x7FFF;
+  public const ulong EFI_PXE_BASE_CODE_BOOT_LAYER_INITIAL = 0x0000;
 
 //
 // PXE Tag definition that identifies the processor
@@ -175,6 +189,7 @@ public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x001B;
 #elif defined (MDE_CPU_LOONGARCH64)
 public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0027;
 // #endif
+}
 
 ///
 /// Discover() server list structure.
@@ -275,8 +290,11 @@ public unsafe struct EFI_PXE_BASE_CODE_DHCPV6_PACKET {
 //
 // PXE Base Code Mode structure
 //
+public unsafe partial class EFI
+{
 public const ulong EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES = 8;
 public const ulong EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES = 8;
+}
 
 ///
 /// EFI_PXE_BASE_CODE_MODE.
@@ -326,593 +344,18 @@ public unsafe struct EFI_PXE_BASE_CODE_MODE {
 // PXE Base Code Interface Function definitions
 //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 // PXE Base Code Protocol structure
 //
+public unsafe partial class EFI
+{
 public const ulong EFI_PXE_BASE_CODE_PROTOCOL_REVISION = 0x00010000;
 
 //
 // Revision defined in EFI1.1
 //
 public const ulong EFI_PXE_BASE_CODE_INTERFACE_REVISION = EFI_PXE_BASE_CODE_PROTOCOL_REVISION;
+}
 
 ///
 /// The EFI_PXE_BASE_CODE_PROTOCOL is used to control PXE-compatible devices.

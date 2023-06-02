@@ -20,109 +20,32 @@ namespace Uefi;
 
 // #include <Pi/PiI2c.h>
 
-public const ulong EFI_I2C_IO_PROTOCOL_GUID = { 0xb60a3e6b, 0x18c4, 0x46e5, { 0xa2, 0x9a, 0xc9, 0xa1, 0x06, 0x65, 0xa2, 0x8e } };
-
-///
-/// I2C I/O protocol
-///
-/// The I2C IO protocol enables access to a specific device on the I2C
-/// bus.
-///
-/// Each I2C device is identified uniquely in the system by the tuple
-/// DeviceGuid:DeviceIndex.  The DeviceGuid represents the manufacture
-/// and part number and is provided by the silicon vendor or the third
-/// party I2C device driver writer.  The DeviceIndex identifies the part
-/// within the system by using a unique number and is created by the
-/// board designer or the writer of the EFI_I2C_ENUMERATE_PROTOCOL.
-///
-/// I2C slave addressing is abstracted to validate addresses and limit
-/// operation to the specified I2C device.  The third party providing
-/// the I2C device support provides an ordered list of slave addresses
-/// for the I2C device required to implement the EFI_I2C_ENUMERATE_PROTOCOL.
-/// The order of the list must be preserved.
-///
-// typedef struct _EFI_I2C_IO_PROTOCOL EFI_I2C_IO_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_I2C_IO_PROTOCOL_GUID = { 0xb60a3e6b, 0x18c4, 0x46e5, { 0xa2, 0x9a, 0xc9, 0xa1, 0x06, 0x65, 0xa2, 0x8e } };
+
+  ///
+  /// I2C I/O protocol
+  ///
+  /// The I2C IO protocol enables access to a specific device on the I2C
+  /// bus.
+  ///
+  /// Each I2C device is identified uniquely in the system by the tuple
+  /// DeviceGuid:DeviceIndex.  The DeviceGuid represents the manufacture
+  /// and part number and is provided by the silicon vendor or the third
+  /// party I2C device driver writer.  The DeviceIndex identifies the part
+  /// within the system by using a unique number and is created by the
+  /// board designer or the writer of the EFI_I2C_ENUMERATE_PROTOCOL.
+  ///
+  /// I2C slave addressing is abstracted to validate addresses and limit
+  /// operation to the specified I2C device.  The third party providing
+  /// the I2C device support provides an ordered list of slave addresses
+  /// for the I2C device required to implement the EFI_I2C_ENUMERATE_PROTOCOL.
+  /// The order of the list must be preserved.
+  ///
+  // typedef struct _EFI_I2C_IO_PROTOCOL EFI_I2C_IO_PROTOCOL;
+
+}
 
 ///
 /// I2C I/O protocol

@@ -17,8 +17,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_SW_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x18a3c6dc, 0x5eea, 0x48c8, new byte[] { 0xa1, 0xc1, 0xb5, 0x33, 0x89, 0xf9, 0x89, 0x99 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_SW_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x18a3c6dc, 0x5eea, 0x48c8, new byte[] { 0xa1, 0xc1, 0xb5, 0x33, 0x89, 0xf9, 0x89, 0x99 });
+}
 
 ///
 /// A particular chipset may not support all possible software MMI input values.
@@ -55,63 +58,6 @@ public unsafe struct EFI_MM_SW_CONTEXT
 }
 
 // typedef struct _EFI_MM_SW_DISPATCH_PROTOCOL EFI_MM_SW_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM Software MMI Dispatch Protocol.

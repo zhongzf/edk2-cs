@@ -18,36 +18,39 @@ namespace Uefi;
 /// PCI_CLASS_MASS_STORAGE, Base Class 01h.
 ///
 ///@{
-public const ulong PCI_CLASS_MASS_STORAGE_SATADPA = 0x06;
-public const ulong PCI_IF_MASS_STORAGE_SATA = 0x00;
-public const ulong PCI_IF_MASS_STORAGE_AHCI = 0x01;
-///@}
+public unsafe partial class EFI
+{
+  public const ulong PCI_CLASS_MASS_STORAGE_SATADPA = 0x06;
+  public const ulong PCI_IF_MASS_STORAGE_SATA = 0x00;
+  public const ulong PCI_IF_MASS_STORAGE_AHCI = 0x01;
+  ///@}
 
-///
-/// PCI_CLASS_WIRELESS, Base Class 0Dh.
-///
-///@{
-public const ulong PCI_SUBCLASS_ETHERNET_80211A = 0x20;
-public const ulong PCI_SUBCLASS_ETHERNET_80211B = 0x21;
-///@}
+  ///
+  /// PCI_CLASS_WIRELESS, Base Class 0Dh.
+  ///
+  ///@{
+  public const ulong PCI_SUBCLASS_ETHERNET_80211A = 0x20;
+  public const ulong PCI_SUBCLASS_ETHERNET_80211B = 0x21;
+  ///@}
 
-/**
-  Macro that checks whether device is a SATA controller.
+  /**
+    Macro that checks whether device is a SATA controller.
 
-  @param  _p      Specified device.
+    @param  _p      Specified device.
 
-  @retval TRUE    Device is a SATA controller.
-  @retval FALSE   Device is not a SATA controller.
+    @retval TRUE    Device is a SATA controller.
+    @retval FALSE   Device is not a SATA controller.
 
-**/
-public const ulong IS_PCI_SATADPA = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SATADPA);
+  **/
+  public const ulong IS_PCI_SATADPA = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SATADPA);
 
-///
-/// PCI Capability List IDs and records
-///
-public const ulong EFI_PCI_CAPABILITY_ID_PCIEXP = 0x10;
+  ///
+  /// PCI Capability List IDs and records
+  ///
+  public const ulong EFI_PCI_CAPABILITY_ID_PCIEXP = 0x10;
 
-// #pragma pack(1)
+  // #pragma pack(1)
+}
 
 ///
 /// PCI Data Structure Format

@@ -17,41 +17,16 @@ namespace Uefi;
 ///
 /// Global ID for the Metronome Architectural Protocol
 ///
-public static EFI_GUID EFI_METRONOME_ARCH_PROTOCOL_GUID = new GUID(0x26baccb2, 0x6f42, 0x11d4, new byte[] { 0xbc, 0xe7, 0x0, 0x80, 0xc7, 0x3c, 0x88, 0x81 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_METRONOME_ARCH_PROTOCOL_GUID = new GUID(0x26baccb2, 0x6f42, 0x11d4, new byte[] { 0xbc, 0xe7, 0x0, 0x80, 0xc7, 0x3c, 0x88, 0x81 });
 
-///
-/// Declare forward reference for the Metronome Architectural Protocol
-///
-// typedef struct _EFI_METRONOME_ARCH_PROTOCOL EFI_METRONOME_ARCH_PROTOCOL;
+  ///
+  /// Declare forward reference for the Metronome Architectural Protocol
+  ///
+  // typedef struct _EFI_METRONOME_ARCH_PROTOCOL EFI_METRONOME_ARCH_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This protocol provides access to a known time source in the platform to the

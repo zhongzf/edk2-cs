@@ -18,109 +18,16 @@ namespace Uefi;
 //
 // EFI UFS Device Config Protocol GUID value
 //
-public static EFI_GUID EFI_UFS_DEVICE_CONFIG_GUID = new GUID(0xb81bfab0, 0xeb3, 0x4cf9, new byte[] { 0x84, 0x65, 0x7f, 0xa9, 0x86, 0x36, 0x16, 0x64 });;
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_UFS_DEVICE_CONFIG_GUID = new GUID(0xb81bfab0, 0xeb3, 0x4cf9, new byte[] { 0x84, 0x65, 0x7f, 0xa9, 0x86, 0x36, 0x16, 0x64 });;
 
 //
 // Forward reference for pure ANSI compatability
 //
 // typedef struct _EFI_UFS_DEVICE_CONFIG_PROTOCOL EFI_UFS_DEVICE_CONFIG_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// UFS Device Config Protocol structure.

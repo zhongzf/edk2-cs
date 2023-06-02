@@ -18,10 +18,13 @@ This Protocol is introduced in UEFI Specification 2.5
 
 // #include <Protocol/Ip4.h>
 
-public static EFI_GUID EFI_IP4_CONFIG2_PROTOCOL_GUID = new GUID(
-    0x5b446ed1, 0xe30b, 0x4faa, new byte[] { 0x87, 0x1a, 0x36, 0x54, 0xec, 0xa3, 0x60, 0x80 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_IP4_CONFIG2_PROTOCOL_GUID = new GUID(
+      0x5b446ed1, 0xe30b, 0x4faa, new byte[] { 0x87, 0x1a, 0x36, 0x54, 0xec, 0xa3, 0x60, 0x80 });
 
-// typedef struct _EFI_IP4_CONFIG2_PROTOCOL EFI_IP4_CONFIG2_PROTOCOL;
+  // typedef struct _EFI_IP4_CONFIG2_PROTOCOL EFI_IP4_CONFIG2_PROTOCOL;
+}
 
 ///
 /// EFI_IP4_CONFIG2_DATA_TYPE
@@ -80,7 +83,10 @@ public enum EFI_IP4_CONFIG2_DATA_TYPE
 ///
 /// EFI_IP4_CONFIG2_INTERFACE_INFO related definitions
 ///
-public const ulong EFI_IP4_CONFIG2_INTERFACE_INFO_NAME_SIZE = 32;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IP4_CONFIG2_INTERFACE_INFO_NAME_SIZE = 32;
+}
 
 ///
 /// EFI_IP4_CONFIG2_INTERFACE_INFO
@@ -163,147 +169,6 @@ public unsafe struct EFI_IP4_CONFIG2_MANUAL_ADDRESS
   ///
   public EFI_IPv4_ADDRESS SubnetMask;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// The EFI_IP4_CONFIG2_PROTOCOL is designed to be the central repository for the common

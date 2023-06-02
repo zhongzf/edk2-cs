@@ -19,13 +19,16 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <Protocol/HiiImage.h>
 
-public static EFI_GUID EFI_HII_IMAGE_DECODER_PROTOCOL_GUID = new GUID(0x9e66f251, 0x727c, 0x418c, new byte[] { 0xbf, 0xd6, 0xc2, 0xb4, 0x25, 0x28, 0x18, 0xea });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_HII_IMAGE_DECODER_PROTOCOL_GUID = new GUID(0x9e66f251, 0x727c, 0x418c, new byte[] { 0xbf, 0xd6, 0xc2, 0xb4, 0x25, 0x28, 0x18, 0xea });
 
-public static EFI_GUID EFI_HII_IMAGE_DECODER_NAME_JPEG_GUID = new GUID(0xefefd093, 0xd9b, 0x46eb, new byte[] { 0xa8, 0x56, 0x48, 0x35, 0x7, 0x0, 0xc9, 0x8 });
+  public static EFI_GUID EFI_HII_IMAGE_DECODER_NAME_JPEG_GUID = new GUID(0xefefd093, 0xd9b, 0x46eb, new byte[] { 0xa8, 0x56, 0x48, 0x35, 0x7, 0x0, 0xc9, 0x8 });
 
-public static EFI_GUID EFI_HII_IMAGE_DECODER_NAME_PNG_GUID = new GUID(0xaf060190, 0x5e3a, 0x4025, new byte[] { 0xaf, 0xbd, 0xe1, 0xf9, 0x5, 0xbf, 0xaa, 0x4c });
+  public static EFI_GUID EFI_HII_IMAGE_DECODER_NAME_PNG_GUID = new GUID(0xaf060190, 0x5e3a, 0x4025, new byte[] { 0xaf, 0xbd, 0xe1, 0xf9, 0x5, 0xbf, 0xaa, 0x4c });
 
-// typedef struct _EFI_HII_IMAGE_DECODER_PROTOCOL EFI_HII_IMAGE_DECODER_PROTOCOL;
+  // typedef struct _EFI_HII_IMAGE_DECODER_PROTOCOL EFI_HII_IMAGE_DECODER_PROTOCOL;
+}
 
 public enum EFI_HII_IMAGE_DECODER_COLOR_TYPE
 {
@@ -56,8 +59,11 @@ public unsafe struct EFI_HII_IMAGE_DECODER_IMAGE_INFO_HEADER
   public byte ColorDepthInBits;
 }
 
-public const ulong EFI_IMAGE_JPEG_SCANTYPE_PROGREESSIVE = 0x01;
-public const ulong EFI_IMAGE_JPEG_SCANTYPE_INTERLACED = 0x02;
+public unsafe partial class EFI
+{
+  public const ulong EFI_IMAGE_JPEG_SCANTYPE_PROGREESSIVE = 0x01;
+  public const ulong EFI_IMAGE_JPEG_SCANTYPE_INTERLACED = 0x02;
+}
 
 //
 // EFI_HII_IMAGE_DECODER_JPEG_INFO
@@ -99,102 +105,6 @@ public unsafe struct EFI_HII_IMAGE_DECODER_OTHER_INFO
   // Variable length of image file extension name.
   //
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_IMAGE_DECODER_PROTOCOL
@@ -262,7 +172,6 @@ public unsafe struct EFI_HII_IMAGE_DECODER_PROTOCOL
                                    the image on the original buffer.
     @param Transparent             bool value indicates whether the image decoder
                                    has to handle the transparent image or not.
-
 
     @retval EFI_SUCCESS            Image decode success.
     @retval EFI_UNSUPPORTED        Unsupported format of image.

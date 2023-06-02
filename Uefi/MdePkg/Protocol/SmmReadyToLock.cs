@@ -22,8 +22,11 @@ namespace Uefi;
 
 // #include <Protocol/MmReadyToLock.h>
 
-public const ulong EFI_SMM_READY_TO_LOCK_PROTOCOL_GUID = EFI_MM_READY_TO_LOCK_PROTOCOL_GUID;
+public unsafe partial class EFI
+{
+  public const ulong EFI_SMM_READY_TO_LOCK_PROTOCOL_GUID = EFI_MM_READY_TO_LOCK_PROTOCOL_GUID;
 
-// extern EFI_GUID  gEfiSmmReadyToLockProtocolGuid;
+  // extern EFI_GUID  gEfiSmmReadyToLockProtocolGuid;
+}
 
 // #endif

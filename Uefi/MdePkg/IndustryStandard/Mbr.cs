@@ -12,17 +12,20 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef _MBR_H_
 // #define _MBR_H_
 
-public const ulong MBR_SIGNATURE = 0xaa55;
+public unsafe partial class EFI
+{
+  public const ulong MBR_SIGNATURE = 0xaa55;
 
-public const ulong EXTENDED_DOS_PARTITION = 0x05;
-public const ulong EXTENDED_WINDOWS_PARTITION = 0x0F;
+  public const ulong EXTENDED_DOS_PARTITION = 0x05;
+  public const ulong EXTENDED_WINDOWS_PARTITION = 0x0F;
 
-public const ulong MAX_MBR_PARTITIONS = 4;
+  public const ulong MAX_MBR_PARTITIONS = 4;
 
-public const ulong PMBR_GPT_PARTITION = 0xEE;
-public const ulong EFI_PARTITION = 0xEF;
+  public const ulong PMBR_GPT_PARTITION = 0xEE;
+  public const ulong EFI_PARTITION = 0xEF;
 
-public const ulong MBR_SIZE = 512;
+  public const ulong MBR_SIZE = 512;
+}
 
 // #pragma pack(1)
 ///

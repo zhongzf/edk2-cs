@@ -15,10 +15,13 @@ namespace Uefi;
 // #ifndef __EFI_HTTP_BOOT_CALLBACK_H__
 // #define __EFI_HTTP_BOOT_CALLBACK_H__
 
-public static EFI_GUID EFI_HTTP_BOOT_CALLBACK_PROTOCOL_GUID = new GUID(
-    0xba23b311, 0x343d, 0x11e6, new byte[] { 0x91, 0x85, 0x58, 0x20, 0xb1, 0xd6, 0x52, 0x99 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_HTTP_BOOT_CALLBACK_PROTOCOL_GUID = new GUID(
+      0xba23b311, 0x343d, 0x11e6, new byte[] { 0x91, 0x85, 0x58, 0x20, 0xb1, 0xd6, 0x52, 0x99 });
 
-// typedef struct _EFI_HTTP_BOOT_CALLBACK_PROTOCOL EFI_HTTP_BOOT_CALLBACK_PROTOCOL;
+  // typedef struct _EFI_HTTP_BOOT_CALLBACK_PROTOCOL EFI_HTTP_BOOT_CALLBACK_PROTOCOL;
+}
 
 ///
 /// EFI_HTTP_BOOT_CALLBACK_DATA_TYPE
@@ -54,37 +57,6 @@ public enum EFI_HTTP_BOOT_CALLBACK_DATA_TYPE
   HttpBootHttpAuthInfo,
   HttpBootTypeMax
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI HTTP Boot Callback Protocol is invoked when the HTTP Boot driver is about to transmit or

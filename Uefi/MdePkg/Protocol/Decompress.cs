@@ -12,97 +12,14 @@ namespace Uefi;
 // #ifndef __DECOMPRESS_H__
 // #define __DECOMPRESS_H__
 
-public static EFI_GUID EFI_DECOMPRESS_PROTOCOL_GUID = new GUID(
-    0xd8117cfe, 0x94a6, 0x11d4, new byte[] { 0x9a, 0x3a, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DECOMPRESS_PROTOCOL_GUID = new GUID(
+      0xd8117cfe, 0x94a6, 0x11d4, new byte[] { 0x9a, 0x3a, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
-// typedef struct _EFI_DECOMPRESS_PROTOCOL EFI_DECOMPRESS_PROTOCOL;
+  // typedef struct _EFI_DECOMPRESS_PROTOCOL EFI_DECOMPRESS_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// Provides a decompression service.

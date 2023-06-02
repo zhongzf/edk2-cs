@@ -18,78 +18,81 @@ namespace Uefi;
 /// PCI_CLASS_MASS_STORAGE, Base Class 01h.
 ///
 ///@{
-public const ulong PCI_CLASS_MASS_STORAGE_ATA = 0x05;
-public const ulong PCI_IF_MASS_STORAGE_SINGLE_DMA = 0x20;
-public const ulong PCI_IF_MASS_STORAGE_CHAINED_DMA = 0x30;
-///@}
+public unsafe partial class EFI
+{
+  public const ulong PCI_CLASS_MASS_STORAGE_ATA = 0x05;
+  public const ulong PCI_IF_MASS_STORAGE_SINGLE_DMA = 0x20;
+  public const ulong PCI_IF_MASS_STORAGE_CHAINED_DMA = 0x30;
+  ///@}
 
-///
-/// PCI_CLASS_NETWORK, Base Class 02h.
-///
-///@{
-public const ulong PCI_CLASS_NETWORK_WORLDFIP = 0x05;
-public const ulong PCI_CLASS_NETWORK_PICMG_MULTI_COMPUTING = 0x06;
-///@}
+  ///
+  /// PCI_CLASS_NETWORK, Base Class 02h.
+  ///
+  ///@{
+  public const ulong PCI_CLASS_NETWORK_WORLDFIP = 0x05;
+  public const ulong PCI_CLASS_NETWORK_PICMG_MULTI_COMPUTING = 0x06;
+  ///@}
 
-///
-/// PCI_CLASS_BRIDGE, Base Class 06h.
-///
-///@{
-public const ulong PCI_CLASS_BRIDGE_SEMI_TRANSPARENT_P2P = 0x09;
-public const ulong PCI_IF_BRIDGE_SEMI_TRANSPARENT_P2P_PRIMARY = 0x40;
-public const ulong PCI_IF_BRIDGE_SEMI_TRANSPARENT_P2P_SECONDARY = 0x80;
-public const ulong PCI_CLASS_BRIDGE_INFINIBAND_TO_PCI = 0x0A;
-///@}
+  ///
+  /// PCI_CLASS_BRIDGE, Base Class 06h.
+  ///
+  ///@{
+  public const ulong PCI_CLASS_BRIDGE_SEMI_TRANSPARENT_P2P = 0x09;
+  public const ulong PCI_IF_BRIDGE_SEMI_TRANSPARENT_P2P_PRIMARY = 0x40;
+  public const ulong PCI_IF_BRIDGE_SEMI_TRANSPARENT_P2P_SECONDARY = 0x80;
+  public const ulong PCI_CLASS_BRIDGE_INFINIBAND_TO_PCI = 0x0A;
+  ///@}
 
-///
-/// PCI_CLASS_SCC, Base Class 07h.
-///
-///@{
-public const ulong PCI_SUBCLASS_GPIB = 0x04;
-public const ulong PCI_SUBCLASS_SMART_CARD = 0x05;
-///@}
+  ///
+  /// PCI_CLASS_SCC, Base Class 07h.
+  ///
+  ///@{
+  public const ulong PCI_SUBCLASS_GPIB = 0x04;
+  public const ulong PCI_SUBCLASS_SMART_CARD = 0x05;
+  ///@}
 
-///
-/// PCI_CLASS_SERIAL, Base Class 0Ch.
-///
-///@{
-public const ulong PCI_IF_EHCI = 0x20;
-public const ulong PCI_CLASS_SERIAL_IB = 0x06;
-public const ulong PCI_CLASS_SERIAL_IPMI = 0x07;
-public const ulong PCI_IF_IPMI_SMIC = 0x00;
-public const ulong PCI_IF_IPMI_KCS = 0x01           ///< Keyboard Controller Style;
+  ///
+  /// PCI_CLASS_SERIAL, Base Class 0Ch.
+  ///
+  ///@{
+  public const ulong PCI_IF_EHCI = 0x20;
+  public const ulong PCI_CLASS_SERIAL_IB = 0x06;
+  public const ulong PCI_CLASS_SERIAL_IPMI = 0x07;
+  public const ulong PCI_IF_IPMI_SMIC = 0x00;
+  public const ulong PCI_IF_IPMI_KCS = 0x01           ///< Keyboard Controller Style;
 public const ulong PCI_IF_IPMI_BT = 0x02           ///< Block Transfer;
 public const ulong PCI_CLASS_SERIAL_SERCOS = 0x08;
-public const ulong PCI_CLASS_SERIAL_CANBUS = 0x09;
-///@}
+  public const ulong PCI_CLASS_SERIAL_CANBUS = 0x09;
+  ///@}
 
-///
-/// PCI_CLASS_WIRELESS, Base Class 0Dh.
-///
-///@{
-public const ulong PCI_SUBCLASS_BLUETOOTH = 0x11;
-public const ulong PCI_SUBCLASS_BROADBAND = 0x12;
-///@}
+  ///
+  /// PCI_CLASS_WIRELESS, Base Class 0Dh.
+  ///
+  ///@{
+  public const ulong PCI_SUBCLASS_BLUETOOTH = 0x11;
+  public const ulong PCI_SUBCLASS_BROADBAND = 0x12;
+  ///@}
 
-///
-/// PCI_CLASS_DPIO, Base Class 11h.
-///
-///@{
-public const ulong PCI_SUBCLASS_PERFORMANCE_COUNTERS = 0x01;
-public const ulong PCI_SUBCLASS_COMMUNICATION_SYNCHRONIZATION = 0x10;
-public const ulong PCI_SUBCLASS_MANAGEMENT_CARD = 0x20;
-///@}
+  ///
+  /// PCI_CLASS_DPIO, Base Class 11h.
+  ///
+  ///@{
+  public const ulong PCI_SUBCLASS_PERFORMANCE_COUNTERS = 0x01;
+  public const ulong PCI_SUBCLASS_COMMUNICATION_SYNCHRONIZATION = 0x10;
+  public const ulong PCI_SUBCLASS_MANAGEMENT_CARD = 0x20;
+  ///@}
 
-///
-/// defined in PCI Express Spec.
-///
-public const ulong PCI_EXP_MAX_CONFIG_OFFSET = 0x1000;
+  ///
+  /// defined in PCI Express Spec.
+  ///
+  public const ulong PCI_EXP_MAX_CONFIG_OFFSET = 0x1000;
 
-///
-/// PCI Capability List IDs and records.
-///
-public const ulong EFI_PCI_CAPABILITY_ID_PCIX = 0x07;
-public const ulong EFI_PCI_CAPABILITY_ID_VENDOR = 0x09;
+  ///
+  /// PCI Capability List IDs and records.
+  ///
+  public const ulong EFI_PCI_CAPABILITY_ID_PCIX = 0x07;
+  public const ulong EFI_PCI_CAPABILITY_ID_VENDOR = 0x09;
+}
 
 // #pragma pack(1)
 ///
@@ -131,6 +134,9 @@ public unsafe struct EFI_PCI_CAPABILITY_VENDOR_HDR
 
 // #pragma pack()
 
-public const ulong PCI_CODE_TYPE_EFI_IMAGE = 0x03;
+public unsafe partial class EFI
+{
+  public const ulong PCI_CODE_TYPE_EFI_IMAGE = 0x03;
+}
 
 // #endif

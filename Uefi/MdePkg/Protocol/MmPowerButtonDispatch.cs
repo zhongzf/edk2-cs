@@ -20,8 +20,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_POWER_BUTTON_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x1b1183fa, 0x1823, 0x46a7, new byte[] { 0x88, 0x72, 0x9c, 0x57, 0x87, 0x55, 0x40, 0x9d });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_POWER_BUTTON_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x1b1183fa, 0x1823, 0x46a7, new byte[] { 0x88, 0x72, 0x9c, 0x57, 0x87, 0x55, 0x40, 0x9d });
+}
 
 ///
 /// Power Button phases.
@@ -46,58 +49,6 @@ public unsafe struct EFI_MM_POWER_BUTTON_REGISTER_CONTEXT
 }
 
 // typedef struct _EFI_MM_POWER_BUTTON_DISPATCH_PROTOCOL EFI_MM_POWER_BUTTON_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM Power Button Dispatch Protocol.

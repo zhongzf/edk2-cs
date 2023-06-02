@@ -22,18 +22,21 @@ namespace Uefi;
 
 // #include <Protocol/Eap.h>
 
-public static EFI_GUID EFI_EAP_MANAGEMENT_PROTOCOL_GUID = new GUID(
-    0xbb62e663, 0x625d, 0x40b2, new byte[] { 0xa0, 0x88, 0xbb, 0xe8, 0x36, 0x23, 0xa2, 0x45 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_EAP_MANAGEMENT_PROTOCOL_GUID = new GUID(
+      0xbb62e663, 0x625d, 0x40b2, new byte[] { 0xa0, 0x88, 0xbb, 0xe8, 0x36, 0x23, 0xa2, 0x45 });
 
-// typedef struct _EFI_EAP_MANAGEMENT_PROTOCOL EFI_EAP_MANAGEMENT_PROTOCOL;
+  // typedef struct _EFI_EAP_MANAGEMENT_PROTOCOL EFI_EAP_MANAGEMENT_PROTOCOL;
 
-///
-/// PAE Capabilities
-///
-///@{
-public const ulong PAE_SUPPORT_AUTHENTICATOR = 0x01;
-public const ulong PAE_SUPPORT_SUPPLICANT = 0x02;
-///@}
+  ///
+  /// PAE Capabilities
+  ///
+  ///@{
+  public const ulong PAE_SUPPORT_AUTHENTICATOR = 0x01;
+  public const ulong PAE_SUPPORT_SUPPLICANT = 0x02;
+  ///@}
+}
 
 ///
 /// EFI_EAPOL_PORT_INFO
@@ -79,11 +82,14 @@ EFI_EAPOL_SUPPLICANT_PAE_STATE;
 /// Definitions for ValidFieldMask
 ///
 ///@{
-public const ulong AUTH_PERIOD_FIELD_VALID = 0x01;
-public const ulong HELD_PERIOD_FIELD_VALID = 0x02;
-public const ulong START_PERIOD_FIELD_VALID = 0x04;
-public const ulong MAX_START_FIELD_VALID = 0x08;
-///@}
+public unsafe partial class EFI
+{
+  public const ulong AUTH_PERIOD_FIELD_VALID = 0x01;
+  public const ulong HELD_PERIOD_FIELD_VALID = 0x02;
+  public const ulong START_PERIOD_FIELD_VALID = 0x04;
+  public const ulong MAX_START_FIELD_VALID = 0x08;
+  ///@}
+}
 
 ///
 /// EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION
@@ -175,213 +181,6 @@ public unsafe struct EFI_EAPOL_SUPPLICANT_PAE_STATISTICS
   public ulong LastEapolFrameSource;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// EFI_EAP_MANAGEMENT_PROTOCOL
 /// is used to control, configure and monitor EAPOL state machine on
@@ -416,7 +215,6 @@ public unsafe struct EFI_EAP_MANAGEMENT_PROTOCOL
     @retval EFI_SUCCESS            The system configuration information of the
                                    Port is read successfully.
     @retval EFI_INVALID_PARAMETER  SystemAuthControl is NULL.
-
 
   **/
   public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, bool*, EFI_EAPOL_PORT_INFO*, EFI_STATUS> GetSystemConfiguration;

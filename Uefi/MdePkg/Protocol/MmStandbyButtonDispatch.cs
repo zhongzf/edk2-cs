@@ -20,8 +20,11 @@ namespace Uefi;
 
 // #include <Pi/PiMmCis.h>
 
-public static EFI_GUID EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID = new GUID(
-    0x7300c4a1, 0x43f2, 0x4017, new byte[] { 0xa5, 0x1b, 0xc8, 0x1a, 0x7f, 0x40, 0x58, 0x5b });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID = new GUID(
+      0x7300c4a1, 0x43f2, 0x4017, new byte[] { 0xa5, 0x1b, 0xc8, 0x1a, 0x7f, 0x40, 0x58, 0x5b });
+}
 
 ///
 /// Standby Button phases
@@ -47,58 +50,6 @@ public unsafe struct EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT
 }
 
 // typedef struct _EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// Interface structure for the MM Standby Button Dispatch Protocol.

@@ -23,37 +23,40 @@ namespace Uefi;
 ///
 
 /// Write block
-public const ulong IPMI_SSIF_SMBUS_CMD_SINGLE_PART_WRITE = 0x02;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_START = 0x06;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_MIDDLE = 0x07;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_END = 0x08;
+public unsafe partial class EFI
+{
+  public const ulong IPMI_SSIF_SMBUS_CMD_SINGLE_PART_WRITE = 0x02;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_START = 0x06;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_MIDDLE = 0x07;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_END = 0x08;
 
-/// Read block
-public const ulong IPMI_SSIF_SMBUS_CMD_SINGLE_PART_READ = 0x03;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_START = 0x03;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_MIDDLE = 0x09;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_END = 0x09;
-public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_RETRY = 0x0A;
+  /// Read block
+  public const ulong IPMI_SSIF_SMBUS_CMD_SINGLE_PART_READ = 0x03;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_START = 0x03;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_MIDDLE = 0x09;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_END = 0x09;
+  public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_READ_RETRY = 0x0A;
 
-///
-/// Definitions for Multi-Part Read Transactions
-/// Section 12.5
-///
-public const ulong IPMI_SSIF_MULTI_PART_READ_START_SIZE = 0x1E;
-public const ulong IPMI_SSIF_MULTI_PART_READ_START_PATTERN1 = 0x00;
-public const ulong IPMI_SSIF_MULTI_PART_READ_START_PATTERN2 = 0x01;
-public const ulong IPMI_SSIF_MULTI_PART_READ_END_PATTERN = 0xFF;
+  ///
+  /// Definitions for Multi-Part Read Transactions
+  /// Section 12.5
+  ///
+  public const ulong IPMI_SSIF_MULTI_PART_READ_START_SIZE = 0x1E;
+  public const ulong IPMI_SSIF_MULTI_PART_READ_START_PATTERN1 = 0x00;
+  public const ulong IPMI_SSIF_MULTI_PART_READ_START_PATTERN2 = 0x01;
+  public const ulong IPMI_SSIF_MULTI_PART_READ_END_PATTERN = 0xFF;
 
-///
-/// IPMI SSIF maximum message size
-///
-public const ulong IPMI_SSIF_INPUT_MESSAGE_SIZE_MAX = 0xFF;
-public const ulong IPMI_SSIF_OUTPUT_MESSAGE_SIZE_MAX = 0xFF;
+  ///
+  /// IPMI SSIF maximum message size
+  ///
+  public const ulong IPMI_SSIF_INPUT_MESSAGE_SIZE_MAX = 0xFF;
+  public const ulong IPMI_SSIF_OUTPUT_MESSAGE_SIZE_MAX = 0xFF;
 
-///
-/// IPMI SMBus system interface maximum packet size in byte
-///
-public const ulong IPMI_SSIF_MAXIMUM_PACKET_SIZE_IN_BYTES = 0x20;
+  ///
+  /// IPMI SMBus system interface maximum packet size in byte
+  ///
+  public const ulong IPMI_SSIF_MAXIMUM_PACKET_SIZE_IN_BYTES = 0x20;
+}
 
 public enum IPMI_SSIF_PACKET_ATTRIBUTE
 {

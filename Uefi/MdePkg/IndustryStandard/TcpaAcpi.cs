@@ -51,9 +51,12 @@ public unsafe struct EFI_TCG_SERVER_ACPI_TABLE
 //
 // TCG Platform Type based on TCG ACPI Specification Version 1.00
 //
-public const ulong TCG_PLATFORM_TYPE_CLIENT = 0;
-public const ulong TCG_PLATFORM_TYPE_SERVER = 1;
+public unsafe partial class EFI
+{
+  public const ulong TCG_PLATFORM_TYPE_CLIENT = 0;
+  public const ulong TCG_PLATFORM_TYPE_SERVER = 1;
 
-// #pragma pack ()
+  // #pragma pack ()
+}
 
 // #endif

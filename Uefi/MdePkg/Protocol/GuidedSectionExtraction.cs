@@ -31,96 +31,6 @@ namespace Uefi;
 
 // typedef struct _EFI_GUIDED_SECTION_EXTRACTION_PROTOCOL EFI_GUIDED_SECTION_EXTRACTION_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///
 /// Typically, protocol interface structures are identified by associating them with a GUID. Each
 /// instance of a protocol with a given GUID must have the same interface structure. While all instances
@@ -156,7 +66,6 @@ public unsafe struct EFI_GUIDED_SECTION_EXTRACTION_PROTOCOL
     TPL_NOTIFY and below. Behavior of ExtractSection() at any
     EFI_TPL above TPL_NOTIFY is undefined. Type EFI_TPL is
     defined in RaiseTPL() in the UEFI 2.0 specification.
-
 
     @param This         Indicates the EFI_GUIDED_SECTION_EXTRACTION_PROTOCOL instance.
 

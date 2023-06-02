@@ -24,65 +24,16 @@ namespace Uefi;
 
 // extern EFI_GUID  gGetPcdInfoProtocolGuid;
 
-public static EFI_GUID GET_PCD_INFO_PROTOCOL_GUID = new GUID(0x5be40f57, 0xfa68, 0x4610, new byte[] { 0xbb, 0xbf, 0xe9, 0xc5, 0xfc, 0xda, 0xd3, 0x65 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID GET_PCD_INFO_PROTOCOL_GUID = new GUID(0x5be40f57, 0xfa68, 0x4610, new byte[] { 0xbb, 0xbf, 0xe9, 0xc5, 0xfc, 0xda, 0xd3, 0x65 });
 
-///
-/// The forward declaration for GET_PCD_INFO_PROTOCOL.
-///
-// typedef struct _GET_PCD_INFO_PROTOCOL GET_PCD_INFO_PROTOCOL;
+  ///
+  /// The forward declaration for GET_PCD_INFO_PROTOCOL.
+  ///
+  // typedef struct _GET_PCD_INFO_PROTOCOL GET_PCD_INFO_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 ///
 /// This is the PCD service to use when querying for some additional data that can be contained in the

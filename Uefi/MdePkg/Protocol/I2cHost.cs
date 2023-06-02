@@ -20,109 +20,29 @@ namespace Uefi;
 
 // #include <Pi/PiI2c.h>
 
-public const ulong EFI_I2C_HOST_PROTOCOL_GUID = { 0xa5aab9e3, 0xc727, 0x48cd, { 0x8b, 0xbf, 0x42, 0x72, 0x33, 0x85, 0x49, 0x48 } };
-
-///
-/// I2C Host Protocol
-///
-/// The I2C bus driver uses the services of the EFI_I2C_HOST_PROTOCOL
-/// to produce an instance of the EFI_I2C_IO_PROTOCOL for each I2C
-/// device on an I2C bus.
-///
-/// The EFI_I2C_HOST_PROTOCOL exposes an asynchronous interface to
-/// callers to perform transactions to any device on the I2C bus.
-/// Internally, the I2C host protocol manages the flow of the I2C
-/// transactions to the host controller, keeping them in FIFO order.
-/// Prior to each transaction, the I2C host protocol ensures that the
-/// switches and multiplexers are properly configured.  The I2C host
-/// protocol then starts the transaction on the host controller using
-/// the EFI_I2C_MASTER_PROTOCOL.
-///
-// typedef struct _EFI_I2C_HOST_PROTOCOL EFI_I2C_HOST_PROTOCOL;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public unsafe partial class EFI
+{
+  public const ulong EFI_I2C_HOST_PROTOCOL_GUID = { 0xa5aab9e3, 0xc727, 0x48cd, { 0x8b, 0xbf, 0x42, 0x72, 0x33, 0x85, 0x49, 0x48 } };
+
+  ///
+  /// I2C Host Protocol
+  ///
+  /// The I2C bus driver uses the services of the EFI_I2C_HOST_PROTOCOL
+  /// to produce an instance of the EFI_I2C_IO_PROTOCOL for each I2C
+  /// device on an I2C bus.
+  ///
+  /// The EFI_I2C_HOST_PROTOCOL exposes an asynchronous interface to
+  /// callers to perform transactions to any device on the I2C bus.
+  /// Internally, the I2C host protocol manages the flow of the I2C
+  /// transactions to the host controller, keeping them in FIFO order.
+  /// Prior to each transaction, the I2C host protocol ensures that the
+  /// switches and multiplexers are properly configured.  The I2C host
+  /// protocol then starts the transaction on the host controller using
+  /// the EFI_I2C_MASTER_PROTOCOL.
+  ///
+  // typedef struct _EFI_I2C_HOST_PROTOCOL EFI_I2C_HOST_PROTOCOL;
+
+}
 
 ///
 /// I2C Host Protocol

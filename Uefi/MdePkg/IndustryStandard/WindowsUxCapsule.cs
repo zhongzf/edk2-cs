@@ -37,9 +37,12 @@ public unsafe struct EFI_DISPLAY_CAPSULE
 
 // #pragma pack()
 
-public static EFI_GUID WINDOWS_UX_CAPSULE_GUID = new GUID(
-    0x3b8c8162, 0x188c, 0x46a4, new byte[] { 0xae, 0xc9, 0xbe, 0x43, 0xf1, 0xd6, 0x56, 0x97 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID WINDOWS_UX_CAPSULE_GUID = new GUID(
+      0x3b8c8162, 0x188c, 0x46a4, new byte[] { 0xae, 0xc9, 0xbe, 0x43, 0xf1, 0xd6, 0x56, 0x97 });
 
-// extern EFI_GUID  gWindowsUxCapsuleGuid;
+  // extern EFI_GUID  gWindowsUxCapsuleGuid;
+}
 
 // #endif

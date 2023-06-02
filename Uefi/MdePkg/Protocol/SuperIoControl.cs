@@ -17,55 +17,15 @@ namespace Uefi;
 // #ifndef __EFI_SUPER_IO_CONTROL_PROTOCOL_H__
 // #define __EFI_SUPER_IO_CONTROL_PROTOCOL_H__
 
-public static EFI_GUID EFI_SIO_CONTROL_PROTOCOL_GUID = new GUID(
-    0xb91978df, 0x9fc1, 0x427d, new byte[] { 0xbb, 0x5, 0x4c, 0x82, 0x84, 0x55, 0xca, 0x27 });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_SIO_CONTROL_PROTOCOL_GUID = new GUID(
+      0xb91978df, 0x9fc1, 0x427d, new byte[] { 0xbb, 0x5, 0x4c, 0x82, 0x84, 0x55, 0xca, 0x27 });
 
-typedef struct _EFI_SIO_CONTROL_PROTOCOL  EFI_SIO_CONTROL_PROTOCOL;
-typedef struct _EFI_SIO_CONTROL_PROTOCOL  * PEFI_SIO_CONTROL_PROTOCOL;
+  typedef struct _EFI_SIO_CONTROL_PROTOCOL  EFI_SIO_CONTROL_PROTOCOL;
+typedef struct _EFI_SIO_CONTROL_PROTOCOL  *PEFI_SIO_CONTROL_PROTOCOL;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIO_CONTROL_PROTOCOL

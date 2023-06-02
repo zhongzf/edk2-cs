@@ -58,13 +58,16 @@ namespace Uefi;
 ///
 /// Global ID for the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
 ///
-public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID(
-    0xaa0e8bc1, 0xdabc, 0x46b0, new byte[] { 0xa8, 0x44, 0x37, 0xb8, 0x16, 0x9b, 0x2b, 0xea });
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID(
+      0xaa0e8bc1, 0xdabc, 0x46b0, new byte[] { 0xa8, 0x44, 0x37, 0xb8, 0x16, 0x9b, 0x2b, 0xea });
 
-///
-/// Forward declaration for EFI_PCI_HOT_PLUG_INIT_PROTOCOL
-///
-// typedef struct _EFI_PCI_HOT_PLUG_INIT_PROTOCOL EFI_PCI_HOT_PLUG_INIT_PROTOCOL;
+  ///
+  /// Forward declaration for EFI_PCI_HOT_PLUG_INIT_PROTOCOL
+  ///
+  // typedef struct _EFI_PCI_HOT_PLUG_INIT_PROTOCOL EFI_PCI_HOT_PLUG_INIT_PROTOCOL;
+}
 
 ///
 /// Describes the current state of an HPC
@@ -78,13 +81,16 @@ public unsafe struct EFI_HPC_STATE { ushort Value; public static implicit operat
 /// disabled in hardware, or it may be disabled due to user preferences,
 /// hardware failure, or other reasons. No resource padding is required.
 ///
-public const ulong EFI_HPC_STATE_INITIALIZED = 0x01;
+public unsafe partial class EFI
+{
+  public const ulong EFI_HPC_STATE_INITIALIZED = 0x01;
 
-///
-/// The HPC initialization function was called, the HPC completed
-/// initialization, and it was enabled. Resource padding is required.
-///
-public const ulong EFI_HPC_STATE_ENABLED = 0x02;
+  ///
+  /// The HPC initialization function was called, the HPC completed
+  /// initialization, and it was enabled. Resource padding is required.
+  ///
+  public const ulong EFI_HPC_STATE_ENABLED = 0x02;
+}
 
 ///
 /// Location definition for PCI Hot Plug Controller
@@ -134,121 +140,6 @@ public enum EFI_HPC_PADDING_ATTRIBUTES
   ///
   EfiPaddingPciRootBridge
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// This protocol provides the necessary functionality to initialize the

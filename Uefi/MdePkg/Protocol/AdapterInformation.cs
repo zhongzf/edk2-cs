@@ -20,7 +20,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_ADAPTER_INFORMATION_PROTOCOL_GUID = new GUID(
-    0xE5DD1403, 0xD622, 0xC24E, new byte[] { 0x84, 0x88, 0xC7, 0x1B, 0x17, 0xF5, 0xE8, 0x02 });
+      0xE5DD1403, 0xD622, 0xC24E, new byte[] { 0x84, 0x88, 0xC7, 0x1B, 0x17, 0xF5, 0xE8, 0x02 });
 
   public static EFI_GUID EFI_ADAPTER_INFO_MEDIA_STATE_GUID = new GUID(
       0xD7C74207, 0xA831, 0x4A26, new byte[] { 0xB1, 0xF5, 0xD1, 0x93, 0x06, 0x5C, 0xE8, 0xB6 });
@@ -36,9 +36,9 @@ public unsafe partial class EFI
 
   public static EFI_GUID EFI_ADAPTER_INFO_MEDIA_TYPE_GUID = new GUID(
       0x8484472f, 0x71ec, 0x411a, new byte[] { 0xb3, 0x9c, 0x62, 0xcd, 0x94, 0xd9, 0x91, 0x6e });
-}
 
-// typedef struct _EFI_ADAPTER_INFORMATION_PROTOCOL EFI_ADAPTER_INFORMATION_PROTOCOL;
+  // typedef struct _EFI_ADAPTER_INFORMATION_PROTOCOL EFI_ADAPTER_INFORMATION_PROTOCOL;
+}
 
 ///
 /// EFI_ADAPTER_INFO_MEDIA_STATE
@@ -138,97 +138,6 @@ public unsafe struct EFI_ADAPTER_INFO_UNDI_IPV6_SUPPORT
   ///
   public bool Ipv6Support;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ///
 /// EFI_ADAPTER_INFORMATION_PROTOCOL
