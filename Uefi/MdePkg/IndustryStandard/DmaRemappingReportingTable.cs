@@ -25,11 +25,11 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-///
-/// DMA-Remapping Reporting Structure definitions from section 8.1
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// DMA-Remapping Reporting Structure definitions from section 8.1
+  ///@{
   public const ulong EFI_ACPI_DMAR_REVISION = 0x01;
 
   public const ulong EFI_ACPI_DMAR_FLAGS_INTR_REMAP = BIT0;

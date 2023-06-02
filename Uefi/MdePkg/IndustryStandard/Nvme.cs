@@ -20,11 +20,11 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-//
-// controller register offsets
-//
 public unsafe partial class EFI
 {
+  //
+  // controller register offsets
+  //
   public const ulong NVME_CAP_OFFSET = 0x0000        // Controller Capabilities;
 public const ulong NVME_VER_OFFSET = 0x0008        // Version;
 public const ulong NVME_INTMS_OFFSET = 0x000c        // Interrupt Mask Set;
@@ -135,11 +135,11 @@ public unsafe struct NVME_AQA
   public ushort Rsvd2 = 4;
 }
 
-//
-// 3.1.9 Offset 28h: ASQ - Admin Submission Queue Base Address
-//
 public unsafe partial class EFI
 {
+  //
+  // 3.1.9 Offset 28h: ASQ - Admin Submission Queue Base Address
+  //
   public const ulong NVME_ASQ = UINT64;
   //
   // 3.1.10 Offset 30h: ACQ - Admin Completion Queue Base Address
@@ -586,12 +586,12 @@ public unsafe struct NVME_RPMB_DCB
   public fixed byte Rsvd1[509];    /* Reserved as of Nvm Express 2.0 Spec */
 }
 
-//
-// RPMB Request and Response Message Types.
-// (ref. NVMe Base spec. v2.0 Figure 461).
-//
 public unsafe partial class EFI
 {
+  //
+  // RPMB Request and Response Message Types.
+  // (ref. NVMe Base spec. v2.0 Figure 461).
+  //
   public const ulong NVME_RPMB_AUTHKEY_PROGRAM = 0x0001;
   public const ulong NVME_RPMB_COUNTER_READ = 0x0002;
   public const ulong NVME_RPMB_AUTHDATA_WRITE = 0x0003;
@@ -970,11 +970,11 @@ public unsafe struct NVME_CQ
   public ushort Dnr = 1;      // Do Not Retry
 }
 
-//
-// Nvm Express Admin cmd opcodes
-//
 public unsafe partial class EFI
 {
+  //
+  // Nvm Express Admin cmd opcodes
+  //
   public const ulong NVME_ADMIN_DEIOSQ_CMD = 0x00;
   public const ulong NVME_ADMIN_CRIOSQ_CMD = 0x01;
   public const ulong NVME_ADMIN_GET_LOG_PAGE_CMD = 0x02;

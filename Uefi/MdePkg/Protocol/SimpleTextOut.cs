@@ -36,11 +36,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SIMPLE_TEXT_OUTPUT_INTERFACE { EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL Value; public static implicit operator SIMPLE_TEXT_OUTPUT_INTERFACE(EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL value) => new SIMPLE_TEXT_OUTPUT_INTERFACE() { Value = value }; public static implicit operator EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL(SIMPLE_TEXT_OUTPUT_INTERFACE value) => value.Value; }
 
-//
-// Defines for required EFI Unicode Box Draw characters
-//
 public unsafe partial class EFI
 {
+  //
+  // Defines for required EFI Unicode Box Draw characters
+  //
   public const ulong BOXDRAW_HORIZONTAL = 0x2500;
   public const ulong BOXDRAW_VERTICAL = 0x2502;
   public const ulong BOXDRAW_DOWN_RIGHT = 0x250c;

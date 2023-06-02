@@ -35,11 +35,11 @@ public unsafe struct EFI_USB_PORT_STATUS
   public ushort PortChangeStatus;        ///< Contains current port status change bitmap.
 }
 
-///
-/// EFI_USB_PORT_STATUS.PortStatus bit definition
-///
 public unsafe partial class EFI
 {
+  ///
+  /// EFI_USB_PORT_STATUS.PortStatus bit definition
+  ///
   public const ulong USB_PORT_STAT_CONNECTION = 0x0001;
   public const ulong USB_PORT_STAT_ENABLE = 0x0002;
   public const ulong USB_PORT_STAT_SUSPEND = 0x0004;

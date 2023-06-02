@@ -109,14 +109,14 @@ public enum EFI_MM_SAVE_STATE_REGISTER
   EFI_MM_SAVE_STATE_REGISTER_PROCESSOR_ID = 514
 }
 
-///
-/// The EFI_MM_SAVE_STATE_REGISTER_LMA pseudo-register values
-/// If the processor acts in 32-bit mode at the time the MMI occurred, the pseudo register value
-/// EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT is returned in Buffer. Otherwise,
-/// EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT is returned in Buffer.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The EFI_MM_SAVE_STATE_REGISTER_LMA pseudo-register values
+  /// If the processor acts in 32-bit mode at the time the MMI occurred, the pseudo register value
+  /// EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT is returned in Buffer. Otherwise,
+  /// EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT is returned in Buffer.
+  ///
   public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_32BIT = 32;
   public const ulong EFI_MM_SAVE_STATE_REGISTER_LMA_64BIT = 64;
 }

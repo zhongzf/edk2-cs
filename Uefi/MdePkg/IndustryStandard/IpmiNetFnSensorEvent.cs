@@ -19,12 +19,12 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_SENSOR_EVENT_H_
 // #define _IPMI_NET_FN_SENSOR_EVENT_H_
 
-// #pragma pack(1)
-//
-// Net function definition for Sensor command
-//
 public unsafe partial class EFI
 {
+  // #pragma pack(1)
+  //
+  // Net function definition for Sensor command
+  //
   public const ulong IPMI_NETFN_SENSOR_EVENT = 0x04;
 
   //

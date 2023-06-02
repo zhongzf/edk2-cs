@@ -13,14 +13,14 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-///
-/// HTTP Version (currently HTTP 1.1)
-///
-/// The version of an HTTP message is indicated by an HTTP-Version field
-/// in the first line of the message.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// HTTP Version (currently HTTP 1.1)
+  ///
+  /// The version of an HTTP message is indicated by an HTTP-Version field
+  /// in the first line of the message.
+  ///
   public const ulong HTTP_VERSION = "HTTP/1.1";
 
   ///

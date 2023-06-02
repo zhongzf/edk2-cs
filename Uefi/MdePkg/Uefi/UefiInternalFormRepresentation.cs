@@ -74,11 +74,11 @@ public unsafe struct EFI_HII_PACKAGE_HEADER
   // byte  Data[...];
 }
 
-//
-// Value of HII package type
-//
 public unsafe partial class EFI
 {
+  //
+  // Value of HII package type
+  //
   public const ulong EFI_HII_PACKAGE_TYPE_ALL = 0x00;
   public const ulong EFI_HII_PACKAGE_TYPE_GUID = 0x01;
   public const ulong EFI_HII_PACKAGE_FORMS = 0x02;
@@ -185,11 +185,11 @@ public unsafe struct EFI_HII_SIMPLE_FONT_PACKAGE_HDR
 // Section 27.3.3
 //
 
-//
-// Value for font style
-//
 public unsafe partial class EFI
 {
+  //
+  // Value for font style
+  //
   public const ulong EFI_HII_FONT_STYLE_NORMAL = 0x00000000;
   public const ulong EFI_HII_FONT_STYLE_BOLD = 0x00000001;
   public const ulong EFI_HII_FONT_STYLE_ITALIC = 0x00000002;
@@ -227,11 +227,11 @@ public unsafe struct EFI_HII_FONT_PACKAGE_HDR
   public fixed char FontFamily[1];
 }
 
-//
-// Value of different glyph info block types
-//
 public unsafe partial class EFI
 {
+  //
+  // Value of different glyph info block types
+  //
   public const ulong EFI_HII_GIBT_END = 0x00;
   public const ulong EFI_HII_GIBT_GLYPH = 0x10;
   public const ulong EFI_HII_GIBT_GLYPHS = 0x11;
@@ -420,11 +420,11 @@ public unsafe struct EFI_HII_STRING_BLOCK
   public byte BlockType;
 }
 
-//
-// Value of different string information block types
-//
 public unsafe partial class EFI
 {
+  //
+  // Value of different string information block types
+  //
   public const ulong EFI_HII_SIBT_END = 0x00;
   public const ulong EFI_HII_SIBT_STRING_SCSU = 0x10;
   public const ulong EFI_HII_SIBT_STRING_SCSU_FONT = 0x11;
@@ -591,11 +591,11 @@ public unsafe struct EFI_HII_IMAGE_BLOCK
   public byte BlockType;
 }
 
-//
-// Value of different image information block types
-//
 public unsafe partial class EFI
 {
+  //
+  // Value of different image information block types
+  //
   public const ulong EFI_HII_IIBT_END = 0x00;
   public const ulong EFI_HII_IIBT_IMAGE_1BIT = 0x10;
   public const ulong EFI_HII_IIBT_IMAGE_1BIT_TRANS = 0x11;
@@ -861,11 +861,11 @@ public unsafe struct EFI_IFR_TYPE_VALUE
   // byte buffer[];      ///< EFI_IFR_TYPE_BUFFER
 }
 
-//
-// IFR Opcodes
-//
 public unsafe partial class EFI
 {
+  //
+  // IFR Opcodes
+  //
   public const ulong EFI_IFR_FORM_OP = 0x01;
   public const ulong EFI_IFR_SUBTITLE_OP = 0x02;
   public const ulong EFI_IFR_TEXT_OP = 0x03;
@@ -1001,11 +1001,11 @@ public unsafe struct VarStoreInfo
 byte Flags;
 } EFI_IFR_QUESTION_HEADER;
 
-//
-// Flag values of EFI_IFR_QUESTION_HEADER
-//
 public unsafe partial class EFI
 {
+  //
+  // Flag values of EFI_IFR_QUESTION_HEADER
+  //
   public const ulong EFI_IFR_FLAG_READ_ONLY = 0x01;
   public const ulong EFI_IFR_FLAG_CALLBACK = 0x04;
   public const ulong EFI_IFR_FLAG_RESET_REQUIRED = 0x10;
@@ -1026,11 +1026,11 @@ public unsafe struct EFI_IFR_DEFAULTSTORE
   public ushort DefaultId;
 }
 
-//
-// Default Identifier of default store
-//
 public unsafe partial class EFI
 {
+  //
+  // Default Identifier of default store
+  //
   public const ulong EFI_HII_DEFAULT_CLASS_STANDARD = 0x0000;
   public const ulong EFI_HII_DEFAULT_CLASS_MANUFACTURING = 0x0001;
   public const ulong EFI_HII_DEFAULT_CLASS_SAFE = 0x0002;
@@ -1256,11 +1256,11 @@ public unsafe struct EFI_IFR_DATE
   public byte Flags;
 }
 
-//
-// Flags that describe the behavior of the question.
-//
 public unsafe partial class EFI
 {
+  //
+  // Flags that describe the behavior of the question.
+  //
   public const ulong EFI_QF_DATE_YEAR_SUPPRESS = 0x01;
   public const ulong EFI_QF_DATE_MONTH_SUPPRESS = 0x02;
   public const ulong EFI_QF_DATE_DAY_SUPPRESS = 0x04;
@@ -1305,11 +1305,11 @@ public unsafe struct EFI_IFR_NUMERIC
   public MINMAXSTEP_DATA data;
 }
 
-//
-// Flags related to the numeric question
-//
 public unsafe partial class EFI
 {
+  //
+  // Flags related to the numeric question
+  //
   public const ulong EFI_IFR_NUMERIC_SIZE = 0x03;
   public const ulong EFI_IFR_NUMERIC_SIZE_1 = 0x00;
   public const ulong EFI_IFR_NUMERIC_SIZE_2 = 0x01;
@@ -1378,11 +1378,11 @@ public unsafe struct EFI_IFR_TIME
   public byte Flags;
 }
 
-//
-// A bit-mask that determines which unique settings are active for this opcode.
-//
 public unsafe partial class EFI
 {
+  //
+  // A bit-mask that determines which unique settings are active for this opcode.
+  //
   public const ulong QF_TIME_HOUR_SUPPRESS = 0x01;
   public const ulong QF_TIME_MINUTE_SUPPRESS = 0x02;
   public const ulong QF_TIME_SECOND_SUPPRESS = 0x04;
@@ -1457,11 +1457,11 @@ public unsafe struct EFI_IFR_ONE_OF_OPTION
   public EFI_IFR_TYPE_VALUE Value;
 }
 
-//
-// Types of the option's value.
-//
 public unsafe partial class EFI
 {
+  //
+  // Types of the option's value.
+  //
   public const ulong EFI_IFR_TYPE_NUM_SIZE_8 = 0x00;
   public const ulong EFI_IFR_TYPE_NUM_SIZE_16 = 0x01;
   public const ulong EFI_IFR_TYPE_NUM_SIZE_32 = 0x02;
@@ -1680,16 +1680,16 @@ public unsafe struct EFI_IFR_TO_BOOLEAN
   public EFI_IFR_OP_HEADER Header;
 }
 
-///
-/// For EFI_IFR_TO_STRING, when converting from
-/// unsigned integers, these flags control the format:
-/// 0 = unsigned decimal.
-/// 1 = signed decimal.
-/// 2 = hexadecimal (lower-case alpha).
-/// 3 = hexadecimal (upper-case alpha).
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// For EFI_IFR_TO_STRING, when converting from
+  /// unsigned integers, these flags control the format:
+  /// 0 = unsigned decimal.
+  /// 1 = signed decimal.
+  /// 2 = hexadecimal (lower-case alpha).
+  /// 3 = hexadecimal (upper-case alpha).
+  ///@{
   public const ulong EFI_IFR_STRING_UNSIGNED_DEC = 0;
   public const ulong EFI_IFR_STRING_SIGNED_DEC = 1;
   public const ulong EFI_IFR_STRING_LOWERCASE_HEX = 2;
@@ -1858,11 +1858,11 @@ public unsafe struct EFI_IFR_CONDITIONAL
   public EFI_IFR_OP_HEADER Header;
 }
 
-//
-// Flags governing the matching criteria of EFI_IFR_FIND
-//
 public unsafe partial class EFI
 {
+  //
+  // Flags governing the matching criteria of EFI_IFR_FIND
+  //
   public const ulong EFI_IFR_FF_CASE_SENSITIVE = 0x00;
   public const ulong EFI_IFR_FF_CASE_INSENSITIVE = 0x01;
 }
@@ -1886,12 +1886,12 @@ public unsafe struct EFI_IFR_TOKEN
   public EFI_IFR_OP_HEADER Header;
 }
 
-//
-// Flags specifying whether to find the first matching string
-// or the first non-matching string.
-//
 public unsafe partial class EFI
 {
+  //
+  // Flags specifying whether to find the first matching string
+  // or the first non-matching string.
+  //
   public const ulong EFI_IFR_FLAGS_FIRST_MATCHING = 0x00;
   public const ulong EFI_IFR_FLAGS_FIRST_NON_MATCHING = 0x01;
 }
@@ -2173,12 +2173,12 @@ public unsafe struct EFI_KEY_DESCRIPTOR
   public ushort AffectedAttribute;
 }
 
-///
-/// A key which is affected by all the standard shift modifiers.
-/// Most keys would be expected to have this bit active.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// A key which is affected by all the standard shift modifiers.
+  /// Most keys would be expected to have this bit active.
+  ///
   public const ulong EFI_AFFECTED_BY_STANDARD_SHIFT = 0x0001;
 
   ///
@@ -2214,11 +2214,11 @@ public unsafe struct EFI_HII_KEYBOARD_PACKAGE_HDR
   // EFI_HII_KEYBOARD_LAYOUT Layout[];
 }
 
-//
-// Modifier values
-//
 public unsafe partial class EFI
 {
+  //
+  // Modifier values
+  //
   public const ulong EFI_NULL_MODIFIER = 0x0000;
   public const ulong EFI_LEFT_CONTROL_MODIFIER = 0x0001;
   public const ulong EFI_RIGHT_CONTROL_MODIFIER = 0x0002;
@@ -2317,11 +2317,11 @@ public unsafe struct EFI_HII_ANIMATION_BLOCK
   // byte  BlockBody[];
 }
 
-///
-/// Animation block types.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Animation block types.
+  ///
   public const ulong EFI_HII_AIBT_END = 0x00;
   public const ulong EFI_HII_AIBT_OVERLAY_IMAGES = 0x10;
   public const ulong EFI_HII_AIBT_CLEAR_IMAGES = 0x11;
@@ -2593,16 +2593,16 @@ public unsafe struct EFI_HII_AIBT_SKIP2_BLOCK
 
 // #pragma pack()
 
-///
-/// References to string tokens must use this macro to enable scanning for
-/// token usages.
-///
-///
-/// STRING_TOKEN is not defined in UEFI specification. But it is placed
-/// here for the easy access by C files and VFR source files.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// References to string tokens must use this macro to enable scanning for
+  /// token usages.
+  ///
+  ///
+  /// STRING_TOKEN is not defined in UEFI specification. But it is placed
+  /// here for the easy access by C files and VFR source files.
+  ///
   public const ulong STRING_TOKEN = (t)t;
 
   ///

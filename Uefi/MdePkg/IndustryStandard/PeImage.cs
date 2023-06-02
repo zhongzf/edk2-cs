@@ -22,11 +22,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __PE_IMAGE_H__
 // #define __PE_IMAGE_H__
 
-//
-// PE32+ Subsystem type for EFI images
-//
 public unsafe partial class EFI
 {
+  //
+  // PE32+ Subsystem type for EFI images
+  //
   public const ulong EFI_IMAGE_SUBSYSTEM_EFI_APPLICATION = 10;
   public const ulong EFI_IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER = 11;
   public const ulong EFI_IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER = 12;
@@ -99,11 +99,11 @@ public unsafe struct EFI_IMAGE_FILE_HEADER
   public ushort Characteristics;
 }
 
-///
-/// Size of EFI_IMAGE_FILE_HEADER.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Size of EFI_IMAGE_FILE_HEADER.
+  ///
   public const ulong EFI_IMAGE_SIZEOF_FILE_HEADER = 20;
 
   //
@@ -131,11 +131,11 @@ public unsafe struct EFI_IMAGE_DATA_DIRECTORY
   public uint Size;
 }
 
-//
-// Directory Entries
-//
 public unsafe partial class EFI
 {
+  //
+  // Directory Entries
+  //
   public const ulong EFI_IMAGE_DIRECTORY_ENTRY_EXPORT = 0;
   public const ulong EFI_IMAGE_DIRECTORY_ENTRY_IMPORT = 1;
   public const ulong EFI_IMAGE_DIRECTORY_ENTRY_RESOURCE = 2;
@@ -204,14 +204,14 @@ public unsafe struct EFI_IMAGE_OPTIONAL_HEADER32
   public fixed EFI_IMAGE_DATA_DIRECTORY DataDirectory[EFI_IMAGE_NUMBER_OF_DIRECTORY_ENTRIES];
 }
 
-///
-/// @attention
-/// EFI_IMAGE_NT_OPTIONAL_HDR64_MAGIC means PE32+ and
-/// EFI_IMAGE_OPTIONAL_HEADER64 must be used. The data structures only vary
-/// after NT additional fields.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// @attention
+  /// EFI_IMAGE_NT_OPTIONAL_HDR64_MAGIC means PE32+ and
+  /// EFI_IMAGE_OPTIONAL_HEADER64 must be used. The data structures only vary
+  /// after NT additional fields.
+  ///
   public const ulong EFI_IMAGE_NT_OPTIONAL_HDR64_MAGIC = 0x20b;
 }
 
@@ -329,11 +329,11 @@ ushort NumberOfLinenumbers;
 uint Characteristics;
 } EFI_IMAGE_SECTION_HEADER;
 
-///
-/// Size of EFI_IMAGE_SECTION_HEADER.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Size of EFI_IMAGE_SECTION_HEADER.
+  ///
   public const ulong EFI_IMAGE_SIZEOF_SECTION_HEADER = 40;
 
   //
@@ -474,11 +474,11 @@ public unsafe struct EFI_IMAGE_RELOCATION
   public ushort Type;
 }
 
-///
-/// Size of EFI_IMAGE_RELOCATION
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Size of EFI_IMAGE_RELOCATION
+  ///
   public const ulong EFI_IMAGE_SIZEOF_RELOCATION = 10;
 
   //
@@ -526,11 +526,11 @@ public unsafe struct EFI_IMAGE_BASE_RELOCATION
   public uint SizeOfBlock;
 }
 
-///
-/// Size of EFI_IMAGE_BASE_RELOCATION.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Size of EFI_IMAGE_BASE_RELOCATION.
+  ///
   public const ulong EFI_IMAGE_SIZEOF_BASE_RELOCATION = 8;
 
   //
@@ -575,11 +575,11 @@ public unsafe struct Type
 ushort Linenumber;       ///< Line number.
 } EFI_IMAGE_LINENUMBER;
 
-///
-/// Size of EFI_IMAGE_LINENUMBER.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Size of EFI_IMAGE_LINENUMBER.
+  ///
   public const ulong EFI_IMAGE_SIZEOF_LINENUMBER = 6;
 
   //
@@ -608,11 +608,11 @@ public unsafe struct EFI_IMAGE_ARCHIVE_MEMBER_HEADER
   public fixed byte EndHeader[2]; ///< String to end header. (0x60 0x0A).
 }
 
-///
-/// Size of EFI_IMAGE_ARCHIVE_MEMBER_HEADER.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Size of EFI_IMAGE_ARCHIVE_MEMBER_HEADER.
+  ///
   public const ulong EFI_IMAGE_SIZEOF_ARCHIVE_MEMBER_HDR = 60;
 
   //
@@ -720,11 +720,11 @@ public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_NB10_ENTRY
   //
 }
 
-///
-/// Debug Data Structure defined in Microsoft C++.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Debug Data Structure defined in Microsoft C++.
+  ///
   public const ulong CODEVIEW_SIGNATURE_RSDS = SIGNATURE_32('R', 'S', 'D', 'S');
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -741,11 +741,11 @@ public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_RSDS_ENTRY
   //
 }
 
-///
-/// Debug Data Structure defined by Apple Mach-O to Coff utility.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Debug Data Structure defined by Apple Mach-O to Coff utility.
+  ///
   public const ulong CODEVIEW_SIGNATURE_MTOC = SIGNATURE_32('M', 'T', 'O', 'C');
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -758,11 +758,11 @@ public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_MTOC_ENTRY
   //
 }
 
-///
-/// Extended DLL Characteristics
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Extended DLL Characteristics
+  ///
   public const ulong EFI_IMAGE_DLLCHARACTERISTICS_EX_CET_COMPAT = 0x0001;
   public const ulong EFI_IMAGE_DLLCHARACTERISTICS_EX_FORWARD_CFI_COMPAT = 0x0040;
 }

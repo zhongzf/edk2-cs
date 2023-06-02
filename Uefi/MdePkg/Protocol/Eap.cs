@@ -34,11 +34,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PORT_HANDLE { void* Value; public static implicit operator EFI_PORT_HANDLE(void* value) => new EFI_PORT_HANDLE() { Value = value }; public static implicit operator void*(EFI_PORT_HANDLE value) => value.Value; }
 
-///
-/// EAP Authentication Method Type (RFC 3748)
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// EAP Authentication Method Type (RFC 3748)
+  ///@{
   public const ulong EFI_EAP_TYPE_TLS = 13///< REQUIRED - RFC 5216;
                                           ///@}
 

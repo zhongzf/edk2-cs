@@ -76,11 +76,11 @@ public unsafe struct EFI_ACPI_DEBUG_PORT_2_DESCRIPTION_TABLE
 
 // #pragma pack()
 
-//
-// DBG2 Revision (defined in spec)
-//
 public unsafe partial class EFI
 {
+  //
+  // DBG2 Revision (defined in spec)
+  //
   public const ulong EFI_ACPI_DEBUG_PORT_2_TABLE_REVISION = 0x00;
 }
 

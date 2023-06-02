@@ -19,11 +19,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __ARCH_PROTOCOL_CAPSULE_ARCH_H__
 // #define __ARCH_PROTOCOL_CAPSULE_ARCH_H__
 
-//
-// Global ID for the Capsule Architectural Protocol
-//
 public unsafe partial class EFI
 {
+  //
+  // Global ID for the Capsule Architectural Protocol
+  //
   public static EFI_GUID EFI_CAPSULE_ARCH_PROTOCOL_GUID = new GUID(0x5053697e, 0x2cbc, 0x4819, new byte[] { 0x90, 0xd9, 0x05, 0x80, 0xde, 0xee, 0x57, 0x54 });
 
   // extern EFI_GUID  gEfiCapsuleArchProtocolGuid;

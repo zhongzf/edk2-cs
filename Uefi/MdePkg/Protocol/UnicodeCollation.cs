@@ -36,11 +36,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UNICODE_COLLATION_INTERFACE { EFI_UNICODE_COLLATION_PROTOCOL Value; public static implicit operator UNICODE_COLLATION_INTERFACE(EFI_UNICODE_COLLATION_PROTOCOL value) => new UNICODE_COLLATION_INTERFACE() { Value = value }; public static implicit operator EFI_UNICODE_COLLATION_PROTOCOL(UNICODE_COLLATION_INTERFACE value) => value.Value; }
 
-///
-/// Protocol data structures and defines
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Protocol data structures and defines
+  ///
   public const ulong EFI_UNICODE_BYTE_ORDER_MARK = (char)(0xfeff);
 
   //

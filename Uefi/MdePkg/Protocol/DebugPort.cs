@@ -15,11 +15,11 @@ namespace Uefi;
 // #ifndef __DEBUG_PORT_H__
 // #define __DEBUG_PORT_H__
 
-///
-/// DebugPortIo protocol {EBA4E8D2-3858-41EC-A281-2647BA9660D0}
-///
 public unsafe partial class EFI
 {
+  ///
+  /// DebugPortIo protocol {EBA4E8D2-3858-41EC-A281-2647BA9660D0}
+  ///
   public static EFI_GUID EFI_DEBUGPORT_PROTOCOL_GUID = new GUID(
       0xEBA4E8D2, 0x3858, 0x41EC, new byte[] { 0xA2, 0x81, 0x26, 0x47, 0xBA, 0x96, 0x60, 0xD0 });
 
@@ -93,11 +93,11 @@ public unsafe struct EFI_DEBUGPORT_PROTOCOL
   public readonly delegate* unmanaged<EFI_DEBUGPORT_PROTOCOL*, EFI_STATUS> Poll;
 }
 
-//
-// DEBUGPORT variable definitions...
-//
 public unsafe partial class EFI
 {
+  //
+  // DEBUGPORT variable definitions...
+  //
   public const string EFI_DEBUGPORT_VARIABLE_NAME = "DEBUGPORT";
   public const ulong EFI_DEBUGPORT_VARIABLE_GUID = EFI_DEBUGPORT_PROTOCOL_GUID;
 

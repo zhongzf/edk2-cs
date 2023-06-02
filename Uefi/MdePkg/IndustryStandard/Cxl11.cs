@@ -15,14 +15,14 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef _CXL11_H_
 // #define _CXL11_H_
 
-// #include <IndustryStandard/Pci.h>
-//
-// DVSEC Vendor ID
-// Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1 - Table 58
-// (subject to change as per CXL assigned Vendor ID)
-//
 public unsafe partial class EFI
 {
+  // #include <IndustryStandard/Pci.h>
+  //
+  // DVSEC Vendor ID
+  // Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1 - Table 58
+  // (subject to change as per CXL assigned Vendor ID)
+  //
   public const ulong INTEL_CXL_DVSEC_VENDOR_ID = 0x8086;
 
   //
@@ -238,12 +238,12 @@ public unsafe struct Bits
 uint Uint32;
 } CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_BASE_LOW;
 
-//
-// Flex Bus Device DVSEC ID
-// Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1, Table 58
-//
 public unsafe partial class EFI
 {
+  //
+  // Flex Bus Device DVSEC ID
+  // Compute Express Link Specification Revision: 1.1 - Chapter 7.1.1, Table 58
+  //
   public const ulong FLEX_BUS_DEVICE_DVSEC_ID = 0;
 }
 
@@ -344,12 +344,12 @@ public unsafe struct Bits
 ushort Uint16;
 } CXL_1_1_DVSEC_FLEX_BUS_PORT_STATUS;
 
-//
-// Flex Bus Port DVSEC ID
-// Compute Express Link Specification Revision: 1.1 - Chapter 7.2.1.3, Table 62
-//
 public unsafe partial class EFI
 {
+  //
+  // Flex Bus Port DVSEC ID
+  // Compute Express Link Specification Revision: 1.1 - Chapter 7.2.1.3, Table 62
+  //
   public const ulong FLEX_BUS_PORT_DVSEC_ID = 7;
 }
 
@@ -763,12 +763,12 @@ CXL_11_SIZE_ASSERT(CXL_RCRB_BASE, 0x8);
 
 // #pragma pack()
 
-//
-// CXL Downstream / Upstream Port RCRB space register offsets
-// Compute Express Link Specification Revision: 1.1 - Chapter 7.2.1.1 - Figure 97
-//
 public unsafe partial class EFI
 {
+  //
+  // CXL Downstream / Upstream Port RCRB space register offsets
+  // Compute Express Link Specification Revision: 1.1 - Chapter 7.2.1.1 - Figure 97
+  //
   public const ulong CXL_PORT_RCRB_MEMBAR0_LOW_OFFSET = 0x010;
   public const ulong CXL_PORT_RCRB_MEMBAR0_HIGH_OFFSET = 0x014;
   public const ulong CXL_PORT_RCRB_EXTENDED_CAPABILITY_BASE_OFFSET = 0x100;

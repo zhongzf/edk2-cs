@@ -15,11 +15,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #pragma pack(1)
 
-///
-/// SPDM response code
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPDM response code
+  ///
   public const ulong SPDM_DIGESTS = 0x01;
   public const ulong SPDM_CERTIFICATE = 0x02;
   public const ulong SPDM_CHALLENGE_AUTH = 0x03;
@@ -114,11 +114,11 @@ public unsafe struct SPDM_CAPABILITIES_RESPONSE
   public uint Flags;
 }
 
-///
-/// SPDM GET_CAPABILITIES response Flags
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPDM GET_CAPABILITIES response Flags
+  ///
   public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CACHE_CAP = BIT0;
   public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CERT_CAP = BIT1;
   public const ulong SPDM_GET_CAPABILITIES_RESPONSE_FLAGS_CHAL_CAP = BIT2;
@@ -148,11 +148,11 @@ public unsafe struct SPDM_NEGOTIATE_ALGORITHMS_REQUEST
   // uint               ExtHash[ExtHashCount];
 }
 
-///
-/// SPDM NEGOTIATE_ALGORITHMS request BaseAsymAlgo
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPDM NEGOTIATE_ALGORITHMS request BaseAsymAlgo
+  ///
   public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_2048 = BIT0;
   public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSAPSS_2048 = BIT1;
   public const ulong SPDM_ALGORITHMS_BASE_ASYM_ALGO_TPM_ALG_RSASSA_3072 = BIT2;
@@ -195,11 +195,11 @@ public unsafe struct SPDM_ALGORITHMS_RESPONSE
   // uint               ExtHashSel[ExtHashSelCount];
 }
 
-///
-/// SPDM NEGOTIATE_ALGORITHMS response MeasurementHashAlgo
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPDM NEGOTIATE_ALGORITHMS response MeasurementHashAlgo
+  ///
   public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_RAW_BIT_STREAM_ONLY = BIT0;
   public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_256 = BIT1;
   public const ulong SPDM_ALGORITHMS_MEASUREMENT_HASH_ALGO_TPM_ALG_SHA_384 = BIT2;
@@ -314,11 +314,11 @@ public unsafe struct SPDM_MEASUREMENT_BLOCK_DMTF_HEADER
   // byte                DMTFSpecMeasurementValue[DMTFSpecMeasurementValueSize];
 }
 
-///
-/// SPDM MEASUREMENTS block MeasurementValueType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPDM MEASUREMENTS block MeasurementValueType
+  ///
   public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_IMMUTABLE_ROM = 0;
   public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_MUTABLE_FIRMWARE = 1;
   public const ulong SPDM_MEASUREMENT_BLOCK_MEASUREMENT_TYPE_HARDWARE_CONFIGURATION = 2;
@@ -354,11 +354,11 @@ public unsafe struct SPDM_ERROR_RESPONSE
   // byte                ExtendedErrorData[];
 }
 
-///
-/// SPDM error code
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPDM error code
+  ///
   public const ulong SPDM_ERROR_CODE_INVALID_REQUEST = 0x01;
   public const ulong SPDM_ERROR_CODE_BUSY = 0x03;
   public const ulong SPDM_ERROR_CODE_UNEXPECTED_REQUEST = 0x04;

@@ -12,12 +12,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __UEFI_GPT_H__
 // #define __UEFI_GPT_H__
 
-///
-/// The primary GUID Partition Table Header must be
-/// located in LBA 1 (i.e., the second logical block).
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The primary GUID Partition Table Header must be
+  /// located in LBA 1 (i.e., the second logical block).
+  ///
   public const ulong PRIMARY_PART_HEADER_LBA = 1;
   ///
   /// EFI Partition Table Signature: "EFI PART".

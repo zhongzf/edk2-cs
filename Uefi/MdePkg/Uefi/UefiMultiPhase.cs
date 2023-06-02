@@ -12,11 +12,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __UEFI_MULTIPHASE_H__
 // #define __UEFI_MULTIPHASE_H__
 
-///
-/// Attributes of variable.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Attributes of variable.
+  ///
   public const ulong EFI_VARIABLE_NON_VOLATILE = 0x00000001;
   public const ulong EFI_VARIABLE_BOOTSERVICE_ACCESS = 0x00000002;
   public const ulong EFI_VARIABLE_RUNTIME_ACCESS = 0x00000004;

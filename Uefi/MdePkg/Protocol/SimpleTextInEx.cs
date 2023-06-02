@@ -66,14 +66,14 @@ public unsafe struct EFI_KEY_DATA
   public EFI_KEY_STATE KeyState;
 }
 
-//
-// Any Shift or Toggle State that is valid should have
-// high order bit set.
-//
-// Shift state
-//
 public unsafe partial class EFI
 {
+  //
+  // Any Shift or Toggle State that is valid should have
+  // high order bit set.
+  //
+  // Shift state
+  //
   public const ulong EFI_SHIFT_STATE_VALID = 0x80000000;
   public const ulong EFI_RIGHT_SHIFT_PRESSED = 0x00000001;
   public const ulong EFI_LEFT_SHIFT_PRESSED = 0x00000002;

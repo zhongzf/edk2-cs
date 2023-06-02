@@ -12,14 +12,14 @@ namespace Uefi;
 // #ifndef __SCSI_H__
 // #define __SCSI_H__
 
-//
-// SCSI command OP Code
-//
-//
-// Commands for all device types
-//
 public unsafe partial class EFI
 {
+  //
+  // SCSI command OP Code
+  //
+  //
+  // Commands for all device types
+  //
   public const ulong EFI_SCSI_OP_CHANGE_DEFINITION = 0x40;
   public const ulong EFI_SCSI_OP_COMPARE = 0x39;
   public const ulong EFI_SCSI_OP_COPY = 0x18;
@@ -401,11 +401,11 @@ public unsafe struct EFI_SCSI_DISK_UNMAP_BLOCK_DESP
 
 // #pragma pack()
 
-//
-// Sense Key
-//
 public unsafe partial class EFI
 {
+  //
+  // Sense Key
+  //
   public const ulong EFI_SCSI_SK_NO_SENSE = (0x0);
   public const ulong EFI_SCSI_SK_RECOVERY_ERROR = (0x1);
   public const ulong EFI_SCSI_SK_NOT_READY = (0x2);

@@ -30,11 +30,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <IndustryStandard/Atapi.h>
 
-///
-/// Global ID for the EFI_IDE_CONTROLLER_INIT_PROTOCOL.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the EFI_IDE_CONTROLLER_INIT_PROTOCOL.
+  ///
   public static EFI_GUID EFI_IDE_CONTROLLER_INIT_PROTOCOL_GUID = new GUID(
       0xa1e37052, 0x80d9, 0x4e65, new byte[] { 0xa3, 0x17, 0x3e, 0x9a, 0x55, 0xc4, 0x3e, 0xc9 });
 
@@ -106,11 +106,11 @@ public enum EFI_ATA_EXT_TRANSFER_PROTOCOL
   EfiAtaSataTransferProtocol
 }
 
-///
-/// Automatically detects the optimum SATA speed.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Automatically detects the optimum SATA speed.
+  ///
   public const ulong EFI_SATA_AUTO_SPEED = 0;
 
   ///
@@ -221,16 +221,16 @@ public unsafe struct EFI_ATA_IDENTIFY_DATA { ATA_IDENTIFY_DATA Value; public sta
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ATAPI_IDENTIFY_DATA { ATAPI_IDENTIFY_DATA Value; public static implicit operator EFI_ATAPI_IDENTIFY_DATA(ATAPI_IDENTIFY_DATA value) => new EFI_ATAPI_IDENTIFY_DATA() { Value = value }; public static implicit operator ATAPI_IDENTIFY_DATA(EFI_ATAPI_IDENTIFY_DATA value) => value.Value; }
 
-///
-/// This flag indicates whether the IDENTIFY data is a response from an ATA device
-/// (EFI_ATA_IDENTIFY_DATA) or response from an ATAPI device
-/// (EFI_ATAPI_IDENTIFY_DATA).  According to the ATA/ATAPI specification,
-/// EFI_IDENTIFY_DATA is for an ATA device if bit 15 of the Config field is zero.
-/// The Config field is common to both EFI_ATA_IDENTIFY_DATA and
-/// EFI_ATAPI_IDENTIFY_DATA.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// This flag indicates whether the IDENTIFY data is a response from an ATA device
+  /// (EFI_ATA_IDENTIFY_DATA) or response from an ATAPI device
+  /// (EFI_ATAPI_IDENTIFY_DATA).  According to the ATA/ATAPI specification,
+  /// EFI_IDENTIFY_DATA is for an ATA device if bit 15 of the Config field is zero.
+  /// The Config field is common to both EFI_ATA_IDENTIFY_DATA and
+  /// EFI_ATAPI_IDENTIFY_DATA.
+  ///
   public const ulong EFI_ATAPI_DEVICE_IDENTIFY_DATA = 0x8000;
 }
 

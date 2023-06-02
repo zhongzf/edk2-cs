@@ -156,11 +156,11 @@ public unsafe struct PCI_CARDBUS_CONTROL_REGISTER
   public ushort BridgeControl;      ///< Bridge Control
 }
 
-//
-// Definitions of PCI class bytes and manipulation macros.
-//
 public unsafe partial class EFI
 {
+  //
+  // Definitions of PCI class bytes and manipulation macros.
+  //
   public const ulong PCI_CLASS_OLD = 0x00;
   public const ulong PCI_CLASS_OLD_OTHER = 0x00;
   public const ulong PCI_CLASS_OLD_VGA = 0x01;

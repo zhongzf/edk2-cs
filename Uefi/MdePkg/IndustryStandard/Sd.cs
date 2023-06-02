@@ -15,11 +15,11 @@ namespace Uefi;
 // #ifndef __SD_H__
 // #define __SD_H__
 
-//
-// SD command index
-//
 public unsafe partial class EFI
 {
+  //
+  // SD command index
+  //
   public const ulong SD_GO_IDLE_STATE = 0;
   public const ulong SD_ALL_SEND_CID = 2;
   public const ulong SD_SET_RELATIVE_ADDR = 3;

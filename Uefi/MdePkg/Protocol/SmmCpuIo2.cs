@@ -24,11 +24,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_CPU_IO2_PROTOCOL { EFI_MM_CPU_IO_PROTOCOL Value; public static implicit operator EFI_SMM_CPU_IO2_PROTOCOL(EFI_MM_CPU_IO_PROTOCOL value) => new EFI_SMM_CPU_IO2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_CPU_IO_PROTOCOL(EFI_SMM_CPU_IO2_PROTOCOL value) => value.Value; }
 
-///
-/// Width of the SMM CPU I/O operations
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Width of the SMM CPU I/O operations
+  ///
   public const ulong SMM_IO_UINT8 = MM_IO_UINT8;
   public const ulong SMM_IO_UINT16 = MM_IO_UINT16;
   public const ulong SMM_IO_UINT32 = MM_IO_UINT32;

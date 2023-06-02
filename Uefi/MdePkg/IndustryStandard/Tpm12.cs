@@ -12,11 +12,11 @@ namespace Uefi;
 // #ifndef _TPM12_H_
 // #define _TPM12_H_
 
-///
-/// The start of TPM return codes
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The start of TPM return codes
+  ///
   public const ulong TPM_BASE = 0;
 
   //
@@ -247,13 +247,13 @@ public unsafe struct TPM_HANDLE { uint Value; public static implicit operator TP
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_FAMILY_OPERATION { uint Value; public static implicit operator TPM_FAMILY_OPERATION(uint value) => new TPM_FAMILY_OPERATION() { Value = value }; public static implicit operator uint(TPM_FAMILY_OPERATION value) => value.Value; }
 
-//
-// Part 2, section 2.2.4: Vendor specific
-// The following defines allow for the quick specification of a
-// vendor specific item.
-//
 public unsafe partial class EFI
 {
+  //
+  // Part 2, section 2.2.4: Vendor specific
+  // The following defines allow for the quick specification of a
+  // vendor specific item.
+  //
   public const ulong TPM_Vendor_Specific32 = ((uint)0x00000400);
   public const ulong TPM_Vendor_Specific8 = ((byte)0x80);
 
@@ -581,16 +581,16 @@ typedef struct tdTPM_KEY_HANDLE_LIST
 }
 TPM_KEY_HANDLE_LIST;
 
-//
-// Part 2, section 5.8: TPM_KEY_USAGE values
-//
-///
-/// TPM_KEY_SIGNING SHALL indicate a signing key. The [private] key SHALL be
-/// used for signing operations, only. This means that it MUST be a leaf of the
-/// Protected Storage key hierarchy.
-///
 public unsafe partial class EFI
 {
+  //
+  // Part 2, section 5.8: TPM_KEY_USAGE values
+  //
+  ///
+  /// TPM_KEY_SIGNING SHALL indicate a signing key. The [private] key SHALL be
+  /// used for signing operations, only. This means that it MUST be a leaf of the
+  /// Protected Storage key hierarchy.
+  ///
   public const ulong TPM_KEY_SIGNING = ((ushort)0x0010);
   ///
   /// TPM_KEY_STORAGE SHALL indicate a storage key. The key SHALL be used to wrap

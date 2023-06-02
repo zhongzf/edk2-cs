@@ -14,11 +14,11 @@ namespace Uefi;
 
 // #include <Protocol/DriverConfiguration2.h>
 
-///
-/// Global ID for the Driver Configuration Protocol defined in EFI 1.1
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the Driver Configuration Protocol defined in EFI 1.1
+  ///
   public static EFI_GUID EFI_DRIVER_CONFIGURATION_PROTOCOL_GUID = new GUID(
       0x107a772b, 0xd5e1, 0x11d4, new byte[] { 0x9a, 0x46, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 

@@ -29,11 +29,11 @@ namespace Uefi;
 // #ifndef __ARCH_PROTOCOL_VARIABLE_WRITE_ARCH_H__
 // #define __ARCH_PROTOCOL_VARIABLE_WRITE_ARCH_H__
 
-///
-/// Global ID for the Variable Write Architectural Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the Variable Write Architectural Protocol
+  ///
   public static EFI_GUID EFI_VARIABLE_WRITE_ARCH_PROTOCOL_GUID = new GUID(0x6441f818, 0x6362, 0x4e44, new byte[] { 0xb5, 0x70, 0x7d, 0xba, 0x31, 0xdd, 0x24, 0x53 });
 
   // extern EFI_GUID  gEfiVariableWriteArchProtocolGuid;

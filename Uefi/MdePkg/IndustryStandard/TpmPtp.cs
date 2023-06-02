@@ -151,11 +151,11 @@ public unsafe struct Bits
 uint Uint32;
 } PTP_FIFO_INTERFACE_CAPABILITY;
 
-///
-/// InterfaceVersion
-///
 public unsafe partial class EFI
 {
+  ///
+  /// InterfaceVersion
+  ///
   public const ulong INTERFACE_CAPABILITY_INTERFACE_VERSION_TIS_12 = 0x0;
   public const ulong INTERFACE_CAPABILITY_INTERFACE_VERSION_TIS_13 = 0x2;
   public const ulong INTERFACE_CAPABILITY_INTERFACE_VERSION_PTP = 0x3;
@@ -362,11 +362,11 @@ public unsafe struct Bits
 uint Uint32;
 } PTP_CRB_INTERFACE_IDENTIFIER;
 
-///
-/// InterfaceType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// InterfaceType
+  ///
   public const ulong PTP_INTERFACE_IDENTIFIER_INTERFACE_TYPE_FIFO = 0x0;
   public const ulong PTP_INTERFACE_IDENTIFIER_INTERFACE_TYPE_CRB = 0x1;
   public const ulong PTP_INTERFACE_IDENTIFIER_INTERFACE_TYPE_TIS = 0xF;

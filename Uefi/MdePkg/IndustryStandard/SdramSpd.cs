@@ -13,11 +13,11 @@ namespace Uefi;
 // #include <IndustryStandard/SdramSpdDdr4.h>
 // #include <IndustryStandard/SdramSpdLpDdr.h>
 
-//
-// SDRAM SPD field definitions
-//
 public unsafe partial class EFI
 {
+  //
+  // SDRAM SPD field definitions
+  //
   public const ulong SPD_MEMORY_TYPE = 2;
   public const ulong SPD_SDRAM_ROW_ADDR = 3;
   public const ulong SPD_SDRAM_COL_ADDR = 4;

@@ -18,11 +18,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <Protocol/HiiImage.h>
 
-//
-// Global ID for the Hii Image Ex Protocol.
-//
 public unsafe partial class EFI
 {
+  //
+  // Global ID for the Hii Image Ex Protocol.
+  //
   public static EFI_GUID EFI_HII_IMAGE_EX_PROTOCOL_GUID = new GUID(0x1a1241e6, 0x8f19, 0x41a9, new byte[] { 0xbc, 0xe, 0xe8, 0xef, 0x39, 0xe0, 0x65, 0x46 });
 
   // typedef struct _EFI_HII_IMAGE_EX_PROTOCOL EFI_HII_IMAGE_EX_PROTOCOL;

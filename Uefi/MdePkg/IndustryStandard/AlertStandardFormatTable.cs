@@ -144,11 +144,11 @@ public unsafe struct EFI_ACPI_ASF_ADDR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_ASF_DESCRIPTION_HEADER { EFI_ACPI_DESCRIPTION_HEADER Value; public static implicit operator EFI_ACPI_ASF_DESCRIPTION_HEADER(EFI_ACPI_DESCRIPTION_HEADER value) => new EFI_ACPI_ASF_DESCRIPTION_HEADER() { Value = value }; public static implicit operator EFI_ACPI_DESCRIPTION_HEADER(EFI_ACPI_ASF_DESCRIPTION_HEADER value) => value.Value; }
 
-///
-/// The revision stored in ASF! DESCRIPTION TABLE as BCD value
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The revision stored in ASF! DESCRIPTION TABLE as BCD value
+  ///
   public const ulong EFI_ACPI_2_0_ASF_DESCRIPTION_TABLE_REVISION = 0x20;
 
   ///

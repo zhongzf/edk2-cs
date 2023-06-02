@@ -23,11 +23,11 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-///
-/// LPI Structure Types
-///
 public unsafe partial class EFI
 {
+  ///
+  /// LPI Structure Types
+  ///
   public const ulong ACPI_LPI_STRUCTURE_TYPE_NATIVE_CSTATE = 0x00;
 }
 

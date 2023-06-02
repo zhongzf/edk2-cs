@@ -34,11 +34,11 @@ public unsafe struct EFI_ACPI_DEBUG_PORT_DESCRIPTION_TABLE
 
 // #pragma pack()
 
-//
-// DBGP Revision (defined in spec)
-//
 public unsafe partial class EFI
 {
+  //
+  // DBGP Revision (defined in spec)
+  //
   public const ulong EFI_ACPI_DEBUG_PORT_TABLE_REVISION = 0x01;
 
   //

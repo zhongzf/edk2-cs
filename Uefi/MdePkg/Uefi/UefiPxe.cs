@@ -96,11 +96,11 @@ public const ulong PXE_TRUE = (!PXE_FALSE);
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_OPCODE { PXE_UINT16 Value; public static implicit operator PXE_OPCODE(PXE_UINT16 value) => new PXE_OPCODE() { Value = value }; public static implicit operator PXE_UINT16(PXE_OPCODE value) => value.Value; }
 
-///
-/// Return UNDI operational state.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Return UNDI operational state.
+  ///
   public const ulong PXE_OPCODE_GET_STATE = 0x0000;
 
   ///
@@ -656,11 +656,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_IFNUM { PXE_UINT16 Value; public static implicit operator PXE_IFNUM(PXE_UINT16 value) => new PXE_IFNUM() { Value = value }; public static implicit operator PXE_UINT16(PXE_IFNUM value) => value.Value; }
 
-///
-/// This interface number must be passed to the S/W UNDI Start command.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// This interface number must be passed to the S/W UNDI Start command.
+  ///
   public const ulong PXE_IFNUM_START = 0x0000;
 
   ///
@@ -673,15 +673,15 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_CONTROL { PXE_UINT16 Value; public static implicit operator PXE_CONTROL(PXE_UINT16 value) => new PXE_CONTROL() { Value = value }; public static implicit operator PXE_UINT16(PXE_CONTROL value) => value.Value; }
 
-///
-/// Setting this flag directs the UNDI to queue this command for later
-/// execution if the UNDI is busy and it supports command queuing.
-/// If queuing is not supported, a PXE_STATCODE_INVALID_CONTROL error
-/// is returned.  If the queue is full, a PXE_STATCODE_CDB_QUEUE_FULL
-/// error is returned.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Setting this flag directs the UNDI to queue this command for later
+  /// execution if the UNDI is busy and it supports command queuing.
+  /// If queuing is not supported, a PXE_STATCODE_INVALID_CONTROL error
+  /// is returned.  If the queue is full, a PXE_STATCODE_CDB_QUEUE_FULL
+  /// error is returned.
+  ///
   public const ulong PXE_CONTROL_QUEUE_IF_BUSY = 0x0002;
 
   ///
@@ -726,35 +726,35 @@ public unsafe struct PXE_IFTYPE { PXE_UINT8 Value; public static implicit operat
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_MEDIA_PROTOCOL { ushort Value; public static implicit operator PXE_MEDIA_PROTOCOL(ushort value) => new PXE_MEDIA_PROTOCOL() { Value = value }; public static implicit operator ushort(PXE_MEDIA_PROTOCOL value) => value.Value; }
 
-///
-/// This information is from the ARP section of RFC 1700.
-///
-///     1 Ethernet (10Mb)                                    [JBP]
-///     2 Experimental Ethernet (3Mb)                        [JBP]
-///     3 Amateur Radio AX.25                                [PXK]
-///     4 Proteon ProNET Token Ring                          [JBP]
-///     5 Chaos                                              [GXP]
-///     6 IEEE 802 Networks                                  [JBP]
-///     7 ARCNET                                             [JBP]
-///     8 Hyperchannel                                       [JBP]
-///     9 Lanstar                                             [TU]
-///    10 Autonet Short Address                             [MXB1]
-///    11 LocalTalk                                         [JKR1]
-///    12 LocalNet (IBM* PCNet or SYTEK* LocalNET)           [JXM]
-///    13 Ultra link                                        [RXD2]
-///    14 SMDS                                              [GXC1]
-///    15 Frame Relay                                        [AGM]
-///    16 Asynchronous Transmission Mode (ATM)              [JXB2]
-///    17 HDLC                                               [JBP]
-///    18 Fibre Channel                            [Yakov Rekhter]
-///    19 Asynchronous Transmission Mode (ATM)      [Mark Laubach]
-///    20 Serial Line                                        [JBP]
-///    21 Asynchronous Transmission Mode (ATM)              [MXB1]
-///
-/// * Other names and brands may be claimed as the property of others.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// This information is from the ARP section of RFC 1700.
+  ///
+  ///     1 Ethernet (10Mb)                                    [JBP]
+  ///     2 Experimental Ethernet (3Mb)                        [JBP]
+  ///     3 Amateur Radio AX.25                                [PXK]
+  ///     4 Proteon ProNET Token Ring                          [JBP]
+  ///     5 Chaos                                              [GXP]
+  ///     6 IEEE 802 Networks                                  [JBP]
+  ///     7 ARCNET                                             [JBP]
+  ///     8 Hyperchannel                                       [JBP]
+  ///     9 Lanstar                                             [TU]
+  ///    10 Autonet Short Address                             [MXB1]
+  ///    11 LocalTalk                                         [JKR1]
+  ///    12 LocalNet (IBM* PCNet or SYTEK* LocalNET)           [JXM]
+  ///    13 Ultra link                                        [RXD2]
+  ///    14 SMDS                                              [GXC1]
+  ///    15 Frame Relay                                        [AGM]
+  ///    16 Asynchronous Transmission Mode (ATM)              [JXB2]
+  ///    17 HDLC                                               [JBP]
+  ///    18 Fibre Channel                            [Yakov Rekhter]
+  ///    19 Asynchronous Transmission Mode (ATM)      [Mark Laubach]
+  ///    20 Serial Line                                        [JBP]
+  ///    21 Asynchronous Transmission Mode (ATM)              [MXB1]
+  ///
+  /// * Other names and brands may be claimed as the property of others.
+  ///
   public const ulong PXE_IFTYPE_ETHERNET = 0x01;
   public const ulong PXE_IFTYPE_TOKENRING = 0x04;
   public const ulong PXE_IFTYPE_FIBRE_CHANNEL = 0x12;

@@ -14,11 +14,11 @@ namespace Uefi;
 // #ifndef __EMMC_H__
 // #define __EMMC_H__
 
-//
-// EMMC command index
-//
 public unsafe partial class EFI
 {
+  //
+  // EMMC command index
+  //
   public const ulong EMMC_GO_IDLE_STATE = 0;
   public const ulong EMMC_SEND_OP_COND = 1;
   public const ulong EMMC_ALL_SEND_CID = 2;

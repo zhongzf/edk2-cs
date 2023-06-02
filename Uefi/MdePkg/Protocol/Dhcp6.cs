@@ -132,11 +132,11 @@ public enum EFI_DHCP6_EVENT
   Dhcp6EnterRebinding = 0xa
 }
 
-///
-/// An IA which carries assigned not temporary address.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// An IA which carries assigned not temporary address.
+  ///
   public const ulong EFI_DHCP6_IA_TYPE_NA = 3;
   ///
   /// An IA which carries assigned temporary address.

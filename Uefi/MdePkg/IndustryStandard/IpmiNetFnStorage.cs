@@ -20,12 +20,12 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_STORAGE_H_
 // #define _IPMI_NET_FN_STORAGE_H_
 
-// #pragma pack(1)
-//
-// Net function definition for Storage command
-//
 public unsafe partial class EFI
 {
+  // #pragma pack(1)
+  //
+  // Net function definition for Storage command
+  //
   public const ulong IPMI_NETFN_STORAGE = 0x0A;
 
   //
@@ -59,11 +59,11 @@ public unsafe struct IPMI_GET_FRU_INVENTORY_AREA_INFO_RESPONSE
   public byte AccessType;
 }
 
-//
-//  Definitions for Read Fru Data command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Read Fru Data command
+  //
   public const ulong IPMI_STORAGE_READ_FRU_DATA = 0x11;
 }
 
@@ -100,11 +100,11 @@ public unsafe struct IPMI_READ_FRU_DATA_RESPONSE
   public fixed byte Data[0];
 }
 
-//
-//  Definitions for Write Fru Data command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Write Fru Data command
+  //
   public const ulong IPMI_STORAGE_WRITE_FRU_DATA = 0x12;
 }
 
@@ -137,11 +137,11 @@ public unsafe struct IPMI_WRITE_FRU_DATA_RESPONSE
 //  Below is Definitions for SDR Repository (Chapter 33)
 //
 
-//
-//  Definitions for Get SDR Repository Info command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SDR Repository Info command
+  //
   public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_INFO = 0x20;
 }
 
@@ -175,11 +175,11 @@ public unsafe struct IPMI_GET_SDR_REPOSITORY_INFO_RESPONSE
   IPMI_SDR_OPERATION_SUPPORT OperationSupport;
 }
 
-//
-//  Definitions for Get SDR Repository Allocateion Info command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SDR Repository Allocateion Info command
+  //
   public const ulong IPMI_STORAGE_GET_SDR_REPOSITORY_ALLOCATION_INFO = 0x21;
 
   //
@@ -202,11 +202,11 @@ public unsafe struct IPMI_RESERVE_SDR_REPOSITORY_RESPONSE
   public fixed byte ReservationId[2]; // Reservation ID. LSpublic fixed byte first.
 }
 
-//
-//  Definitions for Get SDR command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SDR command
+  //
   public const ulong IPMI_STORAGE_GET_SDR = 0x23;
 }
 
@@ -461,11 +461,11 @@ public unsafe struct IPMI_GET_SDR_RESPONSE
   IPMI_SENSOR_RECORD_STRUCT RecordData;
 }
 
-//
-//  Definitions for Add SDR command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Add SDR command
+  //
   public const ulong IPMI_STORAGE_ADD_SDR = 0x24;
 
   //
@@ -575,11 +575,11 @@ public unsafe struct IPMI_GET_SEL_INFO_RESPONSE
   public byte OperationSupport;     // Operation Support
 }
 
-//
-//  Definitions for Get SEL Allocation Info command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SEL Allocation Info command
+  //
   public const ulong IPMI_STORAGE_GET_SEL_ALLOCATION_INFO = 0x41;
 
   //
@@ -602,11 +602,11 @@ public unsafe struct IPMI_RESERVE_SEL_RESPONSE
   public fixed byte ReservationId[2]; // Reservation ID. LSpublic fixed byte first.
 }
 
-//
-//  Definitions for Get SEL Entry command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SEL Entry command
+  //
   public const ulong IPMI_STORAGE_GET_SEL_ENTRY = 0x43;
 
   //
@@ -668,11 +668,11 @@ public unsafe struct IPMI_GET_SEL_ENTRY_RESPONSE
   IPMI_SEL_EVENT_RECORD_DATA RecordData;
 }
 
-//
-//  Definitions for Add SEL Entry command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Add SEL Entry command
+  //
   public const ulong IPMI_STORAGE_ADD_SEL_ENTRY = 0x44;
 }
 
@@ -692,11 +692,11 @@ public unsafe struct IPMI_ADD_SEL_ENTRY_RESPONSE
   public ushort RecordId; // Record ID for added record, LS Byte first
 }
 
-//
-//  Definitions for Partial Add SEL Entry command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Partial Add SEL Entry command
+  //
   public const ulong IPMI_STORAGE_PARTIAL_ADD_SEL_ENTRY = 0x45;
 }
 
@@ -720,11 +720,11 @@ public unsafe struct IPMI_PARTIAL_ADD_SEL_ENTRY_RESPONSE
   public ushort RecordId;
 }
 
-//
-//  Definitions for Delete SEL Entry command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Delete SEL Entry command
+  //
   public const ulong IPMI_STORAGE_DELETE_SEL_ENTRY = 0x46;
 }
 
@@ -751,11 +751,11 @@ public unsafe struct IPMI_DELETE_SEL_ENTRY_RESPONSE
   public ushort RecordId; // Record ID added. LS byte first
 }
 
-//
-//  Definitions for Clear SEL command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Clear SEL command
+  //
   public const ulong IPMI_STORAGE_CLEAR_SEL = 0x47;
 
   //
@@ -791,11 +791,11 @@ public unsafe struct IPMI_CLEAR_SEL_RESPONSE
   public byte ErasureProgress;
 }
 
-//
-//  Definitions for Get SEL Time command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SEL Time command
+  //
   public const ulong IPMI_STORAGE_GET_SEL_TIME = 0x48;
 }
 
@@ -809,11 +809,11 @@ public unsafe struct IPMI_GET_SEL_TIME_RESPONSE
   public uint Timestamp; // Present Timestamp clock reading. LS byte first.
 }
 
-//
-//  Definitions for Set SEL Time command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set SEL Time command
+  //
   public const ulong IPMI_STORAGE_SET_SEL_TIME = 0x49;
 }
 
@@ -826,11 +826,11 @@ public unsafe struct IPMI_SET_SEL_TIME_REQUEST
   public uint Timestamp;
 }
 
-//
-//  Definitions for Get Auxillary Log Status command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Auxillary Log Status command
+  //
   public const ulong IPMI_STORAGE_GET_AUXILLARY_LOG_STATUS = 0x5A;
 
   //
@@ -866,11 +866,11 @@ public unsafe struct IPMI_GET_SEL_TIME_UTC_OFFSET_RESPONSE
   public short UtcOffset;
 }
 
-//
-//  Definitions for Set SEL Time UTC Offset command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set SEL Time UTC Offset command
+  //
   public const ulong IPMI_STORAGE_SET_SEL_TIME_UTC_OFFSET = 0x5D;
 
   //

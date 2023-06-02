@@ -17,11 +17,11 @@ namespace Uefi;
 // #ifndef EFI_REDFISH_DISCOVER_PROTOCOL_H_
 // #define EFI_REDFISH_DISCOVER_PROTOCOL_H_
 
-//
-// GUID definitions
-//
 public unsafe partial class EFI
 {
+  //
+  // GUID definitions
+  //
   public static EFI_GUID EFI_REDFISH_DISCOVER_PROTOCOL_GUID = new GUID(
       0x5db12509, 0x4550, 0x4347, new byte[] { 0x96, 0xb3, 0x73, 0xc0, 0xff, 0x6e, 0x86, 0x9f });
 

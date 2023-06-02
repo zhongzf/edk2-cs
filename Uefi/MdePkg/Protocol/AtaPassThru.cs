@@ -32,12 +32,12 @@ public unsafe struct EFI_ATA_PASS_THRU_MODE
   public uint IoAlign;
 }
 
-///
-/// If this bit is set, then the EFI_ATA_PASS_THRU_PROTOCOL interface is for physical
-/// devices on the ATA controller.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// If this bit is set, then the EFI_ATA_PASS_THRU_PROTOCOL interface is for physical
+  /// devices on the ATA controller.
+  ///
   public const ulong EFI_ATA_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
   ///
   /// If this bit is set, then the EFI_ATA_PASS_THRU_PROTOCOL interface is for logical

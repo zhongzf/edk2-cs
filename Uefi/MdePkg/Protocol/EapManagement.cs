@@ -78,12 +78,12 @@ typedef enum _EFI_EAPOL_SUPPLICANT_PAE_STATE
 }
 EFI_EAPOL_SUPPLICANT_PAE_STATE;
 
-///
-/// Definitions for ValidFieldMask
-///
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// Definitions for ValidFieldMask
+  ///
+  ///@{
   public const ulong AUTH_PERIOD_FIELD_VALID = 0x01;
   public const ulong HELD_PERIOD_FIELD_VALID = 0x02;
   public const ulong START_PERIOD_FIELD_VALID = 0x04;

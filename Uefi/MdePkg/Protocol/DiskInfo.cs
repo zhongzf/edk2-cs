@@ -17,11 +17,11 @@ namespace Uefi;
 // #ifndef __DISK_INFO_H__
 // #define __DISK_INFO_H__
 
-///
-/// Global ID for EFI_DISK_INFO_PROTOCOL
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for EFI_DISK_INFO_PROTOCOL
+  ///
   public static EFI_GUID EFI_DISK_INFO_PROTOCOL_GUID = new GUID(
       0xd432a67f, 0x14dc, 0x484b, new byte[] { 0xb3, 0xbb, 0x3f, 0x2, 0x91, 0x84, 0x93, 0x27 });
 

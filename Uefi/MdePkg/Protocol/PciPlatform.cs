@@ -25,11 +25,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 ///
 // #include <Protocol/PciHostBridgeResourceAllocation.h>
 
-///
-/// Global ID for the EFI_PCI_PLATFORM_PROTOCOL.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the EFI_PCI_PLATFORM_PROTOCOL.
+  ///
   public static EFI_GUID EFI_PCI_PLATFORM_PROTOCOL_GUID = new GUID(
       0x7d75280, 0x27d4, 0x4d69, new byte[] { 0x90, 0xd0, 0x56, 0x43, 0xe2, 0x38, 0xb3, 0x41 });
 
@@ -117,12 +117,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PCI_PLATFORM_POLICY { uint Value; public static implicit operator EFI_PCI_PLATFORM_POLICY(uint value) => new EFI_PCI_PLATFORM_POLICY() { Value = value }; public static implicit operator uint(EFI_PCI_PLATFORM_POLICY value) => value.Value; }
 
-///
-/// Does not set aside either ISA or VGA I/O resources during PCI
-/// enumeration.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Does not set aside either ISA or VGA I/O resources during PCI
+  /// enumeration.
+  ///
   public const ulong EFI_RESERVE_NONE_IO_ALIAS = 0x0000;
 
   ///

@@ -18,12 +18,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_UDP4_PROTOCOL_H__
 // #define __EFI_UDP4_PROTOCOL_H__
 
-// #include <Protocol/Ip4.h>
-//
-// GUID definitions
-//
 public unsafe partial class EFI
 {
+  // #include <Protocol/Ip4.h>
+  //
+  // GUID definitions
+  //
   public static EFI_GUID EFI_UDP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
       0x83f01464, 0x99bd, 0x45e5, new byte[] { 0xb3, 0x83, 0xaf, 0x63, 0x05, 0xd8, 0xe9, 0xe6 });
 

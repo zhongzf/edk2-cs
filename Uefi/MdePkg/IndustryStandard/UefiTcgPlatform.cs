@@ -17,11 +17,11 @@ namespace Uefi;
 // #include <IndustryStandard/Tpm20.h>
 // #include <Uefi.h>
 
-//
-// Standard event types
-//
 public unsafe partial class EFI
 {
+  //
+  // Standard event types
+  //
   public const ulong EV_PREBOOT_CERT = ((TCG_EVENTTYPE)0x00000000);
   public const ulong EV_POST_CODE = ((TCG_EVENTTYPE)0x00000001);
   public const ulong EV_NO_ACTION = ((TCG_EVENTTYPE)0x00000003);

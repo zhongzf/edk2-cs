@@ -22,9 +22,9 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // Annex A Algorithm Constants
 
-// Table 205 - Defines for SHA1 Hash Values
 public unsafe partial class EFI
 {
+  // Table 205 - Defines for SHA1 Hash Values
   public const ulong SHA1_DIGEST_SIZE = 20;
   public const ulong SHA1_BLOCK_SIZE = 64;
 
@@ -187,11 +187,11 @@ public unsafe partial class EFI
 // Table 7 - TPM_ALG_ID Constants
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM_ALG_ID { ushort Value; public static implicit operator TPM_ALG_ID(ushort value) => new TPM_ALG_ID() { Value = value }; public static implicit operator ushort(TPM_ALG_ID value) => value.Value; }
-//
-// NOTE: Comment some algo which has same name as TPM1.2 (value is same, so not runtime issue)
-//
 public unsafe partial class EFI
 {
+  //
+  // NOTE: Comment some algo which has same name as TPM1.2 (value is same, so not runtime issue)
+  //
   public const ulong TPM_ALG_ERROR = (TPM_ALG_ID)(0x0000);
   public const ulong TPM_ALG_FIRST = (TPM_ALG_ID)(0x0001);
   public const ulong TPM_ALG_RSA = (TPM_ALG_ID)(0x0001);
@@ -2193,11 +2193,11 @@ public unsafe struct TPM2_RESPONSE_HEADER
 
 // #pragma pack ()
 
-//
-// TCG Algorithm Registry
-//
 public unsafe partial class EFI
 {
+  //
+  // TCG Algorithm Registry
+  //
   public const ulong HASH_ALG_SHA1 = 0x00000001;
   public const ulong HASH_ALG_SHA256 = 0x00000002;
   public const ulong HASH_ALG_SHA384 = 0x00000004;

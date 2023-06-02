@@ -13,11 +13,11 @@ namespace Uefi;
 // #ifndef __DEVICE_PATH_FROM_TEXT_PROTOCOL_H__
 // #define __DEVICE_PATH_FROM_TEXT_PROTOCOL_H__
 
-///
-/// Device Path From Text protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Device Path From Text protocol
+  ///
   public static EFI_GUID EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL_GUID = new GUID(
       0x5c99a21, 0xc70f, 0x4ad2, new byte[] { 0x8a, 0x5f, 0x35, 0xdf, 0x33, 0x43, 0xf5, 0x1e });
 

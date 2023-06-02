@@ -17,11 +17,11 @@ namespace Uefi;
 // #ifndef __DEFERRED_IMAGE_LOAD_H__
 // #define __DEFERRED_IMAGE_LOAD_H__
 
-///
-/// Global ID for the Deferred Image Load Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the Deferred Image Load Protocol
+  ///
   public static EFI_GUID EFI_DEFERRED_IMAGE_LOAD_PROTOCOL_GUID = new GUID(
       0x15853d7c, 0x3ddf, 0x43e0, new byte[] { 0xa1, 0xcb, 0xeb, 0xf8, 0x5b, 0x8f, 0x87, 0x2c });;
 

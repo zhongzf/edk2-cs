@@ -15,13 +15,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __FIRMWARE_VOLUME_BLOCK_H__
 // #define __FIRMWARE_VOLUME_BLOCK_H__
 
-//
-// EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL is defined in PI 1.0 spec and its GUID value
-// is later updated to be the same as that of EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL
-// defined in PI 1.2 spec.
-//
 public unsafe partial class EFI
 {
+  //
+  // EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL is defined in PI 1.0 spec and its GUID value
+  // is later updated to be the same as that of EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL
+  // defined in PI 1.2 spec.
+  //
   public static EFI_GUID EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL_GUID = new GUID(0x8f644fa9, 0xe850, 0x4db1, new byte[] { 0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4 });
 
   public static EFI_GUID EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL_GUID = new GUID(0x8f644fa9, 0xe850, 0x4db1, new byte[] { 0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4 });
@@ -32,11 +32,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL { EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL Value; public static implicit operator EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL(EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL value) => new EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL() { Value = value }; public static implicit operator EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL(EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL value) => value.Value; }
 
-///
-/// EFI_LBA_LIST_TERMINATOR
-///
 public unsafe partial class EFI
 {
+  ///
+  /// EFI_LBA_LIST_TERMINATOR
+  ///
   public const ulong EFI_LBA_LIST_TERMINATOR = 0xFFFFFFFFFFFFFFFF;
 
 }

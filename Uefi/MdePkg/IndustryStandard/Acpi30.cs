@@ -13,11 +13,11 @@ namespace Uefi;
 
 // #include <IndustryStandard/Acpi20.h>
 
-//
-// Define for Descriptor
-//
 public unsafe partial class EFI
 {
+  //
+  // Define for Descriptor
+  //
   public const ulong ACPI_LARGE_EXTENDED_ADDRESS_SPACE_DESCRIPTOR_NAME = 0x0B;
 
   public const ulong ACPI_EXTENDED_ADDRESS_SPACE_DESCRIPTOR = 0x8B;
@@ -50,11 +50,11 @@ public unsafe struct EFI_ACPI_EXTENDED_ADDRESS_SPACE_DESCRIPTOR
 
 // #pragma pack()
 
-//
-// Memory Type Specific Flags
-//
 public unsafe partial class EFI
 {
+  //
+  // Memory Type Specific Flags
+  //
   public const ulong EFI_ACPI_MEMORY_TYPE_SPECIFIC_ATTRIBUTES_UC = 0x0000000000000001;
   public const ulong EFI_ACPI_MEMORY_TYPE_SPECIFIC_ATTRIBUTES_WC = 0x0000000000000002;
   public const ulong EFI_ACPI_MEMORY_TYPE_SPECIFIC_ATTRIBUTES_WT = 0x0000000000000004;
@@ -81,11 +81,11 @@ public unsafe struct EFI_ACPI_3_0_GENERIC_ADDRESS_STRUCTURE
   public ulong Address;
 }
 
-//
-// Generic Address Space Address IDs
-//
 public unsafe partial class EFI
 {
+  //
+  // Generic Address Space Address IDs
+  //
   public const ulong EFI_ACPI_3_0_SYSTEM_MEMORY = 0;
   public const ulong EFI_ACPI_3_0_SYSTEM_IO = 1;
   public const ulong EFI_ACPI_3_0_PCI_CONFIGURATION_SPACE = 2;
@@ -124,11 +124,11 @@ public unsafe struct EFI_ACPI_3_0_ROOT_SYSTEM_DESCRIPTION_POINTER
   public fixed byte Reserved[3];
 }
 
-///
-/// RSD_PTR Revision (as defined in ACPI 3.0b spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RSD_PTR Revision (as defined in ACPI 3.0b spec.)
+  ///
   public const ulong EFI_ACPI_3_0_ROOT_SYSTEM_DESCRIPTION_POINTER_REVISION = 0x02 ///< ACPISpec (Revision 3.0b) says current value is 2;
 }
 
@@ -149,11 +149,11 @@ public unsafe struct EFI_ACPI_3_0_COMMON_HEADER
 // EFI_ACPI_DESCRIPTION_HEADER, followed by a variable number of uint table pointers.
 //
 
-///
-/// RSDT Revision (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RSDT Revision (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_ROOT_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
 
   //
@@ -228,11 +228,11 @@ public unsafe struct EFI_ACPI_3_0_FIXED_ACPI_DESCRIPTION_TABLE
   public EFI_ACPI_3_0_GENERIC_ADDRESS_STRUCTURE XGpe1Blk;
 }
 
-///
-/// FADT Version (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FADT Version (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_FIXED_ACPI_DESCRIPTION_TABLE_REVISION = 0x04;
 
   //
@@ -300,11 +300,11 @@ public unsafe struct EFI_ACPI_3_0_FIRMWARE_ACPI_CONTROL_STRUCTURE
   public fixed byte Reserved[31];
 }
 
-///
-/// FACS Version (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FACS Version (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_FIRMWARE_ACPI_CONTROL_STRUCTURE_VERSION = 0x01;
 
   ///
@@ -336,11 +336,11 @@ public unsafe struct EFI_ACPI_3_0_MULTIPLE_APIC_DESCRIPTION_TABLE_HEADER
   public uint Flags;
 }
 
-///
-/// MADT Revision (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MADT Revision (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_MULTIPLE_APIC_DESCRIPTION_TABLE_REVISION = 0x02;
 
   ///
@@ -382,11 +382,11 @@ public unsafe struct EFI_ACPI_3_0_PROCESSOR_LOCAL_APIC_STRUCTURE
   public uint Flags;
 }
 
-///
-/// Local APIC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Local APIC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_3_0_LOCAL_APIC_ENABLED = BIT0;
 }
 
@@ -437,12 +437,12 @@ public unsafe struct EFI_ACPI_3_0_PLATFORM_INTERRUPT_APIC_STRUCTURE
   public fixed byte Reserved[31];
 }
 
-//
-// MPS INTI flags.
-// All other bits are reserved and must be set to 0.
-//
 public unsafe partial class EFI
 {
+  //
+  // MPS INTI flags.
+  // All other bits are reserved and must be set to 0.
+  //
   public const ulong EFI_ACPI_3_0_POLARITY = (3 << 0);
   public const ulong EFI_ACPI_3_0_TRIGGER_MODE = (3 << 2);
 }
@@ -532,12 +532,12 @@ public unsafe struct EFI_ACPI_3_0_PLATFORM_INTERRUPT_SOURCES_STRUCTURE
   public uint PlatformInterruptSourceFlags;
 }
 
-///
-/// Platform Interrupt Source Flags.
-/// All other bits are reserved and must be set to 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Platform Interrupt Source Flags.
+  /// All other bits are reserved and must be set to 0.
+  ///
   public const ulong EFI_ACPI_3_0_CPEI_PROCESSOR_OVERRIDE = BIT0;
 }
 
@@ -553,11 +553,11 @@ public unsafe struct EFI_ACPI_3_0_SMART_BATTERY_DESCRIPTION_TABLE
   public uint CriticalEnergyLevel;
 }
 
-///
-/// SBST Version (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SBST Version (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_SMART_BATTERY_DESCRIPTION_TABLE_REVISION = 0x01;
 }
 
@@ -576,11 +576,11 @@ public unsafe struct EFI_ACPI_3_0_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE
   public byte GpeBit;
 }
 
-///
-/// ECDT Version (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ECDT Version (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_REVISION = 0x01;
 }
 
@@ -596,11 +596,11 @@ public unsafe struct EFI_ACPI_3_0_SYSTEM_RESOURCE_AFFINITY_TABLE_HEADER
   public ulong Reserved2;
 }
 
-///
-/// SRAT Version (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SRAT Version (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_SYSTEM_RESOURCE_AFFINITY_TABLE_REVISION = 0x02;
 
   //
@@ -628,11 +628,11 @@ public unsafe struct EFI_ACPI_3_0_PROCESSOR_LOCAL_APIC_SAPIC_AFFINITY_STRUCTURE
   public fixed byte Reserved[4];
 }
 
-///
-/// Local APIC/SAPIC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Local APIC/SAPIC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_3_0_PROCESSOR_LOCAL_APIC_SAPIC_ENABLED = (1 << 0);
 }
 
@@ -655,11 +655,11 @@ public unsafe struct EFI_ACPI_3_0_MEMORY_AFFINITY_STRUCTURE
   public ulong Reserved3;
 }
 
-//
-// Memory Flags.  All other bits are reserved and must be 0.
-//
 public unsafe partial class EFI
 {
+  //
+  // Memory Flags.  All other bits are reserved and must be 0.
+  //
   public const ulong EFI_ACPI_3_0_MEMORY_ENABLED = (1 << 0);
   public const ulong EFI_ACPI_3_0_MEMORY_HOT_PLUGGABLE = (1 << 1);
   public const ulong EFI_ACPI_3_0_MEMORY_NONVOLATILE = (1 << 2);
@@ -676,11 +676,11 @@ public unsafe struct EFI_ACPI_3_0_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_HEA
   public ulong NumberOfSystemLocalities;
 }
 
-///
-/// SLIT Version (as defined in ACPI 3.0 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SLIT Version (as defined in ACPI 3.0 spec.)
+  ///
   public const ulong EFI_ACPI_3_0_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_REVISION = 0x01;
 
   //

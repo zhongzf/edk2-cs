@@ -9,11 +9,11 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_GROUP_EXTENSION_H_
 // #define _IPMI_NET_FN_GROUP_EXTENSION_H_
 
-//
-// Net function definition for Group Extension command
-//
 public unsafe partial class EFI
 {
+  //
+  // Net function definition for Group Extension command
+  //
   public const ulong IPMI_NETFN_GROUP_EXT = 0x2C;
 
   //

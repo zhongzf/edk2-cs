@@ -26,11 +26,11 @@ public unsafe struct EFI_ACPI_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_HEADER
   public EFI_ACPI_DESCRIPTION_HEADER Header;
 }
 
-///
-/// APMT Revision (as defined in DEN0117.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// APMT Revision (as defined in DEN0117.)
+  ///
   public const ulong EFI_ACPI_ARM_PERFORMANCE_MONITORING_UNIT_TABLE_REVISION = 0x00;
 
   ///

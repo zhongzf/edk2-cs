@@ -62,14 +62,14 @@ public enum EFI_STOP_BITS_TYPE
   TwoStopBits
 }
 
-//
-// define for Control bits, grouped by read only, write only, and read write
-//
-//
-// Read Only
-//
 public unsafe partial class EFI
 {
+  //
+  // define for Control bits, grouped by read only, write only, and read write
+  //
+  //
+  // Read Only
+  //
   public const ulong EFI_SERIAL_CLEAR_TO_SEND = 0x00000010;
   public const ulong EFI_SERIAL_DATA_SET_READY = 0x00000020;
   public const ulong EFI_SERIAL_RING_INDICATE = 0x00000040;

@@ -73,11 +73,11 @@ namespace Uefi;
 // #ifndef _INCOMPATIBLE_PCI_DEVICE_SUPPORT_H_
 // #define _INCOMPATIBLE_PCI_DEVICE_SUPPORT_H_
 
-///
-/// Global ID for EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL
+  ///
   public static EFI_GUID EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL_GUID = new GUID(
       0xeb23f55a, 0x7863, 0x4ac2, new byte[] { 0x8d, 0x3d, 0x95, 0x65, 0x35, 0xde, 0x03, 0x75 });
 

@@ -37,11 +37,11 @@ public unsafe struct EFI_CC_VERSION
   public byte Minor;
 }
 
-//
-// EFI_CC Type/SubType definition
-//
 public unsafe partial class EFI
 {
+  //
+  // EFI_CC Type/SubType definition
+  //
   public const ulong EFI_CC_TYPE_NONE = 0;
   public const ulong EFI_CC_TYPE_SEV = 1;
   public const ulong EFI_CC_TYPE_TDX = 2;
@@ -63,11 +63,11 @@ public unsafe struct EFI_CC_EVENT_ALGORITHM_BITMAP { uint Value; public static i
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_MR_INDEX { uint Value; public static implicit operator EFI_CC_MR_INDEX(uint value) => new EFI_CC_MR_INDEX() { Value = value }; public static implicit operator uint(EFI_CC_MR_INDEX value) => value.Value; }
 
-//
-// Intel TDX measure register index
-//
 public unsafe partial class EFI
 {
+  //
+  // Intel TDX measure register index
+  //
   public const ulong TDX_MR_INDEX_MRTD = 0;
   public const ulong TDX_MR_INDEX_RTMR0 = 1;
   public const ulong TDX_MR_INDEX_RTMR1 = 2;
@@ -319,11 +319,11 @@ public unsafe struct EFI_CC_EVENTLOG_ACPI_TABLE
 
 // #pragma pack()
 
-//
-// Define the signature and revision of CC Measurement EventLog ACPI Table
-//
 public unsafe partial class EFI
 {
+  //
+  // Define the signature and revision of CC Measurement EventLog ACPI Table
+  //
   public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
   public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
 }

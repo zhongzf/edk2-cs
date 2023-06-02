@@ -23,12 +23,12 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-///
-/// Smbios-related definitions from PLDM for SMBIOS Transfer
-/// Specification (DMTF DSP0246)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Smbios-related definitions from PLDM for SMBIOS Transfer
+  /// Specification (DMTF DSP0246)
+  ///
   public const ulong PLDM_GET_SMBIOS_STRUCTURE_TABLE_METADATA_COMMAND_CODE = 0x01;
   public const ulong PLDM_SET_SMBIOS_STRUCTURE_TABLE_METADATA_COMMAND_CODE = 0x02;
   public const ulong PLDM_GET_SMBIOS_STRUCTURE_TABLE_COMMAND_CODE = 0x03;

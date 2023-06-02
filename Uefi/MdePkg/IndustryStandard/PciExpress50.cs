@@ -18,12 +18,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #pragma pack(1)
 
-/// The Physical Layer PCI Express Extended Capability definitions.
-///
-/// Based on section 7.7.6 of PCI Express Base Specification 5.0.
-///@{
 public unsafe partial class EFI
 {
+  /// The Physical Layer PCI Express Extended Capability definitions.
+  ///
+  /// Based on section 7.7.6 of PCI Express Base Specification 5.0.
+  ///@{
   public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_PHYSICAL_LAYER_32_0_ID = 0x002A;
   public const ulong PCI_EXPRESS_EXTENDED_CAPABILITY_PHYSICAL_LAYER_32_0_VER1 = 0x1;
 

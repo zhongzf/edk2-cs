@@ -13,11 +13,11 @@ namespace Uefi;
 // #ifndef __ARCH_PROTOCOL_WATCHDOG_TIMER_H__
 // #define __ARCH_PROTOCOL_WATCHDOG_TIMER_H__
 
-///
-/// Global ID for the Watchdog Timer Architectural Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the Watchdog Timer Architectural Protocol
+  ///
   public static EFI_GUID EFI_WATCHDOG_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x665E3FF5, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
 
   ///

@@ -17,11 +17,11 @@ namespace Uefi;
 // #ifndef _EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL_H_
 // #define _EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL_H_
 
-///
-/// Global ID for the Bus Specific Driver Override Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the Bus Specific Driver Override Protocol
+  ///
   public static EFI_GUID EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL_GUID = new GUID(
       0x3bc1b285, 0x8a15, 0x4a82, new byte[] { 0xaa, 0xbf, 0x4d, 0x7d, 0x13, 0xfb, 0x32, 0x65 });
 

@@ -17,13 +17,13 @@ namespace Uefi;
 
 // #include <Protocol/WiFi2.h>
 
-///
-/// The EFI Supplicant Service Binding Protocol is used to locate EFI
-/// Supplicant Protocol drivers to create and destroy child of the driver to
-/// communicate with other host using Supplicant protocol.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The EFI Supplicant Service Binding Protocol is used to locate EFI
+  /// Supplicant Protocol drivers to create and destroy child of the driver to
+  /// communicate with other host using Supplicant protocol.
+  ///
   public static EFI_GUID EFI_SUPPLICANT_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
       0x45bcd98e, 0x59ad, 0x4174, new byte[] { 0x95, 0x46, 0x34, 0x4a, 0x7, 0x48, 0x58, 0x98 });
 

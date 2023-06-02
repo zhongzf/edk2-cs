@@ -21,11 +21,11 @@ namespace Uefi;
 //
 // #pragma pack(1)
 
-///
-/// SPCR Revision (defined in spec)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SPCR Revision (defined in spec)
+  ///
   public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_REVISION = 0x02;
 }
 
@@ -68,11 +68,11 @@ public unsafe struct EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE
 // Interface Type
 //
 
-///
-/// Full 16550 interface
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Full 16550 interface
+  ///
   public const ulong EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_16550 = 0;
   ///
   /// Full 16450 interface

@@ -32,12 +32,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FV_ATTRIBUTES { ulong Value; public static implicit operator EFI_FV_ATTRIBUTES(ulong value) => new EFI_FV_ATTRIBUTES() { Value = value }; public static implicit operator ulong(EFI_FV_ATTRIBUTES value) => value.Value; }
 
-//
-// EFI_FV_ATTRIBUTES bit definitions
-//
-// EFI_FV_ATTRIBUTES bit semantics
 public unsafe partial class EFI
 {
+  //
+  // EFI_FV_ATTRIBUTES bit definitions
+  //
+  // EFI_FV_ATTRIBUTES bit semantics
   public const ulong EFI_FV2_READ_DISABLE_CAP = 0x0000000000000001;
   public const ulong EFI_FV2_READ_ENABLE_CAP = 0x0000000000000002;
   public const ulong EFI_FV2_READ_STATUS = 0x0000000000000004;

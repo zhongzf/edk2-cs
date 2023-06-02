@@ -14,11 +14,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_RNG_PROTOCOL_H__
 // #define __EFI_RNG_PROTOCOL_H__
 
-///
-/// Global ID for the Random Number Generator Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the Random Number Generator Protocol
+  ///
   public static EFI_GUID EFI_RNG_PROTOCOL_GUID = new GUID(
       0x3152bca5, 0xeade, 0x433d, new byte[] { 0x86, 0x2e, 0xc0, 0x1c, 0xdc, 0x29, 0x1f, 0x44 });
 
@@ -34,13 +34,13 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RNG_ALGORITHM { EFI_GUID Value; public static implicit operator EFI_RNG_ALGORITHM(EFI_GUID value) => new EFI_RNG_ALGORITHM() { Value = value }; public static implicit operator EFI_GUID(EFI_RNG_ALGORITHM value) => value.Value; }
 
-///
-/// The algorithms corresponds to SP800-90 as defined in
-/// NIST SP 800-90, "Recommendation for Random Number Generation Using Deterministic Random
-/// Bit Generators", March 2007.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The algorithms corresponds to SP800-90 as defined in
+  /// NIST SP 800-90, "Recommendation for Random Number Generation Using Deterministic Random
+  /// Bit Generators", March 2007.
+  ///
   public static EFI_GUID EFI_RNG_ALGORITHM_SP800_90_HASH_256_GUID = new GUID(
       0xa7af67cb, 0x603b, 0x4d42, new byte[] { 0xba, 0x21, 0x70, 0xbf, 0xb6, 0x29, 0x3f, 0x96 });
   public static EFI_GUID EFI_RNG_ALGORITHM_SP800_90_HMAC_256_GUID = new GUID(

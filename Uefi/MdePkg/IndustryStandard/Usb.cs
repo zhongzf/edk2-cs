@@ -16,11 +16,11 @@ namespace Uefi;
 // Subset of Class and Subclass definitions from USB Specs
 //
 
-//
-// Usb mass storage class code
-//
 public unsafe partial class EFI
 {
+  //
+  // Usb mass storage class code
+  //
   public const ulong USB_MASS_STORE_CLASS = 0x08;
 
   //
@@ -261,11 +261,11 @@ public enum USB_TYPES_DEFINITION
 // for Human Interface Devices (HID) rev1.11
 //
 
-//
-// HID standard GET_DESCRIPTOR request.
-//
 public unsafe partial class EFI
 {
+  //
+  // HID standard GET_DESCRIPTOR request.
+  //
   public const ulong USB_HID_GET_DESCRIPTOR_REQ_TYPE = 0x81;
 
   //

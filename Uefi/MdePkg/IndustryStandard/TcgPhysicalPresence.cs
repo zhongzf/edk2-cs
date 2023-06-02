@@ -10,11 +10,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef _TCG_PHYSICAL_PRESENCE_H_
 // #define _TCG_PHYSICAL_PRESENCE_H_
 
-//
-// TCG PP definition for physical presence ACPI function
-//
 public unsafe partial class EFI
 {
+  //
+  // TCG PP definition for physical presence ACPI function
+  //
   public const ulong TCG_ACPI_FUNCTION_GET_PHYSICAL_PRESENCE_INTERFACE_VERSION = 1;
   public const ulong TCG_ACPI_FUNCTION_SUBMIT_REQUEST_TO_BIOS = 2;
   public const ulong TCG_ACPI_FUNCTION_GET_PENDING_REQUEST_BY_OS = 3;

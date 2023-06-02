@@ -13,11 +13,11 @@ namespace Uefi;
 // #ifndef __PCI_IO_H__
 // #define __PCI_IO_H__
 
-///
-/// Global ID for the PCI I/O Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the PCI I/O Protocol
+  ///
   public static EFI_GUID EFI_PCI_IO_PROTOCOL_GUID = new GUID(
       0x4cf5b200, 0x68b8, 0x4ca5, new byte[] { 0x9e, 0xec, 0xb2, 0x3e, 0x3f, 0x50, 0x2, 0x9a });
 
@@ -46,11 +46,11 @@ public enum EFI_PCI_IO_PROTOCOL_WIDTH
   EfiPciIoWidthMaximum
 }
 
-//
-// Complete PCI address generater
-//
 public unsafe partial class EFI
 {
+  //
+  // Complete PCI address generater
+  //
   public const ulong EFI_PCI_IO_PASS_THROUGH_BAR = 0xff    ///< Special BAR that passes a memory or I/O cycle through unchanged;
 public const ulong EFI_PCI_IO_ATTRIBUTE_MASK = 0x077f  ///< All the following I/O and Memory cycles;
 public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_MOTHERBOARD_IO = 0x0001  ///< I/O cycles 0x0000-0x00FF (10 bit decode);

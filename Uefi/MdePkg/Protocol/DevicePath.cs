@@ -20,11 +20,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #include <IndustryStandard/Bluetooth.h>
 // #include <IndustryStandard/Acpi60.h>
 
-///
-/// Device Path protocol.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Device Path protocol.
+  ///
   public static EFI_GUID EFI_DEVICE_PATH_PROTOCOL_GUID = new GUID(
       0x9576e91, 0x6d3f, 0x11d2, new byte[] { 0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 
@@ -69,11 +69,11 @@ public unsafe struct EFI_DEVICE_PATH_PROTOCOL
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DEVICE_PATH { EFI_DEVICE_PATH_PROTOCOL Value; public static implicit operator EFI_DEVICE_PATH(EFI_DEVICE_PATH_PROTOCOL value) => new EFI_DEVICE_PATH() { Value = value }; public static implicit operator EFI_DEVICE_PATH_PROTOCOL(EFI_DEVICE_PATH value) => value.Value; }
 
-///
-/// Hardware Device Paths.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Hardware Device Paths.
+  ///
   public const ulong HARDWARE_DEVICE_PATH = 0x01;
 
   ///
@@ -99,11 +99,11 @@ public unsafe struct PCI_DEVICE_PATH
   public byte Device;
 }
 
-///
-/// PCCARD Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PCCARD Device Path SubType.
+  ///
   public const ulong HW_PCCARD_DP = 0x02;
 }
 
@@ -120,11 +120,11 @@ public unsafe struct PCCARD_DEVICE_PATH
   public byte FunctionNumber;
 }
 
-///
-/// Memory Mapped Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Memory Mapped Device Path SubType.
+  ///
   public const ulong HW_MEMMAP_DP = 0x03;
 }
 
@@ -149,11 +149,11 @@ public unsafe struct MEMMAP_DEVICE_PATH
   public EFI_PHYSICAL_ADDRESS EndingAddress;
 }
 
-///
-/// Hardware Vendor Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Hardware Vendor Device Path SubType.
+  ///
   public const ulong HW_VENDOR_DP = 0x04;
 }
 
@@ -175,11 +175,11 @@ public unsafe struct VENDOR_DEVICE_PATH
   ///
 }
 
-///
-/// Controller Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Controller Device Path SubType.
+  ///
   public const ulong HW_CONTROLLER_DP = 0x05;
 }
 
@@ -196,11 +196,11 @@ public unsafe struct CONTROLLER_DEVICE_PATH
   public uint ControllerNumber;
 }
 
-///
-/// BMC Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// BMC Device Path SubType.
+  ///
   public const ulong HW_BMC_DP = 0x06;
 }
 
@@ -221,11 +221,11 @@ public unsafe struct BMC_DEVICE_PATH
   public fixed byte BaseAddress[8];
 }
 
-///
-/// ACPI Device Paths.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ACPI Device Paths.
+  ///
   public const ulong ACPI_DEVICE_PATH = 0x02;
 }
 
@@ -253,11 +253,11 @@ public unsafe struct ACPI_HID_DEVICE_PATH
   public uint UID;
 }
 
-///
-/// Expanded ACPI Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Expanded ACPI Device Path SubType.
+  ///
   public const ulong ACPI_EXTENDED_DP = 0x02;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -290,15 +290,15 @@ public unsafe struct ACPI_EXTENDED_HID_DEVICE_PATH
   ///
 }
 
-//
-//  EISA ID Macro
-//  EISA ID Definition 32-bits
-//   bits[15:0] - three character compressed ASCII EISA ID.
-//   bits[31:16] - binary number
-//    Compressed ASCII is 5 bits per character 0b00001 = 'A' 0b11010 = 'Z'
-//
 public unsafe partial class EFI
 {
+  //
+  //  EISA ID Macro
+  //  EISA ID Definition 32-bits
+  //   bits[15:0] - three character compressed ASCII EISA ID.
+  //   bits[31:16] - binary number
+  //    Compressed ASCII is 5 bits per character 0b00001 = 'A' 0b11010 = 'Z'
+  //
   public const ulong PNP_EISA_ID_CONST = 0x41d0;
   public const ulong EISA_ID = (_Name, _Num)((uint)((_Name) | (_Num) << 16));
   public const ulong EISA_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
@@ -333,11 +333,11 @@ public unsafe struct ACPI_ADR_DEVICE_PATH
   //
 }
 
-///
-/// ACPI NVDIMM Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ACPI NVDIMM Device Path SubType.
+  ///
   public const ulong ACPI_NVDIMM_DP = 0x04;
   ///
   ///
@@ -402,11 +402,11 @@ public unsafe struct ATAPI_DEVICE_PATH
   public ushort Lun;
 }
 
-///
-/// SCSI Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SCSI Device Path SubType.
+  ///
   public const ulong MSG_SCSI_DP = 0x02;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -423,11 +423,11 @@ public unsafe struct SCSI_DEVICE_PATH
   public ushort Lun;
 }
 
-///
-/// Fibre Channel SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Fibre Channel SubType.
+  ///
   public const ulong MSG_FIBRECHANNEL_DP = 0x03;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -448,11 +448,11 @@ public unsafe struct FIBRECHANNEL_DEVICE_PATH
   public ulong Lun;
 }
 
-///
-/// Fibre Channel Ex SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Fibre Channel Ex SubType.
+  ///
   public const ulong MSG_FIBRECHANNELEX_DP = 0x15;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -473,11 +473,11 @@ public unsafe struct FIBRECHANNELEX_DEVICE_PATH
   public fixed byte Lun[8];
 }
 
-///
-/// 1394 Device Path SubType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// 1394 Device Path SubType
+  ///
   public const ulong MSG_1394_DP = 0x04;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -494,11 +494,11 @@ public unsafe struct F1394_DEVICE_PATH
   public ulong Guid;
 }
 
-///
-/// USB Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// USB Device Path SubType.
+  ///
   public const ulong MSG_USB_DP = 0x05;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -515,11 +515,11 @@ public unsafe struct USB_DEVICE_PATH
   public byte InterfaceNumber;
 }
 
-///
-/// USB Class Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// USB Class Device Path SubType.
+  ///
   public const ulong MSG_USB_CLASS_DP = 0x0f;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -553,11 +553,11 @@ public unsafe struct USB_CLASS_DEVICE_PATH
   public byte DeviceProtocol;
 }
 
-///
-/// USB WWID Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// USB WWID Device Path SubType.
+  ///
   public const ulong MSG_USB_WWID_DP = 0x10;
 }
 
@@ -589,11 +589,11 @@ public unsafe struct USB_WWID_DEVICE_PATH
   /// char                     SerialNumber[...];
 }
 
-///
-/// Device Logical Unit SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Device Logical Unit SubType.
+  ///
   public const ulong MSG_DEVICE_LOGICAL_UNIT_DP = 0x11;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -606,11 +606,11 @@ public unsafe struct DEVICE_LOGICAL_UNIT_DEVICE_PATH
   public byte Lun;
 }
 
-///
-/// SATA Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SATA Device Path SubType.
+  ///
   public const ulong MSG_SATA_DP = 0x12;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -634,11 +634,11 @@ public unsafe struct SATA_DEVICE_PATH
   public ushort Lun;
 }
 
-///
-/// Flag for if the device is directly connected to the HBA.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Flag for if the device is directly connected to the HBA.
+  ///
   public const ulong SATA_HBA_DIRECT_CONNECT_FLAG = 0x8000;
 }
 
@@ -656,11 +656,11 @@ public unsafe struct I2O_DEVICE_PATH
   public uint Tid;
 }
 
-///
-/// MAC Address Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MAC Address Device Path SubType.
+  ///
   public const ulong MSG_MAC_ADDR_DP = 0x0b;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -677,11 +677,11 @@ public unsafe struct MAC_ADDR_DEVICE_PATH
   public byte IfType;
 }
 
-///
-/// IPv4 Device Path SubType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// IPv4 Device Path SubType
+  ///
   public const ulong MSG_IPv4_DP = 0x0c;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -723,11 +723,11 @@ public unsafe struct IPv4_DEVICE_PATH
   public EFI_IPv4_ADDRESS SubnetMask;
 }
 
-///
-/// IPv6 Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// IPv6 Device Path SubType.
+  ///
   public const ulong MSG_IPv6_DP = 0x0d;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -772,11 +772,11 @@ public unsafe struct IPv6_DEVICE_PATH
   public EFI_IPv6_ADDRESS GatewayIpAddress;
 }
 
-///
-/// InfiniBand Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// InfiniBand Device Path SubType.
+  ///
   public const ulong MSG_INFINIBAND_DP = 0x09;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -863,11 +863,11 @@ public unsafe struct UART_DEVICE_PATH
   public byte StopBits;
 }
 
-///
-/// NVDIMM Namespace Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// NVDIMM Namespace Device Path SubType.
+  ///
   public const ulong NVDIMM_NAMESPACE_DP = 0x20;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -880,11 +880,11 @@ public unsafe struct NVDIMM_NAMESPACE_DEVICE_PATH
   public EFI_GUID Uuid;
 }
 
-//
-// Use VENDOR_DEVICE_PATH struct
-//
 public unsafe partial class EFI
 {
+  //
+  // Use VENDOR_DEVICE_PATH struct
+  //
   public const ulong MSG_VENDOR_DP = 0x0a;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -959,11 +959,11 @@ public unsafe struct SAS_DEVICE_PATH
   public ushort RelativeTargetPort;
 }
 
-///
-/// Serial Attached SCSI (SAS) Ex Device Path SubType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Serial Attached SCSI (SAS) Ex Device Path SubType
+  ///
   public const ulong MSG_SASEX_DP = 0x16;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -988,11 +988,11 @@ public unsafe struct SASEX_DEVICE_PATH
   public ushort RelativeTargetPort;
 }
 
-///
-/// NvmExpress Namespace Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// NvmExpress Namespace Device Path SubType.
+  ///
   public const ulong MSG_NVME_NAMESPACE_DP = 0x17;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1003,11 +1003,11 @@ public unsafe struct NVME_NAMESPACE_DEVICE_PATH
   public ulong NamespaceUuid;
 }
 
-///
-/// DNS Device Path SubType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// DNS Device Path SubType
+  ///
   public const ulong MSG_DNS_DP = 0x1F;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1024,11 +1024,11 @@ public unsafe struct DNS_DEVICE_PATH
   public fixed EFI_IP_ADDRESS DnsServerIp[];
 }
 
-///
-/// Uniform Resource Identifiers (URI) Device Path SubType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Uniform Resource Identifiers (URI) Device Path SubType
+  ///
   public const ulong MSG_URI_DP = 0x18;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1041,11 +1041,11 @@ public unsafe struct URI_DEVICE_PATH
   public fixed byte Uri[];
 }
 
-///
-/// Universal Flash Storage (UFS) Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Universal Flash Storage (UFS) Device Path SubType.
+  ///
   public const ulong MSG_UFS_DP = 0x19;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1062,11 +1062,11 @@ public unsafe struct UFS_DEVICE_PATH
   public byte Lun;
 }
 
-///
-/// SD (Secure Digital) Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SD (Secure Digital) Device Path SubType.
+  ///
   public const ulong MSG_SD_DP = 0x1A;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1076,11 +1076,11 @@ public unsafe struct SD_DEVICE_PATH
   public byte SlotNumber;
 }
 
-///
-/// EMMC (Embedded MMC) Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// EMMC (Embedded MMC) Device Path SubType.
+  ///
   public const ulong MSG_EMMC_DP = 0x1D;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1090,11 +1090,11 @@ public unsafe struct EMMC_DEVICE_PATH
   public byte SlotNumber;
 }
 
-///
-/// iSCSI Device Path SubType
-///
 public unsafe partial class EFI
 {
+  ///
+  /// iSCSI Device Path SubType
+  ///
   public const ulong MSG_ISCSI_DP = 0x13;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1151,11 +1151,11 @@ public unsafe struct VLAN_DEVICE_PATH
   public ushort VlanId;
 }
 
-///
-/// Bluetooth Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Bluetooth Device Path SubType.
+  ///
   public const ulong MSG_BLUETOOTH_DP = 0x1b;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1168,11 +1168,11 @@ public unsafe struct BLUETOOTH_DEVICE_PATH
   public BLUETOOTH_ADDRESS BD_ADDR;
 }
 
-///
-/// Wi-Fi Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Wi-Fi Device Path SubType.
+  ///
   public const ulong MSG_WIFI_DP = 0x1C;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1185,11 +1185,11 @@ public unsafe struct WIFI_DEVICE_PATH
   public fixed byte SSId[32];
 }
 
-///
-/// Bluetooth LE Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Bluetooth LE Device Path SubType.
+  ///
   public const ulong MSG_BLUETOOTH_LE_DP = 0x1E;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1199,11 +1199,11 @@ public unsafe struct BLUETOOTH_LE_DEVICE_PATH
   public BLUETOOTH_LE_ADDRESS Address;
 }
 
-//
-// Media Device Path
-//
 public unsafe partial class EFI
 {
+  //
+  // Media Device Path
+  //
   public const ulong MEDIA_DEVICE_PATH = 0x04;
 
   ///
@@ -1293,11 +1293,11 @@ public unsafe struct CDROM_DEVICE_PATH
   public ulong PartitionSize;
 }
 
-//
-// Use VENDOR_DEVICE_PATH struct
-//
 public unsafe partial class EFI
 {
+  //
+  // Use VENDOR_DEVICE_PATH struct
+  //
   public const ulong MEDIA_VENDOR_DP = 0x03           ///< Media vendor device path subtype.;
 }
 
@@ -1340,11 +1340,11 @@ public unsafe struct MEDIA_PROTOCOL_DEVICE_PATH
   public EFI_GUID Protocol;
 }
 
-///
-/// PIWG Firmware File SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PIWG Firmware File SubType.
+  ///
   public const ulong MEDIA_PIWG_FW_FILE_DP = 0x06;
 }
 
@@ -1361,11 +1361,11 @@ public unsafe struct MEDIA_FW_VOL_FILEPATH_DEVICE_PATH
   public EFI_GUID FvFileName;
 }
 
-///
-/// PIWG Firmware Volume Device Path SubType.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PIWG Firmware Volume Device Path SubType.
+  ///
   public const ulong MEDIA_PIWG_FW_VOL_DP = 0x07;
 }
 
@@ -1382,11 +1382,11 @@ public unsafe struct MEDIA_FW_VOL_DEVICE_PATH
   public EFI_GUID FvName;
 }
 
-///
-/// Media relative offset range device path.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Media relative offset range device path.
+  ///
   public const ulong MEDIA_RELATIVE_OFFSET_RANGE_DP = 0x08;
 }
 
@@ -1402,11 +1402,11 @@ public unsafe struct MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH
   public ulong EndingOffset;
 }
 
-///
-/// This GUID defines a RAM Disk supporting a raw disk format in volatile memory.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// This GUID defines a RAM Disk supporting a raw disk format in volatile memory.
+  ///
   public const ulong EFI_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE;
 
   // extern  EFI_GUID  gEfiVirtualDiskGuid;
@@ -1463,11 +1463,11 @@ public unsafe struct MEDIA_RAM_DISK_DEVICE_PATH
   public ushort Instance;
 }
 
-///
-/// BIOS Boot Specification Device Path.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// BIOS Boot Specification Device Path.
+  ///
   public const ulong BBS_DEVICE_PATH = 0x05;
 
   ///
@@ -1497,11 +1497,11 @@ public unsafe struct BBS_BBS_DEVICE_PATH
   public fixed byte String[1];
 }
 
-//
-// DeviceType definitions - from BBS specification
-//
 public unsafe partial class EFI
 {
+  //
+  // DeviceType definitions - from BBS specification
+  //
   public const ulong BBS_TYPE_FLOPPY = 0x01;
   public const ulong BBS_TYPE_HARDDRIVE = 0x02;
   public const ulong BBS_TYPE_CDROM = 0x03;

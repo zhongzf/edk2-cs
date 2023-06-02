@@ -23,12 +23,12 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_APP_H_
 // #define _IPMI_NET_FN_APP_H_
 
-// #pragma pack(1)
-//
-// Net function definition for App command
-//
 public unsafe partial class EFI
 {
+  // #pragma pack(1)
+  //
+  // Net function definition for App command
+  //
   public const ulong IPMI_NETFN_APP = 0x06;
 
   //
@@ -96,11 +96,11 @@ public unsafe struct IPMI_GET_DEVICE_ID_RESPONSE
   public uint AuxFirmwareRevInfo;
 }
 
-//
-//  Definitions for Cold Reset command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Cold Reset command
+  //
   public const ulong IPMI_APP_COLD_RESET = 0x2;
 
   //
@@ -220,11 +220,11 @@ public unsafe struct IPMI_SET_ACPI_POWER_STATE_REQUEST
   IPMI_ACPI_POWER_STATE DevicePowerState;
 }
 
-//
-//  Definitions for Get ACPI Power State command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get ACPI Power State command
+  //
   public const ulong IPMI_APP_GET_ACPI_POWERSTATE = 0x7;
 
   //
@@ -254,11 +254,11 @@ public unsafe struct IPMI_GET_DEVICE_GUID_RESPONSE
 //  Below is Definitions for BMC Watchdog Timer Commands (Chapter 27)
 //
 
-//
-//  Definitions for Reset WatchDog Timer command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Reset WatchDog Timer command
+  //
   public const ulong IPMI_APP_RESET_WATCHDOG_TIMER = 0x22;
 
   //
@@ -295,11 +295,11 @@ public unsafe struct Bits
 byte Uint8;
 } IPMI_WATCHDOG_TIMER_USE;
 
-//
-//  Definitions for watchdog timeout action
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for watchdog timeout action
+  //
   public const ulong IPMI_WATCHDOG_TIMER_ACTION_NO_ACTION = 0x0;
   public const ulong IPMI_WATCHDOG_TIMER_ACTION_HARD_RESET = 0x1;
   public const ulong IPMI_WATCHDOG_TIMER_ACTION_POWER_DONW = 0x2;
@@ -329,11 +329,11 @@ public unsafe struct Bits
 byte Uint8;
 } IPMI_WATCHDOG_TIMER_ACTIONS;
 
-//
-//  Bit definitions for Timer use expiration flags
-//
 public unsafe partial class EFI
 {
+  //
+  //  Bit definitions for Timer use expiration flags
+  //
   public const ulong IPMI_WATCHDOG_TIMER_EXPIRATION_FLAG_BIOS_FRB2 = BIT1;
   public const ulong IPMI_WATCHDOG_TIMER_EXPIRATION_FLAG_BIOS_POST = BIT2;
   public const ulong IPMI_WATCHDOG_TIMER_EXPIRATION_FLAG_OS_LOAD = BIT3;
@@ -351,11 +351,11 @@ public unsafe struct IPMI_SET_WATCHDOG_TIMER_REQUEST
   public ushort InitialCountdownValue;
 }
 
-//
-//  Definitions for Get WatchDog Timer command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get WatchDog Timer command
+  //
   public const ulong IPMI_APP_GET_WATCHDOG_TIMER = 0x25;
 }
 
@@ -378,11 +378,11 @@ public unsafe struct IPMI_GET_WATCHDOG_TIMER_RESPONSE
 //  Below is Definitions for IPMI Messaging Support Commands (Chapter 22)
 //
 
-//
-//  Definitions for Set BMC Global Enables command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set BMC Global Enables command
+  //
   public const ulong IPMI_APP_SET_BMC_GLOBAL_ENABLES = 0x2E;
 }
 
@@ -411,11 +411,11 @@ public unsafe struct IPMI_SET_BMC_GLOBAL_ENABLES_REQUEST
   IPMI_BMC_GLOBAL_ENABLES SetEnables;
 }
 
-//
-//  Definitions for Get BMC Global Enables command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get BMC Global Enables command
+  //
   public const ulong IPMI_APP_GET_BMC_GLOBAL_ENABLES = 0x2F;
 }
 
@@ -429,11 +429,11 @@ public unsafe struct IPMI_GET_BMC_GLOBAL_ENABLES_RESPONSE
   IPMI_BMC_GLOBAL_ENABLES GetEnables;
 }
 
-//
-//  Definitions for Clear Message Flags command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Clear Message Flags command
+  //
   public const ulong IPMI_APP_CLEAR_MESSAGE_FLAGS = 0x30;
 }
 
@@ -462,11 +462,11 @@ public unsafe struct IPMI_CLEAR_MESSAGE_FLAGS_REQUEST
   IPMI_MESSAGE_FLAGS ClearFlags;
 }
 
-//
-//  Definitions for Get Message Flags command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Message Flags command
+  //
   public const ulong IPMI_APP_GET_MESSAGE_FLAGS = 0x31;
 }
 
@@ -480,11 +480,11 @@ public unsafe struct IPMI_GET_MESSAGE_FLAGS_RESPONSE
   IPMI_MESSAGE_FLAGS GetFlags;
 }
 
-//
-//  Definitions for Enable Message Channel Receive command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Enable Message Channel Receive command
+  //
   public const ulong IPMI_APP_ENABLE_MESSAGE_CHANNEL_RECEIVE = 0x32;
 
   //
@@ -518,11 +518,11 @@ public unsafe struct IPMI_GET_MESSAGE_RESPONSE
   public fixed byte MessageData[0];
 }
 
-//
-//  Definitions for Send Message command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Send Message command
+  //
   public const ulong IPMI_APP_SEND_MESSAGE = 0x34;
 }
 
@@ -556,11 +556,11 @@ public unsafe struct IPMI_SEND_MESSAGE_RESPONSE
   public fixed byte ResponseData[0];
 }
 
-//
-//  Definitions for Read Event Message Buffer command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Read Event Message Buffer command
+  //
   public const ulong IPMI_APP_READ_EVENT_MSG_BUFFER = 0x35;
 
   //
@@ -593,11 +593,11 @@ public unsafe struct IPMI_GET_SYSTEM_UUID_RESPONSE
 //  Constants and Structure definitions for "Get System GUID" command to follow here
 //
 
-//
-//  Definitions for Get Channel Authentication Capabilities command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Channel Authentication Capabilities command
+  //
   public const ulong IPMI_APP_GET_CHANNEL_AUTHENTICATION_CAPABILITIES = 0x38;
 
   //
@@ -749,11 +749,11 @@ public unsafe struct IPMI_GET_CHANNEL_ACCESS_RESPONSE
   IPMI_GET_CHANNEL_ACCESS_PRIVILEGE_LIMIT PrivilegeLimit;
 }
 
-//
-//  Definitions for Get Channel Info command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Channel Info command
+  //
   public const ulong IPMI_APP_GET_CHANNEL_INFO = 0x42;
 
   //
@@ -878,11 +878,11 @@ public unsafe struct IPMI_GET_CHANNEL_INFO_REQUEST
 //  Constants and Structure definitions for "Get Channel Info" command to follow here
 //
 
-//
-//  Definitions for Set User Access command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set User Access command
+  //
   public const ulong IPMI_APP_SET_USER_ACCESS = 0x43;
 
   //
@@ -978,11 +978,11 @@ public unsafe struct IPMI_GET_USER_ACCESS_RESPONSE
   IPMI_GET_USER_ACCESS_CHANNEL_ACCESS ChannelAccess;
 }
 
-//
-//  Definitions for Set User Name command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set User Name command
+  //
   public const ulong IPMI_APP_SET_USER_NAME = 0x45;
 }
 
@@ -996,11 +996,11 @@ public unsafe struct IPMI_SET_USER_NAME_REQUEST
   public fixed byte UserName[16];
 }
 
-//
-//  Definitions for Get User Name command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get User Name command
+  //
   public const ulong IPMI_APP_GET_USER_NAME = 0x46;
 }
 
@@ -1020,11 +1020,11 @@ public unsafe struct IPMI_GET_USER_NAME_RESPONSE
   public fixed byte UserName[16];
 }
 
-//
-//  Definitions for Set User Password command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set User Password command
+  //
   public const ulong IPMI_APP_SET_USER_PASSWORD = 0x47;
 
   //
@@ -1079,11 +1079,11 @@ public unsafe struct IPMI_SET_USER_PASSWORD_REQUEST
 //  Below is Definitions for RMCP+ Support and Payload Commands (Chapter 24)
 //
 
-//
-//  Definitions for Activate Payload command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Activate Payload command
+  //
   public const ulong IPMI_APP_ACTIVATE_PAYLOAD = 0x48;
 
   //
@@ -1271,11 +1271,11 @@ public unsafe struct IPMI_GET_SYSTEM_INTERFACE_KCS_SMIC_CAPABILITIES_RESPONSE
   public byte InputMaxMsgSize;
 }
 
-//
-//  Definitions for Get System Interface Capabilities command SSIF transaction support
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get System Interface Capabilities command SSIF transaction support
+  //
   public const ulong IPMI_GET_SYSTEM_INTERFACE_CAPABILITIES_SSIF_TRANSACTION_SUPPORT_SINGLE_PARTITION_RW = 0x0;
   public const ulong IPMI_GET_SYSTEM_INTERFACE_CAPABILITIES_SSIF_TRANSACTION_SUPPORT_MULTI_PARTITION_RW = 0x1;
   public const ulong IPMI_GET_SYSTEM_INTERFACE_CAPABILITIES_SSIF_TRANSACTION_SUPPORT_MULTI_PARTITION_RW_WITH_MIDDLE = 0x2;

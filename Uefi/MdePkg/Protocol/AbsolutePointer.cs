@@ -49,11 +49,11 @@ public unsafe struct EFI_ABSOLUTE_POINTER_MODE
                             ///< and should be 0
 }
 
-///
-/// If set, indicates this device supports an alternate button input.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// If set, indicates this device supports an alternate button input.
+  ///
   public const ulong EFI_ABSP_SupportsAltActive = 0x00000001;
 
   ///

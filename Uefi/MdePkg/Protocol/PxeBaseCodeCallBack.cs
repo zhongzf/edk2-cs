@@ -16,11 +16,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef _PXE_BASE_CODE_CALLBACK_H_
 // #define _PXE_BASE_CODE_CALLBACK_H_
 
-///
-/// Call Back Definitions.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Call Back Definitions.
+  ///
   public static EFI_GUID EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_GUID = new GUID(
       0x245dca21, 0xfb7b, 0x11d3, new byte[] { 0x8f, 0x01, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
 

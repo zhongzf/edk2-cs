@@ -17,13 +17,13 @@ namespace Uefi;
 
 // #include <Protocol/EapManagement.h>
 
-///
-/// This EFI EAP Management2 protocol provides the ability to configure and control EAPOL
-/// state machine, and retrieve the information, status and the statistics information of
-/// EAPOL state machine.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// This EFI EAP Management2 protocol provides the ability to configure and control EAPOL
+  /// state machine, and retrieve the information, status and the statistics information of
+  /// EAPOL state machine.
+  ///
   public static EFI_GUID EFI_EAP_MANAGEMENT2_PROTOCOL_GUID = new GUID(
       0x5e93c847, 0x456d, 0x40b3, new byte[] { 0xa6, 0xb4, 0x78, 0xb0, 0xc9, 0xcf, 0x7f, 0x20 });
 

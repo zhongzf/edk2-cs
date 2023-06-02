@@ -25,11 +25,11 @@ namespace Uefi;
 
 // #include <IndustryStandard/IpmiFruInformationStorage.h>
 
-//
-// Generic Completion Codes definitions
-//
 public unsafe partial class EFI
 {
+  //
+  // Generic Completion Codes definitions
+  //
   public const ulong IPMI_COMP_CODE_NORMAL = 0x00;
   public const ulong IPMI_COMP_CODE_NODE_BUSY = 0xC0;
   public const ulong IPMI_COMP_CODE_INVALID_COMMAND = 0xC1;

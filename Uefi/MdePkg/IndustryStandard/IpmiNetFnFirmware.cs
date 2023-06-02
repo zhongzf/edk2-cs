@@ -11,11 +11,11 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_FIRMWARE_H_
 // #define _IPMI_NET_FN_FIRMWARE_H_
 
-//
-// Net function definition for Firmware command
-//
 public unsafe partial class EFI
 {
+  //
+  // Net function definition for Firmware command
+  //
   public const ulong IPMI_NETFN_FIRMWARE = 0x08;
 
   //
@@ -38,11 +38,11 @@ public unsafe struct IPMI_MSG_GET_BMC_EXEC_RSP
   public byte PartitionPointer;
 }
 
-//
-// Current Execution Context responses
-//
 public unsafe partial class EFI
 {
+  //
+  // Current Execution Context responses
+  //
   public const ulong IPMI_BMC_IN_FORCED_UPDATE_MODE = 0x11;
 }
 

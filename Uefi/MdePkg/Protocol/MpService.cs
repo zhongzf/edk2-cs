@@ -42,11 +42,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef _MP_SERVICE_PROTOCOL_H_
 // #define _MP_SERVICE_PROTOCOL_H_
 
-///
-/// Global ID for the EFI_MP_SERVICES_PROTOCOL.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the EFI_MP_SERVICES_PROTOCOL.
+  ///
   public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID = new GUID(
       0x3fdda605, 0xa76e, 0x4f46, new byte[] { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 });
 

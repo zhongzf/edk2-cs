@@ -117,11 +117,11 @@ public const ulong EFI_SMM_SAVE_STATE_IO_WIDTH_UINT64 = EFI_MM_SAVE_STATE_IO_WID
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_SAVE_STATE_IO_WIDTH { EFI_MM_SAVE_STATE_IO_WIDTH Value; public static implicit operator EFI_SMM_SAVE_STATE_IO_WIDTH(EFI_MM_SAVE_STATE_IO_WIDTH value) => new EFI_SMM_SAVE_STATE_IO_WIDTH() { Value = value }; public static implicit operator EFI_MM_SAVE_STATE_IO_WIDTH(EFI_SMM_SAVE_STATE_IO_WIDTH value) => value.Value; }
 
-///
-/// Types of I/O instruction
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Types of I/O instruction
+  ///
   public const ulong EFI_SMM_SAVE_STATE_IO_TYPE_INPUT = EFI_MM_SAVE_STATE_IO_TYPE_INPUT;
   public const ulong EFI_SMM_SAVE_STATE_IO_TYPE_OUTPUT = EFI_MM_SAVE_STATE_IO_TYPE_OUTPUT;
   public const ulong EFI_SMM_SAVE_STATE_IO_TYPE_STRING = EFI_MM_SAVE_STATE_IO_TYPE_STRING;

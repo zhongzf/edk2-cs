@@ -33,12 +33,12 @@ public unsafe struct EFI_NVM_EXPRESS_PASS_THRU_MODE
   public uint NvmeVersion;
 }
 
-//
-// If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
-// for directly addressable namespaces.
-//
 public unsafe partial class EFI
 {
+  //
+  // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
+  // for directly addressable namespaces.
+  //
   public const ulong EFI_NVM_EXPRESS_PASS_THRU_ATTRIBUTES_PHYSICAL = 0x0001;
   //
   // If this bit is set, then the EFI_NVM_EXPRESS_PASS_THRU_PROTOCOL interface is
@@ -72,11 +72,11 @@ public unsafe struct NVME_CDW0
   public uint Reserved = 22;
 }
 
-//
-// Flags
-//
 public unsafe partial class EFI
 {
+  //
+  // Flags
+  //
   public const ulong CDW2_VALID = 0x01;
   public const ulong CDW3_VALID = 0x02;
   public const ulong CDW10_VALID = 0x04;

@@ -19,11 +19,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __PXE_BASE_CODE_PROTOCOL_H__
 // #define __PXE_BASE_CODE_PROTOCOL_H__
 
-///
-/// PXE Base Code protocol.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PXE Base Code protocol.
+  ///
   public static EFI_GUID EFI_PXE_BASE_CODE_PROTOCOL_GUID = new GUID(
       0x03c4e603, 0xac28, 0x11d3, new byte[] { 0x9a, 0x2d, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 
@@ -36,11 +36,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PXE_BASE_CODE { EFI_PXE_BASE_CODE_PROTOCOL Value; public static implicit operator EFI_PXE_BASE_CODE(EFI_PXE_BASE_CODE_PROTOCOL value) => new EFI_PXE_BASE_CODE() { Value = value }; public static implicit operator EFI_PXE_BASE_CODE_PROTOCOL(EFI_PXE_BASE_CODE value) => value.Value; }
 
-///
-/// Default IP TTL and ToS.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Default IP TTL and ToS.
+  ///
   public const ulong DEFAULT_TTL = 16;
   public const ulong DEFAULT_ToS = 0;
 }
@@ -76,11 +76,11 @@ public unsafe struct EFI_PXE_BASE_CODE_TFTP_ERROR
   public fixed byte ErrorString[127];
 }
 
-///
-/// IP Receive Filter definitions.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// IP Receive Filter definitions.
+  ///
   public const ulong EFI_PXE_BASE_CODE_MAX_IPCNT = 8;
 }
 
@@ -287,11 +287,11 @@ public unsafe struct EFI_PXE_BASE_CODE_DHCPV6_PACKET {
  [FieldOffset(0)] public EFI_PXE_BASE_CODE_DHCPV6_PACKET    Dhcpv6;
 }
 
+public unsafe partial class EFI
+{
 //
 // PXE Base Code Mode structure
 //
-public unsafe partial class EFI
-{
 public const ulong EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES = 8;
 public const ulong EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES = 8;
 }
@@ -344,11 +344,11 @@ public unsafe struct EFI_PXE_BASE_CODE_MODE {
 // PXE Base Code Interface Function definitions
 //
 
+public unsafe partial class EFI
+{
 //
 // PXE Base Code Protocol structure
 //
-public unsafe partial class EFI
-{
 public const ulong EFI_PXE_BASE_CODE_PROTOCOL_REVISION = 0x00010000;
 
 //

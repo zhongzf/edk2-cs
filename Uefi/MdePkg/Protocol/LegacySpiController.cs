@@ -15,14 +15,14 @@ namespace Uefi;
 // #ifndef __LEGACY_SPI_CONTROLLER_PROTOCOL_H__
 // #define __LEGACY_SPI_CONTROLLER_PROTOCOL_H__
 
-///
-/// Note: The UEFI PI 1.6 specification uses the character 'l' in the GUID
-///       definition. This definition assumes it was supposed to be '1'.
-///
-/// Global ID for the Legacy SPI Controller Protocol
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Note: The UEFI PI 1.6 specification uses the character 'l' in the GUID
+  ///       definition. This definition assumes it was supposed to be '1'.
+  ///
+  /// Global ID for the Legacy SPI Controller Protocol
+  ///
   public static EFI_GUID EFI_LEGACY_SPI_CONTROLLER_GUID = new GUID(0x39136fc7, 0x1a11, 0x49de,
       { 0xbf, 0x35, 0x0e, 0x78, 0xdd, 0xb5, 0x24, 0xfc });
 

@@ -14,12 +14,12 @@ namespace Uefi;
 
 // #include <IndustryStandard/Pci23.h>
 
-///
-/// PCI_CLASS_MASS_STORAGE, Base Class 01h.
-///
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// PCI_CLASS_MASS_STORAGE, Base Class 01h.
+  ///
+  ///@{
   public const ulong PCI_CLASS_MASS_STORAGE_SATADPA = 0x06;
   public const ulong PCI_IF_MASS_STORAGE_SATA = 0x00;
   public const ulong PCI_IF_MASS_STORAGE_AHCI = 0x01;

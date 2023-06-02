@@ -11,12 +11,12 @@ namespace Uefi;
 // #ifndef __PCI_CODE_ID_H__
 // #define __PCI_CODE_ID_H__
 
-///
-/// PCI_CLASS_MASS_STORAGE, Base Class 01h.
-///
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// PCI_CLASS_MASS_STORAGE, Base Class 01h.
+  ///
+  ///@{
   public const ulong PCI_IF_MASS_STORAGE_SCSI_VENDOR_SPECIFIC = 0x00;
   public const ulong PCI_IF_MASS_STORAGE_SCSI_DEVICE_PQI = 0x11;
   public const ulong PCI_IF_MASS_STORAGE_SCSI_CONTROLLER_PQI = 0x12;

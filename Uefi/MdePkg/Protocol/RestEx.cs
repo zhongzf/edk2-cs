@@ -23,11 +23,11 @@ namespace Uefi;
 
 // #include <Protocol/Http.h>
 
-//
-// GUID definitions
-//
 public unsafe partial class EFI
 {
+  //
+  // GUID definitions
+  //
   public static EFI_GUID EFI_REST_EX_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
       0x456bbe01, 0x99d0, 0x45ea, new byte[] { 0xbb, 0x5f, 0x16, 0xd8, 0x4b, 0xed, 0xc5, 0x59 });
 

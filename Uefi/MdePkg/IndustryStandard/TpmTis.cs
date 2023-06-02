@@ -110,11 +110,11 @@ public unsafe struct TIS_PC_REGISTERS_PTR { TIS_PC_REGISTERS* Value; public stat
 // Define bits of ACCESS and STATUS registers
 //
 
-///
-/// This bit is a 1 to indicate that the other bits in this register are valid.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// This bit is a 1 to indicate that the other bits in this register are valid.
+  ///
   public const ulong TIS_PC_VALID = BIT7;
   ///
   /// Indicate that this locality is active.

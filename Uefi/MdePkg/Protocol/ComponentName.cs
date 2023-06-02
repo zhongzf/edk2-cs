@@ -14,11 +14,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_COMPONENT_NAME_H__
 // #define __EFI_COMPONENT_NAME_H__
 
-///
-/// The global ID for the Component Name Protocol.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The global ID for the Component Name Protocol.
+  ///
   public static EFI_GUID EFI_COMPONENT_NAME_PROTOCOL_GUID = new GUID(
       0x107a772c, 0xd5e1, 0x11d4, new byte[] { 0x9a, 0x46, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d });
 

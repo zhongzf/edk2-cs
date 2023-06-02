@@ -18,11 +18,11 @@ namespace Uefi;
 // #ifndef MCTP_H_
 // #define MCTP_H_
 
-///
-/// Definitions of endpoint ID
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Definitions of endpoint ID
+  ///
   public const ulong MCTP_NULL_DESTINATION_ENDPOINT_ID = 0;
   public const ulong MCTP_NULL_SOURCE_ENDPOINT_ID = 0;
   public const ulong MCTP_RESERVED_ENDPOINT_START_ID = 1;
@@ -107,10 +107,10 @@ public unsafe struct Bits
 uint BodyHeader;
 } MCTP_CONTROL_MESSAGE;
 
-/// Minimum transmission size is 64 bytes.
-/// The value of 64 is defined in MCTP Base Specification.
 public unsafe partial class EFI
 {
+  /// Minimum transmission size is 64 bytes.
+  /// The value of 64 is defined in MCTP Base Specification.
   public const ulong MCTP_BASELINE_MINIMUM_UNIT_TRANSMISSION_SIZE = 0x40;
 }
 

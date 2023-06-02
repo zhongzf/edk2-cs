@@ -75,11 +75,11 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_TYPE
   public byte EntryType;
 }
 
-//
-// Entry Type 0: Processor.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 0: Processor.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_PROCESSOR = 0x00;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -123,11 +123,11 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_PROCESSOR
   public uint Reserved2;
 }
 
-//
-// Entry Type 1: Bus.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 1: Bus.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_BUS = 0x01;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -180,11 +180,11 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_IOAPIC
   public uint Address;
 }
 
-//
-// Entry Type 3: I/O Interrupt Assignment.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 3: I/O Interrupt Assignment.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_IO_INT = 0x03;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -246,11 +246,11 @@ public enum EFI_LEGACY_MP_TABLE_ENTRY_IO_INT_FLAGS_TRIGGER
   EfiLegacyMpTableEntryIoIntFlagsTriggerLevel = 0x3,
 }
 
-//
-// Entry Type 4: Local Interrupt Assignment.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 4: Local Interrupt Assignment.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_LOCAL_INT = 0x04;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -289,11 +289,11 @@ public enum EFI_LEGACY_MP_TABLE_ENTRY_LOCAL_INT_FLAGS_TRIGGER
   EfiLegacyMpTableEntryLocalIntFlagsTriggerLevel = 0x3,
 }
 
-//
-// Entry Type 128: System Address Space Mapping.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 128: System Address Space Mapping.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_SYS_ADDR_SPACE_MAPPING = 0x80;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -314,11 +314,11 @@ public enum EFI_LEGACY_MP_TABLE_ENTRY_EXT_SYS_ADDR_SPACE_MAPPING_TYPE
   EfiLegacyMpTableEntryExtSysAddrSpaceMappingPrefetch = 2,
 }
 
-//
-// Entry Type 129: Bus Hierarchy.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 129: Bus Hierarchy.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_BUS_HIERARCHY = 0x81;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -341,11 +341,11 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_EXT_BUS_HIERARCHY
   public byte Reserved3;
 }
 
-//
-// Entry Type 130: Compatibility Bus Address Space Modifier.
-//
 public unsafe partial class EFI
 {
+  //
+  // Entry Type 130: Compatibility Bus Address Space Modifier.
+  //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_EXT_TYPE_COMPAT_BUS_ADDR_SPACE_MODIFIER = 0x82;
 }
 [StructLayout(LayoutKind.Sequential)]

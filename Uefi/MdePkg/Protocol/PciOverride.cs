@@ -24,11 +24,11 @@ namespace Uefi;
 ///
 // #include <Protocol/PciPlatform.h>
 
-///
-/// Global ID for the EFI_PCI_OVERRIDE_PROTOCOL
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the EFI_PCI_OVERRIDE_PROTOCOL
+  ///
   public static EFI_GUID EFI_PCI_OVERRIDE_GUID = new GUID(
       0xb5b35764, 0x460c, 0x4a06, new byte[] { 0x99, 0xfc, 0x77, 0xa1, 0x7c, 0x1b, 0x5c, 0xeb });
 }

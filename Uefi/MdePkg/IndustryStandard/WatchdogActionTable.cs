@@ -55,11 +55,11 @@ public unsafe struct EFI_ACPI_WATCHDOG_ACTION_1_0_WATCHDOG_ACTION_INSTRUCTION_EN
 
 // #pragma pack()
 
-///
-/// WDAT Revision (defined in spec)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// WDAT Revision (defined in spec)
+  ///
   public const ulong EFI_ACPI_WATCHDOG_ACTION_1_0_TABLE_REVISION = 0x01;
 
   //

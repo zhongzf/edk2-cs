@@ -23,11 +23,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // typedef struct _EFI_DEBUG_SUPPORT_PROTOCOL EFI_DEBUG_SUPPORT_PROTOCOL;
 
-///
-/// Debug Support protocol {2755590C-6F3C-42FA-9EA4-A3BA543CDA25}.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Debug Support protocol {2755590C-6F3C-42FA-9EA4-A3BA543CDA25}.
+  ///
   public static EFI_GUID EFI_DEBUG_SUPPORT_PROTOCOL_GUID = new GUID(
       0x2755590C, 0x6F3C, 0x42FA, new byte[] { 0x9E, 0xA4, 0xA3, 0xBA, 0x54, 0x3C, 0xDA, 0x25 });
 }
@@ -39,11 +39,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EXCEPTION_TYPE { long Value; public static implicit operator EFI_EXCEPTION_TYPE(long value) => new EFI_EXCEPTION_TYPE() { Value = value }; public static implicit operator long(EFI_EXCEPTION_TYPE value) => value.Value; }
 
-///
-///  IA-32 processor exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  ///  IA-32 processor exception types.
+  ///
   public const ulong EXCEPT_IA32_DIVIDE_ERROR = 0;
   public const ulong EXCEPT_IA32_DEBUG = 1;
   public const ulong EXCEPT_IA32_NMI = 2;
@@ -140,11 +140,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_IA32
   public uint Eax;
 }
 
-///
-///  x64 processor exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  ///  x64 processor exception types.
+  ///
   public const ulong EXCEPT_X64_DIVIDE_ERROR = 0;
   public const ulong EXCEPT_X64_DEBUG = 1;
   public const ulong EXCEPT_X64_NMI = 2;
@@ -250,11 +250,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_X64
   public ulong R15;
 }
 
-///
-///  Itanium Processor Family Exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  ///  Itanium Processor Family Exception types.
+  ///
   public const ulong EXCEPT_IPF_VHTP_TRANSLATION = 0;
   public const ulong EXCEPT_IPF_INSTRUCTION_TLB = 1;
   public const ulong EXCEPT_IPF_DATA_TLB = 2;
@@ -455,11 +455,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_IPF
   public ulong IntNat;
 }
 
-///
-///  EBC processor exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  ///  EBC processor exception types.
+  ///
   public const ulong EXCEPT_EBC_UNDEFINED = 0;
   public const ulong EXCEPT_EBC_DIVIDE_ERROR = 1;
   public const ulong EXCEPT_EBC_DEBUG = 2;
@@ -496,11 +496,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_EBC
   public ulong Ip;
 }
 
-///
-///  ARM processor exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  ///  ARM processor exception types.
+  ///
   public const ulong EXCEPT_ARM_RESET = 0;
   public const ulong EXCEPT_ARM_UNDEFINED_INSTRUCTION = 1;
   public const ulong EXCEPT_ARM_SOFTWARE_INTERRUPT = 2;
@@ -545,11 +545,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_ARM
   public uint IFAR;
 }
 
-///
-///  AARCH64 processor exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  ///  AARCH64 processor exception types.
+  ///
   public const ulong EXCEPT_AARCH64_SYNCHRONOUS_EXCEPTIONS = 0;
   public const ulong EXCEPT_AARCH64_IRQ = 1;
   public const ulong EXCEPT_AARCH64_FIQ = 2;
@@ -639,11 +639,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_AARCH64
   public ulong FAR;  // Fault Address Register
 }
 
-///
-/// RISC-V processor exception types.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RISC-V processor exception types.
+  ///
   public const ulong EXCEPT_RISCV_INST_MISALIGNED = 0;
   public const ulong EXCEPT_RISCV_INST_ACCESS_FAULT = 1;
   public const ulong EXCEPT_RISCV_ILLEGAL_INST = 2;
@@ -724,11 +724,11 @@ public unsafe struct EFI_SYSTEM_CONTEXT_RISCV64
   public uint STVAL;
 }
 
-//
-// LoongArch processor exception types.
-//
 public unsafe partial class EFI
 {
+  //
+  // LoongArch processor exception types.
+  //
   public const ulong EXCEPT_LOONGARCH_INT = 0;
   public const ulong EXCEPT_LOONGARCH_PIL = 1;
   public const ulong EXCEPT_LOONGARCH_PIS = 2;

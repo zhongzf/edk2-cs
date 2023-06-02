@@ -44,11 +44,11 @@ public unsafe struct EFI_ACPI_DESCRIPTION_HEADER
 }
 // #pragma pack()
 
-//
-// Define for Descriptor
-//
 public unsafe partial class EFI
 {
+  //
+  // Define for Descriptor
+  //
   public const ulong ACPI_SMALL_ITEM_FLAG = 0x00;
   public const ulong ACPI_LARGE_ITEM_FLAG = 0x01;
 
@@ -335,11 +335,11 @@ public unsafe struct EFI_ACPI_END_TAG_DESCRIPTOR
   public byte Checksum;
 }
 
-//
-// General use definitions
-//
 public unsafe partial class EFI
 {
+  //
+  // General use definitions
+  //
   public const ulong EFI_ACPI_RESERVED_BYTE = 0x00;
   public const ulong EFI_ACPI_RESERVED_WORD = 0x0000;
   public const ulong EFI_ACPI_RESERVED_DWORD = 0x00000000;
@@ -460,11 +460,11 @@ public unsafe struct EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_POINTER
 // EFI_ACPI_DESCRIPTION_HEADER, followed by a variable number of uint table pointers.
 //
 
-///
-/// RSDT Revision (as defined in ACPI 1.0b specification).
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RSDT Revision (as defined in ACPI 1.0b specification).
+  ///
   public const ulong EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
 }
 
@@ -516,11 +516,11 @@ public unsafe struct EFI_ACPI_1_0_FIXED_ACPI_DESCRIPTION_TABLE
   public uint Flags;
 }
 
-///
-/// FADT Version (as defined in ACPI 1.0b specification).
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FADT Version (as defined in ACPI 1.0b specification).
+  ///
   public const ulong EFI_ACPI_1_0_FIXED_ACPI_DESCRIPTION_TABLE_REVISION = 0x01;
 
   public const ulong EFI_ACPI_1_0_INT_MODE_DUAL_PIC = 0;
@@ -557,12 +557,12 @@ public unsafe struct EFI_ACPI_1_0_FIRMWARE_ACPI_CONTROL_STRUCTURE
   public fixed byte Reserved[40];
 }
 
-///
-/// Firmware Control Structure Feature Flags.
-/// All other bits are reserved and must be set to 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Firmware Control Structure Feature Flags.
+  /// All other bits are reserved and must be set to 0.
+  ///
   public const ulong EFI_ACPI_1_0_S4BIOS_F = BIT0;
 }
 
@@ -578,11 +578,11 @@ public unsafe struct EFI_ACPI_1_0_MULTIPLE_APIC_DESCRIPTION_TABLE_HEADER
   public uint Flags;
 }
 
-///
-/// MADT Revision (as defined in ACPI 1.0b specification).
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MADT Revision (as defined in ACPI 1.0b specification).
+  ///
   public const ulong EFI_ACPI_1_0_MULTIPLE_APIC_DESCRIPTION_TABLE_REVISION = 0x01;
 
   ///
@@ -620,11 +620,11 @@ public unsafe struct EFI_ACPI_1_0_PROCESSOR_LOCAL_APIC_STRUCTURE
   public uint Flags;
 }
 
-///
-/// Local APIC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Local APIC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_1_0_LOCAL_APIC_ENABLED = BIT0;
 }
 
@@ -697,11 +697,11 @@ public unsafe struct EFI_ACPI_1_0_SMART_BATTERY_DESCRIPTION_TABLE
 // Known table signatures
 //
 
-///
-/// "RSD PTR " Root System Description Pointer.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// "RSD PTR " Root System Description Pointer.
+  ///
   public const ulong EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
 
   ///

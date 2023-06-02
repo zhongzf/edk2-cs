@@ -15,11 +15,11 @@ namespace Uefi;
 
 // #pragma pack(1)
 
-///
-/// TLS Cipher Suite, refers to A.5 of rfc-2246, rfc-4346, rfc-5246, rfc-5288 and rfc-5289.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// TLS Cipher Suite, refers to A.5 of rfc-2246, rfc-4346, rfc-5246, rfc-5288 and rfc-5289.
+  ///
   public const ulong TLS_RSA_WITH_NULL_MD5 = { 0x00, 0x01 };
   public const ulong TLS_RSA_WITH_NULL_SHA = { 0x00, 0x02 };
   public const ulong TLS_RSA_WITH_RC4_128_MD5 = { 0x00, 0x04 };

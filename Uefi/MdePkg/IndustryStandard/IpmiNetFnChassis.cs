@@ -17,12 +17,12 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_CHASSIS_H_
 // #define _IPMI_NET_FN_CHASSIS_H_
 
-// #pragma pack (1)
-//
-// Net function definition for Chassis command
-//
 public unsafe partial class EFI
 {
+  // #pragma pack (1)
+  //
+  // Net function definition for Chassis command
+  //
   public const ulong IPMI_NETFN_CHASSIS = 0x00;
 
   //
@@ -50,11 +50,11 @@ public unsafe struct IPMI_GET_CHASSIS_CAPABILITIES_RESPONSE
   public byte ChassisBridgeDeviceAddress;
 }
 
-//
-//  Definitions for Get Chassis Status command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Chassis Status command
+  //
   public const ulong IPMI_CHASSIS_GET_STATUS = 0x01;
 }
 
@@ -71,11 +71,11 @@ public unsafe struct IPMI_GET_CHASSIS_STATUS_RESPONSE
   public byte FrontPanelButtonCapabilities;
 }
 
-//
-//  Definitions for Chassis Control command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Chassis Control command
+  //
   public const ulong IPMI_CHASSIS_CONTROL = 0x02;
 }
 
@@ -98,11 +98,11 @@ public unsafe struct IPMI_CHASSIS_CONTROL_REQUEST
   IPMI_CHASSIS_CONTROL_CHASSIS_CONTROL ChassisControl;
 }
 
-//
-//  Definitions for Chassis Reset command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Chassis Reset command
+  //
   public const ulong IPMI_CHASSIS_RESET = 0x03;
 
   //
@@ -159,11 +159,11 @@ public unsafe struct IPMI_SET_POWER_RESTORE_POLICY_RESPONSE
   public byte PowerRestorePolicySupport;
 }
 
-//
-//  Definitions for Get System Restart Cause command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get System Restart Cause command
+  //
   public const ulong IPMI_CHASSIS_GET_SYSTEM_RESTART_CAUSE = 0x07;
 
   //
@@ -201,11 +201,11 @@ public unsafe struct IPMI_GET_SYSTEM_RESTART_CAUSE_RESPONSE
   public byte ChannelNumber;
 }
 
-//
-//  Definitions for Set System BOOT options command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set System BOOT options command
+  //
   public const ulong IPMI_CHASSIS_SET_SYSTEM_BOOT_OPTIONS = 0x08;
 }
 
@@ -235,11 +235,11 @@ public unsafe struct IPMI_SET_BOOT_OPTIONS_RESPONSE
   public byte CompletionCode = 8;
 }
 
-//
-//  Definitions for Get System Boot options command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get System Boot options command
+  //
   public const ulong IPMI_CHASSIS_GET_SYSTEM_BOOT_OPTIONS = 0x09;
 }
 
@@ -287,11 +287,11 @@ public unsafe struct IPMI_BOOT_INITIATOR
   public fixed byte Reserved[3];
 }
 
-//
-// Definitions for boot option parameter selector
-//
 public unsafe partial class EFI
 {
+  //
+  // Definitions for boot option parameter selector
+  //
   public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SET_IN_PROGRESS = 0x0;
   public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SERVICE_PARTITION_SELECTOR = 0x1;
   public const ulong IPMI_BOOT_OPTIONS_PARAMETER_SELECTOR_SERVICE_PARTITION_SCAN = 0x2;
@@ -351,11 +351,11 @@ public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_4
   public byte BootInitiatorAcknowledgeData;
 }
 
-//
-//  Definitions for the 'Boot device selector' field of Boot Option Parameters #5
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for the 'Boot device selector' field of Boot Option Parameters #5
+  //
   public const ulong IPMI_BOOT_DEVICE_SELECTOR_NO_OVERRIDE = 0x0;
   public const ulong IPMI_BOOT_DEVICE_SELECTOR_PXE = 0x1;
   public const ulong IPMI_BOOT_DEVICE_SELECTOR_HARDDRIVE = 0x2;
@@ -516,11 +516,11 @@ public unsafe struct IPMI_GET_BOOT_OPTIONS_RESPONSE
   public fixed byte ParameterData[0];
 }
 
-//
-//  Definitions for Set front panel button enables command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set front panel button enables command
+  //
   public const ulong IPMI_CHASSIS_SET_FRONT_PANEL_BUTTON_ENABLES = 0x0A;
 }
 
@@ -546,11 +546,11 @@ public unsafe struct IPMI_CHASSIS_SET_FRONT_PANEL_BUTTON_ENABLES_REQUEST
   IPMI_FRONT_PANEL_BUTTON_ENABLES FrontPanelButtonEnables;
 }
 
-//
-//  Definitions for Set Power Cycle Interval command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set Power Cycle Interval command
+  //
   public const ulong IPMI_CHASSIS_SET_POWER_CYCLE_INTERVALS = 0x0B;
 
   //

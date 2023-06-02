@@ -43,11 +43,11 @@ public unsafe struct EFI_INPUT_KEY
   public char UnicodeChar;
 }
 
-//
-// Required unicode control chars
-//
 public unsafe partial class EFI
 {
+  //
+  // Required unicode control chars
+  //
   public const ulong CHAR_BACKSPACE = 0x0008;
   public const ulong CHAR_TAB = 0x0009;
   public const ulong CHAR_LINEFEED = 0x000A;

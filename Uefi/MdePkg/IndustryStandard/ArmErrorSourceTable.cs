@@ -21,11 +21,11 @@ namespace Uefi;
 // #ifndef ARM_ERROR_SOURCE_TABLE_H_
 // #define ARM_ERROR_SOURCE_TABLE_H_
 
-///
-/// "AEST" Arm Error Source Table
-///
 public unsafe partial class EFI
 {
+  ///
+  /// "AEST" Arm Error Source Table
+  ///
   public const ulong EFI_ACPI_6_3_ARM_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('A', 'E', 'S', 'T');
 
   public const ulong EFI_ACPI_ARM_ERROR_SOURCE_TABLE_REVISION = 1;
@@ -86,9 +86,9 @@ public unsafe struct EFI_ACPI_AEST_NODE_STRUCT
   public ulong ErrorInjectionCountdownRate;
 }
 
-// AEST Node type definitions
 public unsafe partial class EFI
 {
+  // AEST Node type definitions
   public const ulong EFI_ACPI_AEST_NODE_TYPE_PROCESSOR = 0x0;
   public const ulong EFI_ACPI_AEST_NODE_TYPE_MEMORY = 0x1;
   public const ulong EFI_ACPI_AEST_NODE_TYPE_SMMU = 0x2;
@@ -137,9 +137,9 @@ public unsafe struct EFI_ACPI_AEST_INTERFACE_STRUCT
   public ulong AddressingMode;
 }
 
-// AEST Interface node type definitions.
 public unsafe partial class EFI
 {
+  // AEST Interface node type definitions.
   public const ulong EFI_ACPI_AEST_INTERFACE_TYPE_SR = 0x0;
   public const ulong EFI_ACPI_AEST_INTERFACE_TYPE_MMIO = 0x1;
 
@@ -181,9 +181,9 @@ public unsafe struct EFI_ACPI_AEST_INTERRUPT_STRUCT
   public fixed byte Reserved1[3];
 }
 
-// AEST Interrupt node - interrupt type defintions.
 public unsafe partial class EFI
 {
+  // AEST Interrupt node - interrupt type defintions.
   public const ulong EFI_ACPI_AEST_INTERRUPT_TYPE_FAULT_HANDLING = 0x0;
   public const ulong EFI_ACPI_AEST_INTERRUPT_TYPE_ERROR_RECOVERY = 0x1;
 
@@ -285,9 +285,9 @@ public unsafe struct EFI_ACPI_AEST_PROCESSOR_STRUCT
   // EFI_ACPI_AEST_INTERRUPT_STRUCT   NodeInterruptArray[n];
 }
 
-// AEST Processor resource type definitions.
 public unsafe partial class EFI
 {
+  // AEST Processor resource type definitions.
   public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_CACHE = 0x0;
   public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_TLB = 0x1;
   public const ulong EFI_ACPI_AEST_PROCESSOR_RESOURCE_TYPE_GENERIC = 0x2;
@@ -390,9 +390,9 @@ public unsafe struct EFI_ACPI_AEST_GIC_STRUCT
   // EFI_ACPI_AEST_INTERRUPT_STRUCT   NodeInterruptArray[n];
 }
 
-// AEST GIC interface type definitions.
 public unsafe partial class EFI
 {
+  // AEST GIC interface type definitions.
   public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICC = 0x0;
   public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICD = 0x1;
   public const ulong EFI_ACPI_AEST_GIC_INTERFACE_TYPE_GICR = 0x2;

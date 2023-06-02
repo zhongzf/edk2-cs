@@ -79,12 +79,12 @@ public unsafe struct EFI_IP6_VARIABLE_DATA
   public fixed EFI_IP6_ADDRESS_PAIR AddressPairs[1];
 }
 
-///
-/// ICMPv6 type definitions for error messages
-///
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// ICMPv6 type definitions for error messages
+  ///
+  ///@{
   public const ulong ICMP_V6_DEST_UNREACHABLE = 0x1;
   public const ulong ICMP_V6_PACKET_TOO_BIG = 0x2;
   public const ulong ICMP_V6_TIME_EXCEEDED = 0x3;

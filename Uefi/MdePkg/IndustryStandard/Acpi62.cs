@@ -14,11 +14,11 @@ namespace Uefi;
 
 // #include <IndustryStandard/Acpi61.h>
 
-//
-// Large Item Descriptor Name
-//
 public unsafe partial class EFI
 {
+  //
+  // Large Item Descriptor Name
+  //
   public const ulong ACPI_LARGE_PIN_FUNCTION_DESCRIPTOR_NAME = 0x0D;
   public const ulong ACPI_LARGE_PIN_CONFIGURATION_DESCRIPTOR_NAME = 0x0F;
   public const ulong ACPI_LARGE_PIN_GROUP_DESCRIPTOR_NAME = 0x10;
@@ -143,11 +143,11 @@ public unsafe struct EFI_ACPI_6_2_GENERIC_ADDRESS_STRUCTURE
   public ulong Address;
 }
 
-//
-// Generic Address Space Address IDs
-//
 public unsafe partial class EFI
 {
+  //
+  // Generic Address Space Address IDs
+  //
   public const ulong EFI_ACPI_6_2_SYSTEM_MEMORY = 0;
   public const ulong EFI_ACPI_6_2_SYSTEM_IO = 1;
   public const ulong EFI_ACPI_6_2_PCI_CONFIGURATION_SPACE = 2;
@@ -187,11 +187,11 @@ public unsafe struct EFI_ACPI_6_2_ROOT_SYSTEM_DESCRIPTION_POINTER
   public fixed byte Reserved[3];
 }
 
-///
-/// RSD_PTR Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RSD_PTR Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_ROOT_SYSTEM_DESCRIPTION_POINTER_REVISION = 0x02 ///< ACPISpec (Revision 6.2) says current value is 2;
 }
 
@@ -212,11 +212,11 @@ public unsafe struct EFI_ACPI_6_2_COMMON_HEADER
 // EFI_ACPI_DESCRIPTION_HEADER, followed by a variable number of uint table pointers.
 //
 
-///
-/// RSDT Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RSDT Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_ROOT_SYSTEM_DESCRIPTION_TABLE_REVISION = 0x01;
 
   //
@@ -295,11 +295,11 @@ public unsafe struct EFI_ACPI_6_2_FIXED_ACPI_DESCRIPTION_TABLE
   public ulong HypervisorVendorIdentity;
 }
 
-///
-/// FADT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FADT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_FIXED_ACPI_DESCRIPTION_TABLE_REVISION = 0x06;
   public const ulong EFI_ACPI_6_2_FIXED_ACPI_DESCRIPTION_TABLE_MINOR_REVISION = 0x02;
 
@@ -381,11 +381,11 @@ public unsafe struct EFI_ACPI_6_2_FIRMWARE_ACPI_CONTROL_STRUCTURE
   public fixed byte Reserved1[24];
 }
 
-///
-/// FACS Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FACS Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_FIRMWARE_ACPI_CONTROL_STRUCTURE_VERSION = 0x02;
 
   ///
@@ -424,11 +424,11 @@ public unsafe struct EFI_ACPI_6_2_MULTIPLE_APIC_DESCRIPTION_TABLE_HEADER
   public uint Flags;
 }
 
-///
-/// MADT Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MADT Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_MULTIPLE_APIC_DESCRIPTION_TABLE_REVISION = 0x04;
 
   ///
@@ -477,11 +477,11 @@ public unsafe struct EFI_ACPI_6_2_PROCESSOR_LOCAL_APIC_STRUCTURE
   public uint Flags;
 }
 
-///
-/// Local APIC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Local APIC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_LOCAL_APIC_ENABLED = BIT0;
 }
 
@@ -532,12 +532,12 @@ public unsafe struct EFI_ACPI_6_2_PLATFORM_INTERRUPT_APIC_STRUCTURE
   public fixed byte Reserved[31];
 }
 
-//
-// MPS INTI flags.
-// All other bits are reserved and must be set to 0.
-//
 public unsafe partial class EFI
 {
+  //
+  // MPS INTI flags.
+  // All other bits are reserved and must be set to 0.
+  //
   public const ulong EFI_ACPI_6_2_POLARITY = (3 << 0);
   public const ulong EFI_ACPI_6_2_TRIGGER_MODE = (3 << 2);
 }
@@ -627,12 +627,12 @@ public unsafe struct EFI_ACPI_6_2_PLATFORM_INTERRUPT_SOURCES_STRUCTURE
   public uint PlatformInterruptSourceFlags;
 }
 
-///
-/// Platform Interrupt Source Flags.
-/// All other bits are reserved and must be set to 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Platform Interrupt Source Flags.
+  /// All other bits are reserved and must be set to 0.
+  ///
   public const ulong EFI_ACPI_6_2_CPEI_PROCESSOR_OVERRIDE = BIT0;
 }
 
@@ -689,11 +689,11 @@ public unsafe struct EFI_ACPI_6_2_GIC_STRUCTURE
   public fixed byte Reserved2[3];
 }
 
-///
-/// GIC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// GIC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_GIC_ENABLED = BIT0;
   public const ulong EFI_ACPI_6_2_PERFORMANCE_INTERRUPT_MODEL = BIT1;
   public const ulong EFI_ACPI_6_2_VGIC_MAINTENANCE_INTERRUPT_MODE_FLAGS = BIT2;
@@ -715,11 +715,11 @@ public unsafe struct EFI_ACPI_6_2_GIC_DISTRIBUTOR_STRUCTURE
   public fixed byte Reserved2[3];
 }
 
-///
-/// GIC Version
-///
 public unsafe partial class EFI
 {
+  ///
+  /// GIC Version
+  ///
   public const ulong EFI_ACPI_6_2_GIC_V1 = 0x01;
   public const ulong EFI_ACPI_6_2_GIC_V2 = 0x02;
   public const ulong EFI_ACPI_6_2_GIC_V3 = 0x03;
@@ -742,11 +742,11 @@ public unsafe struct EFI_ACPI_6_2_GIC_MSI_FRAME_STRUCTURE
   public ushort SPIBase;
 }
 
-///
-/// GIC MSI Frame Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// GIC MSI Frame Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_SPI_COUNT_BASE_SELECT = BIT0;
 }
 
@@ -789,11 +789,11 @@ public unsafe struct EFI_ACPI_6_2_SMART_BATTERY_DESCRIPTION_TABLE
   public uint CriticalEnergyLevel;
 }
 
-///
-/// SBST Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SBST Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_SMART_BATTERY_DESCRIPTION_TABLE_REVISION = 0x01;
 }
 
@@ -812,11 +812,11 @@ public unsafe struct EFI_ACPI_6_2_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE
   public byte GpeBit;
 }
 
-///
-/// ECDT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ECDT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_REVISION = 0x01;
 }
 
@@ -832,11 +832,11 @@ public unsafe struct EFI_ACPI_6_2_SYSTEM_RESOURCE_AFFINITY_TABLE_HEADER
   public ulong Reserved2;
 }
 
-///
-/// SRAT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SRAT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_SYSTEM_RESOURCE_AFFINITY_TABLE_REVISION = 0x03;
 
   //
@@ -867,11 +867,11 @@ public unsafe struct EFI_ACPI_6_2_PROCESSOR_LOCAL_APIC_SAPIC_AFFINITY_STRUCTURE
   public uint ClockDomain;
 }
 
-///
-/// Local APIC/SAPIC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Local APIC/SAPIC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_PROCESSOR_LOCAL_APIC_SAPIC_ENABLED = (1 << 0);
 }
 
@@ -894,11 +894,11 @@ public unsafe struct EFI_ACPI_6_2_MEMORY_AFFINITY_STRUCTURE
   public ulong Reserved3;
 }
 
-//
-// Memory Flags.  All other bits are reserved and must be 0.
-//
 public unsafe partial class EFI
 {
+  //
+  // Memory Flags.  All other bits are reserved and must be 0.
+  //
   public const ulong EFI_ACPI_6_2_MEMORY_ENABLED = (1 << 0);
   public const ulong EFI_ACPI_6_2_MEMORY_HOT_PLUGGABLE = (1 << 1);
   public const ulong EFI_ACPI_6_2_MEMORY_NONVOLATILE = (1 << 2);
@@ -934,11 +934,11 @@ public unsafe struct EFI_ACPI_6_2_GICC_AFFINITY_STRUCTURE
   public uint ClockDomain;
 }
 
-///
-/// GICC Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// GICC Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_GICC_ENABLED = (1 << 0);
 }
 
@@ -966,11 +966,11 @@ public unsafe struct EFI_ACPI_6_2_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_HEA
   public ulong NumberOfSystemLocalities;
 }
 
-///
-/// SLIT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SLIT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_SYSTEM_LOCALITY_DISTANCE_INFORMATION_TABLE_REVISION = 0x01;
 }
 
@@ -984,11 +984,11 @@ public unsafe struct EFI_ACPI_6_2_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_HEADER
   public fixed byte Reserved[8];
 }
 
-///
-/// CPEP Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// CPEP Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_REVISION = 0x01;
 
   //
@@ -1023,11 +1023,11 @@ public unsafe struct EFI_ACPI_6_2_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_HEADER
   public ulong MaximumPhysicalAddress;
 }
 
-///
-/// MSCT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MSCT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_REVISION = 0x01;
 }
 
@@ -1055,11 +1055,11 @@ public unsafe struct EFI_ACPI_6_2_RAS_FEATURE_TABLE
   public fixed byte PlatformCommunicationChannelIdentifier[12];
 }
 
-///
-/// RASF Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// RASF Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_RAS_FEATURE_TABLE_REVISION = 0x01;
 }
 
@@ -1079,11 +1079,11 @@ public unsafe struct EFI_ACPI_6_2_RASF_PLATFORM_COMMUNICATION_CHANNEL_SHARED_MEM
   public uint SetRASCapabilitiesStatus;
 }
 
-///
-/// ACPI RASF PCC command code
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ACPI RASF PCC command code
+  ///
   public const ulong EFI_ACPI_6_2_RASF_PCC_COMMAND_CODE_EXECUTE_RASF_COMMAND = 0x01;
 
   ///
@@ -1112,11 +1112,11 @@ public unsafe struct EFI_ACPI_6_2_RASF_PATROL_SCRUB_PLATFORM_BLOCK_STRUCTURE
   public byte RequestedSpeed;
 }
 
-///
-/// ACPI RASF Patrol Scrub command
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ACPI RASF Patrol Scrub command
+  ///
   public const ulong EFI_ACPI_6_2_RASF_PATROL_SCRUB_COMMAND_GET_PATROL_PARAMETERS = 0x01;
   public const ulong EFI_ACPI_6_2_RASF_PATROL_SCRUB_COMMAND_START_PATROL_SCRUBBER = 0x02;
   public const ulong EFI_ACPI_6_2_RASF_PATROL_SCRUB_COMMAND_STOP_PATROL_SCRUBBER = 0x03;
@@ -1135,11 +1135,11 @@ public unsafe struct EFI_ACPI_6_2_MEMORY_POWER_STATUS_TABLE
   // Memory Power State Characteristics
 }
 
-///
-/// MPST Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MPST Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_MEMORY_POWER_STATE_TABLE_REVISION = 0x01;
 }
 
@@ -1160,11 +1160,11 @@ public unsafe struct EFI_ACPI_6_2_MPST_PLATFORM_COMMUNICATION_CHANNEL_SHARED_MEM
   public ulong ExpectedAveragePowerComsuned;
 }
 
-///
-/// ACPI MPST PCC command code
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ACPI MPST PCC command code
+  ///
   public const ulong EFI_ACPI_6_2_MPST_PCC_COMMAND_CODE_EXECUTE_MPST_COMMAND = 0x03;
 
   ///
@@ -1253,11 +1253,11 @@ public unsafe struct EFI_ACPI_6_2_MEMORY_TOPOLOGY_TABLE
   public uint Reserved;
 }
 
-///
-/// PMTT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PMTT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_MEMORY_TOPOLOGY_TABLE_REVISION = 0x01;
 }
 
@@ -1274,11 +1274,11 @@ public unsafe struct EFI_ACPI_6_2_PMMT_COMMON_MEMORY_AGGREGATOR_DEVICE_STRUCTURE
   public ushort Reserved1;
 }
 
-///
-/// Memory Aggregator Device Type
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Memory Aggregator Device Type
+  ///
   public const ulong EFI_ACPI_6_2_PMMT_MEMORY_AGGREGATOR_DEVICE_TYPE_SOCKET = 0x0;
   public const ulong EFI_ACPI_6_2_PMMT_MEMORY_AGGREGATOR_DEVICE_TYPE_MEMORY_CONTROLLER = 0x1;
   public const ulong EFI_ACPI_6_2_PMMT_MEMORY_AGGREGATOR_DEVICE_TYPE_DIMM = 0x2;
@@ -1370,11 +1370,11 @@ public unsafe struct EFI_ACPI_6_2_BOOT_GRAPHICS_RESOURCE_TABLE
   public uint ImageOffsetY;
 }
 
-///
-/// BGRT Revision
-///
 public unsafe partial class EFI
 {
+  ///
+  /// BGRT Revision
+  ///
   public const ulong EFI_ACPI_6_2_BOOT_GRAPHICS_RESOURCE_TABLE_REVISION = 1;
 
   ///
@@ -1512,11 +1512,11 @@ public unsafe struct EFI_ACPI_6_2_FPDT_FIRMWARE_BASIC_BOOT_RECORD
   public ulong ExitBootServicesExit;
 }
 
-///
-/// FPDT Firmware Basic Boot Performance Table signature
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FPDT Firmware Basic Boot Performance Table signature
+  ///
   public const ulong EFI_ACPI_6_2_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
 }
 
@@ -1532,11 +1532,11 @@ public unsafe struct EFI_ACPI_6_2_FPDT_FIRMWARE_BASIC_BOOT_TABLE
   //
 }
 
-///
-/// FPDT "S3PT" S3 Performance Table
-///
 public unsafe partial class EFI
 {
+  ///
+  /// FPDT "S3PT" S3 Performance Table
+  ///
   public const ulong EFI_ACPI_6_2_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
 }
 
@@ -1627,11 +1627,11 @@ public unsafe struct EFI_ACPI_6_2_GENERIC_TIMER_DESCRIPTION_TABLE
   public uint PlatformTimerOffset;
 }
 
-///
-/// GTDT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// GTDT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_GENERIC_TIMER_DESCRIPTION_TABLE_REVISION = 0x02;
 
   ///
@@ -1679,11 +1679,11 @@ public unsafe struct EFI_ACPI_6_2_GTDT_GT_BLOCK_TIMER_STRUCTURE
   public uint GTxCommonFlags;
 }
 
-///
-/// GT Block Physical Timers and Virtual Timers Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// GT Block Physical Timers and Virtual Timers Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_GTDT_GT_BLOCK_TIMER_FLAG_TIMER_INTERRUPT_MODE = BIT0;
   public const ulong EFI_ACPI_6_2_GTDT_GT_BLOCK_TIMER_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
 
@@ -1709,11 +1709,11 @@ public unsafe struct EFI_ACPI_6_2_GTDT_SBSA_GENERIC_WATCHDOG_STRUCTURE
   public uint WatchdogTimerFlags;
 }
 
-///
-/// SBSA Generic Watchdog Timer Flags.  All other bits are reserved and must be 0.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SBSA Generic Watchdog Timer Flags.  All other bits are reserved and must be 0.
+  ///
   public const ulong EFI_ACPI_6_2_GTDT_SBSA_GENERIC_WATCHDOG_FLAG_TIMER_INTERRUPT_MODE = BIT0;
   public const ulong EFI_ACPI_6_2_GTDT_SBSA_GENERIC_WATCHDOG_FLAG_TIMER_INTERRUPT_POLARITY = BIT1;
   public const ulong EFI_ACPI_6_2_GTDT_SBSA_GENERIC_WATCHDOG_FLAG_SECURE_TIMER = BIT2;
@@ -1729,11 +1729,11 @@ public unsafe struct EFI_ACPI_6_2_NVDIMM_FIRMWARE_INTERFACE_TABLE
   public uint Reserved;
 }
 
-//
-// NFIT Version (as defined in ACPI 6.2 spec.)
-//
 public unsafe partial class EFI
 {
+  //
+  // NFIT Version (as defined in ACPI 6.2 spec.)
+  //
   public const ulong EFI_ACPI_6_2_NVDIMM_FIRMWARE_INTERFACE_TABLE_REVISION = 0x1;
 
   //
@@ -1759,11 +1759,11 @@ public unsafe struct EFI_ACPI_6_2_NFIT_STRUCTURE_HEADER
   public ushort Length;
 }
 
-//
-// Definition for System Physical Address Range Structure
-//
 public unsafe partial class EFI
 {
+  //
+  // Definition for System Physical Address Range Structure
+  //
   public const ulong EFI_ACPI_6_2_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_CONTROL_REGION_FOR_MANAGEMENT = BIT0;
   public const ulong EFI_ACPI_6_2_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_PROXIMITY_DOMAIN_VALID = BIT1;
   public const ulong EFI_ACPI_6_2_NFIT_GUID_VOLATILE_MEMORY_REGION = { 0x7305944F, 0xFDDA, 0x44E3, { 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0 } };
@@ -1860,11 +1860,11 @@ public unsafe struct EFI_ACPI_6_2_NFIT_SMBIOS_MANAGEMENT_INFORMATION_STRUCTURE
   // byte                                       Data[];
 }
 
-//
-// Definition for NVDIMM Control Region Structure
-//
 public unsafe partial class EFI
 {
+  //
+  // Definition for NVDIMM Control Region Structure
+  //
   public const ulong EFI_ACPI_6_2_NFIT_NVDIMM_CONTROL_REGION_VALID_FIELDS_MANUFACTURING = BIT0;
 }
 
@@ -1957,11 +1957,11 @@ public unsafe struct EFI_ACPI_6_2_SECURE_DEVICES_TABLE_HEADER
   public EFI_ACPI_DESCRIPTION_HEADER Header;
 }
 
-///
-/// SDEV Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// SDEV Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_SECURE_DEVICES_TABLE_REVISION = 0x01;
 
   ///
@@ -2030,11 +2030,11 @@ public unsafe struct EFI_ACPI_6_2_BOOT_ERROR_RECORD_TABLE_HEADER
   public ulong BootErrorRegion;
 }
 
-///
-/// BERT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// BERT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_BOOT_ERROR_RECORD_TABLE_REVISION = 0x01;
 }
 
@@ -2065,11 +2065,11 @@ public unsafe struct EFI_ACPI_6_2_BOOT_ERROR_REGION_STRUCTURE
   public uint ErrorSeverity;
 }
 
-//
-// Boot Error Severity types
-//
 public unsafe partial class EFI
 {
+  //
+  // Boot Error Severity types
+  //
   public const ulong EFI_ACPI_6_2_ERROR_SEVERITY_RECOVERABLE = 0x00;
   public const ulong EFI_ACPI_6_2_ERROR_SEVERITY_FATAL = 0x01;
   public const ulong EFI_ACPI_6_2_ERROR_SEVERITY_CORRECTED = 0x02;
@@ -2099,11 +2099,11 @@ public unsafe struct EFI_ACPI_6_2_GENERIC_ERROR_DATA_ENTRY_STRUCTURE
   public fixed byte Timestamp[8];
 }
 
-///
-/// Generic Error Data Entry Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Generic Error Data Entry Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_GENERIC_ERROR_DATA_ENTRY_REVISION = 0x0300;
 }
 
@@ -2117,11 +2117,11 @@ public unsafe struct EFI_ACPI_6_2_HARDWARE_ERROR_SOURCE_TABLE_HEADER
   public uint ErrorSourceCount;
 }
 
-///
-/// HEST Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// HEST Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_HARDWARE_ERROR_SOURCE_TABLE_REVISION = 0x01;
 
   //
@@ -2181,11 +2181,11 @@ public unsafe struct EFI_ACPI_6_2_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_BANK_STR
   public uint MiscRegisterMsrAddress;
 }
 
-///
-/// IA-32 Architecture Machine Check Bank Structure MCA data format
-///
 public unsafe partial class EFI
 {
+  ///
+  /// IA-32 Architecture Machine Check Bank Structure MCA data format
+  ///
   public const ulong EFI_ACPI_6_2_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_IA32 = 0x00;
   public const ulong EFI_ACPI_6_2_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_INTEL64 = 0x01;
   public const ulong EFI_ACPI_6_2_IA32_ARCHITECTURE_MACHINE_CHECK_ERROR_DATA_FORMAT_AMD64 = 0x02;
@@ -2429,11 +2429,11 @@ public unsafe struct EFI_ACPI_6_2_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_HEADER
   public fixed byte Reserved[4];
 }
 
-///
-/// HMAT Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// HMAT Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_REVISION = 0x01;
 
   ///
@@ -2555,11 +2555,11 @@ public unsafe struct EFI_ACPI_6_2_ERROR_RECORD_SERIALIZATION_TABLE_HEADER
   public uint InstructionEntryCount;
 }
 
-///
-/// ERST Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// ERST Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_ERROR_RECORD_SERIALIZATION_TABLE_REVISION = 0x01;
 
   ///
@@ -2649,11 +2649,11 @@ public unsafe struct EFI_ACPI_6_2_ERROR_INJECTION_TABLE_HEADER
   public uint InjectionEntryCount;
 }
 
-///
-/// EINJ Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// EINJ Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_ERROR_INJECTION_TABLE_REVISION = 0x01;
 
   ///
@@ -2745,11 +2745,11 @@ public unsafe struct EFI_ACPI_6_2_PLATFORM_COMMUNICATION_CHANNEL_TABLE_HEADER
   public ulong Reserved;
 }
 
-///
-/// PCCT Version (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PCCT Version (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_PLATFORM_COMMUNICATION_CHANNEL_TABLE_REVISION = 0x02;
 
   ///
@@ -2942,11 +2942,11 @@ public unsafe struct EFI_ACPI_6_2_PLATFORM_DEBUG_TRIGGER_TABLE_HEADER
   public uint TriggerIdentifierArrayOffset;
 }
 
-///
-/// PDTT Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PDTT Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_PLATFORM_DEBUG_TRIGGER_TABLE_REVISION = 0x00;
 }
 
@@ -2962,11 +2962,11 @@ public unsafe struct EFI_ACPI_6_2_PDTT_PCC_IDENTIFIER
   public ushort Reserved = 6;
 }
 
-///
-/// PCC Commands Codes used by Platform Debug Trigger Table
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PCC Commands Codes used by Platform Debug Trigger Table
+  ///
   public const ulong EFI_ACPI_6_2_PDTT_PCC_COMMAND_DOORBELL_ONLY = 0x00;
   public const ulong EFI_ACPI_6_2_PDTT_PCC_COMMAND_VENDOR_SPECIFIC = 0x01;
 }
@@ -2986,11 +2986,11 @@ public unsafe struct EFI_ACPI_6_2_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_HEADER
   public EFI_ACPI_DESCRIPTION_HEADER Header;
 }
 
-///
-/// PPTT Revision (as defined in ACPI 6.2 spec.)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// PPTT Revision (as defined in ACPI 6.2 spec.)
+  ///
   public const ulong EFI_ACPI_6_2_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_REVISION = 0x01;
 
   ///
@@ -3012,11 +3012,11 @@ public unsafe struct EFI_ACPI_6_2_PPTT_STRUCTURE_HEADER
   public fixed byte Reserved[2];
 }
 
-///
-/// For PPTT struct processor flags
-///
 public unsafe partial class EFI
 {
+  ///
+  /// For PPTT struct processor flags
+  ///
   public const ulong EFI_ACPI_6_2_PPTT_PROCESSOR_ID_INVALID = 0x0;
   public const ulong EFI_ACPI_6_2_PPTT_PROCESSOR_ID_VALID = 0x1;
 }
@@ -3063,11 +3063,11 @@ public unsafe struct EFI_ACPI_6_2_PPTT_STRUCTURE_CACHE_FLAGS
   public uint Reserved = 25;
 }
 
-///
-/// For cache attributes
-///
 public unsafe partial class EFI
 {
+  ///
+  /// For cache attributes
+  ///
   public const ulong EFI_ACPI_6_2_CACHE_ATTRIBUTES_ALLOCATION_READ = 0x0;
   public const ulong EFI_ACPI_6_2_CACHE_ATTRIBUTES_ALLOCATION_WRITE = 0x1;
   public const ulong EFI_ACPI_6_2_CACHE_ATTRIBUTES_ALLOCATION_READ_WRITE = 0x2;
@@ -3129,11 +3129,11 @@ public unsafe struct EFI_ACPI_6_2_PPTT_STRUCTURE_ID
 // Known table signatures
 //
 
-///
-/// "RSD PTR " Root System Description Pointer
-///
 public unsafe partial class EFI
 {
+  ///
+  /// "RSD PTR " Root System Description Pointer
+  ///
   public const ulong EFI_ACPI_6_2_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
 
   ///

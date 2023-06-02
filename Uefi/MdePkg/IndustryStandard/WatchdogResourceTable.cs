@@ -40,11 +40,11 @@ public unsafe struct EFI_ACPI_WATCHDOG_RESOURCE_1_0_TABLE
 
 // #pragma pack()
 
-//
-// WDRT Revision (defined in spec)
-//
 public unsafe partial class EFI
 {
+  //
+  // WDRT Revision (defined in spec)
+  //
   public const ulong EFI_ACPI_WATCHDOG_RESOURCE_1_0_TABLE_REVISION = 0x01;
 
   //

@@ -21,12 +21,12 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_TRANSPORT_H_
 // #define _IPMI_NET_FN_TRANSPORT_H_
 
-// #pragma pack(1)
-//
-// Net function definition for Transport command
-//
 public unsafe partial class EFI
 {
+  // #pragma pack(1)
+  //
+  // Net function definition for Transport command
+  //
   public const ulong IPMI_NETFN_TRANSPORT = 0x0C;
 
   //
@@ -382,11 +382,11 @@ public unsafe struct IPMI_SET_LAN_CONFIGURATION_PARAMETERS_COMMAND_REQUEST
   public fixed byte ParameterData[0];
 }
 
-//
-//  Definitions for Get Lan Configuration Parameters command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Lan Configuration Parameters command
+  //
   public const ulong IPMI_TRANSPORT_GET_LAN_CONFIG_PARAMETERS = 0x02;
 }
 
@@ -421,11 +421,11 @@ public unsafe struct IPMI_GET_LAN_CONFIGURATION_PARAMETERS_RESPONSE
   public fixed byte ParameterData[0];
 }
 
-//
-//  Definitions for Suspend BMC ARPs command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Suspend BMC ARPs command
+  //
   public const ulong IPMI_TRANSPORT_SUSPEND_BMC_ARPS = 0x03;
 
   //
@@ -810,11 +810,11 @@ public unsafe struct IPMI_EMP_OPTIONS
   IPMI_TAP_PAGER_ID_STRING TapPagerIdString;
 }
 
-//
-//  Definitions for Get Serial/Modem Configuration command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get Serial/Modem Configuration command
+  //
   public const ulong IPMI_TRANSPORT_GET_SERIAL_CONFIGURATION = 0x11;
 
   //
@@ -899,11 +899,11 @@ public unsafe struct IPMI_SET_SERIAL_MODEM_MUX_COMMAND_RESPONSE
   IPMI_MUX_SETTING_PRESENT_STATE MuxSetting;
 }
 
-//
-//  Definitions for Get TAP Response Code command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get TAP Response Code command
+  //
   public const ulong IPMI_TRANSPORT_GET_TAP_RESPONSE_CODE = 0x13;
 
   //
@@ -1014,11 +1014,11 @@ public unsafe struct IPMI_SOL_ACTIVATING_REQUEST
   public byte FormatVersionMinor; // 0
 }
 
-//
-//  Definitions for Set SOL Configuration Parameters command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Set SOL Configuration Parameters command
+  //
   public const ulong IPMI_TRANSPORT_SET_SOL_CONFIG_PARAM = 0x21;
 
   //
@@ -1057,11 +1057,11 @@ public unsafe struct IPMI_SET_SOL_CONFIGURATION_PARAMETERS_REQUEST
   public fixed byte ParameterData[0];
 }
 
-//
-//  Definitions for Get SOL Configuration Parameters command
-//
 public unsafe partial class EFI
 {
+  //
+  //  Definitions for Get SOL Configuration Parameters command
+  //
   public const ulong IPMI_TRANSPORT_GET_SOL_CONFIG_PARAM = 0x22;
 }
 

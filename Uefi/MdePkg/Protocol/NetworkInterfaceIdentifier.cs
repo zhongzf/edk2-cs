@@ -15,11 +15,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __EFI_NETWORK_INTERFACE_IDENTIFER_H__
 // #define __EFI_NETWORK_INTERFACE_IDENTIFER_H__
 
-//
-// GUID retired from UEFI Specification 2.1b
-//
 public unsafe partial class EFI
 {
+  //
+  // GUID retired from UEFI Specification 2.1b
+  //
   public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
       0xE18541CD, 0xF755, 0x4f73, new byte[] { 0x92, 0x8D, 0x64, 0x3C, 0x8A, 0x79, 0xB2, 0x29 });
 

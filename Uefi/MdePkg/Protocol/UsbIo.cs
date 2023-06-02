@@ -18,11 +18,11 @@ namespace Uefi;
 
 // #include <IndustryStandard/Usb.h>
 
-//
-// Global ID for the USB I/O Protocol
-//
 public unsafe partial class EFI
 {
+  //
+  // Global ID for the USB I/O Protocol
+  //
   public static EFI_GUID EFI_USB_IO_PROTOCOL_GUID = new GUID(
       0x2B2F68D6, 0x0CD2, 0x44cf, new byte[] { 0x8E, 0x8B, 0xBB, 0xA2, 0x0B, 0x1B, 0x5B, 0x75 });
 
@@ -57,11 +57,11 @@ public enum EFI_USB_DATA_DIRECTION
   EfiUsbNoData
 }
 
-//
-// USB Transfer Results
-//
 public unsafe partial class EFI
 {
+  //
+  // USB Transfer Results
+  //
   public const ulong EFI_USB_NOERROR = 0x00;
   public const ulong EFI_USB_ERR_NOTEXECUTE = 0x01;
   public const ulong EFI_USB_ERR_STALL = 0x02;

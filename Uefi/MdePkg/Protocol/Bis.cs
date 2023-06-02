@@ -63,14 +63,14 @@ public unsafe struct EFI_BIS_VERSION
   public uint Minor; ///< A minor BIS version number.
 }
 
-//
-// ----------------------------------------------------//
-// Use these values to initialize EFI_BIS_VERSION.Major
-// and to interpret results of Initialize.
-// ----------------------------------------------------//
-//
 public unsafe partial class EFI
 {
+  //
+  // ----------------------------------------------------//
+  // Use these values to initialize EFI_BIS_VERSION.Major
+  // and to interpret results of Initialize.
+  // ----------------------------------------------------//
+  //
   public const ulong BIS_CURRENT_VERSION_MAJOR = BIS_VERSION_1;
   public const ulong BIS_VERSION_1 = 1;
 }
@@ -86,13 +86,13 @@ public unsafe struct EFI_BIS_SIGNATURE_INFO
   public ushort KeyLength;     ///< The length of alg. keys in bits.
 }
 
-///
-/// values for EFI_BIS_SIGNATURE_INFO.AlgorithmID.
-/// The exact numeric values come from the
-///    "Common Data Security Architecture (CDSA) Specification".
-///
 public unsafe partial class EFI
 {
+  ///
+  /// values for EFI_BIS_SIGNATURE_INFO.AlgorithmID.
+  /// The exact numeric values come from the
+  ///    "Common Data Security Architecture (CDSA) Specification".
+  ///
   public const ulong BIS_ALG_DSA = (41) // CSSM_ALGID_DSA;
 public const ulong BIS_ALG_RSA_MD5 = (42) // CSSM_ALGID_MD5_WITH_RSA;
 ///

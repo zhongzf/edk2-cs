@@ -12,13 +12,13 @@ namespace Uefi;
 // #ifndef _DHCP_H_
 // #define _DHCP_H_
 
-///
-/// Dynamic Host Configuration Protocol for IPv4 (DHCPv4)
-///
-/// Dhcpv4 Options, definitions from RFC 2132
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Dynamic Host Configuration Protocol for IPv4 (DHCPv4)
+  ///
+  /// Dhcpv4 Options, definitions from RFC 2132
+  ///
   public const ulong DHCP4_TAG_PAD = 0      /// Pad Option;
 public const ulong DHCP4_TAG_EOP = 255    /// End Option;
 public const ulong DHCP4_TAG_NETMASK = 1      /// Subnet Mask;
@@ -172,14 +172,14 @@ public enum DHCP6_DUID_TYPE
   Dhcp6DuidTypeUuid = 4
 }
 
-/// Transmission and Retransmission Parameters
-/// This section presents a table of values used to describe the message
-/// transmission behavior of clients and servers.
-///
-/// Transmit parameters of solicit message, refers to section-5.5 of rfc-3315.
-///
 public unsafe partial class EFI
 {
+  /// Transmission and Retransmission Parameters
+  /// This section presents a table of values used to describe the message
+  /// transmission behavior of clients and servers.
+  ///
+  /// Transmit parameters of solicit message, refers to section-5.5 of rfc-3315.
+  ///
   public const ulong DHCP6_SOL_MAX_DELAY = 1;
   public const ulong DHCP6_SOL_IRT = 1;
   public const ulong DHCP6_SOL_MRC = 0;

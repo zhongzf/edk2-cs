@@ -14,11 +14,11 @@ namespace Uefi;
 // #ifndef _IPMI_NET_FN_BRIDGE_H_
 // #define _IPMI_NET_FN_BRIDGE_H_
 
-//
-// Net function definition for Bridge command
-//
 public unsafe partial class EFI
 {
+  //
+  // Net function definition for Bridge command
+  //
   public const ulong IPMI_NETFN_BRIDGE = 0x02;
 
   //

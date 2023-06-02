@@ -24,11 +24,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 //
 // #include <Protocol/PciRootBridgeIo.h>
 
-///
-/// Global ID for the EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.
+  ///
   public static EFI_GUID EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL_GUID = new GUID(
       0xCF8034BE, 0x6768, 0x4d8b, new byte[] { 0xB7, 0x39, 0x7C, 0xCE, 0x68, 0x3A, 0x9F, 0xBE });
 
@@ -61,13 +61,13 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RESOURCE_ALLOCATION_STATUS { ulong Value; public static implicit operator EFI_RESOURCE_ALLOCATION_STATUS(ulong value) => new EFI_RESOURCE_ALLOCATION_STATUS() { Value = value }; public static implicit operator ulong(EFI_RESOURCE_ALLOCATION_STATUS value) => value.Value; }
 
-///
-/// The request of this resource type could be fulfilled.  Used in the
-/// Configuration parameter returned by GetProposedResources() to identify
-/// a PCI resources request that can be satisfied.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The request of this resource type could be fulfilled.  Used in the
+  /// Configuration parameter returned by GetProposedResources() to identify
+  /// a PCI resources request that can be satisfied.
+  ///
   public const ulong EFI_RESOURCE_SATISFIED = 0x0000000000000000;
 
   ///

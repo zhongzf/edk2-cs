@@ -48,11 +48,11 @@ public unsafe struct EFI_TCG_SERVER_ACPI_TABLE
   public byte PciFuncNum;
 }
 
-//
-// TCG Platform Type based on TCG ACPI Specification Version 1.00
-//
 public unsafe partial class EFI
 {
+  //
+  // TCG Platform Type based on TCG ACPI Specification Version 1.00
+  //
   public const ulong TCG_PLATFORM_TYPE_CLIENT = 0;
   public const ulong TCG_PLATFORM_TYPE_SERVER = 1;
 

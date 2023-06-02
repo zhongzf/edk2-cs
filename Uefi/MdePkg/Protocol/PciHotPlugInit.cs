@@ -55,11 +55,11 @@ namespace Uefi;
 // #ifndef _EFI_PCI_HOT_PLUG_INIT_H_
 // #define _EFI_PCI_HOT_PLUG_INIT_H_
 
-///
-/// Global ID for the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Global ID for the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
+  ///
   public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID(
       0xaa0e8bc1, 0xdabc, 0x46b0, new byte[] { 0xa8, 0x44, 0x37, 0xb8, 0x16, 0x9b, 0x2b, 0xea });
 
@@ -75,14 +75,14 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HPC_STATE { ushort Value; public static implicit operator EFI_HPC_STATE(ushort value) => new EFI_HPC_STATE() { Value = value }; public static implicit operator ushort(EFI_HPC_STATE value) => value.Value; }
 
-///
-/// The HPC initialization function was called and the HPC completed
-/// initialization, but it was not enabled for some reason. The HPC may be
-/// disabled in hardware, or it may be disabled due to user preferences,
-/// hardware failure, or other reasons. No resource padding is required.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The HPC initialization function was called and the HPC completed
+  /// initialization, but it was not enabled for some reason. The HPC may be
+  /// disabled in hardware, or it may be disabled due to user preferences,
+  /// hardware failure, or other reasons. No resource padding is required.
+  ///
   public const ulong EFI_HPC_STATE_INITIALIZED = 0x01;
 
   ///

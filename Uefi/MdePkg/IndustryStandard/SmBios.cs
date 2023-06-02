@@ -16,13 +16,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 // #ifndef __SMBIOS_STANDARD_H__
 // #define __SMBIOS_STANDARD_H__
 
-///
-/// Reference SMBIOS 2.6, chapter 3.1.2.
-/// For v2.1 and later, handle values in the range 0FF00h to 0FFFFh are reserved for
-/// use by this specification.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// Reference SMBIOS 2.6, chapter 3.1.2.
+  /// For v2.1 and later, handle values in the range 0FF00h to 0FFFFh are reserved for
+  /// use by this specification.
+  ///
   public const ulong SMBIOS_HANDLE_RESERVED_BEGIN = 0xFF00;
 
   ///

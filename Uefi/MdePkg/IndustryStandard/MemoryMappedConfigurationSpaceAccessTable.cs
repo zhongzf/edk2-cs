@@ -46,11 +46,11 @@ public unsafe struct EFI_ACPI_MEMORY_MAPPED_CONFIGURATION_BASE_ADDRESS_TABLE_HEA
   public ulong Reserved;
 }
 
-///
-/// MCFG Revision (defined in spec)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// MCFG Revision (defined in spec)
+  ///
   public const ulong EFI_ACPI_MEMORY_MAPPED_CONFIGURATION_SPACE_ACCESS_TABLE_REVISION = 0x01;
 
   // #pragma pack()

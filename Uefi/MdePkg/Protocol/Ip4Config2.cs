@@ -80,11 +80,11 @@ public enum EFI_IP4_CONFIG2_DATA_TYPE
   Ip4Config2DataTypeMaximum
 }
 
-///
-/// EFI_IP4_CONFIG2_INTERFACE_INFO related definitions
-///
 public unsafe partial class EFI
 {
+  ///
+  /// EFI_IP4_CONFIG2_INTERFACE_INFO related definitions
+  ///
   public const ulong EFI_IP4_CONFIG2_INTERFACE_INFO_NAME_SIZE = 32;
 }
 

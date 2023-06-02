@@ -50,11 +50,11 @@ public unsafe struct EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_TABLE_HEADER
   public byte PageProtectionAndOemAttribute;
 }
 
-///
-/// HPET Revision (defined in spec)
-///
 public unsafe partial class EFI
 {
+  ///
+  /// HPET Revision (defined in spec)
+  ///
   public const ulong EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_TABLE_REVISION = 0x01;
 
   //

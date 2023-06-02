@@ -22,9 +22,9 @@ namespace Uefi;
 /// Table 12 - Summary of SMBUS Commands for SSIF
 ///
 
-/// Write block
 public unsafe partial class EFI
 {
+  /// Write block
   public const ulong IPMI_SSIF_SMBUS_CMD_SINGLE_PART_WRITE = 0x02;
   public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_START = 0x06;
   public const ulong IPMI_SSIF_SMBUS_CMD_MULTI_PART_WRITE_MIDDLE = 0x07;

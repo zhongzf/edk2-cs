@@ -14,12 +14,12 @@ namespace Uefi;
 
 // #include <IndustryStandard/Pci22.h>
 
-///
-/// PCI_CLASS_MASS_STORAGE, Base Class 01h.
-///
-///@{
 public unsafe partial class EFI
 {
+  ///
+  /// PCI_CLASS_MASS_STORAGE, Base Class 01h.
+  ///
+  ///@{
   public const ulong PCI_CLASS_MASS_STORAGE_ATA = 0x05;
   public const ulong PCI_IF_MASS_STORAGE_SINGLE_DMA = 0x20;
   public const ulong PCI_IF_MASS_STORAGE_CHAINED_DMA = 0x30;

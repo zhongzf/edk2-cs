@@ -15,11 +15,11 @@ namespace Uefi;
 // ACPI AML definition
 //
 
-//
-// Primary OpCode
-//
 public unsafe partial class EFI
 {
+  //
+  // Primary OpCode
+  //
   public const ulong AML_ZERO_OP = 0x00;
   public const ulong AML_ONE_OP = 0x01;
   public const ulong AML_ALIAS_OP = 0x06;

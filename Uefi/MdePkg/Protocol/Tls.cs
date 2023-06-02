@@ -20,13 +20,13 @@ namespace Uefi;
 // #ifndef __EFI_TLS_PROTOCOL_H__
 // #define __EFI_TLS_PROTOCOL_H__
 
-///
-/// The EFI TLS Service Binding Protocol is used to locate EFI TLS Protocol drivers to
-/// create and destroy child of the driver to communicate with other host using TLS
-/// protocol.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// The EFI TLS Service Binding Protocol is used to locate EFI TLS Protocol drivers to
+  /// create and destroy child of the driver to communicate with other host using TLS
+  /// protocol.
+  ///
   public static EFI_GUID EFI_TLS_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
       0x952cb795, 0xff36, 0x48cf, new byte[] { 0xa2, 0x49, 0x4d, 0xf4, 0x86, 0xd6, 0xab, 0x8d });
 
@@ -176,12 +176,12 @@ public unsafe struct EFI_TLS_EXTENSION
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TLS_VERIFY { uint Value; public static implicit operator EFI_TLS_VERIFY(uint value) => new EFI_TLS_VERIFY() { Value = value }; public static implicit operator uint(EFI_TLS_VERIFY value) => value.Value; }
-///
-/// No certificates will be sent or the TLS/SSL handshake will be continued regardless
-/// of the certificate verification result.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// No certificates will be sent or the TLS/SSL handshake will be continued regardless
+  /// of the certificate verification result.
+  ///
   public const ulong EFI_TLS_VERIFY_NONE = 0x0;
   ///
   /// The TLS/SSL handshake is immediately terminated with an alert message containing
@@ -205,12 +205,12 @@ public unsafe partial class EFI
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TLS_VERIFY_HOST_FLAG { uint Value; public static implicit operator EFI_TLS_VERIFY_HOST_FLAG(uint value) => new EFI_TLS_VERIFY_HOST_FLAG() { Value = value }; public static implicit operator uint(EFI_TLS_VERIFY_HOST_FLAG value) => value.Value; }
-///
-/// There is no additional flags set for hostname validation.
-/// Wildcards are supported and they match only in the left-most label.
-///
 public unsafe partial class EFI
 {
+  ///
+  /// There is no additional flags set for hostname validation.
+  /// Wildcards are supported and they match only in the left-most label.
+  ///
   public const ulong EFI_TLS_VERIFY_FLAG_NONE = 0x00;
   ///
   /// Always check the Subject Distinguished Name (DN) in the peer certificate even if the
@@ -281,12 +281,12 @@ public unsafe struct EFI_TLS_MASTER_SECRET
 }
 // #pragma pack ()
 
-///
-/// EFI_TLS_SESSION_ID
-/// Note: The definition of EFI_TLS_SESSION_ID is from "RFC 5246 A.4.1. Hello Messages".
-///
 public unsafe partial class EFI
 {
+  ///
+  /// EFI_TLS_SESSION_ID
+  /// Note: The definition of EFI_TLS_SESSION_ID is from "RFC 5246 A.4.1. Hello Messages".
+  ///
   public const ulong MAX_TLS_SESSION_ID_LENGTH = 32;
   // #pragma pack (1)
 }

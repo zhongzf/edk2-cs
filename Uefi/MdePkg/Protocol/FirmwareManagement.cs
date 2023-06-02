@@ -146,15 +146,15 @@ public unsafe struct EFI_FIRMWARE_IMAGE_DESCRIPTOR
   public EFI_FIRMWARE_IMAGE_DEP* Dependencies;
 }
 
-//
-// Image Attribute Definitions
-//
-///
-/// The attribute IMAGE_ATTRIBUTE_IMAGE_UPDATABLE indicates this device supports firmware
-/// image update.
-///
 public unsafe partial class EFI
 {
+  //
+  // Image Attribute Definitions
+  //
+  ///
+  /// The attribute IMAGE_ATTRIBUTE_IMAGE_UPDATABLE indicates this device supports firmware
+  /// image update.
+  ///
   public const ulong IMAGE_ATTRIBUTE_IMAGE_UPDATABLE = 0x0000000000000001;
   ///
   /// The attribute IMAGE_ATTRIBUTE_RESET_REQUIRED indicates a reset of the device is required
@@ -220,17 +220,17 @@ public unsafe struct EFI_FIRMWARE_IMAGE_AUTHENTICATION
   public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
 }
 
-//
-// ImageUpdatable Definitions
-//
-///
-/// IMAGE_UPDATABLE_VALID indicates SetImage() will accept the new image and update the
-/// device with the new image. The version of the new image could be higher or lower than
-/// the current image. SetImage VendorCode is optional but can be used for vendor
-/// specific action.
-///
 public unsafe partial class EFI
 {
+  //
+  // ImageUpdatable Definitions
+  //
+  ///
+  /// IMAGE_UPDATABLE_VALID indicates SetImage() will accept the new image and update the
+  /// device with the new image. The version of the new image could be higher or lower than
+  /// the current image. SetImage VendorCode is optional but can be used for vendor
+  /// specific action.
+  ///
   public const ulong IMAGE_UPDATABLE_VALID = 0x0000000000000001;
   ///
   /// IMAGE_UPDATABLE_INVALID indicates SetImage() will reject the new image. No additional
