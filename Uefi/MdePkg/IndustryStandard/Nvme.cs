@@ -25,28 +25,28 @@ public unsafe partial class EFI
   //
   // controller register offsets
   //
-  public const ulong NVME_CAP_OFFSET = 0x0000        // Controller Capabilities;
-public const ulong NVME_VER_OFFSET = 0x0008        // Version;
-public const ulong NVME_INTMS_OFFSET = 0x000c        // Interrupt Mask Set;
-public const ulong NVME_INTMC_OFFSET = 0x0010        // Interrupt Mask Clear;
-public const ulong NVME_CC_OFFSET = 0x0014        // Controller Configuration;
-public const ulong NVME_CSTS_OFFSET = 0x001c        // Controller Status;
-public const ulong NVME_NSSR_OFFSET = 0x0020        // NVM Subsystem Reset;
-public const ulong NVME_AQA_OFFSET = 0x0024        // Admin Queue Attributes;
-public const ulong NVME_ASQ_OFFSET = 0x0028        // Admin Submission Queue Base Address;
-public const ulong NVME_ACQ_OFFSET = 0x0030        // Admin Completion Queue Base Address;
-public const ulong NVME_BPINFO_OFFSET = 0x0040        // Boot Partition Information;
-public const ulong NVME_BPRSEL_OFFSET = 0x0044        // Boot Partition Read Select;
-public const ulong NVME_BPMBL_OFFSET = 0x0048        // Boot Partition Memory Buffer Location;
-public const ulong NVME_SQ0_OFFSET = 0x1000        // Submission Queue 0 (admin) Tail Doorbell;
-public const ulong NVME_CQ0_OFFSET = 0x1004        // Completion Queue 0 (admin) Head Doorbell;
+  public const ulong NVME_CAP_OFFSET = 0x0000; //  Controller Capabilities
+  public const ulong NVME_VER_OFFSET = 0x0008; //  Version
+  public const ulong NVME_INTMS_OFFSET = 0x000c; //  Interrupt Mask Set
+  public const ulong NVME_INTMC_OFFSET = 0x0010; //  Interrupt Mask Clear
+  public const ulong NVME_CC_OFFSET = 0x0014; //  Controller Configuration
+  public const ulong NVME_CSTS_OFFSET = 0x001c; //  Controller Status
+  public const ulong NVME_NSSR_OFFSET = 0x0020; //  NVM Subsystem Reset
+  public const ulong NVME_AQA_OFFSET = 0x0024; //  Admin Queue Attributes
+  public const ulong NVME_ASQ_OFFSET = 0x0028; //  Admin Submission Queue Base Address
+  public const ulong NVME_ACQ_OFFSET = 0x0030; //  Admin Completion Queue Base Address
+  public const ulong NVME_BPINFO_OFFSET = 0x0040; //  Boot Partition Information
+  public const ulong NVME_BPRSEL_OFFSET = 0x0044; //  Boot Partition Read Select
+  public const ulong NVME_BPMBL_OFFSET = 0x0048; //  Boot Partition Memory Buffer Location
+  public const ulong NVME_SQ0_OFFSET = 0x1000; //  Submission Queue 0 (admin) Tail Doorbell
+  public const ulong NVME_CQ0_OFFSET = 0x1004; //  Completion Queue 0 (admin) Head Doorbell
 
-//
-// These register offsets are defined as 0x1000 + (N * (4 << CAP.DSTRD))
-// Get the doorbell stride bit shift value from the controller capabilities.
-//
-public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         // Submission Queue y (NVM) Tail Doorbell;
-public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   // Completion Queue y (NVM) Head Doorbell;
+  //
+  // These register offsets are defined as 0x1000 + (N * (4 << CAP.DSTRD))
+  // Get the doorbell stride bit shift value from the controller capabilities.
+  //
+  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
+public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
 
 // #pragma pack(1)
 }

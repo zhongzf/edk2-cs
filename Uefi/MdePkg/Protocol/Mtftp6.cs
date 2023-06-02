@@ -33,24 +33,24 @@ typedef struct _EFI_MTFTP6_TOKEN     EFI_MTFTP6_TOKEN;
 ///
 /// MTFTP Packet OpCodes
 ///@{
-public const ulong EFI_MTFTP6_OPCODE_RRQ = 1   ///< The MTFTPv6 packet is a read request.;
-public const ulong EFI_MTFTP6_OPCODE_WRQ = 2   ///< The MTFTPv6 packet is a write request.;
-public const ulong EFI_MTFTP6_OPCODE_DATA = 3   ///< The MTFTPv6 packet is a data packet.;
-public const ulong EFI_MTFTP6_OPCODE_ACK = 4   ///< The MTFTPv6 packet is an acknowledgement packet.;
-public const ulong EFI_MTFTP6_OPCODE_ERROR = 5   ///< The MTFTPv6 packet is an error packet.;
-public const ulong EFI_MTFTP6_OPCODE_OACK = 6   ///< The MTFTPv6 packet is an option acknowledgement packet.;
-public const ulong EFI_MTFTP6_OPCODE_DIR = 7   ///< The MTFTPv6 packet is a directory query packet.;
-public const ulong EFI_MTFTP6_OPCODE_DATA8 = 8   ///< The MTFTPv6 packet is a data packet with a big block number.;
-public const ulong EFI_MTFTP6_OPCODE_ACK8 = 9   ///< The MTFTPv6 packet is an acknowledgement packet with a big block number.;
-                                                ///@}
+public const ulong EFI_MTFTP6_OPCODE_RRQ = 1; /// < The MTFTPv6 packet is a read request.
+  public const ulong EFI_MTFTP6_OPCODE_WRQ = 2; /// < The MTFTPv6 packet is a write request.
+  public const ulong EFI_MTFTP6_OPCODE_DATA = 3; /// < The MTFTPv6 packet is a data packet.
+  public const ulong EFI_MTFTP6_OPCODE_ACK = 4; /// < The MTFTPv6 packet is an acknowledgement packet.
+  public const ulong EFI_MTFTP6_OPCODE_ERROR = 5; /// < The MTFTPv6 packet is an error packet.
+  public const ulong EFI_MTFTP6_OPCODE_OACK = 6; /// < The MTFTPv6 packet is an option acknowledgement packet.
+  public const ulong EFI_MTFTP6_OPCODE_DIR = 7; /// < The MTFTPv6 packet is a directory query packet.
+  public const ulong EFI_MTFTP6_OPCODE_DATA8 = 8; /// < The MTFTPv6 packet is a data packet with a big block number.
+  public const ulong EFI_MTFTP6_OPCODE_ACK8 = 9; /// < The MTFTPv6 packet is an acknowledgement packet with a big block number.
+                                                 ///@}
 
-                                                ///
-                                                /// MTFTP ERROR Packet ErrorCodes
-                                                ///@{
-                                                ///
-                                                /// The error code is not defined. See the error message in the packet (if any) for details.
-                                                ///
-public const ulong EFI_MTFTP6_ERRORCODE_NOT_DEFINED = 0;
+                                                 ///
+                                                 /// MTFTP ERROR Packet ErrorCodes
+                                                 ///@{
+                                                 ///
+                                                 /// The error code is not defined. See the error message in the packet (if any) for details.
+                                                 ///
+  public const ulong EFI_MTFTP6_ERRORCODE_NOT_DEFINED = 0;
   ///
   /// The file was not found.
   ///

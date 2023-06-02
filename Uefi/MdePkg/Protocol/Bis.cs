@@ -93,20 +93,20 @@ public unsafe partial class EFI
   /// The exact numeric values come from the
   ///    "Common Data Security Architecture (CDSA) Specification".
   ///
-  public const ulong BIS_ALG_DSA = (41) // CSSM_ALGID_DSA;
-public const ulong BIS_ALG_RSA_MD5 = (42) // CSSM_ALGID_MD5_WITH_RSA;
-///
-/// values for EFI_BIS_SIGNATURE_INFO.CertificateId.
-///
-public const ulong BIS_CERT_ID_DSA = BIS_ALG_DSA     // CSSM_ALGID_DSA;
-public const ulong BIS_CERT_ID_RSA_MD5 = BIS_ALG_RSA_MD5 // CSSM_ALGID_MD5_WITH_RSA;
-///
-/// The mask value that gets applied to the truncated hash of a
-/// platform  Boot Object Authorization Certificate to create the certificateID.
-/// A certificateID must not have any bits set to the value 1 other than bits in
-/// this mask.
-///
-public const ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
+  public const ulong BIS_ALG_DSA = (41); //  CSSM_ALGID_DSA
+  public const ulong BIS_ALG_RSA_MD5 = (42); //  CSSM_ALGID_MD5_WITH_RSA
+  ///
+  /// values for EFI_BIS_SIGNATURE_INFO.CertificateId.
+  ///
+  public const ulong BIS_CERT_ID_DSA = BIS_ALG_DSA; //  CSSM_ALGID_DSA
+  public const ulong BIS_CERT_ID_RSA_MD5 = BIS_ALG_RSA_MD5; //  CSSM_ALGID_MD5_WITH_RSA
+  ///
+  /// The mask value that gets applied to the truncated hash of a
+  /// platform  Boot Object Authorization Certificate to create the certificateID.
+  /// A certificateID must not have any bits set to the value 1 other than bits in
+  /// this mask.
+  ///
+  public const ulong BIS_CERT_ID_MASK = (0xFF7F7FFF);
 
   ///
   /// Macros for dealing with the EFI_BIS_DATA object obtained

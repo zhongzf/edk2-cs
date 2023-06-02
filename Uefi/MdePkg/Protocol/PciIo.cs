@@ -51,29 +51,29 @@ public unsafe partial class EFI
   //
   // Complete PCI address generater
   //
-  public const ulong EFI_PCI_IO_PASS_THROUGH_BAR = 0xff    ///< Special BAR that passes a memory or I/O cycle through unchanged;
-public const ulong EFI_PCI_IO_ATTRIBUTE_MASK = 0x077f  ///< All the following I/O and Memory cycles;
-public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_MOTHERBOARD_IO = 0x0001  ///< I/O cycles 0x0000-0x00FF (10 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_IO = 0x0002  ///< I/O cycles 0x0100-0x03FF or greater (10 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO = 0x0004  ///< I/O cycles 0x3C6, 0x3C8, 0x3C9 (10 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_MEMORY = 0x0008  ///< MEM cycles 0xA0000-0xBFFFF (24 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_IO = 0x0010  ///< I/O cycles 0x3B0-0x3BB and 0x3C0-0x3DF (10 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_IDE_PRIMARY_IO = 0x0020  ///< I/O cycles 0x1F0-0x1F7, 0x3F6, 0x3F7 (10 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_IDE_SECONDARY_IO = 0x0040  ///< I/O cycles 0x170-0x177, 0x376, 0x377 (10 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY_WRITE_COMBINE = 0x0080  ///< Map a memory range so writes are combined;
-public const ulong EFI_PCI_IO_ATTRIBUTE_IO = 0x0100  ///< Enable the I/O decode bit in the PCI Config Header;
-public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY = 0x0200  ///< Enable the Memory decode bit in the PCI Config Header;
-public const ulong EFI_PCI_IO_ATTRIBUTE_BUS_MASTER = 0x0400  ///< Enable the DMA bit in the PCI Config Header;
-public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY_CACHED = 0x0800  ///< Map a memory range so all r/w accesses are cached;
-public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY_DISABLE = 0x1000  ///< Disable a memory range;
-public const ulong EFI_PCI_IO_ATTRIBUTE_EMBEDDED_DEVICE = 0x2000  ///< Clear for an add-in PCI Device;
-public const ulong EFI_PCI_IO_ATTRIBUTE_EMBEDDED_ROM = 0x4000  ///< Clear for a physical PCI Option ROM accessed through ROM BAR;
-public const ulong EFI_PCI_IO_ATTRIBUTE_DUAL_ADDRESS_CYCLE = 0x8000  ///< Clear for PCI controllers that can not genrate a DAC;
-public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_IO_16 = 0x10000 ///< I/O cycles 0x0100-0x03FF or greater (16 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO_16 = 0x20000 ///< I/O cycles 0x3C6, 0x3C8, 0x3C9 (16 bit decode);
-public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_IO_16 = 0x40000 ///< I/O cycles 0x3B0-0x3BB and 0x3C0-0x3DF (16 bit decode);
+  public const ulong EFI_PCI_IO_PASS_THROUGH_BAR = 0xff; /// < Special BAR that passes a memory or I/O cycle through unchanged
+  public const ulong EFI_PCI_IO_ATTRIBUTE_MASK = 0x077f; /// < All the following I/O and Memory cycles
+  public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_MOTHERBOARD_IO = 0x0001; /// < I/O cycles 0x0000-0x00FF (10 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_IO = 0x0002; /// < I/O cycles 0x0100-0x03FF or greater (10 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO = 0x0004; /// < I/O cycles 0x3C6, 0x3C8, 0x3C9 (10 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_MEMORY = 0x0008; /// < MEM cycles 0xA0000-0xBFFFF (24 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_IO = 0x0010; /// < I/O cycles 0x3B0-0x3BB and 0x3C0-0x3DF (10 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_IDE_PRIMARY_IO = 0x0020; /// < I/O cycles 0x1F0-0x1F7, 0x3F6, 0x3F7 (10 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_IDE_SECONDARY_IO = 0x0040; /// < I/O cycles 0x170-0x177, 0x376, 0x377 (10 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY_WRITE_COMBINE = 0x0080; /// < Map a memory range so writes are combined
+  public const ulong EFI_PCI_IO_ATTRIBUTE_IO = 0x0100; /// < Enable the I/O decode bit in the PCI Config Header
+  public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY = 0x0200; /// < Enable the Memory decode bit in the PCI Config Header
+  public const ulong EFI_PCI_IO_ATTRIBUTE_BUS_MASTER = 0x0400; /// < Enable the DMA bit in the PCI Config Header
+  public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY_CACHED = 0x0800; /// < Map a memory range so all r/w accesses are cached
+  public const ulong EFI_PCI_IO_ATTRIBUTE_MEMORY_DISABLE = 0x1000; /// < Disable a memory range
+  public const ulong EFI_PCI_IO_ATTRIBUTE_EMBEDDED_DEVICE = 0x2000; /// < Clear for an add-in PCI Device
+  public const ulong EFI_PCI_IO_ATTRIBUTE_EMBEDDED_ROM = 0x4000; /// < Clear for a physical PCI Option ROM accessed through ROM BAR
+  public const ulong EFI_PCI_IO_ATTRIBUTE_DUAL_ADDRESS_CYCLE = 0x8000; /// < Clear for PCI controllers that can not genrate a DAC
+  public const ulong EFI_PCI_IO_ATTRIBUTE_ISA_IO_16 = 0x10000; /// < I/O cycles 0x0100-0x03FF or greater (16 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO_16 = 0x20000; /// < I/O cycles 0x3C6, 0x3C8, 0x3C9 (16 bit decode)
+  public const ulong EFI_PCI_IO_ATTRIBUTE_VGA_IO_16 = 0x40000; /// < I/O cycles 0x3B0-0x3BB and 0x3C0-0x3DF (16 bit decode)
 
-public const ulong EFI_PCI_DEVICE_ENABLE = (EFI_PCI_IO_ATTRIBUTE_IO | EFI_PCI_IO_ATTRIBUTE_MEMORY | EFI_PCI_IO_ATTRIBUTE_BUS_MASTER);
+  public const ulong EFI_PCI_DEVICE_ENABLE = (EFI_PCI_IO_ATTRIBUTE_IO | EFI_PCI_IO_ATTRIBUTE_MEMORY | EFI_PCI_IO_ATTRIBUTE_BUS_MASTER);
   public const ulong EFI_VGA_DEVICE_ENABLE = (EFI_PCI_IO_ATTRIBUTE_VGA_PALETTE_IO | EFI_PCI_IO_ATTRIBUTE_VGA_MEMORY | EFI_PCI_IO_ATTRIBUTE_VGA_IO | EFI_PCI_IO_ATTRIBUTE_IO);
 }
 
@@ -164,16 +164,23 @@ public unsafe struct EFI_PCI_IO_PROTOCOL_ACCESS
 
                                   allocated range.
 
+
     IN  ulong Pages,
 
     @param Attributes            The mask of attributes that are used for Set, Enable, and Disable
 
+
+
     @param Resources             A pointer to the resource descriptors that describe the current
+
+
 
     @retval EFI_SUCCESS           The set of attributes specified by Attributes for the resource
 
+
                                   range specified by BarIndex, Offset, and Length were
                                   set on the PCI controller, and the actual resource range is returned
+
 
                                   in Offset and Length.
     @retval EFI_INVALID_PARAMETER Offset or Length is NULL.

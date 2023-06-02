@@ -94,6 +94,8 @@ public unsafe partial class EFI
 
       @param Buffer     The buffer of data to write.
 
+
+
       );
 
     @param Buffer          A pointer to the data buffer to return. The buffer's type is
@@ -142,6 +144,7 @@ EFI_STATUS
     longer supported.
 
 @param  Token A pointer to the token associated with the transaction.
+
 
 @retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
     If Event is not NULL(asynchronous I/O): The request was successfully

@@ -183,41 +183,41 @@ public unsafe partial class EFI
   //
   // SCSI Block Command Cache Control Parameters
   //
-  public const ulong EFI_SCSI_BLOCK_FUA = BIT3  ///< Force Unit Access;
-public const ulong EFI_SCSI_BLOCK_DPO = BIT4  ///< Disable Page Out;
+  public const ulong EFI_SCSI_BLOCK_FUA = BIT3; /// < Force Unit Access
+  public const ulong EFI_SCSI_BLOCK_DPO = BIT4; /// < Disable Page Out
 
   //
   // Peripheral Device Type Definitions
   //
-public const ulong EFI_SCSI_TYPE_DISK = 0x00 ///< Direct-access device (e.g. magnetic disk);
-public const ulong EFI_SCSI_TYPE_TAPE = 0x01 ///< Sequential-access device (e.g. magnetic tape);
-public const ulong EFI_SCSI_TYPE_PRINTER = 0x02 ///< Printer device;
-public const ulong EFI_SCSI_TYPE_PROCESSOR = 0x03 ///< Processor device;
-public const ulong EFI_SCSI_TYPE_WORM = 0x04 ///< Write-once device (e.g. some optical disks);
-public const ulong EFI_SCSI_TYPE_CDROM = 0x05 ///< CD/DVD device;
-public const ulong EFI_SCSI_TYPE_SCANNER = 0x06 ///< Scanner device (obsolete);
-public const ulong EFI_SCSI_TYPE_OPTICAL = 0x07 ///< Optical memory device (e.g. some optical disks);
-public const ulong EFI_SCSI_TYPE_MEDIUMCHANGER = 0x08 ///< Medium changer device (e.g. jukeboxes);
-public const ulong EFI_SCSI_TYPE_COMMUNICATION = 0x09 ///< Communications device (obsolete);
-public const ulong EFI_SCSI_TYPE_ASCIT8_1 = 0x0A ///< Defined by ASC IT8 (Graphic arts pre-press devices);
-public const ulong EFI_SCSI_TYPE_ASCIT8_2 = 0x0B ///< Defined by ASC IT8 (Graphic arts pre-press devices);
-public const ulong EFI_SCSI_TYPE_RAID = 0x0C ///< Storage array controller device (e.g., RAID);
-public const ulong EFI_SCSI_TYPE_SES = 0x0D ///< Enclosure services device;
-public const ulong EFI_SCSI_TYPE_RBC = 0x0E ///< Simplified direct-access device (e.g., magnetic disk);
-public const ulong EFI_SCSI_TYPE_OCRW = 0x0F ///< Optical card reader/writer device;
-public const ulong EFI_SCSI_TYPE_BRIDGE = 0x10 ///< Bridge Controller Commands;
-public const ulong EFI_SCSI_TYPE_OSD = 0x11 ///< Object-based Storage Device;
-public const ulong EFI_SCSI_TYPE_AUTOMATION = 0x12 ///< Automation/Drive Interface;
-public const ulong EFI_SCSI_TYPE_SECURITYMANAGER = 0x13 ///< Security manager device;
-public const ulong EFI_SCSI_TYPE_RESERVED_LOW = 0x14 ///< Reserved (low);
-public const ulong EFI_SCSI_TYPE_RESERVED_HIGH = 0x1D ///< Reserved (high);
-public const ulong EFI_SCSI_TYPE_WLUN = 0x1E ///< Well known logical unit;
-public const ulong EFI_SCSI_TYPE_UNKNOWN = 0x1F ///< Unknown or no device type;
+  public const ulong EFI_SCSI_TYPE_DISK = 0x00; /// < Direct-access device (e.g. magnetic disk)
+  public const ulong EFI_SCSI_TYPE_TAPE = 0x01; /// < Sequential-access device (e.g. magnetic tape)
+  public const ulong EFI_SCSI_TYPE_PRINTER = 0x02; /// < Printer device
+  public const ulong EFI_SCSI_TYPE_PROCESSOR = 0x03; /// < Processor device
+  public const ulong EFI_SCSI_TYPE_WORM = 0x04; /// < Write-once device (e.g. some optical disks)
+  public const ulong EFI_SCSI_TYPE_CDROM = 0x05; /// < CD/DVD device
+  public const ulong EFI_SCSI_TYPE_SCANNER = 0x06; /// < Scanner device (obsolete)
+  public const ulong EFI_SCSI_TYPE_OPTICAL = 0x07; /// < Optical memory device (e.g. some optical disks)
+  public const ulong EFI_SCSI_TYPE_MEDIUMCHANGER = 0x08; /// < Medium changer device (e.g. jukeboxes)
+  public const ulong EFI_SCSI_TYPE_COMMUNICATION = 0x09; /// < Communications device (obsolete)
+  public const ulong EFI_SCSI_TYPE_ASCIT8_1 = 0x0A; /// < Defined by ASC IT8 (Graphic arts pre-press devices)
+  public const ulong EFI_SCSI_TYPE_ASCIT8_2 = 0x0B; /// < Defined by ASC IT8 (Graphic arts pre-press devices)
+  public const ulong EFI_SCSI_TYPE_RAID = 0x0C; /// < Storage array controller device (e.g., RAID)
+  public const ulong EFI_SCSI_TYPE_SES = 0x0D; /// < Enclosure services device
+  public const ulong EFI_SCSI_TYPE_RBC = 0x0E; /// < Simplified direct-access device (e.g., magnetic disk)
+  public const ulong EFI_SCSI_TYPE_OCRW = 0x0F; /// < Optical card reader/writer device
+  public const ulong EFI_SCSI_TYPE_BRIDGE = 0x10; /// < Bridge Controller Commands
+  public const ulong EFI_SCSI_TYPE_OSD = 0x11; /// < Object-based Storage Device
+  public const ulong EFI_SCSI_TYPE_AUTOMATION = 0x12; /// < Automation/Drive Interface
+  public const ulong EFI_SCSI_TYPE_SECURITYMANAGER = 0x13; /// < Security manager device
+  public const ulong EFI_SCSI_TYPE_RESERVED_LOW = 0x14; /// < Reserved (low)
+  public const ulong EFI_SCSI_TYPE_RESERVED_HIGH = 0x1D; /// < Reserved (high)
+  public const ulong EFI_SCSI_TYPE_WLUN = 0x1E; /// < Well known logical unit
+  public const ulong EFI_SCSI_TYPE_UNKNOWN = 0x1F; /// < Unknown or no device type
 
   //
   // Page Codes for INQUIRY command
   //
-public const ulong EFI_SCSI_PAGE_CODE_SUPPORTED_VPD = 0x00;
+  public const ulong EFI_SCSI_PAGE_CODE_SUPPORTED_VPD = 0x00;
   public const ulong EFI_SCSI_PAGE_CODE_BLOCK_LIMITS_VPD = 0xB0;
 }
 
@@ -441,8 +441,8 @@ public unsafe partial class EFI
   public const ulong EFI_SCSI_ASC_INVALID_FIELD = (0x24);
   public const ulong EFI_SCSI_ASC_WRITE_PROTECTED = (0x27);
   public const ulong EFI_SCSI_ASC_MEDIA_CHANGE = (0x28);
-  public const ulong EFI_SCSI_ASC_RESET = (0x29)   ///< Power On Reset or Bus Reset occurred;
-public const ulong EFI_SCSI_ASC_ILLEGAL_FIELD = (0x26);
+  public const ulong EFI_SCSI_ASC_RESET = (0x29); /// < Power On Reset or Bus Reset occurred
+  public const ulong EFI_SCSI_ASC_ILLEGAL_FIELD = (0x26);
   public const ulong EFI_SCSI_ASC_NO_MEDIA = (0x3A);
   public const ulong EFI_SCSI_ASC_ILLEGAL_MODE_FOR_THIS_TRACK = (0x64);
 }

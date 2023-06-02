@@ -65,7 +65,7 @@ public unsafe struct TCG_PACKET
 
 public unsafe partial class EFI
 {
-  public const ulong TCG_SUBPACKET_ALIGNMENT = 4// 4-byte alignment per spec;
+  public const ulong TCG_SUBPACKET_ALIGNMENT = 4; //  4-byte alignment per spec
 }
 
 [StructLayout(LayoutKind.Sequential)]

@@ -79,7 +79,7 @@ public unsafe partial class EFI
   ///
   /// RSD_PTR Revision (as defined in ACPI 4.0b spec.)
   ///
-  public const ulong EFI_ACPI_4_0_ROOT_SYSTEM_DESCRIPTION_POINTER_REVISION = 0x02 ///< ACPISpec (Revision 4.0a) says current value is 2;
+  public const ulong EFI_ACPI_4_0_ROOT_SYSTEM_DESCRIPTION_POINTER_REVISION = 0x02; /// < ACPISpec (Revision 4.0a) says current value is 2
 }
 
 ///

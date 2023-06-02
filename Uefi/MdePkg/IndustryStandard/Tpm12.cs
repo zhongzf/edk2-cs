@@ -325,69 +325,69 @@ public unsafe partial class EFI
   //
   // Part 2, section 4.1: TPM_RESOURCE_TYPE
   //
-  public const ulong TPM_RT_KEY = ((TPM_RESOURCE_TYPE)0x00000001)            ///< The handle is a key handle and is the result of a LoadKey type operation;
-public const ulong TPM_RT_AUTH = ((TPM_RESOURCE_TYPE)0x00000002)            ///< The handle is an authorization handle. Auth handles come from TPM_OIAP, TPM_OSAP and TPM_DSAP;
-public const ulong TPM_RT_HASH = ((TPM_RESOURCE_TYPE)0x00000003)            ///< Reserved for hashes;
-public const ulong TPM_RT_TRANS = ((TPM_RESOURCE_TYPE)0x00000004)            ///< The handle is for a transport session. Transport handles come from TPM_EstablishTransport;
-public const ulong TPM_RT_CONTEXT = ((TPM_RESOURCE_TYPE)0x00000005)            ///< Resource wrapped and held outside the TPM using the context save/restore commands;
-public const ulong TPM_RT_COUNTER = ((TPM_RESOURCE_TYPE)0x00000006)            ///< Reserved for counters;
-public const ulong TPM_RT_DELEGATE = ((TPM_RESOURCE_TYPE)0x00000007)            ///< The handle is for a delegate row. These are the internal rows held in NV storage by the TPM;
-public const ulong TPM_RT_DAA_TPM = ((TPM_RESOURCE_TYPE)0x00000008)            ///< The value is a DAA TPM specific blob;
-public const ulong TPM_RT_DAA_V0 = ((TPM_RESOURCE_TYPE)0x00000009)            ///< The value is a DAA V0 parameter;
-public const ulong TPM_RT_DAA_V1 = ((TPM_RESOURCE_TYPE)0x0000000A)            ///< The value is a DAA V1 parameter;
+  public const ulong TPM_RT_KEY = ((TPM_RESOURCE_TYPE)0x00000001); /// < The handle is a key handle and is the result of a LoadKey type operation
+  public const ulong TPM_RT_AUTH = ((TPM_RESOURCE_TYPE)0x00000002); /// < The handle is an authorization handle. Auth handles come from TPM_OIAP, TPM_OSAP and TPM_DSAP
+  public const ulong TPM_RT_HASH = ((TPM_RESOURCE_TYPE)0x00000003); /// < Reserved for hashes
+  public const ulong TPM_RT_TRANS = ((TPM_RESOURCE_TYPE)0x00000004); /// < The handle is for a transport session. Transport handles come from TPM_EstablishTransport
+  public const ulong TPM_RT_CONTEXT = ((TPM_RESOURCE_TYPE)0x00000005); /// < Resource wrapped and held outside the TPM using the context save/restore commands
+  public const ulong TPM_RT_COUNTER = ((TPM_RESOURCE_TYPE)0x00000006); /// < Reserved for counters
+  public const ulong TPM_RT_DELEGATE = ((TPM_RESOURCE_TYPE)0x00000007); /// < The handle is for a delegate row. These are the internal rows held in NV storage by the TPM
+  public const ulong TPM_RT_DAA_TPM = ((TPM_RESOURCE_TYPE)0x00000008); /// < The value is a DAA TPM specific blob
+  public const ulong TPM_RT_DAA_V0 = ((TPM_RESOURCE_TYPE)0x00000009); /// < The value is a DAA V0 parameter
+  public const ulong TPM_RT_DAA_V1 = ((TPM_RESOURCE_TYPE)0x0000000A); /// < The value is a DAA V1 parameter
 
   //
   // Part 2, section 4.2: TPM_PAYLOAD_TYPE
   //
-public const ulong TPM_PT_ASYM = ((TPM_PAYLOAD_TYPE)0x01)  ///< The entity is an asymmetric key;
-public const ulong TPM_PT_BIND = ((TPM_PAYLOAD_TYPE)0x02)  ///< The entity is bound data;
-public const ulong TPM_PT_MIGRATE = ((TPM_PAYLOAD_TYPE)0x03)  ///< The entity is a migration blob;
-public const ulong TPM_PT_MAINT = ((TPM_PAYLOAD_TYPE)0x04)  ///< The entity is a maintenance blob;
-public const ulong TPM_PT_SEAL = ((TPM_PAYLOAD_TYPE)0x05)  ///< The entity is sealed data;
-public const ulong TPM_PT_MIGRATE_RESTRICTED = ((TPM_PAYLOAD_TYPE)0x06)  ///< The entity is a restricted-migration asymmetric key;
-public const ulong TPM_PT_MIGRATE_EXTERNAL = ((TPM_PAYLOAD_TYPE)0x07)  ///< The entity is a external migratable key;
-public const ulong TPM_PT_CMK_MIGRATE = ((TPM_PAYLOAD_TYPE)0x08)  ///< The entity is a CMK migratable blob;
-public const ulong TPM_PT_VENDOR_SPECIFIC = ((TPM_PAYLOAD_TYPE)0x80)  ///< 0x80 - 0xFF Vendor specific payloads;
+  public const ulong TPM_PT_ASYM = ((TPM_PAYLOAD_TYPE)0x01); /// < The entity is an asymmetric key
+  public const ulong TPM_PT_BIND = ((TPM_PAYLOAD_TYPE)0x02); /// < The entity is bound data
+  public const ulong TPM_PT_MIGRATE = ((TPM_PAYLOAD_TYPE)0x03); /// < The entity is a migration blob
+  public const ulong TPM_PT_MAINT = ((TPM_PAYLOAD_TYPE)0x04); /// < The entity is a maintenance blob
+  public const ulong TPM_PT_SEAL = ((TPM_PAYLOAD_TYPE)0x05); /// < The entity is sealed data
+  public const ulong TPM_PT_MIGRATE_RESTRICTED = ((TPM_PAYLOAD_TYPE)0x06); /// < The entity is a restricted-migration asymmetric key
+  public const ulong TPM_PT_MIGRATE_EXTERNAL = ((TPM_PAYLOAD_TYPE)0x07); /// < The entity is a external migratable key
+  public const ulong TPM_PT_CMK_MIGRATE = ((TPM_PAYLOAD_TYPE)0x08); /// < The entity is a CMK migratable blob
+  public const ulong TPM_PT_VENDOR_SPECIFIC = ((TPM_PAYLOAD_TYPE)0x80); /// < 0x80 - 0xFF Vendor specific payloads
 
   //
   // Part 2, section 4.3: TPM_ENTITY_TYPE
   //
-public const ulong TPM_ET_KEYHANDLE = ((ushort)0x0001)     ///< The entity is a keyHandle or key;
-public const ulong TPM_ET_OWNER = ((ushort)0x0002)     ///< The entity is the TPM Owner;
-public const ulong TPM_ET_DATA = ((ushort)0x0003)     ///< The entity is some data;
-public const ulong TPM_ET_SRK = ((ushort)0x0004)     ///< The entity is the SRK;
-public const ulong TPM_ET_KEY = ((ushort)0x0005)     ///< The entity is a key or keyHandle;
-public const ulong TPM_ET_REVOKE = ((ushort)0x0006)     ///< The entity is the RevokeTrust value;
-public const ulong TPM_ET_DEL_OWNER_BLOB = ((ushort)0x0007)     ///< The entity is a delegate owner blob;
-public const ulong TPM_ET_DEL_ROW = ((ushort)0x0008)     ///< The entity is a delegate row;
-public const ulong TPM_ET_DEL_KEY_BLOB = ((ushort)0x0009)     ///< The entity is a delegate key blob;
-public const ulong TPM_ET_COUNTER = ((ushort)0x000A)     ///< The entity is a counter;
-public const ulong TPM_ET_NV = ((ushort)0x000B)     ///< The entity is a NV index;
-public const ulong TPM_ET_OPERATOR = ((ushort)0x000C)     ///< The entity is the operator;
-public const ulong TPM_ET_RESERVED_HANDLE = ((ushort)0x0040)     ///< Reserved. This value avoids collisions with the handle MSB setting.;
+  public const ulong TPM_ET_KEYHANDLE = ((ushort)0x0001); /// < The entity is a keyHandle or key
+  public const ulong TPM_ET_OWNER = ((ushort)0x0002); /// < The entity is the TPM Owner
+  public const ulong TPM_ET_DATA = ((ushort)0x0003); /// < The entity is some data
+  public const ulong TPM_ET_SRK = ((ushort)0x0004); /// < The entity is the SRK
+  public const ulong TPM_ET_KEY = ((ushort)0x0005); /// < The entity is a key or keyHandle
+  public const ulong TPM_ET_REVOKE = ((ushort)0x0006); /// < The entity is the RevokeTrust value
+  public const ulong TPM_ET_DEL_OWNER_BLOB = ((ushort)0x0007); /// < The entity is a delegate owner blob
+  public const ulong TPM_ET_DEL_ROW = ((ushort)0x0008); /// < The entity is a delegate row
+  public const ulong TPM_ET_DEL_KEY_BLOB = ((ushort)0x0009); /// < The entity is a delegate key blob
+  public const ulong TPM_ET_COUNTER = ((ushort)0x000A); /// < The entity is a counter
+  public const ulong TPM_ET_NV = ((ushort)0x000B); /// < The entity is a NV index
+  public const ulong TPM_ET_OPERATOR = ((ushort)0x000C); /// < The entity is the operator
+  public const ulong TPM_ET_RESERVED_HANDLE = ((ushort)0x0040); /// < Reserved. This value avoids collisions with the handle MSB setting.
   //
   // TPM_ENTITY_TYPE MSB Values: The MSB is used to indicate the ADIP encryption sheme when applicable
   //
-public const ulong TPM_ET_XOR = ((ushort)0x0000)              ///< ADIP encryption scheme: XOR;
-public const ulong TPM_ET_AES128 = ((ushort)0x0006)              ///< ADIP encryption scheme: AES 128 bits;
+  public const ulong TPM_ET_XOR = ((ushort)0x0000); /// < ADIP encryption scheme: XOR
+  public const ulong TPM_ET_AES128 = ((ushort)0x0006); /// < ADIP encryption scheme: AES 128 bits
 
   //
   // Part 2, section 4.4.1: Reserved Key Handles
   //
-public const ulong TPM_KH_SRK = ((TPM_KEY_HANDLE)0x40000000)           ///< The handle points to the SRK;
-public const ulong TPM_KH_OWNER = ((TPM_KEY_HANDLE)0x40000001)           ///< The handle points to the TPM Owner;
-public const ulong TPM_KH_REVOKE = ((TPM_KEY_HANDLE)0x40000002)           ///< The handle points to the RevokeTrust value;
-public const ulong TPM_KH_TRANSPORT = ((TPM_KEY_HANDLE)0x40000003)           ///< The handle points to the EstablishTransport static authorization;
-public const ulong TPM_KH_OPERATOR = ((TPM_KEY_HANDLE)0x40000004)           ///< The handle points to the Operator auth;
-public const ulong TPM_KH_ADMIN = ((TPM_KEY_HANDLE)0x40000005)           ///< The handle points to the delegation administration auth;
-public const ulong TPM_KH_EK = ((TPM_KEY_HANDLE)0x40000006)           ///< The handle points to the PUBEK, only usable with TPM_OwnerReadInternalPub;
+  public const ulong TPM_KH_SRK = ((TPM_KEY_HANDLE)0x40000000); /// < The handle points to the SRK
+  public const ulong TPM_KH_OWNER = ((TPM_KEY_HANDLE)0x40000001); /// < The handle points to the TPM Owner
+  public const ulong TPM_KH_REVOKE = ((TPM_KEY_HANDLE)0x40000002); /// < The handle points to the RevokeTrust value
+  public const ulong TPM_KH_TRANSPORT = ((TPM_KEY_HANDLE)0x40000003); /// < The handle points to the EstablishTransport static authorization
+  public const ulong TPM_KH_OPERATOR = ((TPM_KEY_HANDLE)0x40000004); /// < The handle points to the Operator auth
+  public const ulong TPM_KH_ADMIN = ((TPM_KEY_HANDLE)0x40000005); /// < The handle points to the delegation administration auth
+  public const ulong TPM_KH_EK = ((TPM_KEY_HANDLE)0x40000006); /// < The handle points to the PUBEK, only usable with TPM_OwnerReadInternalPub
 
   //
   // Part 2, section 4.5: TPM_STARTUP_TYPE
   //
-public const ulong TPM_ST_CLEAR = ((TPM_STARTUP_TYPE)0x0001)         ///< The TPM is starting up from a clean state;
-public const ulong TPM_ST_STATE = ((TPM_STARTUP_TYPE)0x0002)         ///< The TPM is starting up from a saved state;
-public const ulong TPM_ST_DEACTIVATED = ((TPM_STARTUP_TYPE)0x0003)         ///< The TPM is to startup and set the deactivated flag to TRUE;
+  public const ulong TPM_ST_CLEAR = ((TPM_STARTUP_TYPE)0x0001); /// < The TPM is starting up from a clean state
+  public const ulong TPM_ST_STATE = ((TPM_STARTUP_TYPE)0x0002); /// < The TPM is starting up from a saved state
+  public const ulong TPM_ST_DEACTIVATED = ((TPM_STARTUP_TYPE)0x0003); /// < The TPM is to startup and set the deactivated flag to TRUE
 
   //
   // Part 2, section 4.6: TPM_STATUP_EFFECTS
@@ -397,65 +397,65 @@ public const ulong TPM_ST_DEACTIVATED = ((TPM_STARTUP_TYPE)0x0003)         ///< 
   //
   // Part 2, section 4.7: TPM_PROTOCOL_ID
   //
-public const ulong TPM_PID_OIAP = ((TPM_PROTOCOL_ID)0x0001)          ///< The OIAP protocol.;
-public const ulong TPM_PID_OSAP = ((TPM_PROTOCOL_ID)0x0002)          ///< The OSAP protocol.;
-public const ulong TPM_PID_ADIP = ((TPM_PROTOCOL_ID)0x0003)          ///< The ADIP protocol.;
-public const ulong TPM_PID_ADCP = ((TPM_PROTOCOL_ID)0x0004)          ///< The ADCP protocol.;
-public const ulong TPM_PID_OWNER = ((TPM_PROTOCOL_ID)0x0005)          ///< The protocol for taking ownership of a TPM.;
-public const ulong TPM_PID_DSAP = ((TPM_PROTOCOL_ID)0x0006)          ///< The DSAP protocol;
-public const ulong TPM_PID_TRANSPORT = ((TPM_PROTOCOL_ID)0x0007)          ///< The transport protocol;
+  public const ulong TPM_PID_OIAP = ((TPM_PROTOCOL_ID)0x0001); /// < The OIAP protocol.
+  public const ulong TPM_PID_OSAP = ((TPM_PROTOCOL_ID)0x0002); /// < The OSAP protocol.
+  public const ulong TPM_PID_ADIP = ((TPM_PROTOCOL_ID)0x0003); /// < The ADIP protocol.
+  public const ulong TPM_PID_ADCP = ((TPM_PROTOCOL_ID)0x0004); /// < The ADCP protocol.
+  public const ulong TPM_PID_OWNER = ((TPM_PROTOCOL_ID)0x0005); /// < The protocol for taking ownership of a TPM.
+  public const ulong TPM_PID_DSAP = ((TPM_PROTOCOL_ID)0x0006); /// < The DSAP protocol
+  public const ulong TPM_PID_TRANSPORT = ((TPM_PROTOCOL_ID)0x0007); /// < The transport protocol
 
   //
   // Part 2, section 4.8: TPM_ALGORITHM_ID
   //   The TPM MUST support the algorithms TPM_ALG_RSA, TPM_ALG_SHA, TPM_ALG_HMAC,
   //   TPM_ALG_MGF1
   //
-public const ulong TPM_ALG_RSA = ((TPM_ALGORITHM_ID)0x00000001)             ///< The RSA algorithm.;
-public const ulong TPM_ALG_DES = ((TPM_ALGORITHM_ID)0x00000002)             ///< The DES algorithm;
-public const ulong TPM_ALG_3DES = ((TPM_ALGORITHM_ID)0x00000003)             ///< The 3DES algorithm in EDE mode;
-public const ulong TPM_ALG_SHA = ((TPM_ALGORITHM_ID)0x00000004)             ///< The SHA1 algorithm;
-public const ulong TPM_ALG_HMAC = ((TPM_ALGORITHM_ID)0x00000005)             ///< The RFC 2104 HMAC algorithm;
-public const ulong TPM_ALG_AES128 = ((TPM_ALGORITHM_ID)0x00000006)             ///< The AES algorithm, key size 128;
-public const ulong TPM_ALG_MGF1 = ((TPM_ALGORITHM_ID)0x00000007)             ///< The XOR algorithm using MGF1 to create a string the size of the encrypted block;
-public const ulong TPM_ALG_AES192 = ((TPM_ALGORITHM_ID)0x00000008)             ///< AES, key size 192;
-public const ulong TPM_ALG_AES256 = ((TPM_ALGORITHM_ID)0x00000009)             ///< AES, key size 256;
-public const ulong TPM_ALG_XOR = ((TPM_ALGORITHM_ID)0x0000000A)             ///< XOR using the rolling nonces;
+  public const ulong TPM_ALG_RSA = ((TPM_ALGORITHM_ID)0x00000001); /// < The RSA algorithm.
+  public const ulong TPM_ALG_DES = ((TPM_ALGORITHM_ID)0x00000002); /// < The DES algorithm
+  public const ulong TPM_ALG_3DES = ((TPM_ALGORITHM_ID)0x00000003); /// < The 3DES algorithm in EDE mode
+  public const ulong TPM_ALG_SHA = ((TPM_ALGORITHM_ID)0x00000004); /// < The SHA1 algorithm
+  public const ulong TPM_ALG_HMAC = ((TPM_ALGORITHM_ID)0x00000005); /// < The RFC 2104 HMAC algorithm
+  public const ulong TPM_ALG_AES128 = ((TPM_ALGORITHM_ID)0x00000006); /// < The AES algorithm, key size 128
+  public const ulong TPM_ALG_MGF1 = ((TPM_ALGORITHM_ID)0x00000007); /// < The XOR algorithm using MGF1 to create a string the size of the encrypted block
+  public const ulong TPM_ALG_AES192 = ((TPM_ALGORITHM_ID)0x00000008); /// < AES, key size 192
+  public const ulong TPM_ALG_AES256 = ((TPM_ALGORITHM_ID)0x00000009); /// < AES, key size 256
+  public const ulong TPM_ALG_XOR = ((TPM_ALGORITHM_ID)0x0000000A); /// < XOR using the rolling nonces
 
   //
   // Part 2, section 4.9: TPM_PHYSICAL_PRESENCE
   //
-public const ulong TPM_PHYSICAL_PRESENCE_HW_DISABLE = ((TPM_PHYSICAL_PRESENCE)0x0200) ///< Sets the physicalPresenceHWEnable to FALSE;
-public const ulong TPM_PHYSICAL_PRESENCE_CMD_DISABLE = ((TPM_PHYSICAL_PRESENCE)0x0100) ///< Sets the physicalPresenceCMDEnable to FALSE;
-public const ulong TPM_PHYSICAL_PRESENCE_LIFETIME_LOCK = ((TPM_PHYSICAL_PRESENCE)0x0080) ///< Sets the physicalPresenceLifetimeLock to TRUE;
-public const ulong TPM_PHYSICAL_PRESENCE_HW_ENABLE = ((TPM_PHYSICAL_PRESENCE)0x0040) ///< Sets the physicalPresenceHWEnable to TRUE;
-public const ulong TPM_PHYSICAL_PRESENCE_CMD_ENABLE = ((TPM_PHYSICAL_PRESENCE)0x0020) ///< Sets the physicalPresenceCMDEnable to TRUE;
-public const ulong TPM_PHYSICAL_PRESENCE_NOTPRESENT = ((TPM_PHYSICAL_PRESENCE)0x0010) ///< Sets PhysicalPresence = FALSE;
-public const ulong TPM_PHYSICAL_PRESENCE_PRESENT = ((TPM_PHYSICAL_PRESENCE)0x0008) ///< Sets PhysicalPresence = TRUE;
-public const ulong TPM_PHYSICAL_PRESENCE_LOCK = ((TPM_PHYSICAL_PRESENCE)0x0004) ///< Sets PhysicalPresenceLock = TRUE;
+  public const ulong TPM_PHYSICAL_PRESENCE_HW_DISABLE = ((TPM_PHYSICAL_PRESENCE)0x0200); /// < Sets the physicalPresenceHWEnable to FALSE
+  public const ulong TPM_PHYSICAL_PRESENCE_CMD_DISABLE = ((TPM_PHYSICAL_PRESENCE)0x0100); /// < Sets the physicalPresenceCMDEnable to FALSE
+  public const ulong TPM_PHYSICAL_PRESENCE_LIFETIME_LOCK = ((TPM_PHYSICAL_PRESENCE)0x0080); /// < Sets the physicalPresenceLifetimeLock to TRUE
+  public const ulong TPM_PHYSICAL_PRESENCE_HW_ENABLE = ((TPM_PHYSICAL_PRESENCE)0x0040); /// < Sets the physicalPresenceHWEnable to TRUE
+  public const ulong TPM_PHYSICAL_PRESENCE_CMD_ENABLE = ((TPM_PHYSICAL_PRESENCE)0x0020); /// < Sets the physicalPresenceCMDEnable to TRUE
+  public const ulong TPM_PHYSICAL_PRESENCE_NOTPRESENT = ((TPM_PHYSICAL_PRESENCE)0x0010); /// < Sets PhysicalPresence = FALSE
+  public const ulong TPM_PHYSICAL_PRESENCE_PRESENT = ((TPM_PHYSICAL_PRESENCE)0x0008); /// < Sets PhysicalPresence = TRUE
+  public const ulong TPM_PHYSICAL_PRESENCE_LOCK = ((TPM_PHYSICAL_PRESENCE)0x0004); /// < Sets PhysicalPresenceLock = TRUE
 
   //
   // Part 2, section 4.10: TPM_MIGRATE_SCHEME
   //
-public const ulong TPM_MS_MIGRATE = ((TPM_MIGRATE_SCHEME)0x0001)     ///< A public key that can be used with all TPM migration commands other than 'ReWrap' mode.;
-public const ulong TPM_MS_REWRAP = ((TPM_MIGRATE_SCHEME)0x0002)     ///< A public key that can be used for the ReWrap mode of TPM_CreateMigrationBlob.;
-public const ulong TPM_MS_MAINT = ((TPM_MIGRATE_SCHEME)0x0003)     ///< A public key that can be used for the Maintenance commands;
-public const ulong TPM_MS_RESTRICT_MIGRATE = ((TPM_MIGRATE_SCHEME)0x0004)     ///< The key is to be migrated to a Migration Authority.;
-public const ulong TPM_MS_RESTRICT_APPROVE_DOUBLE = ((TPM_MIGRATE_SCHEME)0x0005)     ///< The key is to be migrated to an entity approved by a Migration Authority using double wrapping;
+  public const ulong TPM_MS_MIGRATE = ((TPM_MIGRATE_SCHEME)0x0001); /// < A public key that can be used with all TPM migration commands other than 'ReWrap' mode.
+  public const ulong TPM_MS_REWRAP = ((TPM_MIGRATE_SCHEME)0x0002); /// < A public key that can be used for the ReWrap mode of TPM_CreateMigrationBlob.
+  public const ulong TPM_MS_MAINT = ((TPM_MIGRATE_SCHEME)0x0003); /// < A public key that can be used for the Maintenance commands
+  public const ulong TPM_MS_RESTRICT_MIGRATE = ((TPM_MIGRATE_SCHEME)0x0004); /// < The key is to be migrated to a Migration Authority.
+  public const ulong TPM_MS_RESTRICT_APPROVE_DOUBLE = ((TPM_MIGRATE_SCHEME)0x0005); /// < The key is to be migrated to an entity approved by a Migration Authority using double wrapping
 
   //
   // Part 2, section 4.11: TPM_EK_TYPE
   //
-public const ulong TPM_EK_TYPE_ACTIVATE = ((TPM_EK_TYPE)0x0001)       ///< The blob MUST be TPM_EK_BLOB_ACTIVATE;
-public const ulong TPM_EK_TYPE_AUTH = ((TPM_EK_TYPE)0x0002)       ///< The blob MUST be TPM_EK_BLOB_AUTH;
+  public const ulong TPM_EK_TYPE_ACTIVATE = ((TPM_EK_TYPE)0x0001); /// < The blob MUST be TPM_EK_BLOB_ACTIVATE
+  public const ulong TPM_EK_TYPE_AUTH = ((TPM_EK_TYPE)0x0002); /// < The blob MUST be TPM_EK_BLOB_AUTH
 
   //
   // Part 2, section 4.12: TPM_PLATFORM_SPECIFIC
   //
-public const ulong TPM_PS_PC_11 = ((TPM_PLATFORM_SPECIFIC)0x0001)           ///< PC Specific version 1.1;
-public const ulong TPM_PS_PC_12 = ((TPM_PLATFORM_SPECIFIC)0x0002)           ///< PC Specific version 1.2;
-public const ulong TPM_PS_PDA_12 = ((TPM_PLATFORM_SPECIFIC)0x0003)           ///< PDA Specific version 1.2;
-public const ulong TPM_PS_Server_12 = ((TPM_PLATFORM_SPECIFIC)0x0004)           ///< Server Specific version 1.2;
-public const ulong TPM_PS_Mobile_12 = ((TPM_PLATFORM_SPECIFIC)0x0005)           ///< Mobil Specific version 1.2;
+  public const ulong TPM_PS_PC_11 = ((TPM_PLATFORM_SPECIFIC)0x0001); /// < PC Specific version 1.1
+  public const ulong TPM_PS_PC_12 = ((TPM_PLATFORM_SPECIFIC)0x0002); /// < PC Specific version 1.2
+  public const ulong TPM_PS_PDA_12 = ((TPM_PLATFORM_SPECIFIC)0x0003); /// < PDA Specific version 1.2
+  public const ulong TPM_PS_Server_12 = ((TPM_PLATFORM_SPECIFIC)0x0004); /// < Server Specific version 1.2
+  public const ulong TPM_PS_Mobile_12 = ((TPM_PLATFORM_SPECIFIC)0x0005); /// < Mobil Specific version 1.2
 
   //
   // Part 2, section 5: Basic Structures
@@ -464,7 +464,7 @@ public const ulong TPM_PS_Mobile_12 = ((TPM_PLATFORM_SPECIFIC)0x0005)           
   ///
   /// Part 2, section 5.1: TPM_STRUCT_VER
   ///
-typedef struct tdTPM_STRUCT_VER
+  typedef struct tdTPM_STRUCT_VER
   {
     byte major;
     byte minor;
@@ -633,8 +633,8 @@ public unsafe partial class EFI
   public const ulong TPM_ES_NONE = ((TPM_ENC_SCHEME)0x0001);
   public const ulong TPM_ES_RSAESPKCSv15 = ((TPM_ENC_SCHEME)0x0002);
   public const ulong TPM_ES_RSAESOAEP_SHA1_MGF1 = ((TPM_ENC_SCHEME)0x0003);
-  public const ulong TPM_ES_SYM_CNT = ((TPM_ENC_SCHEME)0x0004)  ///< rev94 defined;
-public const ulong TPM_ES_SYM_CTR = ((TPM_ENC_SCHEME)0x0004);
+  public const ulong TPM_ES_SYM_CNT = ((TPM_ENC_SCHEME)0x0004); /// < rev94 defined
+  public const ulong TPM_ES_SYM_CTR = ((TPM_ENC_SCHEME)0x0004);
   public const ulong TPM_ES_SYM_OFB = ((TPM_ENC_SCHEME)0x0005);
 
   public const ulong TPM_SS_NONE = ((TPM_SIG_SCHEME)0x0001);
@@ -933,8 +933,8 @@ public const ulong TPM_AF_POSTINITIALISE = ((TPM_CAPABILITY_AREA)1);
   //
   // Part 2, section 7.4: TPM_PERMANENT_DATA
   //
-  public const ulong TPM_MIN_COUNTERS = 4     ///< the minimum number of counters is 4;
-public const ulong TPM_DELEGATE_KEY = TPM_KEY;
+  public const ulong TPM_MIN_COUNTERS = 4; /// < the minimum number of counters is 4
+  public const ulong TPM_DELEGATE_KEY = TPM_KEY;
   public const ulong TPM_NUM_PCR = 16;
   public const ulong TPM_MAX_NV_WRITE_NOOWNER = 64;
 

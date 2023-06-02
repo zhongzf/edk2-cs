@@ -26,40 +26,40 @@ public unsafe partial class EFI
   //
   // Usb mass storage subclass code, specify the command set used.
   //
-  public const ulong USB_MASS_STORE_RBC = 0x01   ///< Reduced Block Commands;
-public const ulong USB_MASS_STORE_8020I = 0x02   ///< SFF-8020i, typically a CD/DVD device;
-public const ulong USB_MASS_STORE_QIC = 0x03   ///< Typically a tape device;
-public const ulong USB_MASS_STORE_UFI = 0x04   ///< Typically a floppy disk driver device;
-public const ulong USB_MASS_STORE_8070I = 0x05   ///< SFF-8070i, typically a floppy disk driver device.;
-public const ulong USB_MASS_STORE_SCSI = 0x06   ///< SCSI transparent command set;
+  public const ulong USB_MASS_STORE_RBC = 0x01; /// < Reduced Block Commands
+  public const ulong USB_MASS_STORE_8020I = 0x02; /// < SFF-8020i, typically a CD/DVD device
+  public const ulong USB_MASS_STORE_QIC = 0x03; /// < Typically a tape device
+  public const ulong USB_MASS_STORE_UFI = 0x04; /// < Typically a floppy disk driver device
+  public const ulong USB_MASS_STORE_8070I = 0x05; /// < SFF-8070i, typically a floppy disk driver device.
+  public const ulong USB_MASS_STORE_SCSI = 0x06; /// < SCSI transparent command set
 
   //
   // Usb mass storage protocol code, specify the transport protocol
   //
-public const ulong USB_MASS_STORE_CBI0 = 0x00    ///< CBI protocol with command completion interrupt;
-public const ulong USB_MASS_STORE_CBI1 = 0x01    ///< CBI protocol without command completion interrupt;
-public const ulong USB_MASS_STORE_BOT = 0x50    ///< Bulk-Only Transport;
+  public const ulong USB_MASS_STORE_CBI0 = 0x00; /// < CBI protocol with command completion interrupt
+  public const ulong USB_MASS_STORE_CBI1 = 0x01; /// < CBI protocol without command completion interrupt
+  public const ulong USB_MASS_STORE_BOT = 0x50; /// < Bulk-Only Transport
 
   //
   // Standard device request and request type
   // USB 2.0 spec, Section 9.4
   //
-public const ulong USB_DEV_GET_STATUS = 0x00;
-  public const ulong USB_DEV_GET_STATUS_REQ_TYPE_D = 0x80      // Receiver : Device;
-public const ulong USB_DEV_GET_STATUS_REQ_TYPE_I = 0x81      // Receiver : Interface;
-public const ulong USB_DEV_GET_STATUS_REQ_TYPE_E = 0x82      // Receiver : Endpoint;
+  public const ulong USB_DEV_GET_STATUS = 0x00;
+  public const ulong USB_DEV_GET_STATUS_REQ_TYPE_D = 0x80; //  Receiver : Device
+  public const ulong USB_DEV_GET_STATUS_REQ_TYPE_I = 0x81; //  Receiver : Interface
+  public const ulong USB_DEV_GET_STATUS_REQ_TYPE_E = 0x82; //  Receiver : Endpoint
 
-public const ulong USB_DEV_CLEAR_FEATURE = 0x01;
-  public const ulong USB_DEV_CLEAR_FEATURE_REQ_TYPE_D = 0x00   // Receiver : Device;
-public const ulong USB_DEV_CLEAR_FEATURE_REQ_TYPE_I = 0x01   // Receiver : Interface;
-public const ulong USB_DEV_CLEAR_FEATURE_REQ_TYPE_E = 0x02   // Receiver : Endpoint;
+  public const ulong USB_DEV_CLEAR_FEATURE = 0x01;
+  public const ulong USB_DEV_CLEAR_FEATURE_REQ_TYPE_D = 0x00; //  Receiver : Device
+  public const ulong USB_DEV_CLEAR_FEATURE_REQ_TYPE_I = 0x01; //  Receiver : Interface
+  public const ulong USB_DEV_CLEAR_FEATURE_REQ_TYPE_E = 0x02; //  Receiver : Endpoint
 
-public const ulong USB_DEV_SET_FEATURE = 0x03;
-  public const ulong USB_DEV_SET_FEATURE_REQ_TYPE_D = 0x00     // Receiver : Device;
-public const ulong USB_DEV_SET_FEATURE_REQ_TYPE_I = 0x01     // Receiver : Interface;
-public const ulong USB_DEV_SET_FEATURE_REQ_TYPE_E = 0x02     // Receiver : Endpoint;
+  public const ulong USB_DEV_SET_FEATURE = 0x03;
+  public const ulong USB_DEV_SET_FEATURE_REQ_TYPE_D = 0x00; //  Receiver : Device
+  public const ulong USB_DEV_SET_FEATURE_REQ_TYPE_I = 0x01; //  Receiver : Interface
+  public const ulong USB_DEV_SET_FEATURE_REQ_TYPE_E = 0x02; //  Receiver : Endpoint
 
-public const ulong USB_DEV_SET_ADDRESS = 0x05;
+  public const ulong USB_DEV_SET_ADDRESS = 0x05;
   public const ulong USB_DEV_SET_ADDRESS_REQ_TYPE = 0x00;
 
   public const ulong USB_DEV_GET_DESCRIPTOR = 0x06;

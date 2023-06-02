@@ -32,20 +32,20 @@ public unsafe partial class EFI
 public unsafe struct EFI_REDFISH_DISCOVER_FLAG { uint Value; public static implicit operator EFI_REDFISH_DISCOVER_FLAG(uint value) => new EFI_REDFISH_DISCOVER_FLAG() { Value = value }; public static implicit operator uint(EFI_REDFISH_DISCOVER_FLAG value) => value.Value; }
 public unsafe partial class EFI
 {
-  public const ulong EFI_REDFISH_DISCOVER_HOST_INTERFACE = 0x00000001 ///< Discover Redfish server reported in SMBIOS 42h.;
-public const ulong EFI_REDFISH_DISCOVER_SSDP = 0x00000002 ///< Discover Redfish server using UPnP Http search method.;
-public const ulong EFI_REDFISH_DISCOVER_SSDP_UDP6 = 0x00000004 ///< Use UDP version 6.;
-public const ulong EFI_REDFISH_DISCOVER_KEEP_ALIVE = 0x00000008 ///< Keep to send UPnP Search in the duration indicated in;
-                                                                ///< EFI_REDFISH_DISCOVER_DURATION_MASK.
-public const ulong EFI_REDFISH_DISCOVER_RENEW = 0x00000010         ///< Set this bit to indicate this function to notify the caller;
-                                                                   ///< a list of all Redfish servers it found. Otherwise, this fucntion
-                                                                   ///< just notify the caller new found Redfish servers.
-                                                                   ///<
-public const ulong EFI_REDFISH_DISCOVER_VALIDATION = 0x80000000 ///< Validate Redfish service for host interface instance.;
-public const ulong EFI_REDFISH_DISCOVER_DURATION_MASK = 0x0f000000 ///< 2 to the Power of Duration. The valid value of duration is between;
-                                                                   ///< 3 to 15. The corresponding duration is 8 to 2^15 seconds.
-                                                                   ///< Duration is only valid when EFI_REDFISH_DISCOVER_KEEP_ALIVE
-                                                                   ///< is set to 1.
+  public const ulong EFI_REDFISH_DISCOVER_HOST_INTERFACE = 0x00000001; /// < Discover Redfish server reported in SMBIOS 42h.
+  public const ulong EFI_REDFISH_DISCOVER_SSDP = 0x00000002; /// < Discover Redfish server using UPnP Http search method.
+  public const ulong EFI_REDFISH_DISCOVER_SSDP_UDP6 = 0x00000004; /// < Use UDP version 6.
+  public const ulong EFI_REDFISH_DISCOVER_KEEP_ALIVE = 0x00000008; /// < Keep to send UPnP Search in the duration indicated in
+                                                                   ///< EFI_REDFISH_DISCOVER_DURATION_MASK.
+  public const ulong EFI_REDFISH_DISCOVER_RENEW = 0x00000010; /// < Set this bit to indicate this function to notify the caller
+                                                              ///< a list of all Redfish servers it found. Otherwise, this fucntion
+                                                              ///< just notify the caller new found Redfish servers.
+                                                              ///<
+  public const ulong EFI_REDFISH_DISCOVER_VALIDATION = 0x80000000; /// < Validate Redfish service for host interface instance.
+  public const ulong EFI_REDFISH_DISCOVER_DURATION_MASK = 0x0f000000; /// < 2 to the Power of Duration. The valid value of duration is between
+                                                                      ///< 3 to 15. The corresponding duration is 8 to 2^15 seconds.
+                                                                      ///< Duration is only valid when EFI_REDFISH_DISCOVER_KEEP_ALIVE
+                                                                      ///< is set to 1.
   // typedef struct _EFI_REDFISH_DISCOVER_PROTOCOL EFI_REDFISH_DISCOVER_PROTOCOL;
 }
 

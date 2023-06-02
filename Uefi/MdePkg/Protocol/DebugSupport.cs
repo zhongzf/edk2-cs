@@ -465,16 +465,16 @@ public unsafe partial class EFI
   public const ulong EXCEPT_EBC_DEBUG = 2;
   public const ulong EXCEPT_EBC_BREAKPOINT = 3;
   public const ulong EXCEPT_EBC_OVERFLOW = 4;
-  public const ulong EXCEPT_EBC_INVALID_OPCODE = 5  ///< Opcode out of range.;
-public const ulong EXCEPT_EBC_STACK_FAULT = 6;
+  public const ulong EXCEPT_EBC_INVALID_OPCODE = 5; /// < Opcode out of range.
+  public const ulong EXCEPT_EBC_STACK_FAULT = 6;
   public const ulong EXCEPT_EBC_ALIGNMENT_CHECK = 7;
-  public const ulong EXCEPT_EBC_INSTRUCTION_ENCODING = 8  ///< Malformed instruction.;
-public const ulong EXCEPT_EBC_BAD_BREAK = 9  ///< BREAK 0 or undefined BREAK.;
-public const ulong EXCEPT_EBC_STEP = 10 ///< To support debug stepping.;
-///
-/// For coding convenience, define the maximum valid EBC exception.
-///
-public const ulong MAX_EBC_EXCEPTION = EXCEPT_EBC_STEP;
+  public const ulong EXCEPT_EBC_INSTRUCTION_ENCODING = 8; /// < Malformed instruction.
+  public const ulong EXCEPT_EBC_BAD_BREAK = 9; /// < BREAK 0 or undefined BREAK.
+  public const ulong EXCEPT_EBC_STEP = 10; /// < To support debug stepping.
+                                           ///
+                                           /// For coding convenience, define the maximum valid EBC exception.
+                                           ///
+  public const ulong MAX_EBC_EXCEPTION = EXCEPT_EBC_STEP;
 }
 
 ///
@@ -748,12 +748,12 @@ public unsafe partial class EFI
   public const ulong EXCEPT_LOONGARCH_SXD = 16;
   public const ulong EXCEPT_LOONGARCH_ASXD = 17;
   public const ulong EXCEPT_LOONGARCH_FPE = 18;
-  public const ulong EXCEPT_LOONGARCH_TBR = 64 // For code only, there is no such type in the ISA spec, the TLB refill is defined for an independent exception.;
+  public const ulong EXCEPT_LOONGARCH_TBR = 64; //  For code only, there is no such type in the ISA spec, the TLB refill is defined for an independent exception.
 
-//
-// LoongArch processor Interrupt types.
-//
-public const ulong EXCEPT_LOONGARCH_INT_SIP0 = 0;
+  //
+  // LoongArch processor Interrupt types.
+  //
+  public const ulong EXCEPT_LOONGARCH_INT_SIP0 = 0;
   public const ulong EXCEPT_LOONGARCH_INT_SIP1 = 1;
   public const ulong EXCEPT_LOONGARCH_INT_IP0 = 2;
   public const ulong EXCEPT_LOONGARCH_INT_IP1 = 3;

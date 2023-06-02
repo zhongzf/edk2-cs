@@ -37,30 +37,30 @@ public unsafe partial class EFI
   // SCSI Host Adapter Status definition
   //
   public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_OK = 0x00;
-  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_TIMEOUT_COMMAND = 0x09  // timeout when processing the command;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_TIMEOUT = 0x0b  // timeout when waiting for the command processing;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_MESSAGE_REJECT = 0x0d  // a message reject was received when processing command;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_BUS_RESET = 0x0e  // a bus reset was detected;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_PARITY_ERROR = 0x0f;
-  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_REQUEST_SENSE_FAILED = 0x10  // the adapter failed in issuing request sense command;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_SELECTION_TIMEOUT = 0x11  // selection timeout;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_DATA_OVERRUN_UNDERRUN = 0x12  // data overrun or data underrun;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_BUS_FREE = 0x13  // Unexepected bus free;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_PHASE_ERROR = 0x14  // Target bus phase sequence failure;
-public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_OTHER = 0x7f;
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_TIMEOUT_COMMAND = 0x09; //  timeout when processing the command
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_TIMEOUT = 0x0b; //  timeout when waiting for the command processing
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_MESSAGE_REJECT = 0x0d; //  a message reject was received when processing command
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_BUS_RESET = 0x0e; //  a bus reset was detected
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_PARITY_ERROR = 0x0f;
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_REQUEST_SENSE_FAILED = 0x10; //  the adapter failed in issuing request sense command
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_SELECTION_TIMEOUT = 0x11; //  selection timeout
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_DATA_OVERRUN_UNDERRUN = 0x12; //  data overrun or data underrun
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_BUS_FREE = 0x13; //  Unexepected bus free
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_PHASE_ERROR = 0x14; //  Target bus phase sequence failure
+  public const ulong EFI_SCSI_STATUS_HOST_ADAPTER_OTHER = 0x7f;
 
   //
   // SCSI Target Status definition
   //
   public const ulong EFI_SCSI_STATUS_TARGET_GOOD = 0x00;
-  public const ulong EFI_SCSI_STATUS_TARGET_CHECK_CONDITION = 0x02 // check condition;
-public const ulong EFI_SCSI_STATUS_TARGET_CONDITION_MET = 0x04 // condition met;
-public const ulong EFI_SCSI_STATUS_TARGET_BUSY = 0x08 // busy;
-public const ulong EFI_SCSI_STATUS_TARGET_INTERMEDIATE = 0x10 // intermediate;
-public const ulong EFI_SCSI_STATUS_TARGET_INTERMEDIATE_CONDITION_MET = 0x14 // intermediate-condition met;
-public const ulong EFI_SCSI_STATUS_TARGET_RESERVATION_CONFLICT = 0x18 // reservation conflict;
-public const ulong EFI_SCSI_STATUS_TARGET_COMMOND_TERMINATED = 0x22 // command terminated;
-public const ulong EFI_SCSI_STATUS_TARGET_QUEUE_FULL = 0x28 // queue full;
+  public const ulong EFI_SCSI_STATUS_TARGET_CHECK_CONDITION = 0x02; //  check condition
+  public const ulong EFI_SCSI_STATUS_TARGET_CONDITION_MET = 0x04; //  condition met
+  public const ulong EFI_SCSI_STATUS_TARGET_BUSY = 0x08; //  busy
+  public const ulong EFI_SCSI_STATUS_TARGET_INTERMEDIATE = 0x10; //  intermediate
+  public const ulong EFI_SCSI_STATUS_TARGET_INTERMEDIATE_CONDITION_MET = 0x14; //  intermediate-condition met
+  public const ulong EFI_SCSI_STATUS_TARGET_RESERVATION_CONFLICT = 0x18; //  reservation conflict
+  public const ulong EFI_SCSI_STATUS_TARGET_COMMOND_TERMINATED = 0x22; //  command terminated
+  public const ulong EFI_SCSI_STATUS_TARGET_QUEUE_FULL = 0x28; //  queue full
 }
 
 [StructLayout(LayoutKind.Sequential)]

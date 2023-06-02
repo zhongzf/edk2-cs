@@ -181,10 +181,10 @@ public unsafe partial class EFI
   //
   // Default TimeOut value
   //
-  public const ulong TIS_TIMEOUT_A = (750 * 1000)               // 750ms;
-public const ulong TIS_TIMEOUT_B = (2000 * 1000)               // 2s;
-public const ulong TIS_TIMEOUT_C = (750 * 1000)               // 750ms;
-public const ulong TIS_TIMEOUT_D = (750 * 1000)               // 750ms;
+  public const ulong TIS_TIMEOUT_A = (750 * 1000); //  750ms
+  public const ulong TIS_TIMEOUT_B = (2000 * 1000); //  2s
+  public const ulong TIS_TIMEOUT_C = (750 * 1000); //  750ms
+  public const ulong TIS_TIMEOUT_D = (750 * 1000); //  750ms
 }
 
 // #endif

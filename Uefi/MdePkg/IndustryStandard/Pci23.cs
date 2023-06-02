@@ -59,9 +59,9 @@ public unsafe partial class EFI
   public const ulong PCI_CLASS_SERIAL_IB = 0x06;
   public const ulong PCI_CLASS_SERIAL_IPMI = 0x07;
   public const ulong PCI_IF_IPMI_SMIC = 0x00;
-  public const ulong PCI_IF_IPMI_KCS = 0x01           ///< Keyboard Controller Style;
-public const ulong PCI_IF_IPMI_BT = 0x02           ///< Block Transfer;
-public const ulong PCI_CLASS_SERIAL_SERCOS = 0x08;
+  public const ulong PCI_IF_IPMI_KCS = 0x01; /// < Keyboard Controller Style
+  public const ulong PCI_IF_IPMI_BT = 0x02; /// < Block Transfer
+  public const ulong PCI_CLASS_SERIAL_SERCOS = 0x08;
   public const ulong PCI_CLASS_SERIAL_CANBUS = 0x09;
   ///@}
 

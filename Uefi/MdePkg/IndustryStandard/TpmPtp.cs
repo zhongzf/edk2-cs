@@ -527,10 +527,10 @@ public unsafe partial class EFI
   //
   // Default TimeOut value
   //
-  public const ulong PTP_TIMEOUT_A = (750 * 1000)                // 750ms;
-public const ulong PTP_TIMEOUT_B = (2000 * 1000)               // 2s;
-public const ulong PTP_TIMEOUT_C = (200 * 1000)                // 200ms;
-public const ulong PTP_TIMEOUT_D = (30 * 1000)                 // 30ms;
+  public const ulong PTP_TIMEOUT_A = (750 * 1000); //  750ms
+  public const ulong PTP_TIMEOUT_B = (2000 * 1000); //  2s
+  public const ulong PTP_TIMEOUT_C = (200 * 1000); //  200ms
+  public const ulong PTP_TIMEOUT_D = (30 * 1000); //  30ms
 }
 
 // #endif

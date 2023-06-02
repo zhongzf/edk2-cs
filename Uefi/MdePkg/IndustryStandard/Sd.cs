@@ -59,13 +59,13 @@ public unsafe partial class EFI
   public const ulong SD_READ_EXTR_MULTI = 58;
   public const ulong SD_WRITE_EXTR_MULTI = 59;
 
-  public const ulong SD_SET_BUS_WIDTH = 6           // ACMD6;
-public const ulong SD_STATUS = 13          // ACMD13;
-public const ulong SD_SEND_NUM_WR_BLOCKS = 22          // ACMD22;
-public const ulong SD_SET_WR_BLK_ERASE_COUNT = 23          // ACMD23;
-public const ulong SD_SEND_OP_COND = 41          // ACMD41;
-public const ulong SD_SET_CLR_CARD_DETECT = 42          // ACMD42;
-public const ulong SD_SEND_SCR = 51          // ACMD51;
+  public const ulong SD_SET_BUS_WIDTH = 6; //  ACMD6
+  public const ulong SD_STATUS = 13; //  ACMD13
+  public const ulong SD_SEND_NUM_WR_BLOCKS = 22; //  ACMD22
+  public const ulong SD_SET_WR_BLK_ERASE_COUNT = 23; //  ACMD23
+  public const ulong SD_SEND_OP_COND = 41; //  ACMD41
+  public const ulong SD_SET_CLR_CARD_DETECT = 42; //  ACMD42
+  public const ulong SD_SEND_SCR = 51; //  ACMD51
 }
 
 // #pragma pack(1)

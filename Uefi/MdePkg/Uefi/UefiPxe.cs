@@ -59,11 +59,11 @@ public const ulong PXE_SWAP_UINT64 = (n) \;
    (((PXE_UINT64)(n) & 0x00FF000000000000) >> 40) | \
    (((PXE_UINT64)(n) & 0xFF00000000000000) >> 56))
 
-public const ulong PXE_CPBSIZE_NOT_USED = 0               ///< zero;
-public const ulong PXE_DBSIZE_NOT_USED = 0               ///< zero;
-public const ulong PXE_CPBADDR_NOT_USED = (PXE_UINT64)0  ///< zero;
-public const ulong PXE_DBADDR_NOT_USED = (PXE_UINT64)0  ///< zero;
-public const ulong PXE_CONST = CONST;
+public const ulong PXE_CPBSIZE_NOT_USED = 0; /// < zero
+  public const ulong PXE_DBSIZE_NOT_USED = 0; /// < zero
+  public const ulong PXE_CPBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
+  public const ulong PXE_DBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
+  public const ulong PXE_CONST = CONST;
 
   public const ulong PXE_VOLATILE = volatile;
 }
@@ -89,8 +89,8 @@ public unsafe struct PXE_UINT64 { ulong Value; public static implicit operator P
 public unsafe struct PXE_BOOL { PXE_UINT8 Value; public static implicit operator PXE_BOOL(PXE_UINT8 value) => new PXE_BOOL() { Value = value }; public static implicit operator PXE_UINT8(PXE_BOOL value) => value.Value; }
 public unsafe partial class EFI
 {
-  public const ulong PXE_FALSE = 0           ///< zero;
-public const ulong PXE_TRUE = (!PXE_FALSE);
+  public const ulong PXE_FALSE = 0; /// < zero
+  public const ulong PXE_TRUE = (!PXE_FALSE);
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -973,9 +973,9 @@ PXE_UINT8 Function;
 ///
 /// cpb and db definitions
 ///
-public const ulong MAX_PCI_CONFIG_LEN = 64  ///< # of dwords.;
-public const ulong MAX_EEPROM_LEN = 128 ///< # of dwords.;
-public const ulong MAX_XMIT_BUFFERS = 32  ///< recycling Q length for xmit_done.;
+public const ulong MAX_PCI_CONFIG_LEN = 64; /// < # of dwords.
+public const ulong MAX_EEPROM_LEN = 128; /// < # of dwords.
+public const ulong MAX_XMIT_BUFFERS = 32; /// < recycling Q length for xmit_done.
 public const ulong MAX_MCAST_ADDRESS_CNT = 8;
 
 typedef struct s_pxe_cpb_start_30

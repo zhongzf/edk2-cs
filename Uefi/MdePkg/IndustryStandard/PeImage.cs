@@ -30,12 +30,12 @@ public unsafe partial class EFI
   public const ulong EFI_IMAGE_SUBSYSTEM_EFI_APPLICATION = 10;
   public const ulong EFI_IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER = 11;
   public const ulong EFI_IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER = 12;
-  public const ulong EFI_IMAGE_SUBSYSTEM_SAL_RUNTIME_DRIVER = 13///< defined PI Specification, 1.0;
+  public const ulong EFI_IMAGE_SUBSYSTEM_SAL_RUNTIME_DRIVER = 13; /// < defined PI Specification, 1.0
 
   //
   // PE32+ Machine type for EFI images
   //
-public const ulong IMAGE_FILE_MACHINE_I386 = 0x014c;
+  public const ulong IMAGE_FILE_MACHINE_I386 = 0x014c;
   public const ulong IMAGE_FILE_MACHINE_IA64 = 0x0200;
   public const ulong IMAGE_FILE_MACHINE_EBC = 0x0EBC;
   public const ulong IMAGE_FILE_MACHINE_X64 = 0x8664;
@@ -109,16 +109,16 @@ public unsafe partial class EFI
   //
   // Characteristics
   //
-  public const ulong EFI_IMAGE_FILE_RELOCS_STRIPPED = BIT0     ///< 0x0001  Relocation info stripped from file.;
-public const ulong EFI_IMAGE_FILE_EXECUTABLE_IMAGE = BIT1     ///< 0x0002  File is executable  (i.e. no unresolved externel references).;
-public const ulong EFI_IMAGE_FILE_LINE_NUMS_STRIPPED = BIT2     ///< 0x0004  Line numbers stripped from file.;
-public const ulong EFI_IMAGE_FILE_LOCAL_SYMS_STRIPPED = BIT3     ///< 0x0008  Local symbols stripped from file.;
-public const ulong EFI_IMAGE_FILE_BYTES_REVERSED_LO = BIT7     ///< 0x0080  Bytes of machine word are reversed.;
-public const ulong EFI_IMAGE_FILE_32BIT_MACHINE = BIT8     ///< 0x0100  32 bit word machine.;
-public const ulong EFI_IMAGE_FILE_DEBUG_STRIPPED = BIT9     ///< 0x0200  Debugging info stripped from file in .DBG file.;
-public const ulong EFI_IMAGE_FILE_SYSTEM = BIT12    ///< 0x1000  System File.;
-public const ulong EFI_IMAGE_FILE_DLL = BIT13    ///< 0x2000  File is a DLL.;
-public const ulong EFI_IMAGE_FILE_BYTES_REVERSED_HI = BIT15    ///< 0x8000  Bytes of machine word are reversed.;
+  public const ulong EFI_IMAGE_FILE_RELOCS_STRIPPED = BIT0; /// < 0x0001  Relocation info stripped from file.
+  public const ulong EFI_IMAGE_FILE_EXECUTABLE_IMAGE = BIT1; /// < 0x0002  File is executable  (i.e. no unresolved externel references).
+  public const ulong EFI_IMAGE_FILE_LINE_NUMS_STRIPPED = BIT2; /// < 0x0004  Line numbers stripped from file.
+  public const ulong EFI_IMAGE_FILE_LOCAL_SYMS_STRIPPED = BIT3; /// < 0x0008  Local symbols stripped from file.
+  public const ulong EFI_IMAGE_FILE_BYTES_REVERSED_LO = BIT7; /// < 0x0080  Bytes of machine word are reversed.
+  public const ulong EFI_IMAGE_FILE_32BIT_MACHINE = BIT8; /// < 0x0100  32 bit word machine.
+  public const ulong EFI_IMAGE_FILE_DEBUG_STRIPPED = BIT9; /// < 0x0200  Debugging info stripped from file in .DBG file.
+  public const ulong EFI_IMAGE_FILE_SYSTEM = BIT12; /// < 0x1000  System File.
+  public const ulong EFI_IMAGE_FILE_DLL = BIT13; /// < 0x2000  File is a DLL.
+  public const ulong EFI_IMAGE_FILE_BYTES_REVERSED_HI = BIT15; /// < 0x8000  Bytes of machine word are reversed.
 }
 
 ///
@@ -339,61 +339,61 @@ public unsafe partial class EFI
   //
   // Section Flags Values
   //
-  public const ulong EFI_IMAGE_SCN_TYPE_NO_PAD = BIT3        ///< 0x00000008  ///< Reserved.;
-public const ulong EFI_IMAGE_SCN_CNT_CODE = BIT5        ///< 0x00000020;
-public const ulong EFI_IMAGE_SCN_CNT_INITIALIZED_DATA = BIT6        ///< 0x00000040;
-public const ulong EFI_IMAGE_SCN_CNT_UNINITIALIZED_DATA = BIT7        ///< 0x00000080;
+  public const ulong EFI_IMAGE_SCN_TYPE_NO_PAD = BIT3        ///< 0x00000008  ; /// < Reserved.
+public const ulong EFI_IMAGE_SCN_CNT_CODE = BIT5; /// < 0x00000020
+  public const ulong EFI_IMAGE_SCN_CNT_INITIALIZED_DATA = BIT6; /// < 0x00000040
+  public const ulong EFI_IMAGE_SCN_CNT_UNINITIALIZED_DATA = BIT7; /// < 0x00000080
 
-public const ulong EFI_IMAGE_SCN_LNK_OTHER = BIT8                    ///< 0x00000100  ///< Reserved.;
-public const ulong EFI_IMAGE_SCN_LNK_INFO = BIT9                    ///< 0x00000200  ///< Section contains comments or some other type of information.;
-public const ulong EFI_IMAGE_SCN_LNK_REMOVE = BIT11                   ///< 0x00000800  ///< Section contents will not become part of image.;
-public const ulong EFI_IMAGE_SCN_LNK_COMDAT = BIT12                   ///< 0x00001000;
+  public const ulong EFI_IMAGE_SCN_LNK_OTHER = BIT8                    ///< 0x00000100  ; /// < Reserved.
+public const ulong EFI_IMAGE_SCN_LNK_INFO = BIT9                    ///< 0x00000200  ; /// < Section contains comments or some other type of information.
+public const ulong EFI_IMAGE_SCN_LNK_REMOVE = BIT11                   ///< 0x00000800  ; /// < Section contents will not become part of image.
+public const ulong EFI_IMAGE_SCN_LNK_COMDAT = BIT12; /// < 0x00001000
 
-public const ulong EFI_IMAGE_SCN_ALIGN_1BYTES = BIT20                ///< 0x00100000;
-public const ulong EFI_IMAGE_SCN_ALIGN_2BYTES = BIT21                ///< 0x00200000;
-public const ulong EFI_IMAGE_SCN_ALIGN_4BYTES = (BIT20 | BIT21)        ///< 0x00300000;
-public const ulong EFI_IMAGE_SCN_ALIGN_8BYTES = BIT22                ///< 0x00400000;
-public const ulong EFI_IMAGE_SCN_ALIGN_16BYTES = (BIT20 | BIT22)        ///< 0x00500000;
-public const ulong EFI_IMAGE_SCN_ALIGN_32BYTES = (BIT21 | BIT22)        ///< 0x00600000;
-public const ulong EFI_IMAGE_SCN_ALIGN_64BYTES = (BIT20 | BIT21 | BIT22)  ///< 0x00700000;
+  public const ulong EFI_IMAGE_SCN_ALIGN_1BYTES = BIT20; /// < 0x00100000
+  public const ulong EFI_IMAGE_SCN_ALIGN_2BYTES = BIT21; /// < 0x00200000
+  public const ulong EFI_IMAGE_SCN_ALIGN_4BYTES = (BIT20 | BIT21); /// < 0x00300000
+  public const ulong EFI_IMAGE_SCN_ALIGN_8BYTES = BIT22; /// < 0x00400000
+  public const ulong EFI_IMAGE_SCN_ALIGN_16BYTES = (BIT20 | BIT22); /// < 0x00500000
+  public const ulong EFI_IMAGE_SCN_ALIGN_32BYTES = (BIT21 | BIT22); /// < 0x00600000
+  public const ulong EFI_IMAGE_SCN_ALIGN_64BYTES = (BIT20 | BIT21 | BIT22); /// < 0x00700000
 
-public const ulong EFI_IMAGE_SCN_MEM_DISCARDABLE = BIT25              ///< 0x02000000;
-public const ulong EFI_IMAGE_SCN_MEM_NOT_CACHED = BIT26              ///< 0x04000000;
-public const ulong EFI_IMAGE_SCN_MEM_NOT_PAGED = BIT27              ///< 0x08000000;
-public const ulong EFI_IMAGE_SCN_MEM_SHARED = BIT28              ///< 0x10000000;
-public const ulong EFI_IMAGE_SCN_MEM_EXECUTE = BIT29              ///< 0x20000000;
-public const ulong EFI_IMAGE_SCN_MEM_READ = BIT30              ///< 0x40000000;
-public const ulong EFI_IMAGE_SCN_MEM_WRITE = BIT31              ///< 0x80000000;
+  public const ulong EFI_IMAGE_SCN_MEM_DISCARDABLE = BIT25; /// < 0x02000000
+  public const ulong EFI_IMAGE_SCN_MEM_NOT_CACHED = BIT26; /// < 0x04000000
+  public const ulong EFI_IMAGE_SCN_MEM_NOT_PAGED = BIT27; /// < 0x08000000
+  public const ulong EFI_IMAGE_SCN_MEM_SHARED = BIT28; /// < 0x10000000
+  public const ulong EFI_IMAGE_SCN_MEM_EXECUTE = BIT29; /// < 0x20000000
+  public const ulong EFI_IMAGE_SCN_MEM_READ = BIT30; /// < 0x40000000
+  public const ulong EFI_IMAGE_SCN_MEM_WRITE = BIT31; /// < 0x80000000
 
-                                                                ///
-                                                                /// Size of a Symbol Table Record.
-                                                                ///
-public const ulong EFI_IMAGE_SIZEOF_SYMBOL = 18;
+                                                      ///
+                                                      /// Size of a Symbol Table Record.
+                                                      ///
+  public const ulong EFI_IMAGE_SIZEOF_SYMBOL = 18;
 
   //
   // Symbols have a section number of the section in which they are
   // defined. Otherwise, section numbers have the following meanings:
   //
-  public const ulong EFI_IMAGE_SYM_UNDEFINED = (ushort)0  ///< Symbol is undefined or is common.;
-public const ulong EFI_IMAGE_SYM_ABSOLUTE = (ushort)-1 ///< Symbol is an absolute value.;
-public const ulong EFI_IMAGE_SYM_DEBUG = (ushort)-2 ///< Symbol is a special debug item.;
+  public const ulong EFI_IMAGE_SYM_UNDEFINED = (ushort)0; /// < Symbol is undefined or is common.
+  public const ulong EFI_IMAGE_SYM_ABSOLUTE = (ushort)-1; /// < Symbol is an absolute value.
+  public const ulong EFI_IMAGE_SYM_DEBUG = (ushort)-2; /// < Symbol is a special debug item.
 
   //
   // Symbol Type (fundamental) values.
   //
-public const ulong EFI_IMAGE_SYM_TYPE_NULL = 0  ///< no type.;
-public const ulong EFI_IMAGE_SYM_TYPE_VOID = 1  ///< no valid type.;
-public const ulong EFI_IMAGE_SYM_TYPE_CHAR = 2  ///< type character.;
-public const ulong EFI_IMAGE_SYM_TYPE_SHORT = 3  ///< type short integer.;
-public const ulong EFI_IMAGE_SYM_TYPE_INT = 4;
+  public const ulong EFI_IMAGE_SYM_TYPE_NULL = 0; /// < no type.
+  public const ulong EFI_IMAGE_SYM_TYPE_VOID = 1; /// < no valid type.
+  public const ulong EFI_IMAGE_SYM_TYPE_CHAR = 2; /// < type character.
+  public const ulong EFI_IMAGE_SYM_TYPE_SHORT = 3; /// < type short integer.
+  public const ulong EFI_IMAGE_SYM_TYPE_INT = 4;
   public const ulong EFI_IMAGE_SYM_TYPE_LONG = 5;
   public const ulong EFI_IMAGE_SYM_TYPE_FLOAT = 6;
   public const ulong EFI_IMAGE_SYM_TYPE_DOUBLE = 7;
   public const ulong EFI_IMAGE_SYM_TYPE_STRUCT = 8;
   public const ulong EFI_IMAGE_SYM_TYPE_UNION = 9;
-  public const ulong EFI_IMAGE_SYM_TYPE_ENUM = 10 ///< enumeration.;
-public const ulong EFI_IMAGE_SYM_TYPE_MOE = 11 ///< member of enumeration.;
-public const ulong EFI_IMAGE_SYM_TYPE_BYTE = 12;
+  public const ulong EFI_IMAGE_SYM_TYPE_ENUM = 10; /// < enumeration.
+  public const ulong EFI_IMAGE_SYM_TYPE_MOE = 11; /// < member of enumeration.
+  public const ulong EFI_IMAGE_SYM_TYPE_BYTE = 12;
   public const ulong EFI_IMAGE_SYM_TYPE_WORD = 13;
   public const ulong EFI_IMAGE_SYM_TYPE_UINT = 14;
   public const ulong EFI_IMAGE_SYM_TYPE_DWORD = 15;
@@ -401,8 +401,8 @@ public const ulong EFI_IMAGE_SYM_TYPE_BYTE = 12;
   //
   // Symbol Type (derived) values.
   //
-  public const ulong EFI_IMAGE_SYM_DTYPE_NULL = 0 ///< no derived type.;
-public const ulong EFI_IMAGE_SYM_DTYPE_POINTER = 1;
+  public const ulong EFI_IMAGE_SYM_DTYPE_NULL = 0; /// < no derived type.
+  public const ulong EFI_IMAGE_SYM_DTYPE_POINTER = 1;
   public const ulong EFI_IMAGE_SYM_DTYPE_FUNCTION = 2;
   public const ulong EFI_IMAGE_SYM_DTYPE_ARRAY = 3;
 
@@ -484,20 +484,20 @@ public unsafe partial class EFI
   //
   // I386 relocation types.
   //
-  public const ulong EFI_IMAGE_REL_I386_ABSOLUTE = 0x0000 ///< Reference is absolute, no relocation is necessary.;
-public const ulong EFI_IMAGE_REL_I386_DIR16 = 0x0001 ///< Direct 16-bit reference to the symbols virtual address.;
-public const ulong EFI_IMAGE_REL_I386_REL16 = 0x0002 ///< PC-relative 16-bit reference to the symbols virtual address.;
-public const ulong EFI_IMAGE_REL_I386_DIR32 = 0x0006 ///< Direct 32-bit reference to the symbols virtual address.;
-public const ulong EFI_IMAGE_REL_I386_DIR32NB = 0x0007 ///< Direct 32-bit reference to the symbols virtual address, base not included.;
-public const ulong EFI_IMAGE_REL_I386_SEG12 = 0x0009 ///< Direct 16-bit reference to the segment-selector bits of a 32-bit virtual address.;
-public const ulong EFI_IMAGE_REL_I386_SECTION = 0x000A;
+  public const ulong EFI_IMAGE_REL_I386_ABSOLUTE = 0x0000; /// < Reference is absolute, no relocation is necessary.
+  public const ulong EFI_IMAGE_REL_I386_DIR16 = 0x0001; /// < Direct 16-bit reference to the symbols virtual address.
+  public const ulong EFI_IMAGE_REL_I386_REL16 = 0x0002; /// < PC-relative 16-bit reference to the symbols virtual address.
+  public const ulong EFI_IMAGE_REL_I386_DIR32 = 0x0006; /// < Direct 32-bit reference to the symbols virtual address.
+  public const ulong EFI_IMAGE_REL_I386_DIR32NB = 0x0007; /// < Direct 32-bit reference to the symbols virtual address, base not included.
+  public const ulong EFI_IMAGE_REL_I386_SEG12 = 0x0009; /// < Direct 16-bit reference to the segment-selector bits of a 32-bit virtual address.
+  public const ulong EFI_IMAGE_REL_I386_SECTION = 0x000A;
   public const ulong EFI_IMAGE_REL_I386_SECREL = 0x000B;
-  public const ulong EFI_IMAGE_REL_I386_REL32 = 0x0014 ///< PC-relative 32-bit reference to the symbols virtual address.;
+  public const ulong EFI_IMAGE_REL_I386_REL32 = 0x0014; /// < PC-relative 32-bit reference to the symbols virtual address.
 
   //
   // x64 processor relocation types.
   //
-public const ulong IMAGE_REL_AMD64_ABSOLUTE = 0x0000;
+  public const ulong IMAGE_REL_AMD64_ABSOLUTE = 0x0000;
   public const ulong IMAGE_REL_AMD64_ADDR64 = 0x0001;
   public const ulong IMAGE_REL_AMD64_ADDR32 = 0x0002;
   public const ulong IMAGE_REL_AMD64_ADDR32NB = 0x0003;
@@ -590,7 +590,7 @@ public unsafe partial class EFI
   public const ulong EFI_IMAGE_ARCHIVE_END = "`\n";
   public const ulong EFI_IMAGE_ARCHIVE_PAD = "\n";
   public const ulong EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
-  public const ulong EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//              ";
+  public const ulong EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "; //               "
 }
 
 ///
@@ -664,8 +664,8 @@ public unsafe struct u1
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_IMAGE_ORDINAL_FLAG = BIT31                ///< Flag for PE32.;
-public const ulong EFI_IMAGE_SNAP_BY_ORDINAL = (Ordinal)((Ordinal & EFI_IMAGE_ORDINAL_FLAG) != 0);
+  public const ulong EFI_IMAGE_ORDINAL_FLAG = BIT31; /// < Flag for PE32.
+  public const ulong EFI_IMAGE_SNAP_BY_ORDINAL = (Ordinal)((Ordinal & EFI_IMAGE_ORDINAL_FLAG) != 0);
   public const ulong EFI_IMAGE_ORDINAL = (Ordinal)(Ordinal & 0xffff);
 }
 
@@ -700,8 +700,8 @@ public unsafe struct EFI_IMAGE_DEBUG_DIRECTORY_ENTRY
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_IMAGE_DEBUG_TYPE_CODEVIEW = 2    ///< The Visual C++ debug information.;
-public const ulong EFI_IMAGE_DEBUG_TYPE_EX_DLLCHARACTERISTICS = 20;
+  public const ulong EFI_IMAGE_DEBUG_TYPE_CODEVIEW = 2; /// < The Visual C++ debug information.
+  public const ulong EFI_IMAGE_DEBUG_TYPE_EX_DLLCHARACTERISTICS = 20;
 }
 
 ///

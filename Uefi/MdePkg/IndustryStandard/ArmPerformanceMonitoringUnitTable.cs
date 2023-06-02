@@ -40,16 +40,16 @@ public unsafe partial class EFI
   // Node Flags
   public const ulong EFI_ACPI_APMT_DUAL_PAGE_EXTENSION_SUPPORTED = BIT0;
   public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_CONTAINER = BIT1;
-  public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_PROCESSOR = 0 // BIT 1;
-public const ulong EFI_ACPI_APMT_64BIT_SINGLE_COPY_ATOMICITY_SUPPORTED = BIT2;
+  public const ulong EFI_ACPI_APMT_PROCESSOR_AFFINITY_TYPE_PROCESSOR = 0; //  BIT 1
+  public const ulong EFI_ACPI_APMT_64BIT_SINGLE_COPY_ATOMICITY_SUPPORTED = BIT2;
 
   // Interrupt Flags
   public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_EDGE_TRIGGERED = BIT0;
-  public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_LEVEL_TRIGGERED = 0 // BIT 0;
-public const ulong EFI_ACPI_APMT_INTERRUPT_TYPE_WIRED = 0 // BIT 1;
+  public const ulong EFI_ACPI_APMT_INTERRUPT_MODE_LEVEL_TRIGGERED = 0; //  BIT 0
+  public const ulong EFI_ACPI_APMT_INTERRUPT_TYPE_WIRED = 0; //  BIT 1
 
-// Node Type
-public const ulong EFI_ACPI_APMT_NODE_TYPE_MEMORY_CONTROLLER = 0x00;
+  // Node Type
+  public const ulong EFI_ACPI_APMT_NODE_TYPE_MEMORY_CONTROLLER = 0x00;
   public const ulong EFI_ACPI_APMT_NODE_TYPE_SMMU = 0x01;
   public const ulong EFI_ACPI_APMT_NODE_TYPE_PCIE_ROOT_COMPLEX = 0x02;
   public const ulong EFI_ACPI_APMT_NODE_TYPE_ACPI_DEVICE = 0x03;

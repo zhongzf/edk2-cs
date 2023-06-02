@@ -29,8 +29,8 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_00 = 0x0;
-  public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_04 = 0x4   // Deprecated;
-public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_05 = 0x5;
+  public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_04 = 0x4; //  Deprecated
+  public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_05 = 0x5;
   public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_06 = 0x6;
 
   public const ulong EFI_ACPI_IORT_TYPE_ITS_GROUP = 0x0;
@@ -100,9 +100,9 @@ public const ulong EFI_ACPI_IO_REMAPPING_TABLE_REVISION_05 = 0x5;
 
   public const ulong EFI_ACPI_IORT_ID_MAPPING_FLAGS_SINGLE = BIT0;
 
-  public const ulong EFI_ACPI_IORT_RMR_NODE_REVISION_02 = 0x2    // Deprecated;
+  public const ulong EFI_ACPI_IORT_RMR_NODE_REVISION_02 = 0x2; //  Deprecated
 
-// #pragma pack(1)
+  // #pragma pack(1)
 }
 
 ///

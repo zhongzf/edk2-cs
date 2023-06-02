@@ -57,13 +57,13 @@ public unsafe partial class EFI
   public const ulong OPCODE_MOVWD = 0x22;
   public const ulong OPCODE_MOVDD = 0x23;
   public const ulong OPCODE_MOVQD = 0x24;
-  public const ulong OPCODE_MOVSNW = 0x25  // Move signed natural with word index;
-public const ulong OPCODE_MOVSND = 0x26  // Move signed natural with dword index;
-//
-public const ulong OPCODE_27 = 0x27;
+  public const ulong OPCODE_MOVSNW = 0x25; //  Move signed natural with word index
+  public const ulong OPCODE_MOVSND = 0x26; //  Move signed natural with dword index
+                                           //
+  public const ulong OPCODE_27 = 0x27;
   //
-  public const ulong OPCODE_MOVQQ = 0x28 // Does this go away?;
-public const ulong OPCODE_LOADSP = 0x29;
+  public const ulong OPCODE_MOVQQ = 0x28; //  Does this go away?
+  public const ulong OPCODE_LOADSP = 0x29;
   public const ulong OPCODE_STORESP = 0x2A;
   public const ulong OPCODE_PUSH = 0x2B;
   public const ulong OPCODE_POP = 0x2C;
@@ -86,14 +86,14 @@ public const ulong OPCODE_LOADSP = 0x29;
   //
   // Bit masks for opcode encodings
   //
-  public const ulong OPCODE_M_OPCODE = 0x3F  // bits of interest for first level decode;
-public const ulong OPCODE_M_IMMDATA = 0x80;
+  public const ulong OPCODE_M_OPCODE = 0x3F; //  bits of interest for first level decode
+  public const ulong OPCODE_M_IMMDATA = 0x80;
   public const ulong OPCODE_M_IMMDATA64 = 0x40;
-  public const ulong OPCODE_M_64BIT = 0x40  // for CMP;
-public const ulong OPCODE_M_RELADDR = 0x10  // for CALL instruction;
-public const ulong OPCODE_M_CMPI32_DATA = 0x80  // for CMPI;
-public const ulong OPCODE_M_CMPI64 = 0x40  // for CMPI 32 or 64 bit comparison;
-public const ulong OPERAND_M_MOVIN_N = 0x80;
+  public const ulong OPCODE_M_64BIT = 0x40; //  for CMP
+  public const ulong OPCODE_M_RELADDR = 0x10; //  for CALL instruction
+  public const ulong OPCODE_M_CMPI32_DATA = 0x80; //  for CMPI
+  public const ulong OPCODE_M_CMPI64 = 0x40; //  for CMPI 32 or 64 bit comparison
+  public const ulong OPERAND_M_MOVIN_N = 0x80;
   public const ulong OPERAND_M_CMPI_INDEX = 0x10;
 
   //
@@ -114,8 +114,8 @@ public const ulong OPERAND_M_MOVIN_N = 0x80;
   //
   // Masks for data manipulation instructions
   //
-  public const ulong DATAMANIP_M_64 = 0x40 // 64-bit width operation;
-public const ulong DATAMANIP_M_IMMDATA = 0x80;
+  public const ulong DATAMANIP_M_64 = 0x40; //  64-bit width operation
+  public const ulong DATAMANIP_M_IMMDATA = 0x80;
 
   //
   // For MOV instructions, need a mask for the opcode when immediate
@@ -148,12 +148,12 @@ public const ulong DATAMANIP_M_IMMDATA = 0x80;
   //
   // Masks for decoding push/pop instructions
   //
-  public const ulong PUSHPOP_M_IMMDATA = 0x80 // opcode bit indicating immediate data;
-public const ulong PUSHPOP_M_64 = 0x40 // opcode bit indicating 64-bit operation;
-//
-// Mask for operand of JMP instruction
-//
-public const ulong JMP_M_RELATIVE = 0x10;
+  public const ulong PUSHPOP_M_IMMDATA = 0x80; //  opcode bit indicating immediate data
+  public const ulong PUSHPOP_M_64 = 0x40; //  opcode bit indicating 64-bit operation
+                                          //
+                                          // Mask for operand of JMP instruction
+                                          //
+  public const ulong JMP_M_RELATIVE = 0x10;
   public const ulong JMP_M_CONDITIONAL = 0x80;
   public const ulong JMP_M_CS = 0x40;
 

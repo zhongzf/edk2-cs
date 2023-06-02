@@ -82,10 +82,10 @@ public enum EFI_USB_PORT_FEATURE
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_USB_SPEED_FULL = 0x0000     ///< 12 Mb/s, USB 1.1 OHCI and UHCI HC.;
-public const ulong EFI_USB_SPEED_LOW = 0x0001     ///< 1 Mb/s, USB 1.1 OHCI and UHCI HC.;
-public const ulong EFI_USB_SPEED_HIGH = 0x0002     ///< 480 Mb/s, USB 2.0 EHCI HC.;
-public const ulong EFI_USB_SPEED_SUPER = 0x0003     ///< 4.8 Gb/s, USB 3.0 XHCI HC.;
+  public const ulong EFI_USB_SPEED_FULL = 0x0000; /// < 12 Mb/s, USB 1.1 OHCI and UHCI HC.
+  public const ulong EFI_USB_SPEED_LOW = 0x0001; /// < 1 Mb/s, USB 1.1 OHCI and UHCI HC.
+  public const ulong EFI_USB_SPEED_HIGH = 0x0002; /// < 480 Mb/s, USB 2.0 EHCI HC.
+  public const ulong EFI_USB_SPEED_SUPER = 0x0003; /// < 4.8 Gb/s, USB 3.0 XHCI HC.
 }
 
 [StructLayout(LayoutKind.Sequential)]

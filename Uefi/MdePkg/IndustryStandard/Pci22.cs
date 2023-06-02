@@ -215,8 +215,8 @@ public unsafe partial class EFI
   public const ulong PCI_CLASS_BRIDGE_OTHER = 0x80;
   public const ulong PCI_CLASS_BRIDGE_ISA_PDECODE = 0x80;
 
-  public const ulong PCI_CLASS_SCC = 0x07///< Simple communications controllers;
-public const ulong PCI_SUBCLASS_SERIAL = 0x00;
+  public const ulong PCI_CLASS_SCC = 0x07; /// < Simple communications controllers
+  public const ulong PCI_SUBCLASS_SERIAL = 0x00;
   public const ulong PCI_IF_GENERIC_XT = 0x00;
   public const ulong PCI_IF_16450 = 0x01;
   public const ulong PCI_IF_16550 = 0x02;
@@ -244,8 +244,8 @@ public const ulong PCI_SUBCLASS_SERIAL = 0x00;
   public const ulong PCI_IF_8259_PIC = 0x00;
   public const ulong PCI_IF_ISA_PIC = 0x01;
   public const ulong PCI_IF_EISA_PIC = 0x02;
-  public const ulong PCI_IF_APIC_CONTROLLER = 0x10   ///< I/O APIC interrupt controller , 32 byte none-prefetchable memory.;
-public const ulong PCI_IF_APIC_CONTROLLER2 = 0x20;
+  public const ulong PCI_IF_APIC_CONTROLLER = 0x10; /// < I/O APIC interrupt controller , 32 byte none-prefetchable memory.
+  public const ulong PCI_IF_APIC_CONTROLLER2 = 0x20;
   public const ulong PCI_SUBCLASS_DMA = 0x01;
   public const ulong PCI_IF_8237_DMA = 0x00;
   public const ulong PCI_IF_ISA_DMA = 0x01;
@@ -257,8 +257,8 @@ public const ulong PCI_IF_APIC_CONTROLLER2 = 0x20;
   public const ulong PCI_SUBCLASS_RTC = 0x03;
   public const ulong PCI_IF_GENERIC_RTC = 0x00;
   public const ulong PCI_IF_ISA_RTC = 0x01;
-  public const ulong PCI_SUBCLASS_PNP_CONTROLLER = 0x04   ///< HotPlug Controller;
-public const ulong PCI_SUBCLASS_PERIPHERAL_OTHER = 0x80;
+  public const ulong PCI_SUBCLASS_PNP_CONTROLLER = 0x04; /// < HotPlug Controller
+  public const ulong PCI_SUBCLASS_PERIPHERAL_OTHER = 0x80;
 
   public const ulong PCI_CLASS_INPUT_DEVICE = 0x09;
   public const ulong PCI_SUBCLASS_KEYBOARD = 0x00;
@@ -281,9 +281,9 @@ public const ulong PCI_SUBCLASS_PERIPHERAL_OTHER = 0x80;
   public const ulong PCI_SUBCLASS_PROC_ALPHA = 0x10;
   public const ulong PCI_SUBCLASS_PROC_POWERPC = 0x20;
   public const ulong PCI_SUBCLASS_PROC_MIPS = 0x30;
-  public const ulong PCI_SUBCLASS_PROC_CO_PORC = 0x40    ///< Co-Processor;
+  public const ulong PCI_SUBCLASS_PROC_CO_PORC = 0x40; /// < Co-Processor
 
-public const ulong PCI_CLASS_SERIAL = 0x0C;
+  public const ulong PCI_CLASS_SERIAL = 0x0C;
   public const ulong PCI_CLASS_SERIAL_FIREWIRE = 0x00;
   public const ulong PCI_IF_1394 = 0x00;
   public const ulong PCI_IF_1394_OPEN_HCI = 0x10;
@@ -311,8 +311,8 @@ public const ulong PCI_CLASS_SERIAL = 0x0C;
   public const ulong PCI_SUBCLASS_VOICE = 0x03;
   public const ulong PCI_SUBCLASS_DATA = 0x04;
 
-  public const ulong PCI_SECURITY_CONTROLLER = 0x10  ///< Encryption and decryption controller;
-public const ulong PCI_SUBCLASS_NET_COMPUT = 0x00;
+  public const ulong PCI_SECURITY_CONTROLLER = 0x10; /// < Encryption and decryption controller
+  public const ulong PCI_SUBCLASS_NET_COMPUT = 0x00;
   public const ulong PCI_SUBCLASS_ENTERTAINMENT = 0x10;
   public const ulong PCI_SUBCLASS_SECURITY_OTHER = 0x80;
 
@@ -567,21 +567,21 @@ public const ulong PCI_SUBCLASS_NET_COMPUT = 0x00;
   public const ulong PCI_BIST_OFFSET = 0x0F;
   public const ulong PCI_BASE_ADDRESSREG_OFFSET = 0x10;
   public const ulong PCI_CARDBUS_CIS_OFFSET = 0x28;
-  public const ulong PCI_SVID_OFFSET = 0x2C             ///< SubSystem Vendor id;
-public const ulong PCI_SUBSYSTEM_VENDOR_ID_OFFSET = 0x2C;
-  public const ulong PCI_SID_OFFSET = 0x2E             ///< SubSystem ID;
-public const ulong PCI_SUBSYSTEM_ID_OFFSET = 0x2E;
+  public const ulong PCI_SVID_OFFSET = 0x2C; /// < SubSystem Vendor id
+  public const ulong PCI_SUBSYSTEM_VENDOR_ID_OFFSET = 0x2C;
+  public const ulong PCI_SID_OFFSET = 0x2E; /// < SubSystem ID
+  public const ulong PCI_SUBSYSTEM_ID_OFFSET = 0x2E;
   public const ulong PCI_EXPANSION_ROM_BASE = 0x30;
   public const ulong PCI_CAPBILITY_POINTER_OFFSET = 0x34;
-  public const ulong PCI_INT_LINE_OFFSET = 0x3C             ///< Interrupt Line Register;
-public const ulong PCI_INT_PIN_OFFSET = 0x3D             ///< Interrupt Pin Register;
-public const ulong PCI_MAXGNT_OFFSET = 0x3E             ///< Max Grant Register;
-public const ulong PCI_MAXLAT_OFFSET = 0x3F             ///< Max Latency Register;
+  public const ulong PCI_INT_LINE_OFFSET = 0x3C; /// < Interrupt Line Register
+  public const ulong PCI_INT_PIN_OFFSET = 0x3D; /// < Interrupt Pin Register
+  public const ulong PCI_MAXGNT_OFFSET = 0x3E; /// < Max Grant Register
+  public const ulong PCI_MAXLAT_OFFSET = 0x3F; /// < Max Latency Register
 
   //
   // defined in PCI-to-PCI Bridge Architecture Specification
   //
-public const ulong PCI_BRIDGE_PRIMARY_BUS_REGISTER_OFFSET = 0x18;
+  public const ulong PCI_BRIDGE_PRIMARY_BUS_REGISTER_OFFSET = 0x18;
   public const ulong PCI_BRIDGE_SECONDARY_BUS_REGISTER_OFFSET = 0x19;
   public const ulong PCI_BRIDGE_SUBORDINATE_BUS_REGISTER_OFFSET = 0x1a;
   public const ulong PCI_BRIDGE_SECONDARY_LATENCY_TIMER_OFFSET = 0x1b;
@@ -615,53 +615,53 @@ uint Uint32;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_PCI_COMMAND_IO_SPACE = BIT0      ///< 0x0001;
-public const ulong EFI_PCI_COMMAND_MEMORY_SPACE = BIT1      ///< 0x0002;
-public const ulong EFI_PCI_COMMAND_BUS_MASTER = BIT2      ///< 0x0004;
-public const ulong EFI_PCI_COMMAND_SPECIAL_CYCLE = BIT3      ///< 0x0008;
-public const ulong EFI_PCI_COMMAND_MEMORY_WRITE_AND_INVALIDATE = BIT4      ///< 0x0010;
-public const ulong EFI_PCI_COMMAND_VGA_PALETTE_SNOOP = BIT5      ///< 0x0020;
-public const ulong EFI_PCI_COMMAND_PARITY_ERROR_RESPOND = BIT6      ///< 0x0040;
-public const ulong EFI_PCI_COMMAND_STEPPING_CONTROL = BIT7      ///< 0x0080;
-public const ulong EFI_PCI_COMMAND_SERR = BIT8      ///< 0x0100;
-public const ulong EFI_PCI_COMMAND_FAST_BACK_TO_BACK = BIT9      ///< 0x0200;
+  public const ulong EFI_PCI_COMMAND_IO_SPACE = BIT0; /// < 0x0001
+  public const ulong EFI_PCI_COMMAND_MEMORY_SPACE = BIT1; /// < 0x0002
+  public const ulong EFI_PCI_COMMAND_BUS_MASTER = BIT2; /// < 0x0004
+  public const ulong EFI_PCI_COMMAND_SPECIAL_CYCLE = BIT3; /// < 0x0008
+  public const ulong EFI_PCI_COMMAND_MEMORY_WRITE_AND_INVALIDATE = BIT4; /// < 0x0010
+  public const ulong EFI_PCI_COMMAND_VGA_PALETTE_SNOOP = BIT5; /// < 0x0020
+  public const ulong EFI_PCI_COMMAND_PARITY_ERROR_RESPOND = BIT6; /// < 0x0040
+  public const ulong EFI_PCI_COMMAND_STEPPING_CONTROL = BIT7; /// < 0x0080
+  public const ulong EFI_PCI_COMMAND_SERR = BIT8; /// < 0x0100
+  public const ulong EFI_PCI_COMMAND_FAST_BACK_TO_BACK = BIT9; /// < 0x0200
 
   //
   // defined in PCI-to-PCI Bridge Architecture Specification
   //
-public const ulong EFI_PCI_BRIDGE_CONTROL_PARITY_ERROR_RESPONSE = BIT0   ///< 0x0001;
-public const ulong EFI_PCI_BRIDGE_CONTROL_SERR = BIT1   ///< 0x0002;
-public const ulong EFI_PCI_BRIDGE_CONTROL_ISA = BIT2   ///< 0x0004;
-public const ulong EFI_PCI_BRIDGE_CONTROL_VGA = BIT3   ///< 0x0008;
-public const ulong EFI_PCI_BRIDGE_CONTROL_VGA_16 = BIT4   ///< 0x0010;
-public const ulong EFI_PCI_BRIDGE_CONTROL_MASTER_ABORT = BIT5   ///< 0x0020;
-public const ulong EFI_PCI_BRIDGE_CONTROL_RESET_SECONDARY_BUS = BIT6   ///< 0x0040;
-public const ulong EFI_PCI_BRIDGE_CONTROL_FAST_BACK_TO_BACK = BIT7   ///< 0x0080;
-public const ulong EFI_PCI_BRIDGE_CONTROL_PRIMARY_DISCARD_TIMER = BIT8   ///< 0x0100;
-public const ulong EFI_PCI_BRIDGE_CONTROL_SECONDARY_DISCARD_TIMER = BIT9   ///< 0x0200;
-public const ulong EFI_PCI_BRIDGE_CONTROL_TIMER_STATUS = BIT10  ///< 0x0400;
-public const ulong EFI_PCI_BRIDGE_CONTROL_DISCARD_TIMER_SERR = BIT11  ///< 0x0800;
+  public const ulong EFI_PCI_BRIDGE_CONTROL_PARITY_ERROR_RESPONSE = BIT0; /// < 0x0001
+  public const ulong EFI_PCI_BRIDGE_CONTROL_SERR = BIT1; /// < 0x0002
+  public const ulong EFI_PCI_BRIDGE_CONTROL_ISA = BIT2; /// < 0x0004
+  public const ulong EFI_PCI_BRIDGE_CONTROL_VGA = BIT3; /// < 0x0008
+  public const ulong EFI_PCI_BRIDGE_CONTROL_VGA_16 = BIT4; /// < 0x0010
+  public const ulong EFI_PCI_BRIDGE_CONTROL_MASTER_ABORT = BIT5; /// < 0x0020
+  public const ulong EFI_PCI_BRIDGE_CONTROL_RESET_SECONDARY_BUS = BIT6; /// < 0x0040
+  public const ulong EFI_PCI_BRIDGE_CONTROL_FAST_BACK_TO_BACK = BIT7; /// < 0x0080
+  public const ulong EFI_PCI_BRIDGE_CONTROL_PRIMARY_DISCARD_TIMER = BIT8; /// < 0x0100
+  public const ulong EFI_PCI_BRIDGE_CONTROL_SECONDARY_DISCARD_TIMER = BIT9; /// < 0x0200
+  public const ulong EFI_PCI_BRIDGE_CONTROL_TIMER_STATUS = BIT10; /// < 0x0400
+  public const ulong EFI_PCI_BRIDGE_CONTROL_DISCARD_TIMER_SERR = BIT11; /// < 0x0800
 
   //
   // Following are the PCI-CARDBUS bridge control bit, defined in PC Card Standard
   //
-public const ulong EFI_PCI_BRIDGE_CONTROL_IREQINT_ENABLE = BIT7      ///< 0x0080;
-public const ulong EFI_PCI_BRIDGE_CONTROL_RANGE0_MEMORY_TYPE = BIT8      ///< 0x0100;
-public const ulong EFI_PCI_BRIDGE_CONTROL_RANGE1_MEMORY_TYPE = BIT9      ///< 0x0200;
-public const ulong EFI_PCI_BRIDGE_CONTROL_WRITE_POSTING_ENABLE = BIT10     ///< 0x0400;
+  public const ulong EFI_PCI_BRIDGE_CONTROL_IREQINT_ENABLE = BIT7; /// < 0x0080
+  public const ulong EFI_PCI_BRIDGE_CONTROL_RANGE0_MEMORY_TYPE = BIT8; /// < 0x0100
+  public const ulong EFI_PCI_BRIDGE_CONTROL_RANGE1_MEMORY_TYPE = BIT9; /// < 0x0200
+  public const ulong EFI_PCI_BRIDGE_CONTROL_WRITE_POSTING_ENABLE = BIT10; /// < 0x0400
 
   //
   // Following are the PCI status control bit
   //
-public const ulong EFI_PCI_STATUS_CAPABILITY = BIT4                ///< 0x0010;
-public const ulong EFI_PCI_STATUS_66MZ_CAPABLE = BIT5                ///< 0x0020;
-public const ulong EFI_PCI_FAST_BACK_TO_BACK_CAPABLE = BIT7                ///< 0x0080;
-public const ulong EFI_PCI_MASTER_DATA_PARITY_ERROR = BIT8                ///< 0x0100;
+  public const ulong EFI_PCI_STATUS_CAPABILITY = BIT4; /// < 0x0010
+  public const ulong EFI_PCI_STATUS_66MZ_CAPABLE = BIT5; /// < 0x0020
+  public const ulong EFI_PCI_FAST_BACK_TO_BACK_CAPABLE = BIT7; /// < 0x0080
+  public const ulong EFI_PCI_MASTER_DATA_PARITY_ERROR = BIT8; /// < 0x0100
 
-                                                                          ///
-                                                                          /// defined in PC Card Standard
-                                                                          ///
-public const ulong EFI_PCI_CARDBUS_BRIDGE_CAPABILITY_PTR = 0x14;
+                                                              ///
+                                                              /// defined in PC Card Standard
+                                                              ///
+  public const ulong EFI_PCI_CARDBUS_BRIDGE_CAPABILITY_PTR = 0x14;
 
   // #pragma pack(1)
   //
@@ -860,12 +860,12 @@ public unsafe partial class EFI
   /// EFI PCI Option ROM definitions
   ///
   public const ulong EFI_ROOT_BRIDGE_LIST = 'eprb';
-  public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1       ///< defined in UEFI Spec.;
+  public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1; /// < defined in UEFI Spec.
 
-public const ulong PCI_EXPANSION_ROM_HEADER_SIGNATURE = 0xaa55;
+  public const ulong PCI_EXPANSION_ROM_HEADER_SIGNATURE = 0xaa55;
   public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
   public const ulong PCI_CODE_TYPE_PCAT_IMAGE = 0x00;
-  public const ulong EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED = 0x0001         ///< defined in UEFI spec.;
+  public const ulong EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED = 0x0001; /// < defined in UEFI spec.
 }
 
 ///

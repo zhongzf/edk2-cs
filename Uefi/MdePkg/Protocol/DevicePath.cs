@@ -1298,7 +1298,7 @@ public unsafe partial class EFI
   //
   // Use VENDOR_DEVICE_PATH struct
   //
-  public const ulong MEDIA_VENDOR_DP = 0x03           ///< Media vendor device path subtype.;
+  public const ulong MEDIA_VENDOR_DP = 0x03; /// < Media vendor device path subtype.
 }
 
 ///

@@ -100,19 +100,19 @@ public unsafe partial class EFI
   /// HTTP Content-Encoding Compression types
   ///
 
-  public const ulong HTTP_CONTENT_ENCODING_IDENTITY = "identity" /// No transformation is used. This is the default value for content coding.;
-public const ulong HTTP_CONTENT_ENCODING_GZIP = "gzip"     /// Content-Encoding: GNU zip format (described in RFC 1952).;
-public const ulong HTTP_CONTENT_ENCODING_COMPRESS = "compress" /// encoding format produced by the common UNIX file compression program "compress".;
-public const ulong HTTP_CONTENT_ENCODING_DEFLATE = "deflate"  /// The "zlib" format defined in RFC 1950 in combination with the "deflate";
-                                                              /// compression mechanism described in RFC 1951.
+  public const ulong HTTP_CONTENT_ENCODING_IDENTITY = "identity"; ///  No transformation is used. This is the default value for content coding.
+  public const ulong HTTP_CONTENT_ENCODING_GZIP = "gzip"; ///  Content-Encoding: GNU zip format (described in RFC 1952).
+  public const ulong HTTP_CONTENT_ENCODING_COMPRESS = "compress"; ///  encoding format produced by the common UNIX file compression program "compress".
+  public const ulong HTTP_CONTENT_ENCODING_DEFLATE = "deflate"; ///  The "zlib" format defined in RFC 1950 in combination with the "deflate"
+                                                                /// compression mechanism described in RFC 1951.
 
-                                                              ///
-                                                              /// Content-Type Header
-                                                              /// The Content-Type entity-header field indicates the media type of the entity-body sent to
-                                                              /// the recipient or, in the case of the HEAD method, the media type that would have been sent
-                                                              /// had the request been a GET.
-                                                              ///
-public const ulong HTTP_HEADER_CONTENT_TYPE = "Content-Type";
+                                                                ///
+                                                                /// Content-Type Header
+                                                                /// The Content-Type entity-header field indicates the media type of the entity-body sent to
+                                                                /// the recipient or, in the case of the HEAD method, the media type that would have been sent
+                                                                /// had the request been a GET.
+                                                                ///
+  public const ulong HTTP_HEADER_CONTENT_TYPE = "Content-Type";
   //
   // Common Media Types defined in http://www.iana.org/assignments/media-types/media-types.xhtml
   //

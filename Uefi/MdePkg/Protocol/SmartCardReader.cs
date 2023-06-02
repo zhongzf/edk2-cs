@@ -25,20 +25,20 @@ public unsafe partial class EFI
   //
   // Codes for access mode
   //
-  public const ulong SCARD_AM_READER = 0x0001             // Exclusive access to reader;
-public const ulong SCARD_AM_CARD = 0x0002             // Exclusive access to card;
-//
-// Codes for card action
-//
-public const ulong SCARD_CA_NORESET = 0x0000          // Don't reset card;
-public const ulong SCARD_CA_COLDRESET = 0x0001          // Perform a cold reset;
-public const ulong SCARD_CA_WARMRESET = 0x0002          // Perform a warm reset;
-public const ulong SCARD_CA_UNPOWER = 0x0003          // Power off the card;
-public const ulong SCARD_CA_EJECT = 0x0004          // Eject the card;
-//
-// Protocol types
-//
-public const ulong SCARD_PROTOCOL_UNDEFINED = 0x0000;
+  public const ulong SCARD_AM_READER = 0x0001; //  Exclusive access to reader
+  public const ulong SCARD_AM_CARD = 0x0002; //  Exclusive access to card
+                                             //
+                                             // Codes for card action
+                                             //
+  public const ulong SCARD_CA_NORESET = 0x0000; //  Don't reset card
+  public const ulong SCARD_CA_COLDRESET = 0x0001; //  Perform a cold reset
+  public const ulong SCARD_CA_WARMRESET = 0x0002; //  Perform a warm reset
+  public const ulong SCARD_CA_UNPOWER = 0x0003; //  Power off the card
+  public const ulong SCARD_CA_EJECT = 0x0004; //  Eject the card
+                                              //
+                                              // Protocol types
+                                              //
+  public const ulong SCARD_PROTOCOL_UNDEFINED = 0x0000;
   public const ulong SCARD_PROTOCOL_T0 = 0x0001;
   public const ulong SCARD_PROTOCOL_T1 = 0x0002;
   public const ulong SCARD_PROTOCOL_RAW = 0x0004;
