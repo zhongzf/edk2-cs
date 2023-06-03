@@ -28,10 +28,10 @@ public unsafe partial class EFI
   //      ((PXE_UINT32) (a) & 0xFF) \
   //  )
 
-///
-/// UNDI ROM ID and devive ID signature.
-///
-public const ulong PXE_BUSTYPE_PXE = PXE_BUSTYPE('!', 'P', 'X', 'E');
+  ///
+  /// UNDI ROM ID and devive ID signature.
+  ///
+  public const ulong PXE_BUSTYPE_PXE = PXE_BUSTYPE('!', 'P', 'X', 'E');
 
   ///
   /// BUS ROM ID signatures.
@@ -43,23 +43,23 @@ public const ulong PXE_BUSTYPE_PXE = PXE_BUSTYPE('!', 'P', 'X', 'E');
 
   public const ulong PXE_SWAP_UINT16 = (n)((((PXE_UINT16)(n) & 0x00FF) << 8) | (((PXE_UINT16)(n) & 0xFF00) >> 8));
 
-//  public const ulong PXE_SWAP_UINT32 = (n) \;
-//  ((((PXE_UINT32)(n) & 0x000000FF) << 24) | \
-//   (((PXE_UINT32)(n) & 0x0000FF00) << 8)  | \
-//   (((PXE_UINT32)(n) & 0x00FF0000) >> 8)  | \
-//   (((PXE_UINT32)(n) & 0xFF000000) >> 24))
+  //  public const ulong PXE_SWAP_UINT32 = (n) \;
+  //  ((((PXE_UINT32)(n) & 0x000000FF) << 24) | \
+  //   (((PXE_UINT32)(n) & 0x0000FF00) << 8)  | \
+  //   (((PXE_UINT32)(n) & 0x00FF0000) >> 8)  | \
+  //   (((PXE_UINT32)(n) & 0xFF000000) >> 24))
 
-//public const ulong PXE_SWAP_UINT64 = (n) \;
-//  ((((PXE_UINT64)(n) & 0x00000000000000FF) << 56) | \
-//   (((PXE_UINT64)(n) & 0x000000000000FF00) << 40) | \
-//   (((PXE_UINT64)(n) & 0x0000000000FF0000) << 24) | \
-//   (((PXE_UINT64)(n) & 0x00000000FF000000) << 8)  | \
-//   (((PXE_UINT64)(n) & 0x000000FF00000000) >> 8)  | \
-//   (((PXE_UINT64)(n) & 0x0000FF0000000000) >> 24) | \
-//   (((PXE_UINT64)(n) & 0x00FF000000000000) >> 40) | \
-//   (((PXE_UINT64)(n) & 0xFF00000000000000) >> 56))
+  //public const ulong PXE_SWAP_UINT64 = (n) \;
+  //  ((((PXE_UINT64)(n) & 0x00000000000000FF) << 56) | \
+  //   (((PXE_UINT64)(n) & 0x000000000000FF00) << 40) | \
+  //   (((PXE_UINT64)(n) & 0x0000000000FF0000) << 24) | \
+  //   (((PXE_UINT64)(n) & 0x00000000FF000000) << 8)  | \
+  //   (((PXE_UINT64)(n) & 0x000000FF00000000) >> 8)  | \
+  //   (((PXE_UINT64)(n) & 0x0000FF0000000000) >> 24) | \
+  //   (((PXE_UINT64)(n) & 0x00FF000000000000) >> 40) | \
+  //   (((PXE_UINT64)(n) & 0xFF00000000000000) >> 56))
 
-public const ulong PXE_CPBSIZE_NOT_USED = 0; /// < zero
+  public const ulong PXE_CPBSIZE_NOT_USED = 0; /// < zero
   public const ulong PXE_DBSIZE_NOT_USED = 0; /// < zero
   //public const ulong PXE_CPBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
   //public const ulong PXE_DBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
