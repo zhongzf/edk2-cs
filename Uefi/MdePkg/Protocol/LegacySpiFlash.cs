@@ -179,7 +179,7 @@ public unsafe struct EFI_LEGACY_SPI_FLASH_PROTOCOL
   ///
   /// Clear the SPI protect range registers.
   ///
-  public readonly delegate* unmanaged<, EFI_STATUS> /*EFI_LEGACY_SPI_FLASH_PROTOCOL_CLEAR_SPI_PROTECT*/ ClearSpiProtect;
+  public readonly delegate* unmanaged</* IN CONST */EFI_LEGACY_SPI_FLASH_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_LEGACY_SPI_FLASH_PROTOCOL_CLEAR_SPI_PROTECT*/ ClearSpiProtect;
 
   ///
   /// Determine if the SPI range is protected.

@@ -311,23 +311,23 @@ public unsafe partial class EFI
 ///
 /// Section Table. This table immediately follows the optional header.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Misc
-{
-  public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
-  union {
-    public uint PhysicalAddress;
-  public uint VirtualSize;
-}
-uint VirtualAddress;
-uint SizeOfRawData;
-uint PointerToRawData;
-uint PointerToRelocations;
-uint PointerToLinenumbers;
-ushort NumberOfRelocations;
-ushort NumberOfLinenumbers;
-uint Characteristics;
-} EFI_IMAGE_SECTION_HEADER;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Misc
+//{
+//  public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
+//  union {
+//    public uint PhysicalAddress;
+//  public uint VirtualSize;
+//}
+//uint VirtualAddress;
+//uint SizeOfRawData;
+//uint PointerToRawData;
+//uint PointerToRelocations;
+//uint PointerToLinenumbers;
+//ushort NumberOfRelocations;
+//ushort NumberOfLinenumbers;
+//uint Characteristics;
+//} EFI_IMAGE_SECTION_HEADER;
 
 public unsafe partial class EFI
 {
@@ -586,11 +586,11 @@ public unsafe partial class EFI
   // Archive format.
   //
   public const ulong EFI_IMAGE_ARCHIVE_START_SIZE = 8;
-  public const ulong EFI_IMAGE_ARCHIVE_START = "!<arch>\n";
-  public const ulong EFI_IMAGE_ARCHIVE_END = "`\n";
-  public const ulong EFI_IMAGE_ARCHIVE_PAD = "\n";
-  public const ulong EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
-  public const ulong EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "; //               "
+  public const string EFI_IMAGE_ARCHIVE_START = "!<arch>\n";
+  public const string EFI_IMAGE_ARCHIVE_END = "`\n";
+  public const string EFI_IMAGE_ARCHIVE_PAD = "\n";
+  public const string EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
+  public const string EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//               ";
 }
 
 ///
@@ -652,21 +652,21 @@ public unsafe struct EFI_IMAGE_IMPORT_BY_NAME
 ///
 /// Import Address Table RVA (Thunk Table).
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct u1
-{
-  union {
-    public uint Function;
-  public uint Ordinal;
-  public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
-}
-} EFI_IMAGE_THUNK_DATA;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct u1
+//{
+//  union {
+//    public uint Function;
+//  public uint Ordinal;
+//  public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
+//}
+//} EFI_IMAGE_THUNK_DATA;
 
 public unsafe partial class EFI
 {
   public const ulong EFI_IMAGE_ORDINAL_FLAG = BIT31; /// < Flag for PE32.
-  public const ulong EFI_IMAGE_SNAP_BY_ORDINAL = (Ordinal)((Ordinal & EFI_IMAGE_ORDINAL_FLAG) != 0);
-  public const ulong EFI_IMAGE_ORDINAL = (Ordinal)(Ordinal & 0xffff);
+  //public const ulong EFI_IMAGE_SNAP_BY_ORDINAL = (Ordinal)((Ordinal & EFI_IMAGE_ORDINAL_FLAG) != 0);
+  //public const ulong EFI_IMAGE_ORDINAL = (Ordinal)(Ordinal & 0xffff);
 }
 
 ///

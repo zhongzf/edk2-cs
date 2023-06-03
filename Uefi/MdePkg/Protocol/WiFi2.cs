@@ -89,7 +89,7 @@ public unsafe struct EFI_80211_SSID
   //
   // Specifies the service set identifier.
   //
-  public fixed byte SSId[EFI_MAX_SSID_LEN];
+  //public fixed byte SSId[EFI_MAX_SSID_LEN];
 }
 
 ///
@@ -110,7 +110,7 @@ public unsafe struct EFI_80211_GET_NETWORKS_DATA
   // 10 elements in the SSIDList. It is the caller's responsibility to free
   // this buffer.
   //
-  public fixed EFI_80211_SSID SSIDList[1];
+  //public fixed EFI_80211_SSID SSIDList[1];
 }
 
 ///

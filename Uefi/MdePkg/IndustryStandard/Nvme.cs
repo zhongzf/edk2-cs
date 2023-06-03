@@ -45,10 +45,10 @@ public unsafe partial class EFI
   // These register offsets are defined as 0x1000 + (N * (4 << CAP.DSTRD))
   // Get the doorbell stride bit shift value from the controller capabilities.
   //
-//  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
-//public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
+  //  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
+  //public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
 
-// #pragma pack(1)
+  // #pragma pack(1)
 }
 
 //
@@ -354,10 +354,10 @@ public unsafe struct NVME_COMPARE
   // CDW 12
   //
   public ushort Nlb;              /* Number of Logical Blocks */
-  public ushort Rsvd1 = 10;
-  public ushort Prinfo = 4;       /* Protection Info Check */
-  public ushort Fua = 1;       /* Force Unit Access */
-  public ushort Lr = 1;       /* Limited Retry */
+  public ushort Rsvd1;// = 10;
+  public ushort Prinfo;// = 4;       /* Protection Info Check */
+  public ushort Fua;// = 1;       /* Force Unit Access */
+  public ushort Lr;// = 1;       /* Limited Retry */
   //
   // CDW 13
   //
@@ -402,7 +402,7 @@ public unsafe struct NVME_PSDESCRIPTOR
   public byte Rsvd5 = 3;      /* Reserved as of Nvm Express 1.1 Spec */
   public byte Rwl = 5;      /* Relative Write Latency */
   public byte Rsvd6 = 3;      /* Reserved as of Nvm Express 1.1 Spec */
-  public fixed byte Rsvd7[16];      /* Reserved as of Nvm Express 1.1 Spec */
+  //public fixed byte Rsvd7[16];      /* Reserved as of Nvm Express 1.1 Spec */
 }
 
 //
@@ -432,10 +432,10 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
   public ushort Oacs;  /* Optional Admin Command Support */
   public unsafe partial class EFI
   {
-    public const ulong NAMESPACE_MANAGEMENT_SUPPORTED = BIT3;
-    public const ulong FW_DOWNLOAD_ACTIVATE_SUPPORTED = BIT2;
-    public const ulong FORMAT_NVM_SUPPORTED = BIT1;
-    public const ulong SECURITY_SEND_RECEIVE_SUPPORTED = BIT0;
+    //public const ulong NAMESPACE_MANAGEMENT_SUPPORTED = BIT3;
+    //public const ulong FW_DOWNLOAD_ACTIVATE_SUPPORTED = BIT2;
+    //public const ulong FORMAT_NVM_SUPPORTED = BIT1;
+    //public const ulong SECURITY_SEND_RECEIVE_SUPPORTED = BIT0;
     public byte Acl;   /* Abort Command Limit */
     public byte Aerl;  /* Async Event Request Limit */
     public byte Frmw;  /* Firmware updates */
@@ -452,13 +452,13 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
     public ushort Mtfa;        /* Maximum Time for Firmware Activation */
     public uint Hmpre;       /* Host Memory Buffer Preferred Size */
     public uint Hmmin;       /* Host Memory Buffer Minimum Size */
-    public fixed byte Tnvmcap[16]; /* Total NVM Capacity */
-    public fixed byte Unvmcap[16]; /* Unallocated NVM Capacity */
+    //public fixed byte Tnvmcap[16]; /* Total NVM Capacity */
+    //public fixed byte Unvmcap[16]; /* Unallocated NVM Capacity */
     public uint Rpmbs;       /* Replay Protected Memory Block Support */
     public ushort Edstt;       /* Extended Device Self-test Time */
     public byte Dsto;        /* Device Self-test Options  */
     public byte Fwug;        /* Firmware Update Granularity */
-    public fixed byte Rsvd2[192];  /* Reserved as of Nvm Express 1.4 Spec */
+    //public fixed byte Rsvd2[192];  /* Reserved as of Nvm Express 1.4 Spec */
     //
     // NVM Command Set Attributes
     //
@@ -477,17 +477,17 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
     public ushort Acwu;       /* Atomic Compare & Write Unit */
     public ushort Rsvd5;      /* Reserved as of Nvm Express 1.1 Spec */
     public uint Sgls;       /* SGL Support  */
-    public fixed byte Rsvd6[164]; /* Reserved as of Nvm Express 1.1 Spec */
-    //
-    // I/O Command set Attributes
-    //
-    public fixed byte Rsvd7[1344]; /* Reserved as of Nvm Express 1.1 Spec */
-    //
-    // Power State Descriptors
-    //
-    public fixed NVME_PSDESCRIPTOR PsDescriptor[32];
+    //public fixed byte Rsvd6[164]; /* Reserved as of Nvm Express 1.1 Spec */
+    ////
+    //// I/O Command set Attributes
+    ////
+    //public fixed byte Rsvd7[1344]; /* Reserved as of Nvm Express 1.1 Spec */
+    ////
+    //// Power State Descriptors
+    ////
+    //public fixed NVME_PSDESCRIPTOR PsDescriptor[32];
 
-    public fixed byte VendorData[1024]; /* Vendor specific data */
+    //public fixed byte VendorData[1024]; /* Vendor specific data */
   }
 }
 
@@ -499,11 +499,11 @@ public unsafe struct NVME_LBAFORMAT
   public byte Rp = 2;      /* Relative Performance */
   public unsafe partial class EFI
   {
-    public const ulong LBAF_RP_BEST = 00b;
-public const ulong LBAF_RP_BETTER = 01b;
-public const ulong LBAF_RP_GOOD = 10b;
-public const ulong LBAF_RP_DEGRADED = 11b;
-  public byte Rsvd1 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
+    public const ulong LBAF_RP_BEST = 00;
+    public const ulong LBAF_RP_BETTER = 01;
+    public const ulong LBAF_RP_GOOD = 10;
+    public const ulong LBAF_RP_DEGRADED = 11;
+    public byte Rsvd1 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
   }
 }
 
@@ -1063,9 +1063,9 @@ public enum NVME_FW_ACTIVATE_SLOT
 //
 public enum NVME_LOG_ID
 {
-  ErrorInfoLogID = LID_ERROR_INFO,
-  SmartHealthInfoLogID = LID_SMART_INFO,
-  FirmwareSlotInfoLogID = LID_FW_SLOT_INFO
+  //ErrorInfoLogID = LID_ERROR_INFO,
+  //SmartHealthInfoLogID = LID_SMART_INFO,
+  //FirmwareSlotInfoLogID = LID_FW_SLOT_INFO
 }
 
 //
@@ -1078,12 +1078,12 @@ public unsafe struct NVME_ACTIVE_FW_INFO
   //
   // Indicates the firmware slot from which the actively running firmware revision was loaded.
   //
-  public byte ActivelyRunningFwSlot = 3;
+  public byte ActivelyRunningFwSlot;// = 3;
   //public byte                          = 1;
   //
   // Indicates the firmware slot that is going to be activated at the next controller reset. If this field is 0h, then the controller does not indicate the firmware slot that is going to be activated at the next controller reset.
   //
-  public byte NextActiveFwSlot = 3;
+  public byte NextActiveFwSlot;// = 3;
   //public byte                          = 1;
 }
 
@@ -1098,12 +1098,12 @@ public unsafe struct NVME_FW_SLOT_INFO_LOG
   // Specifies information about the active firmware revision.
   // s
   public NVME_ACTIVE_FW_INFO ActiveFwInfo;
-  public fixed byte Reserved1[7];
-  //
-  // Contains the revision of the firmware downloaded to firmware slot 1/7. If no valid firmware revision is present or if this slot is unsupported, all zeros shall be returned.
-  //
-  byte FwRevisionSlot[7][8];
-  public fixed byte Reserved2[448];
+  //public fixed byte Reserved1[7];
+  ////
+  //// Contains the revision of the firmware downloaded to firmware slot 1/7. If no valid firmware revision is present or if this slot is unsupported, all zeros shall be returned.
+  ////
+  //byte FwRevisionSlot[7][8];
+  //public fixed byte Reserved2[448];
 }
 
 //

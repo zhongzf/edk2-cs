@@ -239,46 +239,46 @@ public unsafe struct EFI_HTTP_HEADER
 ///
 /// EFI_HTTP_MESSAGE
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Data
-{
-  ///
-  /// HTTP message data.
-  ///
-  union {
-    ///
-    /// When the token is used to send a HTTP request, Request is a pointer to storage that
-    /// contains such data as URL and HTTP method.
-    ///
-    public EFI_HTTP_REQUEST_DATA* Request;
-  ///
-  /// When used to await a response, Response points to storage containing HTTP response
-  /// status code.
-  ///
-  public EFI_HTTP_RESPONSE_DATA* Response;
-}
-///
-/// Number of HTTP header structures in Headers list. On request, this count is
-/// provided by the caller. On response, this count is provided by the HTTP driver.
-///
-ulong HeaderCount;
-///
-/// Array containing list of HTTP headers. On request, this array is populated by the
-/// caller. On response, this array is allocated and populated by the HTTP driver. It
-/// is the responsibility of the caller to free this memory on both request and
-/// response.
-///
-EFI_HTTP_HEADER* Headers;
-///
-/// Length in bytes of the HTTP body. This can be zero depending on the HttpMethod type.
-///
-ulong BodyLength;
-///
-/// Body associated with the HTTP request or response. This can be NULL depending on
-/// the HttpMethod type.
-///
-void* Body;
-} EFI_HTTP_MESSAGE;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Data
+//{
+//  ///
+//  /// HTTP message data.
+//  ///
+//  union {
+//    ///
+//    /// When the token is used to send a HTTP request, Request is a pointer to storage that
+//    /// contains such data as URL and HTTP method.
+//    ///
+//    public EFI_HTTP_REQUEST_DATA* Request;
+//  ///
+//  /// When used to await a response, Response points to storage containing HTTP response
+//  /// status code.
+//  ///
+//  public EFI_HTTP_RESPONSE_DATA* Response;
+//}
+/////
+///// Number of HTTP header structures in Headers list. On request, this count is
+///// provided by the caller. On response, this count is provided by the HTTP driver.
+/////
+//ulong HeaderCount;
+/////
+///// Array containing list of HTTP headers. On request, this array is populated by the
+///// caller. On response, this array is allocated and populated by the HTTP driver. It
+///// is the responsibility of the caller to free this memory on both request and
+///// response.
+/////
+//EFI_HTTP_HEADER* Headers;
+/////
+///// Length in bytes of the HTTP body. This can be zero depending on the HttpMethod type.
+/////
+//ulong BodyLength;
+/////
+///// Body associated with the HTTP request or response. This can be NULL depending on
+///// the HttpMethod type.
+/////
+//void* Body;
+//} EFI_HTTP_MESSAGE;
 
 ///
 /// EFI_HTTP_TOKEN

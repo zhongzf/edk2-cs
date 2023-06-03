@@ -303,7 +303,7 @@ public unsafe struct EFI_SPI_CONFIGURATION_PROTOCOL
   ///
   /// The address of an array of EFI_SPI_BUS data structure addresses.
   ///
-  CONST EFI_SPI_BUS *CONST* CONST    Buslist;
+  //CONST EFI_SPI_BUS *CONST* CONST    Buslist;
 }
 
 // extern EFI_GUID  gEfiSpiConfigurationProtocolGuid;

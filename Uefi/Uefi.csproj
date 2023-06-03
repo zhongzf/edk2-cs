@@ -13,6 +13,7 @@
     <Compile Remove="MdePkg\IndustryStandard\Acpi64.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Acpi65.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Cxl11.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Nvme.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Tpm12.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Tpm20.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Udf.cs" />

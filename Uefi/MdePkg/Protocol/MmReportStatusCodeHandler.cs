@@ -28,7 +28,7 @@ public unsafe partial class EFI
   //  IN uint Instance,
   //  IN EFI_GUID* CallerId,
   //  IN EFI_STATUS_CODE_DATA* Data
-  );
+  //);
 
   // /**
   //   Register the callback function for ReportStatusCode() notification.

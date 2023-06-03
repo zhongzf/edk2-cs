@@ -1022,7 +1022,7 @@ public unsafe struct DNS_DEVICE_PATH
   ///
   /// Instance of the DNS server address.
   ///
-  public fixed EFI_IP_ADDRESS DnsServerIp[];
+  //public fixed EFI_IP_ADDRESS DnsServerIp[];
 }
 
 public unsafe partial class EFI
@@ -1039,7 +1039,7 @@ public unsafe struct URI_DEVICE_PATH
   ///
   /// Instance of the URI pursuant to RFC 3986.
   ///
-  public fixed byte Uri[];
+  //public fixed byte Uri[];
 }
 
 public unsafe partial class EFI

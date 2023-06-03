@@ -691,7 +691,7 @@ public unsafe struct EFI_80211_ELEMENT_SUPP_CHANNEL
   ///
   /// Indicates one or more tuples of (first channel, number of channels).
   ///
-  public fixed EFI_80211_ELEMENT_SUPP_CHANNEL_TUPLE Subband[1];
+  //public fixed EFI_80211_ELEMENT_SUPP_CHANNEL_TUPLE Subband[1];
 }
 
 ///

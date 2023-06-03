@@ -113,14 +113,18 @@ public unsafe partial class EFI
   ///
 }
 
-///
-/// No information.
-///
-public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
-///
-/// Provide the user's name for the enrolled user.
-///
-public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
+public unsafe partial class EFI
+{
+  ///
+  /// No information.
+  ///
+  public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
+  ///
+  /// Provide the user's name for the enrolled user.
+  ///
+  public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
+}
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_NAME { char* Value; public static implicit operator EFI_USER_INFO_NAME(char* value) => new EFI_USER_INFO_NAME() { Value = value }; public static implicit operator char*(EFI_USER_INFO_NAME value) => value.Value; }
 public unsafe partial class EFI

@@ -189,29 +189,29 @@ public unsafe struct EFI_DHCP6_HEADER
 /// EFI_DHCP6_PACKET
 /// defines the format of the DHCPv6 packet. See RFC 3315 for more information.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Dhcp6
-{
-  ///
-  /// Size of the EFI_DHCP6_PACKET buffer.
-  ///
-  public uint Size;
-  ///
-  /// Length of the EFI_DHCP6_PACKET from the first byte of the Header field to the last
-  /// byte of the Option[] field.
-  ///
-  public uint Length;
-  struct {
-    ///
-    /// The DHCPv6 packet header.
-    ///
-    public EFI_DHCP6_HEADER Header;
-  ///
-  /// Start of the DHCPv6 packed option data.
-  ///
-  public fixed byte Option[1];
-}
-} EFI_DHCP6_PACKET;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Dhcp6
+//{
+//  ///
+//  /// Size of the EFI_DHCP6_PACKET buffer.
+//  ///
+//  public uint Size;
+//  ///
+//  /// Length of the EFI_DHCP6_PACKET from the first byte of the Header field to the last
+//  /// byte of the Option[] field.
+//  ///
+//  public uint Length;
+//  struct {
+//    ///
+//    /// The DHCPv6 packet header.
+//    ///
+//    public EFI_DHCP6_HEADER Header;
+//  ///
+//  /// Start of the DHCPv6 packed option data.
+//  ///
+//  public fixed byte Option[1];
+//}
+//} EFI_DHCP6_PACKET;
 
 // #pragma pack()
 
