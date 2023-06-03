@@ -8,36 +8,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="MdePkg\IndustryStandard\Acpi10.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi20.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi40.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi51.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi62.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi63.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi64.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Acpi65.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Cxl11.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\ElTorito.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Nvme.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Pci22.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\SdramSpdDdr4.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Tpm12.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Tpm20.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\Udf.cs" />
-    <Compile Remove="MdePkg\IndustryStandard\UefiTcgPlatform.cs" />
-    <Compile Remove="MdePkg\Protocol\DebugSupport.cs" />
-    <Compile Remove="MdePkg\Protocol\LegacySpiController.cs" />
-    <Compile Remove="MdePkg\Protocol\PxeBaseCode.cs" />
-    <Compile Remove="MdePkg\Protocol\SmmGpiDispatch2.cs" />
-    <Compile Remove="MdePkg\Protocol\SmmIoTrapDispatch2.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\**" />
+    <Compile Remove="MdePkg\Protocol\**" />
+    <EmbeddedResource Remove="MdePkg\IndustryStandard\**" />
+    <EmbeddedResource Remove="MdePkg\Protocol\**" />
+    <None Remove="MdePkg\IndustryStandard\**" />
+    <None Remove="MdePkg\Protocol\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="MdePkg\Uefi\UefiInternalFormRepresentation.cs" />
     <Compile Remove="MdePkg\Uefi\UefiPxe.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MdePkg\" />
+    <Compile Include="MdePkg\IndustryStandard\Acpi.cs" />
+    <Compile Include="MdePkg\IndustryStandard\Acpi10.cs" />
+    <Compile Include="MdePkg\IndustryStandard\Bluetooth.cs" />
+    <Compile Include="MdePkg\Protocol\DevicePath.cs" />
+    <Compile Include="MdePkg\Protocol\SimpleTextIn.cs" />
+    <Compile Include="MdePkg\Protocol\SimpleTextOut.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="MdePkg\Uefi\" />
-    <Folder Include="MdePkg\Protocol\" />
   </ItemGroup>
 
 </Project>

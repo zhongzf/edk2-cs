@@ -142,26 +142,26 @@ public unsafe struct EFI_ACPI_ADDRESS_SPACE_DESCRIPTOR
 public unsafe struct ACPI_SMALL_RESOURCE_HEADER
 {
   [FieldOffset(0)] public byte Byte;
-  /*   PACKED struct { */
-  [FieldOffset(0)] public byte Length = 3;
-  [FieldOffset(0)] public byte Name = 4;
-  [FieldOffset(0)] public byte Type = 1;
-  /*   } Bits; */
+  ///*   PACKED struct { */
+  //[FieldOffset(0)] public byte Length = 3;
+  //[FieldOffset(0)] public byte Name = 4;
+  //[FieldOffset(0)] public byte Type = 1;
+  ///*   } Bits; */
 }
 
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Bits
-//{
-//  PACKED union
-//  {
-//    public byte Byte;
-//  PACKED struct {
-//      public byte Name = 7;
-//  public byte Type = 1;
-//}
-//  } Header;
-//ushort Length;
-//} ACPI_LARGE_RESOURCE_HEADER;
+[StructLayout(LayoutKind.Explicit)]
+public unsafe struct ACPI_LARGE_RESOURCE_HEADER
+{
+  //PACKED union
+  //{
+  [FieldOffset(0)] public byte Byte;
+  //PACKED struct {
+  //[FieldOffset(0)] public byte Name = 7;
+  //[FieldOffset(0)] public byte Type = 1;
+  //}
+  //  } Header;
+  [FieldOffset(0)] public ushort Length;
+}
 
 ///
 /// IRQ Descriptor.
@@ -699,50 +699,50 @@ public unsafe struct EFI_ACPI_1_0_SMART_BATTERY_DESCRIPTION_TABLE
 
 public unsafe partial class EFI
 {
-  ///
-  /// "RSD PTR " Root System Description Pointer.
-  ///
-  public const ulong EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
+  /////
+  ///// "RSD PTR " Root System Description Pointer.
+  /////
+  //public const ulong EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
 
-  ///
-  /// "APIC" Multiple APIC Description Table.
-  ///
-  public const ulong EFI_ACPI_1_0_APIC_SIGNATURE = SIGNATURE_32('A', 'P', 'I', 'C');
+  /////
+  ///// "APIC" Multiple APIC Description Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_APIC_SIGNATURE = SIGNATURE_32('A', 'P', 'I', 'C');
 
-  ///
-  /// "DSDT" Differentiated System Description Table.
-  ///
-  public const ulong EFI_ACPI_1_0_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('D', 'S', 'D', 'T');
+  /////
+  ///// "DSDT" Differentiated System Description Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('D', 'S', 'D', 'T');
 
-  ///
-  /// "FACS" Firmware ACPI Control Structure.
-  ///
-  public const ulong EFI_ACPI_1_0_FIRMWARE_ACPI_CONTROL_STRUCTURE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'S');
+  /////
+  ///// "FACS" Firmware ACPI Control Structure.
+  /////
+  //public const ulong EFI_ACPI_1_0_FIRMWARE_ACPI_CONTROL_STRUCTURE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'S');
 
-  ///
-  /// "FACP" Fixed ACPI Description Table.
-  ///
-  public const ulong EFI_ACPI_1_0_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'P');
+  /////
+  ///// "FACP" Fixed ACPI Description Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'P');
 
-  ///
-  /// "PSDT" Persistent System Description Table.
-  ///
-  public const ulong EFI_ACPI_1_0_PERSISTENT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('P', 'S', 'D', 'T');
+  /////
+  ///// "PSDT" Persistent System Description Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_PERSISTENT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('P', 'S', 'D', 'T');
 
-  ///
-  /// "RSDT" Root System Description Table.
-  ///
-  public const ulong EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('R', 'S', 'D', 'T');
+  /////
+  ///// "RSDT" Root System Description Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('R', 'S', 'D', 'T');
 
-  ///
-  /// "SBST" Smart Battery Specification Table.
-  ///
-  public const ulong EFI_ACPI_1_0_SMART_BATTERY_SPECIFICATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'B', 'S', 'T');
+  /////
+  ///// "SBST" Smart Battery Specification Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_SMART_BATTERY_SPECIFICATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'B', 'S', 'T');
 
-  ///
-  /// "SSDT" Secondary System Description Table.
-  ///
-  public const ulong EFI_ACPI_1_0_SECONDARY_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'S', 'D', 'T');
+  /////
+  ///// "SSDT" Secondary System Description Table.
+  /////
+  //public const ulong EFI_ACPI_1_0_SECONDARY_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'S', 'D', 'T');
 
   // #pragma pack()
 }

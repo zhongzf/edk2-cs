@@ -31,7 +31,7 @@ public unsafe partial class EFI
   ///
   /// Device Path guid definition for backward-compatible with EFI1.1.
   ///
-  public const ulong DEVICE_PATH_PROTOCOL = EFI_DEVICE_PATH_PROTOCOL_GUID;
+  public static EFI_GUID DEVICE_PATH_PROTOCOL = EFI_DEVICE_PATH_PROTOCOL_GUID;
 
   // #pragma pack(1)
 }
@@ -227,12 +227,13 @@ public unsafe partial class EFI
   /// ACPI Device Paths.
   ///
   public const ulong ACPI_DEVICE_PATH = 0x02;
+
+  ///
+  /// ACPI Device Path SubType.
+  ///
+  public const ulong ACPI_DP = 0x01;
 }
 
-///
-/// ACPI Device Path SubType.
-///
-public const ulong ACPI_DP = 0x01;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ACPI_HID_DEVICE_PATH
 {
@@ -641,12 +642,12 @@ public unsafe partial class EFI
   /// Flag for if the device is directly connected to the HBA.
   ///
   public const ulong SATA_HBA_DIRECT_CONNECT_FLAG = 0x8000;
-}
-
 ///
 /// I2O Device Path SubType.
 ///
 public const ulong MSG_I2O_DP = 0x06;
+}
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct I2O_DEVICE_PATH
 {
@@ -820,12 +821,13 @@ public unsafe partial class EFI
   public const ulong INFINIBAND_RESOURCE_FLAG_CONSOLE_PROTOCOL = 0x04;
   public const ulong INFINIBAND_RESOURCE_FLAG_STORAGE_PROTOCOL = 0x08;
   public const ulong INFINIBAND_RESOURCE_FLAG_NETWORK_PROTOCOL = 0x10;
+
+  ///
+  /// UART Device Path SubType.
+  ///
+  public const ulong MSG_UART_DP = 0x0e;
 }
 
-///
-/// UART Device Path SubType.
-///
-public const ulong MSG_UART_DP = 0x0e;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UART_DEVICE_PATH
 {
@@ -924,9 +926,10 @@ public unsafe partial class EFI
 {
   public const ulong UART_FLOW_CONTROL_HARDWARE = 0x00000001;
   public const ulong UART_FLOW_CONTROL_XON_XOFF = 0x00000010;
+
+  //public static EFI_GUID DEVICE_PATH_MESSAGING_SAS = EFI_SAS_DEVICE_PATH_GUID;
 }
 
-public const ulong DEVICE_PATH_MESSAGING_SAS = EFI_SAS_DEVICE_PATH_GUID;
 ///
 /// Serial Attached SCSI (SAS) Device Path.
 ///
@@ -1136,12 +1139,13 @@ public unsafe partial class EFI
   public const ulong ISCSI_LOGIN_OPTION_AUTHMETHOD_NON = 0x1000;
   public const ulong ISCSI_LOGIN_OPTION_CHAP_BI = 0x0000;
   public const ulong ISCSI_LOGIN_OPTION_CHAP_UNI = 0x2000;
+
+  ///
+  /// VLAN Device Path SubType.
+  ///
+  public const ulong MSG_VLAN_DP = 0x14;
 }
 
-///
-/// VLAN Device Path SubType.
-///
-public const ulong MSG_VLAN_DP = 0x14;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VLAN_DEVICE_PATH
 {
@@ -1299,13 +1303,14 @@ public unsafe partial class EFI
   //
   // Use VENDOR_DEVICE_PATH struct
   //
-  public const ulong MEDIA_VENDOR_DP = 0x03; /// < Media vendor device path subtype.
+  public const ulong MEDIA_VENDOR_DP = 0x03; // < Media vendor device path subtype.
+
+  ///
+  /// File Path Media Device Path SubType
+  ///
+  public const ulong MEDIA_FILEPATH_DP = 0x04;
 }
 
-///
-/// File Path Media Device Path SubType
-///
-public const ulong MEDIA_FILEPATH_DP = 0x04;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FILEPATH_DEVICE_PATH
 {
@@ -1318,7 +1323,7 @@ public unsafe struct FILEPATH_DEVICE_PATH
 
 public unsafe partial class EFI
 {
-  public const ulong SIZE_OF_FILEPATH_DEVICE_PATH = OFFSET_OF(FILEPATH_DEVICE_PATH, PathName);
+  //public const ulong SIZE_OF_FILEPATH_DEVICE_PATH = OFFSET_OF(FILEPATH_DEVICE_PATH, PathName);
 
   ///
   /// Media Protocol Device Path SubType.
@@ -1405,31 +1410,31 @@ public unsafe struct MEDIA_RELATIVE_OFFSET_RANGE_DEVICE_PATH
 
 public unsafe partial class EFI
 {
-  ///
-  /// This GUID defines a RAM Disk supporting a raw disk format in volatile memory.
-  ///
-  public const ulong EFI_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE;
+  /////
+  ///// This GUID defines a RAM Disk supporting a raw disk format in volatile memory.
+  /////
+  //public const ulong EFI_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE;
 
-  // extern  EFI_GUID  gEfiVirtualDiskGuid;
+  //// extern  EFI_GUID  gEfiVirtualDiskGuid;
 
-  ///
-  /// This GUID defines a RAM Disk supporting an ISO image in volatile memory.
-  ///
-  public const ulong EFI_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE;
+  /////
+  ///// This GUID defines a RAM Disk supporting an ISO image in volatile memory.
+  /////
+  //public const ulong EFI_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE;
 
-  // extern  EFI_GUID  gEfiVirtualCdGuid;
+  //// extern  EFI_GUID  gEfiVirtualCdGuid;
 
-  ///
-  /// This GUID defines a RAM Disk supporting a raw disk format in persistent memory.
-  ///
-  public const ulong EFI_PERSISTENT_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT;
+  /////
+  ///// This GUID defines a RAM Disk supporting a raw disk format in persistent memory.
+  /////
+  //public const ulong EFI_PERSISTENT_VIRTUAL_DISK_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT;
 
-  // extern  EFI_GUID  gEfiPersistentVirtualDiskGuid;
+  //// extern  EFI_GUID  gEfiPersistentVirtualDiskGuid;
 
-  ///
-  /// This GUID defines a RAM Disk supporting an ISO image in persistent memory.
-  ///
-  public const ulong EFI_PERSISTENT_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT;
+  /////
+  ///// This GUID defines a RAM Disk supporting an ISO image in persistent memory.
+  /////
+  //public const ulong EFI_PERSISTENT_VIRTUAL_CD_GUID = EFI_ACPI_6_0_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT;
 
   // extern  EFI_GUID  gEfiPersistentVirtualCdGuid;
 

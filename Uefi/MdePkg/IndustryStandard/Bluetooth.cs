@@ -33,10 +33,10 @@ public unsafe struct BLUETOOTH_ADDRESS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct BLUETOOTH_CLASS_OF_DEVICE
 {
-  public byte FormatType = 2;
-  public byte MinorDeviceClass = 6;
-  public ushort MajorDeviceClass = 5;
-  public ushort MajorServiceClass = 11;
+  //public byte FormatType = 2;
+  //public byte MinorDeviceClass = 6;
+  //public ushort MajorDeviceClass = 5;
+  //public ushort MajorServiceClass = 11;
 }
 
 ///

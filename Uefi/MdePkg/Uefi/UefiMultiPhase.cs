@@ -219,7 +219,7 @@ public unsafe struct EFI_VARIABLE_AUTHENTICATION
   /// associated with a public key that has been
   /// provisioned via the key exchange.
   ///
-  public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
+  //public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
 }
 
 ///
@@ -241,7 +241,7 @@ public unsafe struct EFI_VARIABLE_AUTHENTICATION_2
   ///
   /// Only a CertType of  EFI_CERT_TYPE_PKCS7_GUID is accepted.
   ///
-  public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
+  //public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
 }
 // #endif // VFRCOMPILE
 

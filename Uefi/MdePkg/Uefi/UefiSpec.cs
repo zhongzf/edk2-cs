@@ -898,7 +898,7 @@ public unsafe struct EFI_BOOT_SERVICES
     @retval EFI_OUT_OF_RESOURCES  The event could not be allocated.
 
   **/
-  public readonly delegate* unmanaged<uint, EFI_TPL, EFI_EVENT_NOTIFY, void*, EFI_EVENT*, EFI_STATUS> CreateEvent;
+  //public readonly delegate* unmanaged<uint, EFI_TPL, EFI_EVENT_NOTIFY, void*, EFI_EVENT*, EFI_STATUS> CreateEvent;
   /**
     Sets the type of timer and the trigger time for a timer event.
 
@@ -1522,7 +1522,7 @@ public unsafe struct EFI_BOOT_SERVICES
     @retval EFI_OUT_OF_RESOURCES  The event could not be allocated.
 
   **/
-  public readonly delegate* unmanaged<uint, EFI_TPL, EFI_EVENT_NOTIFY, CONST, CONST, EFI_EVENT*, EFI_STATUS> CreateEventEx;
+  //public readonly delegate* unmanaged<uint, EFI_TPL, EFI_EVENT_NOTIFY, CONST, CONST, EFI_EVENT*, EFI_STATUS> CreateEventEx;
 }
 
 ///
@@ -1704,50 +1704,50 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct EFI_BOOT_KEY_DATA
 {
-  ///
-  /// Indicates the revision of the EFI_KEY_OPTION structure. This revision level should be 0.
-  ///
-  [FieldOffset(0)]
-  public uint Revision = 8;
-  ///
-  /// Either the left or right Shift keys must be pressed (1) or must not be pressed (0).
-  ///
-  [FieldOffset(0)]
-  public uint ShiftPressed = 1;
-  ///
-  /// Either the left or right Control keys must be pressed (1) or must not be pressed (0).
-  ///
-  [FieldOffset(0)]
-  public uint ControlPressed = 1;
-  ///
-  /// Either the left or right Alt keys must be pressed (1) or must not be pressed (0).
-  ///
-  [FieldOffset(0)]
-  public uint AltPressed = 1;
-  ///
-  /// Either the left or right Logo keys must be pressed (1) or must not be pressed (0).
-  ///
-  [FieldOffset(0)]
-  public uint LogoPressed = 1;
-  ///
-  /// The Menu key must be pressed (1) or must not be pressed (0).
-  ///
-  [FieldOffset(0)]
-  public uint MenuPressed = 1;
-  ///
-  /// The SysReq key must be pressed (1) or must not be pressed (0).
-  ///
-  [FieldOffset(0)]
-  public uint SysReqPressed = 1;
-  [FieldOffset(0)]
-  public uint Reserved = 16;
-  ///
-  /// Specifies the actual number of entries in EFI_KEY_OPTION.Keys, from 0-3. If
-  /// zero, then only the shift state is considered. If more than one, then the boot option will
-  /// only be launched if all of the specified keys are pressed with the same shift state.
-  ///
-  [FieldOffset(0)]
-  public uint InputKeyCount = 2;
+  /////
+  ///// Indicates the revision of the EFI_KEY_OPTION structure. This revision level should be 0.
+  /////
+  //[FieldOffset(0)]
+  //public uint Revision = 8;
+  /////
+  ///// Either the left or right Shift keys must be pressed (1) or must not be pressed (0).
+  /////
+  //[FieldOffset(0)]
+  //public uint ShiftPressed = 1;
+  /////
+  ///// Either the left or right Control keys must be pressed (1) or must not be pressed (0).
+  /////
+  //[FieldOffset(0)]
+  //public uint ControlPressed = 1;
+  /////
+  ///// Either the left or right Alt keys must be pressed (1) or must not be pressed (0).
+  /////
+  //[FieldOffset(0)]
+  //public uint AltPressed = 1;
+  /////
+  ///// Either the left or right Logo keys must be pressed (1) or must not be pressed (0).
+  /////
+  //[FieldOffset(0)]
+  //public uint LogoPressed = 1;
+  /////
+  ///// The Menu key must be pressed (1) or must not be pressed (0).
+  /////
+  //[FieldOffset(0)]
+  //public uint MenuPressed = 1;
+  /////
+  ///// The SysReq key must be pressed (1) or must not be pressed (0).
+  /////
+  //[FieldOffset(0)]
+  //public uint SysReqPressed = 1;
+  //[FieldOffset(0)]
+  //public uint Reserved = 16;
+  /////
+  ///// Specifies the actual number of entries in EFI_KEY_OPTION.Keys, from 0-3. If
+  ///// zero, then only the shift state is considered. If more than one, then the boot option will
+  ///// only be launched if all of the specified keys are pressed with the same shift state.
+  /////
+  //[FieldOffset(0)]
+  //public uint InputKeyCount = 2;
 
   [FieldOffset(4)]
   public uint PackedValue;
