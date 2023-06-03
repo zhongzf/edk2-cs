@@ -26,12 +26,12 @@ public unsafe partial class EFI
   // typedef struct _EFI_SIMPLE_FILE_SYSTEM_PROTOCOL EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
 
   // typedef struct _EFI_FILE_PROTOCOL EFI_FILE_PROTOCOL;
-  typedef struct _EFI_FILE_PROTOCOL *EFI_FILE_HANDLE;
+  // typedef struct _EFI_FILE_PROTOCOL *EFI_FILE_HANDLE;
 
-///
-/// Protocol GUID name defined in EFI1.1.
-///
-public const ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
+  ///
+  /// Protocol GUID name defined in EFI1.1.
+  ///
+  public const ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
 }
 
 ///
@@ -41,6 +41,33 @@ public const ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
 public unsafe struct EFI_FILE_IO_INTERFACE { EFI_SIMPLE_FILE_SYSTEM_PROTOCOL Value; public static implicit operator EFI_FILE_IO_INTERFACE(EFI_SIMPLE_FILE_SYSTEM_PROTOCOL value) => new EFI_FILE_IO_INTERFACE() { Value = value }; public static implicit operator EFI_SIMPLE_FILE_SYSTEM_PROTOCOL(EFI_FILE_IO_INTERFACE value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FILE { EFI_FILE_PROTOCOL Value; public static implicit operator EFI_FILE(EFI_FILE_PROTOCOL value) => new EFI_FILE() { Value = value }; public static implicit operator EFI_FILE_PROTOCOL(EFI_FILE value) => value.Value; }
+
+// /**
+//   Open the root directory on a volume.
+// 
+//   @param  This A pointer to the volume to open the root directory.
+//   @param  Root A pointer to the location to return the opened file handle for the
+//                root directory.
+// 
+//   @retval EFI_SUCCESS          The device was opened.
+//   @retval EFI_UNSUPPORTED      This volume does not support the requested file system type.
+//   @retval EFI_NO_MEDIA         The device has no medium.
+//   @retval EFI_DEVICE_ERROR     The device reported an error.
+//   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+//   @retval EFI_ACCESS_DENIED    The service denied access to the file.
+//   @retval EFI_OUT_OF_RESOURCES The volume was not opened due to lack of resources.
+//   @retval EFI_MEDIA_CHANGED    The device has a different medium in it or the medium is no
+//                                longer supported. Any existing file handles for this volume are
+//                                no longer valid. To access the files on the new medium, the
+//                                volume must be reopened with OpenVolume().
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME)(
+//   IN EFI_SIMPLE_FILE_SYSTEM_PROTOCOL    *This,
+//   OUT EFI_FILE_PROTOCOL                 **Root
+//   );
 
 public unsafe partial class EFI
 {
@@ -61,175 +88,486 @@ public unsafe struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL
   /// must be backwards compatible.
   ///
   public ulong Revision;
-  /**
-    Open the root directory on a volume.
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_FILE_SYSTEM_PROTOCOL* /*This*/,/* OUT */EFI_FILE_PROTOCOL** /*Root*/, EFI_STATUS> /*EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME*/ OpenVolume;
+}
 
-    @retval EFI_MEDIA_CHANGED    The device has a different medium in it or the medium is no
-                                 longer supported.
-    @retval EFI_DEVICE_ERROR     The device reported an error.
-    @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
-    @retval EFI_WRITE_PROTECTED  An attempt was made to create a file, or open a file for write
-                                 when the media is write-protected.
-    @retval EFI_ACCESS_DENIED    The service denied access to the file.
-    @retval EFI_OUT_OF_RESOURCES Not enough resources were available to open the file.
-    @retval EFI_VOLUME_FULL      The volume is full.
-
-  **/
-  typedef
-  EFI_STATUS
-  (EFIAPI* EFI_FILE_OPEN)(
-    IN EFI_FILE_PROTOCOL        * This,
-    OUT EFI_FILE_PROTOCOL** NewHandle,
-    IN char* FileName,
-    IN ulong OpenMode,
-    IN ulong Attributes
+// /**
+//   Opens a new file relative to the source file's location.
+// 
+//   @param  This       A pointer to the EFI_FILE_PROTOCOL instance that is the file
+//                      handle to the source location. This would typically be an open
+//                      handle to a directory.
+//   @param  NewHandle  A pointer to the location to return the opened handle for the new
+//                      file.
+//   @param  FileName   The Null-terminated string of the name of the file to be opened.
+//                      The file name may contain the following path modifiers: "\", ".",
+//                      and "..".
+//   @param  OpenMode   The mode to open the file. The only valid combinations that the
+//                      file may be opened with are: Read, Read/Write, or Create/Read/Write.
+//   @param  Attributes Only valid for EFI_FILE_MODE_CREATE, in which case these are the
+//                      attribute bits for the newly created file.
+// 
+//   @retval EFI_SUCCESS          The file was opened.
+//   @retval EFI_NOT_FOUND        The specified file could not be found on the device.
+//   @retval EFI_NO_MEDIA         The device has no medium.
+//   @retval EFI_MEDIA_CHANGED    The device has a different medium in it or the medium is no
+//                                longer supported.
+//   @retval EFI_DEVICE_ERROR     The device reported an error.
+//   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+//   @retval EFI_WRITE_PROTECTED  An attempt was made to create a file, or open a file for write
+//                                when the media is write-protected.
+//   @retval EFI_ACCESS_DENIED    The service denied access to the file.
+//   @retval EFI_OUT_OF_RESOURCES Not enough resources were available to open the file.
+//   @retval EFI_VOLUME_FULL      The volume is full.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FILE_OPEN)(
+//   IN EFI_FILE_PROTOCOL        *This,
+//   OUT EFI_FILE_PROTOCOL       **NewHandle,
+//   IN char                   *FileName,
+//   IN ulong                   OpenMode,
+//   IN ulong                   Attributes
+//   );
 
 public unsafe partial class EFI
-  {
-    public const ulong EFI_FILE_SYSTEM = 0x0000000000000004;
+{
+  //
+  // Open modes
+  //
+  public const ulong EFI_FILE_MODE_READ = 0x0000000000000001;
+  public const ulong EFI_FILE_MODE_WRITE = 0x0000000000000002;
+  public const ulong EFI_FILE_MODE_CREATE = 0x8000000000000000;
 
-    EFI_STATUS
+  //
+  // File attributes
+  //
+  public const ulong EFI_FILE_READ_ONLY = 0x0000000000000001;
+  public const ulong EFI_FILE_HIDDEN = 0x0000000000000002;
+  public const ulong EFI_FILE_SYSTEM = 0x0000000000000004;
+  public const ulong EFI_FILE_RESERVED = 0x0000000000000008;
+  public const ulong EFI_FILE_DIRECTORY = 0x0000000000000010;
+  public const ulong EFI_FILE_ARCHIVE = 0x0000000000000020;
+  public const ulong EFI_FILE_VALID_ATTR = 0x0000000000000037;
 
-      @param  Buffer The buffer into which the data is read.
+  // /**
+  //   Closes a specified file handle.
+  // 
+  //   @param  This          A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                         handle to close.
+  // 
+  //   @retval EFI_SUCCESS   The file was closed.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_CLOSE)(
+  //   IN EFI_FILE_PROTOCOL  *This
+  //   );
 
-      @param Buffer     The buffer of data to write.
+  // /**
+  //   Close and delete the file handle.
+  // 
+  //   @param  This                     A pointer to the EFI_FILE_PROTOCOL instance that is the
+  //                                    handle to the file to delete.
+  // 
+  //   @retval EFI_SUCCESS              The file was closed and deleted, and the handle was closed.
+  //   @retval EFI_WARN_DELETE_FAILURE  The handle was closed, but the file was not deleted.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_DELETE)(
+  //   IN EFI_FILE_PROTOCOL  *This
+  //   );
 
+  // /**
+  //   Reads data from a file.
+  // 
+  //   @param  This       A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                      handle to read data from.
+  //   @param  BufferSize On input, the size of the Buffer. On output, the amount of data
+  //                      returned in Buffer. In both cases, the size is measured in bytes.
+  //   @param  Buffer     The buffer into which the data is read.
+  // 
+  //   @retval EFI_SUCCESS          Data was read.
+  //   @retval EFI_NO_MEDIA         The device has no medium.
+  //   @retval EFI_DEVICE_ERROR     The device reported an error.
+  //   @retval EFI_DEVICE_ERROR     An attempt was made to read from a deleted file.
+  //   @retval EFI_DEVICE_ERROR     On entry, the current file position is beyond the end of the file.
+  //   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+  //   @retval EFI_BUFFER_TOO_SMALL The BufferSize is too small to read the current directory
+  //                                entry. BufferSize has been updated with the size
+  //                                needed to complete the request.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_READ)(
+  //   IN EFI_FILE_PROTOCOL        *This,
+  //   IN OUT ulong                *BufferSize,
+  //   OUT void                    *Buffer
+  //   );
 
+  // /**
+  //   Writes data to a file.
+  // 
+  //   @param  This       A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                      handle to write data to.
+  //   @param  BufferSize On input, the size of the Buffer. On output, the amount of data
+  //                      actually written. In both cases, the size is measured in bytes.
+  //   @param  Buffer     The buffer of data to write.
+  // 
+  //   @retval EFI_SUCCESS          Data was written.
+  //   @retval EFI_UNSUPPORTED      Writes to open directory files are not supported.
+  //   @retval EFI_NO_MEDIA         The device has no medium.
+  //   @retval EFI_DEVICE_ERROR     The device reported an error.
+  //   @retval EFI_DEVICE_ERROR     An attempt was made to write to a deleted file.
+  //   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+  //   @retval EFI_WRITE_PROTECTED  The file or medium is write-protected.
+  //   @retval EFI_ACCESS_DENIED    The file was opened read only.
+  //   @retval EFI_VOLUME_FULL      The volume is full.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_WRITE)(
+  //   IN EFI_FILE_PROTOCOL        *This,
+  //   IN OUT ulong                *BufferSize,
+  //   IN void                     *Buffer
+  //   );
 
-      );
+  // /**
+  //   Sets a file's current position.
+  // 
+  //   @param  This            A pointer to the EFI_FILE_PROTOCOL instance that is the
+  //                           file handle to set the requested position on.
+  //   @param  Position        The byte position from the start of the file to set.
+  // 
+  //   @retval EFI_SUCCESS      The position was set.
+  //   @retval EFI_UNSUPPORTED  The seek request for nonzero is not valid on open
+  //                            directories.
+  //   @retval EFI_DEVICE_ERROR An attempt was made to set the position of a deleted file.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_SET_POSITION)(
+  //   IN EFI_FILE_PROTOCOL        *This,
+  //   IN ulong                   Position
+  //   );
 
-    @param Buffer          A pointer to the data buffer to return. The buffer's type is
+  // /**
+  //   Returns a file's current position.
+  // 
+  //   @param  This            A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                           handle to get the current position on.
+  //   @param  Position        The address to return the file's current position value.
+  // 
+  //   @retval EFI_SUCCESS      The position was returned.
+  //   @retval EFI_UNSUPPORTED  The request is not valid on open directories.
+  //   @retval EFI_DEVICE_ERROR An attempt was made to get the position from a deleted file.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_GET_POSITION)(
+  //   IN EFI_FILE_PROTOCOL        *This,
+  //   OUT ulong                  *Position
+  //   );
 
-                               file that is already present.
+  // /**
+  //   Returns information about a file.
+  // 
+  //   @param  This            A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                           handle the requested information is for.
+  //   @param  InformationType The type identifier for the information being requested.
+  //   @param  BufferSize      On input, the size of Buffer. On output, the amount of data
+  //                           returned in Buffer. In both cases, the size is measured in bytes.
+  //   @param  Buffer          A pointer to the data buffer to return. The buffer's type is
+  //                           indicated by InformationType.
+  // 
+  //   @retval EFI_SUCCESS          The information was returned.
+  //   @retval EFI_UNSUPPORTED      The InformationType is not known.
+  //   @retval EFI_NO_MEDIA         The device has no medium.
+  //   @retval EFI_DEVICE_ERROR     The device reported an error.
+  //   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+  //   @retval EFI_BUFFER_TOO_SMALL The BufferSize is too small to read the current directory entry.
+  //                                BufferSize has been updated with the size needed to complete
+  //                                the request.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_GET_INFO)(
+  //   IN EFI_FILE_PROTOCOL        *This,
+  //   IN EFI_GUID                 *InformationType,
+  //   IN OUT ulong                *BufferSize,
+  //   OUT void                    *Buffer
+  //   );
 
-/**
-  Flushes all modified data associated with a file to a device.
+  // /**
+  //   Sets information about a file.
+  // 
+  //   @param  File            A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                           handle the information is for.
+  //   @param  InformationType The type identifier for the information being set.
+  //   @param  BufferSize      The size, in bytes, of Buffer.
+  //   @param  Buffer          A pointer to the data buffer to write. The buffer's type is
+  //                           indicated by InformationType.
+  // 
+  //   @retval EFI_SUCCESS          The information was set.
+  //   @retval EFI_UNSUPPORTED      The InformationType is not known.
+  //   @retval EFI_NO_MEDIA         The device has no medium.
+  //   @retval EFI_DEVICE_ERROR     The device reported an error.
+  //   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+  //   @retval EFI_WRITE_PROTECTED  InformationType is EFI_FILE_INFO_ID and the media is
+  //                                read-only.
+  //   @retval EFI_WRITE_PROTECTED  InformationType is EFI_FILE_PROTOCOL_SYSTEM_INFO_ID
+  //                                and the media is read only.
+  //   @retval EFI_WRITE_PROTECTED  InformationType is EFI_FILE_SYSTEM_VOLUME_LABEL_ID
+  //                                and the media is read-only.
+  //   @retval EFI_ACCESS_DENIED    An attempt is made to change the name of a file to a
+  //                                file that is already present.
+  //   @retval EFI_ACCESS_DENIED    An attempt is being made to change the EFI_FILE_DIRECTORY
+  //                                Attribute.
+  //   @retval EFI_ACCESS_DENIED    An attempt is being made to change the size of a directory.
+  //   @retval EFI_ACCESS_DENIED    InformationType is EFI_FILE_INFO_ID and the file was opened
+  //                                read-only and an attempt is being made to modify a field
+  //                                other than Attribute.
+  //   @retval EFI_VOLUME_FULL      The volume is full.
+  //   @retval EFI_BAD_BUFFER_SIZE  BufferSize is smaller than the size of the type indicated
+  //                                by InformationType.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_SET_INFO)(
+  //   IN EFI_FILE_PROTOCOL        *This,
+  //   IN EFI_GUID                 *InformationType,
+  //   IN ulong                    BufferSize,
+  //   IN void                     *Buffer
+  //   );
 
-  @param  This A pointer to the EFI_FILE_PROTOCOL instance that is the file
-               handle to flush.
+  // /**
+  //   Flushes all modified data associated with a file to a device.
+  // 
+  //   @param  This A pointer to the EFI_FILE_PROTOCOL instance that is the file
+  //                handle to flush.
+  // 
+  //   @retval EFI_SUCCESS          The data was flushed.
+  //   @retval EFI_NO_MEDIA         The device has no medium.
+  //   @retval EFI_DEVICE_ERROR     The device reported an error.
+  //   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+  //   @retval EFI_WRITE_PROTECTED  The file or medium is write-protected.
+  //   @retval EFI_ACCESS_DENIED    The file was opened read-only.
+  //   @retval EFI_VOLUME_FULL      The volume is full.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_FILE_FLUSH)(
+  //   IN EFI_FILE_PROTOCOL  *This
+  //   );
+}
 
-  @retval EFI_SUCCESS          The data was flushed.
-  @retval EFI_NO_MEDIA         The device has no medium.
-  @retval EFI_DEVICE_ERROR     The device reported an error.
-  @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
-  @retval EFI_WRITE_PROTECTED  The file or medium is write-protected.
-  @retval EFI_ACCESS_DENIED    The file was opened read-only.
-  @retval EFI_VOLUME_FULL      The volume is full.
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_FILE_IO_TOKEN
+{
+  //
+  // If Event is NULL, then blocking I/O is performed.
+  // If Event is not NULL and non-blocking I/O is supported, then non-blocking I/O is performed,
+  // and Event will be signaled when the read request is completed.
+  // The caller must be prepared to handle the case where the callback associated with Event
+  // occurs before the original asynchronous I/O request call returns.
+  //
+  public EFI_EVENT Event;
 
-**/
-typedef
-EFI_STATUS
-(EFIAPI* EFI_FILE_FLUSH)(
-  IN EFI_FILE_PROTOCOL  * This
-  );
-  }
+  //
+  // Defines whether or not the signaled event encountered an error.
+  //
+  public EFI_STATUS Status;
 
-  [StructLayout(LayoutKind.Sequential)]
-  public unsafe struct EFI_FILE_IO_TOKEN
-  {
-    //
-    // If Event is NULL, then blocking I/O is performed.
-    // If Event is not NULL and non-blocking I/O is supported, then non-blocking I/O is performed,
-    // and Event will be signaled when the read request is completed.
-    // The caller must be prepared to handle the case where the callback associated with Event
-    // occurs before the original asynchronous I/O request call returns.
-    //
-    public EFI_EVENT Event;
+  //
+  // For OpenEx():  Not Used, ignored.
+  // For ReadEx():  On input, the size of the Buffer. On output, the amount of data returned in Buffer.
+  //                In both cases, the size is measured in bytes.
+  // For WriteEx(): On input, the size of the Buffer. On output, the amount of data actually written.
+  //                In both cases, the size is measured in bytes.
+  // For FlushEx(): Not used, ignored.
+  //
+  public ulong BufferSize;
 
-    //
-    // Defines whether or not the signaled event encountered an error.
-    //
-    public EFI_STATUS Status;
+  //
+  // For OpenEx():  Not Used, ignored.
+  // For ReadEx():  The buffer into which the data is read.
+  // For WriteEx(): The buffer of data to write.
+  // For FlushEx(): Not Used, ignored.
+  //
+  public void* Buffer;
+}
 
-    longer supported.
+// /**
+//   Opens a new file relative to the source directory's location.
+// 
+//   @param  This       A pointer to the EFI_FILE_PROTOCOL instance that is the file
+//                      handle to the source location.
+//   @param  NewHandle  A pointer to the location to return the opened handle for the new
+//                      file.
+//   @param  FileName   The Null-terminated string of the name of the file to be opened.
+//                      The file name may contain the following path modifiers: "\", ".",
+//                      and "..".
+//   @param  OpenMode   The mode to open the file. The only valid combinations that the
+//                      file may be opened with are: Read, Read/Write, or Create/Read/Write.
+//   @param  Attributes Only valid for EFI_FILE_MODE_CREATE, in which case these are the
+//                      attribute bits for the newly created file.
+//   @param  Token      A pointer to the token associated with the transaction.
+// 
+//   @retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
+//                                If Event is not NULL (asynchronous I/O): The request was successfully
+//                                                                         queued for processing.
+//   @retval EFI_NOT_FOUND        The specified file could not be found on the device.
+//   @retval EFI_NO_MEDIA         The device has no medium.
+//   @retval EFI_MEDIA_CHANGED    The device has a different medium in it or the medium is no
+//                                longer supported.
+//   @retval EFI_DEVICE_ERROR     The device reported an error.
+//   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+//   @retval EFI_WRITE_PROTECTED  An attempt was made to create a file, or open a file for write
+//                                when the media is write-protected.
+//   @retval EFI_ACCESS_DENIED    The service denied access to the file.
+//   @retval EFI_OUT_OF_RESOURCES Not enough resources were available to open the file.
+//   @retval EFI_VOLUME_FULL      The volume is full.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FILE_OPEN_EX)(
+//   IN EFI_FILE_PROTOCOL        *This,
+//   OUT EFI_FILE_PROTOCOL       **NewHandle,
+//   IN char                   *FileName,
+//   IN ulong                   OpenMode,
+//   IN ulong                   Attributes,
+//   IN OUT EFI_FILE_IO_TOKEN    *Token
+//   );
 
-@param  Token A pointer to the token associated with the transaction.
+// /**
+//   Reads data from a file.
+// 
+//   @param  This       A pointer to the EFI_FILE_PROTOCOL instance that is the file handle to read data from.
+//   @param  Token      A pointer to the token associated with the transaction.
+// 
+//   @retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
+//                                If Event is not NULL (asynchronous I/O): The request was successfully
+//                                                                         queued for processing.
+//   @retval EFI_NO_MEDIA         The device has no medium.
+//   @retval EFI_DEVICE_ERROR     The device reported an error.
+//   @retval EFI_DEVICE_ERROR     An attempt was made to read from a deleted file.
+//   @retval EFI_DEVICE_ERROR     On entry, the current file position is beyond the end of the file.
+//   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+//   @retval EFI_OUT_OF_RESOURCES Unable to queue the request due to lack of resources.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FILE_READ_EX)(
+//   IN EFI_FILE_PROTOCOL        *This,
+//   IN OUT EFI_FILE_IO_TOKEN    *Token
+//   );
 
+// /**
+//   Writes data to a file.
+// 
+//   @param  This       A pointer to the EFI_FILE_PROTOCOL instance that is the file handle to write data to.
+//   @param  Token      A pointer to the token associated with the transaction.
+// 
+//   @retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
+//                                If Event is not NULL (asynchronous I/O): The request was successfully
+//                                                                         queued for processing.
+//   @retval EFI_UNSUPPORTED      Writes to open directory files are not supported.
+//   @retval EFI_NO_MEDIA         The device has no medium.
+//   @retval EFI_DEVICE_ERROR     The device reported an error.
+//   @retval EFI_DEVICE_ERROR     An attempt was made to write to a deleted file.
+//   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+//   @retval EFI_WRITE_PROTECTED  The file or medium is write-protected.
+//   @retval EFI_ACCESS_DENIED    The file was opened read only.
+//   @retval EFI_VOLUME_FULL      The volume is full.
+//   @retval EFI_OUT_OF_RESOURCES Unable to queue the request due to lack of resources.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FILE_WRITE_EX)(
+//   IN EFI_FILE_PROTOCOL        *This,
+//   IN OUT EFI_FILE_IO_TOKEN    *Token
+//   );
 
-@retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
-    If Event is not NULL(asynchronous I/O): The request was successfully
-                                                                          queued for processing.
-  @retval EFI_NO_MEDIA         The device has no medium.
-  @retval EFI_DEVICE_ERROR     The device reported an error.
-  @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
-  @retval EFI_WRITE_PROTECTED The file or medium is write-protected.
-  @retval EFI_ACCESS_DENIED    The file was opened read-only.
-  @retval EFI_VOLUME_FULL      The volume is full.
-  @retval EFI_OUT_OF_RESOURCES Unable to queue the request due to lack of resources.
+// /**
+//   Flushes all modified data associated with a file to a device.
+// 
+//   @param  This  A pointer to the EFI_FILE_PROTOCOL instance that is the file
+//                 handle to flush.
+//   @param  Token A pointer to the token associated with the transaction.
+// 
+//   @retval EFI_SUCCESS          If Event is NULL (blocking I/O): The data was read successfully.
+//                                If Event is not NULL (asynchronous I/O): The request was successfully
+//                                                                         queued for processing.
+//   @retval EFI_NO_MEDIA         The device has no medium.
+//   @retval EFI_DEVICE_ERROR     The device reported an error.
+//   @retval EFI_VOLUME_CORRUPTED The file system structures are corrupted.
+//   @retval EFI_WRITE_PROTECTED  The file or medium is write-protected.
+//   @retval EFI_ACCESS_DENIED    The file was opened read-only.
+//   @retval EFI_VOLUME_FULL      The volume is full.
+//   @retval EFI_OUT_OF_RESOURCES Unable to queue the request due to lack of resources.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FILE_FLUSH_EX)(
+//   IN EFI_FILE_PROTOCOL        *This,
+//   IN OUT EFI_FILE_IO_TOKEN    *Token
+//   );
 
-**/
-typedef
-EFI_STATUS
-(EFIAPI* EFI_FILE_FLUSH_EX)(
-  IN EFI_FILE_PROTOCOL        * This,
-  IN OUT EFI_FILE_IO_TOKEN* Token
-  );
+public unsafe partial class EFI
+{
+  public const ulong EFI_FILE_PROTOCOL_REVISION = 0x00010000;
+  public const ulong EFI_FILE_PROTOCOL_REVISION2 = 0x00020000;
+  public const ulong EFI_FILE_PROTOCOL_LATEST_REVISION = EFI_FILE_PROTOCOL_REVISION2;
 
-    public unsafe partial class EFI
-    {
-      public const ulong EFI_FILE_PROTOCOL_REVISION = 0x00010000;
-      public const ulong EFI_FILE_PROTOCOL_REVISION2 = 0x00020000;
-      public const ulong EFI_FILE_PROTOCOL_LATEST_REVISION = EFI_FILE_PROTOCOL_REVISION2;
+  //
+  // Revision defined in EFI1.1.
+  //
+  public const ulong EFI_FILE_REVISION = EFI_FILE_PROTOCOL_REVISION;
+}
 
-      //
-      // Revision defined in EFI1.1.
-      //
-      public const ulong EFI_FILE_REVISION = EFI_FILE_PROTOCOL_REVISION;
-    }
-
-    ///
-    /// The EFI_FILE_PROTOCOL provides file IO access to supported file systems.
-    /// An EFI_FILE_PROTOCOL provides access to a file's or directory's contents,
-    /// and is also a reference to a location in the directory tree of the file system
-    /// in which the file resides. With any given file handle, other files may be opened
-    /// relative to this file's location, yielding new file handles.
-    ///
-    [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct EFI_FILE_PROTOCOL
-    {
-      ///
-      /// The version of the EFI_FILE_PROTOCOL interface. The version specified
-      /// by this specification is EFI_FILE_PROTOCOL_LATEST_REVISION.
-      /// Future versions are required to be backward compatible to version 1.0.
-      ///
-      public ulong Revision;
-      public EFI_FILE_OPEN Open;
-      public EFI_FILE_CLOSE Close;
-      /**
-        Closes a specified file handle.
-
-        @param  This          A pointer to the EFI_FILE_PROTOCOL instance that is the file
-                              handle to close.
-
-        @retval EFI_SUCCESS   The file was closed.
-
-      **/
-      public readonly delegate* unmanaged<, EFI_STATUS> Delete;
-      public EFI_FILE_READ Read;
-      public EFI_FILE_WRITE Write;
-      /**
-        Sets a file's current position.
-
-        @param  This            A pointer to the EFI_FILE_PROTOCOL instance that is the
-                                file handle to set the requested position on.
-        @param  Position        The byte position from the start of the file to set.
-
-        @retval EFI_SUCCESS      The position was set.
-        @retval EFI_UNSUPPORTED  The seek request for nonzero is not valid on open
-                                 directories.
-        @retval EFI_DEVICE_ERROR An attempt was made to set the position of a deleted file.
-
-      **/
-      public readonly delegate* unmanaged<EFI_FILE_PROTOCOL*, ulong, EFI_STATUS> GetPosition;
-      public EFI_FILE_SET_POSITION SetPosition;
-      public EFI_FILE_GET_INFO GetInfo;
-      public EFI_FILE_SET_INFO SetInfo;
-      public EFI_FILE_FLUSH Flush;
-      public EFI_FILE_OPEN_EX OpenEx;
-      public EFI_FILE_READ_EX ReadEx;
-      public EFI_FILE_WRITE_EX WriteEx;
-      public EFI_FILE_FLUSH_EX FlushEx;
-    }
+///
+/// The EFI_FILE_PROTOCOL provides file IO access to supported file systems.
+/// An EFI_FILE_PROTOCOL provides access to a file's or directory's contents,
+/// and is also a reference to a location in the directory tree of the file system
+/// in which the file resides. With any given file handle, other files may be opened
+/// relative to this file's location, yielding new file handles.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_FILE_PROTOCOL
+{
+  ///
+  /// The version of the EFI_FILE_PROTOCOL interface. The version specified
+  /// by this specification is EFI_FILE_PROTOCOL_LATEST_REVISION.
+  /// Future versions are required to be backward compatible to version 1.0.
+  ///
+  public ulong Revision;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* OUT */EFI_FILE_PROTOCOL** /*NewHandle*/,/* IN */char* /*FileName*/,/* IN */ulong /*OpenMode*/,/* IN */ulong /*Attributes*/, EFI_STATUS> /*EFI_FILE_OPEN*/ Open;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_FILE_CLOSE*/ Close;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_FILE_DELETE*/ Delete;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_FILE_READ*/ Read;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_FILE_WRITE*/ Write;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* OUT */ulong* /*Position*/, EFI_STATUS> /*EFI_FILE_GET_POSITION*/ GetPosition;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN */ulong /*Position*/, EFI_STATUS> /*EFI_FILE_SET_POSITION*/ SetPosition;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN */EFI_GUID* /*InformationType*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_FILE_GET_INFO*/ GetInfo;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN */EFI_GUID* /*InformationType*/,/* IN */ulong /*BufferSize*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_FILE_SET_INFO*/ SetInfo;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_FILE_FLUSH*/ Flush;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* OUT */EFI_FILE_PROTOCOL** /*NewHandle*/,/* IN */char* /*FileName*/,/* IN */ulong /*OpenMode*/,/* IN */ulong /*Attributes*/,/* IN OUT */EFI_FILE_IO_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FILE_OPEN_EX*/ OpenEx;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN OUT */EFI_FILE_IO_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FILE_READ_EX*/ ReadEx;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN OUT */EFI_FILE_IO_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FILE_WRITE_EX*/ WriteEx;
+  public readonly delegate* unmanaged</* IN */EFI_FILE_PROTOCOL* /*This*/,/* IN OUT */EFI_FILE_IO_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FILE_FLUSH_EX*/ FlushEx;
+}
 
 // extern EFI_GUID  gEfiSimpleFileSystemProtocolGuid;
 

@@ -39,46 +39,46 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_CAPABILITIES
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved = 32;               // Reserved bit 0:31
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved = 32;               // Reserved bit 0:31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_CAPABILITIES;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved = 32;               // Reserved bit 0:31
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved = 32;               // Reserved bit 0:31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_STATUS
 {
-  struct {
-   [FieldOffset(0)] public uint EqualizationComplete = 1;  // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public uint EqualizationComplete = 1;  // bit 0
   [FieldOffset(0)] public uint EqualizationPhase1Success = 1;  // bit 1
   [FieldOffset(0)] public uint EqualizationPhase2Success = 1;  // bit 2
   [FieldOffset(0)] public uint EqualizationPhase3Success = 1;  // bit 3
   [FieldOffset(0)] public uint LinkEqualizationRequest = 1;  // bit 4
   [FieldOffset(0)] public uint Reserved = 27; // Reserved bit 5:31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_LANE_EQUALIZATION_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public byte DownstreamPortTransmitterPreset = 4; // bit 0..3
+  /*   struct { */
+  [FieldOffset(0)] public byte DownstreamPortTransmitterPreset = 4; // bit 0..3
   [FieldOffset(0)] public byte UpstreamPortTransmitterPreset = 4; // bit 4..7
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_LANE_EQUALIZATION_CONTROL;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_PHYSICAL_LAYER_16_0
@@ -99,24 +99,24 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_PHYSICAL_LAYER_16_0
 /// Based on section 7.9.6 of PCI Express Base Specification 4.0.
 ///@{
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_DESIGNATED_VENDOR_SPECIFIC_HEADER_1
 {
-  struct {
-   [FieldOffset(0)] public uint DvsecVendorId = 16;                                     // bit 0..15
+  /*   struct { */
+  [FieldOffset(0)] public uint DvsecVendorId = 16;                                     // bit 0..15
   [FieldOffset(0)] public uint DvsecRevision = 4;                                      // bit 16..19
   [FieldOffset(0)] public uint DvsecLength = 12;                                     // bit 20..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_DESIGNATED_VENDOR_SPECIFIC_HEADER_1;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_DESIGNATED_VENDOR_SPECIFIC_HEADER_2
 {
-  struct {
-   [FieldOffset(0)] public ushort DvsecId = 16;                                           // bit 0..15
+  /*   struct { */
+  [FieldOffset(0)] public ushort DvsecId = 16;                                           // bit 0..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_EXPRESS_DESIGNATED_VENDOR_SPECIFIC_HEADER_2;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_DESIGNATED_VENDOR_SPECIFIC

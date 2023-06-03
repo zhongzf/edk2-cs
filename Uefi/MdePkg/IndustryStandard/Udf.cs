@@ -20,8 +20,8 @@ public unsafe partial class EFI
   public const ulong UDF_TEA_IDENTIFIER = "TEA01";
 
   public const ulong UDF_LOGICAL_SECTOR_SHIFT = 11;
-  public const ulong UDF_LOGICAL_SECTOR_SIZE = ((ulong)(1ULL << UDF_LOGICAL_SECTOR_SHIFT));
-public const ulong UDF_VRS_START_OFFSET = ((ulong)(16ULL << UDF_LOGICAL_SECTOR_SHIFT));
+  public const ulong UDF_LOGICAL_SECTOR_SIZE = ((ulong)(1u << UDF_LOGICAL_SECTOR_SHIFT));
+  public const ulong UDF_VRS_START_OFFSET = ((ulong)(16u << UDF_LOGICAL_SECTOR_SHIFT));
 }
 
 public enum UDF_VOLUME_DESCRIPTOR_ID
@@ -81,7 +81,7 @@ public unsafe struct Domain
     // Domain Entity Identifier
     //
     struct {
-     public ushort UdfRevision;
+      public ushort UdfRevision;
   public byte DomainFlags;
   public fixed byte Reserved[5];
 }
@@ -128,34 +128,34 @@ public unsafe struct UDF_LB_ADDR
 public unsafe struct UDF_LONG_ALLOCATION_DESCRIPTOR
 {
   public uint ExtentLength;
-  UDF_LB_ADDR ExtentLocation;
+  public UDF_LB_ADDR ExtentLocation;
   public fixed byte ImplementationUse[6];
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UDF_ANCHOR_VOLUME_DESCRIPTOR_POINTER
 {
-  UDF_DESCRIPTOR_TAG DescriptorTag;
-  UDF_EXTENT_AD MainVolumeDescriptorSequenceExtent;
-  UDF_EXTENT_AD ReserveVolumeDescriptorSequenceExtent;
+  public UDF_DESCRIPTOR_TAG DescriptorTag;
+  public UDF_EXTENT_AD MainVolumeDescriptorSequenceExtent;
+  public UDF_EXTENT_AD ReserveVolumeDescriptorSequenceExtent;
   public fixed byte Reserved[480];
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UDF_LOGICAL_VOLUME_DESCRIPTOR
 {
-  UDF_DESCRIPTOR_TAG DescriptorTag;
+  public UDF_DESCRIPTOR_TAG DescriptorTag;
   public uint VolumeDescriptorSequenceNumber;
-  UDF_CHAR_SPEC DescriptorCharacterSet;
+  public UDF_CHAR_SPEC DescriptorCharacterSet;
   public fixed byte LogicalVolumeIdentifier[128];
   public uint LogicalBlockSize;
-  UDF_ENTITY_ID DomainIdentifier;
-  UDF_LONG_ALLOCATION_DESCRIPTOR LogicalVolumeContentsUse;
+  public UDF_ENTITY_ID DomainIdentifier;
+  public UDF_LONG_ALLOCATION_DESCRIPTOR LogicalVolumeContentsUse;
   public uint MapTableLength;
   public uint NumberOfPartitionMaps;
-  UDF_ENTITY_ID ImplementationIdentifier;
+  public UDF_ENTITY_ID ImplementationIdentifier;
   public fixed byte ImplementationUse[128];
-  UDF_EXTENT_AD IntegritySequenceExtent;
+  public UDF_EXTENT_AD IntegritySequenceExtent;
   public fixed byte PartitionMaps[6];
 }
 

@@ -856,8 +856,8 @@ public unsafe struct EFI_IFR_TYPE_VALUE
   [FieldOffset(0)] public bool b;
   [FieldOffset(0)] public EFI_HII_TIME time;
   [FieldOffset(0)] public EFI_HII_DATE date;
-  [FieldOffset(0)] public EFI_STRING_ID string; ///< EFI_IFR_TYPE_STRING, EFI_IFR_TYPE_ACTION
- [FieldOffset(0)] public EFI_HII_REF ref;    ///< EFI_IFR_TYPE_REF
+  //[FieldOffset(0)] public EFI_STRING_ID string; ///< EFI_IFR_TYPE_STRING, EFI_IFR_TYPE_ACTION
+  //[FieldOffset(0)] public EFI_HII_REF ref;    ///< EFI_IFR_TYPE_REF
   // byte buffer[];      ///< EFI_IFR_TYPE_BUFFER
 }
 
@@ -988,18 +988,18 @@ public unsafe struct EFI_IFR_STATEMENT_HEADER
   public EFI_STRING_ID Help;
 }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct VarStoreInfo
-{
-  public EFI_IFR_STATEMENT_HEADER Header;
-  public EFI_QUESTION_ID QuestionId;
-  public EFI_VARSTORE_ID VarStoreId;
-  union {
-   public EFI_STRING_ID VarName;
-  public ushort VarOffset;
-}
-byte Flags;
-} EFI_IFR_QUESTION_HEADER;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct VarStoreInfo
+//{
+//  public EFI_IFR_STATEMENT_HEADER Header;
+//  public EFI_QUESTION_ID QuestionId;
+//  public EFI_VARSTORE_ID VarStoreId;
+//  union {
+//    public EFI_STRING_ID VarName;
+//  public ushort VarOffset;
+//}
+//byte Flags;
+//} EFI_IFR_QUESTION_HEADER;
 
 public unsafe partial class EFI
 {
@@ -1272,29 +1272,29 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct u8
+public unsafe struct MINMAXSTEP_DATA
 {
-  struct {
-   [FieldOffset(0)] public byte MinValue;
+  /*   struct { */
+  [FieldOffset(0)] public byte MinValue;
   [FieldOffset(0)] public byte MaxValue;
   [FieldOffset(0)] public byte Step;
+  /*   } u8; */
+  /*   struct { */
+  [FieldOffset(0)] public ushort MinValue;
+  [FieldOffset(0)] public ushort MaxValue;
+  [FieldOffset(0)] public ushort Step;
+  /*   } u16; */
+  /*   struct { */
+  [FieldOffset(0)] public uint MinValue;
+  [FieldOffset(0)] public uint MaxValue;
+  [FieldOffset(0)] public uint Step;
+  /*   } u32; */
+  /*   struct { */
+  [FieldOffset(0)] public ulong MinValue;
+  [FieldOffset(0)] public ulong MaxValue;
+  [FieldOffset(0)] public ulong Step;
+  /*   } u64; */
 }
-struct {
-    ushort MinValue;
-ushort MaxValue;
-ushort Step;
-  } u16;
-struct {
-    uint MinValue;
-uint MaxValue;
-uint Step;
-  } u32;
-struct {
-    ulong MinValue;
-ulong MaxValue;
-ulong Step;
-  } u64;
-} MINMAXSTEP_DATA;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_NUMERIC
@@ -1949,34 +1949,34 @@ public unsafe struct EFI_IFR_FORM_MAP
   // EFI_IFR_FORM_MAP_METHOD  Methods[];
 }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct VarStoreInfo
-{
-  ///
-  /// The sequence that defines the type of opcode as well as the length
-  /// of the opcode being defined. Header.OpCode = EFI_IFR_SET_OP.
-  ///
-  public EFI_IFR_OP_HEADER Header;
-  ///
-  /// Specifies the identifier of a previously declared variable store to
-  /// use when storing the question's value.
-  ///
-  public EFI_VARSTORE_ID VarStoreId;
-  union {
-    ///
-    /// A 16-bit Buffer Storage offset.
-    ///
-   public EFI_STRING_ID VarName;
-  ///
-  /// A Name Value or EFI Variable name (VarName).
-  ///
-  public ushort VarOffset;
-}
-///
-/// Specifies the type used for storage.
-///
-byte VarStoreType;
-} EFI_IFR_SET;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct VarStoreInfo
+//{
+//  ///
+//  /// The sequence that defines the type of opcode as well as the length
+//  /// of the opcode being defined. Header.OpCode = EFI_IFR_SET_OP.
+//  ///
+//  public EFI_IFR_OP_HEADER Header;
+//  ///
+//  /// Specifies the identifier of a previously declared variable store to
+//  /// use when storing the question's value.
+//  ///
+//  public EFI_VARSTORE_ID VarStoreId;
+//  union {
+//    ///
+//    /// A 16-bit Buffer Storage offset.
+//    ///
+//    public EFI_STRING_ID VarName;
+//  ///
+//  /// A Name Value or EFI Variable name (VarName).
+//  ///
+//  public ushort VarOffset;
+//}
+/////
+///// Specifies the type used for storage.
+/////
+//byte VarStoreType;
+//} EFI_IFR_SET;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct VarStoreInfo
@@ -1995,7 +1995,7 @@ public unsafe struct VarStoreInfo
     ///
     /// A 16-bit Buffer Storage offset.
     ///
-   public EFI_STRING_ID VarName;
+    public EFI_STRING_ID VarName;
   ///
   /// A Name Value or EFI Variable name (VarName).
   ///

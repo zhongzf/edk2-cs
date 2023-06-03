@@ -22,6 +22,115 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL;
 
+  // /**
+  //   The UEFI driver must call Query early in the Start() function
+  //   before any time consuming operations are performed. If
+  //   ChildHandle is NULL the driver is requesting information from
+  //   the platform about the ControllerHandle that is being started.
+  //   Information returned from Query may lead to the drivers Start()
+  //   function failing.
+  //   If the UEFI driver is a bus driver and producing a ChildHandle,
+  //   the driver must call Query after the child handle has been created
+  //   and an EFI_DEVICE_PATH_PROTOCOL has been placed on that handle,
+  //   but before any time consuming operation is performed. If information
+  //   return by Query may lead the driver to decide to not create the
+  //   ChildHandle. The driver must then cleanup and remove the ChildHandle
+  //   from the system.
+  //   The UEFI driver repeatedly calls Query, processes the information
+  //   returned by the platform, and calls Response passing in the
+  //   arguments returned from Query. The Instance value passed into
+  //   Response must be the same value passed into the corresponding
+  //   call to Query. The UEFI driver must continuously call Query and
+  //   Response until EFI_NOT_FOUND is returned by Query.
+  //   If the UEFI driver does not recognize the ParameterTypeGuid, it
+  //   calls Response with a ConfigurationAction of
+  //   EfiPlatformConfigurationActionUnsupportedGuid. The UEFI driver
+  //   must then continue calling Query and Response until EFI_NOT_FOUND
+  //   is returned by Query. This gives the platform an opportunity to
+  //   pass additional configuration settings using a different
+  //   ParameterTypeGuid that may be supported by the driver.
+  //   An Instance value of zero means return the first ParameterBlock
+  //   in the set of unprocessed parameter blocks. The driver should
+  //   increment the Instance value by one for each successive call to Query.
+  // 
+  //   @param This                 A pointer to the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL instance.
+  // 
+  //   @param ControllerHandle     The handle the platform will return
+  //                               configuration information about.
+  // 
+  //   @param ChildHandle          The handle of the child controller to
+  //                               return information on. This is an optional
+  //                               parameter that may be NULL. It will be
+  //                               NULL for device drivers and for bus
+  //                               drivers that attempt to get options for
+  //                               the bus controller. It will not be NULL
+  //                               for a bus driver that attempts to get
+  //                               options for one of its child controllers.
+  // 
+  // 
+  //   @param Instance             Pointer to the Instance value. Zero means
+  //                               return the first query data. The caller should
+  //                               increment this value by one each time to retrieve
+  //                               successive data.
+  // 
+  //   @param ParameterTypeGuid    An EFI_GUID that defines the contents
+  //                               of ParameterBlock. UEFI drivers must
+  //                               use the ParameterTypeGuid to determine
+  //                               how to parse the ParameterBlock. The caller
+  //                               should not attempt to free ParameterTypeGuid.
+  // 
+  //   @param ParameterBlock       The platform returns a pointer to the
+  //                               ParameterBlock structure which
+  //                               contains details about the
+  //                               configuration parameters specific to
+  //                               the ParameterTypeGuid. This structure
+  //                               is defined based on the protocol and
+  //                               may be different for different
+  //                               protocols. UEFI driver decodes this
+  //                               structure and its contents based on
+  //                               ParameterTypeGuid. ParameterBlock is
+  //                               allocated by the platform and the
+  //                               platform is responsible for freeing
+  //                               the ParameterBlock after Result is
+  //                               called.
+  // 
+  //   @param ParameterBlockSize   The platform returns the size of
+  //                               the ParameterBlock in bytes.
+  // 
+  // 
+  //   @retval EFI_SUCCESS           The platform return parameter
+  //                                 information for ControllerHandle.
+  // 
+  //   @retval EFI_NOT_FOUND         No more unread Instance exists.
+  // 
+  //   @retval EFI_INVALID_PARAMETER ControllerHandle is NULL.
+  // 
+  //   @retval EFI_INVALID_PARAMETER Instance is NULL.
+  // 
+  //   @retval EFI_DEVICE_ERROR      A device error occurred while
+  //                                 attempting to return parameter block
+  //                                 information for the controller
+  //                                 specified by ControllerHandle and
+  //                                 ChildHandle.
+  // 
+  //   @retval EFI_OUT_RESOURCES     There are not enough resources
+  //                                 available to set the configuration
+  //                                 options for the controller specified
+  //                                 by ControllerHandle and ChildHandle.
+  // 
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_PLATFORM_TO_DRIVER_CONFIGURATION_QUERY)(
+  //   IN CONST  EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL *This,
+  //   IN CONST  EFI_HANDLE  ControllerHandle,
+  //   IN CONST  EFI_HANDLE  ChildHandle OPTIONAL,
+  //   IN CONST  ulong       *Instance,
+  //   OUT       EFI_GUID    **ParameterTypeGuid,
+  //   OUT       void        **ParameterBlock,
+  //   OUT       ulong       *ParameterBlockSize
+  //   );
 }
 
 public enum EFI_PLATFORM_CONFIGURATION_ACTION
@@ -97,6 +206,71 @@ public enum EFI_PLATFORM_CONFIGURATION_ACTION
   EfiPlatformConfigurationActionMaximum
 }
 
+// /**
+//   The UEFI driver repeatedly calls Query, processes the
+//   information returned by the platform, and calls Response passing
+//   in the arguments returned from Query. The UEFI driver must
+//   continuously call Query until EFI_NOT_FOUND is returned. For
+//   every call to Query that returns EFI_SUCCESS a corrisponding
+//   call to Response is required passing in the same
+//   ContollerHandle, ChildHandle, Instance, ParameterTypeGuid,
+//   ParameterBlock, and ParameterBlockSize. The UEFI driver may
+//   update values in ParameterBlock based on rules defined by
+//   ParameterTypeGuid. The platform is responsible for freeing
+//   ParameterBlock and the UEFI driver must not try to free it.
+// 
+//   @param This                A pointer to the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL instance.
+// 
+//   @param ControllerHandle    The handle the driver is returning
+//                              configuration information about.
+// 
+//   @param ChildHandle         The handle of the child controller to
+//                              return information on. This is an optional
+//                              parameter that may be NULL. It will be
+//                              NULL for device drivers, and for bus
+//                              drivers that attempt to get options for
+//                              the bus controller. It will not be NULL
+//                              for a bus driver that attempts to get
+//                              options for one of its child controllers.
+//                              Instance Instance data returned from
+//                              Query().
+// 
+//   @param Instance            Instance data passed to Query().
+// 
+//   @param ParameterTypeGuid   ParameterTypeGuid returned from Query.
+// 
+//   @param ParameterBlock      ParameterBlock returned from Query.
+// 
+//   @param ParameterBlockSize  The ParameterBlock size returned from Query.
+// 
+//   @param ConfigurationAction The driver tells the platform what
+//                              action is required for ParameterBlock to
+//                              take effect.
+// 
+// 
+//   @retval EFI_SUCCESS           The platform return parameter information
+//                                 for ControllerHandle.
+// 
+//   @retval EFI_NOT_FOUND         Instance was not found.
+// 
+//   @retval EFI_INVALID_PARAMETER ControllerHandle is NULL.
+// 
+//   @retval EFI_INVALID_PARAMETER Instance is zero.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_PLATFORM_TO_DRIVER_CONFIGURATION_RESPONSE)(
+//   IN CONST  EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL *This,
+//   IN CONST  EFI_HANDLE  ControllerHandle,
+//   IN CONST  EFI_HANDLE  ChildHandle OPTIONAL,
+//   IN CONST  ulong       *Instance,
+//   IN CONST  EFI_GUID    *ParameterTypeGuid,
+//   IN CONST  void        *ParameterBlock,
+//   IN CONST  ulong       ParameterBlockSize,
+//   IN CONST  EFI_PLATFORM_CONFIGURATION_ACTION ConfigurationAction
+//   );
+
 ///
 /// The EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL is used by the
 /// UEFI driver to query the platform for configuration information.
@@ -112,162 +286,16 @@ public enum EFI_PLATFORM_CONFIGURATION_ACTION
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL
 {
-  /**
-    The UEFI driver must call Query early in the Start() function
-    before any time consuming operations are performed. If
-    ChildHandle is NULL the driver is requesting information from
-    the platform about the ControllerHandle that is being started.
-    Information returned from Query may lead to the drivers Start()
-    function failing.
-    If the UEFI driver is a bus driver and producing a ChildHandle,
-    the driver must call Query after the child handle has been created
-    and an EFI_DEVICE_PATH_PROTOCOL has been placed on that handle,
-    but before any time consuming operation is performed. If information
-    return by Query may lead the driver to decide to not create the
-    ChildHandle. The driver must then cleanup and remove the ChildHandle
-    from the system.
-    The UEFI driver repeatedly calls Query, processes the information
-    returned by the platform, and calls Response passing in the
-    arguments returned from Query. The Instance value passed into
-    Response must be the same value passed into the corresponding
-    call to Query. The UEFI driver must continuously call Query and
-    Response until EFI_NOT_FOUND is returned by Query.
-    If the UEFI driver does not recognize the ParameterTypeGuid, it
-    calls Response with a ConfigurationAction of
-    EfiPlatformConfigurationActionUnsupportedGuid. The UEFI driver
-    must then continue calling Query and Response until EFI_NOT_FOUND
-    is returned by Query. This gives the platform an opportunity to
-    pass additional configuration settings using a different
-    ParameterTypeGuid that may be supported by the driver.
-    An Instance value of zero means return the first ParameterBlock
-    in the set of unprocessed parameter blocks. The driver should
-    increment the Instance value by one for each successive call to Query.
-
-    @param This                 A pointer to the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL instance.
-
-    @param ControllerHandle     The handle the platform will return
-                                configuration information about.
-
-    @param ChildHandle          The handle of the child controller to
-                                return information on. This is an optional
-                                parameter that may be NULL. It will be
-                                NULL for device drivers and for bus
-                                drivers that attempt to get options for
-                                the bus controller. It will not be NULL
-                                for a bus driver that attempts to get
-                                options for one of its child controllers.
-
-    @param Instance             Pointer to the Instance value. Zero means
-                                return the first query data. The caller should
-                                increment this value by one each time to retrieve
-                                successive data.
-
-    @param ParameterTypeGuid    An EFI_GUID that defines the contents
-                                of ParameterBlock. UEFI drivers must
-                                use the ParameterTypeGuid to determine
-                                how to parse the ParameterBlock. The caller
-                                should not attempt to free ParameterTypeGuid.
-
-    @param ParameterBlock       The platform returns a pointer to the
-                                ParameterBlock structure which
-                                contains details about the
-                                configuration parameters specific to
-                                the ParameterTypeGuid. This structure
-                                is defined based on the protocol and
-                                may be different for different
-                                protocols. UEFI driver decodes this
-                                structure and its contents based on
-                                ParameterTypeGuid. ParameterBlock is
-                                allocated by the platform and the
-                                platform is responsible for freeing
-                                the ParameterBlock after Result is
-                                called.
-
-    @param ParameterBlockSize   The platform returns the size of
-                                the ParameterBlock in bytes.
-
-    @retval EFI_SUCCESS           The platform return parameter
-                                  information for ControllerHandle.
-
-    @retval EFI_NOT_FOUND         No more unread Instance exists.
-
-    @retval EFI_INVALID_PARAMETER ControllerHandle is NULL.
-
-    @retval EFI_INVALID_PARAMETER Instance is NULL.
-
-    @retval EFI_DEVICE_ERROR      A device error occurred while
-                                  attempting to return parameter block
-                                  information for the controller
-                                  specified by ControllerHandle and
-                                  ChildHandle.
-
-    @retval EFI_OUT_RESOURCES     There are not enough resources
-                                  available to set the configuration
-                                  options for the controller specified
-                                  by ControllerHandle and ChildHandle.
-
-  **/
-  public readonly delegate* unmanaged<CONST, CONST, CONST, CONST, EFI_GUID**, void**, ulong*, EFI_STATUS> Query;
-  /**
-    The UEFI driver repeatedly calls Query, processes the
-    information returned by the platform, and calls Response passing
-    in the arguments returned from Query. The UEFI driver must
-    continuously call Query until EFI_NOT_FOUND is returned. For
-    every call to Query that returns EFI_SUCCESS a corrisponding
-    call to Response is required passing in the same
-    ContollerHandle, ChildHandle, Instance, ParameterTypeGuid,
-    ParameterBlock, and ParameterBlockSize. The UEFI driver may
-    update values in ParameterBlock based on rules defined by
-    ParameterTypeGuid. The platform is responsible for freeing
-    ParameterBlock and the UEFI driver must not try to free it.
-
-    @param This                A pointer to the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL instance.
-
-    @param ControllerHandle    The handle the driver is returning
-                               configuration information about.
-
-    @param ChildHandle         The handle of the child controller to
-                               return information on. This is an optional
-                               parameter that may be NULL. It will be
-                               NULL for device drivers, and for bus
-                               drivers that attempt to get options for
-                               the bus controller. It will not be NULL
-                               for a bus driver that attempts to get
-                               options for one of its child controllers.
-                               Instance Instance data returned from
-                               Query().
-
-    @param Instance            Instance data passed to Query().
-
-    @param ParameterTypeGuid   ParameterTypeGuid returned from Query.
-
-    @param ParameterBlock      ParameterBlock returned from Query.
-
-    @param ParameterBlockSize  The ParameterBlock size returned from Query.
-
-    @param ConfigurationAction The driver tells the platform what
-                               action is required for ParameterBlock to
-                               take effect.
-
-    @retval EFI_SUCCESS           The platform return parameter information
-                                  for ControllerHandle.
-
-    @retval EFI_NOT_FOUND         Instance was not found.
-
-    @retval EFI_INVALID_PARAMETER ControllerHandle is NULL.
-
-    @retval EFI_INVALID_PARAMETER Instance is zero.
-
-  **/
-  public readonly delegate* unmanaged<CONST, CONST, CONST, CONST, CONST, CONST, CONST, CONST, EFI_STATUS> Response;
+  public readonly delegate* unmanaged</* IN CONST */EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL* /*This*/,/* IN CONST */EFI_HANDLE /*ControllerHandle*/,/* IN CONST */EFI_HANDLE /*ChildHandle*/,/* IN CONST */ulong* /*Instance*/,/* OUT */EFI_GUID** /*ParameterTypeGuid*/,/* OUT */void** /*ParameterBlock*/,/* OUT */ulong* /*ParameterBlockSize*/, EFI_STATUS> /*EFI_PLATFORM_TO_DRIVER_CONFIGURATION_QUERY*/ Query;
+  public readonly delegate* unmanaged</* IN CONST */EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL* /*This*/,/* IN CONST */EFI_HANDLE /*ControllerHandle*/,/* IN CONST */EFI_HANDLE /*ChildHandle*/,/* IN CONST */ulong* /*Instance*/,/* IN CONST */EFI_GUID* /*ParameterTypeGuid*/,/* IN CONST */void* /*ParameterBlock*/,/* IN CONST */ulong /*ParameterBlockSize*/,/* IN CONST */EFI_PLATFORM_CONFIGURATION_ACTION /*ConfigurationAction*/, EFI_STATUS> /*EFI_PLATFORM_TO_DRIVER_CONFIGURATION_RESPONSE*/ Response;
 }
 
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_PLATFORM_TO_DRIVER_CONFIGURATION_CLP_GUID = new GUID(0x345ecc0e, 0xcb6, 0x4b75, new byte[] { 0xbb, 0x57, 0x1b, 0x12, 0x9c, 0x47, 0x33, 0x3e });
+}
 
   /**
-}
 
     ParameterTypeGuid provides the support for parameters
     communicated through the DMTF SM CLP Specification 1.0 Final

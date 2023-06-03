@@ -93,7 +93,7 @@ public unsafe struct EFI_REDFISH_DISCOVER_NETWORK_INTERFACE
 public unsafe struct EFI_REDFISH_DISCOVERED_TOKEN
 {
   public uint Signature;    ///< Token signature.
-  public EFI_REDFISH_DISCOVERED_LIST DiscoverList; ///< The memory ofpublic EFI_REDFISH_DISCOVERED_LIST is
+  public EFI_REDFISH_DISCOVERED_LIST DiscoverList; ///< The memory of EFI_REDFISH_DISCOVERED_LIST is
                                                    ///< allocated by Acquire() and freed when caller invoke Release().
   public EFI_EVENT Event;        ///< The TPL_CALLBACK event to be notified when Redfish services
                                  ///< are discovered or any errors occurred during discovery.
@@ -107,73 +107,106 @@ public unsafe struct EFI_REDFISH_DISCOVERED_TOKEN
                              ///< found by Acquire().
 }
 
+// /**
+//   This function gets the NIC list which Redfish discover protocol
+//   can discover Redfish service on it.
+// 
+//   @param[in]    This         EFI_REDFISH_DISCOVER_PROTOCOL instance.
+//   @param[in]    ImageHandle  EFI Image handle request the NIC list,
+//   @param[out]   NumberOfNetworkInterfaces Number of NICs can do Redfish service discovery.
+//   @param[out]   NetworkInterfaces NIC instances. It's an array of instance. The number of entries
+//                              in array is indicated by NumberOfNetworkInterfaces.
+//                              Caller has to release the memory
+//                              allocated by Redfish discover protocol.
+// 
+//   @retval EFI_SUCCESS        REST EX instances of discovered Redfish are released.
+//   @retval Others             Fail to remove the entry
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_REDFISH_DISCOVER_NETWORK_LIST)(
+//   IN EFI_REDFISH_DISCOVER_PROTOCOL           *This,
+//   IN EFI_HANDLE                              ImageHandle,
+//   OUT ulong                                  *NumberOfNetworkInterfaces,
+//   OUT EFI_REDFISH_DISCOVER_NETWORK_INTERFACE **NetworkInterfaces
+//   );
+
+// /**
+//   This function acquires Redfish services by discovering static Redfish setting
+//   according to Redfish Host Interface or through SSDP. Returns a list of EFI
+//   handles in EFI_REDFISH_DISCOVERED_LIST. Each of EFI handle has cooresponding
+//   EFI REST EX instance installed on it. Each REST EX isntance is a child instance which
+//   created through EFI REST EX serivce protoocl for communicating with specific
+//   Redfish service.
+// 
+//   @param[in]    This          EFI_REDFISH_DISCOVER_PROTOCOL instance.
+//   @param[in]    ImageHandle   EFI image owns these Redfish service instances.
+//   @param[in]    TargetNetworkInterface Target NIC to do the discovery.
+//                               NULL means discover Redfish service on all NICs on platform.
+//   @param[in]    Flags         Redfish service discover flags.
+//   @param[in]    Token         EFI_REDFISH_DISCOVERED_TOKEN instance.
+//                               The memory of EFI_REDFISH_DISCOVERED_LIST and the strings in
+//                               EFI_REDFISH_DISCOVERED_INFORMATION are all allocated by Acquire()
+//                               and must be freed when caller invoke Release().
+// 
+//   @retval EFI_SUCCESS             REST EX instance of discovered Redfish services are returned.
+//   @retval EFI_INVALID_PARAMETERS  ImageHandle == NULL, Flags == 0, Token == NULL, Token->Timeout > 5,
+//                                   or Token->Event == NULL.
+//   @retval Others                  Fail acquire Redfish services.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_REDFISH_DISCOVER_ACQUIRE_SERVICE)(
+//   IN EFI_REDFISH_DISCOVER_PROTOCOL          *This,
+//   IN EFI_HANDLE                             ImageHandle,
+//   IN EFI_REDFISH_DISCOVER_NETWORK_INTERFACE *TargetNetworkInterface OPTIONAL,
+//   IN EFI_REDFISH_DISCOVER_FLAG              Flags,
+//   IN EFI_REDFISH_DISCOVERED_TOKEN           *Token
+//   );
+
+// /**
+//   This function aborts Redfish service discovery on the given network interface.
+// 
+//   @param[in]    This                    EFI_REDFISH_DISCOVER_PROTOCOL instance.
+//   @param[in]    TargetNetworkInterface  Target NIC to do the discovery.
+// 
+//   @retval EFI_SUCCESS             REST EX instance of discovered Redfish services are returned.
+//   @retval Others                  Fail to abort Redfish service discovery.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_REDFISH_DISCOVER_ABORT_ACQUIRE)(
+//   IN EFI_REDFISH_DISCOVER_PROTOCOL          *This,
+//   IN EFI_REDFISH_DISCOVER_NETWORK_INTERFACE *TargetNetworkInterface OPTIONAL
+//   );
+
+// /**
+//   This function releases Redfish services found by RedfishServiceAcquire().
+// 
+//   @param[in]    This         EFI_REDFISH_DISCOVER_PROTOCOL instance.
+//   @param[in]    List         The Redfish service to release.
+// 
+//   @retval EFI_SUCCESS        REST EX instances of discovered Redfish are released.
+//   @retval Others             Fail to remove the entry
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_REDFISH_DISCOVER_RELEASE_SERVICE)(
+//   IN EFI_REDFISH_DISCOVER_PROTOCOL   *This,
+//   IN EFI_REDFISH_DISCOVERED_LIST     *List
+//   );
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_REDFISH_DISCOVER_PROTOCOL
 {
-  /**
-    This function gets the NIC list which Redfish discover protocol
-    can discover Redfish service on it.
-
-    @param[in]    This         EFI_REDFISH_DISCOVER_PROTOCOL instance.
-    @param[in]    ImageHandle  EFI Image handle request the NIC list,
-    @param[out]   NumberOfNetworkInterfaces Number of NICs can do Redfish service discovery.
-    @param[out]   NetworkInterfaces NIC instances. It's an array of instance. The number of entries
-                               in array is indicated by NumberOfNetworkInterfaces.
-                               Caller has to release the memory
-                               allocated by Redfish discover protocol.
-
-    @retval EFI_SUCCESS        REST EX instances of discovered Redfish are released.
-    @retval Others             Fail to remove the entry
-
-  **/
-  public readonly delegate* unmanaged<EFI_REDFISH_DISCOVER_PROTOCOL*, EFI_HANDLE, ulong*, EFI_REDFISH_DISCOVER_NETWORK_INTERFACE**, EFI_STATUS> GetNetworkInterfaceList;
-  /**
-    This function acquires Redfish services by discovering static Redfish setting
-    according to Redfish Host Interface or through SSDP. Returns a list of EFI
-    handles in EFI_REDFISH_DISCOVERED_LIST. Each of EFI handle has cooresponding
-    EFI REST EX instance installed on it. Each REST EX isntance is a child instance which
-    created through EFI REST EX serivce protoocl for communicating with specific
-    Redfish service.
-
-    @param[in]    This          EFI_REDFISH_DISCOVER_PROTOCOL instance.
-    @param[in]    ImageHandle   EFI image owns these Redfish service instances.
-    @param[in]    TargetNetworkInterface Target NIC to do the discovery.
-                                NULL means discover Redfish service on all NICs on platform.
-    @param[in]    Flags         Redfish service discover flags.
-    @param[in]    Token         EFI_REDFISH_DISCOVERED_TOKEN instance.
-                                The memory of EFI_REDFISH_DISCOVERED_LIST and the strings in
-                                EFI_REDFISH_DISCOVERED_INFORMATION are all allocated by Acquire()
-                                and must be freed when caller invoke Release().
-
-    @retval EFI_SUCCESS             REST EX instance of discovered Redfish services are returned.
-    @retval EFI_INVALID_PARAMETERS  ImageHandle == NULL, Flags == 0, Token == NULL, Token->Timeout > 5,
-                                    or Token->Event == NULL.
-    @retval Others                  Fail acquire Redfish services.
-
-  **/
-  public readonly delegate* unmanaged<EFI_REDFISH_DISCOVER_PROTOCOL*, EFI_HANDLE, EFI_REDFISH_DISCOVER_NETWORK_INTERFACE*, EFI_REDFISH_DISCOVER_FLAG, EFI_REDFISH_DISCOVERED_TOKEN*, EFI_STATUS> AcquireRedfishService;
-  /**
-    This function aborts Redfish service discovery on the given network interface.
-
-    @param[in]    This                    EFI_REDFISH_DISCOVER_PROTOCOL instance.
-    @param[in]    TargetNetworkInterface  Target NIC to do the discovery.
-
-    @retval EFI_SUCCESS             REST EX instance of discovered Redfish services are returned.
-    @retval Others                  Fail to abort Redfish service discovery.
-
-  **/
-  public readonly delegate* unmanaged<EFI_REDFISH_DISCOVER_PROTOCOL*, EFI_REDFISH_DISCOVER_NETWORK_INTERFACE*, EFI_STATUS> AbortAcquireRedfishService;
-  /**
-    This function releases Redfish services found by RedfishServiceAcquire().
-
-    @param[in]    This         EFI_REDFISH_DISCOVER_PROTOCOL instance.
-    @param[in]    List         The Redfish service to release.
-
-    @retval EFI_SUCCESS        REST EX instances of discovered Redfish are released.
-    @retval Others             Fail to remove the entry
-
-  **/
-  public readonly delegate* unmanaged<EFI_REDFISH_DISCOVER_PROTOCOL*, EFI_REDFISH_DISCOVERED_LIST*, EFI_STATUS> ReleaseRedfishService;
+  public readonly delegate* unmanaged</* IN */EFI_REDFISH_DISCOVER_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/,/* OUT */ulong* /*NumberOfNetworkInterfaces*/,/* OUT */EFI_REDFISH_DISCOVER_NETWORK_INTERFACE** /*NetworkInterfaces*/, EFI_STATUS> /*EFI_REDFISH_DISCOVER_NETWORK_LIST*/ GetNetworkInterfaceList;
+  public readonly delegate* unmanaged</* IN */EFI_REDFISH_DISCOVER_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/,/* IN */EFI_REDFISH_DISCOVER_NETWORK_INTERFACE* /*TargetNetworkInterface*/,/* IN */EFI_REDFISH_DISCOVER_FLAG /*Flags*/,/* IN */EFI_REDFISH_DISCOVERED_TOKEN* /*Token*/, EFI_STATUS> /*EFI_REDFISH_DISCOVER_ACQUIRE_SERVICE*/ AcquireRedfishService;
+  public readonly delegate* unmanaged</* IN */EFI_REDFISH_DISCOVER_PROTOCOL* /*This*/,/* IN */EFI_REDFISH_DISCOVER_NETWORK_INTERFACE* /*TargetNetworkInterface*/, EFI_STATUS> /*EFI_REDFISH_DISCOVER_ABORT_ACQUIRE*/ AbortAcquireRedfishService;
+  public readonly delegate* unmanaged</* IN */EFI_REDFISH_DISCOVER_PROTOCOL* /*This*/,/* IN */EFI_REDFISH_DISCOVERED_LIST* /*List*/, EFI_STATUS> /*EFI_REDFISH_DISCOVER_RELEASE_SERVICE*/ ReleaseRedfishService;
 }
 
 // extern EFI_GUID  gEfiRedfishDiscoverProtocolGuid;

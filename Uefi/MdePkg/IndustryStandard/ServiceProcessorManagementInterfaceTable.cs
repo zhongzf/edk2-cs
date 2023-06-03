@@ -26,22 +26,22 @@ namespace Uefi;
 /// Processor Management Interface Description Table
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Pci
+public unsafe struct EFI_ACPI_SERVICE_PROCESSOR_MANAGEMENT_INTERFACE_TABLE_DEVICE_ID
 {
   ///
   /// For PCI IPMI device
   ///
-  struct {
-   [FieldOffset(0)] public byte SegmentGroup;
+  /*   struct { */
+  [FieldOffset(0)] public byte SegmentGroup;
   [FieldOffset(0)] public byte Bus;
   [FieldOffset(0)] public byte Device;
   [FieldOffset(0)] public byte Function;
+  /*   } Pci; */
+  ///
+  /// For non-PCI IPMI device, the ACPI _UID value of the device
+  ///
+  [FieldOffset(0)] public uint Uid;
 }
-///
-/// For non-PCI IPMI device, the ACPI _UID value of the device
-///
-uint Uid;
-} EFI_ACPI_SERVICE_PROCESSOR_MANAGEMENT_INTERFACE_TABLE_DEVICE_ID;
 
 ///
 /// Definition for Service Processor Management Interface Description Table

@@ -75,6 +75,80 @@ public enum EFI_PCI_HOTPLUG_OPERATION
   EfiPciHotplugRequestRemove
 }
 
+// /**
+//   This function is used to notify PCI bus driver that some events happened in a
+//   hot-plug controller, and the PCI bus driver is requested to start or stop
+//   specified PCI-like devices.
+// 
+//   This function allows the PCI bus driver to be notified to act as requested when
+//   a hot-plug event has happened on the hot-plug controller. Currently, the
+//   operations include add operation and remove operation.  If it is a add operation,
+//   the PCI bus driver will enumerate, allocate resources for devices behind the
+//   hot-plug controller, and create handle for the device specified by RemainingDevicePath.
+//   The RemainingDevicePath is an optional parameter. If it is not NULL, only the
+//   specified device is started; if it is NULL, all devices behind the hot-plug
+//   controller are started.  The newly created handles of PC Card functions are
+//   returned in the ChildHandleBuffer, together with the number of child handle in
+//   NumberOfChildren.  If it is a remove operation, when NumberOfChildren contains
+//   a non-zero value, child handles specified in ChildHandleBuffer are stopped and
+//   destroyed; otherwise, PCI bus driver is notified to stop managing the controller
+//   handle.
+// 
+//     @param[in] This                    A pointer to the EFI_PCI_HOTPLUG_REQUEST_PROTOCOL
+//                                        instance.
+//     @param[in] Operation               The operation the PCI bus driver is requested
+//                                        to make.
+//     @param[in] Controller              The handle of the hot-plug controller.
+//     @param[in] RemainingDevicePath     The remaining device path for the PCI-like
+//                                        hot-plug device.  It only contains device
+//                                        path nodes behind the hot-plug controller.
+//                                        It is an optional parameter and only valid
+//                                        when the Operation is a add operation. If
+//                                        it is NULL, all devices behind the PC Card
+//                                        socket are started.
+//     @param[in,out] NumberOfChildren    The number of child handles. For an add
+//                                        operation, it is an output parameter.  For
+//                                        a remove operation, it's an input parameter.
+//                                        When it contains a non-zero value, children
+//                                        handles specified in ChildHandleBuffer are
+//                                        destroyed.  Otherwise, PCI bus driver is
+//                                        notified to stop managing the controller
+//                                        handle.
+//     @param[in,out] ChildHandleBuffer   The buffer which contains the child handles.
+//                                        For an add operation, it is an output
+//                                        parameter and contains all newly created
+//                                        child handles.  For a remove operation, it
+//                                        contains child handles to be destroyed when
+//                                        NumberOfChildren contains a non-zero value.
+//                                        It can be NULL when NumberOfChildren is 0.
+//                                        It's the caller's responsibility to allocate
+//                                        and free memory for this buffer.
+// 
+//   @retval EFI_SUCCESS             The handles for the specified device have been
+//                                   created or destroyed as requested, and for an
+//                                   add operation, the new handles are returned in
+//                                   ChildHandleBuffer.
+//   @retval EFI_INVALID_PARAMETER   Operation is not a legal value.
+//   @retval EFI_INVALID_PARAMETER   Controller is NULL or not a valid handle.
+//   @retval EFI_INVALID_PARAMETER   NumberOfChildren is NULL.
+//   @retval EFI_INVALID_PARAMETER   ChildHandleBuffer is NULL while Operation is
+//                                   remove and NumberOfChildren contains a non-zero
+//                                   value.
+//   @retval EFI_INVALID_PARAMETER   ChildHandleBuffer is NULL while Operation is add.
+//   @retval EFI_OUT_OF_RESOURCES    There are no enough resources to start the
+//                                   devices.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_PCI_HOTPLUG_REQUEST_NOTIFY)(
+//   IN     EFI_PCI_HOTPLUG_REQUEST_PROTOCOL  *This,
+//   IN     EFI_PCI_HOTPLUG_OPERATION         Operation,
+//   IN     EFI_HANDLE                        Controller,
+//   IN     EFI_DEVICE_PATH_PROTOCOL          *RemainingDevicePath  OPTIONAL,
+//   IN OUT byte                             *NumberOfChildren,
+//   IN OUT EFI_HANDLE                        *ChildHandleBuffer
+//   );
+
 ///
 /// Provides services to notify PCI bus driver that some events have happened in
 /// a hot-plug controller (for example, PC Card socket, or PHPC), and ask PCI bus
@@ -89,70 +163,7 @@ public unsafe struct EFI_PCI_HOTPLUG_REQUEST_PROTOCOL
   /// to create or destroy handles for the PCI-like devices. See Section 0 for
   /// a detailed description.
   ///
-  /**
-    This function is used to notify PCI bus driver that some events happened in a
-    hot-plug controller, and the PCI bus driver is requested to start or stop
-    specified PCI-like devices.
-
-    This function allows the PCI bus driver to be notified to act as requested when
-    a hot-plug event has happened on the hot-plug controller. Currently, the
-    operations include add operation and remove operation.  If it is a add operation,
-    the PCI bus driver will enumerate, allocate resources for devices behind the
-    hot-plug controller, and create handle for the device specified by RemainingDevicePath.
-    The RemainingDevicePath is an optional parameter. If it is not NULL, only the
-    specified device is started; if it is NULL, all devices behind the hot-plug
-    controller are started.  The newly created handles of PC Card functions are
-    returned in the ChildHandleBuffer, together with the number of child handle in
-    NumberOfChildren.  If it is a remove operation, when NumberOfChildren contains
-    a non-zero value, child handles specified in ChildHandleBuffer are stopped and
-    destroyed; otherwise, PCI bus driver is notified to stop managing the controller
-    handle.
-
-      @param[in] This                    A pointer to the EFI_PCI_HOTPLUG_REQUEST_PROTOCOL
-                                         instance.
-      @param[in] Operation               The operation the PCI bus driver is requested
-                                         to make.
-      @param[in] Controller              The handle of the hot-plug controller.
-      @param[in] RemainingDevicePath     The remaining device path for the PCI-like
-                                         hot-plug device.  It only contains device
-                                         path nodes behind the hot-plug controller.
-                                         It is an optional parameter and only valid
-                                         when the Operation is a add operation. If
-                                         it is NULL, all devices behind the PC Card
-                                         socket are started.
-      @param[in,out] NumberOfChildren    The number of child handles. For an add
-                                         operation, it is an output parameter.  For
-                                         a remove operation, it's an input parameter.
-                                         When it contains a non-zero value, children
-                                         handles specified in ChildHandleBuffer are
-                                         destroyed.  Otherwise, PCI bus driver is
-                                         notified to stop managing the controller
-                                         handle.
-      @param[in,out] ChildHandleBuffer   The buffer which contains the child handles.
-                                         For an add operation, it is an output
-                                         parameter and contains all newly created
-                                         child handles.  For a remove operation, it
-                                         contains child handles to be destroyed when
-                                         NumberOfChildren contains a non-zero value.
-                                         It can be NULL when NumberOfChildren is 0.
-                                         It's the caller's responsibility to allocate
-                                         and free memory for this buffer.
-
-    @retval EFI_SUCCESS             The handles for the specified device have been
-                                    created or destroyed as requested, and for an
-                                    add operation, the new handles are returned in
-                                    ChildHandleBuffer.
-    @retval EFI_INVALID_PARAMETER   Operation is not a legal value.
-    @retval EFI_INVALID_PARAMETER   Controller is NULL or not a valid handle.
-    @retval EFI_INVALID_PARAMETER   NumberOfChildren is NULL.
-    @retval EFI_INVALID_PARAMETER   ChildHandleBuffer is NULL while Operation is
-                                    remove and NumberOfChildren contains a non-zero
-                                    value.
-    @retval EFI_INVALID_PARAMETER   ChildHandleBuffer is NULL while Operation is add.
-    @retval EFI_OUT_OF_RESOURCES    There are no enough resources to start the
-                                    devices.
-  **/
-  public readonly delegate* unmanaged<EFI_PCI_HOTPLUG_REQUEST_PROTOCOL*, EFI_PCI_HOTPLUG_OPERATION, EFI_HANDLE, EFI_DEVICE_PATH_PROTOCOL*, byte*, EFI_HANDLE*, EFI_STATUS> Notify;
+  public readonly delegate* unmanaged</* IN */EFI_PCI_HOTPLUG_REQUEST_PROTOCOL* /*This*/,/* IN */EFI_PCI_HOTPLUG_OPERATION /*Operation*/,/* IN */EFI_HANDLE /*Controller*/,/* IN */EFI_DEVICE_PATH_PROTOCOL* /*RemainingDevicePath*/,/* IN OUT */byte* /*NumberOfChildren*/,/* IN OUT */EFI_HANDLE* /*ChildHandleBuffer*/, EFI_STATUS> /*EFI_PCI_HOTPLUG_REQUEST_NOTIFY*/ Notify;
 }
 
 // extern EFI_GUID  gEfiPciHotPlugRequestProtocolGuid;

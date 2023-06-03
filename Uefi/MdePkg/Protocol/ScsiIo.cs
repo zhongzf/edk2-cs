@@ -157,116 +157,151 @@ public unsafe struct EFI_SCSI_IO_SCSI_REQUEST_PACKET
   public byte SenseDataLength;
 }
 
+// /**
+//   Retrieves the device type information of the SCSI Controller.
+// 
+//   @param  This       Protocol instance pointer.
+//   @param  DeviceType A pointer to the device type information
+//                      retrieved from the SCSI Controller.
+// 
+//   @retval EFI_SUCCESS           Retrieved the device type information successfully.
+//   @retval EFI_INVALID_PARAMETER The DeviceType is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_IO_PROTOCOL_GET_DEVICE_TYPE)(
+//   IN  EFI_SCSI_IO_PROTOCOL            *This,
+//   OUT byte                           *DeviceType
+//   );
+
+// /**
+//   Retrieves the device location in the SCSI channel.
+// 
+//   @param  This   Protocol instance pointer.
+//   @param  Target A pointer to the Target ID of a SCSI device
+//                  on the SCSI channel.
+//   @param  Lun    A pointer to the LUN of the SCSI device on
+//                  the SCSI channel.
+// 
+//   @retval EFI_SUCCESS           Retrieves the device location successfully.
+//   @retval EFI_INVALID_PARAMETER The Target or Lun is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_IO_PROTOCOL_GET_DEVICE_LOCATION)(
+//   IN EFI_SCSI_IO_PROTOCOL           *This,
+//   IN OUT byte                      **Target,
+//   OUT ulong                        *Lun
+//   );
+
+// /**
+//   Resets the SCSI Bus that the SCSI Controller is attached to.
+// 
+//   @param  This Protocol instance pointer.
+// 
+//   @retval EFI_SUCCESS      The SCSI bus is reset successfully.
+//   @retval EFI_DEVICE_ERROR Errors encountered when resetting the SCSI bus.
+//   @retval EFI_UNSUPPORTED  The bus reset operation is not supported by the
+//                            SCSI Host Controller.
+//   @retval EFI_TIMEOUT      A timeout occurred while attempting to reset
+//                             the SCSI bus.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_IO_PROTOCOL_RESET_BUS)(
+//   IN EFI_SCSI_IO_PROTOCOL     *This
+//   );
+
+// /**
+//   Resets the SCSI Controller that the device handle specifies.
+// 
+//   @param  This Protocol instance pointer.
+// 
+//   @retval EFI_SUCCESS      Reset the SCSI controller successfully.
+//   @retval EFI_DEVICE_ERROR Errors were encountered when resetting the
+//                            SCSI Controller.
+//   @retval EFI_UNSUPPORTED  The SCSI bus does not support a device
+//                            reset operation.
+//   @retval EFI_TIMEOUT      A timeout occurred while attempting to
+//                            reset the SCSI Controller.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_IO_PROTOCOL_RESET_DEVICE)(
+//   IN EFI_SCSI_IO_PROTOCOL     *This
+//   );
+
+// /**
+//   Sends a SCSI Request Packet to the SCSI Controller for execution.
+// 
+//   @param  This    Protocol instance pointer.
+//   @param  Packet  The SCSI request packet to send to the SCSI
+//                   Controller specified by the device handle.
+//   @param  Event   If the SCSI bus to which the SCSI device is attached
+//                   does not support non-blocking I/O, then Event is
+//                   ignored, and blocking I/O is performed.
+//                   If Event is NULL, then blocking I/O is performed.
+//                   If Event is not NULL and non-blocking I/O is
+//                   supported, then non-blocking I/O is performed,
+//                   and Event will be signaled when the SCSI Request
+//                   Packet completes.
+// 
+//   @retval EFI_SUCCESS               The SCSI Request Packet was sent by the host
+//                                     successfully, and TransferLength bytes were
+//                                     transferred to/from DataBuffer. See
+//                                     HostAdapterStatus, TargetStatus,
+//                                     SenseDataLength, and SenseData in that order
+//                                     for additional status information.
+//   @retval EFI_BAD_BUFFER_SIZE       The SCSI Request Packet was executed,
+//                                     but the entire DataBuffer could not be transferred.
+//                                     The actual number of bytes transferred is returned
+//                                     in TransferLength. See HostAdapterStatus,
+//                                     TargetStatus, SenseDataLength, and SenseData in
+//                                     that order for additional status information.
+//   @retval EFI_NOT_READY             The SCSI Request Packet could not be sent because
+//                                     there are too many SCSI Command Packets already
+//                                     queued.The caller may retry again later.
+//   @retval EFI_DEVICE_ERROR          A device error occurred while attempting to send
+//                                     the SCSI Request Packet. See HostAdapterStatus,
+//                                     TargetStatus, SenseDataLength, and SenseData in
+//                                     that order for additional status information.
+//   @retval EFI_INVALID_PARAMETER     The contents of CommandPacket are invalid.
+//                                     The SCSI Request Packet was not sent, so no
+//                                     additional status information is available.
+//   @retval EFI_UNSUPPORTED           The command described by the SCSI Request Packet
+//                                     is not supported by the SCSI initiator(i.e., SCSI
+//                                     Host Controller). The SCSI Request Packet was not
+//                                     sent, so no additional status information is
+//                                     available.
+//   @retval EFI_TIMEOUT               A timeout occurred while waiting for the SCSI
+//                                     Request Packet to execute. See HostAdapterStatus,
+//                                     TargetStatus, SenseDataLength, and SenseData in
+//                                     that order for additional status information.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_IO_PROTOCOL_EXEC_SCSI_COMMAND)(
+//   IN EFI_SCSI_IO_PROTOCOL                   *This,
+//   IN OUT  EFI_SCSI_IO_SCSI_REQUEST_PACKET   *Packet,
+//   IN EFI_EVENT                              Event  OPTIONAL
+//   );
+
 ///
 /// Provides services to manage and communicate with SCSI devices.
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SCSI_IO_PROTOCOL
 {
-  /**
-    Retrieves the device type information of the SCSI Controller.
-
-    @param  This       Protocol instance pointer.
-    @param  DeviceType A pointer to the device type information
-                       retrieved from the SCSI Controller.
-
-    @retval EFI_SUCCESS           Retrieved the device type information successfully.
-    @retval EFI_INVALID_PARAMETER The DeviceType is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_IO_PROTOCOL*, byte*, EFI_STATUS> GetDeviceType;
-  /**
-    Retrieves the device location in the SCSI channel.
-
-    @param  This   Protocol instance pointer.
-    @param  Target A pointer to the Target ID of a SCSI device
-                   on the SCSI channel.
-    @param  Lun    A pointer to the LUN of the SCSI device on
-                   the SCSI channel.
-
-    @retval EFI_SUCCESS           Retrieves the device location successfully.
-    @retval EFI_INVALID_PARAMETER The Target or Lun is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_IO_PROTOCOL*, byte**, ulong*, EFI_STATUS> GetDeviceLocation;
-  /**
-    Resets the SCSI Bus that the SCSI Controller is attached to.
-
-    @param  This Protocol instance pointer.
-
-    @retval EFI_SUCCESS      The SCSI bus is reset successfully.
-    @retval EFI_DEVICE_ERROR Errors encountered when resetting the SCSI bus.
-    @retval EFI_UNSUPPORTED  The bus reset operation is not supported by the
-                             SCSI Host Controller.
-    @retval EFI_TIMEOUT      A timeout occurred while attempting to reset
-                              the SCSI bus.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_IO_PROTOCOL*, EFI_STATUS> ResetBus;
-  /**
-    Resets the SCSI Controller that the device handle specifies.
-
-    @param  This Protocol instance pointer.
-
-    @retval EFI_SUCCESS      Reset the SCSI controller successfully.
-    @retval EFI_DEVICE_ERROR Errors were encountered when resetting the
-                             SCSI Controller.
-    @retval EFI_UNSUPPORTED  The SCSI bus does not support a device
-                             reset operation.
-    @retval EFI_TIMEOUT      A timeout occurred while attempting to
-                             reset the SCSI Controller.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_IO_PROTOCOL*, EFI_STATUS> ResetDevice;
-  /**
-    Sends a SCSI Request Packet to the SCSI Controller for execution.
-
-    @param  This    Protocol instance pointer.
-    @param  Packet  The SCSI request packet to send to the SCSI
-                    Controller specified by the device handle.
-    @param  Event   If the SCSI bus to which the SCSI device is attached
-                    does not support non-blocking I/O, then Event is
-                    ignored, and blocking I/O is performed.
-                    If Event is NULL, then blocking I/O is performed.
-                    If Event is not NULL and non-blocking I/O is
-                    supported, then non-blocking I/O is performed,
-                    and Event will be signaled when the SCSI Request
-                    Packet completes.
-
-    @retval EFI_SUCCESS               The SCSI Request Packet was sent by the host
-                                      successfully, and TransferLength bytes were
-                                      transferred to/from DataBuffer. See
-                                      HostAdapterStatus, TargetStatus,
-                                      SenseDataLength, and SenseData in that order
-                                      for additional status information.
-    @retval EFI_BAD_BUFFER_SIZE       The SCSI Request Packet was executed,
-                                      but the entire DataBuffer could not be transferred.
-                                      The actual number of bytes transferred is returned
-                                      in TransferLength. See HostAdapterStatus,
-                                      TargetStatus, SenseDataLength, and SenseData in
-                                      that order for additional status information.
-    @retval EFI_NOT_READY             The SCSI Request Packet could not be sent because
-                                      there are too many SCSI Command Packets already
-                                      queued.The caller may retry again later.
-    @retval EFI_DEVICE_ERROR          A device error occurred while attempting to send
-                                      the SCSI Request Packet. See HostAdapterStatus,
-                                      TargetStatus, SenseDataLength, and SenseData in
-                                      that order for additional status information.
-    @retval EFI_INVALID_PARAMETER     The contents of CommandPacket are invalid.
-                                      The SCSI Request Packet was not sent, so no
-                                      additional status information is available.
-    @retval EFI_UNSUPPORTED           The command described by the SCSI Request Packet
-                                      is not supported by the SCSI initiator(i.e., SCSI
-                                      Host Controller). The SCSI Request Packet was not
-                                      sent, so no additional status information is
-                                      available.
-    @retval EFI_TIMEOUT               A timeout occurred while waiting for the SCSI
-                                      Request Packet to execute. See HostAdapterStatus,
-                                      TargetStatus, SenseDataLength, and SenseData in
-                                      that order for additional status information.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_IO_PROTOCOL*, EFI_SCSI_IO_SCSI_REQUEST_PACKET*, EFI_EVENT, EFI_STATUS> ExecuteScsiCommand;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_IO_PROTOCOL* /*This*/,/* OUT */byte* /*DeviceType*/, EFI_STATUS> /*EFI_SCSI_IO_PROTOCOL_GET_DEVICE_TYPE*/ GetDeviceType;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_IO_PROTOCOL* /*This*/,/* IN OUT */byte** /*Target*/,/* OUT */ulong* /*Lun*/, EFI_STATUS> /*EFI_SCSI_IO_PROTOCOL_GET_DEVICE_LOCATION*/ GetDeviceLocation;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_IO_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SCSI_IO_PROTOCOL_RESET_BUS*/ ResetBus;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_IO_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SCSI_IO_PROTOCOL_RESET_DEVICE*/ ResetDevice;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_IO_PROTOCOL* /*This*/,/* IN OUT */EFI_SCSI_IO_SCSI_REQUEST_PACKET* /*Packet*/,/* IN */EFI_EVENT /*Event*/, EFI_STATUS> /*EFI_SCSI_IO_PROTOCOL_EXEC_SCSI_COMMAND*/ ExecuteScsiCommand;
 
   ///
   /// Supplies the alignment requirement for any buffer used in a data transfer.

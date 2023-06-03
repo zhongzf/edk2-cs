@@ -270,46 +270,305 @@ public unsafe struct EFI_UDP6_RECEIVE_DATA
 /// client. After a packet is received, RxData and Status are filled in by the EFI UDPv6 Protocol
 /// and the Event is signaled.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
-{
-  ///
-  /// This Event will be signaled after the Status field is updated by the EFI UDPv6 Protocol
-  /// driver. The type of Event must be EVT_NOTIFY_SIGNAL.
-  ///
-  public EFI_EVENT Event;
-  ///
-  /// Will be set to one of the following values:
-  ///   - EFI_SUCCESS: The receive or transmit operation completed successfully.
-  ///   - EFI_ABORTED: The receive or transmit was aborted.
-  ///   - EFI_TIMEOUT: The transmit timeout expired.
-  ///   - EFI_NETWORK_UNREACHABLE: The destination network is unreachable. RxData is set to
-  ///     NULL in this situation.
-  ///   - EFI_HOST_UNREACHABLE: The destination host is unreachable. RxData is set to NULL in
-  ///     this situation.
-  ///   - EFI_PROTOCOL_UNREACHABLE: The UDP protocol is unsupported in the remote system.
-  ///     RxData is set to NULL in this situation.
-  ///   - EFI_PORT_UNREACHABLE: No service is listening on the remote port. RxData is set to
-  ///     NULL in this situation.
-  ///   - EFI_ICMP_ERROR: Some other Internet Control Message Protocol (ICMP) error report was
-  ///     received. For example, packets are being sent too fast for the destination to receive them
-  ///     and the destination sent an ICMP source quench report. RxData is set to NULL in this situation.
-  ///   - EFI_DEVICE_ERROR: An unexpected system or network error occurred.
-  ///   - EFI_SECURITY_VIOLATION: The transmit or receive was failed because of IPsec policy check.
-  ///   - EFI_NO_MEDIA: There was a media error.
-  ///
-  public EFI_STATUS Status;
-  union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
-    ///
-   public EFI_UDP6_RECEIVE_DATA* RxData;
-  ///
-  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
-  ///
-  public EFI_UDP6_TRANSMIT_DATA* TxData;
-}
-} EFI_UDP6_COMPLETION_TOKEN;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Packet
+//{
+//  ///
+//  /// This Event will be signaled after the Status field is updated by the EFI UDPv6 Protocol
+//  /// driver. The type of Event must be EVT_NOTIFY_SIGNAL.
+//  ///
+//  public EFI_EVENT Event;
+//  ///
+//  /// Will be set to one of the following values:
+//  ///   - EFI_SUCCESS: The receive or transmit operation completed successfully.
+//  ///   - EFI_ABORTED: The receive or transmit was aborted.
+//  ///   - EFI_TIMEOUT: The transmit timeout expired.
+//  ///   - EFI_NETWORK_UNREACHABLE: The destination network is unreachable. RxData is set to
+//  ///     NULL in this situation.
+//  ///   - EFI_HOST_UNREACHABLE: The destination host is unreachable. RxData is set to NULL in
+//  ///     this situation.
+//  ///   - EFI_PROTOCOL_UNREACHABLE: The UDP protocol is unsupported in the remote system.
+//  ///     RxData is set to NULL in this situation.
+//  ///   - EFI_PORT_UNREACHABLE: No service is listening on the remote port. RxData is set to
+//  ///     NULL in this situation.
+//  ///   - EFI_ICMP_ERROR: Some other Internet Control Message Protocol (ICMP) error report was
+//  ///     received. For example, packets are being sent too fast for the destination to receive them
+//  ///     and the destination sent an ICMP source quench report. RxData is set to NULL in this situation.
+//  ///   - EFI_DEVICE_ERROR: An unexpected system or network error occurred.
+//  ///   - EFI_SECURITY_VIOLATION: The transmit or receive was failed because of IPsec policy check.
+//  ///   - EFI_NO_MEDIA: There was a media error.
+//  ///
+//  public EFI_STATUS Status;
+//  union {
+//    ///
+//    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
+//    ///
+//    public EFI_UDP6_RECEIVE_DATA* RxData;
+//  ///
+//  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
+//  ///
+//  public EFI_UDP6_TRANSMIT_DATA* TxData;
+//}
+//} EFI_UDP6_COMPLETION_TOKEN;
+
+// /**
+//   Read the current operational settings.
+// 
+//   The GetModeData() function copies the current operational settings of this EFI UDPv6 Protocol
+//   instance into user-supplied buffers. This function is used optionally to retrieve the operational
+//   mode data of underlying networks or drivers.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+//   @param[out]  Udp6ConfigData   The buffer in which the current UDP configuration data is returned.
+//   @param[out]  Ip6ModeData      The buffer in which the current EFI IPv6 Protocol mode data is returned.
+//   @param[out]  MnpConfigData    The buffer in which the current managed network configuration data is
+//                                 returned.
+//   @param[out]  SnpModeData      The buffer in which the simple network mode data is returned.
+// 
+//   @retval EFI_SUCCESS           The mode data was read.
+//   @retval EFI_NOT_STARTED       When Udp6ConfigData is queried, no configuration data is available
+//                                 because this instance has not been started.
+//   @retval EFI_INVALID_PARAMETER This is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_GET_MODE_DATA)(
+//   IN EFI_UDP6_PROTOCOL                 *This,
+//   OUT EFI_UDP6_CONFIG_DATA             *Udp6ConfigData OPTIONAL,
+//   OUT EFI_IP6_MODE_DATA                *Ip6ModeData    OPTIONAL,
+//   OUT EFI_MANAGED_NETWORK_CONFIG_DATA  *MnpConfigData  OPTIONAL,
+//   OUT EFI_SIMPLE_NETWORK_MODE          *SnpModeData    OPTIONAL
+//   );
+
+// /**
+//   Initializes, changes, or resets the operational parameters for this instance of the EFI UDPv6
+//   Protocol.
+// 
+//   The Configure() function is used to do the following:
+//   - Initialize and start this instance of the EFI UDPv6 Protocol.
+//   - Change the filtering rules and operational parameters.
+//   - Reset this instance of the EFI UDPv6 Protocol.
+// 
+//   Until these parameters are initialized, no network traffic can be sent or received by this instance.
+//   This instance can be also reset by calling Configure() with UdpConfigData set to NULL.
+//   Once reset, the receiving queue and transmitting queue are flushed and no traffic is allowed through
+//   this instance.
+// 
+//   With different parameters in UdpConfigData, Configure() can be used to bind this instance to specified
+//   port.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+//   @param[in]   UdpConfigData    Pointer to the buffer contained the configuration data.
+// 
+//   @retval EFI_SUCCESS           The configuration settings were set, changed, or reset successfully.
+//   @retval EFI_NO_MAPPING        The underlying IPv6 driver was responsible for choosing a source
+//                                 address for this instance, but no source address was available for use.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE:
+//                                 - This is NULL.
+//                                 - UdpConfigData.StationAddress neither zero nor one of the configured IP
+//                                   addresses in the underlying IPv6 driver.
+//                                 - UdpConfigData.RemoteAddress is not a valid unicast IPv6 address if it
+//                                   is not zero.
+//   @retval EFI_ALREADY_STARTED   The EFI UDPv6 Protocol instance is already started/configured and must be
+//                                 stopped/reset before it can be reconfigured. Only TrafficClass, HopLimit,
+//                                 ReceiveTimeout, and TransmitTimeout can be reconfigured without stopping
+//                                 the current instance of the EFI UDPv6 Protocol.
+//   @retval EFI_ACCESS_DENIED     UdpConfigData.AllowDuplicatePort is FALSE and UdpConfigData.StationPort
+//                                 is already used by other instance.
+//   @retval EFI_OUT_OF_RESOURCES  The EFI UDPv6 Protocol driver cannot allocate memory for this EFI UDPv6
+//                                 Protocol instance.
+//   @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred and this instance was not
+//                                 opened.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_CONFIGURE)(
+//   IN EFI_UDP6_PROTOCOL     *This,
+//   IN EFI_UDP6_CONFIG_DATA  *UdpConfigData OPTIONAL
+//   );
+
+// /**
+//   Joins and leaves multicast groups.
+// 
+//   The Groups() function is used to join or leave one or more multicast group.
+//   If the JoinFlag is FALSE and the MulticastAddress is NULL, then all currently joined groups are left.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+//   @param[in]   JoinFlag         Set to TRUE to join a multicast group. Set to FALSE to leave one
+//                                 or all multicast groups.
+//   @param[in]   MulticastAddress Pointer to multicast group address to join or leave.
+// 
+//   @retval EFI_SUCCESS           The operation completed successfully.
+//   @retval EFI_NOT_STARTED       The EFI UDPv6 Protocol instance has not been started.
+//   @retval EFI_OUT_OF_RESOURCES  Could not allocate resources to join the group.
+//   @retval EFI_INVALID_PARAMETER One or more of the following conditions is TRUE:
+//                                 - This is NULL.
+//                                 - JoinFlag is TRUE and MulticastAddress is NULL.
+//                                 - JoinFlag is TRUE and *MulticastAddress is not a valid multicast address.
+//   @retval EFI_ALREADY_STARTED   The group address is already in the group table (when JoinFlag is TRUE).
+//   @retval EFI_NOT_FOUND         The group address is not in the group table (when JoinFlag is FALSE).
+//   @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_GROUPS)(
+//   IN EFI_UDP6_PROTOCOL  *This,
+//   IN bool            JoinFlag,
+//   IN EFI_IPv6_ADDRESS   *MulticastAddress OPTIONAL
+//   );
+
+// /**
+//   Queues outgoing data packets into the transmit queue.
+// 
+//   The Transmit() function places a sending request to this instance of the EFI UDPv6 Protocol,
+//   alongside the transmit data that was filled by the user. Whenever the packet in the token is
+//   sent out or some errors occur, the Token.Event will be signaled and Token.Status is updated.
+//   Providing a proper notification function and context for the event will enable the user to
+//   receive the notification and transmitting status.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+//   @param[in]   Token            Pointer to the completion token that will be placed into the
+//                                 transmit queue.
+// 
+//   @retval EFI_SUCCESS           The data has been queued for transmission.
+//   @retval EFI_NOT_STARTED       This EFI UDPv6 Protocol instance has not been started.
+//   @retval EFI_NO_MAPPING        The underlying IPv6 driver was responsible for choosing a source
+//                                 address for this instance, but no source address was available
+//                                 for use.
+//   @retval EFI_INVALID_PARAMETER One or more of the following are TRUE:
+//                                 - This is NULL.
+//                                 - Token is NULL.
+//                                 - Token.Event is NULL.
+//                                 - Token.Packet.TxData is NULL.
+//                                 - Token.Packet.TxData.FragmentCount is zero.
+//                                 - Token.Packet.TxData.DataLength is not equal to the sum of fragment
+//                                   lengths.
+//                                 - One or more of the Token.Packet.TxData.FragmentTable[].FragmentLength
+//                                   fields is zero.
+//                                 - One or more of the Token.Packet.TxData.FragmentTable[].FragmentBuffer
+//                                   fields is NULL.
+//                                 - Token.Packet.TxData.UdpSessionData.DestinationAddress is not zero
+//                                   and is not valid unicast Ipv6 address if UdpSessionData is not NULL.
+//                                 - Token.Packet.TxData.UdpSessionData is NULL and this instance's
+//                                   UdpConfigData.RemoteAddress is unspecified.
+//                                 - Token.Packet.TxData.UdpSessionData.DestinationAddress is non-zero
+//                                   when DestinationAddress is configured as non-zero when doing Configure()
+//                                   for this EFI Udp6 protocol instance.
+//                                 - Token.Packet.TxData.UdpSesionData.DestinationAddress is zero when
+//                                   DestinationAddress is unspecified when doing Configure() for this
+//                                   EFI Udp6 protocol instance.
+//   @retval EFI_ACCESS_DENIED     The transmit completion token with the same Token.Event was already
+//                                 in the transmit queue.
+//   @retval EFI_NOT_READY         The completion token could not be queued because the transmit queue
+//                                 is full.
+//   @retval EFI_OUT_OF_RESOURCES  Could not queue the transmit data.
+//   @retval EFI_NOT_FOUND         There is no route to the destination network or address.
+//   @retval EFI_BAD_BUFFER_SIZE   The data length is greater than the maximum UDP packet size.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_TRANSMIT)(
+//   IN EFI_UDP6_PROTOCOL          *This,
+//   IN EFI_UDP6_COMPLETION_TOKEN  *Token
+//   );
+
+// /**
+//   Places an asynchronous receive request into the receiving queue.
+// 
+//   The Receive() function places a completion token into the receive packet queue. This function is
+//   always asynchronous.
+//   The caller must fill in the Token.Event field in the completion token, and this field cannot be
+//   NULL. When the receive operation completes, the EFI UDPv6 Protocol driver updates the Token.Status
+//   and Token.Packet.RxData fields and the Token.Event is signaled.
+//   Providing a proper notification function and context for the event will enable the user to receive
+//   the notification and receiving status. That notification function is guaranteed to not be re-entered.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+//   @param[in]   Token            Pointer to a token that is associated with the receive data descriptor.
+// 
+//   @retval EFI_SUCCESS           The receive completion token was cached.
+//   @retval EFI_NOT_STARTED       This EFI UDPv6 Protocol instance has not been started.
+//   @retval EFI_NO_MAPPING        The underlying IPv6 driver was responsible for choosing a source
+//                                 address for this instance, but no source address was available
+//                                 for use.
+//   @retval EFI_INVALID_PARAMETER One or more of the following is TRUE:
+//                                 - This is NULL.
+//                                 - Token is NULL.
+//                                 - Token.Event is NULL.
+//   @retval EFI_OUT_OF_RESOURCES  The receive completion token could not be queued due to a lack of system
+//                                 resources (usually memory).
+//   @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred. The EFI UDPv6 Protocol
+//                                 instance has been reset to startup defaults.
+//   @retval EFI_ACCESS_DENIED     A receive completion token with the same Token.Event was already in
+//                                 the receive queue.
+//   @retval EFI_NOT_READY         The receive request could not be queued because the receive queue is full.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_RECEIVE)(
+//   IN EFI_UDP6_PROTOCOL          *This,
+//   IN EFI_UDP6_COMPLETION_TOKEN  *Token
+//   );
+
+// /**
+//   Aborts an asynchronous transmit or receive request.
+// 
+//   The Cancel() function is used to abort a pending transmit or receive request. If the token is in the
+//   transmit or receive request queues, after calling this function, Token.Status will be set to
+//   EFI_ABORTED and then Token.Event will be signaled. If the token is not in one of the queues,
+//   which usually means that the asynchronous operation has completed, this function will not signal the
+//   token and EFI_NOT_FOUND is returned.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+//   @param[in]   Token            Pointer to a token that has been issued by EFI_UDP6_PROTOCOL.Transmit()
+//                                 or EFI_UDP6_PROTOCOL.Receive().If NULL, all pending tokens are aborted.
+// 
+//   @retval EFI_SUCCESS           The asynchronous I/O request was aborted and Token.Event was signaled.
+//                                 When Token is NULL, all pending requests are aborted and their events
+//                                 are signaled.
+//   @retval EFI_INVALID_PARAMETER This is NULL.
+//   @retval EFI_NOT_STARTED       This instance has not been started.
+//   @retval EFI_NOT_FOUND         When Token is not NULL, the asynchronous I/O request was not found in
+//                                 the transmit or receive queue. It has either completed or was not issued
+//                                 by Transmit() and Receive().
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_CANCEL)(
+//   IN EFI_UDP6_PROTOCOL          *This,
+//   IN EFI_UDP6_COMPLETION_TOKEN  *Token OPTIONAL
+//   );
+
+// /**
+//   Polls for incoming data packets and processes outgoing data packets.
+// 
+//   The Poll() function can be used by network drivers and applications to increase the rate that data
+//   packets are moved between the communications device and the transmit and receive queues.
+//   In some systems, the periodic timer event in the managed network driver may not poll the underlying
+//   communications device fast enough to transmit and/or receive all data packets without missing incoming
+//   packets or dropping outgoing packets. Drivers and applications that are experiencing packet loss should
+//   try calling the Poll() function more often.
+// 
+//   @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
+// 
+//   @retval EFI_SUCCESS           Incoming or outgoing data was processed.
+//   @retval EFI_INVALID_PARAMETER This is NULL.
+//   @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred.
+//   @retval EFI_TIMEOUT           Data was dropped out of the transmit and/or receive queue.
+//                                 Consider increasing the polling rate.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_UDP6_POLL)(
+//   IN EFI_UDP6_PROTOCOL  *This
+//   );
 
 ///
 /// The EFI_UDP6_PROTOCOL defines an EFI UDPv6 Protocol session that can be used by any network drivers,
@@ -320,220 +579,13 @@ public unsafe struct Packet
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UDP6_PROTOCOL
 {
-  /**
-    Read the current operational settings.
-
-    The GetModeData() function copies the current operational settings of this EFI UDPv6 Protocol
-    instance into user-supplied buffers. This function is used optionally to retrieve the operational
-    mode data of underlying networks or drivers.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-    @param[out]  Udp6ConfigData   The buffer in which the current UDP configuration data is returned.
-    @param[out]  Ip6ModeData      The buffer in which the current EFI IPv6 Protocol mode data is returned.
-    @param[out]  MnpConfigData    The buffer in which the current managed network configuration data is
-                                  returned.
-    @param[out]  SnpModeData      The buffer in which the simple network mode data is returned.
-
-    @retval EFI_SUCCESS           The mode data was read.
-    @retval EFI_NOT_STARTED       When Udp6ConfigData is queried, no configuration data is available
-                                  because this instance has not been started.
-    @retval EFI_INVALID_PARAMETER This is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, EFI_UDP6_CONFIG_DATA*, EFI_IP6_MODE_DATA*, EFI_MANAGED_NETWORK_CONFIG_DATA*, EFI_SIMPLE_NETWORK_MODE*, EFI_STATUS> GetModeData;
-  /**
-    Initializes, changes, or resets the operational parameters for this instance of the EFI UDPv6
-    Protocol.
-
-    The Configure() function is used to do the following:
-    - Initialize and start this instance of the EFI UDPv6 Protocol.
-    - Change the filtering rules and operational parameters.
-    - Reset this instance of the EFI UDPv6 Protocol.
-
-    Until these parameters are initialized, no network traffic can be sent or received by this instance.
-    This instance can be also reset by calling Configure() with UdpConfigData set to NULL.
-    Once reset, the receiving queue and transmitting queue are flushed and no traffic is allowed through
-    this instance.
-
-    With different parameters in UdpConfigData, Configure() can be used to bind this instance to specified
-    port.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-    @param[in]   UdpConfigData    Pointer to the buffer contained the configuration data.
-
-    @retval EFI_SUCCESS           The configuration settings were set, changed, or reset successfully.
-    @retval EFI_NO_MAPPING        The underlying IPv6 driver was responsible for choosing a source
-                                  address for this instance, but no source address was available for use.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE:
-                                  - This is NULL.
-                                  - UdpConfigData.StationAddress neither zero nor one of the configured IP
-                                    addresses in the underlying IPv6 driver.
-                                  - UdpConfigData.RemoteAddress is not a valid unicast IPv6 address if it
-                                    is not zero.
-    @retval EFI_ALREADY_STARTED   The EFI UDPv6 Protocol instance is already started/configured and must be
-                                  stopped/reset before it can be reconfigured. Only TrafficClass, HopLimit,
-                                  ReceiveTimeout, and TransmitTimeout can be reconfigured without stopping
-                                  the current instance of the EFI UDPv6 Protocol.
-    @retval EFI_ACCESS_DENIED     UdpConfigData.AllowDuplicatePort is FALSE and UdpConfigData.StationPort
-                                  is already used by other instance.
-    @retval EFI_OUT_OF_RESOURCES  The EFI UDPv6 Protocol driver cannot allocate memory for this EFI UDPv6
-                                  Protocol instance.
-    @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred and this instance was not
-                                  opened.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, EFI_UDP6_CONFIG_DATA*, EFI_STATUS> Configure;
-  /**
-    Joins and leaves multicast groups.
-
-    The Groups() function is used to join or leave one or more multicast group.
-    If the JoinFlag is FALSE and the MulticastAddress is NULL, then all currently joined groups are left.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-    @param[in]   JoinFlag         Set to TRUE to join a multicast group. Set to FALSE to leave one
-                                  or all multicast groups.
-    @param[in]   MulticastAddress Pointer to multicast group address to join or leave.
-
-    @retval EFI_SUCCESS           The operation completed successfully.
-    @retval EFI_NOT_STARTED       The EFI UDPv6 Protocol instance has not been started.
-    @retval EFI_OUT_OF_RESOURCES  Could not allocate resources to join the group.
-    @retval EFI_INVALID_PARAMETER One or more of the following conditions is TRUE:
-                                  - This is NULL.
-                                  - JoinFlag is TRUE and MulticastAddress is NULL.
-                                  - JoinFlag is TRUE and *MulticastAddress is not a valid multicast address.
-    @retval EFI_ALREADY_STARTED   The group address is already in the group table (when JoinFlag is TRUE).
-    @retval EFI_NOT_FOUND         The group address is not in the group table (when JoinFlag is FALSE).
-    @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, bool, EFI_IPv6_ADDRESS*, EFI_STATUS> Groups;
-  /**
-    Queues outgoing data packets into the transmit queue.
-
-    The Transmit() function places a sending request to this instance of the EFI UDPv6 Protocol,
-    alongside the transmit data that was filled by the user. Whenever the packet in the token is
-    sent out or some errors occur, the Token.Event will be signaled and Token.Status is updated.
-    Providing a proper notification function and context for the event will enable the user to
-    receive the notification and transmitting status.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-    @param[in]   Token            Pointer to the completion token that will be placed into the
-                                  transmit queue.
-
-    @retval EFI_SUCCESS           The data has been queued for transmission.
-    @retval EFI_NOT_STARTED       This EFI UDPv6 Protocol instance has not been started.
-    @retval EFI_NO_MAPPING        The underlying IPv6 driver was responsible for choosing a source
-                                  address for this instance, but no source address was available
-                                  for use.
-    @retval EFI_INVALID_PARAMETER One or more of the following are TRUE:
-                                  - This is NULL.
-                                  - Token is NULL.
-                                  - Token.Event is NULL.
-                                  - Token.Packet.TxData is NULL.
-                                  - Token.Packet.TxData.FragmentCount is zero.
-                                  - Token.Packet.TxData.DataLength is not equal to the sum of fragment
-                                    lengths.
-                                  - One or more of the Token.Packet.TxData.FragmentTable[].FragmentLength
-                                    fields is zero.
-                                  - One or more of the Token.Packet.TxData.FragmentTable[].FragmentBuffer
-                                    fields is NULL.
-                                  - Token.Packet.TxData.UdpSessionData.DestinationAddress is not zero
-                                    and is not valid unicast Ipv6 address if UdpSessionData is not NULL.
-                                  - Token.Packet.TxData.UdpSessionData is NULL and this instance's
-                                    UdpConfigData.RemoteAddress is unspecified.
-                                  - Token.Packet.TxData.UdpSessionData.DestinationAddress is non-zero
-                                    when DestinationAddress is configured as non-zero when doing Configure()
-                                    for this EFI Udp6 protocol instance.
-                                  - Token.Packet.TxData.UdpSesionData.DestinationAddress is zero when
-                                    DestinationAddress is unspecified when doing Configure() for this
-                                    EFI Udp6 protocol instance.
-    @retval EFI_ACCESS_DENIED     The transmit completion token with the same Token.Event was already
-                                  in the transmit queue.
-    @retval EFI_NOT_READY         The completion token could not be queued because the transmit queue
-                                  is full.
-    @retval EFI_OUT_OF_RESOURCES  Could not queue the transmit data.
-    @retval EFI_NOT_FOUND         There is no route to the destination network or address.
-    @retval EFI_BAD_BUFFER_SIZE   The data length is greater than the maximum UDP packet size.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, EFI_UDP6_COMPLETION_TOKEN*, EFI_STATUS> Transmit;
-  /**
-    Places an asynchronous receive request into the receiving queue.
-
-    The Receive() function places a completion token into the receive packet queue. This function is
-    always asynchronous.
-    The caller must fill in the Token.Event field in the completion token, and this field cannot be
-    NULL. When the receive operation completes, the EFI UDPv6 Protocol driver updates the Token.Status
-    and Token.Packet.RxData fields and the Token.Event is signaled.
-    Providing a proper notification function and context for the event will enable the user to receive
-    the notification and receiving status. That notification function is guaranteed to not be re-entered.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-    @param[in]   Token            Pointer to a token that is associated with the receive data descriptor.
-
-    @retval EFI_SUCCESS           The receive completion token was cached.
-    @retval EFI_NOT_STARTED       This EFI UDPv6 Protocol instance has not been started.
-    @retval EFI_NO_MAPPING        The underlying IPv6 driver was responsible for choosing a source
-                                  address for this instance, but no source address was available
-                                  for use.
-    @retval EFI_INVALID_PARAMETER One or more of the following is TRUE:
-                                  - This is NULL.
-                                  - Token is NULL.
-                                  - Token.Event is NULL.
-    @retval EFI_OUT_OF_RESOURCES  The receive completion token could not be queued due to a lack of system
-                                  resources (usually memory).
-    @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred. The EFI UDPv6 Protocol
-                                  instance has been reset to startup defaults.
-    @retval EFI_ACCESS_DENIED     A receive completion token with the same Token.Event was already in
-                                  the receive queue.
-    @retval EFI_NOT_READY         The receive request could not be queued because the receive queue is full.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, EFI_UDP6_COMPLETION_TOKEN*, EFI_STATUS> Receive;
-  /**
-    Aborts an asynchronous transmit or receive request.
-
-    The Cancel() function is used to abort a pending transmit or receive request. If the token is in the
-    transmit or receive request queues, after calling this function, Token.Status will be set to
-    EFI_ABORTED and then Token.Event will be signaled. If the token is not in one of the queues,
-    which usually means that the asynchronous operation has completed, this function will not signal the
-    token and EFI_NOT_FOUND is returned.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-    @param[in]   Token            Pointer to a token that has been issued by EFI_UDP6_PROTOCOL.Transmit()
-                                  or EFI_UDP6_PROTOCOL.Receive().If NULL, all pending tokens are aborted.
-
-    @retval EFI_SUCCESS           The asynchronous I/O request was aborted and Token.Event was signaled.
-                                  When Token is NULL, all pending requests are aborted and their events
-                                  are signaled.
-    @retval EFI_INVALID_PARAMETER This is NULL.
-    @retval EFI_NOT_STARTED       This instance has not been started.
-    @retval EFI_NOT_FOUND         When Token is not NULL, the asynchronous I/O request was not found in
-                                  the transmit or receive queue. It has either completed or was not issued
-                                  by Transmit() and Receive().
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, EFI_UDP6_COMPLETION_TOKEN*, EFI_STATUS> Cancel;
-  /**
-    Polls for incoming data packets and processes outgoing data packets.
-
-    The Poll() function can be used by network drivers and applications to increase the rate that data
-    packets are moved between the communications device and the transmit and receive queues.
-    In some systems, the periodic timer event in the managed network driver may not poll the underlying
-    communications device fast enough to transmit and/or receive all data packets without missing incoming
-    packets or dropping outgoing packets. Drivers and applications that are experiencing packet loss should
-    try calling the Poll() function more often.
-
-    @param[in]   This             Pointer to the EFI_UDP6_PROTOCOL instance.
-
-    @retval EFI_SUCCESS           Incoming or outgoing data was processed.
-    @retval EFI_INVALID_PARAMETER This is NULL.
-    @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred.
-    @retval EFI_TIMEOUT           Data was dropped out of the transmit and/or receive queue.
-                                  Consider increasing the polling rate.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UDP6_PROTOCOL*, EFI_STATUS> Poll;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP6_CONFIGURE*/ Configure;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP6_GROUPS*/ Groups;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_RECEIVE*/ Receive;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_CANCEL*/ Cancel;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_UDP6_POLL*/ Poll;
 }
 
 // extern EFI_GUID  gEfiUdp6ServiceBindingProtocolGuid;

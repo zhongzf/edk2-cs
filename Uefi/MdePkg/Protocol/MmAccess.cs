@@ -29,6 +29,78 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_MM_ACCESS_PROTOCOL EFI_MM_ACCESS_PROTOCOL;
 
+  // /**
+  //   Opens the MMRAM area to be accessible by a boot-service driver.
+  // 
+  //   This function "opens" MMRAM so that it is visible while not inside of MM. The function should
+  //   return EFI_UNSUPPORTED if the hardware does not support hiding of MMRAM. The function
+  //   should return EFI_DEVICE_ERROR if the MMRAM configuration is locked.
+  // 
+  //   @param[in] This           The EFI_MM_ACCESS_PROTOCOL instance.
+  // 
+  //   @retval EFI_SUCCESS       The operation was successful.
+  //   @retval EFI_UNSUPPORTED   The system does not support opening and closing of MMRAM.
+  //   @retval EFI_DEVICE_ERROR  MMRAM cannot be opened, perhaps because it is locked.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_MM_OPEN)(
+  //   IN EFI_MM_ACCESS_PROTOCOL  *This
+  //   );
+
+  // /**
+  //   Inhibits access to the MMRAM.
+  // 
+  //   This function "closes" MMRAM so that it is not visible while outside of MM. The function should
+  //   return EFI_UNSUPPORTED if the hardware does not support hiding of MMRAM.
+  // 
+  //   @param[in] This           The EFI_MM_ACCESS_PROTOCOL instance.
+  // 
+  //   @retval EFI_SUCCESS       The operation was successful.
+  //   @retval EFI_UNSUPPORTED   The system does not support opening and closing of MMRAM.
+  //   @retval EFI_DEVICE_ERROR  MMRAM cannot be closed.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_MM_CLOSE)(
+  //   IN EFI_MM_ACCESS_PROTOCOL  *This
+  //   );
+
+  // /**
+  //   Inhibits access to the MMRAM.
+  // 
+  //   This function prohibits access to the MMRAM region.  This function is usually implemented such
+  //   that it is a write-once operation.
+  // 
+  //   @param[in] This          The EFI_MM_ACCESS_PROTOCOL instance.
+  // 
+  //   @retval EFI_SUCCESS      The device was successfully locked.
+  //   @retval EFI_UNSUPPORTED  The system does not support locking of MMRAM.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_MM_LOCK)(
+  //   IN EFI_MM_ACCESS_PROTOCOL  *This
+  //   );
+
+  // /**
+  //   Queries the memory controller for the possible regions that will support MMRAM.
+  // 
+  //   @param[in]     This           The EFI_MM_ACCESS_PROTOCOL instance.
+  //   @param[in,out] MmramMapSize   A pointer to the size, in bytes, of the MmramMemoryMap buffer.
+  //   @param[in,out] MmramMap       A pointer to the buffer in which firmware places the current memory map.
+  // 
+  //   @retval EFI_SUCCESS           The chipset supported the given resource.
+  //   @retval EFI_BUFFER_TOO_SMALL  The MmramMap parameter was too small.  The current buffer size
+  //                                 needed to hold the memory map is returned in MmramMapSize.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_MM_CAPABILITIES)(
+  //   IN CONST EFI_MM_ACCESS_PROTOCOL    *This,
+  //   IN OUT ulong                       *MmramMapSize,
+  //   IN OUT EFI_MMRAM_DESCRIPTOR        *MmramMap
+  //   );
 }
 
 ///
@@ -40,57 +112,10 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_ACCESS_PROTOCOL
 {
-  /**
-    Opens the MMRAM area to be accessible by a boot-service driver.
-
-    This function "opens" MMRAM so that it is visible while not inside of MM. The function should
-    return EFI_UNSUPPORTED if the hardware does not support hiding of MMRAM. The function
-    should return EFI_DEVICE_ERROR if the MMRAM configuration is locked.
-
-    @param[in] This           The EFI_MM_ACCESS_PROTOCOL instance.
-
-    @retval EFI_SUCCESS       The operation was successful.
-    @retval EFI_UNSUPPORTED   The system does not support opening and closing of MMRAM.
-    @retval EFI_DEVICE_ERROR  MMRAM cannot be opened, perhaps because it is locked.
-  **/
-  public readonly delegate* unmanaged<EFI_MM_ACCESS_PROTOCOL*, EFI_STATUS> Open;
-  /**
-    Inhibits access to the MMRAM.
-
-    This function "closes" MMRAM so that it is not visible while outside of MM. The function should
-    return EFI_UNSUPPORTED if the hardware does not support hiding of MMRAM.
-
-    @param[in] This           The EFI_MM_ACCESS_PROTOCOL instance.
-
-    @retval EFI_SUCCESS       The operation was successful.
-    @retval EFI_UNSUPPORTED   The system does not support opening and closing of MMRAM.
-    @retval EFI_DEVICE_ERROR  MMRAM cannot be closed.
-  **/
-  public readonly delegate* unmanaged<EFI_MM_ACCESS_PROTOCOL*, EFI_STATUS> Close;
-  /**
-    Inhibits access to the MMRAM.
-
-    This function prohibits access to the MMRAM region.  This function is usually implemented such
-    that it is a write-once operation.
-
-    @param[in] This          The EFI_MM_ACCESS_PROTOCOL instance.
-
-    @retval EFI_SUCCESS      The device was successfully locked.
-    @retval EFI_UNSUPPORTED  The system does not support locking of MMRAM.
-  **/
-  public readonly delegate* unmanaged<EFI_MM_ACCESS_PROTOCOL*, EFI_STATUS> Lock;
-  /**
-    Queries the memory controller for the possible regions that will support MMRAM.
-
-    @param[in]     This           The EFI_MM_ACCESS_PROTOCOL instance.
-    @param[in,out] MmramMapSize   A pointer to the size, in bytes, of the MmramMemoryMap buffer.
-    @param[in,out] MmramMap       A pointer to the buffer in which firmware places the current memory map.
-
-    @retval EFI_SUCCESS           The chipset supported the given resource.
-    @retval EFI_BUFFER_TOO_SMALL  The MmramMap parameter was too small.  The current buffer size
-                                  needed to hold the memory map is returned in MmramMapSize.
-  **/
-  public readonly delegate* unmanaged<CONST, ulong*, EFI_MMRAM_DESCRIPTOR*, EFI_STATUS> GetCapabilities;
+  public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_OPEN*/ Open;
+  public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_CLOSE*/ Close;
+  public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_LOCK*/ Lock;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_ACCESS_PROTOCOL* /*This*/,/* IN OUT */ulong* /*MmramMapSize*/,/* IN OUT */EFI_MMRAM_DESCRIPTOR* /*MmramMap*/, EFI_STATUS> /*EFI_MM_CAPABILITIES*/ GetCapabilities;
   ///
   /// Indicates the current state of the MMRAM. Set to TRUE if MMRAM is locked.
   ///

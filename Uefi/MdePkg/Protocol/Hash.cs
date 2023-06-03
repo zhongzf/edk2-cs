@@ -60,12 +60,12 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_HASH_PROTOCOL EFI_HASH_PROTOCOL;
 
-  typedef byte EFI_MD5_HASH[16];
-  typedef byte EFI_SHA1_HASH[20];
-  typedef byte EFI_SHA224_HASH[28];
-  typedef byte EFI_SHA256_HASH[32];
-  typedef byte EFI_SHA384_HASH[48];
-  typedef byte EFI_SHA512_HASH[64];
+  //typedef byte EFI_MD5_HASH[16];
+  //typedef byte EFI_SHA1_HASH[20];
+  //typedef byte EFI_SHA224_HASH[28];
+  //typedef byte EFI_SHA256_HASH[32];
+  //typedef byte EFI_SHA384_HASH[48];
+  //typedef byte EFI_SHA512_HASH[64];
 }
 
 [StructLayout(LayoutKind.Explicit)]
@@ -79,6 +79,61 @@ public unsafe struct EFI_HASH_OUTPUT
   [FieldOffset(0)] public EFI_SHA512_HASH* Sha512Hash;
 }
 
+// /**
+//   Returns the size of the hash which results from a specific algorithm.
+// 
+//   @param[in]  This                  Points to this instance of EFI_HASH_PROTOCOL.
+//   @param[in]  HashAlgorithm         Points to the EFI_GUID which identifies the algorithm to use.
+//   @param[out] HashSize              Holds the returned size of the algorithm's hash.
+// 
+//   @retval EFI_SUCCESS           Hash size returned successfully.
+//   @retval EFI_INVALID_PARAMETER HashSize is NULL or HashAlgorithm is NULL.
+//   @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported
+//                                 by this driver.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_HASH_GET_HASH_SIZE)(
+//   IN  CONST EFI_HASH_PROTOCOL     *This,
+//   IN  CONST EFI_GUID              *HashAlgorithm,
+//   OUT ulong                       *HashSize
+//   );
+
+// /**
+//   Creates a hash for the specified message text.
+// 
+//   @param[in]  This          Points to this instance of EFI_HASH_PROTOCOL.
+//   @param[in]  HashAlgorithm Points to the EFI_GUID which identifies the algorithm to use.
+//   @param[in]  Extend        Specifies whether to create a new hash (FALSE) or extend the specified
+//                             existing hash (TRUE).
+//   @param[in]  Message       Points to the start of the message.
+//   @param[in]  MessageSize   The size of Message, in bytes.
+//   @param[in,out]  Hash      On input, if Extend is TRUE, then this parameter holds a pointer
+//                             to a pointer to an array containing the hash to extend. If Extend
+//                             is FALSE, then this parameter holds a pointer to a pointer to a
+//                             caller-allocated array that will receive the result of the hash
+//                             computation. On output (regardless of the value of Extend), the
+//                             array will contain the result of the hash computation.
+// 
+//   @retval EFI_SUCCESS           Hash returned successfully.
+//   @retval EFI_INVALID_PARAMETER Message or Hash, HashAlgorithm is NULL or MessageSize is 0.
+//                                 MessageSize is not an integer multiple of block size.
+//   @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported by this
+//                                  driver. Or, Extend is TRUE, and the algorithm doesn't support extending the hash.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_HASH_HASH)(
+//   IN CONST EFI_HASH_PROTOCOL      *This,
+//   IN CONST EFI_GUID               *HashAlgorithm,
+//   IN bool                      Extend,
+//   IN CONST byte                  *Message,
+//   IN ulong                       MessageSize,
+//   IN OUT EFI_HASH_OUTPUT          *Hash
+//   );
+
 ///
 /// This protocol allows creating a hash of an arbitrary message digest
 /// using one or more hash algorithms.
@@ -86,44 +141,8 @@ public unsafe struct EFI_HASH_OUTPUT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HASH_PROTOCOL
 {
-  /**
-    Returns the size of the hash which results from a specific algorithm.
-
-    @param[in]  This                  Points to this instance of EFI_HASH_PROTOCOL.
-    @param[in]  HashAlgorithm         Points to the EFI_GUID which identifies the algorithm to use.
-    @param[out] HashSize              Holds the returned size of the algorithm's hash.
-
-    @retval EFI_SUCCESS           Hash size returned successfully.
-    @retval EFI_INVALID_PARAMETER HashSize is NULL or HashAlgorithm is NULL.
-    @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported
-                                  by this driver.
-
-  **/
-  public readonly delegate* unmanaged<CONST, CONST, ulong*, EFI_STATUS> GetHashSize;
-  /**
-    Creates a hash for the specified message text.
-
-    @param[in]  This          Points to this instance of EFI_HASH_PROTOCOL.
-    @param[in]  HashAlgorithm Points to the EFI_GUID which identifies the algorithm to use.
-    @param[in]  Extend        Specifies whether to create a new hash (FALSE) or extend the specified
-                              existing hash (TRUE).
-    @param[in]  Message       Points to the start of the message.
-    @param[in]  MessageSize   The size of Message, in bytes.
-    @param[in,out]  Hash      On input, if Extend is TRUE, then this parameter holds a pointer
-                              to a pointer to an array containing the hash to extend. If Extend
-                              is FALSE, then this parameter holds a pointer to a pointer to a
-                              caller-allocated array that will receive the result of the hash
-                              computation. On output (regardless of the value of Extend), the
-                              array will contain the result of the hash computation.
-
-    @retval EFI_SUCCESS           Hash returned successfully.
-    @retval EFI_INVALID_PARAMETER Message or Hash, HashAlgorithm is NULL or MessageSize is 0.
-                                  MessageSize is not an integer multiple of block size.
-    @retval EFI_UNSUPPORTED       The algorithm specified by HashAlgorithm is not supported by this
-                                   driver. Or, Extend is TRUE, and the algorithm doesn't support extending the hash.
-
-  **/
-  public readonly delegate* unmanaged<CONST, CONST, bool, CONST, ulong, EFI_HASH_OUTPUT*, EFI_STATUS> Hash;
+  public readonly delegate* unmanaged</* IN */CONST /*EFI_HASH_PROTOCOL*/,/* IN */CONST /*EFI_GUID*/,/* OUT */ulong* /*HashSize*/, EFI_STATUS> /*EFI_HASH_GET_HASH_SIZE*/ GetHashSize;
+  public readonly delegate* unmanaged</* IN CONST */EFI_HASH_PROTOCOL* /*This*/,/* IN CONST */EFI_GUID* /*HashAlgorithm*/,/* IN */bool /*Extend*/,/* IN CONST */byte* /*Message*/,/* IN */ulong /*MessageSize*/,/* IN OUT */EFI_HASH_OUTPUT* /*Hash*/, EFI_STATUS> /*EFI_HASH_HASH*/ Hash;
 }
 
 // extern EFI_GUID  gEfiHashServiceBindingProtocolGuid;

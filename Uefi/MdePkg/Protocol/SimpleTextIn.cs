@@ -79,6 +79,43 @@ public unsafe partial class EFI
   public const ulong SCAN_F10 = 0x0014;
   public const ulong SCAN_ESC = 0x0017;
 
+  // /**
+  //   Reset the input device and optionally run diagnostics
+  // 
+  //   @param  This                 Protocol instance pointer.
+  //   @param  ExtendedVerification Driver may perform diagnostics on reset.
+  // 
+  //   @retval EFI_SUCCESS          The device was reset.
+  //   @retval EFI_DEVICE_ERROR     The device is not functioning properly and could not be reset.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_INPUT_RESET)(
+  //   IN EFI_SIMPLE_TEXT_INPUT_PROTOCOL       *This,
+  //   IN bool                              ExtendedVerification
+  //   );
+
+  // /**
+  //   Reads the next keystroke from the input device. The WaitForKey Event can
+  //   be used to test for existence of a keystroke via WaitForEvent () call.
+  // 
+  //   @param  This  Protocol instance pointer.
+  //   @param  Key   A pointer to a buffer that is filled in with the keystroke
+  //                 information for the key that was pressed.
+  // 
+  //   @retval EFI_SUCCESS      The keystroke information was returned.
+  //   @retval EFI_NOT_READY    There was no keystroke data available.
+  //   @retval EFI_DEVICE_ERROR The keystroke information was not returned due to
+  //                            hardware errors.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_INPUT_READ_KEY)(
+  //   IN EFI_SIMPLE_TEXT_INPUT_PROTOCOL       *This,
+  //   OUT EFI_INPUT_KEY                       *Key
+  //   );
 }
 
 ///
@@ -88,32 +125,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL
 {
-  /**
-    Reset the input device and optionally run diagnostics
-
-    @param  This                 Protocol instance pointer.
-    @param  ExtendedVerification Driver may perform diagnostics on reset.
-
-    @retval EFI_SUCCESS          The device was reset.
-    @retval EFI_DEVICE_ERROR     The device is not functioning properly and could not be reset.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_PROTOCOL*, bool, EFI_STATUS> Reset;
-  /**
-    Reads the next keystroke from the input device. The WaitForKey Event can
-    be used to test for existence of a keystroke via WaitForEvent () call.
-
-    @param  This  Protocol instance pointer.
-    @param  Key   A pointer to a buffer that is filled in with the keystroke
-                  information for the key that was pressed.
-
-    @retval EFI_SUCCESS      The keystroke information was returned.
-    @retval EFI_NOT_READY    There was no keystroke data available.
-    @retval EFI_DEVICE_ERROR The keystroke information was not returned due to
-                             hardware errors.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_PROTOCOL*, EFI_INPUT_KEY*, EFI_STATUS> ReadKeyStroke;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_INPUT_RESET*/ Reset;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_PROTOCOL* /*This*/,/* OUT */EFI_INPUT_KEY* /*Key*/, EFI_STATUS> /*EFI_INPUT_READ_KEY*/ ReadKeyStroke;
   ///
   /// Event to use with WaitForEvent() to wait for a key to be available
   ///

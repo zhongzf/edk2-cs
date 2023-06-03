@@ -76,10 +76,10 @@ public const ulong CXL_11_OFFSET_ASSERT = (TypeName, FieldName, ExpectedOffset) 
 /// The PCIe DVSEC for Flex Bus Device
 ///@{
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public ushort CacheCapable = 1;                                     // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort CacheCapable = 1;                                     // bit 0
   [FieldOffset(0)] public ushort IoCapable = 1;                                     // bit 1
   [FieldOffset(0)] public ushort MemCapable = 1;                                     // bit 2
   [FieldOffset(0)] public ushort MemHwInitMode = 1;                                     // bit 3
@@ -87,15 +87,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort Reserved1 = 8;                                     // bit 6..13
   [FieldOffset(0)] public ushort ViralCapable = 1;                                     // bit 14
   [FieldOffset(0)] public ushort Reserved2 = 1;                                     // bit 15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_DVSEC_FLEX_BUS_DEVICE_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ushort CacheEnable = 1;                                // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort CacheEnable = 1;                                // bit 0
   [FieldOffset(0)] public ushort IoEnable = 1;                                // bit 1
   [FieldOffset(0)] public ushort MemEnable = 1;                                // bit 2
   [FieldOffset(0)] public ushort CacheSfCoverage = 5;                                // bit 3..7
@@ -104,139 +104,139 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort Reserved1 = 2;                                // bit 12..13
   [FieldOffset(0)] public ushort ViralEnable = 1;                                // bit 14
   [FieldOffset(0)] public ushort Reserved2 = 1;                                // bit 15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_DVSEC_FLEX_BUS_DEVICE_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ushort Reserved1 = 14;                                       // bit 0..13
+  /*   struct { */
+  [FieldOffset(0)] public ushort Reserved1 = 14;                                       // bit 0..13
   [FieldOffset(0)] public ushort ViralStatus = 1;                                        // bit 14
   [FieldOffset(0)] public ushort Reserved2 = 1;                                        // bit 15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_DVSEC_FLEX_BUS_DEVICE_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_DEVICE_CONTROL2
 {
-  struct {
-   [FieldOffset(0)] public ushort Reserved1 = 1;                                          // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort Reserved1 = 1;                                          // bit 0
   [FieldOffset(0)] public ushort Reserved2 = 1;                                          // bit 1
   [FieldOffset(0)] public ushort Reserved3 = 1;                                          // bit 2
   [FieldOffset(0)] public ushort Reserved4 = 13;                                         // bit 3..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_1_1_DVSEC_FLEX_BUS_DEVICE_CONTROL2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_DEVICE_STATUS2
 {
-  struct {
-   [FieldOffset(0)] public ushort Reserved1 = 1;                                          // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort Reserved1 = 1;                                          // bit 0
   [FieldOffset(0)] public ushort Reserved2 = 1;                                          // bit 1
   [FieldOffset(0)] public ushort Reserved3 = 14;                                         // bit 2..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_1_1_DVSEC_FLEX_BUS_DEVICE_STATUS2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_LOCK
 {
-  struct {
-   [FieldOffset(0)] public ushort ConfigLock = 1;                                         // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort ConfigLock = 1;                                         // bit 0
   [FieldOffset(0)] public ushort Reserved1 = 15;                                        // bit 1..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_DVSEC_FLEX_BUS_DEVICE_LOCK;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_SIZE_HIGH
 {
-  struct {
-   [FieldOffset(0)] public uint MemorySizeHigh = 32;                                    // bit 0..31
+  /*   struct { */
+  [FieldOffset(0)] public uint MemorySizeHigh = 32;                                    // bit 0..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_SIZE_HIGH;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_SIZE_LOW
 {
-  struct {
-   [FieldOffset(0)] public uint MemoryInfoValid = 1;                                  // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public uint MemoryInfoValid = 1;                                  // bit 0
   [FieldOffset(0)] public uint MemoryActive = 1;                                  // bit 1
   [FieldOffset(0)] public uint MediaType = 3;                                  // bit 2..4
   [FieldOffset(0)] public uint MemoryClass = 3;                                  // bit 5..7
   [FieldOffset(0)] public uint DesiredInterleave = 3;                                  // bit 8..10
   [FieldOffset(0)] public uint Reserved = 17;                                 // bit 11..27
   [FieldOffset(0)] public uint MemorySizeLow = 4;                                  // bit 28..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_SIZE_LOW;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_BASE_HIGH
 {
-  struct {
-   [FieldOffset(0)] public uint MemoryBaseHigh = 32;                                    // bit 0..31
+  /*   struct { */
+  [FieldOffset(0)] public uint MemoryBaseHigh = 32;                                    // bit 0..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_BASE_HIGH;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_BASE_LOW
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved = 28;                                     // bit 0..27
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved = 28;                                     // bit 0..27
   [FieldOffset(0)] public uint MemoryBaseLow = 4;                                      // bit 28..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE1_BASE_LOW;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_SIZE_HIGH
 {
-  struct {
-   [FieldOffset(0)] public uint MemorySizeHigh = 32;                                    // bit 0..31
+  /*   struct { */
+  [FieldOffset(0)] public uint MemorySizeHigh = 32;                                    // bit 0..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_SIZE_HIGH;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_SIZE_LOW
 {
-  struct {
-   [FieldOffset(0)] public uint MemoryInfoValid = 1;                                  // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public uint MemoryInfoValid = 1;                                  // bit 0
   [FieldOffset(0)] public uint MemoryActive = 1;                                  // bit 1
   [FieldOffset(0)] public uint MediaType = 3;                                  // bit 2..4
   [FieldOffset(0)] public uint MemoryClass = 3;                                  // bit 5..7
   [FieldOffset(0)] public uint DesiredInterleave = 3;                                  // bit 8..10
   [FieldOffset(0)] public uint Reserved = 17;                                 // bit 11..27
   [FieldOffset(0)] public uint MemorySizeLow = 4;                                  // bit 28..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_SIZE_LOW;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_BASE_HIGH
 {
-  struct {
-   [FieldOffset(0)] public uint MemoryBaseHigh = 32;                                    // bit 0..31
+  /*   struct { */
+  [FieldOffset(0)] public uint MemoryBaseHigh = 32;                                    // bit 0..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_BASE_HIGH;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_BASE_LOW
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved = 28;                                     // bit 0..27
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved = 28;                                     // bit 0..27
   [FieldOffset(0)] public uint MemoryBaseLow = 4;                                      // bit 28..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_BASE_LOW;
 
 public unsafe partial class EFI
 {
@@ -298,22 +298,22 @@ CXL_11_SIZE_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, 0x38);
 /// PCIe DVSEC for FLex Bus Port
 ///@{
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_PORT_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public ushort CacheCapable = 1;                                       // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort CacheCapable = 1;                                       // bit 0
   [FieldOffset(0)] public ushort IoCapable = 1;                                       // bit 1
   [FieldOffset(0)] public ushort MemCapable = 1;                                       // bit 2
   [FieldOffset(0)] public ushort Reserved = 13;                                      // bit 3..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_1_1_DVSEC_FLEX_BUS_PORT_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_PORT_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ushort CacheEnable = 1;                               // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort CacheEnable = 1;                               // bit 0
   [FieldOffset(0)] public ushort IoEnable = 1;                               // bit 1
   [FieldOffset(0)] public ushort MemEnable = 1;                               // bit 2
   [FieldOffset(0)] public ushort CxlSyncBypassEnable = 1;                               // bit 3
@@ -322,15 +322,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort Retimer1Present = 1;                               // bit 8
   [FieldOffset(0)] public ushort Retimer2Present = 1;                               // bit 9
   [FieldOffset(0)] public ushort Reserved2 = 6;                               // bit 10..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_1_1_DVSEC_FLEX_BUS_PORT_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_PORT_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ushort CacheEnable = 1;            // bit 0
+  /*   struct { */
+  [FieldOffset(0)] public ushort CacheEnable = 1;            // bit 0
   [FieldOffset(0)] public ushort IoEnable = 1;            // bit 1
   [FieldOffset(0)] public ushort MemEnable = 1;            // bit 2
   [FieldOffset(0)] public ushort CxlSyncBypassEnable = 1;            // bit 3
@@ -340,9 +340,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort CxlUncorrectableProtocolIdFramingError = 1;            // bit 9
   [FieldOffset(0)] public ushort CxlUnexpectedProtocolIdDropped = 1;            // bit 10
   [FieldOffset(0)] public ushort Reserved2 = 5;            // bit 11..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} CXL_1_1_DVSEC_FLEX_BUS_PORT_STATUS;
 
 public unsafe partial class EFI
 {
@@ -390,67 +390,67 @@ public unsafe partial class EFI
   public const ulong CXL_CAPABILITY_HEADER_OFFSET = 0;
 }
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_CAPABILITY_HEADER
 {
-  struct {
-   [FieldOffset(0)] public uint CxlCapabilityId = 16;                              // bit 0..15
+  /*   struct { */
+  [FieldOffset(0)] public uint CxlCapabilityId = 16;                              // bit 0..15
   [FieldOffset(0)] public uint CxlCapabilityVersion = 4;                              // bit 16..19
   [FieldOffset(0)] public uint CxlCacheMemVersion = 4;                              // bit 20..23
   [FieldOffset(0)] public uint ArraySize = 8;                              // bit 24..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_CAPABILITY_HEADER;
 
 public unsafe partial class EFI
 {
   public const ulong CXL_RAS_CAPABILITY_HEADER_OFFSET = 4;
 }
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_RAS_CAPABILITY_HEADER
 {
-  struct {
-   [FieldOffset(0)] public uint CxlCapabilityId = 16;                           // bit 0..15
+  /*   struct { */
+  [FieldOffset(0)] public uint CxlCapabilityId = 16;                           // bit 0..15
   [FieldOffset(0)] public uint CxlCapabilityVersion = 4;                           // bit 16..19
   [FieldOffset(0)] public uint CxlRasCapabilityPointer = 12;                           // bit 20..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_RAS_CAPABILITY_HEADER;
 
 public unsafe partial class EFI
 {
   public const ulong CXL_SECURITY_CAPABILITY_HEADER_OFFSET = 8;
 }
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_SECURITY_CAPABILITY_HEADER
 {
-  struct {
-   [FieldOffset(0)] public uint CxlCapabilityId = 16;                      // bit 0..15
+  /*   struct { */
+  [FieldOffset(0)] public uint CxlCapabilityId = 16;                      // bit 0..15
   [FieldOffset(0)] public uint CxlCapabilityVersion = 4;                      // bit 16..19
   [FieldOffset(0)] public uint CxlSecurityCapabilityPointer = 12;                      // bit 20..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_SECURITY_CAPABILITY_HEADER;
 
 public unsafe partial class EFI
 {
   public const ulong CXL_LINK_CAPABILITY_HEADER_OFFSET = 0xC;
 }
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_CAPABILITY_HEADER
 {
-  struct {
-   [FieldOffset(0)] public uint CxlCapabilityId = 16;                          // bit 0..15
+  /*   struct { */
+  [FieldOffset(0)] public uint CxlCapabilityId = 16;                          // bit 0..15
   [FieldOffset(0)] public uint CxlCapabilityVersion = 4;                          // bit 16..19
   [FieldOffset(0)] public uint CxlLinkCapabilityPointer = 12;                          // bit 20..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_LINK_CAPABILITY_HEADER;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_UNCORRECTABLE_ERROR_STATUS
 {
-  struct {
-   [FieldOffset(0)] public uint CacheDataParity = 1;                             // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public uint CacheDataParity = 1;                             // bit 0..0
   [FieldOffset(0)] public uint CacheAddressParity = 1;                             // bit 1..1
   [FieldOffset(0)] public uint CacheByteEnableParity = 1;                             // bit 2..2
   [FieldOffset(0)] public uint CacheDataEcc = 1;                             // bit 3..3
@@ -463,15 +463,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint PoisonReceived = 1;                             // bit 10..10
   [FieldOffset(0)] public uint ReceiverOverflow = 1;                             // bit 11..11
   [FieldOffset(0)] public uint Reserved = 20;                             // bit 12..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_1_1_UNCORRECTABLE_ERROR_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_UNCORRECTABLE_ERROR_MASK
 {
-  struct {
-   [FieldOffset(0)] public uint CacheDataParityMask = 1;                         // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public uint CacheDataParityMask = 1;                         // bit 0..0
   [FieldOffset(0)] public uint CacheAddressParityMask = 1;                         // bit 1..1
   [FieldOffset(0)] public uint CacheByteEnableParityMask = 1;                         // bit 2..2
   [FieldOffset(0)] public uint CacheDataEccMask = 1;                         // bit 3..3
@@ -484,15 +484,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint PoisonReceivedMask = 1;                         // bit 10..10
   [FieldOffset(0)] public uint ReceiverOverflowMask = 1;                         // bit 11..11
   [FieldOffset(0)] public uint Reserved = 20;                         // bit 12..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_1_1_UNCORRECTABLE_ERROR_MASK;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_UNCORRECTABLE_ERROR_SEVERITY
 {
-  struct {
-   [FieldOffset(0)] public uint CacheDataParitySeverity = 1;                     // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public uint CacheDataParitySeverity = 1;                     // bit 0..0
   [FieldOffset(0)] public uint CacheAddressParitySeverity = 1;                     // bit 1..1
   [FieldOffset(0)] public uint CacheByteEnableParitySeverity = 1;                     // bit 2..2
   [FieldOffset(0)] public uint CacheDataEccSeverity = 1;                     // bit 3..3
@@ -505,15 +505,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint PoisonReceivedSeverity = 1;                     // bit 10..10
   [FieldOffset(0)] public uint ReceiverOverflowSeverity = 1;                     // bit 11..11
   [FieldOffset(0)] public uint Reserved = 20;                     // bit 12..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_1_1_UNCORRECTABLE_ERROR_SEVERITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_CORRECTABLE_ERROR_STATUS
 {
-  struct {
-   [FieldOffset(0)] public uint CacheDataEcc = 1;                              // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public uint CacheDataEcc = 1;                              // bit 0..0
   [FieldOffset(0)] public uint MemoryDataEcc = 1;                              // bit 1..1
   [FieldOffset(0)] public uint CrcThreshold = 1;                              // bit 2..2
   [FieldOffset(0)] public uint RetryThreshold = 1;                              // bit 3..3
@@ -521,15 +521,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint MemoryPoisonReceived = 1;                              // bit 5..5
   [FieldOffset(0)] public uint PhysicalLayerError = 1;                              // bit 6..6
   [FieldOffset(0)] public uint Reserved = 25;                              // bit 7..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_CORRECTABLE_ERROR_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_CORRECTABLE_ERROR_MASK
 {
-  struct {
-   [FieldOffset(0)] public uint CacheDataEccMask = 1;                          // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public uint CacheDataEccMask = 1;                          // bit 0..0
   [FieldOffset(0)] public uint MemoryDataEccMask = 1;                          // bit 1..1
   [FieldOffset(0)] public uint CrcThresholdMask = 1;                          // bit 2..2
   [FieldOffset(0)] public uint RetryThresholdMask = 1;                          // bit 3..3
@@ -537,23 +537,23 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint MemoryPoisonReceivedMask = 1;                          // bit 5..5
   [FieldOffset(0)] public uint PhysicalLayerErrorMask = 1;                          // bit 6..6
   [FieldOffset(0)] public uint Reserved = 25;                          // bit 7..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_CORRECTABLE_ERROR_MASK;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_ERROR_CAPABILITIES_AND_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public uint FirstErrorPointer = 4;                 // bit 0..3
+  /*   struct { */
+  [FieldOffset(0)] public uint FirstErrorPointer = 4;                 // bit 0..3
   [FieldOffset(0)] public uint Reserved1 = 5;                 // bit 4..8
   [FieldOffset(0)] public uint MultipleHeaderRecordingCapability = 1;                 // bit 9..9
   [FieldOffset(0)] public uint Reserved2 = 3;                 // bit 10..12
   [FieldOffset(0)] public uint PoisonEnabled = 1;                 // bit 13..13
   [FieldOffset(0)] public uint Reserved3 = 18;                 // bit 14..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_ERROR_CAPABILITIES_AND_CONTROL;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct CXL_1_1_RAS_CAPABILITY_STRUCTURE
@@ -577,14 +577,14 @@ CXL_11_OFFSET_ASSERT(CXL_1_1_RAS_CAPABILITY_STRUCTURE, HeaderLog, 0x18);
 CXL_11_SIZE_ASSERT(CXL_1_1_RAS_CAPABILITY_STRUCTURE, 0x58);
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_1_1_SECURITY_POLICY
 {
-  struct {
-   [FieldOffset(0)] public uint DeviceTrustLevel = 2;                                  // bit 0..1
+  /*   struct { */
+  [FieldOffset(0)] public uint DeviceTrustLevel = 2;                                  // bit 0..1
   [FieldOffset(0)] public uint Reserved = 30;                                  // bit 2..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_1_1_SECURITY_POLICY;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct CXL_1_1_SECURITY_CAPABILITY_STRUCTURE
@@ -596,10 +596,10 @@ CXL_11_OFFSET_ASSERT(CXL_1_1_SECURITY_CAPABILITY_STRUCTURE, SecurityPolicy, 0x0)
 CXL_11_SIZE_ASSERT(CXL_1_1_SECURITY_CAPABILITY_STRUCTURE, 0x4);
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public ulong CxlLinkVersionSupported = 4;                           // bit 0..3
+  /*   struct { */
+  [FieldOffset(0)] public ulong CxlLinkVersionSupported = 4;                           // bit 0..3
   [FieldOffset(0)] public ulong CxlLinkVersionReceived = 4;                           // bit 4..7
   [FieldOffset(0)] public ulong LlrWrapValueSupported = 8;                           // bit 8..15
   [FieldOffset(0)] public ulong LlrWrapValueReceived = 8;                           // bit 16..23
@@ -609,82 +609,82 @@ public unsafe struct Bits
   [FieldOffset(0)] public ulong EchoEseqReceived = 8;                           // bit 42..49
   [FieldOffset(0)] public ulong NumFreeBufReceived = 8;                           // bit 50..57
   [FieldOffset(0)] public ulong Reserved = 6;                           // bit 58..63
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_CONTROL_AND_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ushort LlReset = 1;                             // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public ushort LlReset = 1;                             // bit 0..0
   [FieldOffset(0)] public ushort LlInitStall = 1;                             // bit 1..1
   [FieldOffset(0)] public ushort LlCrdStall = 1;                             // bit 2..2
   [FieldOffset(0)] public ushort InitState = 2;                             // bit 3..4
   [FieldOffset(0)] public ushort LlRetryBufferConsumed = 8;                             // bit 5..12
   [FieldOffset(0)] public ushort Reserved = 3;                             // bit 13..15
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_CONTROL_AND_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_RX_CREDIT_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ulong CacheReqCredits = 10;                                  // bit 0..9
+  /*   struct { */
+  [FieldOffset(0)] public ulong CacheReqCredits = 10;                                  // bit 0..9
   [FieldOffset(0)] public ulong CacheRspCredits = 10;                                  // bit 10..19
   [FieldOffset(0)] public ulong CacheDataCredits = 10;                                  // bit 20..29
   [FieldOffset(0)] public ulong MemReqRspCredits = 10;                                  // bit 30..39
   [FieldOffset(0)] public ulong MemDataCredits = 10;                                  // bit 40..49
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_RX_CREDIT_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_RX_CREDIT_RETURN_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ulong CacheReqCredits = 10;                                  // bit 0..9
+  /*   struct { */
+  [FieldOffset(0)] public ulong CacheReqCredits = 10;                                  // bit 0..9
   [FieldOffset(0)] public ulong CacheRspCredits = 10;                                  // bit 10..19
   [FieldOffset(0)] public ulong CacheDataCredits = 10;                                  // bit 20..29
   [FieldOffset(0)] public ulong MemReqRspCredits = 10;                                  // bit 30..39
   [FieldOffset(0)] public ulong MemDataCredits = 10;                                  // bit 40..49
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_RX_CREDIT_RETURN_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_TX_CREDIT_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ulong CacheReqCredits = 10;                                  // bit 0..9
+  /*   struct { */
+  [FieldOffset(0)] public ulong CacheReqCredits = 10;                                  // bit 0..9
   [FieldOffset(0)] public ulong CacheRspCredits = 10;                                  // bit 10..19
   [FieldOffset(0)] public ulong CacheDataCredits = 10;                                  // bit 20..29
   [FieldOffset(0)] public ulong MemReqRspCredits = 10;                                  // bit 30..39
   [FieldOffset(0)] public ulong MemDataCredits = 10;                                  // bit 40..49
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_TX_CREDIT_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_ACK_TIMER_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public uint AckForceThreshold = 8;                                 // bit 0..7
+  /*   struct { */
+  [FieldOffset(0)] public uint AckForceThreshold = 8;                                 // bit 0..7
   [FieldOffset(0)] public uint AckFLushRetimer = 10;                                 // bit 8..17
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_ACK_TIMER_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_LINK_LAYER_DEFEATURE
 {
-  struct {
-   [FieldOffset(0)] public uint MdhDisable = 1;                                        // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public uint MdhDisable = 1;                                        // bit 0..0
   [FieldOffset(0)] public uint Reserved = 31;                                        // bit 1..31
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_LINK_LAYER_DEFEATURE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct CXL_1_1_LINK_CAPABILITY_STRUCTURE
@@ -712,15 +712,15 @@ public unsafe partial class EFI
   public const ulong CXL_IO_ARBITRATION_CONTROL_OFFSET = 0x180;
 }
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_IO_ARBITRATION_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved1 = 4;               // bit 0..3
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved1 = 4;               // bit 0..3
   [FieldOffset(0)] public uint WeightedRoundRobinArbitrationWeight = 4;               // bit 4..7
   [FieldOffset(0)] public uint Reserved2 = 24;               // bit 8..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_IO_ARBITRATION_CONTROL;
 
 CXL_11_SIZE_ASSERT(CXL_IO_ARBITRATION_CONTROL, 0x4);
 
@@ -729,15 +729,15 @@ public unsafe partial class EFI
   public const ulong CXL_CACHE_MEMORY_ARBITRATION_CONTROL_OFFSET = 0x1C0;
 }
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_CACHE_MEMORY_ARBITRATION_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved1 = 4;               // bit 0..3
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved1 = 4;               // bit 0..3
   [FieldOffset(0)] public uint WeightedRoundRobinArbitrationWeight = 4;               // bit 4..7
   [FieldOffset(0)] public uint Reserved2 = 24;               // bit 8..31
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} CXL_CACHE_MEMORY_ARBITRATION_CONTROL;
 
 CXL_11_SIZE_ASSERT(CXL_CACHE_MEMORY_ARBITRATION_CONTROL, 0x4);
 
@@ -747,15 +747,15 @@ CXL_11_SIZE_ASSERT(CXL_CACHE_MEMORY_ARBITRATION_CONTROL, 0x4);
 /// Based on chapter 7.3 of Compute Express Link Specification Revision: 1.1
 ///@{
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct CXL_RCRB_BASE
 {
-  struct {
-   [FieldOffset(0)] public ulong RcrbEnable = 1;                                   // bit 0..0
+  /*   struct { */
+  [FieldOffset(0)] public ulong RcrbEnable = 1;                                   // bit 0..0
   [FieldOffset(0)] public ulong Reserved = 12;                                   // bit 1..12
   [FieldOffset(0)] public ulong RcrbBaseAddress = 51;                                   // bit 13..63
+  /*   } Bits; */
+  [FieldOffset(0)] public ulong Uint64;
 }
-ulong Uint64;
-} CXL_RCRB_BASE;
 
 CXL_11_SIZE_ASSERT(CXL_RCRB_BASE, 0x8);
 

@@ -35,10 +35,10 @@ public unsafe partial class EFI
 /// Low Power Idle (LPI) State Flags
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct ACPI_LPI_STATE_FLAGS
 {
-  struct {
-   [FieldOffset(0)] public uint Disabled = 1; ///< If set, LPI state is not used
+  /*   struct { */
+  [FieldOffset(0)] public uint Disabled = 1; ///< If set, LPI state is not used
 
   /**
     If set, Residency counter is not available for this LPI state and
@@ -46,9 +46,9 @@ public unsafe struct Bits
   **/
   [FieldOffset(0)] public uint CounterUnavailable = 1;
   [FieldOffset(0)] public uint Reserved = 30; ///< Reserved for future use. Must be zero
+/*   } Bits; */
+  [FieldOffset(0)] public uint Data32;
 }
-uint Data32;
-} ACPI_LPI_STATE_FLAGS;
 
 ///
 /// Low Power Idle (LPI) structure with Native C-state instruction entry trigger descriptor
@@ -74,13 +74,13 @@ public unsafe struct ACPI_LPI_NATIVE_CSTATE_DESCRIPTOR
   public uint Latency;   ///< Worst case exit latency in uSec
 
   /**
-public fixed  public fixed  [optional] Residency counter, represented as a Generic Address Structure.
+    [optional] Residency counter, represented as a Generic Address Structure.
     If not present, Flags[1] bit should be set.
   **/
   public EFI_ACPI_6_1_GENERIC_ADDRESS_STRUCTURE ResidencyCounter;
 
   /**
-public fixed  public fixed  [optional] Residency counter frequency in cycles per second. Value 0 indicates that
+    [optional] Residency counter frequency in cycles per second. Value 0 indicates that
     counter runs at TSC frequency. Valid only if Residency Counter is present.
   **/
   public ulong ResidencyCounterFrequency;

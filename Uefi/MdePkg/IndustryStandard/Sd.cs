@@ -179,7 +179,7 @@ public unsafe struct SD_SCR
   public uint SdSpec3 = 1;             // Spec. Version 3.00 or higher [47:47]
   public uint SdBusWidths = 4;             // DAT Bus widths supported [51:48]
   public uint SdSecurity = 3;             // CPRM security support [54:52]
-  uint DataStatAfterErase : 1;             // Data status afterpublic fixed erases [55]
+  public uint DataStatAfterErase = 1;             // Data status after erases [55]
   public uint SdSpec = 4;             // SD Memory Card Spec. Version [59:56]
   public uint ScrStructure = 4;             // SCR Structure [63:60]
 }

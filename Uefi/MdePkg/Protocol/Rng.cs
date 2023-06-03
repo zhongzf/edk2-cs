@@ -56,15 +56,73 @@ public unsafe partial class EFI
       0x63c4785a, 0xca34, 0x4012, new byte[] { 0xa3, 0xc8, 0x0b, 0x6a, 0x32, 0x4f, 0x55, 0x46 });
   public static EFI_GUID EFI_RNG_ALGORITHM_X9_31_AES_GUID = new GUID(
       0xacd03321, 0x777e, 0x4d3d, new byte[] { 0xb1, 0xc8, 0x20, 0xcf, 0xd8, 0x88, 0x20, 0xc9 });
-///
-/// The "raw" algorithm, when supported, is intended to provide entropy directly from
-/// the source, without it going through some deterministic random bit generator.
-///
-#define EFI_RNG_ALGORITHM_RAW \
-  { \
-    0xe43176d7, 0xb6e8, 0x4827, {0xb7, 0x84, 0x7f, 0xfd, 0xc4, 0xb6, 0x85, 0x61 } \
-  }
+  ///
+  /// The "raw" algorithm, when supported, is intended to provide entropy directly from
+  /// the source, without it going through some deterministic random bit generator.
+  ///
+  public static EFI_GUID EFI_RNG_ALGORITHM_RAW = new GUID(0xe43176d7, 0xb6e8, 0x4827, new byte[] { 0xb7, 0x84, 0x7f, 0xfd, 0xc4, 0xb6, 0x85, 0x61 });
 
+  // /**
+  //   Returns information about the random number generation implementation.
+  // 
+  //   @param[in]     This                 A pointer to the EFI_RNG_PROTOCOL instance.
+  //   @param[in,out] RNGAlgorithmListSize On input, the size in bytes of RNGAlgorithmList.
+  //                                       On output with a return code of EFI_SUCCESS, the size
+  //                                       in bytes of the data returned in RNGAlgorithmList. On output
+  //                                       with a return code of EFI_BUFFER_TOO_SMALL,
+  //                                       the size of RNGAlgorithmList required to obtain the list.
+  //   @param[out] RNGAlgorithmList        A caller-allocated memory buffer filled by the driver
+  //                                       with one EFI_RNG_ALGORITHM element for each supported
+  //                                       RNG algorithm. The list must not change across multiple
+  //                                       calls to the same driver. The first algorithm in the list
+  //                                       is the default algorithm for the driver.
+  // 
+  //   @retval EFI_SUCCESS                 The RNG algorithm list was returned successfully.
+  //   @retval EFI_UNSUPPORTED             The services is not supported by this driver.
+  //   @retval EFI_DEVICE_ERROR            The list of algorithms could not be retrieved due to a
+  //                                       hardware or firmware error.
+  //   @retval EFI_INVALID_PARAMETER       One or more of the parameters are incorrect.
+  //   @retval EFI_BUFFER_TOO_SMALL        The buffer RNGAlgorithmList is too small to hold the result.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_RNG_GET_INFO)(
+  //   IN EFI_RNG_PROTOCOL             *This,
+  //   IN OUT ulong                    *RNGAlgorithmListSize,
+  //   OUT EFI_RNG_ALGORITHM           *RNGAlgorithmList
+  //   );
+
+  // /**
+  //   Produces and returns an RNG value using either the default or specified RNG algorithm.
+  // 
+  //   @param[in]  This                    A pointer to the EFI_RNG_PROTOCOL instance.
+  //   @param[in]  RNGAlgorithm            A pointer to the EFI_RNG_ALGORITHM that identifies the RNG
+  //                                       algorithm to use. May be NULL in which case the function will
+  //                                       use its default RNG algorithm.
+  //   @param[in]  RNGValueLength          The length in bytes of the memory buffer pointed to by
+  //                                       RNGValue. The driver shall return exactly this numbers of bytes.
+  //   @param[out] RNGValue                A caller-allocated memory buffer filled by the driver with the
+  //                                       resulting RNG value.
+  // 
+  //   @retval EFI_SUCCESS                 The RNG value was returned successfully.
+  //   @retval EFI_UNSUPPORTED             The algorithm specified by RNGAlgorithm is not supported by
+  //                                       this driver.
+  //   @retval EFI_DEVICE_ERROR            An RNG value could not be retrieved due to a hardware or
+  //                                       firmware error.
+  //   @retval EFI_NOT_READY               There is not enough random data available to satisfy the length
+  //                                       requested by RNGValueLength.
+  //   @retval EFI_INVALID_PARAMETER       RNGValue is NULL or RNGValueLength is zero.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_RNG_GET_RNG)(
+  //   IN EFI_RNG_PROTOCOL            *This,
+  //   IN EFI_RNG_ALGORITHM           *RNGAlgorithm  OPTIONAL,
+  //   IN ulong                       RNGValueLength,
+  //   OUT byte                      *RNGValue
+  //   );
 }
 
 ///
@@ -74,53 +132,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RNG_PROTOCOL
 {
-  /**
-    Returns information about the random number generation implementation.
-
-    @param[in]     This                 A pointer to the EFI_RNG_PROTOCOL instance.
-    @param[in,out] RNGAlgorithmListSize On input, the size in bytes of RNGAlgorithmList.
-                                        On output with a return code of EFI_SUCCESS, the size
-                                        in bytes of the data returned in RNGAlgorithmList. On output
-                                        with a return code of EFI_BUFFER_TOO_SMALL,
-                                        the size of RNGAlgorithmList required to obtain the list.
-    @param[out] RNGAlgorithmList        A caller-allocated memory buffer filled by the driver
-                                        with one EFI_RNG_ALGORITHM element for each supported
-                                        RNG algorithm. The list must not change across multiple
-                                        calls to the same driver. The first algorithm in the list
-                                        is the default algorithm for the driver.
-
-    @retval EFI_SUCCESS                 The RNG algorithm list was returned successfully.
-    @retval EFI_UNSUPPORTED             The services is not supported by this driver.
-    @retval EFI_DEVICE_ERROR            The list of algorithms could not be retrieved due to a
-                                        hardware or firmware error.
-    @retval EFI_INVALID_PARAMETER       One or more of the parameters are incorrect.
-    @retval EFI_BUFFER_TOO_SMALL        The buffer RNGAlgorithmList is too small to hold the result.
-
-  **/
-  public readonly delegate* unmanaged<EFI_RNG_PROTOCOL*, ulong*, EFI_RNG_ALGORITHM*, EFI_STATUS> GetInfo;
-  /**
-    Produces and returns an RNG value using either the default or specified RNG algorithm.
-
-    @param[in]  This                    A pointer to the EFI_RNG_PROTOCOL instance.
-    @param[in]  RNGAlgorithm            A pointer to the EFI_RNG_ALGORITHM that identifies the RNG
-                                        algorithm to use. May be NULL in which case the function will
-                                        use its default RNG algorithm.
-    @param[in]  RNGValueLength          The length in bytes of the memory buffer pointed to by
-                                        RNGValue. The driver shall return exactly this numbers of bytes.
-    @param[out] RNGValue                A caller-allocated memory buffer filled by the driver with the
-                                        resulting RNG value.
-
-    @retval EFI_SUCCESS                 The RNG value was returned successfully.
-    @retval EFI_UNSUPPORTED             The algorithm specified by RNGAlgorithm is not supported by
-                                        this driver.
-    @retval EFI_DEVICE_ERROR            An RNG value could not be retrieved due to a hardware or
-                                        firmware error.
-    @retval EFI_NOT_READY               There is not enough random data available to satisfy the length
-                                        requested by RNGValueLength.
-    @retval EFI_INVALID_PARAMETER       RNGValue is NULL or RNGValueLength is zero.
-
-  **/
-  public readonly delegate* unmanaged<EFI_RNG_PROTOCOL*, EFI_RNG_ALGORITHM*, ulong, byte*, EFI_STATUS> GetRNG;
+  public readonly delegate* unmanaged</* IN */EFI_RNG_PROTOCOL* /*This*/,/* IN OUT */ulong* /*RNGAlgorithmListSize*/,/* OUT */EFI_RNG_ALGORITHM* /*RNGAlgorithmList*/, EFI_STATUS> /*EFI_RNG_GET_INFO*/ GetInfo;
+  public readonly delegate* unmanaged</* IN */EFI_RNG_PROTOCOL* /*This*/,/* IN */EFI_RNG_ALGORITHM* /*RNGAlgorithm*/,/* IN */ulong /*RNGValueLength*/,/* OUT */byte* /*RNGValue*/, EFI_STATUS> /*EFI_RNG_GET_RNG*/ GetRNG;
 }
 
 // extern EFI_GUID  gEfiRngProtocolGuid;

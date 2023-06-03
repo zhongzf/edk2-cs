@@ -139,6 +139,97 @@ public unsafe struct EFI_ADAPTER_INFO_UNDI_IPV6_SUPPORT
   public bool Ipv6Support;
 }
 
+// /**
+//   Returns the current state information for the adapter.
+// 
+//   This function returns information of type InformationType from the adapter.
+//   If an adapter does not support the requested informational type, then
+//   EFI_UNSUPPORTED is returned.
+// 
+//   @param[in]  This                   A pointer to the EFI_ADAPTER_INFORMATION_PROTOCOL instance.
+//   @param[in]  InformationType        A pointer to an EFI_GUID that defines the contents of InformationBlock.
+//   @param[out] InforamtionBlock       The service returns a pointer to the buffer with the InformationBlock
+//                                      structure which contains details about the data specific to InformationType.
+//   @param[out] InforamtionBlockSize   The driver returns the size of the InformationBlock in bytes.
+// 
+//   @retval EFI_SUCCESS                The InformationType information was retrieved.
+//   @retval EFI_UNSUPPORTED            The InformationType is not known.
+//   @retval EFI_DEVICE_ERROR           The device reported an error.
+//   @retval EFI_OUT_OF_RESOURCES       The request could not be completed due to a lack of resources.
+//   @retval EFI_INVALID_PARAMETER      This is NULL.
+//   @retval EFI_INVALID_PARAMETER      InformationBlock is NULL.
+//   @retval EFI_INVALID_PARAMETER      InformationBlockSize is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_ADAPTER_INFO_GET_INFO)(
+//   IN  EFI_ADAPTER_INFORMATION_PROTOCOL  *This,
+//   IN  EFI_GUID                          *InformationType,
+//   OUT void                              **InformationBlock,
+//   OUT ulong                             *InformationBlockSize
+//   );
+
+// /**
+//   Sets state information for an adapter.
+// 
+//   This function sends information of type InformationType for an adapter.
+//   If an adapter does not support the requested information type, then EFI_UNSUPPORTED
+//   is returned.
+// 
+//   @param[in]  This                   A pointer to the EFI_ADAPTER_INFORMATION_PROTOCOL instance.
+//   @param[in]  InformationType        A pointer to an EFI_GUID that defines the contents of InformationBlock.
+//   @param[in]  InforamtionBlock       A pointer to the InformationBlock structure which contains details
+//                                      about the data specific to InformationType.
+//   @param[in]  InforamtionBlockSize   The size of the InformationBlock in bytes.
+// 
+//   @retval EFI_SUCCESS                The information was received and interpreted successfully.
+//   @retval EFI_UNSUPPORTED            The InformationType is not known.
+//   @retval EFI_DEVICE_ERROR           The device reported an error.
+//   @retval EFI_INVALID_PARAMETER      This is NULL.
+//   @retval EFI_INVALID_PARAMETER      InformationBlock is NULL.
+//   @retval EFI_WRITE_PROTECTED        The InformationType cannot be modified using EFI_ADAPTER_INFO_SET_INFO().
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_ADAPTER_INFO_SET_INFO)(
+//   IN  EFI_ADAPTER_INFORMATION_PROTOCOL  *This,
+//   IN  EFI_GUID                          *InformationType,
+//   IN  void                              *InformationBlock,
+//   IN  ulong                             InformationBlockSize
+//   );
+
+// /**
+//   Get a list of supported information types for this instance of the protocol.
+// 
+//   This function returns a list of InformationType GUIDs that are supported on an
+//   adapter with this instance of EFI_ADAPTER_INFORMATION_PROTOCOL. The list is returned
+//   in InfoTypesBuffer, and the number of GUID pointers in InfoTypesBuffer is returned in
+//   InfoTypesBufferCount.
+// 
+//   @param[in]  This                  A pointer to the EFI_ADAPTER_INFORMATION_PROTOCOL instance.
+//   @param[out] InfoTypesBuffer       A pointer to the array of InformationType GUIDs that are supported
+//                                     by This.
+//   @param[out] InfoTypesBufferCount  A pointer to the number of GUIDs present in InfoTypesBuffer.
+// 
+//   @retval EFI_SUCCESS               The list of information type GUIDs that are supported on this adapter was
+//                                     returned in InfoTypesBuffer. The number of information type GUIDs was
+//                                     returned in InfoTypesBufferCount.
+//   @retval EFI_INVALID_PARAMETER     This is NULL.
+//   @retval EFI_INVALID_PARAMETER     InfoTypesBuffer is NULL.
+//   @retval EFI_INVALID_PARAMETER     InfoTypesBufferCount is NULL.
+//   @retval EFI_OUT_OF_RESOURCES      There is not enough pool memory to store the results.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_ADAPTER_INFO_GET_SUPPORTED_TYPES)(
+//   IN  EFI_ADAPTER_INFORMATION_PROTOCOL  *This,
+//   OUT EFI_GUID                          **InfoTypesBuffer,
+//   OUT ulong                             *InfoTypesBufferCount
+//   );
+
 ///
 /// EFI_ADAPTER_INFORMATION_PROTOCOL
 /// The protocol for adapter provides the following services.
@@ -149,74 +240,9 @@ public unsafe struct EFI_ADAPTER_INFO_UNDI_IPV6_SUPPORT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ADAPTER_INFORMATION_PROTOCOL
 {
-  /**
-    Returns the current state information for the adapter.
-
-    This function returns information of type InformationType from the adapter.
-    If an adapter does not support the requested informational type, then
-    EFI_UNSUPPORTED is returned.
-
-    @param[in]  This                   A pointer to the EFI_ADAPTER_INFORMATION_PROTOCOL instance.
-    @param[in]  InformationType        A pointer to an EFI_GUID that defines the contents of InformationBlock.
-    @param[out] InforamtionBlock       The service returns a pointer to the buffer with the InformationBlock
-                                       structure which contains details about the data specific to InformationType.
-    @param[out] InforamtionBlockSize   The driver returns the size of the InformationBlock in bytes.
-
-    @retval EFI_SUCCESS                The InformationType information was retrieved.
-    @retval EFI_UNSUPPORTED            The InformationType is not known.
-    @retval EFI_DEVICE_ERROR           The device reported an error.
-    @retval EFI_OUT_OF_RESOURCES       The request could not be completed due to a lack of resources.
-    @retval EFI_INVALID_PARAMETER      This is NULL.
-    @retval EFI_INVALID_PARAMETER      InformationBlock is NULL.
-    @retval EFI_INVALID_PARAMETER      InformationBlockSize is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_ADAPTER_INFORMATION_PROTOCOL*, EFI_GUID*, void**, ulong*, EFI_STATUS> GetInformation;
-  /**
-    Sets state information for an adapter.
-
-    This function sends information of type InformationType for an adapter.
-    If an adapter does not support the requested information type, then EFI_UNSUPPORTED
-    is returned.
-
-    @param[in]  This                   A pointer to the EFI_ADAPTER_INFORMATION_PROTOCOL instance.
-    @param[in]  InformationType        A pointer to an EFI_GUID that defines the contents of InformationBlock.
-    @param[in]  InforamtionBlock       A pointer to the InformationBlock structure which contains details
-                                       about the data specific to InformationType.
-    @param[in]  InforamtionBlockSize   The size of the InformationBlock in bytes.
-
-    @retval EFI_SUCCESS                The information was received and interpreted successfully.
-    @retval EFI_UNSUPPORTED            The InformationType is not known.
-    @retval EFI_DEVICE_ERROR           The device reported an error.
-    @retval EFI_INVALID_PARAMETER      This is NULL.
-    @retval EFI_INVALID_PARAMETER      InformationBlock is NULL.
-    @retval EFI_WRITE_PROTECTED        The InformationType cannot be modified using EFI_ADAPTER_INFO_SET_INFO().
-
-  **/
-  public readonly delegate* unmanaged<EFI_ADAPTER_INFORMATION_PROTOCOL*, EFI_GUID*, void*, ulong, EFI_STATUS> SetInformation;
-  /**
-    Get a list of supported information types for this instance of the protocol.
-
-    This function returns a list of InformationType GUIDs that are supported on an
-    adapter with this instance of EFI_ADAPTER_INFORMATION_PROTOCOL. The list is returned
-    in InfoTypesBuffer, and the number of GUID pointers in InfoTypesBuffer is returned in
-    InfoTypesBufferCount.
-
-    @param[in]  This                  A pointer to the EFI_ADAPTER_INFORMATION_PROTOCOL instance.
-    @param[out] InfoTypesBuffer       A pointer to the array of InformationType GUIDs that are supported
-                                      by This.
-    @param[out] InfoTypesBufferCount  A pointer to the number of GUIDs present in InfoTypesBuffer.
-
-    @retval EFI_SUCCESS               The list of information type GUIDs that are supported on this adapter was
-                                      returned in InfoTypesBuffer. The number of information type GUIDs was
-                                      returned in InfoTypesBufferCount.
-    @retval EFI_INVALID_PARAMETER     This is NULL.
-    @retval EFI_INVALID_PARAMETER     InfoTypesBuffer is NULL.
-    @retval EFI_INVALID_PARAMETER     InfoTypesBufferCount is NULL.
-    @retval EFI_OUT_OF_RESOURCES      There is not enough pool memory to store the results.
-
-  **/
-  public readonly delegate* unmanaged<EFI_ADAPTER_INFORMATION_PROTOCOL*, EFI_GUID**, ulong*, EFI_STATUS> GetSupportedTypes;
+  public readonly delegate* unmanaged</* IN */EFI_ADAPTER_INFORMATION_PROTOCOL* /*This*/,/* IN */EFI_GUID* /*InformationType*/,/* OUT */void** /*InformationBlock*/,/* OUT */ulong* /*InformationBlockSize*/, EFI_STATUS> /*EFI_ADAPTER_INFO_GET_INFO*/ GetInformation;
+  public readonly delegate* unmanaged</* IN */EFI_ADAPTER_INFORMATION_PROTOCOL* /*This*/,/* IN */EFI_GUID* /*InformationType*/,/* IN */void* /*InformationBlock*/,/* IN */ulong /*InformationBlockSize*/, EFI_STATUS> /*EFI_ADAPTER_INFO_SET_INFO*/ SetInformation;
+  public readonly delegate* unmanaged</* IN */EFI_ADAPTER_INFORMATION_PROTOCOL* /*This*/,/* OUT */EFI_GUID** /*InfoTypesBuffer*/,/* OUT */ulong* /*InfoTypesBufferCount*/, EFI_STATUS> /*EFI_ADAPTER_INFO_GET_SUPPORTED_TYPES*/ GetSupportedTypes;
 }
 
 // extern EFI_GUID  gEfiAdapterInformationProtocolGuid;

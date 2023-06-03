@@ -80,14 +80,14 @@ public unsafe struct EFI_FX_SAVE_STATE_IA32
   public uint DataOffset;
   public ushort Ds;
   public fixed byte Reserved2[10];
-  public fixed byte St0Mm0[10], Reserved3[6];
-  public fixed byte St1Mm1[10], Reserved4[6];
-  public fixed byte St2Mm2[10], Reserved5[6];
-  public fixed byte St3Mm3[10], Reserved6[6];
-  public fixed byte St4Mm4[10], Reserved7[6];
-  public fixed byte St5Mm5[10], Reserved8[6];
-  public fixed byte St6Mm6[10], Reserved9[6];
-  public fixed byte St7Mm7[10], Reserved10[6];
+  byte St0Mm0[10], Reserved3[6];
+  byte St1Mm1[10], Reserved4[6];
+  byte St2Mm2[10], Reserved5[6];
+  byte St3Mm3[10], Reserved6[6];
+  byte St4Mm4[10], Reserved7[6];
+  byte St5Mm5[10], Reserved8[6];
+  byte St6Mm6[10], Reserved9[6];
+  byte St7Mm7[10], Reserved10[6];
   public fixed byte Xmm0[16];
   public fixed byte Xmm1[16];
   public fixed byte Xmm2[16];
@@ -96,7 +96,7 @@ public unsafe struct EFI_FX_SAVE_STATE_IA32
   public fixed byte Xmm5[16];
   public fixed byte Xmm6[16];
   public fixed byte Xmm7[16];
-  public bytepublic public Reserved11[14 * 16];
+  byte Reserved11[14 * 16];
 }
 
 ///
@@ -178,14 +178,14 @@ public unsafe struct EFI_FX_SAVE_STATE_X64
   public ulong Rip;
   public ulong DataOffset;
   public fixed byte Reserved1[8];
-  public fixed byte St0Mm0[10], Reserved2[6];
-  public fixed byte St1Mm1[10], Reserved3[6];
-  public fixed byte St2Mm2[10], Reserved4[6];
-  public fixed byte St3Mm3[10], Reserved5[6];
-  public fixed byte St4Mm4[10], Reserved6[6];
-  public fixed byte St5Mm5[10], Reserved7[6];
-  public fixed byte St6Mm6[10], Reserved8[6];
-  public fixed byte St7Mm7[10], Reserved9[6];
+  byte St0Mm0[10], Reserved2[6];
+  byte St1Mm1[10], Reserved3[6];
+  byte St2Mm2[10], Reserved4[6];
+  byte St3Mm3[10], Reserved5[6];
+  byte St4Mm4[10], Reserved6[6];
+  byte St5Mm5[10], Reserved7[6];
+  byte St6Mm6[10], Reserved8[6];
+  byte St7Mm7[10], Reserved9[6];
   public fixed byte Xmm0[16];
   public fixed byte Xmm1[16];
   public fixed byte Xmm2[16];
@@ -197,7 +197,7 @@ public unsafe struct EFI_FX_SAVE_STATE_X64
   //
   // NOTE: UEFI 2.0 spec definition as follows.
   //
-  public bytepublic public Reserved11[14 * 16];
+  byte Reserved11[14 * 16];
 }
 
 ///
@@ -841,6 +841,32 @@ public unsafe struct EFI_SYSTEM_CONTEXT
 // DebugSupport callback function prototypes
 //
 
+// /**
+//   Registers and enables an exception callback function for the specified exception.
+// 
+//   @param  ExceptionType         Exception types in EBC, IA-32, x64, or IPF.
+//   @param  SystemContext         Exception content.
+// 
+// **/
+// typedef
+// VOID
+// (EFIAPI *EFI_EXCEPTION_CALLBACK)(
+//   IN     EFI_EXCEPTION_TYPE               ExceptionType,
+//   IN OUT EFI_SYSTEM_CONTEXT               SystemContext
+//   );
+
+// /**
+//   Registers and enables the on-target debug agent's periodic entry point.
+// 
+//   @param  SystemContext         Exception content.
+// 
+// **/
+// typedef
+// VOID
+// (EFIAPI *EFI_PERIODIC_CALLBACK)(
+//   IN OUT EFI_SYSTEM_CONTEXT               SystemContext
+//   );
+
 ///
 /// Machine type definition
 ///
@@ -858,6 +884,94 @@ public enum EFI_INSTRUCTION_SET_ARCHITECTURE
 // DebugSupport member function definitions
 //
 
+// /**
+//   Returns the maximum value that may be used for the ProcessorIndex parameter in
+//   RegisterPeriodicCallback() and RegisterExceptionCallback().
+// 
+//   @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
+//   @param  MaxProcessorIndex     Pointer to a caller-allocated ulong in which the maximum supported
+//                                 processor index is returned.
+// 
+//   @retval EFI_SUCCESS           The function completed successfully.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_GET_MAXIMUM_PROCESSOR_INDEX)(
+//   IN EFI_DEBUG_SUPPORT_PROTOCOL          *This,
+//   OUT ulong                              *MaxProcessorIndex
+//   );
+
+// /**
+//   Registers a function to be called back periodically in interrupt context.
+// 
+//   @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
+//   @param  ProcessorIndex        Specifies which processor the callback function applies to.
+//   @param  PeriodicCallback      A pointer to a function of type PERIODIC_CALLBACK that is the main
+//                                 periodic entry point of the debug agent.
+// 
+//   @retval EFI_SUCCESS           The function completed successfully.
+//   @retval EFI_ALREADY_STARTED   Non-NULL PeriodicCallback parameter when a callback
+//                                 function was previously registered.
+//   @retval EFI_OUT_OF_RESOURCES  System has insufficient memory resources to register new callback
+//                                 function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_REGISTER_PERIODIC_CALLBACK)(
+//   IN EFI_DEBUG_SUPPORT_PROTOCOL          *This,
+//   IN ulong                               ProcessorIndex,
+//   IN EFI_PERIODIC_CALLBACK               PeriodicCallback
+//   );
+
+// /**
+//   Registers a function to be called when a given processor exception occurs.
+// 
+//   @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
+//   @param  ProcessorIndex        Specifies which processor the callback function applies to.
+//   @param  ExceptionCallback     A pointer to a function of type EXCEPTION_CALLBACK that is called
+//                                 when the processor exception specified by ExceptionType occurs.
+//   @param  ExceptionType         Specifies which processor exception to hook.
+// 
+//   @retval EFI_SUCCESS           The function completed successfully.
+//   @retval EFI_ALREADY_STARTED   Non-NULL PeriodicCallback parameter when a callback
+//                                 function was previously registered.
+//   @retval EFI_OUT_OF_RESOURCES  System has insufficient memory resources to register new callback
+//                                 function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_REGISTER_EXCEPTION_CALLBACK)(
+//   IN EFI_DEBUG_SUPPORT_PROTOCOL          *This,
+//   IN ulong                               ProcessorIndex,
+//   IN EFI_EXCEPTION_CALLBACK              ExceptionCallback,
+//   IN EFI_EXCEPTION_TYPE                  ExceptionType
+//   );
+
+// /**
+//   Invalidates processor instruction cache for a memory range. Subsequent execution in this range
+//   causes a fresh memory fetch to retrieve code to be executed.
+// 
+//   @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
+//   @param  ProcessorIndex        Specifies which processor's instruction cache is to be invalidated.
+//   @param  Start                 Specifies the physical base of the memory range to be invalidated.
+//   @param  Length                Specifies the minimum number of bytes in the processor's instruction
+//                                 cache to invalidate.
+// 
+//   @retval EFI_SUCCESS           The function completed successfully.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_INVALIDATE_INSTRUCTION_CACHE)(
+//   IN EFI_DEBUG_SUPPORT_PROTOCOL          *This,
+//   IN ulong                               ProcessorIndex,
+//   IN void                                *Start,
+//   IN ulong                              Length
+//   );
+
 ///
 /// This protocol provides the services to allow the debug agent to register
 /// callback functions that are called either periodically or when specific
@@ -870,65 +984,10 @@ public unsafe struct EFI_DEBUG_SUPPORT_PROTOCOL
   /// Declares the processor architecture for this instance of the EFI Debug Support protocol.
   ///
   public EFI_INSTRUCTION_SET_ARCHITECTURE Isa;
-  /**
-    Returns the maximum value that may be used for the ProcessorIndex parameter in
-    RegisterPeriodicCallback() and RegisterExceptionCallback().
-
-    @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
-    @param  MaxProcessorIndex     Pointer to a caller-allocated ulong in which the maximum supported
-                                  processor index is returned.
-
-    @retval EFI_SUCCESS           The function completed successfully.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DEBUG_SUPPORT_PROTOCOL*, ulong*, EFI_STATUS> GetMaximumProcessorIndex;
-  /**
-    Registers a function to be called back periodically in interrupt context.
-
-    @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
-    @param  ProcessorIndex        Specifies which processor the callback function applies to.
-    @param  PeriodicCallback      A pointer to a function of type PERIODIC_CALLBACK that is the main
-                                  periodic entry point of the debug agent.
-
-    @retval EFI_SUCCESS           The function completed successfully.
-    @retval EFI_ALREADY_STARTED   Non-NULL PeriodicCallback parameter when a callback
-                                  function was previously registered.
-    @retval EFI_OUT_OF_RESOURCES  System has insufficient memory resources to register new callback
-                                  function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DEBUG_SUPPORT_PROTOCOL*, ulong, EFI_PERIODIC_CALLBACK, EFI_STATUS> RegisterPeriodicCallback;
-  /**
-    Registers a function to be called when a given processor exception occurs.
-
-    @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
-    @param  ProcessorIndex        Specifies which processor the callback function applies to.
-    @param  ExceptionCallback     A pointer to a function of type EXCEPTION_CALLBACK that is called
-                                  when the processor exception specified by ExceptionType occurs.
-    @param  ExceptionType         Specifies which processor exception to hook.
-
-    @retval EFI_SUCCESS           The function completed successfully.
-    @retval EFI_ALREADY_STARTED   Non-NULL PeriodicCallback parameter when a callback
-                                  function was previously registered.
-    @retval EFI_OUT_OF_RESOURCES  System has insufficient memory resources to register new callback
-                                  function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DEBUG_SUPPORT_PROTOCOL*, ulong, EFI_EXCEPTION_CALLBACK, EFI_EXCEPTION_TYPE, EFI_STATUS> RegisterExceptionCallback;
-  /**
-    Invalidates processor instruction cache for a memory range. Subsequent execution in this range
-    causes a fresh memory fetch to retrieve code to be executed.
-
-    @param  This                  A pointer to the EFI_DEBUG_SUPPORT_PROTOCOL instance.
-    @param  ProcessorIndex        Specifies which processor's instruction cache is to be invalidated.
-    @param  Start                 Specifies the physical base of the memory range to be invalidated.
-    @param  Length                Specifies the minimum number of bytes in the processor's instruction
-                                  cache to invalidate.
-
-    @retval EFI_SUCCESS           The function completed successfully.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DEBUG_SUPPORT_PROTOCOL*, ulong, void*, ulong, EFI_STATUS> InvalidateInstructionCache;
+  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* OUT */ulong* /*MaxProcessorIndex*/, EFI_STATUS> /*EFI_GET_MAXIMUM_PROCESSOR_INDEX*/ GetMaximumProcessorIndex;
+  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */EFI_PERIODIC_CALLBACK /*PeriodicCallback*/, EFI_STATUS> /*EFI_REGISTER_PERIODIC_CALLBACK*/ RegisterPeriodicCallback;
+  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */EFI_EXCEPTION_CALLBACK /*ExceptionCallback*/,/* IN */EFI_EXCEPTION_TYPE /*ExceptionType*/, EFI_STATUS> /*EFI_REGISTER_EXCEPTION_CALLBACK*/ RegisterExceptionCallback;
+  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */void* /*Start*/,/* IN */ulong /*Length*/, EFI_STATUS> /*EFI_INVALIDATE_INSTRUCTION_CACHE*/ InvalidateInstructionCache;
 }
 
 // extern EFI_GUID  gEfiDebugSupportProtocolGuid;

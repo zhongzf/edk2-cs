@@ -27,9 +27,61 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_ISA_HC_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
       0xfad7933a, 0x6c21, 0x4234, new byte[] { 0xa4, 0x34, 0x0a, 0x8a, 0x0d, 0x2b, 0x07, 0x81 });
 
-  typedef struct _EFI_ISA_HC_PROTOCOL  EFI_ISA_HC_PROTOCOL;
-typedef struct _EFI_ISA_HC_PROTOCOL  *PEFI_ISA_HC_PROTOCOL;
+  //  typedef struct _EFI_ISA_HC_PROTOCOL  EFI_ISA_HC_PROTOCOL;
+  //typedef struct _EFI_ISA_HC_PROTOCOL  *PEFI_ISA_HC_PROTOCOL;
 
+  // /**
+  //   Open I/O aperture.
+  // 
+  //   This function opens an I/O aperture in a ISA Host Controller for the I/O addresses
+  //   specified by IoAddress to IoAddress + IoLength - 1. It may be possible that a
+  //   single hardware aperture may be used for more than one device. This function
+  //   tracks the number of times that each aperture is referenced, and does not close
+  //   the hardware aperture (via CloseIoAperture()) until there are no more references to it.
+  // 
+  //   @param This             A pointer to this instance of the EFI_ISA_HC_PROTOCOL.
+  //   @param IoAddress        An unsigned integer that specifies the first byte of the
+  //                           I/O space required.
+  //   @param IoLength         An unsigned integer that specifies the number of bytes
+  //                           of the I/O space required.
+  //   @param IoApertureHandle A pointer to the returned I/O aperture handle. This
+  //                           value can be used on subsequent calls to CloseIoAperture().
+  // 
+  //   @retval EFI_SUCCESS          The I/O aperture was opened successfully.
+  //   @retval EFI_UNSUPPORTED      The ISA Host Controller is a subtractive-decode controller.
+  //   @retval EFI_OUT_OF_RESOURCES There is no available I/O aperture.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_ISA_HC_OPEN_IO)(
+  //   IN CONST EFI_ISA_HC_PROTOCOL  *This,
+  //   IN ushort                     IoAddress,
+  //   IN ushort                     IoLength,
+  //   OUT ulong                    *IoApertureHandle
+  //   );
+
+  // /**
+  //   Close I/O aperture.
+  // 
+  //   This function closes a previously opened I/O aperture handle. If there are no
+  //   more I/O aperture handles that refer to the hardware I/O aperture resource,
+  //   then the hardware I/O aperture is closed. It may be possible that a single
+  //   hardware aperture may be used for more than one device. This function tracks
+  //   the number of times that each aperture is referenced, and does not close the
+  //   hardware aperture (via CloseIoAperture()) until there are no more references to it.
+  // 
+  //   @param This             A pointer to this instance of the EFI_ISA_HC_PROTOCOL.
+  //   @param IoApertureHandle The I/O aperture handle previously returned from a
+  //                           call to OpenIoAperture().
+  // 
+  //   @retval EFI_SUCCESS     The IO aperture was closed successfully.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_ISA_HC_CLOSE_IO)(
+  //   IN CONST EFI_ISA_HC_PROTOCOL      *This,
+  //   IN ulong                         IoApertureHandle
+  //   );
 }
 
 ///
@@ -46,48 +98,11 @@ public unsafe struct EFI_ISA_HC_PROTOCOL
   ///
   /// Open an I/O aperture.
   ///
-  /**
-    Open I/O aperture.
-
-    This function opens an I/O aperture in a ISA Host Controller for the I/O addresses
-    specified by IoAddress to IoAddress + IoLength - 1. It may be possible that a
-    single hardware aperture may be used for more than one device. This function
-    tracks the number of times that each aperture is referenced, and does not close
-    the hardware aperture (via CloseIoAperture()) until there are no more references to it.
-
-    @param This             A pointer to this instance of the EFI_ISA_HC_PROTOCOL.
-    @param IoAddress        An unsigned integer that specifies the first byte of the
-                            I/O space required.
-    @param IoLength         An unsigned integer that specifies the number of bytes
-                            of the I/O space required.
-    @param IoApertureHandle A pointer to the returned I/O aperture handle. This
-                            value can be used on subsequent calls to CloseIoAperture().
-
-    @retval EFI_SUCCESS          The I/O aperture was opened successfully.
-    @retval EFI_UNSUPPORTED      The ISA Host Controller is a subtractive-decode controller.
-    @retval EFI_OUT_OF_RESOURCES There is no available I/O aperture.
-  **/
-  public readonly delegate* unmanaged<CONST, ushort, ushort, ulong*, EFI_STATUS> OpenIoAperture;
+  public readonly delegate* unmanaged</* IN CONST */EFI_ISA_HC_PROTOCOL* /*This*/,/* IN */ushort /*IoAddress*/,/* IN */ushort /*IoLength*/,/* OUT */ulong* /*IoApertureHandle*/, EFI_STATUS> /*EFI_ISA_HC_OPEN_IO*/ OpenIoAperture;
   ///
   /// Close an I/O aperture.
   ///
-  /**
-    Close I/O aperture.
-
-    This function closes a previously opened I/O aperture handle. If there are no
-    more I/O aperture handles that refer to the hardware I/O aperture resource,
-    then the hardware I/O aperture is closed. It may be possible that a single
-    hardware aperture may be used for more than one device. This function tracks
-    the number of times that each aperture is referenced, and does not close the
-    hardware aperture (via CloseIoAperture()) until there are no more references to it.
-
-    @param This             A pointer to this instance of the EFI_ISA_HC_PROTOCOL.
-    @param IoApertureHandle The I/O aperture handle previously returned from a
-                            call to OpenIoAperture().
-
-    @retval EFI_SUCCESS     The IO aperture was closed successfully.
-  **/
-  public readonly delegate* unmanaged<CONST, ulong, EFI_STATUS> CloseIoAperture;
+  public readonly delegate* unmanaged</* IN CONST */EFI_ISA_HC_PROTOCOL* /*This*/,/* IN */ulong /*IoApertureHandle*/, EFI_STATUS> /*EFI_ISA_HC_CLOSE_IO*/ CloseIoAperture;
 }
 
 ///

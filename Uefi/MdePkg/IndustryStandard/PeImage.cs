@@ -316,7 +316,7 @@ public unsafe struct Misc
 {
   public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
   union {
-   public uint PhysicalAddress;
+    public uint PhysicalAddress;
   public uint VirtualSize;
 }
 uint VirtualAddress;
@@ -339,15 +339,15 @@ public unsafe partial class EFI
   //
   // Section Flags Values
   //
-  public const ulong EFI_IMAGE_SCN_TYPE_NO_PAD = BIT3        ///< 0x00000008  ; /// < Reserved.
-public const ulong EFI_IMAGE_SCN_CNT_CODE = BIT5; /// < 0x00000020
+  public const ulong EFI_IMAGE_SCN_TYPE_NO_PAD = BIT3; /// < 0x00000008  / /// < Reserved.
+  public const ulong EFI_IMAGE_SCN_CNT_CODE = BIT5; /// < 0x00000020
   public const ulong EFI_IMAGE_SCN_CNT_INITIALIZED_DATA = BIT6; /// < 0x00000040
   public const ulong EFI_IMAGE_SCN_CNT_UNINITIALIZED_DATA = BIT7; /// < 0x00000080
 
-  public const ulong EFI_IMAGE_SCN_LNK_OTHER = BIT8                    ///< 0x00000100  ; /// < Reserved.
-public const ulong EFI_IMAGE_SCN_LNK_INFO = BIT9                    ///< 0x00000200  ; /// < Section contains comments or some other type of information.
-public const ulong EFI_IMAGE_SCN_LNK_REMOVE = BIT11                   ///< 0x00000800  ; /// < Section contents will not become part of image.
-public const ulong EFI_IMAGE_SCN_LNK_COMDAT = BIT12; /// < 0x00001000
+  public const ulong EFI_IMAGE_SCN_LNK_OTHER = BIT8; /// < 0x00000100  / /// < Reserved.
+  public const ulong EFI_IMAGE_SCN_LNK_INFO = BIT9; /// < 0x00000200  / /// < Section contains comments or some other type of information.
+  public const ulong EFI_IMAGE_SCN_LNK_REMOVE = BIT11; /// < 0x00000800  / /// < Section contents will not become part of image.
+  public const ulong EFI_IMAGE_SCN_LNK_COMDAT = BIT12; /// < 0x00001000
 
   public const ulong EFI_IMAGE_SCN_ALIGN_1BYTES = BIT20; /// < 0x00100000
   public const ulong EFI_IMAGE_SCN_ALIGN_2BYTES = BIT21; /// < 0x00200000
@@ -569,7 +569,7 @@ public unsafe partial class EFI
 public unsafe struct Type
 {
   union {
-   public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
+    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
   public uint VirtualAddress;   ///< Virtual address of line number.
 }
 ushort Linenumber;       ///< Line number.
@@ -656,7 +656,7 @@ public unsafe struct EFI_IMAGE_IMPORT_BY_NAME
 public unsafe struct u1
 {
   union {
-   public uint Function;
+    public uint Function;
   public uint Ordinal;
   public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
 }
@@ -793,24 +793,24 @@ public unsafe struct EFI_IMAGE_RESOURCE_DIRECTORY
 ///
 /// Resource directory entry format.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct s
-{
-  union {
-    struct {
-     public uint NameOffset = 31;
-  public uint NameIsString = 1;
-}
-uint Id;
-  } u1;
-union {
-    uint    OffsetToData;
-struct {
-      uint OffsetToDirectory : 31;
-uint DataIsDirectory   : 1;
-    } s;
-  } u2;
-} EFI_IMAGE_RESOURCE_DIRECTORY_ENTRY;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct s
+//{
+//  union {
+//    struct {
+//      public uint NameOffset = 31;
+//  public uint NameIsString = 1;
+//}
+//uint Id;
+//  } u1;
+//union {
+//    uint    OffsetToData;
+//struct {
+//      uint OffsetToDirectory : 31;
+//uint DataIsDirectory   : 1;
+//    } s;
+//  } u2;
+//} EFI_IMAGE_RESOURCE_DIRECTORY_ENTRY;
 
 ///
 /// Resource directory entry for string.

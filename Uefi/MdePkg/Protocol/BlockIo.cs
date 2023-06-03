@@ -34,6 +34,99 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLOCK_IO { EFI_BLOCK_IO_PROTOCOL Value; public static implicit operator EFI_BLOCK_IO(EFI_BLOCK_IO_PROTOCOL value) => new EFI_BLOCK_IO() { Value = value }; public static implicit operator EFI_BLOCK_IO_PROTOCOL(EFI_BLOCK_IO value) => value.Value; }
 
+// /**
+//   Reset the Block Device.
+// 
+//   @param  This                 Indicates a pointer to the calling context.
+//   @param  ExtendedVerification Driver may perform diagnostics on reset.
+// 
+//   @retval EFI_SUCCESS          The device was reset.
+//   @retval EFI_DEVICE_ERROR     The device is not functioning properly and could
+//                                not be reset.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_BLOCK_RESET)(
+//   IN EFI_BLOCK_IO_PROTOCOL          *This,
+//   IN bool                        ExtendedVerification
+//   );
+
+// /**
+//   Read BufferSize bytes from Lba into Buffer.
+// 
+//   @param  This       Indicates a pointer to the calling context.
+//   @param  MediaId    Id of the media, changes every time the media is replaced.
+//   @param  Lba        The starting Logical Block Address to read from
+//   @param  BufferSize Size of Buffer, must be a multiple of device block size.
+//   @param  Buffer     A pointer to the destination buffer for the data. The caller is
+//                      responsible for either having implicit or explicit ownership of the buffer.
+// 
+//   @retval EFI_SUCCESS           The data was read correctly from the device.
+//   @retval EFI_DEVICE_ERROR      The device reported an error while performing the read.
+//   @retval EFI_NO_MEDIA          There is no media in the device.
+//   @retval EFI_MEDIA_CHANGED     The MediaId does not matched the current device.
+//   @retval EFI_BAD_BUFFER_SIZE   The Buffer was not a multiple of the block size of the device.
+//   @retval EFI_INVALID_PARAMETER The read request contains LBAs that are not valid,
+//                                 or the buffer is not on proper alignment.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_BLOCK_READ)(
+//   IN EFI_BLOCK_IO_PROTOCOL          *This,
+//   IN uint                         MediaId,
+//   IN EFI_LBA                        Lba,
+//   IN ulong                          BufferSize,
+//   OUT void                          *Buffer
+//   );
+
+// /**
+//   Write BufferSize bytes from Lba into Buffer.
+// 
+//   @param  This       Indicates a pointer to the calling context.
+//   @param  MediaId    The media ID that the write request is for.
+//   @param  Lba        The starting logical block address to be written. The caller is
+//                      responsible for writing to only legitimate locations.
+//   @param  BufferSize Size of Buffer, must be a multiple of device block size.
+//   @param  Buffer     A pointer to the source buffer for the data.
+// 
+//   @retval EFI_SUCCESS           The data was written correctly to the device.
+//   @retval EFI_WRITE_PROTECTED   The device can not be written to.
+//   @retval EFI_DEVICE_ERROR      The device reported an error while performing the write.
+//   @retval EFI_NO_MEDIA          There is no media in the device.
+//   @retval EFI_MEDIA_CHNAGED     The MediaId does not matched the current device.
+//   @retval EFI_BAD_BUFFER_SIZE   The Buffer was not a multiple of the block size of the device.
+//   @retval EFI_INVALID_PARAMETER The write request contains LBAs that are not valid,
+//                                 or the buffer is not on proper alignment.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_BLOCK_WRITE)(
+//   IN EFI_BLOCK_IO_PROTOCOL          *This,
+//   IN uint                         MediaId,
+//   IN EFI_LBA                        Lba,
+//   IN ulong                          BufferSize,
+//   IN void                           *Buffer
+//   );
+
+// /**
+//   Flush the Block Device.
+// 
+//   @param  This              Indicates a pointer to the calling context.
+// 
+//   @retval EFI_SUCCESS       All outstanding data was written to the device
+//   @retval EFI_DEVICE_ERROR  The device reported an error while writting back the data
+//   @retval EFI_NO_MEDIA      There is no media in the device.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_BLOCK_FLUSH)(
+//   IN EFI_BLOCK_IO_PROTOCOL  *This
+//   );
+
 /**
   Block IO read only mode data and updated only via members of BlockIO
 **/
@@ -142,70 +235,10 @@ public unsafe struct EFI_BLOCK_IO_PROTOCOL
   ///
   public EFI_BLOCK_IO_MEDIA* Media;
 
-  /**
-    Reset the Block Device.
-
-    @param  This                 Indicates a pointer to the calling context.
-    @param  ExtendedVerification Driver may perform diagnostics on reset.
-
-    @retval EFI_SUCCESS          The device was reset.
-    @retval EFI_DEVICE_ERROR     The device is not functioning properly and could
-                                 not be reset.
-
-  **/
-  public readonly delegate* unmanaged<EFI_BLOCK_IO_PROTOCOL*, bool, EFI_STATUS> Reset;
-  /**
-    Read BufferSize bytes from Lba into Buffer.
-
-    @param  This       Indicates a pointer to the calling context.
-    @param  MediaId    Id of the media, changes every time the media is replaced.
-    @param  Lba        The starting Logical Block Address to read from
-    @param  BufferSize Size of Buffer, must be a multiple of device block size.
-    @param  Buffer     A pointer to the destination buffer for the data. The caller is
-                       responsible for either having implicit or explicit ownership of the buffer.
-
-    @retval EFI_SUCCESS           The data was read correctly from the device.
-    @retval EFI_DEVICE_ERROR      The device reported an error while performing the read.
-    @retval EFI_NO_MEDIA          There is no media in the device.
-    @retval EFI_MEDIA_CHANGED     The MediaId does not matched the current device.
-    @retval EFI_BAD_BUFFER_SIZE   The Buffer was not a multiple of the block size of the device.
-    @retval EFI_INVALID_PARAMETER The read request contains LBAs that are not valid,
-                                  or the buffer is not on proper alignment.
-
-  **/
-  public readonly delegate* unmanaged<EFI_BLOCK_IO_PROTOCOL*, uint, EFI_LBA, ulong, void*, EFI_STATUS> ReadBlocks;
-  /**
-    Write BufferSize bytes from Lba into Buffer.
-
-    @param  This       Indicates a pointer to the calling context.
-    @param  MediaId    The media ID that the write request is for.
-    @param  Lba        The starting logical block address to be written. The caller is
-                       responsible for writing to only legitimate locations.
-    @param  BufferSize Size of Buffer, must be a multiple of device block size.
-    @param  Buffer     A pointer to the source buffer for the data.
-
-    @retval EFI_SUCCESS           The data was written correctly to the device.
-    @retval EFI_WRITE_PROTECTED   The device can not be written to.
-    @retval EFI_DEVICE_ERROR      The device reported an error while performing the write.
-    @retval EFI_NO_MEDIA          There is no media in the device.
-    @retval EFI_MEDIA_CHNAGED     The MediaId does not matched the current device.
-    @retval EFI_BAD_BUFFER_SIZE   The Buffer was not a multiple of the block size of the device.
-    @retval EFI_INVALID_PARAMETER The write request contains LBAs that are not valid,
-                                  or the buffer is not on proper alignment.
-
-  **/
-  public readonly delegate* unmanaged<EFI_BLOCK_IO_PROTOCOL*, uint, EFI_LBA, ulong, void*, EFI_STATUS> WriteBlocks;
-  /**
-    Flush the Block Device.
-
-    @param  This              Indicates a pointer to the calling context.
-
-    @retval EFI_SUCCESS       All outstanding data was written to the device
-    @retval EFI_DEVICE_ERROR  The device reported an error while writting back the data
-    @retval EFI_NO_MEDIA      There is no media in the device.
-
-  **/
-  public readonly delegate* unmanaged<EFI_BLOCK_IO_PROTOCOL*, EFI_STATUS> FlushBlocks;
+  public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_BLOCK_RESET*/ Reset;
+  public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_PROTOCOL* /*This*/,/* IN */uint /*MediaId*/,/* IN */EFI_LBA /*Lba*/,/* IN */ulong /*BufferSize*/,/* OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_BLOCK_READ*/ ReadBlocks;
+  public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_PROTOCOL* /*This*/,/* IN */uint /*MediaId*/,/* IN */EFI_LBA /*Lba*/,/* IN */ulong /*BufferSize*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_BLOCK_WRITE*/ WriteBlocks;
+  public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_BLOCK_FLUSH*/ FlushBlocks;
 }
 
 // extern EFI_GUID  gEfiBlockIoProtocolGuid;

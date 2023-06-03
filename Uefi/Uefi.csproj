@@ -8,6 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MdePkg\IndustryStandard\Acpi10.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Acpi63.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Acpi64.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Acpi65.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Cxl11.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Tpm12.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Tpm20.cs" />
+    <Compile Remove="MdePkg\Protocol\DebugSupport.cs" />
+    <Compile Remove="MdePkg\Protocol\LegacySpiController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="MdePkg\" />
     <Folder Include="MdePkg\Uefi\" />
     <Folder Include="MdePkg\Protocol\" />

@@ -48,27 +48,38 @@ public enum EFI_HII_POPUP_SELECTION
   EfiHiiPopupSelectionNo
 }
 
+// /**
+//   Displays a popup window.
+// 
+//   @param  This           A pointer to the EFI_HII_POPUP_PROTOCOL instance.
+//   @param  PopupStyle     Popup style to use.
+//   @param  PopupType      Type of the popup to display.
+//   @param  HiiHandle      HII handle of the string pack containing Message
+//   @param  Message        A message to display in the popup box.
+//   @param  UserSelection  User selection.
+// 
+//   @retval EFI_SUCCESS            The popup box was successfully displayed.
+//   @retval EFI_INVALID_PARAMETER  HiiHandle and Message do not define a valid HII string.
+//   @retval EFI_INVALID_PARAMETER  PopupType is not one of the values defined by this specification.
+//   @retval EFI_OUT_OF_RESOURCES   There are not enough resources available to display the popup box.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_HII_CREATE_POPUP)(
+//   IN  EFI_HII_POPUP_PROTOCOL  *This,
+//   IN  EFI_HII_POPUP_STYLE     PopupStyle,
+//   IN  EFI_HII_POPUP_TYPE      PopupType,
+//   IN  EFI_HII_HANDLE          HiiHandle,
+//   IN  EFI_STRING_ID           Message,
+//   OUT EFI_HII_POPUP_SELECTION *UserSelection OPTIONAL
+//   );
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_POPUP_PROTOCOL
 {
   public ulong Revision;
-  /**
-    Displays a popup window.
-
-    @param  This           A pointer to the EFI_HII_POPUP_PROTOCOL instance.
-    @param  PopupStyle     Popup style to use.
-    @param  PopupType      Type of the popup to display.
-    @param  HiiHandle      HII handle of the string pack containing Message
-    @param  Message        A message to display in the popup box.
-    @param  UserSelection  User selection.
-
-    @retval EFI_SUCCESS            The popup box was successfully displayed.
-    @retval EFI_INVALID_PARAMETER  HiiHandle and Message do not define a valid HII string.
-    @retval EFI_INVALID_PARAMETER  PopupType is not one of the values defined by this specification.
-    @retval EFI_OUT_OF_RESOURCES   There are not enough resources available to display the popup box.
-
-  **/
-  public readonly delegate* unmanaged<EFI_HII_POPUP_PROTOCOL*, EFI_HII_POPUP_STYLE, EFI_HII_POPUP_TYPE, EFI_HII_HANDLE, EFI_STRING_ID, EFI_HII_POPUP_SELECTION*, EFI_STATUS> CreatePopup;
+  public readonly delegate* unmanaged</* IN */EFI_HII_POPUP_PROTOCOL* /*This*/,/* IN */EFI_HII_POPUP_STYLE /*PopupStyle*/,/* IN */EFI_HII_POPUP_TYPE /*PopupType*/,/* IN */EFI_HII_HANDLE /*HiiHandle*/,/* IN */EFI_STRING_ID /*Message*/,/* OUT */EFI_HII_POPUP_SELECTION* /*UserSelection*/, EFI_STATUS> /*EFI_HII_CREATE_POPUP*/ CreatePopup;
 }
 
 // extern EFI_GUID  gEfiHiiPopupProtocolGuid;

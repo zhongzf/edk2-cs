@@ -308,6 +308,791 @@ public unsafe struct EFI_KMS_KEY_ATTRIBUTE
   public EFI_STATUS KeyAttributeStatus;
 }
 
+// /**
+//   Get the current status of the key management service.
+// 
+//   @param[in]      This              Pointer to the EFI_KMS_PROTOCOL instance.
+// 
+//   @retval EFI_SUCCESS               The KMS is ready for use.
+//   @retval EFI_NOT_READY             No connection to the KMS is available.
+//   @retval EFI_NO_MAPPING            No valid connection configuration exists for the KMS.
+//   @retval EFI_NO_RESPONSE           No response was received from the KMS.
+//   @retval EFI_DEVICE_ERROR          An error occurred when attempting to access the KMS.
+//   @retval EFI_INVALID_PARAMETER     This is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_GET_SERVICE_STATUS)(
+//   IN EFI_KMS_PROTOCOL           *This
+//   );
+
+// /**
+//   Register client information with the supported KMS.
+// 
+//   @param[in]      This              Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client            Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in, out] ClientDataSize    Pointer to the size, in bytes, of an arbitrary block of
+//                                     data specified by the ClientData parameter. This
+//                                     parameter may be NULL, in which case the ClientData
+//                                     parameter will be ignored and no data will be
+//                                     transferred to or from the KMS. If the parameter is
+//                                     not NULL, then ClientData must be a valid pointer.
+//                                     If the value pointed to is 0, no data will be transferred
+//                                     to the KMS, but data may be returned by the KMS.
+//                                     For all non-zero values *ClientData will be transferred
+//                                     to the KMS, which may also return data to the caller.
+//                                     In all cases, the value upon return to the caller will
+//                                     be the size of the data block returned to the caller,
+//                                     which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData        Pointer to a pointer to an arbitrary block of data of
+//                                     *ClientDataSize that is to be passed directly to the
+//                                     KMS if it supports the use of client data. This
+//                                     parameter may be NULL if and only if the
+//                                     ClientDataSize parameter is also NULL. Upon return to
+//                                     the caller, *ClientData points to a block of data of
+//                                     *ClientDataSize that was returned from the KMS.
+//                                     If the returned value for *ClientDataSize is zero,
+//                                     then the returned value for *ClientData must be NULL
+//                                     and should be ignored by the caller. The KMS protocol
+//                                     consumer is responsible for freeing all valid buffers
+//                                     used for client data regardless of whether they are
+//                                     allocated by the caller for input to the function or by
+//                                     the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS               The client information has been accepted by the KMS.
+//   @retval EFI_NOT_READY             No connection to the KMS is available.
+//   @retval EFI_NO_RESPONSE           There was no response from the device or the key server.
+//   @retval EFI_ACCESS_DENIED         Access was denied by the device or the key server.
+//   @retval EFI_DEVICE_ERROR          An error occurred when attempting to access the KMS.
+//   @retval EFI_OUT_OF_RESOURCES      Required resources were not available to perform the function.
+//   @retval EFI_INVALID_PARAMETER     This is NULL.
+//   @retval EFI_UNSUPPORTED           The KMS does not support the use of client identifiers.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_REGISTER_CLIENT)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Request that the KMS generate one or more new keys and associate them with key identifiers.
+//   The key value(s) is returned to the caller.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
+//                                      processed by this operation. On return, this number
+//                                      will be updated with the number of key descriptors
+//                                      successfully processed.
+//   @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
+//                                      structures which describe the keys to be generated.
+//                                      On input, the KeyIdentifierSize and the KeyIdentifier
+//                                      may specify an identifier to be used for the key,
+//                                      but this is not required. The KeyFormat field must
+//                                      specify a key format GUID reported as supported by
+//                                      the KeyFormats field of the EFI_KMS_PROTOCOL.
+//                                      The value for this field in the first key descriptor will
+//                                      be considered the default value for subsequent key
+//                                      descriptors requested in this operation if those key
+//                                      descriptors have a NULL GUID in the key format field.
+//                                      On output, the KeyIdentifierSize and KeyIdentifier fields
+//                                      will specify an identifier for the key which will be either
+//                                      the original identifier if one was provided, or an identifier
+//                                      generated either by the KMS or the KMS protocol
+//                                      implementation. The KeyFormat field will be updated
+//                                      with the GUID used to generate the key if it was a
+//                                      NULL GUID, and the KeyValue field will contain a pointer
+//                                      to memory containing the key value for the generated
+//                                      key. Memory for both the KeyIdentifier and the KeyValue
+//                                      fields will be allocated with the BOOT_SERVICES_DATA
+//                                      type and must be freed by the caller when it is no longer
+//                                      needed. Also, the KeyStatus field must reflect the result
+//                                      of the request relative to that key.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully generated and retrieved all requested keys.
+//   @retval EFI_UNSUPPORTED            This function is not supported by the KMS. --OR--
+//                                      One (or more) of the key requests submitted is not supported by
+//                                      the KMS. Check individual key request(s) to see which ones
+//                                      may have been processed.
+//   @retval EFI_OUT_OF_RESOURCES       Required resources were not available to perform the function.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      request(s) to see which ones may have been processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either no id was
+//                                      provided or an invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           An error occurred when attempting to access the KMS. Check
+//                                      individual key request(s) to see which ones may have been
+//                                      processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyDescriptorCount is NULL, or Keys is NULL.
+//   @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
+//                                      could not be processed properly. KeyDescriptorCount
+//                                      contains the number of structures which were successfully
+//                                      processed. Individual structures will reflect the status of the
+//                                      processing for that structure.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_CREATE_KEY)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN OUT ushort                 *KeyDescriptorCount,
+//   IN OUT EFI_KMS_KEY_DESCRIPTOR *KeyDescriptors,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Retrieve an existing key.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
+//                                      processed by this operation. On return, this number
+//                                      will be updated with the number of key descriptors
+//                                      successfully processed.
+//   @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
+//                                      structures which describe the keys to be retrieved
+//                                      from the KMS.
+//                                      On input, the KeyIdentifierSize and the KeyIdentifier
+//                                      must specify an identifier to be used to retrieve a
+//                                      specific key. All other fields in the descriptor should
+//                                      be NULL.
+//                                      On output, the KeyIdentifierSize and KeyIdentifier fields
+//                                      will be unchanged, while the KeyFormat and KeyValue
+//                                      fields will be updated values associated with this key
+//                                      identifier. Memory for the KeyValue field will be
+//                                      allocated with the BOOT_SERVICES_DATA type and
+//                                      must be freed by the caller when it is no longer needed.
+//                                      Also, the KeyStatus field will reflect the result of the
+//                                      request relative to the individual key descriptor.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully retrieved all requested keys.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate resources for the method processing.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      request(s) to see which ones may have been processed.
+//   @retval EFI_BUFFER_TOO_SMALL       If multiple keys are associated with a single identifier, and the
+//                                      KeyValue buffer does not contain enough structures
+//                                      (KeyDescriptorCount) to contain all the key data, then
+//                                      the available structures will be filled and
+//                                      KeyDescriptorCount will be updated to indicate the
+//                                      number of keys which could not be processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key request(s) to
+//                                      see which ones may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyDescriptorCount is NULL, or Keys is NULL.
+//   @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
+//                                      could not be processed properly. KeyDescriptorCount
+//                                      contains the number of structures which were successfully
+//                                      processed. Individual structures will reflect the status of the
+//                                      processing for that structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_GET_KEY)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN OUT ushort                 *KeyDescriptorCount,
+//   IN OUT EFI_KMS_KEY_DESCRIPTOR *KeyDescriptors,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Add a new key.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
+//                                      processed by this operation. On normal return, this
+//                                      number will be updated with the number of key
+//                                      descriptors successfully processed.
+//   @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
+//                                      structures which describe the keys to be added.
+//                                      On input, the KeyId field for first key must contain
+//                                      valid identifier data to be used for adding a key to
+//                                      the KMS. The values for these fields in this key
+//                                      definition will be considered default values for
+//                                      subsequent keys requested in this operation. A value
+//                                      of 0 in any subsequent KeyId field will be replaced
+//                                      with the current default value. The KeyFormat and
+//                                      KeyValue fields for each key to be added must contain
+//                                      consistent values to be associated with the given KeyId.
+//                                      On return, the KeyStatus field will reflect the result
+//                                      of the operation for each key request.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully added all requested keys.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      request(s) to see which ones may have been processed.
+//   @retval EFI_BUFFER_TOO_SMALL       If multiple keys are associated with a single identifier, and the
+//                                      KeyValue buffer does not contain enough structures
+//                                      (KeyDescriptorCount) to contain all the key data, then
+//                                      the available structures will be filled and
+//                                      KeyDescriptorCount will be updated to indicate the
+//                                      number of keys which could not be processed
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key request(s) to
+//                                      see which ones may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyDescriptorCount is NULL, or Keys is NULL.
+//   @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
+//                                      could not be processed properly. KeyDescriptorCount
+//                                      contains the number of structures which were successfully
+//                                      processed. Individual structures will reflect the status of the
+//                                      processing for that structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_ADD_KEY)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN OUT ushort                 *KeyDescriptorCount,
+//   IN OUT EFI_KMS_KEY_DESCRIPTOR *KeyDescriptors,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Delete an existing key from the KMS database.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
+//                                      processed by this operation. On normal return, this
+//                                      number will be updated with the number of key
+//                                      descriptors successfully processed.
+//   @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
+//                                      structures which describe the keys to be deleted.
+//                                      On input, the KeyId field for first key must contain
+//                                      valid identifier data to be used for adding a key to
+//                                      the KMS. The values for these fields in this key
+//                                      definition will be considered default values for
+//                                      subsequent keys requested in this operation. A value
+//                                      of 0 in any subsequent KeyId field will be replaced
+//                                      with the current default value. The KeyFormat and
+//                                      KeyValue fields are ignored, but should be 0.
+//                                      On return, the KeyStatus field will reflect the result
+//                                      of the operation for each key request.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully deleted all requested keys.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      request(s) to see which ones may have been processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key request(s) to
+//                                      see which ones may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyDescriptorCount is NULL, or Keys is NULL.
+//   @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
+//                                      could not be processed properly. KeyDescriptorCount
+//                                      contains the number of structures which were successfully
+//                                      processed. Individual structures will reflect the status of the
+//                                      processing for that structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_DELETE_KEY)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN OUT ushort                 *KeyDescriptorCount,
+//   IN OUT EFI_KMS_KEY_DESCRIPTOR *KeyDescriptors,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Get one or more attributes associated with a specified key identifier.
+//   If none are found, the returned attributes count contains a value of zero.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in]      KeyIdentifierSize  Pointer to the size in bytes of the KeyIdentifier variable.
+//   @param[in]      KeyIdentifier      Pointer to the key identifier associated with this key.
+//   @param[in, out] KeyAttributesCount Pointer to the number of EFI_KMS_KEY_ATTRIBUTE
+//                                      structures associated with the Key identifier. If none
+//                                      are found, the count value is zero on return.
+//                                      On input this value reflects the number of KeyAttributes
+//                                      that may be returned.
+//                                      On output, the value reflects the number of completed
+//                                      KeyAttributes structures found.
+//   @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
+//                                      structures associated with the Key Identifier.
+//                                      On input, the fields in the structure should be NULL.
+//                                      On output, the attribute fields will have updated values
+//                                      for attributes associated with this key identifier.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully retrieved all key attributes.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate resources for the method processing.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      attribute request(s) to see which ones may have been
+//                                      processed.
+//   @retval EFI_BUFFER_TOO_SMALL       If multiple key attributes are associated with a single identifier,
+//                                      and the KeyAttributes buffer does not contain enough
+//                                      structures (KeyAttributesCount) to contain all the key
+//                                      attributes data, then the available structures will be filled and
+//                                      KeyAttributesCount will be updated to indicate the
+//                                      number of key attributes which could not be processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
+//                                      request(s) (i.e. key attribute status for each) to see which ones
+//                                      may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyIdentifierSize is NULL , or KeyIdentifier
+//                                      is NULL, or KeyAttributes is NULL, or
+//                                      KeyAttributesSize is NULL.
+//   @retval EFI_NOT_FOUND              The KeyIdentifier could not be found.
+//                                      KeyAttributesCount contains zero. Individual
+//                                      structures will reflect the status of the processing for that
+//                                      structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_GET_KEY_ATTRIBUTES)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN byte                      *KeyIdentifierSize,
+//   IN CONST void                 *KeyIdentifier,
+//   IN OUT ushort                 *KeyAttributesCount,
+//   IN OUT EFI_KMS_KEY_ATTRIBUTE  *KeyAttributes,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Add one or more attributes to a key specified by a key identifier.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in]      KeyIdentifierSize  Pointer to the size in bytes of the KeyIdentifier variable.
+//   @param[in]      KeyIdentifier      Pointer to the key identifier associated with this key.
+//   @param[in, out] KeyAttributesCount Pointer to the number of EFI_KMS_KEY_ATTRIBUTE
+//                                      structures to associate with the Key. On normal returns,
+//                                      this number will be updated with the number of key
+//                                      attributes successfully processed.
+//   @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
+//                                      structures providing the attribute information to
+//                                      associate with the key.
+//                                      On input, the values for the fields in the structure
+//                                      are completely filled in.
+//                                      On return the KeyAttributeStatus field will reflect the
+//                                      result of the operation for each key attribute request.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully added all requested key attributes.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      attribute request(s) to see which ones may have been
+//                                      processed.
+//   @retval EFI_BUFFER_TOO_SMALL       If multiple keys attributes are associated with a single key
+//                                      identifier, and the attributes buffer does not contain
+//                                      enough structures (KeyAttributesCount) to contain all
+//                                      the data, then the available structures will be filled and
+//                                      KeyAttributesCount will be updated to indicate the
+//                                      number of key attributes which could not be processed. The
+//                                      status of each key attribute is also updated indicating success or
+//                                      failure for that attribute in case there are other errors for those
+//                                      attributes that could be processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
+//                                      request(s) (i.e. key attribute status for each) to see which ones
+//                                      may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyAttributesCount is NULL, or KeyAttributes
+//                                      is NULL, or KeyIdentifierSize is NULL, or
+//                                      KeyIdentifer is NULL.
+//   @retval EFI_NOT_FOUND              The KeyIdentifier could not be found. On return the
+//                                      KeyAttributesCount contains the number of attributes
+//                                      processed. Individual structures will reflect the status of the
+//                                      processing for that structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_ADD_KEY_ATTRIBUTES)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN byte                      *KeyIdentifierSize,
+//   IN CONST void                 *KeyIdentifier,
+//   IN OUT ushort                 *KeyAttributesCount,
+//   IN OUT EFI_KMS_KEY_ATTRIBUTE  *KeyAttributes,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Delete attributes to a key specified by a key identifier.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in]      KeyIdentifierSize  Pointer to the size in bytes of the KeyIdentifier variable.
+//   @param[in]      KeyIdentifier      Pointer to the key identifier associated with this key.
+//   @param[in, out] KeyAttributesCount Pointer to the number of EFI_KMS_KEY_ATTRIBUTE
+//                                      structures to associate with the Key.
+//                                      On input, the count value is one or more.
+//                                      On normal returns, this number will be updated with
+//                                      the number of key attributes successfully processed.
+//   @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
+//                                      structures providing the attribute information to
+//                                      associate with the key.
+//                                      On input, the values for the fields in the structure
+//                                      are completely filled in.
+//                                      On return the KeyAttributeStatus field will reflect the
+//                                      result of the operation for each key attribute request.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully deleted all requested key attributes.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      attribute request(s) to see which ones may have been
+//                                      processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
+//                                      request(s) (i.e. key attribute status for each) to see which ones
+//                                      may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyAttributesCount is NULL, or
+//                                      KeyAttributes is NULL, or KeyIdentifierSize
+//                                      is NULL, or KeyIdentifer is NULL.
+//   @retval EFI_NOT_FOUND              The KeyIdentifier could not be found or the attribute
+//                                      could not be found. On return the KeyAttributesCount
+//                                      contains the number of attributes processed. Individual
+//                                      structures will reflect the status of the processing for that
+//                                      structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_DELETE_KEY_ATTRIBUTES)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN byte                      *KeyIdentifierSize,
+//   IN CONST void                 *KeyIdentifier,
+//   IN OUT ushort                 *KeyAttributesCount,
+//   IN OUT EFI_KMS_KEY_ATTRIBUTE  *KeyAttributes,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
+// /**
+//   Retrieve one or more key that has matched all of the specified key attributes.
+// 
+//   @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
+//   @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
+//   @param[in, out] KeyAttributesCount Pointer to a count of the number of key attribute structures
+//                                      that must be matched for each returned key descriptor.
+//                                      On input the count value is one or more.
+//                                      On normal returns, this number will be updated with
+//                                      the number of key attributes successfully processed.
+//   @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
+//                                      structure to search for.
+//                                      On input, the values for the fields in the structure are
+//                                      completely filled in.
+//                                      On return the KeyAttributeStatus field will reflect the
+//                                      result of the operation for each key attribute request.
+//   @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors matched
+//                                      by this operation.
+//                                      On entry, this number will be zero.
+//                                      On return, this number will be updated to the number
+//                                      of key descriptors successfully found.
+//   @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
+//                                      structures which describe the keys from the KMS
+//                                      having the KeyAttribute(s) specified.
+//                                      On input, this pointer will be NULL.
+//                                      On output, the array will contain an
+//                                      EFI_KMS_KEY_DESCRIPTOR structure for each key
+//                                      meeting the search criteria. Memory for the array
+//                                      and all KeyValue fields will be allocated with the
+//                                      EfiBootServicesData type and must be freed by the
+//                                      caller when it is no longer needed. Also, the KeyStatus
+//                                      field of each descriptor will reflect the result of the
+//                                      request relative to that key descriptor.
+//   @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
+//                                      data specified by the ClientData parameter. This
+//                                      parameter may be NULL, in which case the ClientData
+//                                      parameter will be ignored and no data will be
+//                                      transferred to or from the KMS. If the parameter is
+//                                      not NULL, then ClientData must be a valid pointer.
+//                                      If the value pointed to is 0, no data will be transferred
+//                                      to the KMS, but data may be returned by the KMS.
+//                                      For all non-zero values *ClientData will be transferred
+//                                      to the KMS, which may also return data to the caller.
+//                                      In all cases, the value upon return to the caller will
+//                                      be the size of the data block returned to the caller,
+//                                      which will be zero if no data is returned from the KMS.
+//   @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
+//                                      *ClientDataSize that is to be passed directly to the
+//                                      KMS if it supports the use of client data. This
+//                                      parameter may be NULL if and only if the
+//                                      ClientDataSize parameter is also NULL. Upon return to
+//                                      the caller, *ClientData points to a block of data of
+//                                      *ClientDataSize that was returned from the KMS.
+//                                      If the returned value for *ClientDataSize is zero,
+//                                      then the returned value for *ClientData must be NULL
+//                                      and should be ignored by the caller. The KMS protocol
+//                                      consumer is responsible for freeing all valid buffers
+//                                      used for client data regardless of whether they are
+//                                      allocated by the caller for input to the function or by
+//                                      the implementation for output back to the caller.
+// 
+//   @retval EFI_SUCCESS                Successfully retrieved all requested keys.
+//   @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
+//   @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
+//                                      attribute request(s) to see which ones may have been
+//                                      processed.
+//   @retval EFI_BUFFER_TOO_SMALL       If multiple keys are associated with the attribute(s), and the
+//                                      KeyValue buffer does not contain enough structures
+//                                      (KeyDescriptorCount) to contain all the key data, then
+//                                      the available structures will be filled and
+//                                      KeyDescriptorCount will be updated to indicate the
+//                                      number of keys which could not be processed.
+//   @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
+//                                      ClientId is required by the server and either none or an
+//                                      invalid id was provided.
+//   @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
+//                                      request(s) (i.e. key attribute status for each) to see which ones
+//                                      may have been processed.
+//   @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
+//                                      KeyDescriptorCount is NULL, or
+//                                      KeyDescriptors is NULL or KeyAttributes is
+//                                      NULL, or KeyAttributesCount is NULL.
+//   @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_ATTRIBUTE structures could
+//                                      not be processed properly. KeyAttributeCount contains
+//                                      the number of structures which were successfully processed.
+//                                      Individual structures will reflect the status of the processing for
+//                                      that structure.
+//   @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_KMS_GET_KEY_BY_ATTRIBUTES)(
+//   IN EFI_KMS_PROTOCOL           *This,
+//   IN EFI_KMS_CLIENT_INFO        *Client,
+//   IN OUT ulong                  *KeyAttributeCount,
+//   IN OUT EFI_KMS_KEY_ATTRIBUTE  *KeyAttributes,
+//   IN OUT ulong                  *KeyDescriptorCount,
+//   IN OUT EFI_KMS_KEY_DESCRIPTOR *KeyDescriptors,
+//   IN OUT ulong                  *ClientDataSize OPTIONAL,
+//   IN OUT void                   **ClientData OPTIONAL
+//   );
+
 ///
 /// The Key Management Service (KMS) protocol provides services to generate, store, retrieve,
 /// and manage cryptographic keys.
@@ -320,718 +1105,44 @@ public unsafe struct EFI_KMS_PROTOCOL
   /// connected to the KMS, then a call to this function will initiate a connection. This is the
   /// only function that is valid for use prior to the service being marked available.
   ///
-  /**
-    Get the current status of the key management service.
-
-    @param[in]      This              Pointer to the EFI_KMS_PROTOCOL instance.
-
-    @retval EFI_SUCCESS               The KMS is ready for use.
-    @retval EFI_NOT_READY             No connection to the KMS is available.
-    @retval EFI_NO_MAPPING            No valid connection configuration exists for the KMS.
-    @retval EFI_NO_RESPONSE           No response was received from the KMS.
-    @retval EFI_DEVICE_ERROR          An error occurred when attempting to access the KMS.
-    @retval EFI_INVALID_PARAMETER     This is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_STATUS> GetServiceStatus;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_KMS_GET_SERVICE_STATUS*/ GetServiceStatus;
   ///
   /// Register a specific client with the KMS.
   ///
-  /**
-    Register client information with the supported KMS.
-
-    @param[in]      This              Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client            Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in, out] ClientDataSize    Pointer to the size, in bytes, of an arbitrary block of
-                                      data specified by the ClientData parameter. This
-                                      parameter may be NULL, in which case the ClientData
-                                      parameter will be ignored and no data will be
-                                      transferred to or from the KMS. If the parameter is
-                                      not NULL, then ClientData must be a valid pointer.
-                                      If the value pointed to is 0, no data will be transferred
-                                      to the KMS, but data may be returned by the KMS.
-                                      For all non-zero values *ClientData will be transferred
-                                      to the KMS, which may also return data to the caller.
-                                      In all cases, the value upon return to the caller will
-                                      be the size of the data block returned to the caller,
-                                      which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData        Pointer to a pointer to an arbitrary block of data of
-                                      *ClientDataSize that is to be passed directly to the
-                                      KMS if it supports the use of client data. This
-                                      parameter may be NULL if and only if the
-                                      ClientDataSize parameter is also NULL. Upon return to
-                                      the caller, *ClientData points to a block of data of
-                                      *ClientDataSize that was returned from the KMS.
-                                      If the returned value for *ClientDataSize is zero,
-                                      then the returned value for *ClientData must be NULL
-                                      and should be ignored by the caller. The KMS protocol
-                                      consumer is responsible for freeing all valid buffers
-                                      used for client data regardless of whether they are
-                                      allocated by the caller for input to the function or by
-                                      the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS               The client information has been accepted by the KMS.
-    @retval EFI_NOT_READY             No connection to the KMS is available.
-    @retval EFI_NO_RESPONSE           There was no response from the device or the key server.
-    @retval EFI_ACCESS_DENIED         Access was denied by the device or the key server.
-    @retval EFI_DEVICE_ERROR          An error occurred when attempting to access the KMS.
-    @retval EFI_OUT_OF_RESOURCES      Required resources were not available to perform the function.
-    @retval EFI_INVALID_PARAMETER     This is NULL.
-    @retval EFI_UNSUPPORTED           The KMS does not support the use of client identifiers.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, ulong*, void**, EFI_STATUS> RegisterClient;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_REGISTER_CLIENT*/ RegisterClient;
   ///
   /// Request the generation of a new key and retrieve it.
   ///
-  /**
-    Request that the KMS generate one or more new keys and associate them with key identifiers.
-    The key value(s) is returned to the caller.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
-                                       processed by this operation. On return, this number
-                                       will be updated with the number of key descriptors
-                                       successfully processed.
-    @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
-                                       structures which describe the keys to be generated.
-                                       On input, the KeyIdentifierSize and the KeyIdentifier
-                                       may specify an identifier to be used for the key,
-                                       but this is not required. The KeyFormat field must
-                                       specify a key format GUID reported as supported by
-                                       the KeyFormats field of the EFI_KMS_PROTOCOL.
-                                       The value for this field in the first key descriptor will
-                                       be considered the default value for subsequent key
-                                       descriptors requested in this operation if those key
-                                       descriptors have a NULL GUID in the key format field.
-                                       On output, the KeyIdentifierSize and KeyIdentifier fields
-                                       will specify an identifier for the key which will be either
-                                       the original identifier if one was provided, or an identifier
-                                       generated either by the KMS or the KMS protocol
-                                       implementation. The KeyFormat field will be updated
-                                       with the GUID used to generate the key if it was a
-                                       NULL GUID, and the KeyValue field will contain a pointer
-                                       to memory containing the key value for the generated
-                                       key. Memory for both the KeyIdentifier and the KeyValue
-                                       fields will be allocated with the BOOT_SERVICES_DATA
-                                       type and must be freed by the caller when it is no longer
-                                       needed. Also, the KeyStatus field must reflect the result
-                                       of the request relative to that key.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully generated and retrieved all requested keys.
-    @retval EFI_UNSUPPORTED            This function is not supported by the KMS. --OR--
-                                       One (or more) of the key requests submitted is not supported by
-                                       the KMS. Check individual key request(s) to see which ones
-                                       may have been processed.
-    @retval EFI_OUT_OF_RESOURCES       Required resources were not available to perform the function.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       request(s) to see which ones may have been processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either no id was
-                                       provided or an invalid id was provided.
-    @retval EFI_DEVICE_ERROR           An error occurred when attempting to access the KMS. Check
-                                       individual key request(s) to see which ones may have been
-                                       processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyDescriptorCount is NULL, or Keys is NULL.
-    @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
-                                       could not be processed properly. KeyDescriptorCount
-                                       contains the number of structures which were successfully
-                                       processed. Individual structures will reflect the status of the
-                                       processing for that structure.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, ushort*, EFI_KMS_KEY_DESCRIPTOR*, ulong*, void**, EFI_STATUS> CreateKey;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN OUT */ushort* /*KeyDescriptorCount*/,/* IN OUT */EFI_KMS_KEY_DESCRIPTOR* /*KeyDescriptors*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_CREATE_KEY*/ CreateKey;
   ///
   /// Retrieve an existing key.
   ///
-  /**
-    Retrieve an existing key.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
-                                       processed by this operation. On return, this number
-                                       will be updated with the number of key descriptors
-                                       successfully processed.
-    @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
-                                       structures which describe the keys to be retrieved
-                                       from the KMS.
-                                       On input, the KeyIdentifierSize and the KeyIdentifier
-                                       must specify an identifier to be used to retrieve a
-                                       specific key. All other fields in the descriptor should
-                                       be NULL.
-                                       On output, the KeyIdentifierSize and KeyIdentifier fields
-                                       will be unchanged, while the KeyFormat and KeyValue
-                                       fields will be updated values associated with this key
-                                       identifier. Memory for the KeyValue field will be
-                                       allocated with the BOOT_SERVICES_DATA type and
-                                       must be freed by the caller when it is no longer needed.
-                                       Also, the KeyStatus field will reflect the result of the
-                                       request relative to the individual key descriptor.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully retrieved all requested keys.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate resources for the method processing.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       request(s) to see which ones may have been processed.
-    @retval EFI_BUFFER_TOO_SMALL       If multiple keys are associated with a single identifier, and the
-                                       KeyValue buffer does not contain enough structures
-                                       (KeyDescriptorCount) to contain all the key data, then
-                                       the available structures will be filled and
-                                       KeyDescriptorCount will be updated to indicate the
-                                       number of keys which could not be processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key request(s) to
-                                       see which ones may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyDescriptorCount is NULL, or Keys is NULL.
-    @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
-                                       could not be processed properly. KeyDescriptorCount
-                                       contains the number of structures which were successfully
-                                       processed. Individual structures will reflect the status of the
-                                       processing for that structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, ushort*, EFI_KMS_KEY_DESCRIPTOR*, ulong*, void**, EFI_STATUS> GetKey;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN OUT */ushort* /*KeyDescriptorCount*/,/* IN OUT */EFI_KMS_KEY_DESCRIPTOR* /*KeyDescriptors*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_GET_KEY*/ GetKey;
   ///
   /// Add a local key to KMS database. If there is an existing key with this key identifier in the
   /// KMS database, it will be replaced with the new key.
   ///
-  /**
-    Add a new key.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
-                                       processed by this operation. On normal return, this
-                                       number will be updated with the number of key
-                                       descriptors successfully processed.
-    @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
-                                       structures which describe the keys to be added.
-                                       On input, the KeyId field for first key must contain
-                                       valid identifier data to be used for adding a key to
-                                       the KMS. The values for these fields in this key
-                                       definition will be considered default values for
-                                       subsequent keys requested in this operation. A value
-                                       of 0 in any subsequent KeyId field will be replaced
-                                       with the current default value. The KeyFormat and
-                                       KeyValue fields for each key to be added must contain
-                                       consistent values to be associated with the given KeyId.
-                                       On return, the KeyStatus field will reflect the result
-                                       of the operation for each key request.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully added all requested keys.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       request(s) to see which ones may have been processed.
-    @retval EFI_BUFFER_TOO_SMALL       If multiple keys are associated with a single identifier, and the
-                                       KeyValue buffer does not contain enough structures
-                                       (KeyDescriptorCount) to contain all the key data, then
-                                       the available structures will be filled and
-                                       KeyDescriptorCount will be updated to indicate the
-                                       number of keys which could not be processed
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key request(s) to
-                                       see which ones may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyDescriptorCount is NULL, or Keys is NULL.
-    @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
-                                       could not be processed properly. KeyDescriptorCount
-                                       contains the number of structures which were successfully
-                                       processed. Individual structures will reflect the status of the
-                                       processing for that structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, ushort*, EFI_KMS_KEY_DESCRIPTOR*, ulong*, void**, EFI_STATUS> AddKey;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN OUT */ushort* /*KeyDescriptorCount*/,/* IN OUT */EFI_KMS_KEY_DESCRIPTOR* /*KeyDescriptors*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_ADD_KEY*/ AddKey;
   ///
   /// Delete an existing key from the KMS database.
   ///
-  /**
-    Delete an existing key from the KMS database.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors to be
-                                       processed by this operation. On normal return, this
-                                       number will be updated with the number of key
-                                       descriptors successfully processed.
-    @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
-                                       structures which describe the keys to be deleted.
-                                       On input, the KeyId field for first key must contain
-                                       valid identifier data to be used for adding a key to
-                                       the KMS. The values for these fields in this key
-                                       definition will be considered default values for
-                                       subsequent keys requested in this operation. A value
-                                       of 0 in any subsequent KeyId field will be replaced
-                                       with the current default value. The KeyFormat and
-                                       KeyValue fields are ignored, but should be 0.
-                                       On return, the KeyStatus field will reflect the result
-                                       of the operation for each key request.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully deleted all requested keys.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       request(s) to see which ones may have been processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key request(s) to
-                                       see which ones may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyDescriptorCount is NULL, or Keys is NULL.
-    @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_DESCRIPTOR structures
-                                       could not be processed properly. KeyDescriptorCount
-                                       contains the number of structures which were successfully
-                                       processed. Individual structures will reflect the status of the
-                                       processing for that structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, ushort*, EFI_KMS_KEY_DESCRIPTOR*, ulong*, void**, EFI_STATUS> DeleteKey;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN OUT */ushort* /*KeyDescriptorCount*/,/* IN OUT */EFI_KMS_KEY_DESCRIPTOR* /*KeyDescriptors*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_DELETE_KEY*/ DeleteKey;
   ///
   /// Get attributes for an existing key in the KMS database.
   ///
-  /**
-    Get one or more attributes associated with a specified key identifier.
-    If none are found, the returned attributes count contains a value of zero.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in]      KeyIdentifierSize  Pointer to the size in bytes of the KeyIdentifier variable.
-    @param[in]      KeyIdentifier      Pointer to the key identifier associated with this key.
-    @param[in, out] KeyAttributesCount Pointer to the number of EFI_KMS_KEY_ATTRIBUTE
-                                       structures associated with the Key identifier. If none
-                                       are found, the count value is zero on return.
-                                       On input this value reflects the number of KeyAttributes
-                                       that may be returned.
-                                       On output, the value reflects the number of completed
-                                       KeyAttributes structures found.
-    @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
-                                       structures associated with the Key Identifier.
-                                       On input, the fields in the structure should be NULL.
-                                       On output, the attribute fields will have updated values
-                                       for attributes associated with this key identifier.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully retrieved all key attributes.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate resources for the method processing.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       attribute request(s) to see which ones may have been
-                                       processed.
-    @retval EFI_BUFFER_TOO_SMALL       If multiple key attributes are associated with a single identifier,
-                                       and the KeyAttributes buffer does not contain enough
-                                       structures (KeyAttributesCount) to contain all the key
-                                       attributes data, then the available structures will be filled and
-                                       KeyAttributesCount will be updated to indicate the
-                                       number of key attributes which could not be processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
-                                       request(s) (i.e. key attribute status for each) to see which ones
-                                       may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyIdentifierSize is NULL , or KeyIdentifier
-                                       is NULL, or KeyAttributes is NULL, or
-                                       KeyAttributesSize is NULL.
-    @retval EFI_NOT_FOUND              The KeyIdentifier could not be found.
-                                       KeyAttributesCount contains zero. Individual
-                                       structures will reflect the status of the processing for that
-                                       structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, byte*, CONST, ushort*, EFI_KMS_KEY_ATTRIBUTE*, ulong*, void**, EFI_STATUS> GetKeyAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN */byte* /*KeyIdentifierSize*/,/* IN CONST */void* /*KeyIdentifier*/,/* IN OUT */ushort* /*KeyAttributesCount*/,/* IN OUT */EFI_KMS_KEY_ATTRIBUTE* /*KeyAttributes*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_GET_KEY_ATTRIBUTES*/ GetKeyAttributes;
   ///
   /// Add attributes to an existing key in the KMS database.
   ///
-  /**
-    Add one or more attributes to a key specified by a key identifier.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in]      KeyIdentifierSize  Pointer to the size in bytes of the KeyIdentifier variable.
-    @param[in]      KeyIdentifier      Pointer to the key identifier associated with this key.
-    @param[in, out] KeyAttributesCount Pointer to the number of EFI_KMS_KEY_ATTRIBUTE
-                                       structures to associate with the Key. On normal returns,
-                                       this number will be updated with the number of key
-                                       attributes successfully processed.
-    @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
-                                       structures providing the attribute information to
-                                       associate with the key.
-                                       On input, the values for the fields in the structure
-                                       are completely filled in.
-                                       On return the KeyAttributeStatus field will reflect the
-                                       result of the operation for each key attribute request.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully added all requested key attributes.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       attribute request(s) to see which ones may have been
-                                       processed.
-    @retval EFI_BUFFER_TOO_SMALL       If multiple keys attributes are associated with a single key
-                                       identifier, and the attributes buffer does not contain
-                                       enough structures (KeyAttributesCount) to contain all
-                                       the data, then the available structures will be filled and
-                                       KeyAttributesCount will be updated to indicate the
-                                       number of key attributes which could not be processed. The
-                                       status of each key attribute is also updated indicating success or
-                                       failure for that attribute in case there are other errors for those
-                                       attributes that could be processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
-                                       request(s) (i.e. key attribute status for each) to see which ones
-                                       may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyAttributesCount is NULL, or KeyAttributes
-                                       is NULL, or KeyIdentifierSize is NULL, or
-                                       KeyIdentifer is NULL.
-    @retval EFI_NOT_FOUND              The KeyIdentifier could not be found. On return the
-                                       KeyAttributesCount contains the number of attributes
-                                       processed. Individual structures will reflect the status of the
-                                       processing for that structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, byte*, CONST, ushort*, EFI_KMS_KEY_ATTRIBUTE*, ulong*, void**, EFI_STATUS> AddKeyAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN */byte* /*KeyIdentifierSize*/,/* IN CONST */void* /*KeyIdentifier*/,/* IN OUT */ushort* /*KeyAttributesCount*/,/* IN OUT */EFI_KMS_KEY_ATTRIBUTE* /*KeyAttributes*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_ADD_KEY_ATTRIBUTES*/ AddKeyAttributes;
   ///
   /// Delete attributes for an existing key in the KMS database.
   ///
-  /**
-    Delete attributes to a key specified by a key identifier.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in]      KeyIdentifierSize  Pointer to the size in bytes of the KeyIdentifier variable.
-    @param[in]      KeyIdentifier      Pointer to the key identifier associated with this key.
-    @param[in, out] KeyAttributesCount Pointer to the number of EFI_KMS_KEY_ATTRIBUTE
-                                       structures to associate with the Key.
-                                       On input, the count value is one or more.
-                                       On normal returns, this number will be updated with
-                                       the number of key attributes successfully processed.
-    @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
-                                       structures providing the attribute information to
-                                       associate with the key.
-                                       On input, the values for the fields in the structure
-                                       are completely filled in.
-                                       On return the KeyAttributeStatus field will reflect the
-                                       result of the operation for each key attribute request.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully deleted all requested key attributes.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       attribute request(s) to see which ones may have been
-                                       processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
-                                       request(s) (i.e. key attribute status for each) to see which ones
-                                       may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyAttributesCount is NULL, or
-                                       KeyAttributes is NULL, or KeyIdentifierSize
-                                       is NULL, or KeyIdentifer is NULL.
-    @retval EFI_NOT_FOUND              The KeyIdentifier could not be found or the attribute
-                                       could not be found. On return the KeyAttributesCount
-                                       contains the number of attributes processed. Individual
-                                       structures will reflect the status of the processing for that
-                                       structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, byte*, CONST, ushort*, EFI_KMS_KEY_ATTRIBUTE*, ulong*, void**, EFI_STATUS> DeleteKeyAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN */byte* /*KeyIdentifierSize*/,/* IN CONST */void* /*KeyIdentifier*/,/* IN OUT */ushort* /*KeyAttributesCount*/,/* IN OUT */EFI_KMS_KEY_ATTRIBUTE* /*KeyAttributes*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_DELETE_KEY_ATTRIBUTES*/ DeleteKeyAttributes;
   ///
   /// Get existing key(s) with the specified attributes.
   ///
-  /**
-    Retrieve one or more key that has matched all of the specified key attributes.
-
-    @param[in]      This               Pointer to the EFI_KMS_PROTOCOL instance.
-    @param[in]      Client             Pointer to a valid EFI_KMS_CLIENT_INFO structure.
-    @param[in, out] KeyAttributesCount Pointer to a count of the number of key attribute structures
-                                       that must be matched for each returned key descriptor.
-                                       On input the count value is one or more.
-                                       On normal returns, this number will be updated with
-                                       the number of key attributes successfully processed.
-    @param[in, out] KeyAttributes      Pointer to an array of EFI_KMS_KEY_ATTRIBUTE
-                                       structure to search for.
-                                       On input, the values for the fields in the structure are
-                                       completely filled in.
-                                       On return the KeyAttributeStatus field will reflect the
-                                       result of the operation for each key attribute request.
-    @param[in, out] KeyDescriptorCount Pointer to a count of the number of key descriptors matched
-                                       by this operation.
-                                       On entry, this number will be zero.
-                                       On return, this number will be updated to the number
-                                       of key descriptors successfully found.
-    @param[in, out] KeyDescriptors     Pointer to an array of EFI_KMS_KEY_DESCRIPTOR
-                                       structures which describe the keys from the KMS
-                                       having the KeyAttribute(s) specified.
-                                       On input, this pointer will be NULL.
-                                       On output, the array will contain an
-                                       EFI_KMS_KEY_DESCRIPTOR structure for each key
-                                       meeting the search criteria. Memory for the array
-                                       and all KeyValue fields will be allocated with the
-                                       EfiBootServicesData type and must be freed by the
-                                       caller when it is no longer needed. Also, the KeyStatus
-                                       field of each descriptor will reflect the result of the
-                                       request relative to that key descriptor.
-    @param[in, out] ClientDataSize     Pointer to the size, in bytes, of an arbitrary block of
-                                       data specified by the ClientData parameter. This
-                                       parameter may be NULL, in which case the ClientData
-                                       parameter will be ignored and no data will be
-                                       transferred to or from the KMS. If the parameter is
-                                       not NULL, then ClientData must be a valid pointer.
-                                       If the value pointed to is 0, no data will be transferred
-                                       to the KMS, but data may be returned by the KMS.
-                                       For all non-zero values *ClientData will be transferred
-                                       to the KMS, which may also return data to the caller.
-                                       In all cases, the value upon return to the caller will
-                                       be the size of the data block returned to the caller,
-                                       which will be zero if no data is returned from the KMS.
-    @param[in, out] ClientData         Pointer to a pointer to an arbitrary block of data of
-                                       *ClientDataSize that is to be passed directly to the
-                                       KMS if it supports the use of client data. This
-                                       parameter may be NULL if and only if the
-                                       ClientDataSize parameter is also NULL. Upon return to
-                                       the caller, *ClientData points to a block of data of
-                                       *ClientDataSize that was returned from the KMS.
-                                       If the returned value for *ClientDataSize is zero,
-                                       then the returned value for *ClientData must be NULL
-                                       and should be ignored by the caller. The KMS protocol
-                                       consumer is responsible for freeing all valid buffers
-                                       used for client data regardless of whether they are
-                                       allocated by the caller for input to the function or by
-                                       the implementation for output back to the caller.
-
-    @retval EFI_SUCCESS                Successfully retrieved all requested keys.
-    @retval EFI_OUT_OF_RESOURCES       Could not allocate required resources.
-    @retval EFI_TIMEOUT                Timed out waiting for device or key server. Check individual key
-                                       attribute request(s) to see which ones may have been
-                                       processed.
-    @retval EFI_BUFFER_TOO_SMALL       If multiple keys are associated with the attribute(s), and the
-                                       KeyValue buffer does not contain enough structures
-                                       (KeyDescriptorCount) to contain all the key data, then
-                                       the available structures will be filled and
-                                       KeyDescriptorCount will be updated to indicate the
-                                       number of keys which could not be processed.
-    @retval EFI_ACCESS_DENIED          Access was denied by the device or the key server; OR a
-                                       ClientId is required by the server and either none or an
-                                       invalid id was provided.
-    @retval EFI_DEVICE_ERROR           Device or key server error. Check individual key attribute
-                                       request(s) (i.e. key attribute status for each) to see which ones
-                                       may have been processed.
-    @retval EFI_INVALID_PARAMETER      This is NULL, ClientId is required but it is NULL,
-                                       KeyDescriptorCount is NULL, or
-                                       KeyDescriptors is NULL or KeyAttributes is
-                                       NULL, or KeyAttributesCount is NULL.
-    @retval EFI_NOT_FOUND              One or more EFI_KMS_KEY_ATTRIBUTE structures could
-                                       not be processed properly. KeyAttributeCount contains
-                                       the number of structures which were successfully processed.
-                                       Individual structures will reflect the status of the processing for
-                                       that structure.
-    @retval EFI_UNSUPPORTED            The implementation/KMS does not support this function.
-
-  **/
-  public readonly delegate* unmanaged<EFI_KMS_PROTOCOL*, EFI_KMS_CLIENT_INFO*, ulong*, EFI_KMS_KEY_ATTRIBUTE*, ulong*, EFI_KMS_KEY_DESCRIPTOR*, ulong*, void**, EFI_STATUS> GetKeyByAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_KMS_PROTOCOL* /*This*/,/* IN */EFI_KMS_CLIENT_INFO* /*Client*/,/* IN OUT */ulong* /*KeyAttributeCount*/,/* IN OUT */EFI_KMS_KEY_ATTRIBUTE* /*KeyAttributes*/,/* IN OUT */ulong* /*KeyDescriptorCount*/,/* IN OUT */EFI_KMS_KEY_DESCRIPTOR* /*KeyDescriptors*/,/* IN OUT */ulong* /*ClientDataSize*/,/* IN OUT */void** /*ClientData*/, EFI_STATUS> /*EFI_KMS_GET_KEY_BY_ATTRIBUTES*/ GetKeyByAttributes;
   ///
   /// The version of this EFI_KMS_PROTOCOL structure. This must be set to 0x00020040 for
   /// the initial version of this protocol.

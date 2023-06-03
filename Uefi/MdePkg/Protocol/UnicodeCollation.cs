@@ -47,6 +47,119 @@ public unsafe partial class EFI
   // Protocol member functions
   //
 
+  // /**
+  //   Performs a case-insensitive comparison of two Null-terminated strings.
+  // 
+  //   @param  This A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
+  //   @param  Str1 A pointer to a Null-terminated string.
+  //   @param  Str2 A pointer to a Null-terminated string.
+  // 
+  //   @retval 0   Str1 is equivalent to Str2.
+  //   @retval >0  Str1 is lexically greater than Str2.
+  //   @retval <0  Str1 is lexically less than Str2.
+  // 
+  // **/
+  // typedef
+  // INTN
+  // (EFIAPI *EFI_UNICODE_COLLATION_STRICOLL)(
+  //   IN EFI_UNICODE_COLLATION_PROTOCOL         *This,
+  //   IN char                                 *Str1,
+  //   IN char                                 *Str2
+  //   );
+
+  // /**
+  //   Performs a case-insensitive comparison of a Null-terminated
+  //   pattern string and a Null-terminated string.
+  // 
+  //   @param  This    A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
+  //   @param  String  A pointer to a Null-terminated string.
+  //   @param  Pattern A pointer to a Null-terminated pattern string.
+  // 
+  //   @retval TRUE    Pattern was found in String.
+  //   @retval FALSE   Pattern was not found in String.
+  // 
+  // **/
+  // typedef
+  // BOOLEAN
+  // (EFIAPI *EFI_UNICODE_COLLATION_METAIMATCH)(
+  //   IN EFI_UNICODE_COLLATION_PROTOCOL         *This,
+  //   IN char                                 *String,
+  //   IN char                                 *Pattern
+  //   );
+
+  // /**
+  //   Converts all the characters in a Null-terminated string to
+  //   lower case characters.
+  // 
+  //   @param  This   A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
+  //   @param  String A pointer to a Null-terminated string.
+  // 
+  // **/
+  // typedef
+  // VOID
+  // (EFIAPI *EFI_UNICODE_COLLATION_STRLWR)(
+  //   IN EFI_UNICODE_COLLATION_PROTOCOL         *This,
+  //   IN OUT char                             *Str
+  //   );
+
+  // /**
+  //   Converts all the characters in a Null-terminated string to upper
+  //   case characters.
+  // 
+  //   @param  This   A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
+  //   @param  String A pointer to a Null-terminated string.
+  // 
+  // **/
+  // typedef
+  // VOID
+  // (EFIAPI *EFI_UNICODE_COLLATION_STRUPR)(
+  //   IN EFI_UNICODE_COLLATION_PROTOCOL         *This,
+  //   IN OUT char                             *Str
+  //   );
+
+  // /**
+  //   Converts an 8.3 FAT file name in an OEM character set to a Null-terminated
+  //   string.
+  // 
+  //   @param  This    A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
+  //   @param  FatSize The size of the string Fat in bytes.
+  //   @param  Fat     A pointer to a Null-terminated string that contains an 8.3 file
+  //                   name using an 8-bit OEM character set.
+  //   @param  String  A pointer to a Null-terminated string. The string must
+  //                   be allocated in advance to hold FatSize characters.
+  // 
+  // **/
+  // typedef
+  // VOID
+  // (EFIAPI *EFI_UNICODE_COLLATION_FATTOSTR)(
+  //   IN EFI_UNICODE_COLLATION_PROTOCOL         *This,
+  //   IN ulong                                  FatSize,
+  //   IN byte                                  *Fat,
+  //   OUT char                                *String
+  //   );
+
+  // /**
+  //   Converts a Null-terminated string to legal characters in a FAT
+  //   filename using an OEM character set.
+  // 
+  //   @param  This    A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
+  //   @param  String  A pointer to a Null-terminated string.
+  //   @param  FatSize The size of the string Fat in bytes.
+  //   @param  Fat     A pointer to a string that contains the converted version of
+  //                   String using legal FAT characters from an OEM character set.
+  // 
+  //   @retval TRUE    One or more conversions failed and were substituted with '_'
+  //   @retval FALSE   None of the conversions failed.
+  // 
+  // **/
+  // typedef
+  // BOOLEAN
+  // (EFIAPI *EFI_UNICODE_COLLATION_STRTOFAT)(
+  //   IN EFI_UNICODE_COLLATION_PROTOCOL         *This,
+  //   IN char                                 *String,
+  //   IN ulong                                  FatSize,
+  //   OUT byte                                 *Fat
+  //   );
 }
 
 ///
@@ -56,82 +169,16 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UNICODE_COLLATION_PROTOCOL
 {
-  /**
-    Performs a case-insensitive comparison of two Null-terminated strings.
-
-    @param  This A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
-    @param  Str1 A pointer to a Null-terminated string.
-    @param  Str2 A pointer to a Null-terminated string.
-
-    @retval 0   Str1 is equivalent to Str2.
-    @retval >0  Str1 is lexically greater than Str2.
-    @retval <0  Str1 is lexically less than Str2.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UNICODE_COLLATION_PROTOCOL*, char*, char*, EFI_STATUS> StriColl;
-  /**
-    Performs a case-insensitive comparison of a Null-terminated
-    pattern string and a Null-terminated string.
-
-    @param  This    A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
-    @param  String  A pointer to a Null-terminated string.
-    @param  Pattern A pointer to a Null-terminated pattern string.
-
-    @retval TRUE    Pattern was found in String.
-    @retval FALSE   Pattern was not found in String.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UNICODE_COLLATION_PROTOCOL*, char*, char*, EFI_STATUS> MetaiMatch;
-  /**
-    Converts all the characters in a Null-terminated string to
-    lower case characters.
-
-    @param  This   A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
-    @param  String A pointer to a Null-terminated string.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UNICODE_COLLATION_PROTOCOL*, char*, EFI_STATUS> StrLwr;
-  /**
-    Converts all the characters in a Null-terminated string to upper
-    case characters.
-
-    @param  This   A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
-    @param  String A pointer to a Null-terminated string.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UNICODE_COLLATION_PROTOCOL*, char*, EFI_STATUS> StrUpr;
+  public readonly delegate* unmanaged</* IN */EFI_UNICODE_COLLATION_PROTOCOL* /*This*/,/* IN */char* /*Str1*/,/* IN */char* /*Str2*/, EFI_STATUS> /*EFI_UNICODE_COLLATION_STRICOLL*/ StriColl;
+  public readonly delegate* unmanaged</* IN */EFI_UNICODE_COLLATION_PROTOCOL* /*This*/,/* IN */char* /*String*/,/* IN */char* /*Pattern*/, EFI_STATUS> /*EFI_UNICODE_COLLATION_METAIMATCH*/ MetaiMatch;
+  public readonly delegate* unmanaged</* IN */EFI_UNICODE_COLLATION_PROTOCOL* /*This*/,/* IN OUT */char* /*Str*/, EFI_STATUS> /*EFI_UNICODE_COLLATION_STRLWR*/ StrLwr;
+  public readonly delegate* unmanaged</* IN */EFI_UNICODE_COLLATION_PROTOCOL* /*This*/,/* IN OUT */char* /*Str*/, EFI_STATUS> /*EFI_UNICODE_COLLATION_STRUPR*/ StrUpr;
 
   //
   // for supporting fat volumes
   //
-  /**
-    Converts an 8.3 FAT file name in an OEM character set to a Null-terminated
-    string.
-
-    @param  This    A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
-    @param  FatSize The size of the string Fat in bytes.
-    @param  Fat     A pointer to a Null-terminated string that contains an 8.3 file
-                    name using an 8-bit OEM character set.
-    @param  String  A pointer to a Null-terminated string. The string must
-                    be allocated in advance to hold FatSize characters.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UNICODE_COLLATION_PROTOCOL*, ulong, byte*, char*, EFI_STATUS> FatToStr;
-  /**
-    Converts a Null-terminated string to legal characters in a FAT
-    filename using an OEM character set.
-
-    @param  This    A pointer to the EFI_UNICODE_COLLATION_PROTOCOL instance.
-    @param  String  A pointer to a Null-terminated string.
-    @param  FatSize The size of the string Fat in bytes.
-    @param  Fat     A pointer to a string that contains the converted version of
-                    String using legal FAT characters from an OEM character set.
-
-    @retval TRUE    One or more conversions failed and were substituted with '_'
-    @retval FALSE   None of the conversions failed.
-
-  **/
-  public readonly delegate* unmanaged<EFI_UNICODE_COLLATION_PROTOCOL*, char*, ulong, byte*, EFI_STATUS> StrToFat;
+  public readonly delegate* unmanaged</* IN */EFI_UNICODE_COLLATION_PROTOCOL* /*This*/,/* IN */ulong /*FatSize*/,/* IN */byte* /*Fat*/,/* OUT */char* /*String*/, EFI_STATUS> /*EFI_UNICODE_COLLATION_FATTOSTR*/ FatToStr;
+  public readonly delegate* unmanaged</* IN */EFI_UNICODE_COLLATION_PROTOCOL* /*This*/,/* IN */char* /*String*/,/* IN */ulong /*FatSize*/,/* OUT */byte* /*Fat*/, EFI_STATUS> /*EFI_UNICODE_COLLATION_STRTOFAT*/ StrToFat;
 
   ///
   /// A Null-terminated ASCII string array that contains one or more language codes.

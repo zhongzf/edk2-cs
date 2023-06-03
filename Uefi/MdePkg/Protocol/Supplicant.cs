@@ -312,6 +312,151 @@ public unsafe struct EFI_SUPPLICANT_FRAGMENT_DATA
   public void* FragmentBuffer;
 }
 
+// /**
+//   BuildResponsePacket() is called during STA and AP authentication is in
+//   progress. Supplicant derives the PTK or session keys depend on type of
+//   authentication is being employed.
+// 
+//   @param[in]       This           Pointer to the EFI_SUPPLICANT_PROTOCOL
+//                                   instance.
+//   @param[in]       RequestBuffer  Pointer to the most recently received EAPOL
+//                                   packet. NULL means the supplicant need
+//                                   initiate the EAP authentication session and
+//                                   send EAPOL-Start message.
+//   @param[in]       RequestBufferSize
+//                                   Packet size in bytes for the most recently
+//                                   received EAPOL packet. 0 is only valid when
+//                                   RequestBuffer is NULL.
+//   @param[out]      Buffer         Pointer to the buffer to hold the built
+//                                   packet.
+//   @param[in, out]  BufferSize     Pointer to the buffer size in bytes. On
+//                                   input, it is the buffer size provided by the
+//                                   caller. On output, it is the buffer size in
+//                                   fact needed to contain the packet.
+// 
+//   @retval EFI_SUCCESS             The required EAPOL packet is built
+//                                   successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   RequestBuffer is NULL, but RequestSize is
+//                                   NOT 0.
+//                                   RequestBufferSize is 0.
+//                                   Buffer is NULL, but RequestBuffer is NOT 0.
+//                                   BufferSize is NULL.
+//   @retval EFI_BUFFER_TOO_SMALL    BufferSize is too small to hold the response
+//                                   packet.
+//   @retval EFI_NOT_READY           Current EAPOL session state is NOT ready to
+//                                   build ResponsePacket.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SUPPLICANT_BUILD_RESPONSE_PACKET)(
+//   IN     EFI_SUPPLICANT_PROTOCOL          *This,
+//   IN     byte                            *RequestBuffer      OPTIONAL,
+//   IN     ulong                            RequestBufferSize   OPTIONAL,
+//   OUT byte                            *Buffer,
+//   IN OUT ulong                            *BufferSize
+//   );
+
+// /**
+//   ProcessPacket() is called to Supplicant driver to encrypt or decrypt the data
+//   depending type of authentication type.
+// 
+//   @param[in]       This           Pointer to the EFI_SUPPLICANT_PROTOCOL
+//                                   instance.
+//   @param[in, out]  FragmentTable  Pointer to a list of fragment. The caller
+//                                   will take responsible to handle the original
+//                                   FragmentTable while it may be reallocated in
+//                                   Supplicant driver.
+//   @param[in]       FragmentCount  Number of fragment.
+//   @param[in]       CryptMode      Crypt mode.
+// 
+//   @retval EFI_SUCCESS             The operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   FragmentTable is NULL.
+//                                   FragmentCount is NULL.
+//                                   CryptMode is invalid.
+//   @retval EFI_NOT_READY           Current supplicant state is NOT Authenticated.
+//   @retval EFI_ABORTED             Something wrong decryption the message.
+//   @retval EFI_UNSUPPORTED         This API is not supported.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SUPPLICANT_PROCESS_PACKET)(
+//   IN     EFI_SUPPLICANT_PROTOCOL          *This,
+//   IN OUT EFI_SUPPLICANT_FRAGMENT_DATA     **FragmentTable,
+//   IN     uint                           *FragmentCount,
+//   IN     EFI_SUPPLICANT_CRYPT_MODE        CryptMode
+//   );
+
+// /**
+//   Set Supplicant configuration data.
+// 
+//   @param[in]  This                Pointer to the EFI_SUPPLICANT_PROTOCOL
+//                                   instance.
+//   @param[in]  DataType            The type of data.
+//   @param[in]  Data                Pointer to the buffer to hold the data.
+//   @param[in]  DataSize            Pointer to the buffer size in bytes.
+// 
+//   @retval EFI_SUCCESS             The Supplicant configuration data is set
+//                                   successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   Data is NULL.
+//                                   DataSize is 0.
+//   @retval EFI_UNSUPPORTED         The DataType is unsupported.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SUPPLICANT_SET_DATA)(
+//   IN EFI_SUPPLICANT_PROTOCOL              *This,
+//   IN EFI_SUPPLICANT_DATA_TYPE             DataType,
+//   IN void                                 *Data,
+//   IN ulong                                DataSize
+//   );
+
+// /**
+//   Get Supplicant configuration data.
+// 
+//   @param[in]       This           Pointer to the EFI_SUPPLICANT_PROTOCOL
+//                                   instance.
+//   @param[in]       DataType       The type of data.
+//   @param[out]      Data           Pointer to the buffer to hold the data.
+//                                   Ignored if DataSize is 0.
+//   @param[in, out]  DataSize       Pointer to the buffer size in bytes. On
+//                                   input, it is the buffer size provided by the
+//                                   caller. On output, it is the buffer size in
+//                                   fact needed to contain the packet.
+// 
+//   @retval EFI_SUCCESS             The Supplicant configuration data is got
+//                                   successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   This is NULL.
+//                                   DataSize is NULL.
+//                                   Data is NULL if *DataSize is not zero.
+//   @retval EFI_UNSUPPORTED         The DataType is unsupported.
+//   @retval EFI_NOT_FOUND           The Supplicant configuration data is not
+//                                   found.
+//   @retval EFI_BUFFER_TOO_SMALL    The size of Data is too small for the
+//                                   specified configuration data and the required
+//                                   size is returned in DataSize.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SUPPLICANT_GET_DATA)(
+//   IN     EFI_SUPPLICANT_PROTOCOL          *This,
+//   IN     EFI_SUPPLICANT_DATA_TYPE         DataType,
+//   OUT byte                            *Data      OPTIONAL,
+//   IN OUT ulong                            *DataSize
+//   );
+
 ///
 /// The EFI_SUPPLICANT_PROTOCOL is designed to provide unified place for WIFI
 /// and EAP security management. Both PSK authentication and 802.1X EAP
@@ -321,118 +466,10 @@ public unsafe struct EFI_SUPPLICANT_FRAGMENT_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SUPPLICANT_PROTOCOL
 {
-  /**
-    BuildResponsePacket() is called during STA and AP authentication is in
-    progress. Supplicant derives the PTK or session keys depend on type of
-    authentication is being employed.
-
-    @param[in]       This           Pointer to the EFI_SUPPLICANT_PROTOCOL
-                                    instance.
-    @param[in]       RequestBuffer  Pointer to the most recently received EAPOL
-                                    packet. NULL means the supplicant need
-                                    initiate the EAP authentication session and
-                                    send EAPOL-Start message.
-    @param[in]       RequestBufferSize
-                                    Packet size in bytes for the most recently
-                                    received EAPOL packet. 0 is only valid when
-                                    RequestBuffer is NULL.
-    @param[out]      Buffer         Pointer to the buffer to hold the built
-                                    packet.
-    @param[in, out]  BufferSize     Pointer to the buffer size in bytes. On
-                                    input, it is the buffer size provided by the
-                                    caller. On output, it is the buffer size in
-                                    fact needed to contain the packet.
-
-    @retval EFI_SUCCESS             The required EAPOL packet is built
-                                    successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    RequestBuffer is NULL, but RequestSize is
-                                    NOT 0.
-                                    RequestBufferSize is 0.
-                                    Buffer is NULL, but RequestBuffer is NOT 0.
-                                    BufferSize is NULL.
-    @retval EFI_BUFFER_TOO_SMALL    BufferSize is too small to hold the response
-                                    packet.
-    @retval EFI_NOT_READY           Current EAPOL session state is NOT ready to
-                                    build ResponsePacket.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SUPPLICANT_PROTOCOL*, byte*, ulong, byte*, ulong*, EFI_STATUS> BuildResponsePacket;
-  /**
-    ProcessPacket() is called to Supplicant driver to encrypt or decrypt the data
-    depending type of authentication type.
-
-    @param[in]       This           Pointer to the EFI_SUPPLICANT_PROTOCOL
-                                    instance.
-    @param[in, out]  FragmentTable  Pointer to a list of fragment. The caller
-                                    will take responsible to handle the original
-                                    FragmentTable while it may be reallocated in
-                                    Supplicant driver.
-    @param[in]       FragmentCount  Number of fragment.
-    @param[in]       CryptMode      Crypt mode.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    FragmentTable is NULL.
-                                    FragmentCount is NULL.
-                                    CryptMode is invalid.
-    @retval EFI_NOT_READY           Current supplicant state is NOT Authenticated.
-    @retval EFI_ABORTED             Something wrong decryption the message.
-    @retval EFI_UNSUPPORTED         This API is not supported.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SUPPLICANT_PROTOCOL*, EFI_SUPPLICANT_FRAGMENT_DATA**, uint*, EFI_SUPPLICANT_CRYPT_MODE, EFI_STATUS> ProcessPacket;
-  /**
-    Set Supplicant configuration data.
-
-    @param[in]  This                Pointer to the EFI_SUPPLICANT_PROTOCOL
-                                    instance.
-    @param[in]  DataType            The type of data.
-    @param[in]  Data                Pointer to the buffer to hold the data.
-    @param[in]  DataSize            Pointer to the buffer size in bytes.
-
-    @retval EFI_SUCCESS             The Supplicant configuration data is set
-                                    successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    Data is NULL.
-                                    DataSize is 0.
-    @retval EFI_UNSUPPORTED         The DataType is unsupported.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SUPPLICANT_PROTOCOL*, EFI_SUPPLICANT_DATA_TYPE, void*, ulong, EFI_STATUS> SetData;
-  /**
-    Get Supplicant configuration data.
-
-    @param[in]       This           Pointer to the EFI_SUPPLICANT_PROTOCOL
-                                    instance.
-    @param[in]       DataType       The type of data.
-    @param[out]      Data           Pointer to the buffer to hold the data.
-                                    Ignored if DataSize is 0.
-    @param[in, out]  DataSize       Pointer to the buffer size in bytes. On
-                                    input, it is the buffer size provided by the
-                                    caller. On output, it is the buffer size in
-                                    fact needed to contain the packet.
-
-    @retval EFI_SUCCESS             The Supplicant configuration data is got
-                                    successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    This is NULL.
-                                    DataSize is NULL.
-                                    Data is NULL if *DataSize is not zero.
-    @retval EFI_UNSUPPORTED         The DataType is unsupported.
-    @retval EFI_NOT_FOUND           The Supplicant configuration data is not
-                                    found.
-    @retval EFI_BUFFER_TOO_SMALL    The size of Data is too small for the
-                                    specified configuration data and the required
-                                    size is returned in DataSize.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SUPPLICANT_PROTOCOL*, EFI_SUPPLICANT_DATA_TYPE, byte*, ulong*, EFI_STATUS> GetData;
+  public readonly delegate* unmanaged</* IN */EFI_SUPPLICANT_PROTOCOL* /*This*/,/* IN */byte* /*RequestBuffer*/,/* IN */ulong /*RequestBufferSize*/,/* OUT */byte* /*Buffer*/,/* IN OUT */ulong* /*BufferSize*/, EFI_STATUS> /*EFI_SUPPLICANT_BUILD_RESPONSE_PACKET*/ BuildResponsePacket;
+  public readonly delegate* unmanaged</* IN */EFI_SUPPLICANT_PROTOCOL* /*This*/,/* IN OUT */EFI_SUPPLICANT_FRAGMENT_DATA** /*FragmentTable*/,/* IN */uint* /*FragmentCount*/,/* IN */EFI_SUPPLICANT_CRYPT_MODE /*CryptMode*/, EFI_STATUS> /*EFI_SUPPLICANT_PROCESS_PACKET*/ ProcessPacket;
+  public readonly delegate* unmanaged</* IN */EFI_SUPPLICANT_PROTOCOL* /*This*/,/* IN */EFI_SUPPLICANT_DATA_TYPE /*DataType*/,/* IN */void* /*Data*/,/* IN */ulong /*DataSize*/, EFI_STATUS> /*EFI_SUPPLICANT_SET_DATA*/ SetData;
+  public readonly delegate* unmanaged</* IN */EFI_SUPPLICANT_PROTOCOL* /*This*/,/* IN */EFI_SUPPLICANT_DATA_TYPE /*DataType*/,/* OUT */byte* /*Data*/,/* IN OUT */ulong* /*DataSize*/, EFI_STATUS> /*EFI_SUPPLICANT_GET_DATA*/ GetData;
 }
 
 // extern EFI_GUID  gEfiSupplicantServiceBindingProtocolGuid;

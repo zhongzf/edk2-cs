@@ -60,88 +60,88 @@ public unsafe partial class EFI
 /// CD-ROM Volume Descriptor
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Unknown
+public unsafe struct CDROM_VOLUME_DESCRIPTOR
 {
-  struct {
-   [FieldOffset(0)] public byte Type;
+  /*   struct { */
+  [FieldOffset(0)] public byte Type;
   [FieldOffset(0)] public fixed byte Id[5];          ///< "CD001"
   [FieldOffset(0)] public fixed byte Reserved[82];
+  /*   } Unknown; */
+
+  ///
+  /// Boot Record Volume Descriptor, defined in "El Torito" Specification.
+  ///
+  /*   struct { */
+  [FieldOffset(0)] public byte Type;           ///< Must be 0
+  [FieldOffset(0)] public fixed byte Id[5];          ///< "CD001"
+  [FieldOffset(0)] public byte Version;        ///< Must be 1
+  [FieldOffset(0)] public fixed byte SystemId[32];   ///< "EL TORITO SPECIFICATION"
+  [FieldOffset(0)] public fixed byte Unused[32];     ///< Must be 0
+  [FieldOffset(0)] public fixed byte EltCatalog[4];  ///< Absolute pointer to first sector of Boot Catalog
+  [FieldOffset(0)] public fixed byte Unused2[13];    ///< Must be 0
+  /*   } BootRecordVolume; */
+
+  ///
+  /// Primary Volume Descriptor, defined in ISO 9660.
+  ///
+  /*   struct { */
+  [FieldOffset(0)] public byte Type;
+  [FieldOffset(0)] public fixed byte Id[5];         ///< "CD001"
+  [FieldOffset(0)] public byte Version;
+  [FieldOffset(0)] public byte Unused;        ///< Must be 0
+  [FieldOffset(0)] public fixed byte SystemId[32];
+  [FieldOffset(0)] public fixed byte VolumeId[32];
+  [FieldOffset(0)] public fixed byte Unused2[8];      ///< Must be 0
+  [FieldOffset(0)] public fixed uint VolSpaceSize[2]; ///< the number of Logical Blocks
+/*   } PrimaryVolume; */
 }
-
-///
-/// Boot Record Volume Descriptor, defined in "El Torito" Specification.
-///
-struct {
-    byte Type;           ///< Must be 0
-byte Id[5];          ///< "CD001"
-byte Version;        ///< Must be 1
-byte SystemId[32];   ///< "EL TORITO SPECIFICATION"
-byte Unused[32];     ///< Must be 0
-byte EltCatalog[4];  ///< Absolute pointer to first sector of Boot Catalog
-byte Unused2[13];    ///< Must be 0
-  } BootRecordVolume;
-
-///
-/// Primary Volume Descriptor, defined in ISO 9660.
-///
-struct {
-    byte Type;
-byte Id[5];         ///< "CD001"
-byte Version;
-byte Unused;        ///< Must be 0
-byte SystemId[32];
-byte VolumeId[32];
-byte Unused2[8];      ///< Must be 0
-uint VolSpaceSize[2]; ///< the number of Logical Blocks
-  } PrimaryVolume;
-} CDROM_VOLUME_DESCRIPTOR;
 
 ///
 /// Catalog Entry
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Unknown
+public unsafe struct ELTORITO_CATALOG
 {
-  struct {
-   [FieldOffset(0)] public fixed byte Reserved[0x20];
+  /*   struct { */
+  [FieldOffset(0)] public fixed byte Reserved[0x20];
+  /*   } Unknown; */
+
+  ///
+  /// Catalog validation entry (Catalog header)
+  ///
+  /*   struct { */
+  [FieldOffset(0)] public byte Indicator;     ///< Must be 01
+  [FieldOffset(0)] public byte PlatformId;
+  [FieldOffset(0)] public ushort Reserved;
+  [FieldOffset(0)] public fixed byte ManufacId[24];
+  [FieldOffset(0)] public ushort Checksum;
+  [FieldOffset(0)] public ushort Id55AA;
+  /*   } Catalog; */
+
+  ///
+  /// Initial/Default Entry or Section Entry
+  ///
+  /*   struct { */
+  [FieldOffset(0)] public byte Indicator;     ///< 88 = Bootable, 00 = Not Bootable
+  [FieldOffset(0)] public byte MediaType = 4;
+  [FieldOffset(0)] public byte Reserved1 = 4; ///< Must be 0
+  [FieldOffset(0)] public ushort LoadSegment;
+  [FieldOffset(0)] public byte SystemType;
+  [FieldOffset(0)] public byte Reserved2;     ///< Must be 0
+  [FieldOffset(0)] public ushort SectorCount;
+  [FieldOffset(0)] public uint Lba;
+  /*   } Boot; */
+
+  ///
+  /// Section Header Entry
+  ///
+  /*   struct { */
+  [FieldOffset(0)] public byte Indicator;     ///< 90 - Header, more header follw, 91 - Final Header
+  [FieldOffset(0)] public byte PlatformId;
+  [FieldOffset(0)] public ushort SectionEntries; ///< Number of section entries following this header
+  [FieldOffset(0)] public fixed byte Id[28];
+  /*   } Section; */
 }
-
-///
-/// Catalog validation entry (Catalog header)
-///
-struct {
-    byte Indicator;     ///< Must be 01
-byte PlatformId;
-ushort Reserved;
-byte ManufacId[24];
-ushort Checksum;
-ushort Id55AA;
-  } Catalog;
-
-///
-/// Initial/Default Entry or Section Entry
-///
-struct {
-    byte Indicator;     ///< 88 = Bootable, 00 = Not Bootable
-byte MediaType : 4;
-byte Reserved1 : 4; ///< Must be 0
-ushort LoadSegment;
-byte SystemType;
-byte Reserved2;     ///< Must be 0
-ushort SectorCount;
-uint Lba;
-  } Boot;
-
-///
-/// Section Header Entry
-///
-struct {
-    byte Indicator;     ///< 90 - Header, more header follw, 91 - Final Header
-byte PlatformId;
-ushort SectionEntries; ///< Number of section entries following this header
-byte Id[28];
-  } Section;
-} ELTORITO_CATALOG;
 
 // #pragma pack()
 

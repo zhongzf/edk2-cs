@@ -188,23 +188,107 @@ public unsafe partial class EFI
   ///
   // typedef struct _EFI_EBC_PROTOCOL EFI_EBC_PROTOCOL;
 
-  /**
-    This is the prototype for the Flush callback routine. A pointer to a routine
-    of this type is passed to the EBC EFI_EBC_REGISTER_ICACHE_FLUSH protocol service.
+  // /**
+  //   Creates a thunk for an EBC entry point, returning the address of the thunk.
+  // 
+  //   A PE32+ EBC image, like any other PE32+ image, contains an optional header that specifies the
+  //   entry point for image execution. However, for EBC images, this is the entry point of EBC
+  //   instructions, so is not directly executable by the native processor. Therefore, when an EBC image is
+  //   loaded, the loader must call this service to get a pointer to native code (thunk) that can be executed,
+  //   which will invoke the interpreter to begin execution at the original EBC entry point.
+  // 
+  //   @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
+  //   @param  ImageHandle   Handle of image for which the thunk is being created.
+  //   @param  EbcEntryPoint Address of the actual EBC entry point or protocol service the thunk should call.
+  //   @param  Thunk         Returned pointer to a thunk created.
+  // 
+  //   @retval EFI_SUCCESS            The function completed successfully.
+  //   @retval EFI_INVALID_PARAMETER  Image entry point is not 2-byte aligned.
+  //   @retval EFI_OUT_OF_RESOURCES   Memory could not be allocated for the thunk.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_EBC_CREATE_THUNK)(
+  //   IN EFI_EBC_PROTOCOL           *This,
+  //   IN EFI_HANDLE                 ImageHandle,
+  //   IN void                       *EbcEntryPoint,
+  //   OUT void                      **Thunk
+  //   );
 
-    @param  Start  The beginning physical address to flush from the processor's instruction cache.
-    @param  Length The number of bytes to flush from the processor's instruction cache.
+  // /**
+  //   Called prior to unloading an EBC image from memory.
+  // 
+  //   This function is called after an EBC image has exited, but before the image is actually unloaded. It
+  //   is intended to provide the interpreter with the opportunity to perform any cleanup that may be
+  //   necessary as a result of loading and executing the image.
+  // 
+  //   @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
+  //   @param  ImageHandle   Image handle of the EBC image that is being unloaded from memory.
+  // 
+  //   @retval EFI_SUCCESS            The function completed successfully.
+  //   @retval EFI_INVALID_PARAMETER  Image handle is not recognized as belonging
+  //                                  to an EBC image that has been executed.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_EBC_UNLOAD_IMAGE)(
+  //   IN EFI_EBC_PROTOCOL           *This,
+  //   IN EFI_HANDLE                 ImageHandle
+  //   );
 
-    @retval EFI_SUCCESS            The function completed successfully.
+  // /**
+  //   This is the prototype for the Flush callback routine. A pointer to a routine
+  //   of this type is passed to the EBC EFI_EBC_REGISTER_ICACHE_FLUSH protocol service.
+  // 
+  //   @param  Start  The beginning physical address to flush from the processor's instruction cache.
+  //   @param  Length The number of bytes to flush from the processor's instruction cache.
+  // 
+  //   @retval EFI_SUCCESS            The function completed successfully.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EBC_ICACHE_FLUSH)(
+  //   IN EFI_PHYSICAL_ADDRESS     Start,
+  //   IN ulong                   Length
+  //   );
 
-  **/
-  typedef
-  EFI_STATUS
-  (EFIAPI* EBC_ICACHE_FLUSH)(
-    IN EFI_PHYSICAL_ADDRESS     Start,
-    IN ulong Length
-  );
+  // /**
+  //   Registers a callback function that the EBC interpreter calls to flush
+  //   the processor instruction cache following creation of thunks.
+  // 
+  //   @param  This       A pointer to the EFI_EBC_PROTOCOL instance.
+  //   @param  Flush      Pointer to a function of type EBC_ICACH_FLUSH.
+  // 
+  //   @retval EFI_SUCCESS            The function completed successfully.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_EBC_REGISTER_ICACHE_FLUSH)(
+  //   IN EFI_EBC_PROTOCOL           *This,
+  //   IN EBC_ICACHE_FLUSH           Flush
+  //   );
 
+  // /**
+  //   Called to get the version of the interpreter.
+  // 
+  //   This function is called to get the version of the loaded EBC interpreter. The value and format of the
+  //   returned version is identical to that returned by the EBC BREAK 1 instruction.
+  // 
+  //   @param  This       A pointer to the EFI_EBC_PROTOCOL instance.
+  //   @param  Version    Pointer to where to store the returned version of the interpreter.
+  // 
+  //   @retval EFI_SUCCESS            The function completed successfully.
+  //   @retval EFI_INVALID_PARAMETER  Version pointer is NULL.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_EBC_GET_VERSION)(
+  //   IN EFI_EBC_PROTOCOL           *This,
+  //   IN OUT ulong                 *Version
+  //   );
 }
 
 ///
@@ -216,55 +300,10 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EBC_PROTOCOL
 {
-  /**
-    Creates a thunk for an EBC entry point, returning the address of the thunk.
-
-    A PE32+ EBC image, like any other PE32+ image, contains an optional header that specifies the
-    entry point for image execution. However, for EBC images, this is the entry point of EBC
-    instructions, so is not directly executable by the native processor. Therefore, when an EBC image is
-    loaded, the loader must call this service to get a pointer to native code (thunk) that can be executed,
-    which will invoke the interpreter to begin execution at the original EBC entry point.
-
-    @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
-    @param  ImageHandle   Handle of image for which the thunk is being created.
-    @param  EbcEntryPoint Address of the actual EBC entry point or protocol service the thunk should call.
-    @param  Thunk         Returned pointer to a thunk created.
-
-    @retval EFI_SUCCESS            The function completed successfully.
-    @retval EFI_INVALID_PARAMETER  Image entry point is not 2-byte aligned.
-    @retval EFI_OUT_OF_RESOURCES   Memory could not be allocated for the thunk.
-  **/
-  public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*, EFI_HANDLE, void*, void**, EFI_STATUS> CreateThunk;
-  /**
-    Called prior to unloading an EBC image from memory.
-
-    This function is called after an EBC image has exited, but before the image is actually unloaded. It
-    is intended to provide the interpreter with the opportunity to perform any cleanup that may be
-    necessary as a result of loading and executing the image.
-
-    @param  This          A pointer to the EFI_EBC_PROTOCOL instance.
-    @param  ImageHandle   Image handle of the EBC image that is being unloaded from memory.
-
-    @retval EFI_SUCCESS            The function completed successfully.
-    @retval EFI_INVALID_PARAMETER  Image handle is not recognized as belonging
-                                   to an EBC image that has been executed.
-  **/
-  public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*, EFI_HANDLE, EFI_STATUS> UnloadImage;
-  public EFI_EBC_REGISTER_ICACHE_FLUSH RegisterICacheFlush;
-  /**
-    Called to get the version of the interpreter.
-
-    This function is called to get the version of the loaded EBC interpreter. The value and format of the
-    returned version is identical to that returned by the EBC BREAK 1 instruction.
-
-    @param  This       A pointer to the EFI_EBC_PROTOCOL instance.
-    @param  Version    Pointer to where to store the returned version of the interpreter.
-
-    @retval EFI_SUCCESS            The function completed successfully.
-    @retval EFI_INVALID_PARAMETER  Version pointer is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EBC_PROTOCOL*, ulong*, EFI_STATUS> GetVersion;
+  public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/,/* IN */void* /*EbcEntryPoint*/,/* OUT */void** /*Thunk*/, EFI_STATUS> /*EFI_EBC_CREATE_THUNK*/ CreateThunk;
+  public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/, EFI_STATUS> /*EFI_EBC_UNLOAD_IMAGE*/ UnloadImage;
+  public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EBC_ICACHE_FLUSH /*Flush*/, EFI_STATUS> /*EFI_EBC_REGISTER_ICACHE_FLUSH*/ RegisterICacheFlush;
+  public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN OUT */ulong* /*Version*/, EFI_STATUS> /*EFI_EBC_GET_VERSION*/ GetVersion;
 }
 
 //

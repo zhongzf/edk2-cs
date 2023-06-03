@@ -24,6 +24,37 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
 
+  // /**
+  //   The Reset() function resets the input device hardware. As part
+  //   of initialization process, the firmware/device will make a quick
+  //   but reasonable attempt to verify that the device is functioning.
+  //   If the ExtendedVerification flag is TRUE the firmware may take
+  //   an extended amount of time to verify the device is operating on
+  //   reset. Otherwise the reset operation is to occur as quickly as
+  //   possible. The hardware verification process is not defined by
+  //   this specification and is left up to the platform firmware or
+  //   driver to implement.
+  // 
+  //   @param This                 A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
+  // 
+  //   @param ExtendedVerification Indicates that the driver may
+  //                               perform a more exhaustive
+  //                               verification operation of the
+  //                               device during reset.
+  // 
+  // 
+  //   @retval EFI_SUCCESS       The device was reset.
+  // 
+  //   @retval EFI_DEVICE_ERROR  The device is not functioning
+  //                             correctly and could not be reset.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_INPUT_RESET_EX)(
+  //   IN EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+  //   IN bool                           ExtendedVerification
+  //   );
 }
 
 ///
@@ -124,15 +155,151 @@ public unsafe partial class EFI
   public const ulong SCAN_RECOVERY = 0x0105;
   public const ulong SCAN_EJECT = 0x0106;
 
+  // /**
+  //   The function reads the next keystroke from the input device. If
+  //   there is no pending keystroke the function returns
+  //   EFI_NOT_READY. If there is a pending keystroke, then
+  //   KeyData.Key.ScanCode is the EFI scan code defined in Error!
+  //   Reference source not found. The KeyData.Key.UnicodeChar is the
+  //   actual printable character or is zero if the key does not
+  //   represent a printable character (control key, function key,
+  //   etc.). The KeyData.KeyState is shift state for the character
+  //   reflected in KeyData.Key.UnicodeChar or KeyData.Key.ScanCode .
+  //   When interpreting the data from this function, it should be
+  //   noted that if a class of printable characters that are
+  //   normally adjusted by shift modifiers (e.g. Shift Key + "f"
+  //   key) would be presented solely as a KeyData.Key.UnicodeChar
+  //   without the associated shift state. So in the previous example
+  //   of a Shift Key + "f" key being pressed, the only pertinent
+  //   data returned would be KeyData.Key.UnicodeChar with the value
+  //   of "F". This of course would not typically be the case for
+  //   non-printable characters such as the pressing of the Right
+  //   Shift Key + F10 key since the corresponding returned data
+  //   would be reflected both in the KeyData.KeyState.KeyShiftState
+  //   and KeyData.Key.ScanCode values. UEFI drivers which implement
+  //   the EFI_SIMPLE_TEXT_INPUT_EX protocol are required to return
+  //   KeyData.Key and KeyData.KeyState values. These drivers must
+  //   always return the most current state of
+  //   KeyData.KeyState.KeyShiftState and
+  //   KeyData.KeyState.KeyToggleState. It should also be noted that
+  //   certain input devices may not be able to produce shift or toggle
+  //   state information, and in those cases the high order bit in the
+  //   respective Toggle and Shift state fields should not be active.
+  // 
+  // 
+  //   @param This     A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
+  // 
+  //   @param KeyData  A pointer to a buffer that is filled in with
+  //                   the keystroke state data for the key that was
+  //                   pressed.
+  // 
+  // 
+  //   @retval EFI_SUCCESS      The keystroke information was returned.
+  //   @retval EFI_NOT_READY    There was no keystroke data available.
+  //   @retval EFI_DEVICE_ERROR The keystroke information was not returned due to
+  //                            hardware errors.
+  // 
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_INPUT_READ_KEY_EX)(
+  //   IN  EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+  //   OUT EFI_KEY_DATA                      *KeyData
+  //   );
+
+  // /**
+  //   The SetState() function allows the input device hardware to
+  //   have state settings adjusted.
+  // 
+  //   @param This           A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
+  // 
+  //   @param KeyToggleState Pointer to the EFI_KEY_TOGGLE_STATE to
+  //                         set the state for the input device.
+  // 
+  // 
+  //   @retval EFI_SUCCESS       The device state was set appropriately.
+  // 
+  //   @retval EFI_DEVICE_ERROR  The device is not functioning
+  //                             correctly and could not have the
+  //                             setting adjusted.
+  // 
+  //   @retval EFI_UNSUPPORTED   The device does not support the
+  //                             ability to have its state set.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SET_STATE)(
+  //   IN EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+  //   IN EFI_KEY_TOGGLE_STATE              *KeyToggleState
+  //   );
+
   ///
   /// The function will be called when the key sequence is typed specified by KeyData.
   ///
-  typedef
-  EFI_STATUS
-  (EFIAPI* EFI_KEY_NOTIFY_FUNCTION)(
-    IN EFI_KEY_DATA * KeyData
-  );
+  //typedef
+  //EFI_STATUS
+  //(EFIAPI* EFI_KEY_NOTIFY_FUNCTION)(
+  //  IN EFI_KEY_DATA * KeyData
+  //);
 
+  // /**
+  //   The RegisterKeystrokeNotify() function registers a function
+  //   which will be called when a specified keystroke will occur.
+  // 
+  //   @param This                     A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
+  // 
+  //   @param KeyData                  A pointer to a buffer that is filled in with
+  //                                   the keystroke information for the key that was
+  //                                   pressed. If KeyData.Key, KeyData.KeyState.KeyToggleState
+  //                                   and KeyData.KeyState.KeyShiftState are 0, then any incomplete
+  //                                   keystroke will trigger a notification of the KeyNotificationFunction.
+  // 
+  //   @param KeyNotificationFunction  Points to the function to be called when the key sequence
+  //                                   is typed specified by KeyData. This notification function
+  //                                   should be called at <=TPL_CALLBACK.
+  // 
+  // 
+  //   @param NotifyHandle             Points to the unique handle assigned to
+  //                                   the registered notification.
+  // 
+  //   @retval EFI_SUCCESS           Key notify was registered successfully.
+  // 
+  //   @retval EFI_OUT_OF_RESOURCES  Unable to allocate necessary
+  //                                 data structures.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_REGISTER_KEYSTROKE_NOTIFY)(
+  //   IN  EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
+  //   IN  EFI_KEY_DATA                      *KeyData,
+  //   IN  EFI_KEY_NOTIFY_FUNCTION           KeyNotificationFunction,
+  //   OUT void                              **NotifyHandle
+  //   );
+
+  // /**
+  //   The UnregisterKeystrokeNotify() function removes the
+  //   notification which was previously registered.
+  // 
+  //   @param This               A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
+  // 
+  //   @param NotificationHandle The handle of the notification
+  //                             function being unregistered.
+  // 
+  //   @retval EFI_SUCCESS           Key notify was unregistered successfully.
+  // 
+  //   @retval EFI_INVALID_PARAMETER The NotificationHandle is
+  //                                 invalid.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_UNREGISTER_KEYSTROKE_NOTIFY)(
+  //   IN EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL  *This,
+  //   IN void                               *NotificationHandle
+  //   );
 }
 
 ///
@@ -144,141 +311,15 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL
 {
-  /**
-    The Reset() function resets the input device hardware. As part
-    of initialization process, the firmware/device will make a quick
-    but reasonable attempt to verify that the device is functioning.
-    If the ExtendedVerification flag is TRUE the firmware may take
-    an extended amount of time to verify the device is operating on
-    reset. Otherwise the reset operation is to occur as quickly as
-    possible. The hardware verification process is not defined by
-    this specification and is left up to the platform firmware or
-    driver to implement.
-
-    @param This                 A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
-
-    @param ExtendedVerification Indicates that the driver may
-                                perform a more exhaustive
-                                verification operation of the
-                                device during reset.
-
-    @retval EFI_SUCCESS       The device was reset.
-
-    @retval EFI_DEVICE_ERROR  The device is not functioning
-                              correctly and could not be reset.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL*, bool, EFI_STATUS> Reset;
-  /**
-    The function reads the next keystroke from the input device. If
-    there is no pending keystroke the function returns
-    EFI_NOT_READY. If there is a pending keystroke, then
-    KeyData.Key.ScanCode is the EFI scan code defined in Error!
-    Reference source not found. The KeyData.Key.UnicodeChar is the
-    actual printable character or is zero if the key does not
-    represent a printable character (control key, function key,
-    etc.). The KeyData.KeyState is shift state for the character
-    reflected in KeyData.Key.UnicodeChar or KeyData.Key.ScanCode .
-    When interpreting the data from this function, it should be
-    noted that if a class of printable characters that are
-    normally adjusted by shift modifiers (e.g. Shift Key + "f"
-    key) would be presented solely as a KeyData.Key.UnicodeChar
-    without the associated shift state. So in the previous example
-    of a Shift Key + "f" key being pressed, the only pertinent
-    data returned would be KeyData.Key.UnicodeChar with the value
-    of "F". This of course would not typically be the case for
-    non-printable characters such as the pressing of the Right
-    Shift Key + F10 key since the corresponding returned data
-    would be reflected both in the KeyData.KeyState.KeyShiftState
-    and KeyData.Key.ScanCode values. UEFI drivers which implement
-    the EFI_SIMPLE_TEXT_INPUT_EX protocol are required to return
-    KeyData.Key and KeyData.KeyState values. These drivers must
-    always return the most current state of
-    KeyData.KeyState.KeyShiftState and
-    KeyData.KeyState.KeyToggleState. It should also be noted that
-    certain input devices may not be able to produce shift or toggle
-    state information, and in those cases the high order bit in the
-    respective Toggle and Shift state fields should not be active.
-
-    @param This     A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
-
-    @param KeyData  A pointer to a buffer that is filled in with
-                    the keystroke state data for the key that was
-                    pressed.
-
-    @retval EFI_SUCCESS      The keystroke information was returned.
-    @retval EFI_NOT_READY    There was no keystroke data available.
-    @retval EFI_DEVICE_ERROR The keystroke information was not returned due to
-                             hardware errors.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL*, EFI_KEY_DATA*, EFI_STATUS> ReadKeyStrokeEx;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_INPUT_RESET_EX*/ Reset;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* OUT */EFI_KEY_DATA* /*KeyData*/, EFI_STATUS> /*EFI_INPUT_READ_KEY_EX*/ ReadKeyStrokeEx;
   ///
   /// Event to use with WaitForEvent() to wait for a key to be available.
   ///
   public EFI_EVENT WaitForKeyEx;
-  /**
-    The SetState() function allows the input device hardware to
-    have state settings adjusted.
-
-    @param This           A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
-
-    @param KeyToggleState Pointer to the EFI_KEY_TOGGLE_STATE to
-                          set the state for the input device.
-
-    @retval EFI_SUCCESS       The device state was set appropriately.
-
-    @retval EFI_DEVICE_ERROR  The device is not functioning
-                              correctly and could not have the
-                              setting adjusted.
-
-    @retval EFI_UNSUPPORTED   The device does not support the
-                              ability to have its state set.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL*, EFI_KEY_TOGGLE_STATE*, EFI_STATUS> SetState;
-  /**
-    The RegisterKeystrokeNotify() function registers a function
-    which will be called when a specified keystroke will occur.
-
-    @param This                     A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
-
-    @param KeyData                  A pointer to a buffer that is filled in with
-                                    the keystroke information for the key that was
-                                    pressed. If KeyData.Key, KeyData.KeyState.KeyToggleState
-                                    and KeyData.KeyState.KeyShiftState are 0, then any incomplete
-                                    keystroke will trigger a notification of the KeyNotificationFunction.
-
-    @param KeyNotificationFunction  Points to the function to be called when the key sequence
-                                    is typed specified by KeyData. This notification function
-                                    should be called at <=TPL_CALLBACK.
-
-    @param NotifyHandle             Points to the unique handle assigned to
-                                    the registered notification.
-
-    @retval EFI_SUCCESS           Key notify was registered successfully.
-
-    @retval EFI_OUT_OF_RESOURCES  Unable to allocate necessary
-                                  data structures.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL*, EFI_KEY_DATA*, EFI_KEY_NOTIFY_FUNCTION, void**, EFI_STATUS> RegisterKeyNotify;
-  /**
-    The UnregisterKeystrokeNotify() function removes the
-    notification which was previously registered.
-
-    @param This               A pointer to the EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL instance.
-
-    @param NotificationHandle The handle of the notification
-                              function being unregistered.
-
-    @retval EFI_SUCCESS           Key notify was unregistered successfully.
-
-    @retval EFI_INVALID_PARAMETER The NotificationHandle is
-                                  invalid.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL*, void*, EFI_STATUS> UnregisterKeyNotify;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_TOGGLE_STATE* /*KeyToggleState*/, EFI_STATUS> /*EFI_SET_STATE*/ SetState;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_DATA* /*KeyData*/,/* IN */EFI_KEY_NOTIFY_FUNCTION /*KeyNotificationFunction*/,/* OUT */void** /*NotifyHandle*/, EFI_STATUS> /*EFI_REGISTER_KEYSTROKE_NOTIFY*/ RegisterKeyNotify;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */void* /*NotificationHandle*/, EFI_STATUS> /*EFI_UNREGISTER_KEYSTROKE_NOTIFY*/ UnregisterKeyNotify;
 }
 
 // extern EFI_GUID  gEfiSimpleTextInputExProtocolGuid;

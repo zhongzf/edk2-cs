@@ -334,6 +334,97 @@ public unsafe struct EFI_80211_DISCONNECT_NETWORK_TOKEN
   public EFI_STATUS Status;
 }
 
+// /**
+//   Request a survey of potential wireless networks that administrator can later
+//   elect to try to join.
+// 
+//   @param[in]  This                Pointer to the
+//                                   EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
+//                                   instance.
+//   @param[in]  Token               Pointer to the token for getting wireless
+//                                   network.
+// 
+//   @retval EFI_SUCCESS             The operation started, and an event will
+//                                   eventually be raised for the caller.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   This is NULL.
+//                                   Token is NULL.
+//   @retval EFI_UNSUPPORTED         One or more of the input parameters is not
+//                                   supported by this implementation.
+//   @retval EFI_ALREADY_STARTED     The operation of getting wireless network is
+//                                   already started.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be
+//                                   allocated.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_II_GET_NETWORKS)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL          *This,
+//   IN EFI_80211_GET_NETWORKS_TOKEN                     *Token
+//   );
+
+// /**
+//   Connect a wireless network specified by a particular SSID, BSS type and
+//   Security type.
+// 
+//   @param[in]  This                Pointer to the
+//                                   EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
+//                                   instance.
+//   @param[in]  Token               Pointer to the token for connecting wireless
+//                                   network.
+// 
+//   @retval EFI_SUCCESS             The operation started successfully. Results
+//                                   will be notified eventually.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   This is NULL.
+//                                   Token is NULL.
+//   @retval EFI_UNSUPPORTED         One or more of the input parameters are not
+//                                   supported by this implementation.
+//   @retval EFI_ALREADY_STARTED     The connection process is already started.
+//   @retval EFI_NOT_FOUND           The specified wireless network is not found.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be
+//                                   allocated.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_II_CONNECT_NETWORK)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL          *This,
+//   IN EFI_80211_CONNECT_NETWORK_TOKEN                  *Token
+//   );
+
+// /**
+//   Request a disconnection with current connected wireless network.
+// 
+//   @param[in]  This                Pointer to the
+//                                   EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
+//                                   instance.
+//   @param[in]  Token               Pointer to the token for disconnecting
+//                                   wireless network.
+// 
+//   @retval EFI_SUCCESS             The operation started successfully. Results
+//                                   will be notified eventually.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
+//                                   TRUE:
+//                                   This is NULL.
+//                                   Token is NULL.
+//   @retval EFI_UNSUPPORTED         One or more of the input parameters are not
+//                                   supported by this implementation.
+//   @retval EFI_NOT_FOUND           Not connected to a wireless network.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be
+//                                   allocated.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_II_DISCONNECT_NETWORK)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL          *This,
+//   IN EFI_80211_DISCONNECT_NETWORK_TOKEN               *Token
+//   );
+
 ///
 /// The EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL provides network management
 /// service interfaces for 802.11 network stack. It is used by network
@@ -343,79 +434,9 @@ public unsafe struct EFI_80211_DISCONNECT_NETWORK_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
 {
-  /**
-    Request a survey of potential wireless networks that administrator can later
-    elect to try to join.
-
-    @param[in]  This                Pointer to the
-                                    EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
-                                    instance.
-    @param[in]  Token               Pointer to the token for getting wireless
-                                    network.
-
-    @retval EFI_SUCCESS             The operation started, and an event will
-                                    eventually be raised for the caller.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    This is NULL.
-                                    Token is NULL.
-    @retval EFI_UNSUPPORTED         One or more of the input parameters is not
-                                    supported by this implementation.
-    @retval EFI_ALREADY_STARTED     The operation of getting wireless network is
-                                    already started.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be
-                                    allocated.
-
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL*, EFI_80211_GET_NETWORKS_TOKEN*, EFI_STATUS> GetNetworks;
-  /**
-    Connect a wireless network specified by a particular SSID, BSS type and
-    Security type.
-
-    @param[in]  This                Pointer to the
-                                    EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
-                                    instance.
-    @param[in]  Token               Pointer to the token for connecting wireless
-                                    network.
-
-    @retval EFI_SUCCESS             The operation started successfully. Results
-                                    will be notified eventually.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    This is NULL.
-                                    Token is NULL.
-    @retval EFI_UNSUPPORTED         One or more of the input parameters are not
-                                    supported by this implementation.
-    @retval EFI_ALREADY_STARTED     The connection process is already started.
-    @retval EFI_NOT_FOUND           The specified wireless network is not found.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be
-                                    allocated.
-
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL*, EFI_80211_CONNECT_NETWORK_TOKEN*, EFI_STATUS> ConnectNetwork;
-  /**
-    Request a disconnection with current connected wireless network.
-
-    @param[in]  This                Pointer to the
-                                    EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
-                                    instance.
-    @param[in]  Token               Pointer to the token for disconnecting
-                                    wireless network.
-
-    @retval EFI_SUCCESS             The operation started successfully. Results
-                                    will be notified eventually.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is
-                                    TRUE:
-                                    This is NULL.
-                                    Token is NULL.
-    @retval EFI_UNSUPPORTED         One or more of the input parameters are not
-                                    supported by this implementation.
-    @retval EFI_NOT_FOUND           Not connected to a wireless network.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be
-                                    allocated.
-
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL*, EFI_80211_DISCONNECT_NETWORK_TOKEN*, EFI_STATUS> DisconnectNetwork;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_GET_NETWORKS_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_GET_NETWORKS*/ GetNetworks;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_CONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_CONNECT_NETWORK*/ ConnectNetwork;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_DISCONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_DISCONNECT_NETWORK*/ DisconnectNetwork;
 }
 
 // extern EFI_GUID  gEfiWiFi2ProtocolGuid;

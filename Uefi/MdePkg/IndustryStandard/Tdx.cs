@@ -127,11 +127,11 @@ public unsafe struct TDCALL_INFO_RETURN_DATA
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Io
+public unsafe struct VMX_EXIT_QUALIFICATION
 {
   [FieldOffset(0)] public ulong Val;
-  struct {
-   [FieldOffset(0)] public uint Size = 3;
+  /*   struct { */
+  [FieldOffset(0)] public uint Size = 3;
   [FieldOffset(0)] public uint Direction = 1;
   [FieldOffset(0)] public uint String = 1;
   [FieldOffset(0)] public uint Rep = 1;
@@ -139,8 +139,8 @@ public unsafe struct Io
   [FieldOffset(0)] public uint Resv = 9;
   [FieldOffset(0)] public uint Port = 16;
   [FieldOffset(0)] public uint Resv2;
+  /*   } Io; */
 }
-} VMX_EXIT_QUALIFICATION;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TDCALL_VEINFO_RETURN_DATA
@@ -158,9 +158,9 @@ public unsafe struct TDCALL_VEINFO_RETURN_DATA
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TD_RETURN_DATA
 {
-  TDCALL_GENERIC_RETURN_DATA Generic;
-  TDCALL_INFO_RETURN_DATA TdInfo;
-  TDCALL_VEINFO_RETURN_DATA VeInfo;
+  [FieldOffset(0)] public TDCALL_GENERIC_RETURN_DATA Generic;
+  [FieldOffset(0)] public TDCALL_INFO_RETURN_DATA TdInfo;
+  [FieldOffset(0)] public TDCALL_VEINFO_RETURN_DATA VeInfo;
 }
 
 /* data structure used in TDREPORT_STRUCT */
@@ -176,7 +176,7 @@ public unsafe struct TD_REPORT_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct REPORTMACSTRUCT
 {
-  TD_REPORT_TYPE ReportType;
+  public TD_REPORT_TYPE ReportType;
   public fixed byte Rsvd1[12];
   public fixed byte CpuSvn[16];
   public fixed byte TeeTcbInfoHash[48];
@@ -197,7 +197,7 @@ public unsafe struct TEE_TCB_SVN
 public unsafe struct TEE_TCB_INFO
 {
   public fixed byte Valid[8];
-  TEE_TCB_SVN TeeTcbSvn;
+  public TEE_TCB_SVN TeeTcbSvn;
   public fixed byte Mrseam[48];
   public fixed byte Mrsignerseam[48];
   public fixed byte Attributes[8];
@@ -213,17 +213,17 @@ public unsafe struct TDINFO
   public fixed byte Mrconfigid[48];
   public fixed byte Mrowner[48];
   public fixed byte Mrownerconfig[48];
-  public fixed byte Rtmrs[4][48];
- public fixed byte Rsvd[112];
+  byte Rtmrs[4][48];
+  public fixed byte Rsvd[112];
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TDREPORT_STRUCT
 {
   public REPORTMACSTRUCT ReportMacStruct;
-  TEE_TCB_INFO TeeTcbInfo;
+  public TEE_TCB_INFO TeeTcbInfo;
   public fixed byte Rsvd[17];
-  TDINFO Tdinfo;
+  public TDINFO Tdinfo;
 }
 
 // #pragma pack()

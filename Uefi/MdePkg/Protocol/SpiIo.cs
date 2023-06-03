@@ -54,6 +54,119 @@ public enum EFI_SPI_TRANSACTION_TYPE
   SPI_TRANSACTION_WRITE_THEN_READ
 }
 
+// /**
+//   Initiate a SPI transaction between the host and a SPI peripheral.
+// 
+//   This routine must be called at or below TPL_NOTIFY.
+//   This routine works with the SPI bus layer to pass the SPI transaction to the
+//   SPI controller for execution on the SPI bus. There are four types of
+//   supported transactions supported by this routine:
+//   * Full Duplex: WriteBuffer and ReadBuffer are the same size.
+//   * Write Only: WriteBuffer contains data for SPI peripheral, ReadBytes = 0
+//   * Read Only: ReadBuffer to receive data from SPI peripheral, WriteBytes = 0
+//   * Write Then Read: WriteBuffer contains control data to write to SPI
+//                      peripheral before data is placed into the ReadBuffer.
+//                      Both WriteBytes and ReadBytes must be non-zero.
+// 
+//   @param[in]  This              Pointer to an EFI_SPI_IO_PROTOCOL structure.
+//   @param[in]  TransactionType   Type of SPI transaction.
+//   @param[in]  DebugTransaction  Set TRUE only when debugging is desired.
+//                                 Debugging may be turned on for a single SPI
+//                                 transaction. Only this transaction will display
+//                                 debugging messages. All other transactions with
+//                                 this value set to FALSE will not display any
+//                                 debugging messages.
+//   @param[in]  ClockHz           Specify the ClockHz value as zero (0) to use
+//                                 the maximum clock frequency supported by the
+//                                 SPI controller and part. Specify a non-zero
+//                                 value only when a specific SPI transaction
+//                                 requires a reduced clock rate.
+//   @param[in]  BusWidth          Width of the SPI bus in bits: 1, 2, 4
+//   @param[in]  FrameSize         Frame size in bits, range: 1 - 32
+//   @param[in]  WriteBytes        The length of the WriteBuffer in bytes.
+//                                 Specify zero for read-only operations.
+//   @param[in]  WriteBuffer       The buffer containing data to be sent from the
+//                                 host to the SPI chip. Specify NULL for read
+//                                 only operations.
+//                                 * Frame sizes 1-8 bits: byte (one byte) per
+//                                   frame
+//                                 * Frame sizes 7-16 bits: ushort (two bytes) per
+//                                   frame
+//                                 * Frame sizes 17-32 bits: uint (four bytes)
+//                                   per frame The transmit frame is in the least
+//                                   significant N bits.
+//   @param[in]  ReadBytes         The length of the ReadBuffer in bytes.
+//                                 Specify zero for write-only operations.
+//   @param[out] ReadBuffer        The buffer to receeive data from the SPI chip
+//                                 during the transaction. Specify NULL for write
+//                                 only operations.
+//                                 * Frame sizes 1-8 bits: byte (one byte) per
+//                                   frame
+//                                 * Frame sizes 7-16 bits: ushort (two bytes) per
+//                                   frame
+//                                 * Frame sizes 17-32 bits: uint (four bytes)
+//                                   per frame The received frame is in the least
+//                                   significant N bits.
+// 
+//   @retval EFI_SUCCESS            The SPI transaction completed successfully
+//   @retval EFI_BAD_BUFFER_SIZE    The writeBytes value was invalid
+//   @retval EFI_BAD_BUFFER_SIZE    The ReadBytes value was invalid
+//   @retval EFI_INVALID_PARAMETER  TransactionType is not valid,
+//                                  or BusWidth not supported by SPI peripheral or
+//                                  SPI host controller,
+//                                  or WriteBytes non-zero and WriteBuffer is
+//                                  NULL,
+//                                  or ReadBytes non-zero and ReadBuffer is NULL,
+//                                  or ReadBuffer != WriteBuffer for full-duplex
+//                                  type,
+//                                  or WriteBuffer was NULL,
+//                                  or TPL is too high
+//   @retval EFI_OUT_OF_RESOURCES   Insufficient memory for SPI transaction
+//   @retval EFI_UNSUPPORTED        The FrameSize is not supported by the SPI bus
+//                                  layer or the SPI host controller
+//   @retval EFI_UNSUPPORTED        The SPI controller was not able to support
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SPI_IO_PROTOCOL_TRANSACTION)(
+//   IN  CONST EFI_SPI_IO_PROTOCOL  *This,
+//   IN  EFI_SPI_TRANSACTION_TYPE   TransactionType,
+//   IN  bool                    DebugTransaction,
+//   IN  uint                     ClockHz OPTIONAL,
+//   IN  uint                     BusWidth,
+//   IN  uint                     FrameSize,
+//   IN  uint                     WriteBytes,
+//   IN  byte                      *WriteBuffer,
+//   IN  uint                     ReadBytes,
+//   OUT byte                      *ReadBuffer
+//   );
+
+// /**
+//   Update the SPI peripheral associated with this SPI 10 instance.
+// 
+//   Support socketed SPI parts by allowing the SPI peripheral driver to replace
+//   the SPI peripheral after the connection is made. An example use is socketed
+//   SPI NOR flash parts, where the size and parameters change depending upon
+//   device is in the socket.
+// 
+//   @param[in] This           Pointer to an EFI_SPI_IO_PROTOCOL structure.
+//   @param[in] SpiPeripheral  Pointer to an EFI_SPI_PERIPHERAL structure.
+// 
+//   @retval EFI_SUCCESS            The SPI peripheral was updated successfully
+//   @retval EFI_INVALID_PARAMETER  The SpiPeripheral value is NULL,
+//                                  or the SpiPeripheral->SpiBus is NULL,
+//                                  or the SpiP eripheral - >SpiBus pointing at
+//                                  wrong bus,
+//                                  or the SpiP eripheral - >SpiPart is NULL
+// 
+// **/
+// typedef EFI_STATUS
+// (EFIAPI *EFI_SPI_IO_PROTOCOL_UPDATE_SPI_PERIPHERAL)(
+//   IN CONST EFI_SPI_IO_PROTOCOL  *This,
+//   IN CONST EFI_SPI_PERIPHERAL   *SpiPeripheral
+//   );
+
 ///
 /// The EFI_SPI_BUS_ TRANSACTION data structure contains the description of the
 /// SPI transaction to perform on the host controller.
@@ -64,13 +177,14 @@ public unsafe struct EFI_SPI_BUS_TRANSACTION
   ///
   /// Pointer to the SPI peripheral being manipulated.
   ///
-  CONSTpublic EFI_SPI_PERIPHERAL    *SpiPeripheral;
+  /*CONST*/
+  public EFI_SPI_PERIPHERAL* SpiPeripheral;
 
   ///
   /// Type of transaction specified by one of the EFI_SPI_TRANSACTION_TYPE
   /// values.
   ///
- public EFI_SPI_TRANSACTION_TYPE TransactionType;
+  public EFI_SPI_TRANSACTION_TYPE TransactionType;
 
   ///
   /// TRUE if the transaction is being debugged. Debugging may be turned on for
@@ -127,13 +241,15 @@ public unsafe struct EFI_SPI_IO_PROTOCOL
   /// Address of an EFI_SPI_PERIPHERAL data structure associated with this
   /// protocol instance.
   ///
-  CONSTpublic EFI_SPI_PERIPHERAL    *SpiPeripheral;
+  /*CONST*/
+  public EFI_SPI_PERIPHERAL* SpiPeripheral;
 
   ///
   /// Address of the original EFI_SPI_PERIPHERAL data structure associated with
   /// this protocol instance.
   ///
-  CONSTpublic EFI_SPI_PERIPHERAL    *OriginalSpiPeripheral;
+  /*CONST*/
+  public EFI_SPI_PERIPHERAL* OriginalSpiPeripheral;
 
   ///
   /// Mask of frame sizes which the SPI 10 layer supports. Frame size of N-bits
@@ -142,7 +258,7 @@ public unsafe struct EFI_SPI_IO_PROTOCOL
   /// 8-bit frame sizes by the SPI bus layer if the frame size is not supported
   /// by the SPI host controller.
   ///
- public uint FrameSizeSupportMask;
+  public uint FrameSizeSupportMask;
 
   ///
   /// Maximum transfer size in bytes: 1 - Oxffffffff
@@ -165,109 +281,18 @@ public unsafe struct EFI_SPI_IO_PROTOCOL
   ///
   /// Pointer to legacy SPI controller protocol
   ///
-  CONSTpublic EFI_LEGACY_SPI_CONTROLLER_PROTOCOL     *LegacySpiProtocol;
+  /*CONST*/
+  public EFI_LEGACY_SPI_CONTROLLER_PROTOCOL* LegacySpiProtocol;
 
   ///
   /// Initiate a SPI transaction between the host and a SPI peripheral.
   ///
-/**
-  Initiate a SPI transaction between the host and a SPI peripheral.
-
-  This routine must be called at or below TPL_NOTIFY.
-  This routine works with the SPI bus layer to pass the SPI transaction to the
-  SPI controller for execution on the SPI bus. There are four types of
-  supported transactions supported by this routine:
-  * Full Duplex: WriteBuffer and ReadBuffer are the same size.
-  * Write Only: WriteBuffer contains data for SPI peripheral, ReadBytes = 0
-  * Read Only: ReadBuffer to receive data from SPI peripheral, WriteBytes = 0
-  * Write Then Read: WriteBuffer contains control data to write to SPI
-                     peripheral before data is placed into the ReadBuffer.
-                     Both WriteBytes and ReadBytes must be non-zero.
-
-  @param[in]  This              Pointer to an EFI_SPI_IO_PROTOCOL structure.
-  @param[in]  TransactionType   Type of SPI transaction.
-  @param[in]  DebugTransaction  Set TRUE only when debugging is desired.
-                                Debugging may be turned on for a single SPI
-                                transaction. Only this transaction will display
-                                debugging messages. All other transactions with
-                                this value set to FALSE will not display any
-                                debugging messages.
-  @param[in]  ClockHz           Specify the ClockHz value as zero (0) to use
-                                the maximum clock frequency supported by the
-                                SPI controller and part. Specify a non-zero
-                                value only when a specific SPI transaction
-                                requires a reduced clock rate.
-  @param[in]  BusWidth          Width of the SPI bus in bits: 1, 2, 4
-  @param[in]  FrameSize         Frame size in bits, range: 1 - 32
-  @param[in]  WriteBytes        The length of the WriteBuffer in bytes.
-                                Specify zero for read-only operations.
-  @param[in]  WriteBuffer       The buffer containing data to be sent from the
-                                host to the SPI chip. Specify NULL for read
-                                only operations.
-                                * Frame sizes 1-8 bits: byte (one byte) per
-                                  frame
-                                * Frame sizes 7-16 bits: ushort (two bytes) per
-                                  frame
-                                * Frame sizes 17-32 bits: uint (four bytes)
-                                  per frame The transmit frame is in the least
-                                  significant N bits.
-  @param[in]  ReadBytes         The length of the ReadBuffer in bytes.
-                                Specify zero for write-only operations.
-  @param[out] ReadBuffer        The buffer to receeive data from the SPI chip
-                                during the transaction. Specify NULL for write
-                                only operations.
-                                * Frame sizes 1-8 bits: byte (one byte) per
-                                  frame
-                                * Frame sizes 7-16 bits: ushort (two bytes) per
-                                  frame
-                                * Frame sizes 17-32 bits: uint (four bytes)
-                                  per frame The received frame is in the least
-                                  significant N bits.
-
-  @retval EFI_SUCCESS            The SPI transaction completed successfully
-  @retval EFI_BAD_BUFFER_SIZE    The writeBytes value was invalid
-  @retval EFI_BAD_BUFFER_SIZE    The ReadBytes value was invalid
-  @retval EFI_INVALID_PARAMETER  TransactionType is not valid,
-                                 or BusWidth not supported by SPI peripheral or
-                                 SPI host controller,
-                                 or WriteBytes non-zero and WriteBuffer is
-                                 NULL,
-                                 or ReadBytes non-zero and ReadBuffer is NULL,
-                                 or ReadBuffer != WriteBuffer for full-duplex
-                                 type,
-                                 or WriteBuffer was NULL,
-                                 or TPL is too high
-  @retval EFI_OUT_OF_RESOURCES   Insufficient memory for SPI transaction
-  @retval EFI_UNSUPPORTED        The FrameSize is not supported by the SPI bus
-                                 layer or the SPI host controller
-  @retval EFI_UNSUPPORTED        The SPI controller was not able to support
-
-**/
-public readonly delegate* unmanaged<CONST, EFI_SPI_TRANSACTION_TYPE, bool, uint, uint, uint, uint, byte*, uint, byte*, EFI_STATUS> Transaction;
+  public readonly delegate* unmanaged</* IN */CONST /*EFI_SPI_IO_PROTOCOL*/,/* IN */EFI_SPI_TRANSACTION_TYPE /*TransactionType*/,/* IN */bool /*DebugTransaction*/,/* IN */uint /*ClockHz*/,/* IN */uint /*BusWidth*/,/* IN */uint /*FrameSize*/,/* IN */uint /*WriteBytes*/,/* IN */byte* /*WriteBuffer*/,/* IN */uint /*ReadBytes*/,/* OUT */byte* /*ReadBuffer*/, EFI_STATUS> /*EFI_SPI_IO_PROTOCOL_TRANSACTION*/ Transaction;
 
   ///
   /// Update the SPI peripheral associated with this SPI 10 instance.
   ///
-  /**
-    Update the SPI peripheral associated with this SPI 10 instance.
-
-    Support socketed SPI parts by allowing the SPI peripheral driver to replace
-    the SPI peripheral after the connection is made. An example use is socketed
-    SPI NOR flash parts, where the size and parameters change depending upon
-    device is in the socket.
-
-    @param[in] This           Pointer to an EFI_SPI_IO_PROTOCOL structure.
-    @param[in] SpiPeripheral  Pointer to an EFI_SPI_PERIPHERAL structure.
-
-    @retval EFI_SUCCESS            The SPI peripheral was updated successfully
-    @retval EFI_INVALID_PARAMETER  The SpiPeripheral value is NULL,
-                                   or the SpiPeripheral->SpiBus is NULL,
-                                   or the SpiP eripheral - >SpiBus pointing at
-                                   wrong bus,
-                                   or the SpiP eripheral - >SpiPart is NULL
-
-  **/
-  public readonly delegate* unmanaged<CONST, EFI_STATUS> UpdateSpiPeripheral;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SPI_PERIPHERAL* /*SpiPeripheral*/, EFI_STATUS> /*EFI_SPI_IO_PROTOCOL_UPDATE_SPI_PERIPHERAL*/ UpdateSpiPeripheral;
 }
 
 // #endif // __SPI_IO_PROTOCOL_H__

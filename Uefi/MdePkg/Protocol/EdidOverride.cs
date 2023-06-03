@@ -25,6 +25,31 @@ public unsafe partial class EFI
   public const ulong EFI_EDID_OVERRIDE_DONT_OVERRIDE = 0x01;
   public const ulong EFI_EDID_OVERRIDE_ENABLE_HOT_PLUG = 0x02;
 
+  // /**
+  //   Returns policy information and potentially a replacement EDID for the specified video output device.
+  // 
+  //   @param  This              The EFI_EDID_OVERRIDE_PROTOCOL instance.
+  //   @param  ChildHandle       A child handle produced by the Graphics Output EFI
+  //                             driver that represents a video output device.
+  //   @param  Attributes        The attributes associated with ChildHandle video output device.
+  //   @param  EdidSize          A pointer to the size, in bytes, of the Edid buffer.
+  //   @param  Edid              A pointer to callee allocated buffer that contains the EDID that
+  //                             should be used for ChildHandle. A value of NULL
+  //                             represents no EDID override for ChildHandle.
+  // 
+  //   @retval EFI_SUCCESS       Valid overrides returned for ChildHandle.
+  //   @retval EFI_UNSUPPORTED   ChildHandle has no overrides.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_EDID_OVERRIDE_PROTOCOL_GET_EDID)(
+  //   IN  EFI_EDID_OVERRIDE_PROTOCOL          *This,
+  //   IN  EFI_HANDLE                          *ChildHandle,
+  //   OUT uint                              *Attributes,
+  //   OUT ulong                               *EdidSize,
+  //   OUT byte                               **Edid
+  //   );
 }
 
 ///
@@ -34,23 +59,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EDID_OVERRIDE_PROTOCOL
 {
-  /**
-    Returns policy information and potentially a replacement EDID for the specified video output device.
-
-    @param  This              The EFI_EDID_OVERRIDE_PROTOCOL instance.
-    @param  ChildHandle       A child handle produced by the Graphics Output EFI
-                              driver that represents a video output device.
-    @param  Attributes        The attributes associated with ChildHandle video output device.
-    @param  EdidSize          A pointer to the size, in bytes, of the Edid buffer.
-    @param  Edid              A pointer to callee allocated buffer that contains the EDID that
-                              should be used for ChildHandle. A value of NULL
-                              represents no EDID override for ChildHandle.
-
-    @retval EFI_SUCCESS       Valid overrides returned for ChildHandle.
-    @retval EFI_UNSUPPORTED   ChildHandle has no overrides.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EDID_OVERRIDE_PROTOCOL*, EFI_HANDLE*, uint*, ulong*, byte**, EFI_STATUS> GetEdid;
+  public readonly delegate* unmanaged</* IN */EFI_EDID_OVERRIDE_PROTOCOL* /*This*/,/* IN */EFI_HANDLE* /*ChildHandle*/,/* OUT */uint* /*Attributes*/,/* OUT */ulong* /*EdidSize*/,/* OUT */byte** /*Edid*/, EFI_STATUS> /*EFI_EDID_OVERRIDE_PROTOCOL_GET_EDID*/ GetEdid;
 }
 
 // extern EFI_GUID  gEfiEdidOverrideProtocolGuid;

@@ -31,8 +31,8 @@ namespace Uefi;
 **/
 public unsafe partial class EFI
 {
-  public const ulong PCI_ECAM_ADDRESS = (Bus, Device, Function, Offset) \;
-  (((Offset) & 0xfff) | (((Function) & 0x07) << 12) | (((Device) & 0x1f) << 15) | (((Bus) & 0xff) << 20))
+  //public const ulong PCI_ECAM_ADDRESS = (Bus, Device, Function, Offset) \;
+  //(((Offset) & 0xfff) | (((Function) & 0x07) << 12) | (((Device) & 0x1f) << 15) | (((Bus) & 0xff) << 20))
 }
 
 // #pragma pack(1)
@@ -40,18 +40,18 @@ public unsafe partial class EFI
 /// PCI Express Capability Structure
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public ushort Version = 4;
+  /*   struct { */
+  [FieldOffset(0)] public ushort Version = 4;
   [FieldOffset(0)] public ushort DevicePortType = 4;
   [FieldOffset(0)] public ushort SlotImplemented = 1;
   [FieldOffset(0)] public ushort InterruptMessageNumber = 5;
   [FieldOffset(0)] public ushort Undefined = 1;
   [FieldOffset(0)] public ushort Reserved = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_CAPABILITY;
 
 public unsafe partial class EFI
 {
@@ -67,10 +67,10 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_DEVICE_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public uint MaxPayloadSize = 3;
+  /*   struct { */
+  [FieldOffset(0)] public uint MaxPayloadSize = 3;
   [FieldOffset(0)] public uint PhantomFunctions = 2;
   [FieldOffset(0)] public uint ExtendedTagField = 1;
   [FieldOffset(0)] public uint EndpointL0sAcceptableLatency = 3;
@@ -82,15 +82,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint CapturedSlotPowerLimitScale = 2;
   [FieldOffset(0)] public uint FunctionLevelReset = 1;
   [FieldOffset(0)] public uint Reserved2 = 3;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_REG_PCIE_DEVICE_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_DEVICE_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ushort CorrectableError = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort CorrectableError = 1;
   [FieldOffset(0)] public ushort NonFatalError = 1;
   [FieldOffset(0)] public ushort FatalError = 1;
   [FieldOffset(0)] public ushort UnsupportedRequest = 1;
@@ -102,9 +102,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort NoSnoop = 1;
   [FieldOffset(0)] public ushort MaxReadRequestSize = 3;
   [FieldOffset(0)] public ushort BridgeConfigurationRetryOrFunctionLevelReset = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_DEVICE_CONTROL;
 
 public unsafe partial class EFI
 {
@@ -128,25 +128,25 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_DEVICE_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ushort CorrectableError = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort CorrectableError = 1;
   [FieldOffset(0)] public ushort NonFatalError = 1;
   [FieldOffset(0)] public ushort FatalError = 1;
   [FieldOffset(0)] public ushort UnsupportedRequest = 1;
   [FieldOffset(0)] public ushort AuxPower = 1;
   [FieldOffset(0)] public ushort TransactionsPending = 1;
   [FieldOffset(0)] public ushort Reserved = 10;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_DEVICE_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_LINK_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public uint MaxLinkSpeed = 4;
+  /*   struct { */
+  [FieldOffset(0)] public uint MaxLinkSpeed = 4;
   [FieldOffset(0)] public uint MaxLinkWidth = 6;
   [FieldOffset(0)] public uint Aspm = 2;
   [FieldOffset(0)] public uint L0sExitLatency = 3;
@@ -158,9 +158,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint AspmOptionalityCompliance = 1;
   [FieldOffset(0)] public uint Reserved = 1;
   [FieldOffset(0)] public uint PortNumber = 8;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_REG_PCIE_LINK_CAPABILITY;
 
 public unsafe partial class EFI
 {
@@ -169,10 +169,10 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_LINK_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ushort AspmControl = 2;
+  /*   struct { */
+  [FieldOffset(0)] public ushort AspmControl = 2;
   [FieldOffset(0)] public ushort Reserved = 1;
   [FieldOffset(0)] public ushort ReadCompletionBoundary = 1;
   [FieldOffset(0)] public ushort LinkDisable = 1;
@@ -183,15 +183,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort HardwareAutonomousWidthDisable = 1;
   [FieldOffset(0)] public ushort LinkBandwidthManagementInterrupt = 1;
   [FieldOffset(0)] public ushort LinkAutonomousBandwidthInterrupt = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_LINK_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_LINK_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ushort CurrentLinkSpeed = 4;
+  /*   struct { */
+  [FieldOffset(0)] public ushort CurrentLinkSpeed = 4;
   [FieldOffset(0)] public ushort NegotiatedLinkWidth = 6;
   [FieldOffset(0)] public ushort Undefined = 1;
   [FieldOffset(0)] public ushort LinkTraining = 1;
@@ -199,15 +199,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort DataLinkLayerLinkActive = 1;
   [FieldOffset(0)] public ushort LinkBandwidthManagement = 1;
   [FieldOffset(0)] public ushort LinkAutonomousBandwidth = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_LINK_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_SLOT_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public uint AttentionButton = 1;
+  /*   struct { */
+  [FieldOffset(0)] public uint AttentionButton = 1;
   [FieldOffset(0)] public uint PowerController = 1;
   [FieldOffset(0)] public uint MrlSensor = 1;
   [FieldOffset(0)] public uint AttentionIndicator = 1;
@@ -219,15 +219,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint ElectromechanicalInterlock = 1;
   [FieldOffset(0)] public uint NoCommandCompleted = 1;
   [FieldOffset(0)] public uint PhysicalSlotNumber = 13;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_REG_PCIE_SLOT_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_SLOT_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ushort AttentionButtonPressed = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort AttentionButtonPressed = 1;
   [FieldOffset(0)] public ushort PowerFaultDetected = 1;
   [FieldOffset(0)] public ushort MrlSensorChanged = 1;
   [FieldOffset(0)] public ushort PresenceDetectChanged = 1;
@@ -239,15 +239,15 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort ElectromechanicalInterlock = 1;
   [FieldOffset(0)] public ushort DataLinkLayerStateChanged = 1;
   [FieldOffset(0)] public ushort Reserved = 3;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_SLOT_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_SLOT_STATUS
 {
-  struct {
-   [FieldOffset(0)] public ushort AttentionButtonPressed = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort AttentionButtonPressed = 1;
   [FieldOffset(0)] public ushort PowerFaultDetected = 1;
   [FieldOffset(0)] public ushort MrlSensorChanged = 1;
   [FieldOffset(0)] public ushort PresenceDetectChanged = 1;
@@ -257,51 +257,51 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort ElectromechanicalInterlock = 1;
   [FieldOffset(0)] public ushort DataLinkLayerStateChanged = 1;
   [FieldOffset(0)] public ushort Reserved = 7;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_SLOT_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_ROOT_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public ushort SystemErrorOnCorrectableError = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort SystemErrorOnCorrectableError = 1;
   [FieldOffset(0)] public ushort SystemErrorOnNonFatalError = 1;
   [FieldOffset(0)] public ushort SystemErrorOnFatalError = 1;
   [FieldOffset(0)] public ushort PmeInterrupt = 1;
   [FieldOffset(0)] public ushort CrsSoftwareVisibility = 1;
   [FieldOffset(0)] public ushort Reserved = 11;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_ROOT_CONTROL;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_ROOT_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public ushort CrsSoftwareVisibility = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort CrsSoftwareVisibility = 1;
   [FieldOffset(0)] public ushort Reserved = 15;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_ROOT_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_ROOT_STATUS
 {
-  struct {
-   [FieldOffset(0)] public uint PmeRequesterId = 16;
+  /*   struct { */
+  [FieldOffset(0)] public uint PmeRequesterId = 16;
   [FieldOffset(0)] public uint PmeStatus = 1;
   [FieldOffset(0)] public uint PmePending = 1;
   [FieldOffset(0)] public uint Reserved = 14;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_REG_PCIE_ROOT_STATUS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_DEVICE_CAPABILITY2
 {
-  struct {
-   [FieldOffset(0)] public uint CompletionTimeoutRanges = 4;
+  /*   struct { */
+  [FieldOffset(0)] public uint CompletionTimeoutRanges = 4;
   [FieldOffset(0)] public uint CompletionTimeoutDisable = 1;
   [FieldOffset(0)] public uint AriForwarding = 1;
   [FieldOffset(0)] public uint AtomicOpRouting = 1;
@@ -322,9 +322,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint EmergencyPowerReductionInitializationRequired = 1;
   [FieldOffset(0)] public uint Reserved3 = 4;
   [FieldOffset(0)] public uint FrsSupported = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_REG_PCIE_DEVICE_CAPABILITY2;
 
 public unsafe partial class EFI
 {
@@ -342,10 +342,10 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_DEVICE_CONTROL2
 {
-  struct {
-   [FieldOffset(0)] public ushort CompletionTimeoutValue = 4;
+  /*   struct { */
+  [FieldOffset(0)] public ushort CompletionTimeoutValue = 4;
   [FieldOffset(0)] public ushort CompletionTimeoutDisable = 1;
   [FieldOffset(0)] public ushort AriForwarding = 1;
   [FieldOffset(0)] public ushort AtomicOpRequester = 1;
@@ -357,9 +357,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort TenBitTagRequesterEnable = 1;
   [FieldOffset(0)] public ushort Obff = 2;
   [FieldOffset(0)] public ushort EndEndTlpPrefixBlocking = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_DEVICE_CONTROL2;
 
 public unsafe partial class EFI
 {
@@ -380,22 +380,22 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_LINK_CAPABILITY2
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved = 1;
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved = 1;
   [FieldOffset(0)] public uint LinkSpeedsVector = 7;
   [FieldOffset(0)] public uint Crosslink = 1;
   [FieldOffset(0)] public uint Reserved2 = 23;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_REG_PCIE_LINK_CAPABILITY2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_LINK_CONTROL2
 {
-  struct {
-   [FieldOffset(0)] public ushort TargetLinkSpeed = 4;
+  /*   struct { */
+  [FieldOffset(0)] public ushort TargetLinkSpeed = 4;
   [FieldOffset(0)] public ushort EnterCompliance = 1;
   [FieldOffset(0)] public ushort HardwareAutonomousSpeedDisable = 1;
   [FieldOffset(0)] public ushort SelectableDeemphasis = 1;
@@ -403,24 +403,24 @@ public unsafe struct Bits
   [FieldOffset(0)] public ushort EnterModifiedCompliance = 1;
   [FieldOffset(0)] public ushort ComplianceSos = 1;
   [FieldOffset(0)] public ushort CompliancePresetDeemphasis = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_LINK_CONTROL2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_REG_PCIE_LINK_STATUS2
 {
-  struct {
-   [FieldOffset(0)] public ushort CurrentDeemphasisLevel = 1;
+  /*   struct { */
+  [FieldOffset(0)] public ushort CurrentDeemphasisLevel = 1;
   [FieldOffset(0)] public ushort EqualizationComplete = 1;
   [FieldOffset(0)] public ushort EqualizationPhase1Successful = 1;
   [FieldOffset(0)] public ushort EqualizationPhase2Successful = 1;
   [FieldOffset(0)] public ushort EqualizationPhase3Successful = 1;
   [FieldOffset(0)] public ushort LinkEqualizationRequest = 1;
   [FieldOffset(0)] public ushort Reserved = 10;
+  /*   } Bits; */
+  [FieldOffset(0)] public ushort Uint16;
 }
-ushort Uint16;
-} PCI_REG_PCIE_LINK_STATUS2;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_CAPABILITY_PCIEXP
@@ -531,10 +531,10 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_REG_UNCORRECTABLE_ERROR
 {
-  struct {
-   [FieldOffset(0)] public uint Undefined = 1;
+  /*   struct { */
+  [FieldOffset(0)] public uint Undefined = 1;
   [FieldOffset(0)] public uint Reserved = 3;
   [FieldOffset(0)] public uint DataLinkProtocolError = 1;
   [FieldOffset(0)] public uint SurpriseDownError = 1;
@@ -554,9 +554,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint AtomicOpEgressBlocked = 1;
   [FieldOffset(0)] public uint TlpPrefixBlockedError = 1;
   [FieldOffset(0)] public uint Reserved3 = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_REG_UNCORRECTABLE_ERROR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_ADVANCED_ERROR_REPORTING
@@ -768,28 +768,28 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public uint Reserved = 4;
+  /*   struct { */
+  [FieldOffset(0)] public uint Reserved = 4;
   [FieldOffset(0)] public uint BarSizeCapability = 28;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR_CAPABILITY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public uint BarIndex = 3;
+  /*   struct { */
+  [FieldOffset(0)] public uint BarIndex = 3;
   [FieldOffset(0)] public uint Reserved = 2;
   [FieldOffset(0)] public uint ResizableBarNumber = 3;
   [FieldOffset(0)] public uint BarSize = 6;
   [FieldOffset(0)] public uint Reserved2 = 2;
   [FieldOffset(0)] public uint BarSizeCapability = 16;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR_CONTROL;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_RESIZABLE_BAR_ENTRY

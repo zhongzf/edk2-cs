@@ -21,6 +21,39 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL_GUID = new GUID(
       0x5c99a21, 0xc70f, 0x4ad2, new byte[] { 0x8a, 0x5f, 0x35, 0xdf, 0x33, 0x43, 0xf5, 0x1e });
 
+  // /**
+  //   Convert text to the binary representation of a device node.
+  // 
+  //   @param  TextDeviceNode TextDeviceNode points to the text representation of a device
+  //                          node. Conversion starts with the first character and continues
+  //                          until the first non-device node character.
+  // 
+  //   @retval a_pointer      Pointer to the EFI device node.
+  //   @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
+  // 
+  // **/
+  // typedef
+  // EFI_DEVICE_PATH_PROTOCOL *
+  // (EFIAPI *EFI_DEVICE_PATH_FROM_TEXT_NODE)(
+  //   IN CONST char                 *TextDeviceNode
+  //   );
+
+  // /**
+  //   Convert text to the binary representation of a device node.
+  // 
+  //   @param  TextDeviceNode TextDevicePath points to the text representation of a device
+  //                          path. Conversion starts with the first character and continues
+  //                          until the first non-device path character.
+  // 
+  //   @retval a_pointer      Pointer to the allocated device path.
+  //   @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
+  // 
+  // **/
+  // typedef
+  // EFI_DEVICE_PATH_PROTOCOL *
+  // (EFIAPI *EFI_DEVICE_PATH_FROM_TEXT_PATH)(
+  //   IN CONST char                 *TextDevicePath
+  //   );
 }
 
 ///
@@ -29,30 +62,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DEVICE_PATH_FROM_TEXT_PROTOCOL
 {
-  /**
-    Convert text to the binary representation of a device node.
-
-    @param  TextDeviceNode TextDeviceNode points to the text representation of a device
-                           node. Conversion starts with the first character and continues
-                           until the first non-device node character.
-
-    @retval a_pointer      Pointer to the EFI device node.
-    @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
-
-  **/
-  public readonly delegate* unmanaged<CONST, EFI_STATUS> ConvertTextToDeviceNode;
-  /**
-    Convert text to the binary representation of a device node.
-
-    @param  TextDeviceNode TextDevicePath points to the text representation of a device
-                           path. Conversion starts with the first character and continues
-                           until the first non-device path character.
-
-    @retval a_pointer      Pointer to the allocated device path.
-    @retval NULL           if TextDeviceNode is NULL or there was insufficient memory.
-
-  **/
-  public readonly delegate* unmanaged<CONST, EFI_STATUS> ConvertTextToDevicePath;
+  public readonly delegate* unmanaged</* IN CONST */char* /*TextDeviceNode*/, EFI_STATUS> /*EFI_DEVICE_PATH_FROM_TEXT_NODE*/ ConvertTextToDeviceNode;
+  public readonly delegate* unmanaged</* IN CONST */char* /*TextDevicePath*/, EFI_STATUS> /*EFI_DEVICE_PATH_FROM_TEXT_PATH*/ ConvertTextToDevicePath;
 }
 
 // extern EFI_GUID  gEfiDevicePathFromTextProtocolGuid;

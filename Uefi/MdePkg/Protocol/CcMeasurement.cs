@@ -159,79 +159,114 @@ public unsafe struct EFI_CC_BOOT_SERVICE_CAPABILITY
   public EFI_CC_TYPE CcType;
 }
 
+// /**
+//   The EFI_CC_MEASUREMENT_PROTOCOL GetCapability function call provides protocol
+//   capability information and state information.
+// 
+//   @param[in]      This               Indicates the calling context
+//   @param[in, out] ProtocolCapability The caller allocates memory for a EFI_CC_BOOT_SERVICE_CAPABILITY
+//                                      structure and sets the size field to the size of the structure allocated.
+//                                      The callee fills in the fields with the EFI CC BOOT Service capability
+//                                      information and the current CC information.
+// 
+//   @retval EFI_SUCCESS            Operation completed successfully.
+//   @retval EFI_DEVICE_ERROR       The command was unsuccessful.
+//                                  The ProtocolCapability variable will not be populated.
+//   @retval EFI_INVALID_PARAMETER  One or more of the parameters are incorrect.
+//                                  The ProtocolCapability variable will not be populated.
+//   @retval EFI_BUFFER_TOO_SMALL   The ProtocolCapability variable is too small to hold the full response.
+//                                  It will be partially populated (required Size field will be set).
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_CC_GET_CAPABILITY)(
+//   IN     EFI_CC_MEASUREMENT_PROTOCOL       *This,
+//   IN OUT EFI_CC_BOOT_SERVICE_CAPABILITY    *ProtocolCapability
+//   );
+
+// /**
+//   The EFI_CC_MEASUREMENT_PROTOCOL Get Event Log function call allows a caller to
+//   retrieve the address of a given event log and its last entry.
+// 
+//   @param[in]  This               Indicates the calling context
+//   @param[in]  EventLogFormat     The type of the event log for which the information is requested.
+//   @param[out] EventLogLocation   A pointer to the memory address of the event log.
+//   @param[out] EventLogLastEntry  If the Event Log contains more than one entry, this is a pointer to the
+//                                  address of the start of the last entry in the event log in memory.
+//   @param[out] EventLogTruncated  If the Event Log is missing at least one entry because an event would
+//                                  have exceeded the area allocated for events, this value is set to TRUE.
+//                                  Otherwise, the value will be FALSE and the Event Log will be complete.
+// 
+//   @retval EFI_SUCCESS            Operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER  One or more of the parameters are incorrect
+//                                  (e.g. asking for an event log whose format is not supported).
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_CC_GET_EVENT_LOG)(
+//   IN  EFI_CC_MEASUREMENT_PROTOCOL     *This,
+//   IN  EFI_CC_EVENT_LOG_FORMAT         EventLogFormat,
+//   OUT EFI_PHYSICAL_ADDRESS            *EventLogLocation,
+//   OUT EFI_PHYSICAL_ADDRESS            *EventLogLastEntry,
+//   OUT bool                         *EventLogTruncated
+//   );
+
+// /**
+//   The EFI_CC_MEASUREMENT_PROTOCOL HashLogExtendEvent function call provides
+//   callers with an opportunity to extend and optionally log events without requiring
+//   knowledge of actual CC commands.
+//   The extend operation will occur even if this function cannot create an event
+//   log entry (e.g. due to the event log being full).
+// 
+//   @param[in]  This               Indicates the calling context
+//   @param[in]  Flags              Bitmap providing additional information.
+//   @param[in]  DataToHash         Physical address of the start of the data buffer to be hashed.
+//   @param[in]  DataToHashLen      The length in bytes of the buffer referenced by DataToHash.
+//   @param[in]  EfiCcEvent        Pointer to data buffer containing information about the event.
+// 
+//   @retval EFI_SUCCESS            Operation completed successfully.
+//   @retval EFI_DEVICE_ERROR       The command was unsuccessful.
+//   @retval EFI_VOLUME_FULL        The extend operation occurred, but the event could not be written to one or more event logs.
+//   @retval EFI_INVALID_PARAMETER  One or more of the parameters are incorrect.
+//   @retval EFI_UNSUPPORTED        The PE/COFF image type is not supported.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_CC_HASH_LOG_EXTEND_EVENT)(
+//   IN EFI_CC_MEASUREMENT_PROTOCOL    *This,
+//   IN ulong                         Flags,
+//   IN EFI_PHYSICAL_ADDRESS           DataToHash,
+//   IN ulong                         DataToHashLen,
+//   IN EFI_CC_EVENT                   *EfiCcEvent
+//   );
+
+// /**
+//   The EFI_CC_MEASUREMENT_PROTOCOL MapPcrToMrIndex function call provides callers
+//   the info on TPM PCR <-> CC MR mapping information.
+// 
+//   @param[in]  This               Indicates the calling context
+//   @param[in]  PcrIndex           TPM PCR index.
+//   @param[out] MrIndex            CC MR index.
+// 
+//   @retval EFI_SUCCESS            The MrIndex is returned.
+//   @retval EFI_INVALID_PARAMETER  The MrIndex is NULL.
+//   @retval EFI_UNSUPPORTED        The PcrIndex is invalid.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_CC_MAP_PCR_TO_MR_INDEX)(
+//   IN  EFI_CC_MEASUREMENT_PROTOCOL    *This,
+//   IN  TCG_PCRINDEX                   PcrIndex,
+//   OUT EFI_CC_MR_INDEX                *MrIndex
+//   );
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_CC_MEASUREMENT_PROTOCOL
 {
-  /**
-    The EFI_CC_MEASUREMENT_PROTOCOL GetCapability function call provides protocol
-    capability information and state information.
-
-    @param[in]      This               Indicates the calling context
-    @param[in, out] ProtocolCapability The caller allocates memory for a EFI_CC_BOOT_SERVICE_CAPABILITY
-                                       structure and sets the size field to the size of the structure allocated.
-                                       The callee fills in the fields with the EFI CC BOOT Service capability
-                                       information and the current CC information.
-
-    @retval EFI_SUCCESS            Operation completed successfully.
-    @retval EFI_DEVICE_ERROR       The command was unsuccessful.
-                                   The ProtocolCapability variable will not be populated.
-    @retval EFI_INVALID_PARAMETER  One or more of the parameters are incorrect.
-                                   The ProtocolCapability variable will not be populated.
-    @retval EFI_BUFFER_TOO_SMALL   The ProtocolCapability variable is too small to hold the full response.
-                                   It will be partially populated (required Size field will be set).
-  **/
-  public readonly delegate* unmanaged<EFI_CC_MEASUREMENT_PROTOCOL*, EFI_CC_BOOT_SERVICE_CAPABILITY*, EFI_STATUS> GetCapability;
-  /**
-    The EFI_CC_MEASUREMENT_PROTOCOL Get Event Log function call allows a caller to
-    retrieve the address of a given event log and its last entry.
-
-    @param[in]  This               Indicates the calling context
-    @param[in]  EventLogFormat     The type of the event log for which the information is requested.
-    @param[out] EventLogLocation   A pointer to the memory address of the event log.
-    @param[out] EventLogLastEntry  If the Event Log contains more than one entry, this is a pointer to the
-                                   address of the start of the last entry in the event log in memory.
-    @param[out] EventLogTruncated  If the Event Log is missing at least one entry because an event would
-                                   have exceeded the area allocated for events, this value is set to TRUE.
-                                   Otherwise, the value will be FALSE and the Event Log will be complete.
-
-    @retval EFI_SUCCESS            Operation completed successfully.
-    @retval EFI_INVALID_PARAMETER  One or more of the parameters are incorrect
-                                   (e.g. asking for an event log whose format is not supported).
-  **/
-  public readonly delegate* unmanaged<EFI_CC_MEASUREMENT_PROTOCOL*, EFI_CC_EVENT_LOG_FORMAT, EFI_PHYSICAL_ADDRESS*, EFI_PHYSICAL_ADDRESS*, bool*, EFI_STATUS> GetEventLog;
-  /**
-    The EFI_CC_MEASUREMENT_PROTOCOL HashLogExtendEvent function call provides
-    callers with an opportunity to extend and optionally log events without requiring
-    knowledge of actual CC commands.
-    The extend operation will occur even if this function cannot create an event
-    log entry (e.g. due to the event log being full).
-
-    @param[in]  This               Indicates the calling context
-    @param[in]  Flags              Bitmap providing additional information.
-    @param[in]  DataToHash         Physical address of the start of the data buffer to be hashed.
-    @param[in]  DataToHashLen      The length in bytes of the buffer referenced by DataToHash.
-    @param[in]  EfiCcEvent        Pointer to data buffer containing information about the event.
-
-    @retval EFI_SUCCESS            Operation completed successfully.
-    @retval EFI_DEVICE_ERROR       The command was unsuccessful.
-    @retval EFI_VOLUME_FULL        The extend operation occurred, but the event could not be written to one or more event logs.
-    @retval EFI_INVALID_PARAMETER  One or more of the parameters are incorrect.
-    @retval EFI_UNSUPPORTED        The PE/COFF image type is not supported.
-  **/
-  public readonly delegate* unmanaged<EFI_CC_MEASUREMENT_PROTOCOL*, ulong, EFI_PHYSICAL_ADDRESS, ulong, EFI_CC_EVENT*, EFI_STATUS> HashLogExtendEvent;
-  /**
-    The EFI_CC_MEASUREMENT_PROTOCOL MapPcrToMrIndex function call provides callers
-    the info on TPM PCR <-> CC MR mapping information.
-
-    @param[in]  This               Indicates the calling context
-    @param[in]  PcrIndex           TPM PCR index.
-    @param[out] MrIndex            CC MR index.
-
-    @retval EFI_SUCCESS            The MrIndex is returned.
-    @retval EFI_INVALID_PARAMETER  The MrIndex is NULL.
-    @retval EFI_UNSUPPORTED        The PcrIndex is invalid.
-  **/
-  public readonly delegate* unmanaged<EFI_CC_MEASUREMENT_PROTOCOL*, TCG_PCRINDEX, EFI_CC_MR_INDEX*, EFI_STATUS> MapPcrToMrIndex;
+  public readonly delegate* unmanaged</* IN */EFI_CC_MEASUREMENT_PROTOCOL* /*This*/,/* IN OUT */EFI_CC_BOOT_SERVICE_CAPABILITY* /*ProtocolCapability*/, EFI_STATUS> /*EFI_CC_GET_CAPABILITY*/ GetCapability;
+  public readonly delegate* unmanaged</* IN */EFI_CC_MEASUREMENT_PROTOCOL* /*This*/,/* IN */EFI_CC_EVENT_LOG_FORMAT /*EventLogFormat*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*EventLogLocation*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*EventLogLastEntry*/,/* OUT */bool* /*EventLogTruncated*/, EFI_STATUS> /*EFI_CC_GET_EVENT_LOG*/ GetEventLog;
+  public readonly delegate* unmanaged</* IN */EFI_CC_MEASUREMENT_PROTOCOL* /*This*/,/* IN */ulong /*Flags*/,/* IN */EFI_PHYSICAL_ADDRESS /*DataToHash*/,/* IN */ulong /*DataToHashLen*/,/* IN */EFI_CC_EVENT* /*EfiCcEvent*/, EFI_STATUS> /*EFI_CC_HASH_LOG_EXTEND_EVENT*/ HashLogExtendEvent;
+  public readonly delegate* unmanaged</* IN */EFI_CC_MEASUREMENT_PROTOCOL* /*This*/,/* IN */TCG_PCRINDEX /*PcrIndex*/,/* OUT */EFI_CC_MR_INDEX* /*MrIndex*/, EFI_STATUS> /*EFI_CC_MAP_PCR_TO_MR_INDEX*/ MapPcrToMrIndex;
 }
 
 //
@@ -249,7 +284,7 @@ public unsafe struct CC_EVENT
 {
   public EFI_CC_MR_INDEX MrIndex;
   public uint EventType;
-  TPML_DIGEST_VALUES Digests;
+  public TPML_DIGEST_VALUES Digests;
   public uint EventSize;
   public fixed byte Event[1];
 }
@@ -263,7 +298,7 @@ public unsafe struct CC_EVENT_HDR
 {
   public EFI_CC_MR_INDEX MrIndex;
   public uint EventType;
-  TPML_DIGEST_VALUES Digests;
+  public TPML_DIGEST_VALUES Digests;
   public uint EventSize;
 }
 

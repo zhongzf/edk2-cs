@@ -22,11 +22,11 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public const ulong PXE_BUSTYPE = (a, b, c, d) \;
-  ( \
-      (((PXE_UINT32) (d) & 0xFF) << 24) | (((PXE_UINT32) (c) & 0xFF) << 16) | (((PXE_UINT32) (b) & 0xFF) << 8) | \
-        ((PXE_UINT32) (a) & 0xFF) \
-    )
+  //public const ulong PXE_BUSTYPE = (a, b, c, d) \;
+  //( \
+  //    (((PXE_UINT32) (d) & 0xFF) << 24) | (((PXE_UINT32) (c) & 0xFF) << 16) | (((PXE_UINT32) (b) & 0xFF) << 8) | \
+  //      ((PXE_UINT32) (a) & 0xFF) \
+  //  )
 
 ///
 /// UNDI ROM ID and devive ID signature.
@@ -43,33 +43,33 @@ public const ulong PXE_BUSTYPE_PXE = PXE_BUSTYPE('!', 'P', 'X', 'E');
 
   public const ulong PXE_SWAP_UINT16 = (n)((((PXE_UINT16)(n) & 0x00FF) << 8) | (((PXE_UINT16)(n) & 0xFF00) >> 8));
 
-  public const ulong PXE_SWAP_UINT32 = (n) \;
-  ((((PXE_UINT32)(n) & 0x000000FF) << 24) | \
-   (((PXE_UINT32)(n) & 0x0000FF00) << 8)  | \
-   (((PXE_UINT32)(n) & 0x00FF0000) >> 8)  | \
-   (((PXE_UINT32)(n) & 0xFF000000) >> 24))
+//  public const ulong PXE_SWAP_UINT32 = (n) \;
+//  ((((PXE_UINT32)(n) & 0x000000FF) << 24) | \
+//   (((PXE_UINT32)(n) & 0x0000FF00) << 8)  | \
+//   (((PXE_UINT32)(n) & 0x00FF0000) >> 8)  | \
+//   (((PXE_UINT32)(n) & 0xFF000000) >> 24))
 
-public const ulong PXE_SWAP_UINT64 = (n) \;
-  ((((PXE_UINT64)(n) & 0x00000000000000FF) << 56) | \
-   (((PXE_UINT64)(n) & 0x000000000000FF00) << 40) | \
-   (((PXE_UINT64)(n) & 0x0000000000FF0000) << 24) | \
-   (((PXE_UINT64)(n) & 0x00000000FF000000) << 8)  | \
-   (((PXE_UINT64)(n) & 0x000000FF00000000) >> 8)  | \
-   (((PXE_UINT64)(n) & 0x0000FF0000000000) >> 24) | \
-   (((PXE_UINT64)(n) & 0x00FF000000000000) >> 40) | \
-   (((PXE_UINT64)(n) & 0xFF00000000000000) >> 56))
+//public const ulong PXE_SWAP_UINT64 = (n) \;
+//  ((((PXE_UINT64)(n) & 0x00000000000000FF) << 56) | \
+//   (((PXE_UINT64)(n) & 0x000000000000FF00) << 40) | \
+//   (((PXE_UINT64)(n) & 0x0000000000FF0000) << 24) | \
+//   (((PXE_UINT64)(n) & 0x00000000FF000000) << 8)  | \
+//   (((PXE_UINT64)(n) & 0x000000FF00000000) >> 8)  | \
+//   (((PXE_UINT64)(n) & 0x0000FF0000000000) >> 24) | \
+//   (((PXE_UINT64)(n) & 0x00FF000000000000) >> 40) | \
+//   (((PXE_UINT64)(n) & 0xFF00000000000000) >> 56))
 
 public const ulong PXE_CPBSIZE_NOT_USED = 0; /// < zero
   public const ulong PXE_DBSIZE_NOT_USED = 0; /// < zero
-  public const ulong PXE_CPBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
-  public const ulong PXE_DBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
-  public const ulong PXE_CONST = CONST;
+  //public const ulong PXE_CPBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
+  //public const ulong PXE_DBADDR_NOT_USED = (PXE_UINT64)0; /// < zero
+  //public const ulong PXE_CONST = CONST;
 
-  public const ulong PXE_VOLATILE = volatile;
+  //public const ulong PXE_VOLATILE = volatile;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_VOID { void Value; public static implicit operator PXE_VOID(void value) => new PXE_VOID() { Value = value }; public static implicit operator void(PXE_VOID value) => value.Value; }
+//public unsafe struct PXE_VOID { void Value; public static implicit operator PXE_VOID(void value) => new PXE_VOID() { Value = value }; public static implicit operator void(PXE_VOID value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_UINT8 { byte Value; public static implicit operator PXE_UINT8(byte value) => new PXE_UINT8() { Value = value }; public static implicit operator byte(PXE_UINT8 value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
@@ -89,8 +89,8 @@ public unsafe struct PXE_UINT64 { ulong Value; public static implicit operator P
 public unsafe struct PXE_BOOL { PXE_UINT8 Value; public static implicit operator PXE_BOOL(PXE_UINT8 value) => new PXE_BOOL() { Value = value }; public static implicit operator PXE_UINT8(PXE_BOOL value) => value.Value; }
 public unsafe partial class EFI
 {
-  public const ulong PXE_FALSE = 0; /// < zero
-  public const ulong PXE_TRUE = (!PXE_FALSE);
+  public const bool PXE_FALSE = 0; /// < zero
+  public const bool PXE_TRUE = (!PXE_FALSE);
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -758,35 +758,38 @@ public unsafe partial class EFI
   public const ulong PXE_IFTYPE_ETHERNET = 0x01;
   public const ulong PXE_IFTYPE_TOKENRING = 0x04;
   public const ulong PXE_IFTYPE_FIBRE_CHANNEL = 0x12;
+}
 
-  typedef struct s_pxe_hw_undi
-  {
-    PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
-    PXE_UINT8 Len;            ///< sizeof(PXE_HW_UNDI).
-    PXE_UINT8 Fudge;          ///< makes 8-bit cksum equal zero.
-    PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
-    PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
-    PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
-    PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
-    PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
-    PXE_UINT8 reserved;       ///< zero, not used.
-    PXE_UINT32 Implementation; ///< implementation flags.
-                               ///< reserved             ///< vendor use.
-                               ///< uint Status;       ///< status port.
-                               ///< uint Command;      ///< command port.
-                               ///< ulong CDBaddr;      ///< CDB address port.
-                               ///<
-  }
-  PXE_HW_UNDI;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_HW_UNDI
+{
+  public PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
+  public PXE_UINT8 Len;            ///< sizeof(PXE_HW_UNDI).
+  public PXE_UINT8 Fudge;          ///< makes 8-bit cksum equal zero.
+  public PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
+  public PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
+  public PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
+  public PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
+  public PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
+  public PXE_UINT8 reserved;       ///< zero, not used.
+  public PXE_UINT32 Implementation; ///< implementation flags.
+                                    ///< reserved             ///< vendor use.
+                                    ///< uint Status;       ///< status port.
+                                    ///< uint Command;      ///< command port.
+                                    ///< ulong CDBaddr;      ///< CDB address port.
+                                    ///<
+}
 
 ///
 /// Status port bit definitions.
 ///
 
-///
-/// UNDI operation state.
-///
-public const ulong PXE_HWSTAT_STATE_MASK = 0xC0000000;
+public unsafe partial class EFI
+{
+  ///
+  /// UNDI operation state.
+  ///
+  public const ulong PXE_HWSTAT_STATE_MASK = 0xC0000000;
   public const ulong PXE_HWSTAT_BUSY = 0xC0000000;
   public const ulong PXE_HWSTAT_INITIALIZED = 0x80000000;
   public const ulong PXE_HWSTAT_STARTED = 0x40000000;
@@ -857,93 +860,96 @@ public const ulong PXE_HWSTAT_STATE_MASK = 0xC0000000;
   public const ulong PXE_HWCMD_CLEAR_TX_COMPLETE_INT = 0x00000004;
   public const ulong PXE_HWCMD_CLEAR_PACKET_RX_INT = 0x00000002;
   public const ulong PXE_HWCMD_CLEAR_CMD_COMPLETE_INT = 0x00000001;
+}
 
-  typedef struct s_pxe_sw_undi
-  {
-    PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
-    PXE_UINT8 Len;            ///< sizeof(PXE_SW_UNDI).
-    PXE_UINT8 Fudge;          ///< makes 8-bit cksum zero.
-    PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
-    PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
-    PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
-    PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
-    PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
-    PXE_UINT8 reserved1;      ///< zero, not used.
-    PXE_UINT32 Implementation; ///< Implementation flags.
-    PXE_UINT64 EntryPoint;     ///< API entry point.
-    PXE_UINT8 reserved2[3];   ///< zero, not used.
-    PXE_UINT8 BusCnt;         ///< number of bustypes supported.
-    PXE_UINT32 BusType[1];     ///< list of supported bustypes.
-  }
-  PXE_SW_UNDI;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_SW_UNDI
+{
+  public PXE_UINT32 Signature;      ///< PXE_ROMID_SIGNATURE.
+  public PXE_UINT8 Len;            ///< sizeof(PXE_SW_UNDI).
+  public PXE_UINT8 Fudge;          ///< makes 8-bit cksum zero.
+  public PXE_UINT8 Rev;            ///< PXE_ROMID_REV.
+  public PXE_UINT8 IFcnt;          ///< physical connector count lower byte.
+  public PXE_UINT8 MajorVer;       ///< PXE_ROMID_MAJORVER.
+  public PXE_UINT8 MinorVer;       ///< PXE_ROMID_MINORVER.
+  public PXE_UINT8 IFcntExt;       ///< physical connector count upper byte.
+  public PXE_UINT8 reserved1;      ///< zero, not used.
+  public PXE_UINT32 Implementation; ///< Implementation flags.
+  public PXE_UINT64 EntryPoint;     ///< API entry point.
+  public fixed PXE_UINT8 reserved2[3];   ///< zero, not used.
+  public PXE_UINT8 BusCnt;         ///< number of bustypes supported.
+  public fixed PXE_UINT32 BusType[1];     ///< list of supported bustypes.
+}
 
 typedef union u_pxe_undi {
   PXE_HW_UNDI hw;
-  PXE_SW_UNDI sw;
-}
-PXE_UNDI;
+PXE_SW_UNDI sw;
+} PXE_UNDI;
 
-///
-/// Signature of !PXE structure.
-///
-public const ulong PXE_ROMID_SIGNATURE = PXE_BUSTYPE('!', 'P', 'X', 'E');
-
-///
-/// !PXE structure format revision
-/// .
-public const ulong PXE_ROMID_REV = 0x02;
-
-///
-/// UNDI command interface revision.  These are the values that get sent
-/// in option 94 (Client Network Interface Identifier) in the DHCP Discover
-/// and PXE Boot Server Request packets.
-///
-public const ulong PXE_ROMID_MAJORVER = 0x03;
-public const ulong PXE_ROMID_MINORVER = 0x01;
-
-///
-/// Implementation flags.
-///
-public const ulong PXE_ROMID_IMP_HW_UNDI = 0x80000000;
-public const ulong PXE_ROMID_IMP_SW_VIRT_ADDR = 0x40000000;
-public const ulong PXE_ROMID_IMP_64BIT_DEVICE = 0x00010000;
-public const ulong PXE_ROMID_IMP_FRAG_SUPPORTED = 0x00008000;
-public const ulong PXE_ROMID_IMP_CMD_LINK_SUPPORTED = 0x00004000;
-public const ulong PXE_ROMID_IMP_CMD_QUEUE_SUPPORTED = 0x00002000;
-public const ulong PXE_ROMID_IMP_MULTI_FRAME_SUPPORTED = 0x00001000;
-public const ulong PXE_ROMID_IMP_NVDATA_SUPPORT_MASK = 0x00000C00;
-public const ulong PXE_ROMID_IMP_NVDATA_BULK_WRITABLE = 0x00000C00;
-public const ulong PXE_ROMID_IMP_NVDATA_SPARSE_WRITABLE = 0x00000800;
-public const ulong PXE_ROMID_IMP_NVDATA_READ_ONLY = 0x00000400;
-public const ulong PXE_ROMID_IMP_NVDATA_NOT_AVAILABLE = 0x00000000;
-public const ulong PXE_ROMID_IMP_STATISTICS_SUPPORTED = 0x00000200;
-public const ulong PXE_ROMID_IMP_STATION_ADDR_SETTABLE = 0x00000100;
-public const ulong PXE_ROMID_IMP_PROMISCUOUS_MULTICAST_RX_SUPPORTED = 0x00000080;
-public const ulong PXE_ROMID_IMP_PROMISCUOUS_RX_SUPPORTED = 0x00000040;
-public const ulong PXE_ROMID_IMP_BROADCAST_RX_SUPPORTED = 0x00000020;
-public const ulong PXE_ROMID_IMP_FILTERED_MULTICAST_RX_SUPPORTED = 0x00000010;
-public const ulong PXE_ROMID_IMP_SOFTWARE_INT_SUPPORTED = 0x00000008;
-public const ulong PXE_ROMID_IMP_TX_COMPLETE_INT_SUPPORTED = 0x00000004;
-public const ulong PXE_ROMID_IMP_PACKET_RX_INT_SUPPORTED = 0x00000002;
-public const ulong PXE_ROMID_IMP_CMD_COMPLETE_INT_SUPPORTED = 0x00000001;
-
-typedef struct s_pxe_cdb
+public unsafe partial class EFI
 {
-  PXE_OPCODE OpCode;
-  PXE_OPFLAGS OpFlags;
-  PXE_UINT16 CPBsize;
-  PXE_UINT16 DBsize;
-  PXE_UINT64 CPBaddr;
-  PXE_UINT64 DBaddr;
-  PXE_STATCODE StatCode;
-  PXE_STATFLAGS StatFlags;
-  PXE_UINT16 IFnum;
-  PXE_CONTROL Control;
+  ///
+  /// Signature of !PXE structure.
+  ///
+  public const ulong PXE_ROMID_SIGNATURE = PXE_BUSTYPE('!', 'P', 'X', 'E');
+
+  ///
+  /// !PXE structure format revision
+  /// .
+  public const ulong PXE_ROMID_REV = 0x02;
+
+  ///
+  /// UNDI command interface revision.  These are the values that get sent
+  /// in option 94 (Client Network Interface Identifier) in the DHCP Discover
+  /// and PXE Boot Server Request packets.
+  ///
+  public const ulong PXE_ROMID_MAJORVER = 0x03;
+  public const ulong PXE_ROMID_MINORVER = 0x01;
+
+  ///
+  /// Implementation flags.
+  ///
+  public const ulong PXE_ROMID_IMP_HW_UNDI = 0x80000000;
+  public const ulong PXE_ROMID_IMP_SW_VIRT_ADDR = 0x40000000;
+  public const ulong PXE_ROMID_IMP_64BIT_DEVICE = 0x00010000;
+  public const ulong PXE_ROMID_IMP_FRAG_SUPPORTED = 0x00008000;
+  public const ulong PXE_ROMID_IMP_CMD_LINK_SUPPORTED = 0x00004000;
+  public const ulong PXE_ROMID_IMP_CMD_QUEUE_SUPPORTED = 0x00002000;
+  public const ulong PXE_ROMID_IMP_MULTI_FRAME_SUPPORTED = 0x00001000;
+  public const ulong PXE_ROMID_IMP_NVDATA_SUPPORT_MASK = 0x00000C00;
+  public const ulong PXE_ROMID_IMP_NVDATA_BULK_WRITABLE = 0x00000C00;
+  public const ulong PXE_ROMID_IMP_NVDATA_SPARSE_WRITABLE = 0x00000800;
+  public const ulong PXE_ROMID_IMP_NVDATA_READ_ONLY = 0x00000400;
+  public const ulong PXE_ROMID_IMP_NVDATA_NOT_AVAILABLE = 0x00000000;
+  public const ulong PXE_ROMID_IMP_STATISTICS_SUPPORTED = 0x00000200;
+  public const ulong PXE_ROMID_IMP_STATION_ADDR_SETTABLE = 0x00000100;
+  public const ulong PXE_ROMID_IMP_PROMISCUOUS_MULTICAST_RX_SUPPORTED = 0x00000080;
+  public const ulong PXE_ROMID_IMP_PROMISCUOUS_RX_SUPPORTED = 0x00000040;
+  public const ulong PXE_ROMID_IMP_BROADCAST_RX_SUPPORTED = 0x00000020;
+  public const ulong PXE_ROMID_IMP_FILTERED_MULTICAST_RX_SUPPORTED = 0x00000010;
+  public const ulong PXE_ROMID_IMP_SOFTWARE_INT_SUPPORTED = 0x00000008;
+  public const ulong PXE_ROMID_IMP_TX_COMPLETE_INT_SUPPORTED = 0x00000004;
+  public const ulong PXE_ROMID_IMP_PACKET_RX_INT_SUPPORTED = 0x00000002;
+  public const ulong PXE_ROMID_IMP_CMD_COMPLETE_INT_SUPPORTED = 0x00000001;
 }
-PXE_CDB;
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CDB
+{
+  public PXE_OPCODE OpCode;
+  public PXE_OPFLAGS OpFlags;
+  public PXE_UINT16 CPBsize;
+  public PXE_UINT16 DBsize;
+  public PXE_UINT64 CPBaddr;
+  public PXE_UINT64 DBaddr;
+  public PXE_STATCODE StatCode;
+  public PXE_STATFLAGS StatFlags;
+  public PXE_UINT16 IFnum;
+  public PXE_CONTROL Control;
+}
 
 typedef union u_pxe_ip_addr {
-  PXE_IPV6 IPv6;
+  PXE_IPV6    IPv6;
 PXE_IPV4 IPv4;
 } PXE_IP_ADDR;
 
@@ -970,15 +976,19 @@ PXE_UINT8 Function;
   } PCI, PCC;
 } PXE_DEVICE;
 
-///
-/// cpb and db definitions
-///
-public const ulong MAX_PCI_CONFIG_LEN = 64; /// < # of dwords.
-public const ulong MAX_EEPROM_LEN = 128; /// < # of dwords.
-public const ulong MAX_XMIT_BUFFERS = 32; /// < recycling Q length for xmit_done.
-public const ulong MAX_MCAST_ADDRESS_CNT = 8;
+public unsafe partial class EFI
+{
+  ///
+  /// cpb and db definitions
+  ///
+  public const ulong MAX_PCI_CONFIG_LEN = 64; /// < # of dwords.
+  public const ulong MAX_EEPROM_LEN = 128; /// < # of dwords.
+  public const ulong MAX_XMIT_BUFFERS = 32; /// < recycling Q length for xmit_done.
+  public const ulong MAX_MCAST_ADDRESS_CNT = 8;
+}
 
-typedef struct s_pxe_cpb_start_30
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_START_30
 {
   ///
   /// PXE_VOID Delay(UINTN microseconds);
@@ -990,7 +1000,7 @@ typedef struct s_pxe_cpb_start_30
   ///
   /// This field cannot be set to zero.
   ///
-  ulong Delay;
+  public ulong Delay;
 
   ///
   /// PXE_VOID Block(UINT32 enable);
@@ -1006,7 +1016,7 @@ typedef struct s_pxe_cpb_start_30
   ///
   /// This field cannot be set to zero.
   ///
-  ulong Block;
+  public ulong Block;
 
   ///
   /// PXE_VOID Virt2Phys(UINT64 virtual, ulong physical_ptr);
@@ -1020,7 +1030,7 @@ typedef struct s_pxe_cpb_start_30
   /// This field can be set to zero if virtual and physical addresses
   /// are equal.
   ///
-  ulong Virt2Phys;
+  public ulong Virt2Phys;
   ///
   /// PXE_VOID Mem_IO(UINT8 read_write, byte len, ulong port,
   ///              ulong buf_addr);
@@ -1031,11 +1041,11 @@ typedef struct s_pxe_cpb_start_30
   ///
   /// This field can not be set to zero.
   ///
-  ulong Mem_IO;
+  public ulong Mem_IO;
 }
-PXE_CPB_START_30;
 
-typedef struct s_pxe_cpb_start_31
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_START_31
 {
   ///
   /// PXE_VOID Delay(UINT64 UnqId, ulong microseconds);
@@ -1047,7 +1057,7 @@ typedef struct s_pxe_cpb_start_31
   ///
   /// This field cannot be set to zero.
   ///
-  ulong Delay;
+  public ulong Delay;
 
   ///
   /// PXE_VOID Block(UINT64 unq_id, uint enable);
@@ -1063,7 +1073,7 @@ typedef struct s_pxe_cpb_start_31
   ///
   /// This field cannot be set to zero.
   ///
-  ulong Block;
+  public ulong Block;
 
   ///
   /// PXE_VOID Virt2Phys(UINT64 UnqId, ulong virtual, ulong physical_ptr);
@@ -1077,7 +1087,7 @@ typedef struct s_pxe_cpb_start_31
   /// This field can be set to zero if virtual and physical addresses
   /// are equal.
   ///
-  ulong Virt2Phys;
+  public ulong Virt2Phys;
   ///
   /// PXE_VOID Mem_IO(UINT64 UnqId, byte read_write, byte len, ulong port,
   ///              ulong buf_addr);
@@ -1088,7 +1098,7 @@ typedef struct s_pxe_cpb_start_31
   ///
   /// This field can not be set to zero.
   ///
-  ulong Mem_IO;
+  public ulong Mem_IO;
   ///
   /// PXE_VOID Map_Mem(UINT64 unq_id, ulong virtual_addr, uint size,
   ///                 uint Direction, ulong mapped_addr);
@@ -1105,7 +1115,7 @@ typedef struct s_pxe_cpb_start_31
   ///
   /// This field can be set to zero if there is no mapping service available.
   ///
-  ulong Map_Mem;
+  public ulong Map_Mem;
 
   ///
   /// PXE_VOID UnMap_Mem(UINT64 unq_id, ulong virtual_addr, uint size,
@@ -1116,7 +1126,7 @@ typedef struct s_pxe_cpb_start_31
   ///
   /// This field can be set to zero if there is no unmapping service available.
   ///
-  ulong UnMap_Mem;
+  public ulong UnMap_Mem;
 
   ///
   /// PXE_VOID Sync_Mem(UINT64 unq_id, ulong virtual,
@@ -1128,7 +1138,7 @@ typedef struct s_pxe_cpb_start_31
   ///
   /// This field can be set to zero if there is no service available.
   ///
-  ulong Sync_Mem;
+  public ulong Sync_Mem;
 
   ///
   /// protocol driver can provide anything for this Unique_ID, UNDI remembers
@@ -1136,22 +1146,25 @@ typedef struct s_pxe_cpb_start_31
   /// the ifnum and gives it back as a parameter to all the call-back routines
   /// when calling for that interface!
   ///
-  ulong Unique_ID;
+  public ulong Unique_ID;
 }
-PXE_CPB_START_31;
 
-public const ulong TO_AND_FROM_DEVICE = 0;
-public const ulong FROM_DEVICE = 1;
-public const ulong TO_DEVICE = 2;
+public unsafe partial class EFI
+{
+  public const ulong TO_AND_FROM_DEVICE = 0;
+  public const ulong FROM_DEVICE = 1;
+  public const ulong TO_DEVICE = 2;
 
-public const ulong PXE_DELAY_MILLISECOND = 1000;
-public const ulong PXE_DELAY_SECOND = 1000000;
-public const ulong PXE_IO_READ = 0;
-public const ulong PXE_IO_WRITE = 1;
-public const ulong PXE_MEM_READ = 2;
-public const ulong PXE_MEM_WRITE = 4;
+  public const ulong PXE_DELAY_MILLISECOND = 1000;
+  public const ulong PXE_DELAY_SECOND = 1000000;
+  public const ulong PXE_IO_READ = 0;
+  public const ulong PXE_IO_WRITE = 1;
+  public const ulong PXE_MEM_READ = 2;
+  public const ulong PXE_MEM_WRITE = 4;
+}
 
-typedef struct s_pxe_db_get_init_info
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_GET_INIT_INFO
 {
   ///
   /// Minimum length of locked memory buffer that must be given to
@@ -1161,47 +1174,47 @@ typedef struct s_pxe_db_get_init_info
   /// If MemoryRequired is zero, the UNDI does not need and will not
   /// use system memory to receive and transmit packets.
   ///
-  PXE_UINT32 MemoryRequired;
+  public PXE_UINT32 MemoryRequired;
 
   ///
   /// Maximum frame data length for Tx/Rx excluding the media header.
   ///
-  PXE_UINT32 FrameDataLen;
+  public PXE_UINT32 FrameDataLen;
 
   ///
   /// Supported link speeds are in units of mega bits.  Common ethernet
   /// values are 10, 100 and 1000.  Unused LinkSpeeds[] entries are zero
   /// filled.
   ///
-  PXE_UINT32 LinkSpeeds[4];
+  public fixed PXE_UINT32 LinkSpeeds[4];
 
   ///
   /// Number of non-volatile storage items.
   ///
-  PXE_UINT32 NvCount;
+  public PXE_UINT32 NvCount;
 
   ///
   /// Width of non-volatile storage item in bytes.  0, 1, 2 or 4
   ///
-  PXE_UINT16 NvWidth;
+  public PXE_UINT16 NvWidth;
 
   ///
   /// Media header length.  This is the typical media header length for
   /// this UNDI.  This information is needed when allocating receive
   /// and transmit buffers.
   ///
-  PXE_UINT16 MediaHeaderLen;
+  public PXE_UINT16 MediaHeaderLen;
 
   ///
   /// Number of bytes in the NIC hardware (MAC) address.
   ///
-  PXE_UINT16 HWaddrLen;
+  public PXE_UINT16 HWaddrLen;
 
   ///
   /// Maximum number of multicast MAC addresses in the multicast
   /// MAC address filter list.
   ///
-  PXE_UINT16 MCastFilterCnt;
+  public PXE_UINT16 MCastFilterCnt;
 
   ///
   /// Default number and size of transmit and receive buffers that will
@@ -1210,95 +1223,97 @@ typedef struct s_pxe_db_get_init_info
   /// command.  If MemoryRequired is zero, this allocation will come out of
   /// memory on the NIC.
   ///
-  PXE_UINT16 TxBufCnt;
-  PXE_UINT16 TxBufSize;
-  PXE_UINT16 RxBufCnt;
-  PXE_UINT16 RxBufSize;
+  public PXE_UINT16 TxBufCnt;
+  public PXE_UINT16 TxBufSize;
+  public PXE_UINT16 RxBufCnt;
+  public PXE_UINT16 RxBufSize;
 
   ///
   /// Hardware interface types defined in the Assigned Numbers RFC
   /// and used in DHCP and ARP packets.
   /// See the PXE_IFTYPE typedef and PXE_IFTYPE_xxx macros.
   ///
-  PXE_UINT8 IFtype;
+  public PXE_UINT8 IFtype;
 
   ///
-  public const ulong s = below.;
-  ///
-  PXE_UINT8 SupportedDuplexModes;
+  public unsafe partial class EFI
+  {
+    public const ulong s = below.;
+    ///
+    public PXE_UINT8 SupportedDuplexModes;
 
-  ///
-  public const ulong s = below.;
-  ///
-  PXE_UINT8 SupportedLoopBackModes;
+    ///
+    public const ulong s = below.;
+    ///
+    public PXE_UINT8 SupportedLoopBackModes;
+  }
+
+  public const ulong PXE_MAX_TXRX_UNIT_ETHER = 1500;
+
+  public const ulong PXE_HWADDR_LEN_ETHER = 0x0006;
+  public const ulong PXE_MAC_HEADER_LEN_ETHER = 0x000E;
+
+  public const ulong PXE_DUPLEX_ENABLE_FULL_SUPPORTED = 1;
+  public const ulong PXE_DUPLEX_FORCE_FULL_SUPPORTED = 2;
+
+  public const ulong PXE_LOOPBACK_INTERNAL_SUPPORTED = 1;
+  public const ulong PXE_LOOPBACK_EXTERNAL_SUPPORTED = 2;
 }
-PXE_DB_GET_INIT_INFO;
 
-public const ulong PXE_MAX_TXRX_UNIT_ETHER = 1500;
-
-public const ulong PXE_HWADDR_LEN_ETHER = 0x0006;
-public const ulong PXE_MAC_HEADER_LEN_ETHER = 0x000E;
-
-public const ulong PXE_DUPLEX_ENABLE_FULL_SUPPORTED = 1;
-public const ulong PXE_DUPLEX_FORCE_FULL_SUPPORTED = 2;
-
-public const ulong PXE_LOOPBACK_INTERNAL_SUPPORTED = 1;
-public const ulong PXE_LOOPBACK_EXTERNAL_SUPPORTED = 2;
-
-typedef struct s_pxe_pci_config_info
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Config
 {
   ///
   /// This is the flag field for the PXE_DB_GET_CONFIG_INFO union.
   /// For PCI bus devices, this field is set to PXE_BUSTYPE_PCI.
   ///
-  uint BusType;
+  public uint BusType;
 
   ///
   /// This identifies the PCI network device that this UNDI interface.
   /// is bound to.
   ///
-  ushort Bus;
-  byte Device;
-  byte Function;
+  public ushort Bus;
+  public byte Device;
+  public byte Function;
 
   ///
   /// This is a copy of the PCI configuration space for this
   /// network device.
   ///
   union {
-    byte Byte[256];
-  ushort Word[128];
-  uint Dword[64];
+    public fixed byte Byte[256];
+  public fixed ushort Word[128];
+  public fixed uint Dword[64];
 }
-Config;
 } PXE_PCI_CONFIG_INFO;
 
-typedef struct s_pxe_pcc_config_info
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Config
 {
   ///
   /// This is the flag field for the PXE_DB_GET_CONFIG_INFO union.
   /// For PCC bus devices, this field is set to PXE_BUSTYPE_PCC.
   ///
-  PXE_UINT32 BusType;
+  public PXE_UINT32 BusType;
 
   ///
   /// This identifies the PCC network device that this UNDI interface
   /// is bound to.
   ///
-  PXE_UINT16 Bus;
-  PXE_UINT8 Device;
-  PXE_UINT8 Function;
+  public PXE_UINT16 Bus;
+  public PXE_UINT8 Device;
+  public PXE_UINT8 Function;
 
   ///
   /// This is a copy of the PCC configuration space for this
   /// network device.
   ///
   union {
-    PXE_UINT8 Byte[256];
-  PXE_UINT16 Word[128];
-  PXE_UINT32 Dword[64];
+    public fixed PXE_UINT8 Byte[256];
+  public fixed PXE_UINT16 Word[128];
+  public fixed PXE_UINT32 Dword[64];
 }
-Config;
 } PXE_PCC_CONFIG_INFO;
 
 typedef union u_pxe_db_get_config_info {
@@ -1306,27 +1321,28 @@ typedef union u_pxe_db_get_config_info {
 PXE_PCC_CONFIG_INFO pcc;
 } PXE_DB_GET_CONFIG_INFO;
 
-typedef struct s_pxe_cpb_initialize
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_INITIALIZE
 {
   ///
   /// Address of first (lowest) byte of the memory buffer.  This buffer must
   /// be in contiguous physical memory and cannot be swapped out.  The UNDI
   /// will be using this for transmit and receive buffering.
   ///
-  PXE_UINT64 MemoryAddr;
+  public PXE_UINT64 MemoryAddr;
 
   ///
   /// MemoryLength must be greater than or equal to MemoryRequired
   /// returned by the Get Init Info command.
   ///
-  PXE_UINT32 MemoryLength;
+  public PXE_UINT32 MemoryLength;
 
   ///
   /// Desired link speed in Mbit/sec.  Common ethernet values are 10, 100
   /// and 1000.  Setting a value of zero will auto-detect and/or use the
   /// default link speed (operation depends on UNDI/NIC functionality).
   ///
-  PXE_UINT32 LinkSpeed;
+  public PXE_UINT32 LinkSpeed;
 
   ///
   /// Suggested number and size of receive and transmit buffers to
@@ -1338,32 +1354,35 @@ typedef struct s_pxe_cpb_initialize
   /// If these fields are set to zero, the UNDI will allocate buffer
   /// counts and sizes as it sees fit.
   ///
-  PXE_UINT16 TxBufCnt;
-  PXE_UINT16 TxBufSize;
-  PXE_UINT16 RxBufCnt;
-  PXE_UINT16 RxBufSize;
+  public PXE_UINT16 TxBufCnt;
+  public PXE_UINT16 TxBufSize;
+  public PXE_UINT16 RxBufCnt;
+  public PXE_UINT16 RxBufSize;
 
   ///
   /// The following configuration parameters are optional and must be zero
   /// to use the default values.
   ///
-  PXE_UINT8 DuplexMode;
+  public PXE_UINT8 DuplexMode;
 
-  PXE_UINT8 LoopBackMode;
+  public PXE_UINT8 LoopBackMode;
 }
-PXE_CPB_INITIALIZE;
 
-public const ulong PXE_DUPLEX_DEFAULT = 0x00;
-public const ulong PXE_FORCE_FULL_DUPLEX = 0x01;
-public const ulong PXE_ENABLE_FULL_DUPLEX = 0x02;
-public const ulong PXE_FORCE_HALF_DUPLEX = 0x04;
-public const ulong PXE_DISABLE_FULL_DUPLEX = 0x08;
+public unsafe partial class EFI
+{
+  public const ulong PXE_DUPLEX_DEFAULT = 0x00;
+  public const ulong PXE_FORCE_FULL_DUPLEX = 0x01;
+  public const ulong PXE_ENABLE_FULL_DUPLEX = 0x02;
+  public const ulong PXE_FORCE_HALF_DUPLEX = 0x04;
+  public const ulong PXE_DISABLE_FULL_DUPLEX = 0x08;
 
-public const ulong LOOPBACK_NORMAL = 0;
-public const ulong LOOPBACK_INTERNAL = 1;
-public const ulong LOOPBACK_EXTERNAL = 2;
+  public const ulong LOOPBACK_NORMAL = 0;
+  public const ulong LOOPBACK_INTERNAL = 1;
+  public const ulong LOOPBACK_EXTERNAL = 2;
+}
 
-typedef struct s_pxe_db_initialize
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_INITIALIZE
 {
   ///
   /// Actual amount of memory used from the supplied memory buffer.  This
@@ -1373,68 +1392,68 @@ typedef struct s_pxe_db_initialize
   /// Memory used by the UNDI and network device is allocated from the
   /// lowest memory buffer address.
   ///
-  PXE_UINT32 MemoryUsed;
+  public PXE_UINT32 MemoryUsed;
 
   ///
   /// Actual number and size of receive and transmit buffers that were
   /// allocated.
   ///
-  PXE_UINT16 TxBufCnt;
-  PXE_UINT16 TxBufSize;
-  PXE_UINT16 RxBufCnt;
-  PXE_UINT16 RxBufSize;
+  public PXE_UINT16 TxBufCnt;
+  public PXE_UINT16 TxBufSize;
+  public PXE_UINT16 RxBufCnt;
+  public PXE_UINT16 RxBufSize;
 }
-PXE_DB_INITIALIZE;
 
-typedef struct s_pxe_cpb_receive_filters
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_RECEIVE_FILTERS
 {
   ///
   /// List of multicast MAC addresses.  This list, if present, will
   /// replace the existing multicast MAC address filter list.
   ///
-  PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
+  public fixed PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
 }
-PXE_CPB_RECEIVE_FILTERS;
 
-typedef struct s_pxe_db_receive_filters
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_RECEIVE_FILTERS
 {
   ///
   /// Filtered multicast MAC address list.
   ///
-  PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
+  public fixed PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
 }
-PXE_DB_RECEIVE_FILTERS;
 
-typedef struct s_pxe_cpb_station_address
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_STATION_ADDRESS
 {
   ///
   /// If supplied and supported, the current station MAC address
   /// will be changed.
   ///
-  PXE_MAC_ADDR StationAddr;
+  public PXE_MAC_ADDR StationAddr;
 }
-PXE_CPB_STATION_ADDRESS;
 
-typedef struct s_pxe_dpb_station_address
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_STATION_ADDRESS
 {
   ///
   /// Current station MAC address.
   ///
-  PXE_MAC_ADDR StationAddr;
+  public PXE_MAC_ADDR StationAddr;
 
   ///
   /// Station broadcast MAC address.
   ///
-  PXE_MAC_ADDR BroadcastAddr;
+  public PXE_MAC_ADDR BroadcastAddr;
 
   ///
   /// Permanent station MAC address.
   ///
-  PXE_MAC_ADDR PermanentAddr;
+  public PXE_MAC_ADDR PermanentAddr;
 }
-PXE_DB_STATION_ADDRESS;
 
-typedef struct s_pxe_db_statistics
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_STATISTICS
 {
   ///
   /// Bit field identifying what statistic data is collected by the
@@ -1445,132 +1464,135 @@ typedef struct s_pxe_db_statistics
   /// If bit 0x21 is set, Data[0x21] is collected.
   /// Etc.
   ///
-  PXE_UINT64 Supported;
+  public PXE_UINT64 Supported;
 
   ///
   /// Statistic data.
   ///
-  PXE_UINT64 Data[64];
+  public fixed PXE_UINT64 Data[64];
 }
-PXE_DB_STATISTICS;
 
-///
-/// Total number of frames received.  Includes frames with errors and
-/// dropped frames.
-///
-public const ulong PXE_STATISTICS_RX_TOTAL_FRAMES = 0x00;
+public unsafe partial class EFI
+{
+  ///
+  /// Total number of frames received.  Includes frames with errors and
+  /// dropped frames.
+  ///
+  public const ulong PXE_STATISTICS_RX_TOTAL_FRAMES = 0x00;
 
-///
-/// Number of valid frames received and copied into receive buffers.
-///
-public const ulong PXE_STATISTICS_RX_GOOD_FRAMES = 0x01;
+  ///
+  /// Number of valid frames received and copied into receive buffers.
+  ///
+  public const ulong PXE_STATISTICS_RX_GOOD_FRAMES = 0x01;
 
-///
-/// Number of frames below the minimum length for the media.
-/// This would be <64 for ethernet.
-///
-public const ulong PXE_STATISTICS_RX_UNDERSIZE_FRAMES = 0x02;
+  ///
+  /// Number of frames below the minimum length for the media.
+  /// This would be <64 for ethernet.
+  ///
+  public const ulong PXE_STATISTICS_RX_UNDERSIZE_FRAMES = 0x02;
 
-///
-/// Number of frames longer than the maxminum length for the
-/// media.  This would be >1500 for ethernet.
-///
-public const ulong PXE_STATISTICS_RX_OVERSIZE_FRAMES = 0x03;
+  ///
+  /// Number of frames longer than the maxminum length for the
+  /// media.  This would be >1500 for ethernet.
+  ///
+  public const ulong PXE_STATISTICS_RX_OVERSIZE_FRAMES = 0x03;
 
-///
-/// Valid frames that were dropped because receive buffers were full.
-///
-public const ulong PXE_STATISTICS_RX_DROPPED_FRAMES = 0x04;
+  ///
+  /// Valid frames that were dropped because receive buffers were full.
+  ///
+  public const ulong PXE_STATISTICS_RX_DROPPED_FRAMES = 0x04;
 
-///
-/// Number of valid unicast frames received and not dropped.
-///
-public const ulong PXE_STATISTICS_RX_UNICAST_FRAMES = 0x05;
+  ///
+  /// Number of valid unicast frames received and not dropped.
+  ///
+  public const ulong PXE_STATISTICS_RX_UNICAST_FRAMES = 0x05;
 
-///
-/// Number of valid broadcast frames received and not dropped.
-///
-public const ulong PXE_STATISTICS_RX_BROADCAST_FRAMES = 0x06;
+  ///
+  /// Number of valid broadcast frames received and not dropped.
+  ///
+  public const ulong PXE_STATISTICS_RX_BROADCAST_FRAMES = 0x06;
 
-///
-/// Number of valid mutlicast frames received and not dropped.
-///
-public const ulong PXE_STATISTICS_RX_MULTICAST_FRAMES = 0x07;
+  ///
+  /// Number of valid mutlicast frames received and not dropped.
+  ///
+  public const ulong PXE_STATISTICS_RX_MULTICAST_FRAMES = 0x07;
 
-///
-/// Number of frames w/ CRC or alignment errors.
-///
-public const ulong PXE_STATISTICS_RX_CRC_ERROR_FRAMES = 0x08;
+  ///
+  /// Number of frames w/ CRC or alignment errors.
+  ///
+  public const ulong PXE_STATISTICS_RX_CRC_ERROR_FRAMES = 0x08;
 
-///
-/// Total number of bytes received.  Includes frames with errors
-/// and dropped frames.
-///
-public const ulong PXE_STATISTICS_RX_TOTAL_BYTES = 0x09;
+  ///
+  /// Total number of bytes received.  Includes frames with errors
+  /// and dropped frames.
+  ///
+  public const ulong PXE_STATISTICS_RX_TOTAL_BYTES = 0x09;
 
-///
-/// Transmit statistics.
-///
-public const ulong PXE_STATISTICS_TX_TOTAL_FRAMES = 0x0A;
-public const ulong PXE_STATISTICS_TX_GOOD_FRAMES = 0x0B;
-public const ulong PXE_STATISTICS_TX_UNDERSIZE_FRAMES = 0x0C;
-public const ulong PXE_STATISTICS_TX_OVERSIZE_FRAMES = 0x0D;
-public const ulong PXE_STATISTICS_TX_DROPPED_FRAMES = 0x0E;
-public const ulong PXE_STATISTICS_TX_UNICAST_FRAMES = 0x0F;
-public const ulong PXE_STATISTICS_TX_BROADCAST_FRAMES = 0x10;
-public const ulong PXE_STATISTICS_TX_MULTICAST_FRAMES = 0x11;
-public const ulong PXE_STATISTICS_TX_CRC_ERROR_FRAMES = 0x12;
-public const ulong PXE_STATISTICS_TX_TOTAL_BYTES = 0x13;
+  ///
+  /// Transmit statistics.
+  ///
+  public const ulong PXE_STATISTICS_TX_TOTAL_FRAMES = 0x0A;
+  public const ulong PXE_STATISTICS_TX_GOOD_FRAMES = 0x0B;
+  public const ulong PXE_STATISTICS_TX_UNDERSIZE_FRAMES = 0x0C;
+  public const ulong PXE_STATISTICS_TX_OVERSIZE_FRAMES = 0x0D;
+  public const ulong PXE_STATISTICS_TX_DROPPED_FRAMES = 0x0E;
+  public const ulong PXE_STATISTICS_TX_UNICAST_FRAMES = 0x0F;
+  public const ulong PXE_STATISTICS_TX_BROADCAST_FRAMES = 0x10;
+  public const ulong PXE_STATISTICS_TX_MULTICAST_FRAMES = 0x11;
+  public const ulong PXE_STATISTICS_TX_CRC_ERROR_FRAMES = 0x12;
+  public const ulong PXE_STATISTICS_TX_TOTAL_BYTES = 0x13;
 
-///
-/// Number of collisions detection on this subnet.
-///
-public const ulong PXE_STATISTICS_COLLISIONS = 0x14;
+  ///
+  /// Number of collisions detection on this subnet.
+  ///
+  public const ulong PXE_STATISTICS_COLLISIONS = 0x14;
 
-///
-/// Number of frames destined for unsupported protocol.
-///
-public const ulong PXE_STATISTICS_UNSUPPORTED_PROTOCOL = 0x15;
+  ///
+  /// Number of frames destined for unsupported protocol.
+  ///
+  public const ulong PXE_STATISTICS_UNSUPPORTED_PROTOCOL = 0x15;
 
-///
-/// Number of valid frames received that were duplicated.
-///
-public const ulong PXE_STATISTICS_RX_DUPLICATED_FRAMES = 0x16;
+  ///
+  /// Number of valid frames received that were duplicated.
+  ///
+  public const ulong PXE_STATISTICS_RX_DUPLICATED_FRAMES = 0x16;
 
-///
-/// Number of encrypted frames received that failed to decrypt.
-///
-public const ulong PXE_STATISTICS_RX_DECRYPT_ERROR_FRAMES = 0x17;
+  ///
+  /// Number of encrypted frames received that failed to decrypt.
+  ///
+  public const ulong PXE_STATISTICS_RX_DECRYPT_ERROR_FRAMES = 0x17;
 
-///
-/// Number of frames that failed to transmit after exceeding the retry limit.
-///
-public const ulong PXE_STATISTICS_TX_ERROR_FRAMES = 0x18;
+  ///
+  /// Number of frames that failed to transmit after exceeding the retry limit.
+  ///
+  public const ulong PXE_STATISTICS_TX_ERROR_FRAMES = 0x18;
 
-///
-/// Number of frames transmitted successfully after more than one attempt.
-///
-public const ulong PXE_STATISTICS_TX_RETRY_FRAMES = 0x19;
+  ///
+  /// Number of frames transmitted successfully after more than one attempt.
+  ///
+  public const ulong PXE_STATISTICS_TX_RETRY_FRAMES = 0x19;
+}
 
-typedef struct s_pxe_cpb_mcast_ip_to_mac
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_MCAST_IP_TO_MAC
 {
   ///
   /// Multicast IP address to be converted to multicast MAC address.
   ///
-  PXE_IP_ADDR IP;
+  public PXE_IP_ADDR IP;
 }
-PXE_CPB_MCAST_IP_TO_MAC;
 
-typedef struct s_pxe_db_mcast_ip_to_mac
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_MCAST_IP_TO_MAC
 {
   ///
   /// Multicast MAC address.
   ///
-  PXE_MAC_ADDR MAC;
+  public PXE_MAC_ADDR MAC;
 }
-PXE_DB_MCAST_IP_TO_MAC;
 
-typedef struct s_pxe_cpb_nvdata_sparse
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Data
 {
   ///
   /// NvData item list.  Only items in this list will be updated.
@@ -1579,17 +1601,16 @@ typedef struct s_pxe_cpb_nvdata_sparse
     ///
     ///  Non-volatile storage address to be changed.
     ///
-    PXE_UINT32 Addr;
+    public PXE_UINT32 Addr;
 
   ///
   /// Data item to write into above storage address.
   ///
   union {
-      PXE_UINT8 Byte;
-  PXE_UINT16 Word;
-  PXE_UINT32 Dword;
+      public PXE_UINT8 Byte;
+  public PXE_UINT16 Word;
+  public PXE_UINT32 Dword;
 }
-Data;
   } Item[MAX_EEPROM_LEN];
 } PXE_CPB_NVDATA_SPARSE;
 
@@ -1614,7 +1635,8 @@ PXE_UINT16 Word[MAX_EEPROM_LEN << 1];
 PXE_UINT32 Dword[MAX_EEPROM_LEN];
 } PXE_CPB_NVDATA_BULK;
 
-typedef struct s_pxe_db_nvdata
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Data
 {
   ///
   /// Arrays of data items from non-volatile storage.
@@ -1633,104 +1655,107 @@ typedef struct s_pxe_db_nvdata
   ///
   /// Array of dword-wide data items.
   ///
-  PXE_UINT32 Dword[MAX_EEPROM_LEN];
+  public fixed PXE_UINT32 Dword[MAX_EEPROM_LEN];
 }
-Data;
 } PXE_DB_NVDATA;
 
-typedef struct s_pxe_db_get_status
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_GET_STATUS
 {
   ///
   /// Length of next receive frame (header + data).  If this is zero,
   /// there is no next receive frame available.
   ///
-  PXE_UINT32 RxFrameLen;
+  public PXE_UINT32 RxFrameLen;
 
   ///
   /// Reserved, set to zero.
   ///
-  PXE_UINT32 reserved;
+  public PXE_UINT32 reserved;
 
   ///
   ///  Addresses of transmitted buffers that need to be recycled.
   ///
-  PXE_UINT64 TxBuffer[MAX_XMIT_BUFFERS];
+  public fixed PXE_UINT64 TxBuffer[MAX_XMIT_BUFFERS];
 }
-PXE_DB_GET_STATUS;
 
-typedef struct s_pxe_cpb_fill_header
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_FILL_HEADER
 {
   ///
   /// Source and destination MAC addresses.  These will be copied into
   /// the media header without doing byte swapping.
   ///
-  PXE_MAC_ADDR SrcAddr;
-  PXE_MAC_ADDR DestAddr;
+  public PXE_MAC_ADDR SrcAddr;
+  public PXE_MAC_ADDR DestAddr;
 
   ///
   /// Address of first byte of media header.  The first byte of packet data
   /// follows the last byte of the media header.
   ///
-  PXE_UINT64 MediaHeader;
+  public PXE_UINT64 MediaHeader;
 
   ///
   /// Length of packet data in bytes (not including the media header).
   ///
-  PXE_UINT32 PacketLen;
+  public PXE_UINT32 PacketLen;
 
   ///
   /// Protocol type.  This will be copied into the media header without
   /// doing byte swapping.  Protocol type numbers can be obtained from
   /// the Assigned Numbers RFC 1700.
   ///
-  PXE_UINT16 Protocol;
+  public PXE_UINT16 Protocol;
 
   ///
   /// Length of the media header in bytes.
   ///
-  PXE_UINT16 MediaHeaderLen;
+  public PXE_UINT16 MediaHeaderLen;
 }
-PXE_CPB_FILL_HEADER;
 
-public const ulong PXE_PROTOCOL_ETHERNET_IP = 0x0800;
-public const ulong PXE_PROTOCOL_ETHERNET_ARP = 0x0806;
-public const ulong MAX_XMIT_FRAGMENTS = 16;
+public unsafe partial class EFI
+{
+  public const ulong PXE_PROTOCOL_ETHERNET_IP = 0x0800;
+  public const ulong PXE_PROTOCOL_ETHERNET_ARP = 0x0806;
+  public const ulong MAX_XMIT_FRAGMENTS = 16;
+}
 
-typedef struct s_pxe_cpb_fill_header_fragmented
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct FragDesc
 {
   ///
   /// Source and destination MAC addresses.  These will be copied into
   /// the media header without doing byte swapping.
   ///
-  PXE_MAC_ADDR SrcAddr;
-  PXE_MAC_ADDR DestAddr;
+  public PXE_MAC_ADDR SrcAddr;
+  public PXE_MAC_ADDR DestAddr;
 
   ///
   /// Length of packet data in bytes (not including the media header).
   ///
-  PXE_UINT32 PacketLen;
+  public PXE_UINT32 PacketLen;
 
   ///
   /// Protocol type.  This will be copied into the media header without
   /// doing byte swapping.  Protocol type numbers can be obtained from
   /// the Assigned Numbers RFC 1700.
   ///
-  PXE_MEDIA_PROTOCOL Protocol;
+  public PXE_MEDIA_PROTOCOL Protocol;
 
   ///
   /// Length of the media header in bytes.
   ///
-  PXE_UINT16 MediaHeaderLen;
+  public PXE_UINT16 MediaHeaderLen;
 
   ///
   /// Number of packet fragment descriptors.
   ///
-  PXE_UINT16 FragCnt;
+  public PXE_UINT16 FragCnt;
 
   ///
   /// Reserved, must be set to zero.
   ///
-  PXE_UINT16 reserved;
+  public PXE_UINT16 reserved;
 
   ///
   /// Array of packet fragment descriptors.  The first byte of the media
@@ -1740,63 +1765,63 @@ typedef struct s_pxe_cpb_fill_header_fragmented
     ///
     /// Address of this packet fragment.
     ///
-    PXE_UINT64 FragAddr;
+    public PXE_UINT64 FragAddr;
 
   ///
   /// Length of this packet fragment.
   ///
-  PXE_UINT32 FragLen;
+  public PXE_UINT32 FragLen;
 
   ///
   /// Reserved, must be set to zero.
   ///
-  PXE_UINT32 reserved;
+  public PXE_UINT32 reserved;
 }
-FragDesc[MAX_XMIT_FRAGMENTS];
 } PXE_CPB_FILL_HEADER_FRAGMENTED;
 
-typedef struct s_pxe_cpb_transmit
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_TRANSMIT
 {
   ///
   /// Address of first byte of frame buffer.  This is also the first byte
   /// of the media header.
   ///
-  PXE_UINT64 FrameAddr;
+  public PXE_UINT64 FrameAddr;
 
   ///
   /// Length of the data portion of the frame buffer in bytes.  Do not
   /// include the length of the media header.
   ///
-  PXE_UINT32 DataLen;
+  public PXE_UINT32 DataLen;
 
   ///
   /// Length of the media header in bytes.
   ///
-  PXE_UINT16 MediaheaderLen;
+  public PXE_UINT16 MediaheaderLen;
 
   ///
   /// Reserved, must be zero.
   ///
-  PXE_UINT16 reserved;
+  public PXE_UINT16 reserved;
 }
-PXE_CPB_TRANSMIT;
 
-typedef struct s_pxe_cpb_transmit_fragments
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct FragDesc
 {
   ///
   /// Length of packet data in bytes (not including the media header).
   ///
-  PXE_UINT32 FrameLen;
+  public PXE_UINT32 FrameLen;
 
   ///
   /// Length of the media header in bytes.
   ///
-  PXE_UINT16 MediaheaderLen;
+  public PXE_UINT16 MediaheaderLen;
 
   ///
   /// Number of packet fragment descriptors.
   ///
-  PXE_UINT16 FragCnt;
+  public PXE_UINT16 FragCnt;
 
   ///
   /// Array of frame fragment descriptors.  The first byte of the first
@@ -1806,81 +1831,79 @@ typedef struct s_pxe_cpb_transmit_fragments
     ///
     /// Address of this frame fragment.
     ///
-    PXE_UINT64 FragAddr;
+    public PXE_UINT64 FragAddr;
 
   ///
   /// Length of this frame fragment.
   ///
-  PXE_UINT32 FragLen;
+  public PXE_UINT32 FragLen;
 
   ///
   /// Reserved, must be set to zero.
   ///
-  PXE_UINT32 reserved;
+  public PXE_UINT32 reserved;
 }
-FragDesc[MAX_XMIT_FRAGMENTS];
 } PXE_CPB_TRANSMIT_FRAGMENTS;
 
-typedef struct s_pxe_cpb_receive
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_CPB_RECEIVE
 {
   ///
   /// Address of first byte of receive buffer.  This is also the first byte
   /// of the frame header.
   ///
-  PXE_UINT64 BufferAddr;
+  public PXE_UINT64 BufferAddr;
 
   ///
   /// Length of receive buffer.  This must be large enough to hold the
   /// received frame (media header + data).  If the length of smaller than
   /// the received frame, data will be lost.
   ///
-  PXE_UINT32 BufferLen;
+  public PXE_UINT32 BufferLen;
 
   ///
   /// Reserved, must be set to zero.
   ///
-  PXE_UINT32 reserved;
+  public PXE_UINT32 reserved;
 }
-PXE_CPB_RECEIVE;
 
-typedef struct s_pxe_db_receive
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PXE_DB_RECEIVE
 {
   ///
   /// Source and destination MAC addresses from media header.
   ///
-  PXE_MAC_ADDR SrcAddr;
-  PXE_MAC_ADDR DestAddr;
+  public PXE_MAC_ADDR SrcAddr;
+  public PXE_MAC_ADDR DestAddr;
 
   ///
   /// Length of received frame.  May be larger than receive buffer size.
   /// The receive buffer will not be overwritten.  This is how to tell
   /// if data was lost because the receive buffer was too small.
   ///
-  PXE_UINT32 FrameLen;
+  public PXE_UINT32 FrameLen;
 
   ///
   /// Protocol type from media header.
   ///
-  PXE_MEDIA_PROTOCOL Protocol;
+  public PXE_MEDIA_PROTOCOL Protocol;
 
   ///
   /// Length of media header in received frame.
   ///
-  PXE_UINT16 MediaHeaderLen;
+  public PXE_UINT16 MediaHeaderLen;
 
   ///
   /// Type of receive frame.
   ///
-  PXE_FRAME_TYPE Type;
+  public PXE_FRAME_TYPE Type;
 
   ///
   /// Reserved, must be zero.
   ///
-  PXE_UINT8 reserved[7];
+  public fixed PXE_UINT8 reserved[7];
 }
-PXE_DB_RECEIVE;
 
 // #pragma pack()
-}
 
 // #endif

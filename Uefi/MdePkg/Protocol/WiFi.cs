@@ -1032,6 +1032,149 @@ public unsafe struct EFI_80211_DEAUTHENTICATE_DATA_TOKEN
   public EFI_80211_DEAUTHENTICATE_DATA* Data;
 }
 
+// /**
+//   Request a survey of potential BSSs that administrator can later elect to try to join.
+// 
+//   The Scan() function returns the description of the set of BSSs detected by the scan
+//   process. Passive scan operation is performed by default.
+// 
+//   @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
+//                                   instance.
+//   @param[in]  Data                Pointer to the scan token.
+// 
+//   @retval EFI_SUCCESS             The operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   Data is NULL.
+//                                   Data->Data is NULL.
+//   @retval EFI_UNSUPPORTED         One or more of the input parameters are not supported
+//                                   by this implementation.
+//   @retval EFI_ALREADY_STARTED     The scan operation is already started.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_SCAN)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_PROTOCOL        *This,
+//   IN EFI_80211_SCAN_DATA_TOKEN                   *Data
+//   );
+
+// /**
+//   Request an association with a specified peer MAC entity that is within an AP.
+// 
+//   The Associate() function provides the capability for MAC layer to become associated
+//   with an AP.
+// 
+//   @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
+//                                   instance.
+//   @param[in]  Data                Pointer to the association token.
+// 
+//   @retval EFI_SUCCESS             The operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   Data is NULL.
+//                                   Data->Data is NULL.
+//   @retval EFI_UNSUPPORTED         One or more of the input parameters are not supported
+//                                   by this implementation.
+//   @retval EFI_ALREADY_STARTED     The association process is already started.
+//   @retval EFI_NOT_READY           Authentication is not performed before this association
+//                                   process.
+//   @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_ASSOCIATE)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_PROTOCOL        *This,
+//   IN EFI_80211_ASSOCIATE_DATA_TOKEN              *Data
+//   );
+
+// /**
+//   Request a disassociation with a specified peer MAC entity.
+// 
+//   The Disassociate() function is invoked to terminate an existing association.
+//   Disassociation is a notification and cannot be refused by the receiving peer except
+//   when management frame protection is negotiated and the message integrity check fails.
+// 
+//   @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
+//                                   instance.
+//   @param[in]  Data                Pointer to the disassociation token.
+// 
+//   @retval EFI_SUCCESS             The operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   Data is NULL.
+//   @retval EFI_ALREADY_STARTED     The disassociation process is already started.
+//   @retval EFI_NOT_READY           The disassociation service is invoked to a
+//                                   nonexistent association relationship.
+//   @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_DISASSOCIATE)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_PROTOCOL        *This,
+//   IN EFI_80211_DISASSOCIATE_DATA_TOKEN           *Data
+//   );
+
+// /**
+//   Request the process of establishing an authentication relationship with a peer MAC
+//   entity.
+// 
+//   The Authenticate() function requests authentication with a specified peer MAC entity.
+//   This service might be time-consuming thus is designed to be invoked independently of
+//   the association service.
+// 
+//   @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
+//                                   instance.
+//   @param[in]  Data                Pointer to the authentication token.
+// 
+//   @retval EFI_SUCCESS             The operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   Data is NULL.
+//                                   Data.Data is NULL.
+//   @retval EFI_UNSUPPORTED         One or more of the input parameters are not supported
+//                                   by this implementation.
+//   @retval EFI_ALREADY_STARTED     The authentication process is already started.
+//   @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_AUTHENTICATE)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_PROTOCOL        *This,
+//   IN EFI_80211_AUTHENTICATE_DATA_TOKEN           *Data
+//   );
+
+// /**
+//   Invalidate the authentication relationship with a peer MAC entity.
+// 
+//   The Deauthenticate() function requests that the authentication relationship with a
+//   specified peer MAC entity be invalidated. Deauthentication is a notification and when
+//   it is sent out the association at the transmitting station is terminated.
+// 
+//   @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
+//                                   instance.
+//   @param[in]  Data                Pointer to the deauthentication token.
+// 
+//   @retval EFI_SUCCESS             The operation completed successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   Data is NULL.
+//                                   Data.Data is NULL.
+//   @retval EFI_ALREADY_STARTED     The deauthentication process is already started.
+//   @retval EFI_NOT_READY           The deauthentication service is invoked to a
+//                                   nonexistent association or authentication relationship.
+//   @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_WIRELESS_MAC_CONNECTION_DEAUTHENTICATE)(
+//   IN EFI_WIRELESS_MAC_CONNECTION_PROTOCOL        *This,
+//   IN EFI_80211_DEAUTHENTICATE_DATA_TOKEN         *Data
+//   );
+
 ///
 /// The EFI_WIRELESS_MAC_CONNECTION_PROTOCOL is designed to provide management service
 /// interfaces for the EFI wireless network stack to establish wireless connection with
@@ -1041,119 +1184,11 @@ public unsafe struct EFI_80211_DEAUTHENTICATE_DATA_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
 {
-  /**
-    Request a survey of potential BSSs that administrator can later elect to try to join.
-
-    The Scan() function returns the description of the set of BSSs detected by the scan
-    process. Passive scan operation is performed by default.
-
-    @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
-                                    instance.
-    @param[in]  Data                Pointer to the scan token.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    Data is NULL.
-                                    Data->Data is NULL.
-    @retval EFI_UNSUPPORTED         One or more of the input parameters are not supported
-                                    by this implementation.
-    @retval EFI_ALREADY_STARTED     The scan operation is already started.
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_PROTOCOL*, EFI_80211_SCAN_DATA_TOKEN*, EFI_STATUS> Scan;
-  /**
-    Request an association with a specified peer MAC entity that is within an AP.
-
-    The Associate() function provides the capability for MAC layer to become associated
-    with an AP.
-
-    @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
-                                    instance.
-    @param[in]  Data                Pointer to the association token.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    Data is NULL.
-                                    Data->Data is NULL.
-    @retval EFI_UNSUPPORTED         One or more of the input parameters are not supported
-                                    by this implementation.
-    @retval EFI_ALREADY_STARTED     The association process is already started.
-    @retval EFI_NOT_READY           Authentication is not performed before this association
-                                    process.
-    @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_PROTOCOL*, EFI_80211_ASSOCIATE_DATA_TOKEN*, EFI_STATUS> Associate;
-  /**
-    Request a disassociation with a specified peer MAC entity.
-
-    The Disassociate() function is invoked to terminate an existing association.
-    Disassociation is a notification and cannot be refused by the receiving peer except
-    when management frame protection is negotiated and the message integrity check fails.
-
-    @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
-                                    instance.
-    @param[in]  Data                Pointer to the disassociation token.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    Data is NULL.
-    @retval EFI_ALREADY_STARTED     The disassociation process is already started.
-    @retval EFI_NOT_READY           The disassociation service is invoked to a
-                                    nonexistent association relationship.
-    @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_PROTOCOL*, EFI_80211_DISASSOCIATE_DATA_TOKEN*, EFI_STATUS> Disassociate;
-  /**
-    Request the process of establishing an authentication relationship with a peer MAC
-    entity.
-
-    The Authenticate() function requests authentication with a specified peer MAC entity.
-    This service might be time-consuming thus is designed to be invoked independently of
-    the association service.
-
-    @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
-                                    instance.
-    @param[in]  Data                Pointer to the authentication token.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    Data is NULL.
-                                    Data.Data is NULL.
-    @retval EFI_UNSUPPORTED         One or more of the input parameters are not supported
-                                    by this implementation.
-    @retval EFI_ALREADY_STARTED     The authentication process is already started.
-    @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_PROTOCOL*, EFI_80211_AUTHENTICATE_DATA_TOKEN*, EFI_STATUS> Authenticate;
-  /**
-    Invalidate the authentication relationship with a peer MAC entity.
-
-    The Deauthenticate() function requests that the authentication relationship with a
-    specified peer MAC entity be invalidated. Deauthentication is a notification and when
-    it is sent out the association at the transmitting station is terminated.
-
-    @param[in]  This                Pointer to the EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
-                                    instance.
-    @param[in]  Data                Pointer to the deauthentication token.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    Data is NULL.
-                                    Data.Data is NULL.
-    @retval EFI_ALREADY_STARTED     The deauthentication process is already started.
-    @retval EFI_NOT_READY           The deauthentication service is invoked to a
-                                    nonexistent association or authentication relationship.
-    @retval EFI_NOT_FOUND           The specified peer MAC entity is not found.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-  **/
-  public readonly delegate* unmanaged<EFI_WIRELESS_MAC_CONNECTION_PROTOCOL*, EFI_80211_DEAUTHENTICATE_DATA_TOKEN*, EFI_STATUS> Deauthenticate;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_SCAN_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_SCAN*/ Scan;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_ASSOCIATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_ASSOCIATE*/ Associate;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_DISASSOCIATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_DISASSOCIATE*/ Disassociate;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_AUTHENTICATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_AUTHENTICATE*/ Authenticate;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_DEAUTHENTICATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_DEAUTHENTICATE*/ Deauthenticate;
 }
 
 // extern EFI_GUID  gEfiWiFiProtocolGuid;

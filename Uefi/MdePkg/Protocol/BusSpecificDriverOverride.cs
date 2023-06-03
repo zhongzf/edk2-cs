@@ -31,6 +31,29 @@ public unsafe partial class EFI
   // Prototypes for the Bus Specific Driver Override Protocol
   //
 
+  // /**
+  //   Uses a bus specific algorithm to retrieve a driver image handle for a controller.
+  // 
+  //   @param  This                  A pointer to the EFI_BUS_SPECIFIC_DRIVER_
+  //                                 OVERRIDE_PROTOCOL instance.
+  //   @param  DriverImageHandle     On input, a pointer to the previous driver image handle returned
+  //                                 by GetDriver(). On output, a pointer to the next driver
+  //                                 image handle. Passing in a NULL, will return the first driver
+  //                                 image handle.
+  // 
+  //   @retval EFI_SUCCESS           A bus specific override driver is returned in DriverImageHandle.
+  //   @retval EFI_NOT_FOUND         The end of the list of override drivers was reached.
+  //                                 A bus specific override driver is not returned in DriverImageHandle.
+  //   @retval EFI_INVALID_PARAMETER DriverImageHandle is not a handle that was returned on a
+  //                                 previous call to GetDriver().
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_GET_DRIVER)(
+  //   IN EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL              *This,
+  //   IN OUT EFI_HANDLE                                         *DriverImageHandle
+  //   );
 }
 
 ///
@@ -41,24 +64,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL
 {
-  /**
-    Uses a bus specific algorithm to retrieve a driver image handle for a controller.
-
-    @param  This                  A pointer to the EFI_BUS_SPECIFIC_DRIVER_
-                                  OVERRIDE_PROTOCOL instance.
-    @param  DriverImageHandle     On input, a pointer to the previous driver image handle returned
-                                  by GetDriver(). On output, a pointer to the next driver
-                                  image handle. Passing in a NULL, will return the first driver
-                                  image handle.
-
-    @retval EFI_SUCCESS           A bus specific override driver is returned in DriverImageHandle.
-    @retval EFI_NOT_FOUND         The end of the list of override drivers was reached.
-                                  A bus specific override driver is not returned in DriverImageHandle.
-    @retval EFI_INVALID_PARAMETER DriverImageHandle is not a handle that was returned on a
-                                  previous call to GetDriver().
-
-  **/
-  public readonly delegate* unmanaged<EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL*, EFI_HANDLE*, EFI_STATUS> GetDriver;
+  public readonly delegate* unmanaged</* IN */EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_PROTOCOL* /*This*/,/* IN OUT */EFI_HANDLE* /*DriverImageHandle*/, EFI_STATUS> /*EFI_BUS_SPECIFIC_DRIVER_OVERRIDE_GET_DRIVER*/ GetDriver;
 }
 
 // extern EFI_GUID  gEfiBusSpecificDriverOverrideProtocolGuid;

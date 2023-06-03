@@ -59,7 +59,7 @@ public unsafe struct EFI_SMBUS_DEVICE_MAP
 ///
 /// Smbus Operations
 ///
-typedef enum _EFI_SMBUS_OPERATION
+public enum EFI_SMBUS_OPERATION
 {
   EfiSmbusQuickRead,
   EfiSmbusQuickWrite,
@@ -74,7 +74,6 @@ typedef enum _EFI_SMBUS_OPERATION
   EfiSmbusProcessCall,
   EfiSmbusBWBRProcessCall
 }
-EFI_SMBUS_OPERATION;
 
 ///
 /// EFI_SMBUS_DEVICE_COMMAND

@@ -72,6 +72,100 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_DISK_INFO_SD_MMC_INTERFACE_GUID = new GUID(
       0x8deec992, 0xd39c, 0x4a5c, new byte[] { 0xab, 0x6b, 0x98, 0x6e, 0x14, 0x24, 0x2b, 0x9d });
 
+  // /**
+  //   Provides inquiry information for the controller type.
+  // 
+  //   This function is used by the IDE bus driver to get inquiry data.  Data format
+  //   of Identify data is defined by the Interface GUID.
+  // 
+  //   @param[in]     This              Pointer to the EFI_DISK_INFO_PROTOCOL instance.
+  //   @param[in,out] InquiryData       Pointer to a buffer for the inquiry data.
+  //   @param[in,out] InquiryDataSize   Pointer to the value for the inquiry data size.
+  // 
+  //   @retval EFI_SUCCESS            The command was accepted without any errors.
+  //   @retval EFI_NOT_FOUND          Device does not support this data class
+  //   @retval EFI_DEVICE_ERROR       Error reading InquiryData from device
+  //   @retval EFI_BUFFER_TOO_SMALL   InquiryDataSize not big enough
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_DISK_INFO_INQUIRY)(
+  //   IN     EFI_DISK_INFO_PROTOCOL  *This,
+  //   IN OUT void                    *InquiryData,
+  //   IN OUT uint                  *InquiryDataSize
+  //   );
+
+  // /**
+  //   Provides identify information for the controller type.
+  // 
+  //   This function is used by the IDE bus driver to get identify data.  Data format
+  //   of Identify data is defined by the Interface GUID.
+  // 
+  //   @param[in]     This               Pointer to the EFI_DISK_INFO_PROTOCOL
+  //                                     instance.
+  //   @param[in,out] IdentifyData       Pointer to a buffer for the identify data.
+  //   @param[in,out] IdentifyDataSize   Pointer to the value for the identify data
+  //                                     size.
+  // 
+  //   @retval EFI_SUCCESS            The command was accepted without any errors.
+  //   @retval EFI_NOT_FOUND          Device does not support this data class
+  //   @retval EFI_DEVICE_ERROR       Error reading IdentifyData from device
+  //   @retval EFI_BUFFER_TOO_SMALL   IdentifyDataSize not big enough
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_DISK_INFO_IDENTIFY)(
+  //   IN     EFI_DISK_INFO_PROTOCOL  *This,
+  //   IN OUT void                    *IdentifyData,
+  //   IN OUT uint                  *IdentifyDataSize
+  //   );
+
+  // /**
+  //   Provides sense data information for the controller type.
+  // 
+  //   This function is used by the IDE bus driver to get sense data.
+  //   Data format of Sense data is defined by the Interface GUID.
+  // 
+  //   @param[in]     This              Pointer to the EFI_DISK_INFO_PROTOCOL instance.
+  //   @param[in,out] SenseData         Pointer to the SenseData.
+  //   @param[in,out] SenseDataSize     Size of SenseData in bytes.
+  //   @param[out]    SenseDataNumber   Pointer to the value for the sense data size.
+  // 
+  //   @retval EFI_SUCCESS            The command was accepted without any errors.
+  //   @retval EFI_NOT_FOUND          Device does not support this data class.
+  //   @retval EFI_DEVICE_ERROR       Error reading SenseData from device.
+  //   @retval EFI_BUFFER_TOO_SMALL   SenseDataSize not big enough.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_DISK_INFO_SENSE_DATA)(
+  //   IN     EFI_DISK_INFO_PROTOCOL  *This,
+  //   IN OUT void                    *SenseData,
+  //   IN OUT uint                  *SenseDataSize,
+  //   OUT    byte                   *SenseDataNumber
+  //   );
+
+  // /**
+  //   This function is used by the IDE bus driver to get controller information.
+  // 
+  //   @param[in]  This         Pointer to the EFI_DISK_INFO_PROTOCOL instance.
+  //   @param[out] IdeChannel   Pointer to the Ide Channel number.  Primary or secondary.
+  //   @param[out] IdeDevice    Pointer to the Ide Device number.  Master or slave.
+  // 
+  //   @retval EFI_SUCCESS       IdeChannel and IdeDevice are valid.
+  //   @retval EFI_UNSUPPORTED   This is not an IDE device.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_DISK_INFO_WHICH_IDE)(
+  //   IN  EFI_DISK_INFO_PROTOCOL  *This,
+  //   OUT uint                  *IdeChannel,
+  //   OUT uint                  *IdeDevice
+  //   );
 }
 
 ///
@@ -89,83 +183,21 @@ public unsafe struct EFI_DISK_INFO_PROTOCOL
   /// Return the results of the Inquiry command to a drive in InquiryData. Data
   /// format of Inquiry data is defined by the Interface GUID.
   ///
-  /**
-    Provides inquiry information for the controller type.
-
-    This function is used by the IDE bus driver to get inquiry data.  Data format
-    of Identify data is defined by the Interface GUID.
-
-    @param[in]     This              Pointer to the EFI_DISK_INFO_PROTOCOL instance.
-    @param[in,out] InquiryData       Pointer to a buffer for the inquiry data.
-    @param[in,out] InquiryDataSize   Pointer to the value for the inquiry data size.
-
-    @retval EFI_SUCCESS            The command was accepted without any errors.
-    @retval EFI_NOT_FOUND          Device does not support this data class
-    @retval EFI_DEVICE_ERROR       Error reading InquiryData from device
-    @retval EFI_BUFFER_TOO_SMALL   InquiryDataSize not big enough
-
-  **/
-  public readonly delegate* unmanaged<EFI_DISK_INFO_PROTOCOL*, void*, uint*, EFI_STATUS> Inquiry;
+  public readonly delegate* unmanaged</* IN */EFI_DISK_INFO_PROTOCOL* /*This*/,/* IN OUT */void* /*InquiryData*/,/* IN OUT */uint* /*InquiryDataSize*/, EFI_STATUS> /*EFI_DISK_INFO_INQUIRY*/ Inquiry;
   ///
   /// Return the results of the Identify command to a drive in IdentifyData. Data
   /// format of Identify data is defined by the Interface GUID.
   ///
-  /**
-    Provides identify information for the controller type.
-
-    This function is used by the IDE bus driver to get identify data.  Data format
-    of Identify data is defined by the Interface GUID.
-
-    @param[in]     This               Pointer to the EFI_DISK_INFO_PROTOCOL
-                                      instance.
-    @param[in,out] IdentifyData       Pointer to a buffer for the identify data.
-    @param[in,out] IdentifyDataSize   Pointer to the value for the identify data
-                                      size.
-
-    @retval EFI_SUCCESS            The command was accepted without any errors.
-    @retval EFI_NOT_FOUND          Device does not support this data class
-    @retval EFI_DEVICE_ERROR       Error reading IdentifyData from device
-    @retval EFI_BUFFER_TOO_SMALL   IdentifyDataSize not big enough
-
-  **/
-  public readonly delegate* unmanaged<EFI_DISK_INFO_PROTOCOL*, void*, uint*, EFI_STATUS> Identify;
+  public readonly delegate* unmanaged</* IN */EFI_DISK_INFO_PROTOCOL* /*This*/,/* IN OUT */void* /*IdentifyData*/,/* IN OUT */uint* /*IdentifyDataSize*/, EFI_STATUS> /*EFI_DISK_INFO_IDENTIFY*/ Identify;
   ///
   /// Return the results of the Request Sense command to a drive in SenseData. Data
   /// format of Sense data is defined by the Interface GUID.
   ///
-  /**
-    Provides sense data information for the controller type.
-
-    This function is used by the IDE bus driver to get sense data.
-    Data format of Sense data is defined by the Interface GUID.
-
-    @param[in]     This              Pointer to the EFI_DISK_INFO_PROTOCOL instance.
-    @param[in,out] SenseData         Pointer to the SenseData.
-    @param[in,out] SenseDataSize     Size of SenseData in bytes.
-    @param[out]    SenseDataNumber   Pointer to the value for the sense data size.
-
-    @retval EFI_SUCCESS            The command was accepted without any errors.
-    @retval EFI_NOT_FOUND          Device does not support this data class.
-    @retval EFI_DEVICE_ERROR       Error reading SenseData from device.
-    @retval EFI_BUFFER_TOO_SMALL   SenseDataSize not big enough.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DISK_INFO_PROTOCOL*, void*, uint*, byte*, EFI_STATUS> SenseData;
+  public readonly delegate* unmanaged</* IN */EFI_DISK_INFO_PROTOCOL* /*This*/,/* IN OUT */void* /*SenseData*/,/* IN OUT */uint* /*SenseDataSize*/,/* OUT */byte* /*SenseDataNumber*/, EFI_STATUS> /*EFI_DISK_INFO_SENSE_DATA*/ SenseData;
   ///
   /// Specific controller.
   ///
-  /**
-    This function is used by the IDE bus driver to get controller information.
-
-    @param[in]  This         Pointer to the EFI_DISK_INFO_PROTOCOL instance.
-    @param[out] IdeChannel   Pointer to the Ide Channel number.  Primary or secondary.
-    @param[out] IdeDevice    Pointer to the Ide Device number.  Master or slave.
-
-    @retval EFI_SUCCESS       IdeChannel and IdeDevice are valid.
-    @retval EFI_UNSUPPORTED   This is not an IDE device.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DISK_INFO_PROTOCOL*, uint*, uint*, EFI_STATUS> WhichIde;
+  public readonly delegate* unmanaged</* IN */EFI_DISK_INFO_PROTOCOL* /*This*/,/* OUT */uint* /*IdeChannel*/,/* OUT */uint* /*IdeDevice*/, EFI_STATUS> /*EFI_DISK_INFO_WHICH_IDE*/ WhichIde;
 }
 
 // extern EFI_GUID  gEfiDiskInfoProtocolGuid;

@@ -29,6 +29,36 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_EAP_MANAGEMENT2_PROTOCOL EFI_EAP_MANAGEMENT2_PROTOCOL;
 
+  // /**
+  //   Return key generated through EAP process.
+  // 
+  //   The GetKey() function return the key generated through EAP process, so that the 802.11
+  //   MAC layer driver can use MSK to derive more keys, e.g. PMK (Pairwise Master Key).
+  // 
+  //   @param[in]       This           Pointer to the EFI_EAP_MANAGEMENT2_PROTOCOL instance.
+  //   @param[in, out]  Msk            Pointer to MSK (Master Session Key) buffer.
+  //   @param[in, out]  MskSize        MSK buffer size.
+  //   @param[in, out]  Emsk           Pointer to EMSK (Extended Master Session Key) buffer.
+  //   @param[in, out]  EmskSize       EMSK buffer size.
+  // 
+  //   @retval EFI_SUCCESS             The operation completed successfully.
+  //   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+  //                                   Msk is NULL.
+  //                                   MskSize is NULL.
+  //                                   Emsk is NULL.
+  //                                   EmskSize is NULL.
+  //   @retval EFI_NOT_READY           MSK and EMSK are not generated in current session yet.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_EAP_GET_KEY)(
+  //   IN EFI_EAP_MANAGEMENT2_PROTOCOL         *This,
+  //   IN OUT byte                            *Msk,
+  //   IN OUT ulong                            *MskSize,
+  //   IN OUT byte                            *Emsk,
+  //   IN OUT byte                            *EmskSize
+  //   );
 }
 
 ///
@@ -49,28 +79,7 @@ public unsafe struct EFI_EAP_MANAGEMENT2_PROTOCOL
   public EFI_EAP_GET_SUPPLICANT_STATUS GetSupplicantStatus;
   public EFI_EAP_SET_SUPPLICANT_CONFIGURATION SetSupplicantConfiguration;
   public EFI_EAP_GET_SUPPLICANT_STATISTICS GetSupplicantStatistics;
-  /**
-    Return key generated through EAP process.
-
-    The GetKey() function return the key generated through EAP process, so that the 802.11
-    MAC layer driver can use MSK to derive more keys, e.g. PMK (Pairwise Master Key).
-
-    @param[in]       This           Pointer to the EFI_EAP_MANAGEMENT2_PROTOCOL instance.
-    @param[in, out]  Msk            Pointer to MSK (Master Session Key) buffer.
-    @param[in, out]  MskSize        MSK buffer size.
-    @param[in, out]  Emsk           Pointer to EMSK (Extended Master Session Key) buffer.
-    @param[in, out]  EmskSize       EMSK buffer size.
-
-    @retval EFI_SUCCESS             The operation completed successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    Msk is NULL.
-                                    MskSize is NULL.
-                                    Emsk is NULL.
-                                    EmskSize is NULL.
-    @retval EFI_NOT_READY           MSK and EMSK are not generated in current session yet.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT2_PROTOCOL*, byte*, ulong*, byte*, byte*, EFI_STATUS> GetKey;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT2_PROTOCOL* /*This*/,/* IN OUT */byte* /*Msk*/,/* IN OUT */ulong* /*MskSize*/,/* IN OUT */byte* /*Emsk*/,/* IN OUT */byte* /*EmskSize*/, EFI_STATUS> /*EFI_EAP_GET_KEY*/ GetKey;
 }
 
 // extern EFI_GUID  gEfiEapManagement2ProtocolGuid;

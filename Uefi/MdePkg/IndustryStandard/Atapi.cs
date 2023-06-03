@@ -275,13 +275,13 @@ public unsafe struct ATAPI_INQUIRY_DATA
   public fixed byte vendor_info[8];
   public fixed byte product_id[16];
   public fixed byte product_revision_level[4];
-  public bytepublic public vendor_specific_36_55[55 - 36 + 1];
-public bytepublic public reserved_56_95[95 - 56 + 1];
+  public fixed byte vendor_specific_36_55[55 - 36 + 1];
+  public fixed byte reserved_56_95[95 - 56 + 1];
   ///
   /// Vendor-specific parameters fields. The sizeof (ATAPI_INQUIRY_DATA) is 254
   /// since allocation_length is one byte in ATAPI_INQUIRY_CMD.
   ///
-public bytepublic public vendor_specific_96_253[253 - 96 + 1];
+  public fixed byte vendor_specific_96_253[253 - 96 + 1];
 }
 
 ///

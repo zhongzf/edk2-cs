@@ -26,6 +26,24 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_MM_CONFIGURATION_PROTOCOL EFI_MM_CONFIGURATION_PROTOCOL;
 
+  // /**
+  //   Register the MM Foundation entry point.
+  // 
+  //   This function registers the MM Foundation entry point with the processor code. This entry point
+  //   will be invoked by the MM Processor entry code.
+  // 
+  //   @param[in] This                The EFI_MM_CONFIGURATION_PROTOCOL instance.
+  //   @param[in] MmEntryPoint        MM Foundation entry point.
+  // 
+  //   @retval EFI_SUCCESS            Success to register MM Entry Point.
+  //   @retval EFI_INVALID_PARAMETER  MmEntryPoint is NULL.
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_MM_REGISTER_MM_ENTRY)(
+  //   IN CONST EFI_MM_CONFIGURATION_PROTOCOL  *This,
+  //   IN EFI_MM_ENTRY_POINT                   MmEntryPoint
+  //   );
 }
 
 ///
@@ -43,19 +61,7 @@ public unsafe struct EFI_MM_CONFIGURATION_PROTOCOL
   /// A pointer to an array MMRAM ranges used by the initial MM entry code.
   ///
   public EFI_MM_RESERVED_MMRAM_REGION* MmramReservedRegions;
-  /**
-    Register the MM Foundation entry point.
-
-    This function registers the MM Foundation entry point with the processor code. This entry point
-    will be invoked by the MM Processor entry code.
-
-    @param[in] This                The EFI_MM_CONFIGURATION_PROTOCOL instance.
-    @param[in] MmEntryPoint        MM Foundation entry point.
-
-    @retval EFI_SUCCESS            Success to register MM Entry Point.
-    @retval EFI_INVALID_PARAMETER  MmEntryPoint is NULL.
-  **/
-  public readonly delegate* unmanaged<CONST, EFI_MM_ENTRY_POINT, EFI_STATUS> RegisterMmEntry;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_MM_ENTRY_POINT /*MmEntryPoint*/, EFI_STATUS> /*EFI_MM_REGISTER_MM_ENTRY*/ RegisterMmEntry;
 }
 
 // extern EFI_GUID  gEfiMmConfigurationProtocolGuid;

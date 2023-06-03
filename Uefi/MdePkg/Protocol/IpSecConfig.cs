@@ -538,27 +538,27 @@ public unsafe struct EFI_IPSEC_SA_DATA2
 /// specifies the identifier for PAD entry, which is also used for SPD lookup.
 /// IpAddress Pointer to the IPv4 or IPv6 address range.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Id
-{
-  ///
-  /// Flag to identify which type of PAD Id is used.
-  ///
-  public bool PeerIdValid;
-  union {
-    ///
-    /// Pointer to the IPv4 or IPv6 address range.
-    ///
-   public EFI_IP_ADDRESS_INFO IpAddress;
-  ///
-  /// Pointer to a null terminated ASCII string
-  /// representing the symbolic names. A PeerId can be a DNS
-  /// name, Distinguished Name, RFC 822 email address or Key ID
-  /// (specified in section 4.4.3.1 of RFC 4301)
-  ///
-  public fixed byte PeerId[MAX_PEERID_LEN];
-}
-} EFI_IPSEC_PAD_ID;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Id
+//{
+//  ///
+//  /// Flag to identify which type of PAD Id is used.
+//  ///
+//  public bool PeerIdValid;
+//  union {
+//    ///
+//    /// Pointer to the IPv4 or IPv6 address range.
+//    ///
+//    public EFI_IP_ADDRESS_INFO IpAddress;
+//  ///
+//  /// Pointer to a null terminated ASCII string
+//  /// representing the symbolic names. A PeerId can be a DNS
+//  /// name, Distinguished Name, RFC 822 email address or Key ID
+//  /// (specified in section 4.4.3.1 of RFC 4301)
+//  ///
+//  public fixed byte PeerId[MAX_PEERID_LEN];
+//}
+//} EFI_IPSEC_PAD_ID;
 
 ///
 /// EFI_IPSEC_CONFIG_SELECTOR
@@ -570,7 +570,7 @@ public unsafe struct EFI_IPSEC_CONFIG_SELECTOR
 {
   [FieldOffset(0)] public EFI_IPSEC_SPD_SELECTOR SpdSelector;
   [FieldOffset(0)] public EFI_IPSEC_SA_ID SaId;
-  [FieldOffset(0)] public EFI_IPSEC_PAD_ID PadId;
+  //[FieldOffset(0)] public EFI_IPSEC_PAD_ID PadId;
 }
 
 ///
@@ -642,6 +642,183 @@ public unsafe struct EFI_IPSEC_PAD_DATA
   public void* RevocationData;
 }
 
+// /**
+//   Set the security association, security policy and peer authorization configuration
+//   information for the EFI IPsec driver.
+// 
+//   This function is used to set the IPsec configuration information of type DataType for
+//   the EFI IPsec driver.
+//   The IPsec configuration data has a unique selector/identifier separately to identify
+//   a data entry. The selector structure depends on DataType's definition.
+//   Using SetData() with a Data of NULL causes the IPsec configuration data entry identified
+//   by DataType and Selector to be deleted.
+// 
+//   @param[in] This               Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
+//   @param[in] DataType           The type of data to be set.
+//   @param[in] Selector           Pointer to an entry selector on operated configuration data
+//                                 specified by DataType. A NULL Selector causes the entire
+//                                 specified-type configuration information to be flushed.
+//   @param[in] Data               The data buffer to be set. The structure of the data buffer is
+//                                 associated with the DataType.
+//   @param[in] InsertBefore       Pointer to one entry selector which describes the expected
+//                                 position the new data entry will be added. If InsertBefore is NULL,
+//                                 the new entry will be appended the end of database.
+// 
+//   @retval EFI_SUCCESS           The specified configuration entry data is set successfully.
+//   @retval EFI_INVALID_PARAMETER One or more of the following are TRUE:
+//                                 - This is NULL.
+//   @retval EFI_UNSUPPORTED       The specified DataType is not supported.
+//   @retval EFI_OUT_OF_RESOURCED  The required system resource could not be allocated.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_IPSEC_CONFIG_SET_DATA)(
+//   IN EFI_IPSEC_CONFIG_PROTOCOL        *This,
+//   IN EFI_IPSEC_CONFIG_DATA_TYPE       DataType,
+//   IN EFI_IPSEC_CONFIG_SELECTOR        *Selector,
+//   IN void                             *Data,
+//   IN EFI_IPSEC_CONFIG_SELECTOR        *InsertBefore   OPTIONAL
+//   );
+
+// /**
+//   Return the configuration value for the EFI IPsec driver.
+// 
+//   This function lookup the data entry from IPsec database or IKEv2 configuration
+//   information. The expected data type and unique identification are described in
+//   DataType and Selector parameters.
+// 
+//   @param[in]      This          Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
+//   @param[in]      DataType      The type of data to retrieve.
+//   @param[in]      Selector      Pointer to an entry selector which is an identifier of the IPsec
+//                                 configuration data entry.
+//   @param[in, out] DataSize      On output the size of data returned in Data.
+//   @param[out]     Data          The buffer to return the contents of the IPsec configuration data.
+//                                 The type of the data buffer is associated with the DataType.
+// 
+//   @retval EFI_SUCCESS           The specified configuration data is got successfully.
+//   @retval EFI_INVALID_PARAMETER One or more of the followings are TRUE:
+//                                 - This is NULL.
+//                                 - Selector is NULL.
+//                                 - DataSize is NULL.
+//                                 - Data is NULL and *DataSize is not zero
+//   @retval EFI_NOT_FOUND         The configuration data specified by Selector is not found.
+//   @retval EFI_UNSUPPORTED       The specified DataType is not supported.
+//   @retval EFI_BUFFER_TOO_SMALL  The DataSize is too small for the result. DataSize has been
+//                                 updated with the size needed to complete the request.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_IPSEC_CONFIG_GET_DATA)(
+//   IN EFI_IPSEC_CONFIG_PROTOCOL        *This,
+//   IN EFI_IPSEC_CONFIG_DATA_TYPE       DataType,
+//   IN EFI_IPSEC_CONFIG_SELECTOR        *Selector,
+//   IN OUT ulong                        *DataSize,
+//   OUT void                            *Data
+//   );
+
+// /**
+//   Enumerates the current selector for IPsec configuration data entry.
+// 
+//   This function is called multiple times to retrieve the entry Selector in IPsec
+//   configuration database. On each call to GetNextSelector(), the next entry
+//   Selector are retrieved into the output interface.
+// 
+//   If the entire IPsec configuration database has been iterated, the error
+//   EFI_NOT_FOUND is returned.
+//   If the Selector buffer is too small for the next Selector copy, an
+//   EFI_BUFFER_TOO_SMALL error is returned, and SelectorSize is updated to reflect
+//   the size of buffer needed.
+// 
+//   On the initial call to GetNextSelector() to start the IPsec configuration database
+//   search, a pointer to the buffer with all zero value is passed in Selector. Calls
+//   to SetData() between calls to GetNextSelector may produce unpredictable results.
+// 
+//   @param[in]      This          Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
+//   @param[in]      DataType      The type of IPsec configuration data to retrieve.
+//   @param[in, out] SelectorSize  The size of the Selector buffer.
+//   @param[in, out] Selector      On input, supplies the pointer to last Selector that was
+//                                 returned by GetNextSelector().
+//                                 On output, returns one copy of the current entry Selector
+//                                 of a given DataType.
+// 
+//   @retval EFI_SUCCESS           The specified configuration data is got successfully.
+//   @retval EFI_INVALID_PARAMETER One or more of the followings are TRUE:
+//                                 - This is NULL.
+//                                 - SelectorSize is NULL.
+//                                 - Selector is NULL.
+//   @retval EFI_NOT_FOUND         The next configuration data entry was not found.
+//   @retval EFI_UNSUPPORTED       The specified DataType is not supported.
+//   @retval EFI_BUFFER_TOO_SMALL  The SelectorSize is too small for the result. This parameter
+//                                 has been updated with the size needed to complete the search
+//                                 request.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_IPSEC_CONFIG_GET_NEXT_SELECTOR)(
+//   IN EFI_IPSEC_CONFIG_PROTOCOL        *This,
+//   IN EFI_IPSEC_CONFIG_DATA_TYPE       DataType,
+//   IN OUT ulong                        *SelectorSize,
+//   IN OUT EFI_IPSEC_CONFIG_SELECTOR    *Selector
+//   );
+
+// /**
+//   Register an event that is to be signaled whenever a configuration process on the
+//   specified IPsec configuration information is done.
+// 
+//   This function registers an event that is to be signaled whenever a configuration
+//   process on the specified IPsec configuration data is done (e.g. IPsec security
+//   policy database configuration is ready). An event can be registered for different
+//   DataType simultaneously and the caller is responsible for determining which type
+//   of configuration data causes the signaling of the event in such case.
+// 
+//   @param[in] This               Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
+//   @param[in] DataType           The type of data to be registered the event for.
+//   @param[in] Event              The event to be registered.
+// 
+//   @retval EFI_SUCCESS           The event is registered successfully.
+//   @retval EFI_INVALID_PARAMETER This is NULL or Event is NULL.
+//   @retval EFI_ACCESS_DENIED     The Event is already registered for the DataType.
+//   @retval EFI_UNSUPPORTED       The notify registration unsupported or the specified
+//                                 DataType is not supported.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_IPSEC_CONFIG_REGISTER_NOTIFY)(
+//   IN EFI_IPSEC_CONFIG_PROTOCOL        *This,
+//   IN EFI_IPSEC_CONFIG_DATA_TYPE       DataType,
+//   IN EFI_EVENT                        Event
+//   );
+
+// /**
+//   Remove the specified event that is previously registered on the specified IPsec
+//   configuration data.
+// 
+//   This function removes a previously registered event for the specified configuration data.
+// 
+//   @param[in] This               Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
+//   @param[in] DataType           The configuration data type to remove the registered event for.
+//   @param[in] Event              The event to be unregistered.
+// 
+//   @retval EFI_SUCCESS           The event is removed successfully.
+//   @retval EFI_NOT_FOUND         The Event specified by DataType could not be found in the
+//                                 database.
+//   @retval EFI_INVALID_PARAMETER This is NULL or Event is NULL.
+//   @retval EFI_UNSUPPORTED       The notify registration unsupported or the specified
+//                                 DataType is not supported.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_IPSEC_CONFIG_UNREGISTER_NOTIFY)(
+//   IN EFI_IPSEC_CONFIG_PROTOCOL        *This,
+//   IN EFI_IPSEC_CONFIG_DATA_TYPE       DataType,
+//   IN EFI_EVENT                        Event
+//   );
+
 ///
 /// EFI_IPSEC_CONFIG_PROTOCOL
 /// provides the ability to set and lookup the IPsec SAD (Security Association Database),
@@ -654,143 +831,11 @@ public unsafe struct EFI_IPSEC_PAD_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IPSEC_CONFIG_PROTOCOL
 {
-  /**
-    Set the security association, security policy and peer authorization configuration
-    information for the EFI IPsec driver.
-
-    This function is used to set the IPsec configuration information of type DataType for
-    the EFI IPsec driver.
-    The IPsec configuration data has a unique selector/identifier separately to identify
-    a data entry. The selector structure depends on DataType's definition.
-    Using SetData() with a Data of NULL causes the IPsec configuration data entry identified
-    by DataType and Selector to be deleted.
-
-    @param[in] This               Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
-    @param[in] DataType           The type of data to be set.
-    @param[in] Selector           Pointer to an entry selector on operated configuration data
-                                  specified by DataType. A NULL Selector causes the entire
-                                  specified-type configuration information to be flushed.
-    @param[in] Data               The data buffer to be set. The structure of the data buffer is
-                                  associated with the DataType.
-    @param[in] InsertBefore       Pointer to one entry selector which describes the expected
-                                  position the new data entry will be added. If InsertBefore is NULL,
-                                  the new entry will be appended the end of database.
-
-    @retval EFI_SUCCESS           The specified configuration entry data is set successfully.
-    @retval EFI_INVALID_PARAMETER One or more of the following are TRUE:
-                                  - This is NULL.
-    @retval EFI_UNSUPPORTED       The specified DataType is not supported.
-    @retval EFI_OUT_OF_RESOURCED  The required system resource could not be allocated.
-
-  **/
-  public readonly delegate* unmanaged<EFI_IPSEC_CONFIG_PROTOCOL*, EFI_IPSEC_CONFIG_DATA_TYPE, EFI_IPSEC_CONFIG_SELECTOR*, void*, EFI_IPSEC_CONFIG_SELECTOR*, EFI_STATUS> SetData;
-  /**
-    Return the configuration value for the EFI IPsec driver.
-
-    This function lookup the data entry from IPsec database or IKEv2 configuration
-    information. The expected data type and unique identification are described in
-    DataType and Selector parameters.
-
-    @param[in]      This          Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
-    @param[in]      DataType      The type of data to retrieve.
-    @param[in]      Selector      Pointer to an entry selector which is an identifier of the IPsec
-                                  configuration data entry.
-    @param[in, out] DataSize      On output the size of data returned in Data.
-    @param[out]     Data          The buffer to return the contents of the IPsec configuration data.
-                                  The type of the data buffer is associated with the DataType.
-
-    @retval EFI_SUCCESS           The specified configuration data is got successfully.
-    @retval EFI_INVALID_PARAMETER One or more of the followings are TRUE:
-                                  - This is NULL.
-                                  - Selector is NULL.
-                                  - DataSize is NULL.
-                                  - Data is NULL and *DataSize is not zero
-    @retval EFI_NOT_FOUND         The configuration data specified by Selector is not found.
-    @retval EFI_UNSUPPORTED       The specified DataType is not supported.
-    @retval EFI_BUFFER_TOO_SMALL  The DataSize is too small for the result. DataSize has been
-                                  updated with the size needed to complete the request.
-
-  **/
-  public readonly delegate* unmanaged<EFI_IPSEC_CONFIG_PROTOCOL*, EFI_IPSEC_CONFIG_DATA_TYPE, EFI_IPSEC_CONFIG_SELECTOR*, ulong*, void*, EFI_STATUS> GetData;
-  /**
-    Enumerates the current selector for IPsec configuration data entry.
-
-    This function is called multiple times to retrieve the entry Selector in IPsec
-    configuration database. On each call to GetNextSelector(), the next entry
-    Selector are retrieved into the output interface.
-
-    If the entire IPsec configuration database has been iterated, the error
-    EFI_NOT_FOUND is returned.
-    If the Selector buffer is too small for the next Selector copy, an
-    EFI_BUFFER_TOO_SMALL error is returned, and SelectorSize is updated to reflect
-    the size of buffer needed.
-
-    On the initial call to GetNextSelector() to start the IPsec configuration database
-    search, a pointer to the buffer with all zero value is passed in Selector. Calls
-    to SetData() between calls to GetNextSelector may produce unpredictable results.
-
-    @param[in]      This          Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
-    @param[in]      DataType      The type of IPsec configuration data to retrieve.
-    @param[in, out] SelectorSize  The size of the Selector buffer.
-    @param[in, out] Selector      On input, supplies the pointer to last Selector that was
-                                  returned by GetNextSelector().
-                                  On output, returns one copy of the current entry Selector
-                                  of a given DataType.
-
-    @retval EFI_SUCCESS           The specified configuration data is got successfully.
-    @retval EFI_INVALID_PARAMETER One or more of the followings are TRUE:
-                                  - This is NULL.
-                                  - SelectorSize is NULL.
-                                  - Selector is NULL.
-    @retval EFI_NOT_FOUND         The next configuration data entry was not found.
-    @retval EFI_UNSUPPORTED       The specified DataType is not supported.
-    @retval EFI_BUFFER_TOO_SMALL  The SelectorSize is too small for the result. This parameter
-                                  has been updated with the size needed to complete the search
-                                  request.
-
-  **/
-  public readonly delegate* unmanaged<EFI_IPSEC_CONFIG_PROTOCOL*, EFI_IPSEC_CONFIG_DATA_TYPE, ulong*, EFI_IPSEC_CONFIG_SELECTOR*, EFI_STATUS> GetNextSelector;
-  /**
-    Register an event that is to be signaled whenever a configuration process on the
-    specified IPsec configuration information is done.
-
-    This function registers an event that is to be signaled whenever a configuration
-    process on the specified IPsec configuration data is done (e.g. IPsec security
-    policy database configuration is ready). An event can be registered for different
-    DataType simultaneously and the caller is responsible for determining which type
-    of configuration data causes the signaling of the event in such case.
-
-    @param[in] This               Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
-    @param[in] DataType           The type of data to be registered the event for.
-    @param[in] Event              The event to be registered.
-
-    @retval EFI_SUCCESS           The event is registered successfully.
-    @retval EFI_INVALID_PARAMETER This is NULL or Event is NULL.
-    @retval EFI_ACCESS_DENIED     The Event is already registered for the DataType.
-    @retval EFI_UNSUPPORTED       The notify registration unsupported or the specified
-                                  DataType is not supported.
-
-  **/
-  public readonly delegate* unmanaged<EFI_IPSEC_CONFIG_PROTOCOL*, EFI_IPSEC_CONFIG_DATA_TYPE, EFI_EVENT, EFI_STATUS> RegisterDataNotify;
-  /**
-    Remove the specified event that is previously registered on the specified IPsec
-    configuration data.
-
-    This function removes a previously registered event for the specified configuration data.
-
-    @param[in] This               Pointer to the EFI_IPSEC_CONFIG_PROTOCOL instance.
-    @param[in] DataType           The configuration data type to remove the registered event for.
-    @param[in] Event              The event to be unregistered.
-
-    @retval EFI_SUCCESS           The event is removed successfully.
-    @retval EFI_NOT_FOUND         The Event specified by DataType could not be found in the
-                                  database.
-    @retval EFI_INVALID_PARAMETER This is NULL or Event is NULL.
-    @retval EFI_UNSUPPORTED       The notify registration unsupported or the specified
-                                  DataType is not supported.
-
-  **/
-  public readonly delegate* unmanaged<EFI_IPSEC_CONFIG_PROTOCOL*, EFI_IPSEC_CONFIG_DATA_TYPE, EFI_EVENT, EFI_STATUS> UnregisterDataNotify;
+  public readonly delegate* unmanaged</* IN */EFI_IPSEC_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_IPSEC_CONFIG_DATA_TYPE /*DataType*/,/* IN */EFI_IPSEC_CONFIG_SELECTOR* /*Selector*/,/* IN */void* /*Data*/,/* IN */EFI_IPSEC_CONFIG_SELECTOR* /*InsertBefore*/, EFI_STATUS> /*EFI_IPSEC_CONFIG_SET_DATA*/ SetData;
+  public readonly delegate* unmanaged</* IN */EFI_IPSEC_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_IPSEC_CONFIG_DATA_TYPE /*DataType*/,/* IN */EFI_IPSEC_CONFIG_SELECTOR* /*Selector*/,/* IN OUT */ulong* /*DataSize*/,/* OUT */void* /*Data*/, EFI_STATUS> /*EFI_IPSEC_CONFIG_GET_DATA*/ GetData;
+  public readonly delegate* unmanaged</* IN */EFI_IPSEC_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_IPSEC_CONFIG_DATA_TYPE /*DataType*/,/* IN OUT */ulong* /*SelectorSize*/,/* IN OUT */EFI_IPSEC_CONFIG_SELECTOR* /*Selector*/, EFI_STATUS> /*EFI_IPSEC_CONFIG_GET_NEXT_SELECTOR*/ GetNextSelector;
+  public readonly delegate* unmanaged</* IN */EFI_IPSEC_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_IPSEC_CONFIG_DATA_TYPE /*DataType*/,/* IN */EFI_EVENT /*Event*/, EFI_STATUS> /*EFI_IPSEC_CONFIG_REGISTER_NOTIFY*/ RegisterDataNotify;
+  public readonly delegate* unmanaged</* IN */EFI_IPSEC_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_IPSEC_CONFIG_DATA_TYPE /*DataType*/,/* IN */EFI_EVENT /*Event*/, EFI_STATUS> /*EFI_IPSEC_CONFIG_UNREGISTER_NOTIFY*/ UnregisterDataNotify;
 }
 
 // extern EFI_GUID  gEfiIpSecConfigProtocolGuid;

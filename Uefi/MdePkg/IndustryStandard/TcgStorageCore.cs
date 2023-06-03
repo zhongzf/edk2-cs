@@ -97,7 +97,7 @@ public unsafe struct TCG_TINY_ATOM_BITS
 public unsafe struct TCG_SIMPLE_TOKEN_TINY_ATOM
 {
   [FieldOffset(0)] public byte Raw;
-  TCG_TINY_ATOM_BITS TinyAtomBits;
+  [FieldOffset(0)] public TCG_TINY_ATOM_BITS TinyAtomBits;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -114,7 +114,7 @@ public unsafe struct TCG_SHORT_ATOM_BITS
 public unsafe struct TCG_SIMPLE_TOKEN_SHORT_ATOM
 {
   [FieldOffset(0)] public byte RawHeader;
-  TCG_SHORT_ATOM_BITS ShortAtomBits;
+  [FieldOffset(0)] public TCG_SHORT_ATOM_BITS ShortAtomBits;
 }
 
 public unsafe partial class EFI
@@ -139,34 +139,34 @@ public unsafe struct TCG_MEDIUM_ATOM_BITS
 public unsafe struct TCG_SIMPLE_TOKEN_MEDIUM_ATOM
 {
   [FieldOffset(0)] public ushort RawHeader;
-  TCG_MEDIUM_ATOM_BITS MediumAtomBits;
+  [FieldOffset(0)] public TCG_MEDIUM_ATOM_BITS MediumAtomBits;
 }
 
 public unsafe partial class EFI
 {
   public const ulong TCG_LONG_ATOM_LENGTH_HIGH_SHIFT = 16;
   public const ulong TCG_LONG_ATOM_LENGTH_MID_SHIFT = 8;
+}
 
-  typedef struct {
-  byte SignOrCont : 1;
-  byte ByteOrInt  : 1;
-  byte Reserved   : 2;
-  byte IsZero     : 1;
-  byte IsOne1     : 1;
-  byte IsOne2     : 1;
-  byte IsOne3     : 1;
-  byte LengthHigh;
-  byte LengthMid;
-  byte LengthLow;
-}
-TCG_LONG_ATOM_BITS;
-}
+//  typedef struct {
+//  byte SignOrCont : 1;
+//  byte ByteOrInt  : 1;
+//  byte Reserved   : 2;
+//  byte IsZero     : 1;
+//  byte IsOne1     : 1;
+//  byte IsOne2     : 1;
+//  byte IsOne3     : 1;
+//  byte LengthHigh;
+//  byte LengthMid;
+//  byte LengthLow;
+//}
+//TCG_LONG_ATOM_BITS;
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TCG_SIMPLE_TOKEN_LONG_ATOM
 {
   [FieldOffset(0)] public uint RawHeader;
-  TCG_LONG_ATOM_BITS LongAtomBits;
+  [FieldOffset(0)] public TCG_LONG_ATOM_BITS LongAtomBits;
 }
 
 // TCG Core Spec v2 - Table 04 - Token Types
@@ -338,7 +338,7 @@ public unsafe struct TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_LOCKING_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public byte LockingSupported = 1;
   public byte LockingEnabled = 1; // means the locking security provider (SP) is enabled
   public byte Locked = 1; // means at least 1 locking range is enabled
@@ -352,7 +352,7 @@ public unsafe struct TCG_LOCKING_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_BLOCK_SID_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public byte SIDValueState = 1;
   public byte SIDBlockedState = 1;
   public byte Reserved4 = 6;
@@ -364,7 +364,7 @@ public unsafe struct TCG_BLOCK_SID_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_TPER_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public byte SyncSupported = 1;
   public byte AsyncSupported = 1;
   public byte AckNakSupported = 1;

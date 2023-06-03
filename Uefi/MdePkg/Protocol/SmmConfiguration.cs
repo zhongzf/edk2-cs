@@ -45,6 +45,25 @@ public unsafe struct EFI_SMM_RESERVED_SMRAM_REGION
 
 // typedef struct _EFI_SMM_CONFIGURATION_PROTOCOL EFI_SMM_CONFIGURATION_PROTOCOL;
 
+// /**
+//   Register the SMM Foundation entry point.
+// 
+//   This function registers the SMM Foundation entry point with the processor code. This entry point
+//   will be invoked by the SMM Processor entry code.
+// 
+//   @param[in] This                The EFI_SMM_CONFIGURATION_PROTOCOL instance.
+//   @param[in] SmmEntryPoint       SMM Foundation entry point.
+// 
+//   @retval EFI_SUCCESS            Success to register SMM Entry Point.
+//   @retval EFI_INVALID_PARAMETER  SmmEntryPoint is NULL.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SMM_REGISTER_SMM_ENTRY)(
+//   IN CONST EFI_SMM_CONFIGURATION_PROTOCOL  *This,
+//   IN EFI_SMM_ENTRY_POINT                   SmmEntryPoint
+//   );
+
 ///
 /// The EFI SMM Configuration Protocol is a mandatory protocol published by a DXE CPU driver to
 /// indicate which areas within SMRAM are reserved for use by the CPU for any purpose,
@@ -60,19 +79,7 @@ public unsafe struct EFI_SMM_CONFIGURATION_PROTOCOL
   /// A pointer to an array SMRAM ranges used by the initial SMM entry code.
   ///
   public EFI_SMM_RESERVED_SMRAM_REGION* SmramReservedRegions;
-  /**
-    Register the SMM Foundation entry point.
-
-    This function registers the SMM Foundation entry point with the processor code. This entry point
-    will be invoked by the SMM Processor entry code.
-
-    @param[in] This                The EFI_SMM_CONFIGURATION_PROTOCOL instance.
-    @param[in] SmmEntryPoint       SMM Foundation entry point.
-
-    @retval EFI_SUCCESS            Success to register SMM Entry Point.
-    @retval EFI_INVALID_PARAMETER  SmmEntryPoint is NULL.
-  **/
-  public readonly delegate* unmanaged<CONST, EFI_SMM_ENTRY_POINT, EFI_STATUS> RegisterSmmEntry;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SMM_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_SMM_ENTRY_POINT /*SmmEntryPoint*/, EFI_STATUS> /*EFI_SMM_REGISTER_SMM_ENTRY*/ RegisterSmmEntry;
 }
 
 // extern EFI_GUID  gEfiSmmConfigurationProtocolGuid;

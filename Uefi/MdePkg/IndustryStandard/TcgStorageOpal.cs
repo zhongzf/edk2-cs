@@ -131,7 +131,7 @@ public enum SUPPORTED_DATA_REMOVAL_MECHANISM
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct OPAL_GEOMETRY_REPORTING_FEATURE
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public fixed byte Reserved[8];
   public uint LogicalBlockSizeBE;
   public ulong AlignmentGranularityBE;
@@ -141,7 +141,7 @@ public unsafe struct OPAL_GEOMETRY_REPORTING_FEATURE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct OPAL_SINGLE_USER_MODE_FEATURE
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public uint NumLockingObjectsSupportedBE;
   public byte Any = 1;
   public byte All = 1;
@@ -153,7 +153,7 @@ public unsafe struct OPAL_SINGLE_USER_MODE_FEATURE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct OPAL_DATASTORE_TABLE_FEATURE
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public ushort Reserved;
   public ushort MaxNumTablesBE;
   public uint MaxTotalSizeBE;
@@ -163,7 +163,7 @@ public unsafe struct OPAL_DATASTORE_TABLE_FEATURE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct OPAL_SSCV1_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public ushort BaseComdIdBE;
   public ushort NumComIdsBE;
   public byte RangeCrossing = 1;
@@ -174,7 +174,7 @@ public unsafe struct OPAL_SSCV1_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct OPAL_SSCV2_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public ushort BaseComdIdBE;
   public ushort NumComIdsBE;
   public byte Reserved;
@@ -188,7 +188,7 @@ public unsafe struct OPAL_SSCV2_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct OPAL_SSCLITE_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public ushort BaseComdIdBE;
   public ushort NumComIdsBE;
   public fixed byte Reserved[5];
@@ -200,7 +200,7 @@ public unsafe struct OPAL_SSCLITE_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PYRITE_SSC_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public ushort BaseComdIdBE;
   public ushort NumComIdsBE;
   public fixed byte Reserved[5];
@@ -212,7 +212,7 @@ public unsafe struct PYRITE_SSC_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PYRITE_SSCV2_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public ushort BaseComdIdBE;
   public ushort NumComIdsBE;
   public fixed byte Reserved[5];
@@ -224,7 +224,7 @@ public unsafe struct PYRITE_SSCV2_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct DATA_REMOVAL_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
+  public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER Header;
   public byte Reserved;
   public byte OperationProcessing = 1;
   public byte Reserved2 = 7;
@@ -248,18 +248,18 @@ public unsafe struct DATA_REMOVAL_FEATURE_DESCRIPTOR
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct OPAL_LEVEL0_FEATURE_DESCRIPTOR
 {
-  TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER CommonHeader;
-  TCG_TPER_FEATURE_DESCRIPTOR Tper;
-  TCG_LOCKING_FEATURE_DESCRIPTOR Locking;
-  OPAL_GEOMETRY_REPORTING_FEATURE Geometry;
-  OPAL_SINGLE_USER_MODE_FEATURE SingleUser;
-  OPAL_DATASTORE_TABLE_FEATURE DataStore;
-  OPAL_SSCV1_FEATURE_DESCRIPTOR OpalSscV1;
-  OPAL_SSCV2_FEATURE_DESCRIPTOR OpalSscV2;
-  OPAL_SSCLITE_FEATURE_DESCRIPTOR OpalSscLite;
+  [FieldOffset(0)] public TCG_LEVEL0_FEATURE_DESCRIPTOR_HEADER CommonHeader;
+  [FieldOffset(0)] public TCG_TPER_FEATURE_DESCRIPTOR Tper;
+  [FieldOffset(0)] public TCG_LOCKING_FEATURE_DESCRIPTOR Locking;
+  [FieldOffset(0)] public OPAL_GEOMETRY_REPORTING_FEATURE Geometry;
+  [FieldOffset(0)] public OPAL_SINGLE_USER_MODE_FEATURE SingleUser;
+  [FieldOffset(0)] public OPAL_DATASTORE_TABLE_FEATURE DataStore;
+  [FieldOffset(0)] public OPAL_SSCV1_FEATURE_DESCRIPTOR OpalSscV1;
+  [FieldOffset(0)] public OPAL_SSCV2_FEATURE_DESCRIPTOR OpalSscV2;
+  [FieldOffset(0)] public OPAL_SSCLITE_FEATURE_DESCRIPTOR OpalSscLite;
   [FieldOffset(0)] public PYRITE_SSC_FEATURE_DESCRIPTOR PyriteSsc;
   [FieldOffset(0)] public PYRITE_SSCV2_FEATURE_DESCRIPTOR PyriteSscV2;
-  TCG_BLOCK_SID_FEATURE_DESCRIPTOR BlockSid;
+  [FieldOffset(0)] public TCG_BLOCK_SID_FEATURE_DESCRIPTOR BlockSid;
   [FieldOffset(0)] public DATA_REMOVAL_FEATURE_DESCRIPTOR DataRemoval;
 }
 

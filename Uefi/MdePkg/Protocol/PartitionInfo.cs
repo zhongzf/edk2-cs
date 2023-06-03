@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-
 namespace Uefi;
 /** @file
   This file defines the EFI Partition Information Protocol.
@@ -36,33 +34,33 @@ public const ulong EFI_PARTITION_INFO_PROTOCOL_REVISION = 0x0001000;
 ///
 /// Partition Information Protocol structure.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Info
-{
-  //
-  // Set to EFI_PARTITION_INFO_PROTOCOL_REVISION.
-  //
-  public uint Revision;
-  //
-  // Partition info type (PARTITION_TYPE_MBR, PARTITION_TYPE_GPT, or PARTITION_TYPE_OTHER).
-  //
-  public uint Type;
-  //
-  // If 1, partition describes an EFI System Partition.
-  //
-  public byte System;
-  public fixed byte Reserved[7];
-  union {
-    ///
-    /// MBR data
-    ///
-   public MBR_PARTITION_RECORD Mbr;
-  ///
-  /// GPT data
-  ///
-  public EFI_PARTITION_ENTRY Gpt;
-}
-} EFI_PARTITION_INFO_PROTOCOL;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Info
+//{
+//  //
+//  // Set to EFI_PARTITION_INFO_PROTOCOL_REVISION.
+//  //
+//  public uint Revision;
+//  //
+//  // Partition info type (PARTITION_TYPE_MBR, PARTITION_TYPE_GPT, or PARTITION_TYPE_OTHER).
+//  //
+//  public uint Type;
+//  //
+//  // If 1, partition describes an EFI System Partition.
+//  //
+//  public byte System;
+//  public fixed byte Reserved[7];
+//  union {
+//    ///
+//    /// MBR data
+//    ///
+//    public MBR_PARTITION_RECORD Mbr;
+//  ///
+//  /// GPT data
+//  ///
+//  public EFI_PARTITION_ENTRY Gpt;
+//}
+//} EFI_PARTITION_INFO_PROTOCOL;
 
 // #pragma pack()
 

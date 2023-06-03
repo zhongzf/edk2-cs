@@ -80,7 +80,7 @@ public unsafe struct IPMI_FRU_COMMON_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_FRU_READ_COMMAND
 {
-  IPMI_FRU_COMMON_DATA Data;
+  public IPMI_FRU_COMMON_DATA Data;
   public byte Count;
 }
 
@@ -114,7 +114,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_FRU_WRITE_COMMAND
 {
-  IPMI_FRU_COMMON_DATA Data;
+  public IPMI_FRU_COMMON_DATA Data;
   public fixed byte FruData[16];
 }
 
@@ -149,19 +149,19 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Get SDR Repository Info" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_OPERATION_SUPPORT
 {
-  struct {
-   [FieldOffset(0)] public byte SdrRepAllocInfoCmd = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte SdrRepAllocInfoCmd = 1;
   [FieldOffset(0)] public byte SdrRepReserveCmd = 1;
   [FieldOffset(0)] public byte PartialAddSdrCmd = 1;
   [FieldOffset(0)] public byte DeleteSdrRepCmd = 1;
   [FieldOffset(0)] public byte Reserved = 1;
   [FieldOffset(0)] public byte SdrRepUpdateOp = 2;
   [FieldOffset(0)] public byte Overflow = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_OPERATION_SUPPORT;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_SDR_REPOSITORY_INFO_RESPONSE
@@ -172,7 +172,7 @@ public unsafe struct IPMI_GET_SDR_REPOSITORY_INFO_RESPONSE
   public ushort FreeSpace;
   public uint RecentAdditionTimeStamp;
   public uint RecentEraseTimeStamp;
-  IPMI_SDR_OPERATION_SUPPORT OperationSupport;
+  public IPMI_SDR_OPERATION_SUPPORT OperationSupport;
 }
 
 public unsafe partial class EFI
@@ -199,7 +199,7 @@ public unsafe partial class EFI
 public unsafe struct IPMI_RESERVE_SDR_REPOSITORY_RESPONSE
 {
   public byte CompletionCode;
-  public fixed byte ReservationId[2]; // Reservation ID. LSpublic fixed byte first.
+  public fixed byte ReservationId[2]; // Reservation ID. LS byte first.
 }
 
 public unsafe partial class EFI
@@ -214,10 +214,10 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Get SDR" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_SENSOR_INIT
 {
-  struct {
-   [FieldOffset(0)] public byte EventScanningEnabled = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte EventScanningEnabled = 1;
   [FieldOffset(0)] public byte EventScanningDisabled = 1;
   [FieldOffset(0)] public byte InitSensorType = 1;
   [FieldOffset(0)] public byte InitHysteresis = 1;
@@ -225,85 +225,85 @@ public unsafe struct Bits
   [FieldOffset(0)] public byte InitEvent = 1;
   [FieldOffset(0)] public byte InitScanning = 1;
   [FieldOffset(0)] public byte SettableSensor = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_SENSOR_INIT;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_SENSOR_CAP
 {
-  struct {
-   [FieldOffset(0)] public byte EventMessageControl = 2;
+  /*   struct { */
+  [FieldOffset(0)] public byte EventMessageControl = 2;
   [FieldOffset(0)] public byte ThresholdAccessSupport = 2;
   [FieldOffset(0)] public byte HysteresisSupport = 2;
   [FieldOffset(0)] public byte ReArmSupport = 1;
   [FieldOffset(0)] public byte IgnoreSensor = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_SENSOR_CAP;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_LINEARIZATION
 {
-  struct {
-   [FieldOffset(0)] public byte Linearization = 7;
+  /*   struct { */
+  [FieldOffset(0)] public byte Linearization = 7;
   [FieldOffset(0)] public byte Reserved = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_LINEARIZATION;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_M_TOLERANCE
 {
-  struct {
-   [FieldOffset(0)] public byte Toleremce = 6;
+  /*   struct { */
+  [FieldOffset(0)] public byte Toleremce = 6;
   [FieldOffset(0)] public byte MHi = 2;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_M_TOLERANCE;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_B_ACCURACY
 {
-  struct {
-   [FieldOffset(0)] public byte AccuracyLow = 6;
+  /*   struct { */
+  [FieldOffset(0)] public byte AccuracyLow = 6;
   [FieldOffset(0)] public byte BHi = 2;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_B_ACCURACY;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_ACCURACY_SENSOR_DIR
 {
-  struct {
-   [FieldOffset(0)] public byte Reserved = 2;
+  /*   struct { */
+  [FieldOffset(0)] public byte Reserved = 2;
   [FieldOffset(0)] public byte AccuracyExp = 2;
   [FieldOffset(0)] public byte AccuracyHi = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_ACCURACY_SENSOR_DIR;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_R_EXP_B_EXP
 {
-  struct {
-   [FieldOffset(0)] public byte BExp = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte BExp = 4;
   [FieldOffset(0)] public byte RExp = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_R_EXP_B_EXP;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_ANALOG_FLAGS
 {
-  struct {
-   [FieldOffset(0)] public byte NominalReadingSpscified = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte NominalReadingSpscified = 1;
   [FieldOffset(0)] public byte NominalMaxSpscified = 1;
   [FieldOffset(0)] public byte NominalMinSpscified = 1;
   [FieldOffset(0)] public byte Reserved = 5;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_ANALOG_FLAGS;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SDR_RECORD_STRUCT_1
@@ -317,21 +317,21 @@ public unsafe struct IPMI_SDR_RECORD_STRUCT_1
   public byte SensorNumber;              // 8
   public byte EntityId;                  // 9
   public byte EntityInstance;            // 10
-  IPMI_SDR_RECORD_SENSOR_INIT SensorInitialization;      // 11
-  IPMI_SDR_RECORD_SENSOR_CAP SensorCapabilities;        // 12
+  public IPMI_SDR_RECORD_SENSOR_INIT SensorInitialization;      // 11
+  public IPMI_SDR_RECORD_SENSOR_CAP SensorCapabilities;        // 12
   public byte SensorType;                // 13
   public byte EventType;                 // 14
   public fixed byte Reserved1[7];              // 15
   public byte UnitType;                  // 22
   public byte Reserved2;                 // 23
-  IPMI_SDR_RECORD_LINEARIZATION Linearization;             // 24
+  public IPMI_SDR_RECORD_LINEARIZATION Linearization;             // 24
   public byte MLo;                       // 25
-  IPMI_SDR_RECORD_M_TOLERANCE MHiTolerance;              // 26
+  public IPMI_SDR_RECORD_M_TOLERANCE MHiTolerance;              // 26
   public byte BLo;                       // 27
-  IPMI_SDR_RECORD_B_ACCURACY BHiAccuracyLo;             // 28
-  IPMI_SDR_RECORD_ACCURACY_SENSOR_DIR AccuracySensorDirection;   // 29
-  IPMI_SDR_RECORD_R_EXP_B_EXP RExpBExp;                  // 30
-  IPMI_SDR_RECORD_ANALOG_FLAGS AnalogFlags;               // 31
+  public IPMI_SDR_RECORD_B_ACCURACY BHiAccuracyLo;             // 28
+  public IPMI_SDR_RECORD_ACCURACY_SENSOR_DIR AccuracySensorDirection;   // 29
+  public IPMI_SDR_RECORD_R_EXP_B_EXP RExpBExp;                  // 30
+  public IPMI_SDR_RECORD_ANALOG_FLAGS AnalogFlags;               // 31
   public byte NominalReading;            // 32
   public fixed byte Reserved3[4];              // 33
   public byte UpperNonRecoverThreshold;  // 37
@@ -357,8 +357,8 @@ public unsafe struct IPMI_SDR_RECORD_STRUCT_2
   public byte SensorNumber;         // 8
   public byte EntityId;             // 9
   public byte EntityInstance;       // 10
-  IPMI_SDR_RECORD_SENSOR_INIT SensorInitialization; // 11
-  IPMI_SDR_RECORD_SENSOR_CAP SensorCapabilities;   // 12
+  public IPMI_SDR_RECORD_SENSOR_INIT SensorInitialization; // 11
+  public IPMI_SDR_RECORD_SENSOR_CAP SensorCapabilities;   // 12
   public byte SensorType;           // 13
   public byte EventType;            // 14
   public fixed byte Reserved1[7];         // 15
@@ -369,10 +369,10 @@ public unsafe struct IPMI_SDR_RECORD_STRUCT_2
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_FRU_DATA_INFO
 {
-  struct {
-   [FieldOffset(0)] public byte Reserved1 = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte Reserved1 = 1;
   [FieldOffset(0)] public byte ControllerSlaveAddress = 7;
   [FieldOffset(0)] public byte FruDeviceId;
   [FieldOffset(0)] public byte BusId = 3;
@@ -381,20 +381,20 @@ public unsafe struct Bits
   [FieldOffset(0)] public byte LogicalFruDevice = 1;
   [FieldOffset(0)] public byte Reserved3 = 4;
   [FieldOffset(0)] public byte ChannelNumber = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} IPMI_FRU_DATA_INFO;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SDR_RECORD_DEV_ID_STR_TYPE_LENGTH
 {
-  struct {
-   [FieldOffset(0)] public byte Length = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte Length = 4;
   [FieldOffset(0)] public byte Reserved = 1;
   [FieldOffset(0)] public byte StringType = 3;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SDR_RECORD_DEV_ID_STR_TYPE_LENGTH;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SDR_RECORD_STRUCT_11
@@ -403,14 +403,14 @@ public unsafe struct IPMI_SDR_RECORD_STRUCT_11
   public byte Version;            // 3
   public byte RecordType;         // 4
   public byte RecordLength;       // 5
-  IPMI_FRU_DATA_INFO FruDeviceData;      // 6
+  public IPMI_FRU_DATA_INFO FruDeviceData;      // 6
   public byte Reserved;           // 10
   public byte DeviceType;         // 11
   public byte DeviceTypeModifier; // 12
   public byte FruEntityId;        // 13
   public byte FruEntityInstance;  // 14
   public byte OemReserved;        // 15
-  IPMI_SDR_RECORD_DEV_ID_STR_TYPE_LENGTH StringTypeLength;   // 16
+  public IPMI_SDR_RECORD_DEV_ID_STR_TYPE_LENGTH StringTypeLength;   // 16
   public fixed byte String[16];         // 17
 }
 
@@ -437,11 +437,11 @@ public unsafe struct IPMI_SDR_RECORD_STRUCT_HEADER
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct IPMI_SENSOR_RECORD_STRUCT
 {
-  IPMI_SDR_RECORD_STRUCT_1 SensorType1;
-  IPMI_SDR_RECORD_STRUCT_2 SensorType2;
-  IPMI_SDR_RECORD_STRUCT_11 SensorType11;
-  IPMI_SDR_RECORD_STRUCT_C0 SensorTypeC0;
-  IPMI_SDR_RECORD_STRUCT_HEADER SensorHeader;
+  [FieldOffset(0)] public IPMI_SDR_RECORD_STRUCT_1 SensorType1;
+  [FieldOffset(0)] public IPMI_SDR_RECORD_STRUCT_2 SensorType2;
+  [FieldOffset(0)] public IPMI_SDR_RECORD_STRUCT_11 SensorType11;
+  [FieldOffset(0)] public IPMI_SDR_RECORD_STRUCT_C0 SensorTypeC0;
+  [FieldOffset(0)] public IPMI_SDR_RECORD_STRUCT_HEADER SensorHeader;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -458,7 +458,7 @@ public unsafe struct IPMI_GET_SDR_RESPONSE
 {
   public byte CompletionCode;
   public ushort NextRecordId;
-  IPMI_SENSOR_RECORD_STRUCT RecordData;
+  public IPMI_SENSOR_RECORD_STRUCT RecordData;
 }
 
 public unsafe partial class EFI
@@ -599,7 +599,7 @@ public unsafe partial class EFI
 public unsafe struct IPMI_RESERVE_SEL_RESPONSE
 {
   public byte CompletionCode;
-  public fixed byte ReservationId[2]; // Reservation ID. LSpublic fixed byte first.
+  public fixed byte ReservationId[2]; // Reservation ID. LS byte first.
 }
 
 public unsafe partial class EFI
@@ -665,7 +665,7 @@ public unsafe struct IPMI_GET_SEL_ENTRY_RESPONSE
 {
   public byte CompletionCode;
   public ushort NextSelRecordId; // Next SEL Record ID, LS Byte first
-  IPMI_SEL_EVENT_RECORD_DATA RecordData;
+  public IPMI_SEL_EVENT_RECORD_DATA RecordData;
 }
 
 public unsafe partial class EFI
@@ -682,7 +682,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_ADD_SEL_ENTRY_REQUEST
 {
-  IPMI_SEL_EVENT_RECORD_DATA RecordData;
+  public IPMI_SEL_EVENT_RECORD_DATA RecordData;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -734,7 +734,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_DELETE_SEL_ENTRY_REQUEST
 {
-  public fixed byte ReserveId[2];      // Reservation ID, LSpublic fixed byte first
+  public fixed byte ReserveId[2];      // Reservation ID, LS byte first
   public fixed byte RecordToDelete[2]; // Record to Delete, LS Byte First
 }
 

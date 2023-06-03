@@ -207,7 +207,7 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_INT_FIELDS
 public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_INT_SOURCE_BUS_IRQ
 {
   [FieldOffset(0)] public EFI_LEGACY_MP_TABLE_ENTRY_INT_FIELDS fields;
-  [FieldOffset(0)] public byte byte;
+  //[FieldOffset(0)] public byte byte;
 }
 
 [StructLayout(LayoutKind.Sequential)]

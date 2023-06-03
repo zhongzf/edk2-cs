@@ -108,10 +108,10 @@ public unsafe struct PTP_FIFO_REGISTERS_PTR { PTP_FIFO_REGISTERS* Value; public 
 // Define bits of FIFO Interface Identifier Register
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PTP_FIFO_INTERFACE_IDENTIFIER
 {
-  struct {
-   [FieldOffset(0)] public uint InterfaceType = 4;
+  /*   struct { */
+  [FieldOffset(0)] public uint InterfaceType = 4;
   [FieldOffset(0)] public uint InterfaceVersion = 4;
   [FieldOffset(0)] public uint CapLocality = 1;
   [FieldOffset(0)] public uint Reserved1 = 2;
@@ -123,18 +123,18 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint IntfSelLock = 1;
   [FieldOffset(0)] public uint Reserved2 = 4;
   [FieldOffset(0)] public uint Reserved3 = 8;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PTP_FIFO_INTERFACE_IDENTIFIER;
 
 //
 // Define bits of FIFO Interface Capability Register
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PTP_FIFO_INTERFACE_CAPABILITY
 {
-  struct {
-   [FieldOffset(0)] public uint DataAvailIntSupport = 1;
+  /*   struct { */
+  [FieldOffset(0)] public uint DataAvailIntSupport = 1;
   [FieldOffset(0)] public uint StsValidIntSupport = 1;
   [FieldOffset(0)] public uint LocalityChangeIntSupport = 1;
   [FieldOffset(0)] public uint InterruptLevelHigh = 1;
@@ -147,9 +147,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint Reserved = 17;
   [FieldOffset(0)] public uint InterfaceVersion = 3;
   [FieldOffset(0)] public uint Reserved2 = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PTP_FIFO_INTERFACE_CAPABILITY;
 
 public unsafe partial class EFI
 {
@@ -342,10 +342,10 @@ public unsafe struct PTP_CRB_REGISTERS_PTR { PTP_CRB_REGISTERS* Value; public st
 // Define bits of CRB Interface Identifier Register
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PTP_CRB_INTERFACE_IDENTIFIER
 {
-  struct {
-   [FieldOffset(0)] public uint InterfaceType = 4;
+  /*   struct { */
+  [FieldOffset(0)] public uint InterfaceType = 4;
   [FieldOffset(0)] public uint InterfaceVersion = 4;
   [FieldOffset(0)] public uint CapLocality = 1;
   [FieldOffset(0)] public uint CapCRBIdleBypass = 1;
@@ -358,9 +358,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint IntfSelLock = 1;
   [FieldOffset(0)] public uint Reserved2 = 4;
   [FieldOffset(0)] public uint Rid = 8;
+  /*   } Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} PTP_CRB_INTERFACE_IDENTIFIER;
 
 public unsafe partial class EFI
 {

@@ -986,16 +986,16 @@ public unsafe struct PROCESSOR_CHARACTERISTIC_FLAGS
 /// Processor Information - Status
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct PROCESSOR_STATUS_DATA
 {
-  struct {
-   [FieldOffset(0)] public byte CpuStatus = 3; ///< Indicates the status of the processor.
+  /*   struct { */
+  [FieldOffset(0)] public byte CpuStatus = 3; ///< Indicates the status of the processor.
   [FieldOffset(0)] public byte Reserved1 = 3; ///< Reserved for future use. Must be set to zero.
   [FieldOffset(0)] public byte SocketPopulated = 1; ///< Indicates if the processor socket is populated or not.
   [FieldOffset(0)] public byte Reserved2 = 1; ///< Reserved for future use. Must be set to zero.
+/*   } Bits; */
+  [FieldOffset(0)] public byte Data;
 }
-byte Data;
-} PROCESSOR_STATUS_DATA;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PROCESSOR_ID_DATA
@@ -2052,25 +2052,25 @@ public enum MEMORY_DEVICE_TECHNOLOGY
 /// Memory Device - Memory Operating Mode Capability
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct MEMORY_DEVICE_OPERATING_MODE_CAPABILITY
 {
   ///
   /// Individual bit fields
   ///
-  struct {
-   [FieldOffset(0)] public ushort Reserved = 1; ///< Set to 0.
+  /*   struct { */
+  [FieldOffset(0)] public ushort Reserved = 1; ///< Set to 0.
   [FieldOffset(0)] public ushort Other = 1;
   [FieldOffset(0)] public ushort Unknown = 1;
   [FieldOffset(0)] public ushort VolatileMemory = 1;
   [FieldOffset(0)] public ushort ByteAccessiblePersistentMemory = 1;
   [FieldOffset(0)] public ushort BlockAccessiblePersistentMemory = 1;
   [FieldOffset(0)] public ushort Reserved2 = 10; ///< Set to 0.
+/*   } Bits; */
+  ///
+  /// All bit fields as a 16-bit value
+  ///
+  [FieldOffset(0)] public ushort Uint16;
 }
-///
-/// All bit fields as a 16-bit value
-///
-ushort Uint16;
-} MEMORY_DEVICE_OPERATING_MODE_CAPABILITY;
 
 ///
 /// Memory Device (Type 17).

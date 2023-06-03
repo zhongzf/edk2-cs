@@ -150,6 +150,216 @@ public unsafe struct EFI_SCSI_PASS_THRU_MODE
   public uint IoAlign;
 }
 
+// /**
+//   Sends a SCSI Request Packet to a SCSI device that is attached to
+//   the SCSI channel. This function supports both blocking I/O and
+//   non-blocking I/O.  The blocking I/O functionality is required,
+//   and the non-blocking I/O functionality is optional.
+// 
+//   @param  This   Protocol instance pointer.
+//   @param  Target The Target ID of the SCSI device to
+//                  send the SCSI Request Packet.
+//   @param  Lun    The LUN of the SCSI device to send the
+//                  SCSI Request Packet.
+//   @param  Packet A pointer to the SCSI Request Packet to send
+//                  to the SCSI device specified by Target and Lun.
+//   @param  Event  If non-blocking I/O is not supported then Event
+//                  is ignored, and blocking I/O is performed.
+//                  If Event is NULL, then blocking I/O is performed.
+//                  If Event is not NULL and non blocking I/O is
+//                  supported, then non-blocking I/O is performed,
+//                  and Event will be signaled when the SCSI Request
+//                  Packet completes
+// 
+//   @retval EFI_SUCCESS               The SCSI Request Packet was sent by the host, and
+//                                     TransferLength bytes were transferred to/from
+//                                     DataBuffer. See HostAdapterStatus, TargetStatus,
+//                                     SenseDataLength, and SenseData in that order
+//                                     for additional status information.
+//   @retval EFI_BAD_BUFFER_SIZE       The SCSI Request Packet was executed, but the
+//                                     entire DataBuffer could not be transferred.
+//                                     The actual number of bytes transferred is returned
+//                                     in TransferLength. See HostAdapterStatus,
+//                                     TargetStatus, SenseDataLength, and SenseData in
+//                                     that order for additional status information.
+//   @retval EFI_NOT_READY             The SCSI Request Packet could not be sent because
+//                                     there are too many SCSI Request Packets already
+//                                     queued.  The caller may retry again later.
+//   @retval EFI_DEVICE_ERROR          A device error occurred while attempting to send
+//                                     the SCSI Request Packet. See HostAdapterStatus,
+//                                     TargetStatus, SenseDataLength, and SenseData in
+//                                     that order for additional status information.
+//   @retval EFI_INVALID_PARAMETER     Target, Lun, or the contents of ScsiRequestPacket
+//                                     are invalid. The SCSI Request Packet was not sent,
+//                                     so no additional status information is available.
+//   @retval EFI_UNSUPPORTED           The command described by the SCSI Request Packet
+//                                     is not supported by the host adapter. The SCSI
+//                                     Request Packet was not sent, so no additional
+//                                     status information is available.
+//   @retval EFI_TIMEOUT               A timeout occurred while waiting for the SCSI
+//                                     Request Packet to execute. See HostAdapterStatus,
+//                                     TargetStatus, SenseDataLength, and SenseData in
+//                                     that order for additional status information.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_PASS_THRU_PASSTHRU)(
+//   IN EFI_SCSI_PASS_THRU_PROTOCOL                          *This,
+//   IN uint                                               Target,
+//   IN ulong                                               Lun,
+//   IN OUT EFI_SCSI_PASS_THRU_SCSI_REQUEST_PACKET           *Packet,
+//   IN EFI_EVENT                                            Event   OPTIONAL
+//   );
+
+// /**
+//   Used to retrieve the list of legal Target IDs for SCSI devices
+//   on a SCSI channel.
+// 
+//   @param  This   Protocol instance pointer.
+//   @param  Target On input, a pointer to the Target ID of a
+//                  SCSI device present on the SCSI channel.
+//                  On output, a pointer to the Target ID of
+//                  the next SCSI device present on a SCSI channel.
+//                  An input value of 0xFFFFFFFF retrieves the
+//                  Target ID of the first SCSI device present on
+//                  a SCSI channel.
+//   @param  Lun    On input, a pointer to the LUN of a SCSI device
+//                  present on the SCSI channel. On output, a pointer
+//                  to the LUN of the next SCSI device present on a
+//                  SCSI channel.
+// 
+//   @retval EFI_SUCCESS           The Target ID of the next SCSI device on the SCSI
+//                                 channel was returned in Target and Lun.
+//   @retval EFI_NOT_FOUND         There are no more SCSI devices on this SCSI channel.
+//   @retval EFI_INVALID_PARAMETER Target is not 0xFFFFFFFF, and Target and Lun were
+//                                  not returned on a previous call to GetNextDevice().
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_PASS_THRU_GET_NEXT_DEVICE)(
+//   IN EFI_SCSI_PASS_THRU_PROTOCOL            *This,
+//   IN OUT uint                             *Target,
+//   IN OUT ulong                             *Lun
+//   );
+
+// /**
+//   Used to allocate and build a device path node for a SCSI device
+//   on a SCSI channel.
+// 
+//   @param  This       Protocol instance pointer.
+//   @param  Target     The Target ID of the SCSI device for which
+//                      a device path node is to be allocated and built.
+//   @param  Lun        The LUN of the SCSI device for which a device
+//                      path node is to be allocated and built.
+//   @param  DevicePath A pointer to a single device path node that
+//                      describes the SCSI device specified by
+//                      Target and Lun. This function is responsible
+//                      for allocating the buffer DevicePath with the boot
+//                      service AllocatePool().  It is the caller's
+//                      responsibility to free DevicePath when the caller
+//                      is finished with DevicePath.
+// 
+//   @retval EFI_SUCCESS           The device path node that describes the SCSI device
+//                                 specified by Target and Lun was allocated and
+//                                 returned in DevicePath.
+//   @retval EFI_NOT_FOUND         The SCSI devices specified by Target and Lun does
+//                                 not exist on the SCSI channel.
+//   @retval EFI_INVALID_PARAMETER DevicePath is NULL.
+//   @retval EFI_OUT_OF_RESOURCES  There are not enough resources to allocate
+//                                 DevicePath.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_PASS_THRU_BUILD_DEVICE_PATH)(
+//   IN EFI_SCSI_PASS_THRU_PROTOCOL            *This,
+//   IN     uint                             Target,
+//   IN     ulong                             Lun,
+//   IN OUT EFI_DEVICE_PATH_PROTOCOL           **DevicePath
+//   );
+
+// /**
+//   Used to translate a device path node to a Target ID and LUN.
+// 
+//   @param  This       Protocol instance pointer.
+//   @param  DevicePath A pointer to the device path node that
+//                      describes a SCSI device on the SCSI channel.
+//   @param  Target     A pointer to the Target ID of a SCSI device
+//                      on the SCSI channel.
+//   @param  Lun        A pointer to the LUN of a SCSI device on
+//                      the SCSI channel.
+// 
+//   @retval EFI_SUCCESS           DevicePath was successfully translated to a
+//                                 Target ID and LUN, and they were returned
+//                                 in Target and Lun.
+//   @retval EFI_INVALID_PARAMETER DevicePath is NULL.
+//   @retval EFI_INVALID_PARAMETER Target is NULL.
+//   @retval EFI_INVALID_PARAMETER Lun is NULL.
+//   @retval EFI_UNSUPPORTED       This driver does not support the device path
+//                                 node type in DevicePath.
+//   @retval EFI_NOT_FOUND         A valid translation from DevicePath to a
+//                                 Target ID and LUN does not exist.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_PASS_THRU_GET_TARGET_LUN)(
+//   IN EFI_SCSI_PASS_THRU_PROTOCOL            *This,
+//   IN  EFI_DEVICE_PATH_PROTOCOL              *DevicePath,
+//   OUT uint                                *Target,
+//   OUT ulong                                *Lun
+//   );
+
+// /**
+//   Resets a SCSI channel.This operation resets all the
+//   SCSI devices connected to the SCSI channel.
+// 
+//   @param  This Protocol instance pointer.
+// 
+//   @retval EFI_SUCCESS      The SCSI channel was reset.
+//   @retval EFI_UNSUPPORTED  The SCSI channel does not support
+//                            a channel reset operation.
+//   @retval EFI_DEVICE_ERROR A device error occurred while
+//                            attempting to reset the SCSI channel.
+//   @retval EFI_TIMEOUT      A timeout occurred while attempting
+//                            to reset the SCSI channel.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_PASS_THRU_RESET_CHANNEL)(
+//   IN EFI_SCSI_PASS_THRU_PROTOCOL             *This
+//   );
+
+// /**
+//   Resets a SCSI device that is connected to a SCSI channel.
+// 
+//   @param  This   Protocol instance pointer.
+//   @param  Target The Target ID of the SCSI device to reset.
+//   @param  Lun    The LUN of the SCSI device to reset.
+// 
+//   @retval EFI_SUCCESS           The SCSI device specified by Target and
+//                                 Lun was reset.
+//   @retval EFI_UNSUPPORTED       The SCSI channel does not support a target
+//                                 reset operation.
+//   @retval EFI_INVALID_PARAMETER Target or Lun are invalid.
+//   @retval EFI_DEVICE_ERROR      A device error occurred while attempting
+//                                 to reset the SCSI device specified by Target
+//                                 and Lun.
+//   @retval EFI_TIMEOUT           A timeout occurred while attempting to reset
+//                                 the SCSI device specified by Target and Lun.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SCSI_PASS_THRU_RESET_TARGET)(
+//   IN EFI_SCSI_PASS_THRU_PROTOCOL             *This,
+//   IN uint                                  Target,
+//   IN ulong                                  Lun
+//   );
+
 ///
 /// The EFI_SCSI_PASS_THRU_PROTOCOL provides information about a SCSI channel and
 /// the ability to send SCSI Request Packets to any SCSI device attached to that SCSI channel. The
@@ -164,172 +374,12 @@ public unsafe struct EFI_SCSI_PASS_THRU_PROTOCOL
   /// A pointer to the EFI_SCSI_PASS_THRU_MODE data for this SCSI channel.
   ///
   public EFI_SCSI_PASS_THRU_MODE* Mode;
-  /**
-    Sends a SCSI Request Packet to a SCSI device that is attached to
-    the SCSI channel. This function supports both blocking I/O and
-    non-blocking I/O.  The blocking I/O functionality is required,
-    and the non-blocking I/O functionality is optional.
-
-    @param  This   Protocol instance pointer.
-    @param  Target The Target ID of the SCSI device to
-                   send the SCSI Request Packet.
-    @param  Lun    The LUN of the SCSI device to send the
-                   SCSI Request Packet.
-    @param  Packet A pointer to the SCSI Request Packet to send
-                   to the SCSI device specified by Target and Lun.
-    @param  Event  If non-blocking I/O is not supported then Event
-                   is ignored, and blocking I/O is performed.
-                   If Event is NULL, then blocking I/O is performed.
-                   If Event is not NULL and non blocking I/O is
-                   supported, then non-blocking I/O is performed,
-                   and Event will be signaled when the SCSI Request
-                   Packet completes
-
-    @retval EFI_SUCCESS               The SCSI Request Packet was sent by the host, and
-                                      TransferLength bytes were transferred to/from
-                                      DataBuffer. See HostAdapterStatus, TargetStatus,
-                                      SenseDataLength, and SenseData in that order
-                                      for additional status information.
-    @retval EFI_BAD_BUFFER_SIZE       The SCSI Request Packet was executed, but the
-                                      entire DataBuffer could not be transferred.
-                                      The actual number of bytes transferred is returned
-                                      in TransferLength. See HostAdapterStatus,
-                                      TargetStatus, SenseDataLength, and SenseData in
-                                      that order for additional status information.
-    @retval EFI_NOT_READY             The SCSI Request Packet could not be sent because
-                                      there are too many SCSI Request Packets already
-                                      queued.  The caller may retry again later.
-    @retval EFI_DEVICE_ERROR          A device error occurred while attempting to send
-                                      the SCSI Request Packet. See HostAdapterStatus,
-                                      TargetStatus, SenseDataLength, and SenseData in
-                                      that order for additional status information.
-    @retval EFI_INVALID_PARAMETER     Target, Lun, or the contents of ScsiRequestPacket
-                                      are invalid. The SCSI Request Packet was not sent,
-                                      so no additional status information is available.
-    @retval EFI_UNSUPPORTED           The command described by the SCSI Request Packet
-                                      is not supported by the host adapter. The SCSI
-                                      Request Packet was not sent, so no additional
-                                      status information is available.
-    @retval EFI_TIMEOUT               A timeout occurred while waiting for the SCSI
-                                      Request Packet to execute. See HostAdapterStatus,
-                                      TargetStatus, SenseDataLength, and SenseData in
-                                      that order for additional status information.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_PASS_THRU_PROTOCOL*, uint, ulong, EFI_SCSI_PASS_THRU_SCSI_REQUEST_PACKET*, EFI_EVENT, EFI_STATUS> PassThru;
-  /**
-    Used to retrieve the list of legal Target IDs for SCSI devices
-    on a SCSI channel.
-
-    @param  This   Protocol instance pointer.
-    @param  Target On input, a pointer to the Target ID of a
-                   SCSI device present on the SCSI channel.
-                   On output, a pointer to the Target ID of
-                   the next SCSI device present on a SCSI channel.
-                   An input value of 0xFFFFFFFF retrieves the
-                   Target ID of the first SCSI device present on
-                   a SCSI channel.
-    @param  Lun    On input, a pointer to the LUN of a SCSI device
-                   present on the SCSI channel. On output, a pointer
-                   to the LUN of the next SCSI device present on a
-                   SCSI channel.
-
-    @retval EFI_SUCCESS           The Target ID of the next SCSI device on the SCSI
-                                  channel was returned in Target and Lun.
-    @retval EFI_NOT_FOUND         There are no more SCSI devices on this SCSI channel.
-    @retval EFI_INVALID_PARAMETER Target is not 0xFFFFFFFF, and Target and Lun were
-                                   not returned on a previous call to GetNextDevice().
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_PASS_THRU_PROTOCOL*, uint*, ulong*, EFI_STATUS> GetNextDevice;
-  /**
-    Used to allocate and build a device path node for a SCSI device
-    on a SCSI channel.
-
-    @param  This       Protocol instance pointer.
-    @param  Target     The Target ID of the SCSI device for which
-                       a device path node is to be allocated and built.
-    @param  Lun        The LUN of the SCSI device for which a device
-                       path node is to be allocated and built.
-    @param  DevicePath A pointer to a single device path node that
-                       describes the SCSI device specified by
-                       Target and Lun. This function is responsible
-                       for allocating the buffer DevicePath with the boot
-                       service AllocatePool().  It is the caller's
-                       responsibility to free DevicePath when the caller
-                       is finished with DevicePath.
-
-    @retval EFI_SUCCESS           The device path node that describes the SCSI device
-                                  specified by Target and Lun was allocated and
-                                  returned in DevicePath.
-    @retval EFI_NOT_FOUND         The SCSI devices specified by Target and Lun does
-                                  not exist on the SCSI channel.
-    @retval EFI_INVALID_PARAMETER DevicePath is NULL.
-    @retval EFI_OUT_OF_RESOURCES  There are not enough resources to allocate
-                                  DevicePath.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_PASS_THRU_PROTOCOL*, uint, ulong, EFI_DEVICE_PATH_PROTOCOL**, EFI_STATUS> BuildDevicePath;
-  /**
-    Used to translate a device path node to a Target ID and LUN.
-
-    @param  This       Protocol instance pointer.
-    @param  DevicePath A pointer to the device path node that
-                       describes a SCSI device on the SCSI channel.
-    @param  Target     A pointer to the Target ID of a SCSI device
-                       on the SCSI channel.
-    @param  Lun        A pointer to the LUN of a SCSI device on
-                       the SCSI channel.
-
-    @retval EFI_SUCCESS           DevicePath was successfully translated to a
-                                  Target ID and LUN, and they were returned
-                                  in Target and Lun.
-    @retval EFI_INVALID_PARAMETER DevicePath is NULL.
-    @retval EFI_INVALID_PARAMETER Target is NULL.
-    @retval EFI_INVALID_PARAMETER Lun is NULL.
-    @retval EFI_UNSUPPORTED       This driver does not support the device path
-                                  node type in DevicePath.
-    @retval EFI_NOT_FOUND         A valid translation from DevicePath to a
-                                  Target ID and LUN does not exist.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_PASS_THRU_PROTOCOL*, EFI_DEVICE_PATH_PROTOCOL*, uint*, ulong*, EFI_STATUS> GetTargetLun;
-  /**
-    Resets a SCSI channel.This operation resets all the
-    SCSI devices connected to the SCSI channel.
-
-    @param  This Protocol instance pointer.
-
-    @retval EFI_SUCCESS      The SCSI channel was reset.
-    @retval EFI_UNSUPPORTED  The SCSI channel does not support
-                             a channel reset operation.
-    @retval EFI_DEVICE_ERROR A device error occurred while
-                             attempting to reset the SCSI channel.
-    @retval EFI_TIMEOUT      A timeout occurred while attempting
-                             to reset the SCSI channel.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_PASS_THRU_PROTOCOL*, EFI_STATUS> ResetChannel;
-  /**
-    Resets a SCSI device that is connected to a SCSI channel.
-
-    @param  This   Protocol instance pointer.
-    @param  Target The Target ID of the SCSI device to reset.
-    @param  Lun    The LUN of the SCSI device to reset.
-
-    @retval EFI_SUCCESS           The SCSI device specified by Target and
-                                  Lun was reset.
-    @retval EFI_UNSUPPORTED       The SCSI channel does not support a target
-                                  reset operation.
-    @retval EFI_INVALID_PARAMETER Target or Lun are invalid.
-    @retval EFI_DEVICE_ERROR      A device error occurred while attempting
-                                  to reset the SCSI device specified by Target
-                                  and Lun.
-    @retval EFI_TIMEOUT           A timeout occurred while attempting to reset
-                                  the SCSI device specified by Target and Lun.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SCSI_PASS_THRU_PROTOCOL*, uint, ulong, EFI_STATUS> ResetTarget;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_PASS_THRU_PROTOCOL* /*This*/,/* IN */uint /*Target*/,/* IN */ulong /*Lun*/,/* IN OUT */EFI_SCSI_PASS_THRU_SCSI_REQUEST_PACKET* /*Packet*/,/* IN */EFI_EVENT /*Event*/, EFI_STATUS> /*EFI_SCSI_PASS_THRU_PASSTHRU*/ PassThru;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_PASS_THRU_PROTOCOL* /*This*/,/* IN OUT */uint* /*Target*/,/* IN OUT */ulong* /*Lun*/, EFI_STATUS> /*EFI_SCSI_PASS_THRU_GET_NEXT_DEVICE*/ GetNextDevice;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_PASS_THRU_PROTOCOL* /*This*/,/* IN */uint /*Target*/,/* IN */ulong /*Lun*/,/* IN OUT */EFI_DEVICE_PATH_PROTOCOL** /*DevicePath*/, EFI_STATUS> /*EFI_SCSI_PASS_THRU_BUILD_DEVICE_PATH*/ BuildDevicePath;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_PASS_THRU_PROTOCOL* /*This*/,/* IN */EFI_DEVICE_PATH_PROTOCOL* /*DevicePath*/,/* OUT */uint* /*Target*/,/* OUT */ulong* /*Lun*/, EFI_STATUS> /*EFI_SCSI_PASS_THRU_GET_TARGET_LUN*/ GetTargetLun;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_PASS_THRU_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SCSI_PASS_THRU_RESET_CHANNEL*/ ResetChannel;
+  public readonly delegate* unmanaged</* IN */EFI_SCSI_PASS_THRU_PROTOCOL* /*This*/,/* IN */uint /*Target*/,/* IN */ulong /*Lun*/, EFI_STATUS> /*EFI_SCSI_PASS_THRU_RESET_TARGET*/ ResetTarget;
 }
 
 // extern EFI_GUID  gEfiScsiPassThruProtocolGuid;

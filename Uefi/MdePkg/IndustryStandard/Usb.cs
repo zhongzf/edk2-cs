@@ -368,36 +368,36 @@ public unsafe partial class EFI
   public const ulong EFI_USB_SET_REPORT_REQUEST = 0x09;
   public const ulong EFI_USB_SET_IDLE_REQUEST = 0x0a;
   public const ulong EFI_USB_SET_PROTOCOL_REQUEST = 0x0b;
+}
 
-  // #pragma pack(1)
-  ///
-  /// Descriptor header for Report/Physical Descriptors
-  /// HID 1.1, section 6.2.1
-  ///
-  typedef struct hid_class_descriptor
-  {
-    byte DescriptorType;
-    ushort DescriptorLength;
-  }
-  EFI_USB_HID_CLASS_DESCRIPTOR;
+// #pragma pack(1)
+///
+/// Descriptor header for Report/Physical Descriptors
+/// HID 1.1, section 6.2.1
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_USB_HID_CLASS_DESCRIPTOR
+{
+  public byte DescriptorType;
+  public ushort DescriptorLength;
+}
 
 ///
 /// The HID descriptor identifies the length and type
 /// of subordinate descriptors for a device.
 /// HID 1.1, section 6.2.1
 ///
-typedef struct hid_descriptor
-  {
-    byte Length;
-    byte DescriptorType;
-    ushort BcdHID;
-    byte CountryCode;
-    byte NumDescriptors;
-    EFI_USB_HID_CLASS_DESCRIPTOR HidClassDesc[1];
-  }
-  EFI_USB_HID_DESCRIPTOR;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_USB_HID_DESCRIPTOR
+{
+  public byte Length;
+  public byte DescriptorType;
+  public ushort BcdHID;
+  public byte CountryCode;
+  public byte NumDescriptors;
+  public fixed EFI_USB_HID_CLASS_DESCRIPTOR HidClassDesc[1];
+}
 
 // #pragma pack()
-}
 
 // #endif

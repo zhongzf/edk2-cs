@@ -899,7 +899,7 @@ public unsafe struct DeviceHandle
   public uint ProximityDomain;
 
   union {
-   public EFI_ACPI_6_3_DEVICE_HANDLE_ACPI Acpi;
+    public EFI_ACPI_6_3_DEVICE_HANDLE_ACPI Acpi;
   public EFI_ACPI_6_3_DEVICE_HANDLE_PCI Pci;
 }
 

@@ -32,8 +32,8 @@ public unsafe partial class EFI
   ///
   /// EFI 1.1 Revision Number defintion.
   ///
-#define EFI_PXE_BASE_CODE_CALLBACK_INTERFACE_REVISION  \
-  EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION
+//#define EFI_PXE_BASE_CODE_CALLBACK_INTERFACE_REVISION  \
+//  EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION
 
   ///
   /// UEFI Protocol name.
@@ -74,6 +74,43 @@ public enum EFI_PXE_BASE_CODE_CALLBACK_STATUS
   EFI_PXE_BASE_CODE_CALLBACK_STATUS_LAST
 }
 
+// /**
+//   Callback function that is invoked when the PXE Base Code Protocol is about to transmit, has
+//   received, or is waiting to receive a packet.
+// 
+//   This function is invoked when the PXE Base Code Protocol is about to transmit, has received,
+//   or is waiting to receive a packet. Parameters Function and Received specify the type of event.
+//   Parameters PacketLen and Packet specify the packet that generated the event. If these fields
+//   are zero and NULL respectively, then this is a status update callback. If the operation specified
+//   by Function is to continue, then CALLBACK_STATUS_CONTINUE should be returned. If the operation
+//   specified by Function should be aborted, then CALLBACK_STATUS_ABORT should be returned. Due to
+//   the polling nature of UEFI device drivers, a callback function should not execute for more than 5 ms.
+//   The SetParameters() function must be called after a Callback Protocol is installed to enable the
+//   use of callbacks.
+// 
+//   @param  This                  The pointer to the EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL instance.
+//   @param  Function              The PXE Base Code Protocol function that is waiting for an event.
+//   @param  Received              TRUE if the callback is being invoked due to a receive event. FALSE if
+//                                 the callback is being invoked due to a transmit event.
+//   @param  PacketLen             The length, in bytes, of Packet. This field will have a value of zero if
+//                                 this is a wait for receive event.
+//   @param  Packet                If Received is TRUE, a pointer to the packet that was just received;
+//                                 otherwise a pointer to the packet that is about to be transmitted.
+// 
+//   @retval EFI_PXE_BASE_CODE_CALLBACK_STATUS_CONTINUE if Function specifies a continue operation
+//   @retval EFI_PXE_BASE_CODE_CALLBACK_STATUS_ABORT    if Function specifies an abort operation
+// 
+// **/
+// typedef
+// EFI_PXE_BASE_CODE_CALLBACK_STATUS
+// (EFIAPI *EFI_PXE_CALLBACK)(
+//   IN EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL  *This,
+//   IN EFI_PXE_BASE_CODE_FUNCTION           Function,
+//   IN bool                              Received,
+//   IN uint                               PacketLen,
+//   IN EFI_PXE_BASE_CODE_PACKET             *Packet     OPTIONAL
+//   );
+
 ///
 /// Protocol that is invoked when the PXE Base Code Protocol is about
 /// to transmit, has received, or is waiting to receive a packet.
@@ -87,34 +124,7 @@ public unsafe struct EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL
   ///  it is not the same GUID.
   ///
   public ulong Revision;
-  /**
-    Callback function that is invoked when the PXE Base Code Protocol is about to transmit, has
-    received, or is waiting to receive a packet.
-
-    This function is invoked when the PXE Base Code Protocol is about to transmit, has received,
-    or is waiting to receive a packet. Parameters Function and Received specify the type of event.
-    Parameters PacketLen and Packet specify the packet that generated the event. If these fields
-    are zero and NULL respectively, then this is a status update callback. If the operation specified
-    by Function is to continue, then CALLBACK_STATUS_CONTINUE should be returned. If the operation
-    specified by Function should be aborted, then CALLBACK_STATUS_ABORT should be returned. Due to
-    the polling nature of UEFI device drivers, a callback function should not execute for more than 5 ms.
-    The SetParameters() function must be called after a Callback Protocol is installed to enable the
-    use of callbacks.
-
-    @param  This                  The pointer to the EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL instance.
-    @param  Function              The PXE Base Code Protocol function that is waiting for an event.
-    @param  Received              TRUE if the callback is being invoked due to a receive event. FALSE if
-                                  the callback is being invoked due to a transmit event.
-    @param  PacketLen             The length, in bytes, of Packet. This field will have a value of zero if
-                                  this is a wait for receive event.
-    @param  Packet                If Received is TRUE, a pointer to the packet that was just received;
-                                  otherwise a pointer to the packet that is about to be transmitted.
-
-    @retval EFI_PXE_BASE_CODE_CALLBACK_STATUS_CONTINUE if Function specifies a continue operation
-    @retval EFI_PXE_BASE_CODE_CALLBACK_STATUS_ABORT    if Function specifies an abort operation
-
-  **/
-  public readonly delegate* unmanaged<EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL*, EFI_PXE_BASE_CODE_FUNCTION, bool, uint, EFI_PXE_BASE_CODE_PACKET*, EFI_STATUS> Callback;
+  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_FUNCTION /*Function*/,/* IN */bool /*Received*/,/* IN */uint /*PacketLen*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*Packet*/, EFI_STATUS> /*EFI_PXE_CALLBACK*/ Callback;
 }
 
 // extern EFI_GUID  gEfiPxeBaseCodeCallbackProtocolGuid;

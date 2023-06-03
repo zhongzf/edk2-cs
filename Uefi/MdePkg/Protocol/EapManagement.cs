@@ -65,7 +65,7 @@ public unsafe struct EFI_EAPOL_PORT_INFO
 ///
 /// Supplicant PAE state machine (IEEE Std 802.1X Section 8.5.10)
 ///
-typedef enum _EFI_EAPOL_SUPPLICANT_PAE_STATE
+public enum EFI_EAPOL_SUPPLICANT_PAE_STATE
 {
   Logoff,
   Disconnected,
@@ -76,7 +76,6 @@ typedef enum _EFI_EAPOL_SUPPLICANT_PAE_STATE
   Authenticated,
   MaxSupplicantPaeState
 }
-EFI_EAPOL_SUPPLICANT_PAE_STATE;
 
 public unsafe partial class EFI
 {
@@ -181,6 +180,213 @@ public unsafe struct EFI_EAPOL_SUPPLICANT_PAE_STATISTICS
   public ulong LastEapolFrameSource;
 }
 
+// /**
+//   Read the system configuration information associated with the Port.
+// 
+//   The GetSystemConfiguration() function reads the system configuration
+//   information associated with the Port, including the value of the
+//   SystemAuthControl parameter of the System is returned in SystemAuthControl
+//   and the Port's information is returned in the buffer pointed to by PortInfo.
+//   The Port's information is optional.
+//   If PortInfo is NULL, then reading the Port's information is ignored.
+// 
+//   If SystemAuthControl is NULL, then EFI_INVALID_PARAMETER is returned.
+// 
+//   @param[in]  This               A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+//   @param[out] SystemAuthControl  Returns the value of the SystemAuthControl
+//                                  parameter of the System.
+//                                  TRUE means Enabled. FALSE means Disabled.
+//   @param[out] PortInfo           Returns EFI_EAPOL_PORT_INFO structure to describe
+//                                  the Port's information. This parameter can be NULL
+//                                  to ignore reading the Port's information.
+// 
+//   @retval EFI_SUCCESS            The system configuration information of the
+//                                  Port is read successfully.
+//   @retval EFI_INVALID_PARAMETER  SystemAuthControl is NULL.
+// 
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_GET_SYSTEM_CONFIGURATION)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL          *This,
+//   OUT bool                             *SystemAuthControl,
+//   OUT EFI_EAPOL_PORT_INFO                 *PortInfo OPTIONAL
+//   );
+
+// /**
+//   Set the system configuration information associated with the Port.
+// 
+//   The SetSystemConfiguration() function sets the value of the SystemAuthControl
+//   parameter of the System to SystemAuthControl.
+// 
+//   @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+//   @param[in] SystemAuthControl   The desired value of the SystemAuthControl
+//                                  parameter of the System.
+//                                  TRUE means Enabled. FALSE means Disabled.
+// 
+//   @retval EFI_SUCCESS            The system configuration information of the
+//                                  Port is set successfully.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_SET_SYSTEM_CONFIGURATION)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL          *This,
+//   IN bool                              SystemAuthControl
+//   );
+
+// /**
+//   Cause the EAPOL state machines for the Port to be initialized.
+// 
+//   The InitializePort() function causes the EAPOL state machines for the Port.
+// 
+//   @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+// 
+//   @retval EFI_SUCCESS            The Port is initialized successfully.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_INITIALIZE_PORT)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL            *This
+//   );
+
+// /**
+//   Notify the EAPOL state machines for the Port that the user of the System has
+//   logged on.
+// 
+//   The UserLogon() function notifies the EAPOL state machines for the Port.
+// 
+//   @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+// 
+//   @retval EFI_SUCCESS            The Port is notified successfully.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_USER_LOGON)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL          *This
+//   );
+
+// /**
+//   Notify the EAPOL state machines for the Port that the user of the System has
+//   logged off.
+// 
+//   The UserLogoff() function notifies the EAPOL state machines for the Port.
+// 
+//   @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+// 
+//   @retval EFI_SUCCESS            The Port is notified successfully.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_USER_LOGOFF)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL          *This
+//   );
+
+// /**
+//   Read the status of the Supplicant PAE state machine for the Port, including the
+//   current state and the configuration of the operational parameters.
+// 
+//   The GetSupplicantStatus() function reads the status of the Supplicant PAE state
+//   machine for the Port, including the current state CurrentState  and the configuration
+//   of the operational parameters Configuration. The configuration of the operational
+//   parameters is optional. If Configuration is NULL, then reading the configuration
+//   is ignored. The operational parameters in Configuration to be read can also be
+//   specified by Configuration.ValidFieldMask.
+// 
+//   If CurrentState is NULL, then EFI_INVALID_PARAMETER is returned.
+// 
+//   @param[in]      This           A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+//   @param[out]     CurrentState   Returns the current state of the Supplicant PAE
+//                                  state machine for the Port.
+//   @param[in, out] Configuration  Returns the configuration of the operational
+//                                  parameters of the Supplicant PAE state machine
+//                                  for the Port as required. This parameter can be
+//                                  NULL to ignore reading the configuration.
+//                                  On input, Configuration.ValidFieldMask specifies the
+//                                  operational parameters to be read.
+//                                  On output, Configuration returns the configuration
+//                                  of the required operational parameters.
+// 
+//   @retval EFI_SUCCESS            The configuration of the operational parameter
+//                                  of the Supplicant PAE state machine for the Port
+//                                  is set successfully.
+//   @retval EFI_INVALID_PARAMETER  CurrentState is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_GET_SUPPLICANT_STATUS)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL                  *This,
+//   OUT EFI_EAPOL_SUPPLICANT_PAE_STATE              *CurrentState,
+//   IN OUT EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION   *Configuration  OPTIONAL
+//   );
+
+// /**
+//   Set the configuration of the operational parameter of the Supplicant PAE
+//   state machine for the Port.
+// 
+//   The SetSupplicantConfiguration() function sets the configuration of the
+//   operational Parameter of the Supplicant PAE state machine for the Port to
+//   Configuration. The operational parameters in Configuration to be set can be
+//   specified by Configuration.ValidFieldMask.
+// 
+//   If Configuration is NULL, then EFI_INVALID_PARAMETER is returned.
+// 
+//   @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+//   @param[in] Configuration       The desired configuration of the operational
+//                                  parameters of the Supplicant PAE state machine
+//                                  for the Port as required.
+// 
+//   @retval EFI_SUCCESS            The configuration of the operational parameter
+//                                  of the Supplicant PAE state machine for the Port
+//                                  is set successfully.
+//   @retval EFI_INVALID_PARAMETER  Configuration is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_SET_SUPPLICANT_CONFIGURATION)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL              *This,
+//   IN EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION   *Configuration
+//   );
+
+// /**
+//   Read the statistical information regarding the operation of the Supplicant
+//   associated with the Port.
+// 
+//   The GetSupplicantStatistics() function reads the statistical information
+//   Statistics regarding the operation of the Supplicant associated with the Port.
+// 
+//   If Statistics is NULL, then EFI_INVALID_PARAMETER is returned.
+// 
+//   @param[in]  This               A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
+//                                  instance that indicates the calling context.
+//   @param[out] Statistics         Returns the statistical information regarding the
+//                                  operation of the Supplicant for the Port.
+// 
+//   @retval EFI_SUCCESS            The statistical information regarding the operation
+//                                  of the Supplicant for the Port is read successfully.
+//   @retval EFI_INVALID_PARAMETER  Statistics is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_EAP_GET_SUPPLICANT_STATISTICS)(
+//   IN EFI_EAP_MANAGEMENT_PROTOCOL              *This,
+//   OUT EFI_EAPOL_SUPPLICANT_PAE_STATISTICS     *Statistics
+//   );
+
 ///
 /// EFI_EAP_MANAGEMENT_PROTOCOL
 /// is used to control, configure and monitor EAPOL state machine on
@@ -191,165 +397,14 @@ public unsafe struct EFI_EAPOL_SUPPLICANT_PAE_STATISTICS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EAP_MANAGEMENT_PROTOCOL
 {
-  /**
-    Read the system configuration information associated with the Port.
-
-    The GetSystemConfiguration() function reads the system configuration
-    information associated with the Port, including the value of the
-    SystemAuthControl parameter of the System is returned in SystemAuthControl
-    and the Port's information is returned in the buffer pointed to by PortInfo.
-    The Port's information is optional.
-    If PortInfo is NULL, then reading the Port's information is ignored.
-
-    If SystemAuthControl is NULL, then EFI_INVALID_PARAMETER is returned.
-
-    @param[in]  This               A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-    @param[out] SystemAuthControl  Returns the value of the SystemAuthControl
-                                   parameter of the System.
-                                   TRUE means Enabled. FALSE means Disabled.
-    @param[out] PortInfo           Returns EFI_EAPOL_PORT_INFO structure to describe
-                                   the Port's information. This parameter can be NULL
-                                   to ignore reading the Port's information.
-
-    @retval EFI_SUCCESS            The system configuration information of the
-                                   Port is read successfully.
-    @retval EFI_INVALID_PARAMETER  SystemAuthControl is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, bool*, EFI_EAPOL_PORT_INFO*, EFI_STATUS> GetSystemConfiguration;
-  /**
-    Set the system configuration information associated with the Port.
-
-    The SetSystemConfiguration() function sets the value of the SystemAuthControl
-    parameter of the System to SystemAuthControl.
-
-    @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-    @param[in] SystemAuthControl   The desired value of the SystemAuthControl
-                                   parameter of the System.
-                                   TRUE means Enabled. FALSE means Disabled.
-
-    @retval EFI_SUCCESS            The system configuration information of the
-                                   Port is set successfully.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, bool, EFI_STATUS> SetSystemConfiguration;
-  /**
-    Cause the EAPOL state machines for the Port to be initialized.
-
-    The InitializePort() function causes the EAPOL state machines for the Port.
-
-    @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-
-    @retval EFI_SUCCESS            The Port is initialized successfully.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_STATUS> InitializePort;
-  /**
-    Notify the EAPOL state machines for the Port that the user of the System has
-    logged on.
-
-    The UserLogon() function notifies the EAPOL state machines for the Port.
-
-    @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-
-    @retval EFI_SUCCESS            The Port is notified successfully.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_STATUS> UserLogon;
-  /**
-    Notify the EAPOL state machines for the Port that the user of the System has
-    logged off.
-
-    The UserLogoff() function notifies the EAPOL state machines for the Port.
-
-    @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-
-    @retval EFI_SUCCESS            The Port is notified successfully.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_STATUS> UserLogoff;
-  /**
-    Read the status of the Supplicant PAE state machine for the Port, including the
-    current state and the configuration of the operational parameters.
-
-    The GetSupplicantStatus() function reads the status of the Supplicant PAE state
-    machine for the Port, including the current state CurrentState  and the configuration
-    of the operational parameters Configuration. The configuration of the operational
-    parameters is optional. If Configuration is NULL, then reading the configuration
-    is ignored. The operational parameters in Configuration to be read can also be
-    specified by Configuration.ValidFieldMask.
-
-    If CurrentState is NULL, then EFI_INVALID_PARAMETER is returned.
-
-    @param[in]      This           A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-    @param[out]     CurrentState   Returns the current state of the Supplicant PAE
-                                   state machine for the Port.
-    @param[in, out] Configuration  Returns the configuration of the operational
-                                   parameters of the Supplicant PAE state machine
-                                   for the Port as required. This parameter can be
-                                   NULL to ignore reading the configuration.
-                                   On input, Configuration.ValidFieldMask specifies the
-                                   operational parameters to be read.
-                                   On output, Configuration returns the configuration
-                                   of the required operational parameters.
-
-    @retval EFI_SUCCESS            The configuration of the operational parameter
-                                   of the Supplicant PAE state machine for the Port
-                                   is set successfully.
-    @retval EFI_INVALID_PARAMETER  CurrentState is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_EAPOL_SUPPLICANT_PAE_STATE*, EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION*, EFI_STATUS> GetSupplicantStatus;
-  /**
-    Set the configuration of the operational parameter of the Supplicant PAE
-    state machine for the Port.
-
-    The SetSupplicantConfiguration() function sets the configuration of the
-    operational Parameter of the Supplicant PAE state machine for the Port to
-    Configuration. The operational parameters in Configuration to be set can be
-    specified by Configuration.ValidFieldMask.
-
-    If Configuration is NULL, then EFI_INVALID_PARAMETER is returned.
-
-    @param[in] This                A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-    @param[in] Configuration       The desired configuration of the operational
-                                   parameters of the Supplicant PAE state machine
-                                   for the Port as required.
-
-    @retval EFI_SUCCESS            The configuration of the operational parameter
-                                   of the Supplicant PAE state machine for the Port
-                                   is set successfully.
-    @retval EFI_INVALID_PARAMETER  Configuration is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION*, EFI_STATUS> SetSupplicantConfiguration;
-  /**
-    Read the statistical information regarding the operation of the Supplicant
-    associated with the Port.
-
-    The GetSupplicantStatistics() function reads the statistical information
-    Statistics regarding the operation of the Supplicant associated with the Port.
-
-    If Statistics is NULL, then EFI_INVALID_PARAMETER is returned.
-
-    @param[in]  This               A pointer to the EFI_EAP_MANAGEMENT_PROTOCOL
-                                   instance that indicates the calling context.
-    @param[out] Statistics         Returns the statistical information regarding the
-                                   operation of the Supplicant for the Port.
-
-    @retval EFI_SUCCESS            The statistical information regarding the operation
-                                   of the Supplicant for the Port is read successfully.
-    @retval EFI_INVALID_PARAMETER  Statistics is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_EAP_MANAGEMENT_PROTOCOL*, EFI_EAPOL_SUPPLICANT_PAE_STATISTICS*, EFI_STATUS> GetSupplicantStatistics;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/,/* OUT */bool* /*SystemAuthControl*/,/* OUT */EFI_EAPOL_PORT_INFO* /*PortInfo*/, EFI_STATUS> /*EFI_EAP_GET_SYSTEM_CONFIGURATION*/ GetSystemConfiguration;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/,/* IN */bool /*SystemAuthControl*/, EFI_STATUS> /*EFI_EAP_SET_SYSTEM_CONFIGURATION*/ SetSystemConfiguration;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_EAP_INITIALIZE_PORT*/ InitializePort;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_EAP_USER_LOGON*/ UserLogon;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_EAP_USER_LOGOFF*/ UserLogoff;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/,/* OUT */EFI_EAPOL_SUPPLICANT_PAE_STATE* /*CurrentState*/,/* IN OUT */EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION* /*Configuration*/, EFI_STATUS> /*EFI_EAP_GET_SUPPLICANT_STATUS*/ GetSupplicantStatus;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/,/* IN */EFI_EAPOL_SUPPLICANT_PAE_CONFIGURATION* /*Configuration*/, EFI_STATUS> /*EFI_EAP_SET_SUPPLICANT_CONFIGURATION*/ SetSupplicantConfiguration;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT_PROTOCOL* /*This*/,/* OUT */EFI_EAPOL_SUPPLICANT_PAE_STATISTICS* /*Statistics*/, EFI_STATUS> /*EFI_EAP_GET_SUPPLICANT_STATISTICS*/ GetSupplicantStatistics;
 }
 
 // extern EFI_GUID  gEfiEapManagementProtocolGuid;

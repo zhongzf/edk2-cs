@@ -92,10 +92,10 @@ public const ulong MCTP_ENDPOINT_ID_BROADCAST = 0xff;
 /// MCTP Control Message Format
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct MCTP_CONTROL_MESSAGE
 {
-  struct {
-   [FieldOffset(0)] public uint MessageType = 7; ///< Message type.
+  /*   struct { */
+  [FieldOffset(0)] public uint MessageType = 7; ///< Message type.
   [FieldOffset(0)] public uint IntegrityCheck = 1; ///< Message integrity check.
   [FieldOffset(0)] public uint InstanceId = 5; ///< Instance ID.
   [FieldOffset(0)] public uint Reserved = 1; ///< Reserved bit.
@@ -103,9 +103,9 @@ public unsafe struct Bits
   [FieldOffset(0)] public uint RequestBit = 1; ///< Request bit.
   [FieldOffset(0)] public uint CommandCode = 8; ///< Command code of request message.
   [FieldOffset(0)] public uint CompletionCode = 8; ///< Completion code in response message.
+/*   } Bits; */
+  [FieldOffset(0)] public uint BodyHeader;
 }
-uint BodyHeader;
-} MCTP_CONTROL_MESSAGE;
 
 public unsafe partial class EFI
 {
@@ -118,10 +118,10 @@ public unsafe partial class EFI
 /// The 32-bit Header of MCTP packet.
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct MCTP_TRANSPORT_HEADER
 {
-  struct {
-   [FieldOffset(0)] public uint HeaderVersion = 4; ///< The version of header.
+  /*   struct { */
+  [FieldOffset(0)] public uint HeaderVersion = 4; ///< The version of header.
   [FieldOffset(0)] public uint Reserved = 4; ///< Reserved for future definitions.
   [FieldOffset(0)] public uint DestinationEndpointId = 8; ///< Destination endpoint Id (EID).
   [FieldOffset(0)] public uint SourceEndpointIdId = 8; ///< Source endpoint Id (EID)
@@ -134,21 +134,21 @@ public unsafe struct Bits
                                                    ///< each packet.
   [FieldOffset(0)] public uint EndOfMessage = 1; ///< Indicates the last packet of message.
   [FieldOffset(0)] public uint StartOfMessage = 1; ///< Indicates the first packet of message.
+/*   } Bits; */
+  [FieldOffset(0)] public uint Header;
 }
-uint Header;
-} MCTP_TRANSPORT_HEADER;
 
 ///
 /// The 8-bit Message Header of MCTP packet.
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct MCTP_MESSAGE_HEADER
 {
-  struct {
-   [FieldOffset(0)] public byte MessageType = 7;
+  /*   struct { */
+  [FieldOffset(0)] public byte MessageType = 7;
   [FieldOffset(0)] public byte IntegrityCheck = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte MessageHeader;
 }
-byte MessageHeader;
-} MCTP_MESSAGE_HEADER;
 
 // #endif

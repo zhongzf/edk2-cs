@@ -24,24 +24,25 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public const ulong PLDM_MESSAGE_HEADER_VERSION = 0;
-
-  ///
-  /// General definitions from Platform Level Data Model (PLDM) Base
-  /// Specification (DMTF DSP0240)
-  ///
-  typedef struct  {
-  byte InstanceId    : 5;          ///< Request instance ID.
-  byte Reserved      : 1;          ///< Reserved bit.
-  byte DatagramBit   : 1;          ///< used to indicate whether the Instance ID field is
-                                   ///< being used for tracking and matching requests and
-                                   ///< responses, or just being used for asynchronous
-                                   ///< notifications.
-  byte RequestBit    : 1;          ///< Request bit.
-  byte PldmType      : 6;          ///< PLDM message type.
-  byte HeaderVersion : 2;          ///< Header version.
-  byte PldmTypeCommandCode;        ///< The command code of PLDM message type.
 }
-PLDM_MESSAGE_HEADER;
+
+///
+/// General definitions from Platform Level Data Model (PLDM) Base
+/// Specification (DMTF DSP0240)
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct PLDM_MESSAGE_HEADER
+{
+  public byte InstanceId = 5;          ///< Request instance ID.
+  public byte Reserved = 1;          ///< Reserved bit.
+  public byte DatagramBit = 1;          ///< used to indicate whether the Instance ID field is
+                                        ///< being used for tracking and matching requests and
+                                        ///< responses, or just being used for asynchronous
+                                        ///< notifications.
+  public byte RequestBit = 1;          ///< Request bit.
+  public byte PldmType = 6;          ///< PLDM message type.
+  public byte HeaderVersion = 2;          ///< Header version.
+  public byte PldmTypeCommandCode;        ///< The command code of PLDM message type.
 }
 
 [StructLayout(LayoutKind.Sequential)]

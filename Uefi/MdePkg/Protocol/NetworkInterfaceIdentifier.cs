@@ -90,26 +90,26 @@ public enum EFI_NETWORK_INTERFACE_TYPE
 ///
 /// Forward reference for pure ANSI compatability.
 ///
-typedef struct undiconfig_table UNDI_CONFIG_TABLE;
+//typedef struct undiconfig_table UNDI_CONFIG_TABLE;
 
 ///
 /// The format of the configuration table for UNDI
 ///
-struct undiconfig_table
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct NII_entry
 {
-  uint NumberOfInterfaces;  ///< The number of NIC devices
-                            ///< that this UNDI controls.
-  uint reserved;
-  UNDI_CONFIG_TABLE* nextlink;           ///< A pointer to the next UNDI
-                                         ///< configuration table.
-                                         ///
-                                         /// The length of this array is given in the NumberOfInterfaces field.
-                                         ///
-  struct {
-    void* NII_InterfacePointer;          ///< Pointer to the NII interface structure.
-  void* DevicePathPointer;             ///< Pointer to the device path for this NIC.
-}
-NII_entry[1];
+  public uint NumberOfInterfaces;  ///< The number of NIC devices
+                                   ///< that this UNDI controls.
+  public uint reserved;
+  public UNDI_CONFIG_TABLE* nextlink;           ///< A pointer to the next UNDI
+                                                ///< configuration table.
+                                                ///
+                                                /// The length of this array is given in the NumberOfInterfaces field.
+                                                ///
+  //  struct {
+  //    public void* NII_InterfacePointer;          ///< Pointer to the NII interface structure.
+  //  public void* DevicePathPointer;             ///< Pointer to the device path for this NIC.
+  //}
 };
 
 // extern EFI_GUID  gEfiNetworkInterfaceIdentifierProtocolGuid;

@@ -101,7 +101,7 @@ public unsafe struct EFI_NVDIMM_LABEL_INDEX_BLOCK
   /// padded with additional zero bytes to make the Index Block size a multiple of EFI_NVDIMM_LABEL_INDEX_ALIGN.
   /// Any bits allocated beyond NSlot bits must be zero.
   ///
-  public fixed byte Free[];
+  //public fixed byte Free[];
 }
 
 public unsafe partial class EFI
@@ -219,37 +219,39 @@ public unsafe struct EFI_NVDIMM_LABEL
   public ulong Checksum;
 }
 
-typedef struct  {
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_NVDIMM_LABEL_SET_COOKIE_MAP
+{
   ///
   /// The Region Offset field from the ACPI NFIT NVDIMM Region Mapping Structure for a given entry.
   ///
-  ulong RegionOffset;
+  public ulong RegionOffset;
 
-///
-/// The serial number of the NVDIMM, assigned by the module vendor.
-///
-uint SerialNumber;
+  ///
+  /// The serial number of the NVDIMM, assigned by the module vendor.
+  ///
+  public uint SerialNumber;
 
-///
-/// The identifier indicating the vendor of the NVDIMM.
-///
-ushort VendorId;
+  ///
+  /// The identifier indicating the vendor of the NVDIMM.
+  ///
+  public ushort VendorId;
 
-///
-/// The manufacturing date of the NVDIMM, assigned by the module vendor.
-///
-ushort ManufacturingDate;
+  ///
+  /// The manufacturing date of the NVDIMM, assigned by the module vendor.
+  ///
+  public ushort ManufacturingDate;
 
-///
-/// The manufacturing location from for the NVDIMM, assigned by the module vendor.
-///
-byte ManufacturingLocation;
+  ///
+  /// The manufacturing location from for the NVDIMM, assigned by the module vendor.
+  ///
+  public byte ManufacturingLocation;
 
-///
-/// Shall be 0.
-///
-byte Reserved[31];
-} EFI_NVDIMM_LABEL_SET_COOKIE_MAP;
+  ///
+  /// Shall be 0.
+  ///
+  public fixed byte Reserved[31];
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVDIMM_LABEL_SET_COOKIE_INFO
@@ -260,73 +262,99 @@ public unsafe struct EFI_NVDIMM_LABEL_SET_COOKIE_INFO
   public fixed EFI_NVDIMM_LABEL_SET_COOKIE_MAP Mapping[0];
 }
 
+// /**
+//   Retrieves the Label Storage Area size and the maximum transfer size for the LabelStorageRead and
+//   LabelStorageWrite methods.
+// 
+//   @param  This                   A pointer to the EFI_NVDIMM_LABEL_PROTOCOL instance.
+//   @param  SizeOfLabelStorageArea The size of the Label Storage Area for the NVDIMM in bytes.
+//   @param  MaxTransferLength      The maximum number of bytes that can be transferred in a single call to
+//                                  LabelStorageRead or LabelStorageWrite.
+// 
+//   @retval EFI_SUCCESS            The size of theLabel Storage Area and maximum transfer size returned are valid.
+//   @retval EFI_ACCESS_DENIED      The Label Storage Area for the NVDIMM device is not currently accessible.
+//   @retval EFI_DEVICE_ERROR       A physical device error occurred and the data transfer failed to complete.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_NVDIMM_LABEL_STORAGE_INFORMATION)(
+//   IN  EFI_NVDIMM_LABEL_PROTOCOL *This,
+//   OUT uint                    *SizeOfLabelStorageArea,
+//   OUT uint                    *MaxTransferLength
+//   );
+
+// /**
+//   Retrieves the label data for the requested offset and length from within the Label Storage Area for
+//   the NVDIMM.
+// 
+//   @param  This                   A pointer to the EFI_NVDIMM_LABEL_PROTOCOL instance.
+//   @param  Offset                 The byte offset within the Label Storage Area to read from.
+//   @param  TransferLength         Number of bytes to read from the Label Storage Area beginning at the byte
+//                                  Offset specified. A TransferLength of 0 reads no data.
+//   @param  LabelData              The return label data read at the requested offset and length from within
+//                                  the Label Storage Area.
+// 
+//   @retval EFI_SUCCESS            The label data from the Label Storage Area for the NVDIMM was read successfully
+//                                  at the specified Offset and TransferLength and LabelData contains valid data.
+//   @retval EFI_INVALID_PARAMETER  Any of the following are true:
+//                                  - Offset > SizeOfLabelStorageArea reported in the LabelStorageInformation return data.
+//                                  - Offset + TransferLength is > SizeOfLabelStorageArea reported in the
+//                                    LabelStorageInformation return data.
+//                                  - TransferLength is > MaxTransferLength reported in the LabelStorageInformation return
+//                                    data.
+//   @retval EFI_ACCESS_DENIED      The Label Storage Area for the NVDIMM device is not currently accessible and labels
+//                                  cannot be read at this time.
+//   @retval EFI_DEVICE_ERROR       A physical device error occurred and the data transfer failed to complete.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_NVDIMM_LABEL_STORAGE_READ)(
+//   IN CONST EFI_NVDIMM_LABEL_PROTOCOL *This,
+//   IN uint                          Offset,
+//   IN uint                          TransferLength,
+//   OUT byte                          *LabelData
+//   );
+
+// /**
+//   Writes the label data for the requested offset and length in to the Label Storage Area for the NVDIMM.
+// 
+//   @param  This                   A pointer to the EFI_NVDIMM_LABEL_PROTOCOL instance.
+//   @param  Offset                 The byte offset within the Label Storage Area to write to.
+//   @param  TransferLength         Number of bytes to write to the Label Storage Area beginning at the byte
+//                                  Offset specified. A TransferLength of 0 writes no data.
+//   @param  LabelData              The return label data write at the requested offset and length from within
+//                                  the Label Storage Area.
+// 
+//   @retval EFI_SUCCESS            The label data from the Label Storage Area for the NVDIMM written read successfully
+//                                  at the specified Offset and TransferLength.
+//   @retval EFI_INVALID_PARAMETER  Any of the following are true:
+//                                  - Offset > SizeOfLabelStorageArea reported in the LabelStorageInformation return data.
+//                                  - Offset + TransferLength is > SizeOfLabelStorageArea reported in the
+//                                    LabelStorageInformation return data.
+//                                  - TransferLength is > MaxTransferLength reported in the LabelStorageInformation return
+//                                    data.
+//   @retval EFI_ACCESS_DENIED      The Label Storage Area for the NVDIMM device is not currently accessible and labels
+//                                  cannot be written at this time.
+//   @retval EFI_DEVICE_ERROR       A physical device error occurred and the data transfer failed to complete.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_NVDIMM_LABEL_STORAGE_WRITE)(
+//   IN CONST EFI_NVDIMM_LABEL_PROTOCOL *This,
+//   IN uint                          Offset,
+//   IN uint                          TransferLength,
+//   IN byte                           *LabelData
+//   );
+
 ///
 /// Provides services that allow management of labels contained in a Label Storage Area.
 ///
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_NVDIMM_LABEL_PROTOCOL
 {
-  /**
-    Retrieves the Label Storage Area size and the maximum transfer size for the LabelStorageRead and
-    LabelStorageWrite methods.
-
-    @param  This                   A pointer to the EFI_NVDIMM_LABEL_PROTOCOL instance.
-    @param  SizeOfLabelStorageArea The size of the Label Storage Area for the NVDIMM in bytes.
-    @param  MaxTransferLength      The maximum number of bytes that can be transferred in a single call to
-                                   LabelStorageRead or LabelStorageWrite.
-
-    @retval EFI_SUCCESS            The size of theLabel Storage Area and maximum transfer size returned are valid.
-    @retval EFI_ACCESS_DENIED      The Label Storage Area for the NVDIMM device is not currently accessible.
-    @retval EFI_DEVICE_ERROR       A physical device error occurred and the data transfer failed to complete.
-  **/
-  public readonly delegate* unmanaged<EFI_NVDIMM_LABEL_PROTOCOL*, uint*, uint*, EFI_STATUS> LabelStorageInformation;
-  /**
-    Retrieves the label data for the requested offset and length from within the Label Storage Area for
-    the NVDIMM.
-
-    @param  This                   A pointer to the EFI_NVDIMM_LABEL_PROTOCOL instance.
-    @param  Offset                 The byte offset within the Label Storage Area to read from.
-    @param  TransferLength         Number of bytes to read from the Label Storage Area beginning at the byte
-                                   Offset specified. A TransferLength of 0 reads no data.
-    @param  LabelData              The return label data read at the requested offset and length from within
-                                   the Label Storage Area.
-
-    @retval EFI_SUCCESS            The label data from the Label Storage Area for the NVDIMM was read successfully
-                                   at the specified Offset and TransferLength and LabelData contains valid data.
-    @retval EFI_INVALID_PARAMETER  Any of the following are true:
-                                   - Offset > SizeOfLabelStorageArea reported in the LabelStorageInformation return data.
-                                   - Offset + TransferLength is > SizeOfLabelStorageArea reported in the
-                                     LabelStorageInformation return data.
-                                   - TransferLength is > MaxTransferLength reported in the LabelStorageInformation return
-                                     data.
-    @retval EFI_ACCESS_DENIED      The Label Storage Area for the NVDIMM device is not currently accessible and labels
-                                   cannot be read at this time.
-    @retval EFI_DEVICE_ERROR       A physical device error occurred and the data transfer failed to complete.
-  **/
-  public readonly delegate* unmanaged<CONST, uint, uint, byte*, EFI_STATUS> LabelStorageRead;
-  /**
-    Writes the label data for the requested offset and length in to the Label Storage Area for the NVDIMM.
-
-    @param  This                   A pointer to the EFI_NVDIMM_LABEL_PROTOCOL instance.
-    @param  Offset                 The byte offset within the Label Storage Area to write to.
-    @param  TransferLength         Number of bytes to write to the Label Storage Area beginning at the byte
-                                   Offset specified. A TransferLength of 0 writes no data.
-    @param  LabelData              The return label data write at the requested offset and length from within
-                                   the Label Storage Area.
-
-    @retval EFI_SUCCESS            The label data from the Label Storage Area for the NVDIMM written read successfully
-                                   at the specified Offset and TransferLength.
-    @retval EFI_INVALID_PARAMETER  Any of the following are true:
-                                   - Offset > SizeOfLabelStorageArea reported in the LabelStorageInformation return data.
-                                   - Offset + TransferLength is > SizeOfLabelStorageArea reported in the
-                                     LabelStorageInformation return data.
-                                   - TransferLength is > MaxTransferLength reported in the LabelStorageInformation return
-                                     data.
-    @retval EFI_ACCESS_DENIED      The Label Storage Area for the NVDIMM device is not currently accessible and labels
-                                   cannot be written at this time.
-    @retval EFI_DEVICE_ERROR       A physical device error occurred and the data transfer failed to complete.
-  **/
-  public readonly delegate* unmanaged<CONST, uint, uint, byte*, EFI_STATUS> LabelStorageWrite;
+  public readonly delegate* unmanaged</* IN */EFI_NVDIMM_LABEL_PROTOCOL* /*This*/,/* OUT */uint* /*SizeOfLabelStorageArea*/,/* OUT */uint* /*MaxTransferLength*/, EFI_STATUS> /*EFI_NVDIMM_LABEL_STORAGE_INFORMATION*/ LabelStorageInformation;
+  public readonly delegate* unmanaged</* IN CONST */EFI_NVDIMM_LABEL_PROTOCOL* /*This*/,/* IN */uint /*Offset*/,/* IN */uint /*TransferLength*/,/* OUT */byte* /*LabelData*/, EFI_STATUS> /*EFI_NVDIMM_LABEL_STORAGE_READ*/ LabelStorageRead;
+  public readonly delegate* unmanaged</* IN CONST */EFI_NVDIMM_LABEL_PROTOCOL* /*This*/,/* IN */uint /*Offset*/,/* IN */uint /*TransferLength*/,/* IN */byte* /*LabelData*/, EFI_STATUS> /*EFI_NVDIMM_LABEL_STORAGE_WRITE*/ LabelStorageWrite;
 }
 
 // extern EFI_GUID  gEfiNvdimmLabelProtocolGuid;

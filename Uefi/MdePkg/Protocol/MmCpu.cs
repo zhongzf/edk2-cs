@@ -175,6 +175,64 @@ public unsafe struct EFI_MM_SAVE_STATE_IO_INFO
 
 // typedef struct _EFI_MM_CPU_PROTOCOL EFI_MM_CPU_PROTOCOL;
 
+// /**
+//   Read data from the CPU save state.
+// 
+//   This function is used to read the specified number of bytes of the specified register from the CPU
+//   save state of the specified CPU and place the value into the buffer. If the CPU does not support the
+//   specified register Register, then EFI_NOT_FOUND  should be returned. If the CPU does not
+//   support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
+// 
+//   @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
+//   @param[in]  Width              The number of bytes to read from the CPU save state.
+//   @param[in]  Register           Specifies the CPU register to read form the save state.
+//   @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
+//   @param[out] Buffer             Upon return, this holds the CPU register value read from the save state.
+// 
+//   @retval EFI_SUCCESS            The register was read from Save State.
+//   @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
+//   @retval EFI_INVALID_PARAMETER  Input parameters are not valid, for example, Processor No or register width
+//                                  is not correct.This or Buffer is NULL.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_MM_READ_SAVE_STATE)(
+//   IN CONST EFI_MM_CPU_PROTOCOL    *This,
+//   IN ulong                        Width,
+//   IN EFI_MM_SAVE_STATE_REGISTER   Register,
+//   IN ulong                        CpuIndex,
+//   OUT void                        *Buffer
+//   );
+
+// /**
+//   Write data to the CPU save state.
+// 
+//   This function is used to write the specified number of bytes of the specified register to the CPU save
+//   state of the specified CPU and place the value into the buffer. If the CPU does not support the
+//   specified register Register, then EFI_UNSUPPORTED should be returned. If the CPU does not
+//   support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
+// 
+//   @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
+//   @param[in]  Width              The number of bytes to write to the CPU save state.
+//   @param[in]  Register           Specifies the CPU register to write to the save state.
+//   @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
+//   @param[in]  Buffer             Upon entry, this holds the new CPU register value.
+// 
+//   @retval EFI_SUCCESS            The register was written to Save State.
+//   @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
+//   @retval EFI_INVALID_PARAMETER  Input parameters are not valid. For example:
+//                                  ProcessorIndex or Width is not correct.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_MM_WRITE_SAVE_STATE)(
+//   IN CONST EFI_MM_CPU_PROTOCOL    *This,
+//   IN ulong                        Width,
+//   IN EFI_MM_SAVE_STATE_REGISTER   Register,
+//   IN ulong                        CpuIndex,
+//   IN CONST void                   *Buffer
+//   );
+
 ///
 /// EFI MM CPU Protocol provides access to CPU-related information while in MM.
 ///
@@ -186,46 +244,8 @@ public unsafe struct EFI_MM_SAVE_STATE_IO_INFO
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_CPU_PROTOCOL
 {
-  /**
-    Read data from the CPU save state.
-
-    This function is used to read the specified number of bytes of the specified register from the CPU
-    save state of the specified CPU and place the value into the buffer. If the CPU does not support the
-    specified register Register, then EFI_NOT_FOUND  should be returned. If the CPU does not
-    support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
-
-    @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
-    @param[in]  Width              The number of bytes to read from the CPU save state.
-    @param[in]  Register           Specifies the CPU register to read form the save state.
-    @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
-    @param[out] Buffer             Upon return, this holds the CPU register value read from the save state.
-
-    @retval EFI_SUCCESS            The register was read from Save State.
-    @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
-    @retval EFI_INVALID_PARAMETER  Input parameters are not valid, for example, Processor No or register width
-                                   is not correct.This or Buffer is NULL.
-  **/
-  public readonly delegate* unmanaged<CONST, ulong, EFI_MM_SAVE_STATE_REGISTER, ulong, void*, EFI_STATUS> ReadSaveState;
-  /**
-    Write data to the CPU save state.
-
-    This function is used to write the specified number of bytes of the specified register to the CPU save
-    state of the specified CPU and place the value into the buffer. If the CPU does not support the
-    specified register Register, then EFI_UNSUPPORTED should be returned. If the CPU does not
-    support the specified register width Width, then EFI_INVALID_PARAMETER is returned.
-
-    @param[in]  This               The EFI_MM_CPU_PROTOCOL instance.
-    @param[in]  Width              The number of bytes to write to the CPU save state.
-    @param[in]  Register           Specifies the CPU register to write to the save state.
-    @param[in]  CpuIndex           Specifies the zero-based index of the CPU save state.
-    @param[in]  Buffer             Upon entry, this holds the new CPU register value.
-
-    @retval EFI_SUCCESS            The register was written to Save State.
-    @retval EFI_NOT_FOUND          The register is not defined for the Save State of Processor.
-    @retval EFI_INVALID_PARAMETER  Input parameters are not valid. For example:
-                                   ProcessorIndex or Width is not correct.
-  **/
-  public readonly delegate* unmanaged<CONST, ulong, EFI_MM_SAVE_STATE_REGISTER, ulong, CONST, EFI_STATUS> WriteSaveState;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_CPU_PROTOCOL* /*This*/,/* IN */ulong /*Width*/,/* IN */EFI_MM_SAVE_STATE_REGISTER /*Register*/,/* IN */ulong /*CpuIndex*/,/* OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_MM_READ_SAVE_STATE*/ ReadSaveState;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_CPU_PROTOCOL* /*This*/,/* IN */ulong /*Width*/,/* IN */EFI_MM_SAVE_STATE_REGISTER /*Register*/,/* IN */ulong /*CpuIndex*/,/* IN CONST */void* /*Buffer*/, EFI_STATUS> /*EFI_MM_WRITE_SAVE_STATE*/ WriteSaveState;
 }
 
 // extern EFI_GUID  gEfiMmCpuProtocolGuid;

@@ -376,12 +376,12 @@ public unsafe struct NVME_COMPARE
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct NVME_CMD
 {
-  NVME_READ Read;
-  NVME_WRITE Write;
-  NVME_FLUSH Flush;
-  NVME_WRITE_UNCORRECTABLE WriteUncorrectable;
-  NVME_WRITE_ZEROES WriteZeros;
-  NVME_COMPARE Compare;
+  [FieldOffset(0)] public NVME_READ Read;
+  [FieldOffset(0)] public NVME_WRITE Write;
+  [FieldOffset(0)] public NVME_FLUSH Flush;
+  [FieldOffset(0)] public NVME_WRITE_UNCORRECTABLE WriteUncorrectable;
+  [FieldOffset(0)] public NVME_WRITE_ZEROES WriteZeros;
+  [FieldOffset(0)] public NVME_COMPARE Compare;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -485,7 +485,7 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
     //
     // Power State Descriptors
     //
-    NVME_PSDESCRIPTOR PsDescriptor[32];
+    public fixed NVME_PSDESCRIPTOR PsDescriptor[32];
 
     public fixed byte VendorData[1024]; /* Vendor specific data */
   }
@@ -503,7 +503,7 @@ public unsafe struct NVME_LBAFORMAT
 public const ulong LBAF_RP_BETTER = 01b;
 public const ulong LBAF_RP_GOOD = 10b;
 public const ulong LBAF_RP_DEGRADED = 11b;
- public byte Rsvd1 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
+  public byte Rsvd1 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
   }
 }
 
@@ -532,7 +532,7 @@ public unsafe struct NVME_ADMIN_NAMESPACE_DATA
   //
   // LBA Format
   //
-  NVME_LBAFORMAT LbaFormat[16];
+  public fixed NVME_LBAFORMAT LbaFormat[16];
 
   public fixed byte Rsvd2[192];       /* Reserved as of Nvm Express 1.1 Spec */
   public fixed byte VendorData[3712]; /* Vendor specific data */
@@ -866,20 +866,20 @@ public unsafe struct NVME_ADMIN_SECURITY_SEND
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct NVME_ADMIN_CMD
 {
-  NVME_ADMIN_IDENTIFY Identify;
-  NVME_ADMIN_CRIOCQ CrIoCq;
-  NVME_ADMIN_CRIOSQ CrIoSq;
-  NVME_ADMIN_DEIOCQ DeIoCq;
-  NVME_ADMIN_DEIOSQ DeIoSq;
-  NVME_ADMIN_ABORT Abort;
-  NVME_ADMIN_FIRMWARE_ACTIVATE Activate;
-  NVME_ADMIN_FIRMWARE_IMAGE_DOWNLOAD FirmwareImageDownload;
-  NVME_ADMIN_GET_FEATURES GetFeatures;
-  NVME_ADMIN_GET_LOG_PAGE GetLogPage;
-  NVME_ADMIN_SET_FEATURES SetFeatures;
-  NVME_ADMIN_FORMAT_NVM FormatNvm;
-  NVME_ADMIN_SECURITY_RECEIVE SecurityReceive;
-  NVME_ADMIN_SECURITY_SEND SecuritySend;
+  [FieldOffset(0)] public NVME_ADMIN_IDENTIFY Identify;
+  [FieldOffset(0)] public NVME_ADMIN_CRIOCQ CrIoCq;
+  [FieldOffset(0)] public NVME_ADMIN_CRIOSQ CrIoSq;
+  [FieldOffset(0)] public NVME_ADMIN_DEIOCQ DeIoCq;
+  [FieldOffset(0)] public NVME_ADMIN_DEIOSQ DeIoSq;
+  [FieldOffset(0)] public NVME_ADMIN_ABORT Abort;
+  [FieldOffset(0)] public NVME_ADMIN_FIRMWARE_ACTIVATE Activate;
+  [FieldOffset(0)] public NVME_ADMIN_FIRMWARE_IMAGE_DOWNLOAD FirmwareImageDownload;
+  [FieldOffset(0)] public NVME_ADMIN_GET_FEATURES GetFeatures;
+  [FieldOffset(0)] public NVME_ADMIN_GET_LOG_PAGE GetLogPage;
+  [FieldOffset(0)] public NVME_ADMIN_SET_FEATURES SetFeatures;
+  [FieldOffset(0)] public NVME_ADMIN_FORMAT_NVM FormatNvm;
+  [FieldOffset(0)] public NVME_ADMIN_SECURITY_RECEIVE SecurityReceive;
+  [FieldOffset(0)] public NVME_ADMIN_SECURITY_SEND SecuritySend;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -896,9 +896,9 @@ public unsafe struct NVME_RAW
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct NVME_PAYLOAD
 {
-  NVME_ADMIN_CMD Admin; // Union of Admin commands
-  NVME_CMD Nvm;   // Union of Nvm commands
-  NVME_RAW Raw;
+  [FieldOffset(0)] public NVME_ADMIN_CMD Admin; // Union of Admin commands
+  [FieldOffset(0)] public NVME_CMD Nvm;   // Union of Nvm commands
+  [FieldOffset(0)] public NVME_RAW Raw;
 }
 
 //
@@ -936,7 +936,7 @@ public unsafe struct NVME_SQ
   //
   public fixed ulong Prp[2];   // First and second PRP entries
 
-  NVME_PAYLOAD Payload;
+  public NVME_PAYLOAD Payload;
 }
 
 //
@@ -958,9 +958,9 @@ public unsafe struct NVME_CQ
   //
   public ushort Sqhd;           // Submission Queue Head Pointer
   public ushort Sqid;           // Submission Queue Identifier
-                                //
-                                // CDW 3
-                                //
+  //
+  // CDW 3
+  //
   public ushort Cid;            // Command Identifier
   public ushort Pt = 1;      // Phase Tag
   public ushort Sc = 8;      // Status Code
@@ -1079,12 +1079,12 @@ public unsafe struct NVME_ACTIVE_FW_INFO
   // Indicates the firmware slot from which the actively running firmware revision was loaded.
   //
   public byte ActivelyRunningFwSlot = 3;
-  public byte                          = 1;
+  //public byte                          = 1;
   //
   // Indicates the firmware slot that is going to be activated at the next controller reset. If this field is 0h, then the controller does not indicate the firmware slot that is going to be activated at the next controller reset.
   //
- public byte NextActiveFwSlot = 3;
-  public byte                          = 1;
+  public byte NextActiveFwSlot = 3;
+  //public byte                          = 1;
 }
 
 //
@@ -1097,13 +1097,13 @@ public unsafe struct NVME_FW_SLOT_INFO_LOG
   //
   // Specifies information about the active firmware revision.
   // s
-  NVME_ACTIVE_FW_INFO ActiveFwInfo;
+  public NVME_ACTIVE_FW_INFO ActiveFwInfo;
   public fixed byte Reserved1[7];
   //
   // Contains the revision of the firmware downloaded to firmware slot 1/7. If no valid firmware revision is present or if this slot is unsupported, all zeros shall be returned.
   //
-  public fixed byte FwRevisionSlot[7][8];
- public fixed byte Reserved2[448];
+  byte FwRevisionSlot[7][8];
+  public fixed byte Reserved2[448];
 }
 
 //

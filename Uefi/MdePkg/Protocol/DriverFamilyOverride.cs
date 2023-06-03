@@ -24,6 +24,25 @@ public unsafe partial class EFI
   //
   //
 
+  // /**
+  //   This function returns the version value associated with the driver specified by This.
+  // 
+  //   Retrieves the version of the driver that is used by the EFI Boot Service ConnectController()
+  //   to sort the set of Driver Binding Protocols in order from highest priority to lowest priority.
+  //   For drivers that support the Driver Family Override Protocol, those drivers are sorted so that
+  //   the drivers with higher values returned by GetVersion() are higher priority than drivers that
+  //   return lower values from GetVersion().
+  // 
+  //   @param  This                  A pointer to the EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL instance.
+  // 
+  //   @return The version value associated with the driver specified by This.
+  // 
+  // **/
+  // typedef
+  // UINT32
+  // (EFIAPI *EFI_DRIVER_FAMILY_OVERRIDE_GET_VERSION)(
+  //   IN EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL    *This
+  //   );
 }
 
 ///
@@ -40,21 +59,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL
 {
-  /**
-    This function returns the version value associated with the driver specified by This.
-
-    Retrieves the version of the driver that is used by the EFI Boot Service ConnectController()
-    to sort the set of Driver Binding Protocols in order from highest priority to lowest priority.
-    For drivers that support the Driver Family Override Protocol, those drivers are sorted so that
-    the drivers with higher values returned by GetVersion() are higher priority than drivers that
-    return lower values from GetVersion().
-
-    @param  This                  A pointer to the EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL instance.
-
-    @return The version value associated with the driver specified by This.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL*, EFI_STATUS> GetVersion;
+  public readonly delegate* unmanaged</* IN */EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_DRIVER_FAMILY_OVERRIDE_GET_VERSION*/ GetVersion;
 }
 
 // extern EFI_GUID  gEfiDriverFamilyOverrideProtocolGuid;

@@ -94,6 +94,137 @@ public unsafe partial class EFI
   // Serial IO Member Functions
   //
 
+  // /**
+  //   Reset the serial device.
+  // 
+  //   @param  This              Protocol instance pointer.
+  // 
+  //   @retval EFI_SUCCESS       The device was reset.
+  //   @retval EFI_DEVICE_ERROR  The serial device could not be reset.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SERIAL_RESET)(
+  //   IN EFI_SERIAL_IO_PROTOCOL *This
+  //   );
+
+  // /**
+  //   Sets the baud rate, receive FIFO depth, transmit/receice time out, parity,
+  //   data bits, and stop bits on a serial device.
+  // 
+  //   @param  This             Protocol instance pointer.
+  //   @param  BaudRate         The requested baud rate. A BaudRate value of 0 will use the
+  //                            device's default interface speed.
+  //   @param  ReveiveFifoDepth The requested depth of the FIFO on the receive side of the
+  //                            serial interface. A ReceiveFifoDepth value of 0 will use
+  //                            the device's default FIFO depth.
+  //   @param  Timeout          The requested time out for a single character in microseconds.
+  //                            This timeout applies to both the transmit and receive side of the
+  //                            interface. A Timeout value of 0 will use the device's default time
+  //                            out value.
+  //   @param  Parity           The type of parity to use on this serial device. A Parity value of
+  //                            DefaultParity will use the device's default parity value.
+  //   @param  DataBits         The number of data bits to use on the serial device. A DataBits
+  //                            vaule of 0 will use the device's default data bit setting.
+  //   @param  StopBits         The number of stop bits to use on this serial device. A StopBits
+  //                            value of DefaultStopBits will use the device's default number of
+  //                            stop bits.
+  // 
+  //   @retval EFI_SUCCESS           The device was reset.
+  //   @retval EFI_INVALID_PARAMETER One or more attributes has an unsupported value.
+  //   @retval EFI_DEVICE_ERROR      The serial device is not functioning correctly.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SERIAL_SET_ATTRIBUTES)(
+  //   IN EFI_SERIAL_IO_PROTOCOL         *This,
+  //   IN ulong                         BaudRate,
+  //   IN uint                         ReceiveFifoDepth,
+  //   IN uint                         Timeout,
+  //   IN EFI_PARITY_TYPE                Parity,
+  //   IN byte                          DataBits,
+  //   IN EFI_STOP_BITS_TYPE             StopBits
+  //   );
+
+  // /**
+  //   Set the control bits on a serial device
+  // 
+  //   @param  This             Protocol instance pointer.
+  //   @param  Control          Set the bits of Control that are settable.
+  // 
+  //   @retval EFI_SUCCESS      The new control bits were set on the serial device.
+  //   @retval EFI_UNSUPPORTED  The serial device does not support this operation.
+  //   @retval EFI_DEVICE_ERROR The serial device is not functioning correctly.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SERIAL_SET_CONTROL_BITS)(
+  //   IN EFI_SERIAL_IO_PROTOCOL         *This,
+  //   IN uint                         Control
+  //   );
+
+  // /**
+  //   Retrieves the status of thecontrol bits on a serial device
+  // 
+  //   @param  This              Protocol instance pointer.
+  //   @param  Control           A pointer to return the current Control signals from the serial device.
+  // 
+  //   @retval EFI_SUCCESS       The control bits were read from the serial device.
+  //   @retval EFI_DEVICE_ERROR  The serial device is not functioning correctly.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SERIAL_GET_CONTROL_BITS)(
+  //   IN EFI_SERIAL_IO_PROTOCOL         *This,
+  //   OUT uint                        *Control
+  //   );
+
+  // /**
+  //   Writes data to a serial device.
+  // 
+  //   @param  This              Protocol instance pointer.
+  //   @param  BufferSize        On input, the size of the Buffer. On output, the amount of
+  //                             data actually written.
+  //   @param  Buffer            The buffer of data to write
+  // 
+  //   @retval EFI_SUCCESS       The data was written.
+  //   @retval EFI_DEVICE_ERROR  The device reported an error.
+  //   @retval EFI_TIMEOUT       The data write was stopped due to a timeout.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SERIAL_WRITE)(
+  //   IN EFI_SERIAL_IO_PROTOCOL         *This,
+  //   IN OUT ulong                      *BufferSize,
+  //   IN void                           *Buffer
+  //   );
+
+  // /**
+  //   Writes data to a serial device.
+  // 
+  //   @param  This              Protocol instance pointer.
+  //   @param  BufferSize        On input, the size of the Buffer. On output, the amount of
+  //                             data returned in Buffer.
+  //   @param  Buffer            The buffer to return the data into.
+  // 
+  //   @retval EFI_SUCCESS       The data was read.
+  //   @retval EFI_DEVICE_ERROR  The device reported an error.
+  //   @retval EFI_TIMEOUT       The data write was stopped due to a timeout.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SERIAL_READ)(
+  //   IN EFI_SERIAL_IO_PROTOCOL         *This,
+  //   IN OUT ulong                      *BufferSize,
+  //   OUT void                          *Buffer
+  //   );
+
   /**
     @par Data Structure Description:
     The data values in SERIAL_IO_MODE are read-only and are updated by the code
@@ -167,95 +298,12 @@ public unsafe partial class EFI
     /// it is not the same GUID.
     ///
     public uint Revision;
-    /**
-      Reset the serial device.
-
-      @param  This              Protocol instance pointer.
-
-      @retval EFI_SUCCESS       The device was reset.
-      @retval EFI_DEVICE_ERROR  The serial device could not be reset.
-
-    **/
-    public readonly delegate* unmanaged<EFI_SERIAL_IO_PROTOCOL*, EFI_STATUS> Reset;
-    /**
-      Sets the baud rate, receive FIFO depth, transmit/receice time out, parity,
-      data bits, and stop bits on a serial device.
-
-      @param  This             Protocol instance pointer.
-      @param  BaudRate         The requested baud rate. A BaudRate value of 0 will use the
-                               device's default interface speed.
-      @param  ReveiveFifoDepth The requested depth of the FIFO on the receive side of the
-                               serial interface. A ReceiveFifoDepth value of 0 will use
-                               the device's default FIFO depth.
-      @param  Timeout          The requested time out for a single character in microseconds.
-                               This timeout applies to both the transmit and receive side of the
-                               interface. A Timeout value of 0 will use the device's default time
-                               out value.
-      @param  Parity           The type of parity to use on this serial device. A Parity value of
-                               DefaultParity will use the device's default parity value.
-      @param  DataBits         The number of data bits to use on the serial device. A DataBits
-                               vaule of 0 will use the device's default data bit setting.
-      @param  StopBits         The number of stop bits to use on this serial device. A StopBits
-                               value of DefaultStopBits will use the device's default number of
-                               stop bits.
-
-      @retval EFI_SUCCESS           The device was reset.
-      @retval EFI_INVALID_PARAMETER One or more attributes has an unsupported value.
-      @retval EFI_DEVICE_ERROR      The serial device is not functioning correctly.
-
-    **/
-    public readonly delegate* unmanaged<EFI_SERIAL_IO_PROTOCOL*, ulong, uint, uint, EFI_PARITY_TYPE, byte, EFI_STOP_BITS_TYPE, EFI_STATUS> SetAttributes;
-    /**
-      Set the control bits on a serial device
-
-      @param  This             Protocol instance pointer.
-      @param  Control          Set the bits of Control that are settable.
-
-      @retval EFI_SUCCESS      The new control bits were set on the serial device.
-      @retval EFI_UNSUPPORTED  The serial device does not support this operation.
-      @retval EFI_DEVICE_ERROR The serial device is not functioning correctly.
-
-    **/
-    public readonly delegate* unmanaged<EFI_SERIAL_IO_PROTOCOL*, uint, EFI_STATUS> SetControl;
-    /**
-      Retrieves the status of thecontrol bits on a serial device
-
-      @param  This              Protocol instance pointer.
-      @param  Control           A pointer to return the current Control signals from the serial device.
-
-      @retval EFI_SUCCESS       The control bits were read from the serial device.
-      @retval EFI_DEVICE_ERROR  The serial device is not functioning correctly.
-
-    **/
-    public readonly delegate* unmanaged<EFI_SERIAL_IO_PROTOCOL*, uint*, EFI_STATUS> GetControl;
-    /**
-      Writes data to a serial device.
-
-      @param  This              Protocol instance pointer.
-      @param  BufferSize        On input, the size of the Buffer. On output, the amount of
-                                data actually written.
-      @param  Buffer            The buffer of data to write
-
-      @retval EFI_SUCCESS       The data was written.
-      @retval EFI_DEVICE_ERROR  The device reported an error.
-      @retval EFI_TIMEOUT       The data write was stopped due to a timeout.
-
-    **/
-    public readonly delegate* unmanaged<EFI_SERIAL_IO_PROTOCOL*, ulong*, void*, EFI_STATUS> Write;
-    /**
-      Writes data to a serial device.
-
-      @param  This              Protocol instance pointer.
-      @param  BufferSize        On input, the size of the Buffer. On output, the amount of
-                                data returned in Buffer.
-      @param  Buffer            The buffer to return the data into.
-
-      @retval EFI_SUCCESS       The data was read.
-      @retval EFI_DEVICE_ERROR  The device reported an error.
-      @retval EFI_TIMEOUT       The data write was stopped due to a timeout.
-
-    **/
-    public readonly delegate* unmanaged<EFI_SERIAL_IO_PROTOCOL*, ulong*, void*, EFI_STATUS> Read;
+    public readonly delegate* unmanaged</* IN */EFI_SERIAL_IO_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SERIAL_RESET*/ Reset;
+    public readonly delegate* unmanaged</* IN */EFI_SERIAL_IO_PROTOCOL* /*This*/,/* IN */ulong /*BaudRate*/,/* IN */uint /*ReceiveFifoDepth*/,/* IN */uint /*Timeout*/,/* IN */EFI_PARITY_TYPE /*Parity*/,/* IN */byte /*DataBits*/,/* IN */EFI_STOP_BITS_TYPE /*StopBits*/, EFI_STATUS> /*EFI_SERIAL_SET_ATTRIBUTES*/ SetAttributes;
+    public readonly delegate* unmanaged</* IN */EFI_SERIAL_IO_PROTOCOL* /*This*/,/* IN */uint /*Control*/, EFI_STATUS> /*EFI_SERIAL_SET_CONTROL_BITS*/ SetControl;
+    public readonly delegate* unmanaged</* IN */EFI_SERIAL_IO_PROTOCOL* /*This*/,/* OUT */uint* /*Control*/, EFI_STATUS> /*EFI_SERIAL_GET_CONTROL_BITS*/ GetControl;
+    public readonly delegate* unmanaged</* IN */EFI_SERIAL_IO_PROTOCOL* /*This*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_SERIAL_WRITE*/ Write;
+    public readonly delegate* unmanaged</* IN */EFI_SERIAL_IO_PROTOCOL* /*This*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_SERIAL_READ*/ Read;
     ///
     /// Pointer to SERIAL_IO_MODE data.
     ///
@@ -267,8 +315,9 @@ public unsafe partial class EFI
     /// with a known device attached. The field will remain NULL if there is
     /// no platform serial device identification information available.
     ///
-    CONSTpublic EFI_GUID                 *DeviceTypeGuid; // Revision 1.1
-}
+    /*CONST*/
+    public EFI_GUID* DeviceTypeGuid; // Revision 1.1
+  }
 
 // extern EFI_GUID  gEfiSerialIoProtocolGuid;
 // extern EFI_GUID  gEfiSerialTerminalDeviceTypeGuid;

@@ -59,18 +59,18 @@ public unsafe partial class EFI
   public const ulong EV_EFI_SPDM_FIRMWARE_BLOB = (EV_EFI_EVENT_BASE + 0xE1);
   public const ulong EV_EFI_SPDM_FIRMWARE_CONFIG = (EV_EFI_EVENT_BASE + 0xE2);
 
-#define EFI_CALLING_EFI_APPLICATION         \
-  "Calling EFI Application from Boot Option"
-#define EFI_RETURNING_FROM_EFI_APPLICATION  \
-  "Returning from EFI Application from Boot Option"
-#define EFI_EXIT_BOOT_SERVICES_INVOCATION   \
-  "Exit Boot Services Invocation"
-#define EFI_EXIT_BOOT_SERVICES_FAILED       \
-  "Exit Boot Services Returned with Failure"
-#define EFI_EXIT_BOOT_SERVICES_SUCCEEDED    \
-  "Exit Boot Services Returned with Success"
+  //#define EFI_CALLING_EFI_APPLICATION         \
+  //  "Calling EFI Application from Boot Option"
+  //#define EFI_RETURNING_FROM_EFI_APPLICATION  \
+  //  "Returning from EFI Application from Boot Option"
+  //#define EFI_EXIT_BOOT_SERVICES_INVOCATION   \
+  //  "Exit Boot Services Invocation"
+  //#define EFI_EXIT_BOOT_SERVICES_FAILED       \
+  //  "Exit Boot Services Returned with Failure"
+  //#define EFI_EXIT_BOOT_SERVICES_SUCCEEDED    \
+  //  "Exit Boot Services Returned with Success"
 
-public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
+  public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
   public const ulong POST_CODE_STR_LEN = (sizeof(EV_POSTCODE_INFO_POST_CODE) - 1);
 
   public const ulong EV_POSTCODE_INFO_SMM_CODE = "SMM CODE";
@@ -109,31 +109,32 @@ public unsafe struct TCG_DIGEST { TPM_DIGEST Value; public static implicit opera
 ///
 /// Event Log Entry Structure Definition
 ///
-typedef struct tdTCG_PCR_EVENT
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_PCR_EVENT
 {
-  TCG_PCRINDEX PCRIndex;                   ///< PCRIndex event extended to
-  TCG_EVENTTYPE EventType;                  ///< TCG EFI event type
-  TCG_DIGEST Digest;                     ///< Value extended into PCRIndex
-  uint EventSize;                  ///< Size of the event data
-  byte Event[1];                   ///< The event data
+  public TCG_PCRINDEX PCRIndex;                   ///< PCRIndex event extended to
+  public TCG_EVENTTYPE EventType;                  ///< TCG EFI event type
+  public TCG_DIGEST Digest;                     ///< Value extended into PCRIndex
+  public uint EventSize;                  ///< Size of the event data
+  public fixed byte Event[1];                   ///< The event data
 }
-TCG_PCR_EVENT;
 
 public unsafe partial class EFI
 {
   public const ulong TSS_EVENT_DATA_MAX_SIZE = 256;
+}
 
-  ///
-  /// TCG_PCR_EVENT_HDR
-  ///
-  typedef struct tdTCG_PCR_EVENT_HDR
-  {
-    TCG_PCRINDEX PCRIndex;
-    TCG_EVENTTYPE EventType;
-    TCG_DIGEST Digest;
-    uint EventSize;
-  }
-  TCG_PCR_EVENT_HDR;
+///
+/// TCG_PCR_EVENT_HDR
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_PCR_EVENT_HDR
+{
+  public TCG_PCRINDEX PCRIndex;
+  public TCG_EVENTTYPE EventType;
+  public TCG_DIGEST Digest;
+  public uint EventSize;
+}
 
 ///
 /// EFI_PLATFORM_FIRMWARE_BLOB
@@ -141,12 +142,12 @@ public unsafe partial class EFI
 /// BlobLength should be of type ulong but we use ulong here
 /// because PEI is 32-bit while DXE is 64-bit on x64 platforms
 ///
-typedef struct tdEFI_PLATFORM_FIRMWARE_BLOB
-  {
-    EFI_PHYSICAL_ADDRESS BlobBase;
-    ulong BlobLength;
-  }
-  EFI_PLATFORM_FIRMWARE_BLOB;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_PLATFORM_FIRMWARE_BLOB
+{
+  public EFI_PHYSICAL_ADDRESS BlobBase;
+  public ulong BlobLength;
+}
 
 ///
 /// UEFI_PLATFORM_FIRMWARE_BLOB
@@ -154,12 +155,12 @@ typedef struct tdEFI_PLATFORM_FIRMWARE_BLOB
 /// This structure is used in EV_EFI_PLATFORM_FIRMWARE_BLOB
 /// event to facilitate the measurement of firmware volume.
 ///
-typedef struct tdUEFI_PLATFORM_FIRMWARE_BLOB
-  {
-    EFI_PHYSICAL_ADDRESS BlobBase;
-    ulong BlobLength;
-  }
-  UEFI_PLATFORM_FIRMWARE_BLOB;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_PLATFORM_FIRMWARE_BLOB
+{
+  public EFI_PHYSICAL_ADDRESS BlobBase;
+  public ulong BlobLength;
+}
 
 ///
 /// UEFI_PLATFORM_FIRMWARE_BLOB2
@@ -167,14 +168,14 @@ typedef struct tdUEFI_PLATFORM_FIRMWARE_BLOB
 /// This structure is used in EV_EFI_PLATFORM_FIRMWARE_BLOB2
 /// event to facilitate the measurement of firmware volume.
 ///
-typedef struct tdUEFI_PLATFORM_FIRMWARE_BLOB2
-  {
-    byte BlobDescriptionSize;
-    // byte                             BlobDescription[BlobDescriptionSize];
-    // EFI_PHYSICAL_ADDRESS              BlobBase;
-    // ulong                            BlobLength;
-  }
-  UEFI_PLATFORM_FIRMWARE_BLOB2;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_PLATFORM_FIRMWARE_BLOB2
+{
+  public byte BlobDescriptionSize;
+  // byte                             BlobDescription[BlobDescriptionSize];
+  // EFI_PHYSICAL_ADDRESS              BlobBase;
+  // ulong                            BlobLength;
+}
 
 ///
 /// EFI_IMAGE_LOAD_EVENT
@@ -182,15 +183,15 @@ typedef struct tdUEFI_PLATFORM_FIRMWARE_BLOB2
 /// This structure is used in EV_EFI_BOOT_SERVICES_APPLICATION,
 /// EV_EFI_BOOT_SERVICES_DRIVER and EV_EFI_RUNTIME_SERVICES_DRIVER
 ///
-typedef struct tdEFI_IMAGE_LOAD_EVENT
-  {
-    EFI_PHYSICAL_ADDRESS ImageLocationInMemory;
-    ulong ImageLengthInMemory;
-    ulong ImageLinkTimeAddress;
-    ulong LengthOfDevicePath;
-    EFI_DEVICE_PATH_PROTOCOL DevicePath[1];
-  }
-  EFI_IMAGE_LOAD_EVENT;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_IMAGE_LOAD_EVENT
+{
+  public EFI_PHYSICAL_ADDRESS ImageLocationInMemory;
+  public ulong ImageLengthInMemory;
+  public ulong ImageLinkTimeAddress;
+  public ulong LengthOfDevicePath;
+  public fixed EFI_DEVICE_PATH_PROTOCOL DevicePath[1];
+}
 
 ///
 /// UEFI_IMAGE_LOAD_EVENT
@@ -198,15 +199,15 @@ typedef struct tdEFI_IMAGE_LOAD_EVENT
 /// This structure is used in EV_EFI_BOOT_SERVICES_APPLICATION,
 /// EV_EFI_BOOT_SERVICES_DRIVER and EV_EFI_RUNTIME_SERVICES_DRIVER
 ///
-typedef struct tdUEFI_IMAGE_LOAD_EVENT
-  {
-    EFI_PHYSICAL_ADDRESS ImageLocationInMemory;
-    ulong ImageLengthInMemory;
-    ulong ImageLinkTimeAddress;
-    ulong LengthOfDevicePath;
-    EFI_DEVICE_PATH_PROTOCOL DevicePath[1];
-  }
-  UEFI_IMAGE_LOAD_EVENT;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_IMAGE_LOAD_EVENT
+{
+  public EFI_PHYSICAL_ADDRESS ImageLocationInMemory;
+  public ulong ImageLengthInMemory;
+  public ulong ImageLinkTimeAddress;
+  public ulong LengthOfDevicePath;
+  public fixed EFI_DEVICE_PATH_PROTOCOL DevicePath[1];
+}
 
 ///
 /// EFI_HANDOFF_TABLE_POINTERS
@@ -214,12 +215,12 @@ typedef struct tdUEFI_IMAGE_LOAD_EVENT
 /// This structure is used in EV_EFI_HANDOFF_TABLES event to facilitate
 /// the measurement of given configuration tables.
 ///
-typedef struct tdEFI_HANDOFF_TABLE_POINTERS
-  {
-    ulong NumberOfTables;
-    EFI_CONFIGURATION_TABLE TableEntry[1];
-  }
-  EFI_HANDOFF_TABLE_POINTERS;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_HANDOFF_TABLE_POINTERS
+{
+  public ulong NumberOfTables;
+  public fixed EFI_CONFIGURATION_TABLE TableEntry[1];
+}
 
 ///
 /// UEFI_HANDOFF_TABLE_POINTERS
@@ -227,12 +228,12 @@ typedef struct tdEFI_HANDOFF_TABLE_POINTERS
 /// This structure is used in EV_EFI_HANDOFF_TABLES event to facilitate
 /// the measurement of given configuration tables.
 ///
-typedef struct tdUEFI_HANDOFF_TABLE_POINTERS
-  {
-    ulong NumberOfTables;
-    EFI_CONFIGURATION_TABLE TableEntry[1];
-  }
-  UEFI_HANDOFF_TABLE_POINTERS;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_HANDOFF_TABLE_POINTERS
+{
+  public ulong NumberOfTables;
+  public fixed EFI_CONFIGURATION_TABLE TableEntry[1];
+}
 
 ///
 /// UEFI_HANDOFF_TABLE_POINTERS2
@@ -240,14 +241,14 @@ typedef struct tdUEFI_HANDOFF_TABLE_POINTERS
 /// This structure is used in EV_EFI_HANDOFF_TABLES2 event to facilitate
 /// the measurement of given configuration tables.
 ///
-typedef struct tdUEFI_HANDOFF_TABLE_POINTERS2
-  {
-    byte TableDescriptionSize;
-    // byte                             TableDescription[TableDescriptionSize];
-    // ulong                            NumberOfTables;
-    // EFI_CONFIGURATION_TABLE           TableEntry[1];
-  }
-  UEFI_HANDOFF_TABLE_POINTERS2;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_HANDOFF_TABLE_POINTERS2
+{
+  public byte TableDescriptionSize;
+  // byte                             TableDescription[TableDescriptionSize];
+  // ulong                            NumberOfTables;
+  // EFI_CONFIGURATION_TABLE           TableEntry[1];
+}
 
 ///
 /// EFI_VARIABLE_DATA
@@ -257,15 +258,15 @@ typedef struct tdUEFI_HANDOFF_TABLE_POINTERS2
 /// data.
 /// This is defined in TCG EFI Platform Spec for TPM1.1 or 1.2 V1.22
 ///
-typedef struct tdEFI_VARIABLE_DATA
-  {
-    EFI_GUID VariableName;
-    ulong UnicodeNameLength;
-    ulong VariableDataLength;
-    char UnicodeName[1];
-    sbyte VariableData[1];                        ///< Driver or platform-specific data
-  }
-  EFI_VARIABLE_DATA;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_VARIABLE_DATA
+{
+  public EFI_GUID VariableName;
+  public ulong UnicodeNameLength;
+  public ulong VariableDataLength;
+  public fixed char UnicodeName[1];
+  public fixed sbyte VariableData[1];                        ///< Driver or platform-specific data
+}
 
 ///
 /// UEFI_VARIABLE_DATA
@@ -275,15 +276,14 @@ typedef struct tdEFI_VARIABLE_DATA
 /// data.
 /// This is defined in TCG PC Client Firmware Profile Spec 00.21
 ///
-typedef struct tdUEFI_VARIABLE_DATA
-  {
-    EFI_GUID VariableName;
-    ulong UnicodeNameLength;
-    ulong VariableDataLength;
-    char UnicodeName[1];
-    sbyte VariableData[1];                        ///< Driver or platform-specific data
-  }
-  UEFI_VARIABLE_DATA;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_VARIABLE_DATA
+{
+  public EFI_GUID VariableName;
+  public ulong UnicodeNameLength;
+  public ulong VariableDataLength;
+  public fixed char UnicodeName[1];
+  public fixed sbyte VariableData[1];                        ///< Driver or platform-specific data
 }
 
 //
@@ -299,21 +299,21 @@ public unsafe struct EFI_VARIABLE_DATA_TREE
   public fixed sbyte VariableData[1];
 }
 
-typedef struct tdEFI_GPT_DATA
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_GPT_DATA
 {
-  EFI_PARTITION_TABLE_HEADER EfiPartitionHeader;
-  ulong NumberOfPartitions;
-  EFI_PARTITION_ENTRY Partitions[1];
+  public EFI_PARTITION_TABLE_HEADER EfiPartitionHeader;
+  public ulong NumberOfPartitions;
+  public fixed EFI_PARTITION_ENTRY Partitions[1];
 }
-EFI_GPT_DATA;
 
-typedef struct tdUEFI_GPT_DATA
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct UEFI_GPT_DATA
 {
-  EFI_PARTITION_TABLE_HEADER EfiPartitionHeader;
-  ulong NumberOfPartitions;
-  EFI_PARTITION_ENTRY Partitions[1];
+  public EFI_PARTITION_TABLE_HEADER EfiPartitionHeader;
+  public ulong NumberOfPartitions;
+  public fixed EFI_PARTITION_ENTRY Partitions[1];
 }
-UEFI_GPT_DATA;
 
 public unsafe partial class EFI
 {
@@ -387,28 +387,28 @@ public unsafe struct TCG_DEVICE_SECURITY_EVENT_DATA_USB_CONTEXT
 //
 // Crypto Agile Log Entry Format
 //
-typedef struct tdTCG_PCR_EVENT2
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_PCR_EVENT2
 {
-  TCG_PCRINDEX PCRIndex;
-  TCG_EVENTTYPE EventType;
-  TPML_DIGEST_VALUES Digest;
-  uint EventSize;
-  byte Event[1];
+  public TCG_PCRINDEX PCRIndex;
+  public TCG_EVENTTYPE EventType;
+  public TPML_DIGEST_VALUES Digest;
+  public uint EventSize;
+  public fixed byte Event[1];
 }
-TCG_PCR_EVENT2;
 
 //
 // TCG PCR Event2 Header
 // Follow TCG EFI Protocol Spec 5.2 Crypto Agile Log Entry Format
 //
-typedef struct tdTCG_PCR_EVENT2_HDR
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_PCR_EVENT2_HDR
 {
-  TCG_PCRINDEX PCRIndex;
-  TCG_EVENTTYPE EventType;
-  TPML_DIGEST_VALUES Digests;
-  uint EventSize;
+  public TCG_PCRINDEX PCRIndex;
+  public TCG_EVENTTYPE EventType;
+  public TPML_DIGEST_VALUES Digests;
+  public uint EventSize;
 }
-TCG_PCR_EVENT2_HDR;
 
 //
 // Log Header Entry Data
@@ -498,75 +498,78 @@ public unsafe struct TCG_EfiSpecIDEventStruct
   // byte               vendorInfo[vendorInfoSize];
 }
 
-typedef struct tdTCG_PCClientTaggedEvent
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_PCClientTaggedEvent
 {
-  uint taggedEventID;
-  uint taggedEventDataSize;
+  public uint taggedEventID;
+  public uint taggedEventDataSize;
   // byte               taggedEventData[taggedEventDataSize];
 }
-TCG_PCClientTaggedEvent;
 
 public unsafe partial class EFI
 {
   public const ulong TCG_Sp800_155_PlatformId_Event_SIGNATURE = "SP800-155 Event";
   public const ulong TCG_Sp800_155_PlatformId_Event2_SIGNATURE = "SP800-155 Event2";
+}
 
-  typedef struct tdTCG_Sp800_155_PlatformId_Event2
-  {
-    byte Signature[16];
-    //
-    // Where Vendor ID is an integer defined
-    // at http://www.iana.org/assignments/enterprisenumbers
-    //
-    uint VendorId;
-    //
-    // 16-byte identifier of a given platform's static configuration of code
-    //
-    EFI_GUID ReferenceManifestGuid;
-    //
-    // Below structure is newly added in TCG_Sp800_155_PlatformId_Event2.
-    //
-    // byte               PlatformManufacturerStrSize;
-    // byte               PlatformManufacturerStr[PlatformManufacturerStrSize];
-    // byte               PlatformModelSize;
-    // byte               PlatformModel[PlatformModelSize];
-    // byte               PlatformVersionSize;
-    // byte               PlatformVersion[PlatformVersionSize];
-    // byte               PlatformModelSize;
-    // byte               PlatformModel[PlatformModelSize];
-    // byte               FirmwareManufacturerStrSize;
-    // byte               FirmwareManufacturerStr[FirmwareManufacturerStrSize];
-    // uint              FirmwareManufacturerId;
-    // byte               FirmwareVersion;
-    // byte               FirmwareVersion[FirmwareVersionSize]];
-  }
-  TCG_Sp800_155_PlatformId_Event2;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_Sp800_155_PlatformId_Event2
+{
+  public fixed byte Signature[16];
+  //
+  // Where Vendor ID is an integer defined
+  // at http://www.iana.org/assignments/enterprisenumbers
+  //
+  public uint VendorId;
+  //
+  // 16-byte identifier of a given platform's static configuration of code
+  //
+  public EFI_GUID ReferenceManifestGuid;
+  //
+  // Below structure is newly added in TCG_Sp800_155_PlatformId_Event2.
+  //
+  // byte               PlatformManufacturerStrSize;
+  // byte               PlatformManufacturerStr[PlatformManufacturerStrSize];
+  // byte               PlatformModelSize;
+  // byte               PlatformModel[PlatformModelSize];
+  // byte               PlatformVersionSize;
+  // byte               PlatformVersion[PlatformVersionSize];
+  // byte               PlatformModelSize;
+  // byte               PlatformModel[PlatformModelSize];
+  // byte               FirmwareManufacturerStrSize;
+  // byte               FirmwareManufacturerStr[FirmwareManufacturerStrSize];
+  // uint              FirmwareManufacturerId;
+  // byte               FirmwareVersion;
+  // byte               FirmwareVersion[FirmwareVersionSize]];
+}
 
-public const ulong TCG_EfiStartupLocalityEvent_SIGNATURE = "StartupLocality";
+public unsafe partial class EFI
+{
+  public const ulong TCG_EfiStartupLocalityEvent_SIGNATURE = "StartupLocality";
 
   //
   // The Locality Indicator which sent the TPM2_Startup command
   //
   public const ulong LOCALITY_0_INDICATOR = 0x00;
   public const ulong LOCALITY_3_INDICATOR = 0x03;
+}
 
+//
+// Startup Locality Event
+//
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct TCG_EfiStartupLocalityEvent
+{
+  public fixed byte Signature[16];
   //
-  // Startup Locality Event
+  // The Locality Indicator which sent the TPM2_Startup command
   //
-  typedef struct tdTCG_EfiStartupLocalityEvent
-  {
-    byte Signature[16];
-    //
-    // The Locality Indicator which sent the TPM2_Startup command
-    //
-    byte StartupLocality;
-  }
-  TCG_EfiStartupLocalityEvent;
+  public byte StartupLocality;
+}
 
 //
 // Restore original structure alignment
 //
 // #pragma pack ()
-}
 
 // #endif

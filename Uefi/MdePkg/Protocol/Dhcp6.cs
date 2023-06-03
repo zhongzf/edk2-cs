@@ -205,7 +205,7 @@ public unsafe struct Dhcp6
     ///
     /// The DHCPv6 packet header.
     ///
-   public EFI_DHCP6_HEADER Header;
+    public EFI_DHCP6_HEADER Header;
   ///
   /// Start of the DHCPv6 packed option data.
   ///
@@ -318,6 +318,37 @@ public unsafe struct EFI_DHCP6_MODE_DATA
   public EFI_DHCP6_IA* Ia;
 }
 
+// /**
+//   EFI_DHCP6_CALLBACK is provided by the consumer of the EFI DHCPv6 Protocol instance to
+//   intercept events that occurs in the DHCPv6 S.A.R.R process.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance that is used to configure this
+//                                 callback function.
+//   @param[in]  Context           Pointer to the context that is initialized by EFI_DHCP6_PROTOCOL.Configure().
+//   @param[in]  CurrentState      The current state of the configured IA.
+//   @param[in]  Dhcp6Event        The event that occurs in the current state, which usually means a state transition.
+//   @param[in]  Packet            Pointer to the DHCPv6 packet that is about to be sent or has been received.
+//                                 The EFI DHCPv6 Protocol instance is responsible for freeing the buffer.
+//   @param[out] NewPacket         Pointer to the new DHCPv6 packet to overwrite the Packet. NewPacket can not
+//                                 share the buffer with Packet. If *NewPacket is not NULL, the EFI DHCPv6
+//                                 Protocol instance is responsible for freeing the buffer.
+// 
+//   @retval EFI_SUCCESS           Tell the EFI DHCPv6 Protocol instance to continue the DHCPv6 S.A.R.R process.
+//   @retval EFI_ABORTED           Tell the EFI DHCPv6 Protocol instance to abort the DHCPv6 S.A.R.R process,
+//                                 and the state of the configured IA will be transferred to Dhcp6Init.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_CALLBACK)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN void                      *Context,
+//   IN EFI_DHCP6_STATE           CurrentState,
+//   IN EFI_DHCP6_EVENT           Dhcp6Event,
+//   IN EFI_DHCP6_PACKET          *Packet,
+//   OUT EFI_DHCP6_PACKET         **NewPacket OPTIONAL
+//   );
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DHCP6_CONFIG_DATA
 {
@@ -325,7 +356,7 @@ public unsafe struct EFI_DHCP6_CONFIG_DATA
   /// The callback function is to intercept various events that occur in the DHCPv6 S.A.R.R
   /// process. Set to NULL to ignore all those events.
   ///
-  public EFI_DHCP6_CALLBACK Dhcp6Callback;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */EFI_DHCP6_STATE /*CurrentState*/,/* IN */EFI_DHCP6_EVENT /*Dhcp6Event*/,/* IN */EFI_DHCP6_PACKET* /*Packet*/,/* OUT */EFI_DHCP6_PACKET** /*NewPacket*/, EFI_STATUS> /*EFI_DHCP6_CALLBACK*/ Dhcp6Callback;
   ///
   /// Pointer to the context that will be passed to Dhcp6Callback.
   ///
@@ -373,6 +404,387 @@ public unsafe struct EFI_DHCP6_CONFIG_DATA
   public EFI_DHCP6_RETRANSMISSION* SolicitRetransmission;
 }
 
+// /**
+//   EFI_DHCP6_INFO_CALLBACK is provided by the consumer of the EFI DHCPv6 Protocol
+//   instance to intercept events that occurs in the DHCPv6 Information Request exchange process.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance that is used to configure this
+//                                 callback function.
+//   @param[in]  Context           Pointer to the context that is initialized in the EFI_DHCP6_PROTOCOL.InfoRequest().
+//   @param[in]  Packet            Pointer to Reply packet that has been received. The EFI DHCPv6 Protocol instance is
+//                                 responsible for freeing the buffer.
+// 
+//   @retval EFI_SUCCESS           Tell the EFI DHCPv6 Protocol instance to finish Information Request exchange process.
+//   @retval EFI_NOT_READY         Tell the EFI DHCPv6 Protocol instance to continue Information Request exchange process.
+//   @retval EFI_ABORTED           Tell the EFI DHCPv6 Protocol instance to abort the Information Request exchange process.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_INFO_CALLBACK)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN void                      *Context,
+//   IN EFI_DHCP6_PACKET          *Packet
+//   );
+
+// /**
+//   Retrieve the current operating mode data and configuration data for the EFI DHCPv6 Protocol instance.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+//   @param[out] Dhcp6ModeData     Pointer to the DHCPv6 mode data structure. The caller is responsible for freeing this
+//                                 structure and each reference buffer.
+//   @param[out] Dhcp6ConfigData   Pointer to the DHCPv6 configuration data structure. The caller is responsible for
+//                                 freeing this structure and each reference buffer.
+// 
+//   @retval EFI_SUCCESS           The mode data was returned.
+//   @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Protocol instance has not been configured when Dhcp6ConfigData is not NULL.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE:
+//                                 - This is NULL.
+//                                 - Both Dhcp6ConfigData and Dhcp6ModeData are NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_GET_MODE_DATA)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   OUT EFI_DHCP6_MODE_DATA      *Dhcp6ModeData OPTIONAL,
+//   OUT EFI_DHCP6_CONFIG_DATA    *Dhcp6ConfigData OPTIONAL
+//   );
+
+// /**
+//   Initialize or clean up the configuration data for the EFI DHCPv6 Protocol instance.
+// 
+//   The Configure() function is used to initialize or clean up the configuration data of the EFI
+//   DHCPv6 Protocol instance.
+//   - When Dhcp6CfgData is not NULL and Configure() is called successfully, the
+//     configuration data will be initialized in the EFI DHCPv6 Protocol instance and the state of the
+//     configured IA will be transferred into Dhcp6Init.
+//   - When Dhcp6CfgData is NULL and Configure() is called successfully, the configuration
+//     data will be cleaned up and no IA will be associated with the EFI DHCPv6 Protocol instance.
+// 
+//   To update the configuration data for an EFI DCHPv6 Protocol instance, the original data must be
+//   cleaned up before setting the new configuration data.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+//   @param[in]  Dhcp6CfgData      Pointer to the DHCPv6 configuration data structure.
+// 
+//   @retval EFI_SUCCESS           The mode data was returned.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
+//                                 - This is NULL.
+//                                 - OptionCount > 0 and OptionList is NULL.
+//                                 - OptionList is not NULL, and Client Id option, Reconfigure Accept option,
+//                                   Rapid Commit option or any IA option is specified in the OptionList.
+//                                 - IaDescriptor.Type is neither EFI_DHCP6_IA_TYPE_NA nor EFI_DHCP6_IA_TYPE_NA.
+//                                 - IaDescriptor is not unique.
+//                                 - Both IaInfoEvent and SolicitRetransimssion are NULL.
+//                                 - SolicitRetransmission is not NULL, and both SolicitRetransimssion->Mrc and
+//                                   SolicitRetransmission->Mrd are zero.
+//   @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Protocol instance has been already configured
+//                                 when Dhcp6CfgData is not NULL.
+//                                 The EFI DHCPv6 Protocol instance has already started the
+//                                 DHCPv6 S.A.R.R when Dhcp6CfgData is NULL.
+//   @retval EFI_OUT_OF_RESOURCES  Required system resources could not be allocated.
+//   @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_CONFIGURE)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN EFI_DHCP6_CONFIG_DATA     *Dhcp6CfgData OPTIONAL
+//   );
+
+// /**
+//   Start the DHCPv6 S.A.R.R process.
+// 
+//   The Start() function starts the DHCPv6 S.A.R.R process. This function can be called only when
+//   the state of the configured IA is in the Dhcp6Init state. If the DHCPv6 S.A.R.R process completes
+//   successfully, the state of the configured IA will be transferred through Dhcp6Selecting and
+//   Dhcp6Requesting to Dhcp6Bound state. The update of the IPv6 addresses will be notified through
+//   EFI_DHCP6_CONFIG_DATA.IaInfoEvent. At the time when each event occurs in this process, the
+//   callback function set by EFI_DHCP6_PROTOCOL.Configure() will be called and the user can take
+//   this opportunity to control the process. If EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL, the
+//   Start() function call is a blocking operation. It will return after the DHCPv6 S.A.R.R process
+//   completes or aborted by users. If the process is aborted by system or network error, the state of
+//   the configured IA will be transferred to Dhcp6Init. The Start() function can be called again to
+//   restart the process.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+// 
+//   @retval EFI_SUCCESS           The DHCPv6 S.A.R.R process is completed and at least one IPv6
+//                                 address has been bound to the configured IA when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
+//                                 The DHCPv6 S.A.R.R process is started when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
+//   @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured.
+//   @retval EFI_INVALID_PARAMETER This is NULL.
+//   @retval EFI_OUT_OF_RESOURCES  Required system resources could not be allocated.
+//   @retval EFI_ALREADY_STARTED   The DHCPv6 S.A.R.R process has already started.
+//   @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
+//   @retval EFI_NO_RESPONSE       The DHCPv6 S.A.R.R process failed because of no response.
+//   @retval EFI_NO_MAPPING        No IPv6 address has been bound to the configured IA after the
+//                                 DHCPv6 S.A.R.R process.
+//   @retval EFI_ABORTED           The DHCPv6 S.A.R.R process aborted by user.
+//   @retval EFI_NO_MEDIA          There was a media error.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_START)(
+//   IN EFI_DHCP6_PROTOCOL        *This
+//   );
+
+// /**
+//   Request configuration information without the assignment of any IA addresses of the client.
+// 
+//   The InfoRequest() function is used to request configuration information without the assignment
+//   of any IPv6 address of the client. Client sends out Information Request packet to obtain
+//   the required configuration information, and DHCPv6 server responds with Reply packet containing
+//   the information for the client. The received Reply packet will be passed to the user by
+//   ReplyCallback function. If user returns EFI_NOT_READY from ReplyCallback, the EFI DHCPv6
+//   Protocol instance will continue to receive other Reply packets unless timeout according to
+//   the Retransmission parameter. Otherwise, the Information Request exchange process will be
+//   finished successfully if user returns EFI_SUCCESS from ReplyCallback.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+//   @param[in]  SendClientId      If TRUE, the EFI DHCPv6 Protocol instance will build Client
+//                                 Identifier option and include it into Information Request
+//                                 packet. If FALSE, Client Identifier option will not be included.
+//                                 Client Identifier option can not be specified through OptionList
+//                                 parameter.
+//   @param[in]  OptionRequest     Pointer to the Option Request option in the Information Request
+//                                 packet. Option Request option can not be specified through
+//                                 OptionList parameter.
+//   @param[in]  OptionCount       Number of options in OptionList.
+//   @param[in]  OptionList        List of other DHCPv6 options. These options will be appended
+//                                 to the Option Request option. The caller is responsible for
+//                                 freeing this buffer. Type is defined in EFI_DHCP6_PROTOCOL.GetModeData().
+//   @param[in]  Retransmission    Parameter to control Information Request packet retransmission
+//                                 behavior. The buffer can be freed after EFI_DHCP6_PROTOCOL.InfoRequest()
+//                                 returns.
+//   @param[in]  TimeoutEvent      If not NULL, this event is signaled when the information request
+//                                 exchange aborted because of no response. If NULL, the function
+//                                 call is a blocking operation; and it will return after the
+//                                 information-request exchange process finish or aborted by users.
+//   @param[in]  ReplyCallback     The callback function is to intercept various events that occur
+//                                 in the Information Request exchange process. It should not be
+//                                 set to NULL.
+//   @param[in]  CallbackContext   Pointer to the context that will be passed to ReplyCallback.
+// 
+//   @retval EFI_SUCCESS           The DHCPv6 S.A.R.R process is completed and at least one IPv6
+//   @retval EFI_SUCCESS           The DHCPv6 information request exchange process completed
+//                                 when TimeoutEvent is NULL. Information Request packet has been
+//                                 sent to DHCPv6 server when TimeoutEvent is not NULL.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE:
+//                                 - This is NULL.
+//                                 - OptionRequest is NULL or OptionRequest->OpCode is invalid.
+//                                 - OptionCount > 0 and OptionList is NULL.
+//                                 - OptionList is not NULL, and Client Identify option or
+//                                   Option Request option is specified in the OptionList.
+//                                 - Retransimssion is NULL.
+//                                 - Both Retransimssion->Mrc and Retransmission->Mrd are zero.
+//                                 - ReplyCallback is NULL.
+//   @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
+//   @retval EFI_NO_RESPONSE       The DHCPv6 information request exchange process failed
+//                                 because of no response, or not all requested-options are
+//                                 responded by DHCPv6 servers when Timeout happened.
+//   @retval EFI_ABORTED           The DHCPv6 information request exchange process aborted by user.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_INFO_REQUEST)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN bool                   SendClientId,
+//   IN EFI_DHCP6_PACKET_OPTION   *OptionRequest,
+//   IN uint                    OptionCount,
+//   IN EFI_DHCP6_PACKET_OPTION   *OptionList[] OPTIONAL,
+//   IN EFI_DHCP6_RETRANSMISSION  *Retransmission,
+//   IN EFI_EVENT                 TimeoutEvent OPTIONAL,
+//   IN EFI_DHCP6_INFO_CALLBACK   ReplyCallback,
+//   IN void                      *CallbackContext OPTIONAL
+//   );
+
+// /**
+//   Manually extend the valid and preferred lifetimes for the IPv6 addresses of the configured
+//   IA and update other configuration parameters by sending Renew or Rebind packet.
+// 
+//   The RenewRebind() function is used to manually extend the valid and preferred lifetimes for the
+//   IPv6 addresses of the configured IA and update other configuration parameters by sending Renew or
+//   Rebind packet.
+//   - When RebindRequest is FALSE and the state of the configured IA is Dhcp6Bound, it
+//   will send Renew packet to the previously DHCPv6 server and transfer the state of the configured
+//   IA to Dhcp6Renewing. If valid Reply packet received, the state transfers to Dhcp6Bound
+//   and the valid and preferred timer restarts. If fails, the state transfers to Dhcp6Bound but the
+//   timer continues.
+//   - When RebindRequest is TRUE and the state of the configured IA is Dhcp6Bound, it will
+//   send Rebind packet. If valid Reply packet received, the state transfers to Dhcp6Bound and the
+//   valid and preferred timer restarts. If fails, the state transfers to Dhcp6Init and the IA can't
+//   be used.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP4_PROTOCOL instance.
+//   @param[in]  RebindRequest     If TRUE, it will send Rebind packet and enter the Dhcp6Rebinding state.
+//                                 Otherwise, it will send Renew packet and enter the Dhcp6Renewing state.
+// 
+//   @retval EFI_SUCCESS           The DHCPv6 renew/rebind exchange process has completed and at
+//                                 least one IPv6 address of the configured IA has been bound again
+//                                 when EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
+//                                 The EFI DHCPv6 Protocol instance has sent Renew or Rebind packet
+//                                 when EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
+//   @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured, or the state
+//                                 of the configured IA is not in Dhcp6Bound.
+//   @retval EFI_ALREADY_STARTED   The state of the configured IA has already entered Dhcp6Renewing
+//                                 when RebindRequest is FALSE.
+//                                 The state of the configured IA has already entered Dhcp6Rebinding
+//                                 when RebindRequest is TRUE.
+//   @retval EFI_INVALID_PARAMETER This is NULL.
+//   @retval EFI_DEVICE_ERROR      An unexpected system or system error occurred.
+//   @retval EFI_NO_RESPONSE       The DHCPv6 renew/rebind exchange process failed because of no response.
+//   @retval EFI_NO_MAPPING        No IPv6 address has been bound to the configured IA after the DHCPv6
+//                                 renew/rebind exchange process.
+//   @retval EFI_ABORTED           The DHCPv6 renew/rebind exchange process aborted by user.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_RENEW_REBIND)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN bool                   RebindRequest
+//   );
+
+// /**
+//   Inform that one or more IPv6 addresses assigned by a server are already in use by
+//   another node.
+// 
+//   The Decline() function is used to manually decline the assignment of IPv6 addresses, which
+//   have been already used by another node. If all IPv6 addresses of the configured IA are declined
+//   through this function, the state of the IA will switch through Dhcp6Declining to Dhcp6Init,
+//   otherwise, the state of the IA will restore to Dhcp6Bound after the declining process. The
+//   Decline() can only be called when the IA is in Dhcp6Bound state. If the
+//   EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL, this function is a blocking operation. It
+//   will return after the declining process finishes, or aborted by user.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP4_PROTOCOL instance.
+//   @param[in]  AddressCount      Number of declining IPv6 addresses.
+//   @param[in]  Addresses         Pointer to the buffer stored all the declining IPv6 addresses.
+// 
+//   @retval EFI_SUCCESS           The DHCPv6 decline exchange process has completed when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
+//                                 The EFI DHCPv6 Protocol instance has sent Decline packet when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
+//                                 - This is NULL.
+//                                 - AddressCount is zero or Addresses is NULL.
+//   @retval EFI_NOT_FOUND         Any specified IPv6 address is not correlated with the configured IA
+//                                 for this instance.
+//   @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured, or the
+//                                 state of the configured IA is not in Dhcp6Bound.
+//   @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
+//   @retval EFI_ABORTED           The DHCPv6 decline exchange process aborted by user.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_DECLINE)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN uint                    AddressCount,
+//   IN EFI_IPv6_ADDRESS          *Addresses
+//   );
+
+// /**
+//   Release one or more IPv6 addresses associated with the configured IA for current instance.
+// 
+//   The Release() function is used to manually release the one or more IPv6 address. If AddressCount
+//   is zero, it will release all IPv6 addresses of the configured IA. If all IPv6 addresses of the IA
+//   are released through this function, the state of the IA will switch through Dhcp6Releasing to
+//   Dhcp6Init, otherwise, the state of the IA will restore to Dhcp6Bound after the releasing process.
+//   The Release() can only be called when the IA is in Dhcp6Bound state. If the
+//   EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL, the function is a blocking operation. It will return
+//   after the releasing process finishes, or aborted by user.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+//   @param[in]  AddressCount      Number of releasing IPv6 addresses.
+//   @param[in]  Addresses         Pointer to the buffer stored all the releasing IPv6 addresses.
+//                                 Ignored if AddressCount is zero.
+//   @retval EFI_SUCCESS           The DHCPv6 release exchange process has completed when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
+//                                 The EFI DHCPv6 Protocol instance has sent Release packet when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
+//                                 - This is NULL.
+//                                 - AddressCount is not zero or Addresses is NULL.
+//   @retval EFI_NOT_FOUND         Any specified IPv6 address is not correlated with the configured
+//                                 IA for this instance.
+//   @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured, or the
+//                                 state of the configured IA is not in Dhcp6Bound.
+//   @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
+//   @retval EFI_ABORTED           The DHCPv6 release exchange process aborted by user.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_RELEASE)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN uint                    AddressCount,
+//   IN EFI_IPv6_ADDRESS          *Addresses
+//   );
+
+// /**
+//   Stop the DHCPv6 S.A.R.R process.
+// 
+//   The Stop() function is used to stop the DHCPv6 S.A.R.R process. If this function is called
+//   successfully, all the IPv6 addresses of the configured IA will be released and the state of
+//   the configured IA will be transferred to Dhcp6Init.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+// 
+//   @retval EFI_SUCCESS           The DHCPv6 S.A.R.R process has been stopped when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
+//                                 The EFI DHCPv6 Protocol instance has sent Release packet if
+//                                 need release or has been stopped if needn't, when
+//                                 EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
+//   @retval EFI_INVALID_PARAMETER This is NULL.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_STOP)(
+//   IN EFI_DHCP6_PROTOCOL        *This
+//   );
+
+// /**
+//   Parse the option data in the DHCPv6 packet.
+// 
+//   The Parse() function is used to retrieve the option list in the DHCPv6 packet.
+// 
+//   @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
+// 
+//   @param[in]  Packet            Pointer to packet to be parsed.
+//   @param[in]  OptionCount       On input, the number of entries in the PacketOptionList.
+//                                 On output, the number of DHCPv6 options in the Packet.
+//   @param[in]  PacketOptionList  List of pointers to the DHCPv6 options in the Packet.
+//                                 The OpCode and OpLen in EFI_DHCP6_PACKET_OPTION are
+//                                 both stored in network byte order.
+//   @retval EFI_SUCCESS           The packet was successfully parsed.
+//   @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
+//                                 - This is NULL.
+//                                 - Packet is NULL.
+//                                 - Packet is not a well-formed DHCPv6 packet.
+//                                 - OptionCount is NULL.
+//                                 - *OptionCount is not zero and PacketOptionList is NULL.
+//   @retval EFI_BUFFER_TOO_SMALL  *OptionCount is smaller than the number of options that were
+//                                 found in the Packet.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_DHCP6_PARSE)(
+//   IN EFI_DHCP6_PROTOCOL        *This,
+//   IN EFI_DHCP6_PACKET          *Packet,
+//   IN OUT uint                *OptionCount,
+//   OUT EFI_DHCP6_PACKET_OPTION  *PacketOptionList[] OPTIONAL
+//   );
+
 ///
 /// The EFI DHCPv6 Protocol is used to get IPv6 addresses and other configuration parameters
 /// from DHCPv6 servers.
@@ -380,300 +792,15 @@ public unsafe struct EFI_DHCP6_CONFIG_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DHCP6_PROTOCOL
 {
-  /**
-    Retrieve the current operating mode data and configuration data for the EFI DHCPv6 Protocol instance.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-    @param[out] Dhcp6ModeData     Pointer to the DHCPv6 mode data structure. The caller is responsible for freeing this
-                                  structure and each reference buffer.
-    @param[out] Dhcp6ConfigData   Pointer to the DHCPv6 configuration data structure. The caller is responsible for
-                                  freeing this structure and each reference buffer.
-
-    @retval EFI_SUCCESS           The mode data was returned.
-    @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Protocol instance has not been configured when Dhcp6ConfigData is not NULL.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE:
-                                  - This is NULL.
-                                  - Both Dhcp6ConfigData and Dhcp6ModeData are NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, EFI_DHCP6_MODE_DATA*, EFI_DHCP6_CONFIG_DATA*, EFI_STATUS> GetModeData;
-  /**
-    Initialize or clean up the configuration data for the EFI DHCPv6 Protocol instance.
-
-    The Configure() function is used to initialize or clean up the configuration data of the EFI
-    DHCPv6 Protocol instance.
-    - When Dhcp6CfgData is not NULL and Configure() is called successfully, the
-      configuration data will be initialized in the EFI DHCPv6 Protocol instance and the state of the
-      configured IA will be transferred into Dhcp6Init.
-    - When Dhcp6CfgData is NULL and Configure() is called successfully, the configuration
-      data will be cleaned up and no IA will be associated with the EFI DHCPv6 Protocol instance.
-
-    To update the configuration data for an EFI DCHPv6 Protocol instance, the original data must be
-    cleaned up before setting the new configuration data.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-    @param[in]  Dhcp6CfgData      Pointer to the DHCPv6 configuration data structure.
-
-    @retval EFI_SUCCESS           The mode data was returned.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
-                                  - This is NULL.
-                                  - OptionCount > 0 and OptionList is NULL.
-                                  - OptionList is not NULL, and Client Id option, Reconfigure Accept option,
-                                    Rapid Commit option or any IA option is specified in the OptionList.
-                                  - IaDescriptor.Type is neither EFI_DHCP6_IA_TYPE_NA nor EFI_DHCP6_IA_TYPE_NA.
-                                  - IaDescriptor is not unique.
-                                  - Both IaInfoEvent and SolicitRetransimssion are NULL.
-                                  - SolicitRetransmission is not NULL, and both SolicitRetransimssion->Mrc and
-                                    SolicitRetransmission->Mrd are zero.
-    @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Protocol instance has been already configured
-                                  when Dhcp6CfgData is not NULL.
-                                  The EFI DHCPv6 Protocol instance has already started the
-                                  DHCPv6 S.A.R.R when Dhcp6CfgData is NULL.
-    @retval EFI_OUT_OF_RESOURCES  Required system resources could not be allocated.
-    @retval EFI_DEVICE_ERROR      An unexpected system or network error occurred.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, EFI_DHCP6_CONFIG_DATA*, EFI_STATUS> Configure;
-  /**
-    Start the DHCPv6 S.A.R.R process.
-
-    The Start() function starts the DHCPv6 S.A.R.R process. This function can be called only when
-    the state of the configured IA is in the Dhcp6Init state. If the DHCPv6 S.A.R.R process completes
-    successfully, the state of the configured IA will be transferred through Dhcp6Selecting and
-    Dhcp6Requesting to Dhcp6Bound state. The update of the IPv6 addresses will be notified through
-    EFI_DHCP6_CONFIG_DATA.IaInfoEvent. At the time when each event occurs in this process, the
-    callback function set by EFI_DHCP6_PROTOCOL.Configure() will be called and the user can take
-    this opportunity to control the process. If EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL, the
-    Start() function call is a blocking operation. It will return after the DHCPv6 S.A.R.R process
-    completes or aborted by users. If the process is aborted by system or network error, the state of
-    the configured IA will be transferred to Dhcp6Init. The Start() function can be called again to
-    restart the process.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-
-    @retval EFI_SUCCESS           The DHCPv6 S.A.R.R process is completed and at least one IPv6
-                                  address has been bound to the configured IA when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
-                                  The DHCPv6 S.A.R.R process is started when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
-    @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured.
-    @retval EFI_INVALID_PARAMETER This is NULL.
-    @retval EFI_OUT_OF_RESOURCES  Required system resources could not be allocated.
-    @retval EFI_ALREADY_STARTED   The DHCPv6 S.A.R.R process has already started.
-    @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
-    @retval EFI_NO_RESPONSE       The DHCPv6 S.A.R.R process failed because of no response.
-    @retval EFI_NO_MAPPING        No IPv6 address has been bound to the configured IA after the
-                                  DHCPv6 S.A.R.R process.
-    @retval EFI_ABORTED           The DHCPv6 S.A.R.R process aborted by user.
-    @retval EFI_NO_MEDIA          There was a media error.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, EFI_STATUS> Start;
-  /**
-    Request configuration information without the assignment of any IA addresses of the client.
-
-    The InfoRequest() function is used to request configuration information without the assignment
-    of any IPv6 address of the client. Client sends out Information Request packet to obtain
-    the required configuration information, and DHCPv6 server responds with Reply packet containing
-    the information for the client. The received Reply packet will be passed to the user by
-    ReplyCallback function. If user returns EFI_NOT_READY from ReplyCallback, the EFI DHCPv6
-    Protocol instance will continue to receive other Reply packets unless timeout according to
-    the Retransmission parameter. Otherwise, the Information Request exchange process will be
-    finished successfully if user returns EFI_SUCCESS from ReplyCallback.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-    @param[in]  SendClientId      If TRUE, the EFI DHCPv6 Protocol instance will build Client
-                                  Identifier option and include it into Information Request
-                                  packet. If FALSE, Client Identifier option will not be included.
-                                  Client Identifier option can not be specified through OptionList
-                                  parameter.
-    @param[in]  OptionRequest     Pointer to the Option Request option in the Information Request
-                                  packet. Option Request option can not be specified through
-                                  OptionList parameter.
-    @param[in]  OptionCount       Number of options in OptionList.
-    @param[in]  OptionList        List of other DHCPv6 options. These options will be appended
-                                  to the Option Request option. The caller is responsible for
-                                  freeing this buffer. Type is defined in EFI_DHCP6_PROTOCOL.GetModeData().
-    @param[in]  Retransmission    Parameter to control Information Request packet retransmission
-                                  behavior. The buffer can be freed after EFI_DHCP6_PROTOCOL.InfoRequest()
-                                  returns.
-    @param[in]  TimeoutEvent      If not NULL, this event is signaled when the information request
-                                  exchange aborted because of no response. If NULL, the function
-                                  call is a blocking operation; and it will return after the
-                                  information-request exchange process finish or aborted by users.
-    @param[in]  ReplyCallback     The callback function is to intercept various events that occur
-                                  in the Information Request exchange process. It should not be
-                                  set to NULL.
-    @param[in]  CallbackContext   Pointer to the context that will be passed to ReplyCallback.
-
-    @retval EFI_SUCCESS           The DHCPv6 S.A.R.R process is completed and at least one IPv6
-    @retval EFI_SUCCESS           The DHCPv6 information request exchange process completed
-                                  when TimeoutEvent is NULL. Information Request packet has been
-                                  sent to DHCPv6 server when TimeoutEvent is not NULL.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE:
-                                  - This is NULL.
-                                  - OptionRequest is NULL or OptionRequest->OpCode is invalid.
-                                  - OptionCount > 0 and OptionList is NULL.
-                                  - OptionList is not NULL, and Client Identify option or
-                                    Option Request option is specified in the OptionList.
-                                  - Retransimssion is NULL.
-                                  - Both Retransimssion->Mrc and Retransmission->Mrd are zero.
-                                  - ReplyCallback is NULL.
-    @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
-    @retval EFI_NO_RESPONSE       The DHCPv6 information request exchange process failed
-                                  because of no response, or not all requested-options are
-                                  responded by DHCPv6 servers when Timeout happened.
-    @retval EFI_ABORTED           The DHCPv6 information request exchange process aborted by user.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, bool, EFI_DHCP6_PACKET_OPTION*, uint, EFI_DHCP6_PACKET_OPTION*, EFI_DHCP6_RETRANSMISSION*, EFI_EVENT, EFI_DHCP6_INFO_CALLBACK, void*, EFI_STATUS> InfoRequest;
-  /**
-    Manually extend the valid and preferred lifetimes for the IPv6 addresses of the configured
-    IA and update other configuration parameters by sending Renew or Rebind packet.
-
-    The RenewRebind() function is used to manually extend the valid and preferred lifetimes for the
-    IPv6 addresses of the configured IA and update other configuration parameters by sending Renew or
-    Rebind packet.
-    - When RebindRequest is FALSE and the state of the configured IA is Dhcp6Bound, it
-    will send Renew packet to the previously DHCPv6 server and transfer the state of the configured
-    IA to Dhcp6Renewing. If valid Reply packet received, the state transfers to Dhcp6Bound
-    and the valid and preferred timer restarts. If fails, the state transfers to Dhcp6Bound but the
-    timer continues.
-    - When RebindRequest is TRUE and the state of the configured IA is Dhcp6Bound, it will
-    send Rebind packet. If valid Reply packet received, the state transfers to Dhcp6Bound and the
-    valid and preferred timer restarts. If fails, the state transfers to Dhcp6Init and the IA can't
-    be used.
-
-    @param[in]  This              Pointer to the EFI_DHCP4_PROTOCOL instance.
-    @param[in]  RebindRequest     If TRUE, it will send Rebind packet and enter the Dhcp6Rebinding state.
-                                  Otherwise, it will send Renew packet and enter the Dhcp6Renewing state.
-
-    @retval EFI_SUCCESS           The DHCPv6 renew/rebind exchange process has completed and at
-                                  least one IPv6 address of the configured IA has been bound again
-                                  when EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
-                                  The EFI DHCPv6 Protocol instance has sent Renew or Rebind packet
-                                  when EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
-    @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured, or the state
-                                  of the configured IA is not in Dhcp6Bound.
-    @retval EFI_ALREADY_STARTED   The state of the configured IA has already entered Dhcp6Renewing
-                                  when RebindRequest is FALSE.
-                                  The state of the configured IA has already entered Dhcp6Rebinding
-                                  when RebindRequest is TRUE.
-    @retval EFI_INVALID_PARAMETER This is NULL.
-    @retval EFI_DEVICE_ERROR      An unexpected system or system error occurred.
-    @retval EFI_NO_RESPONSE       The DHCPv6 renew/rebind exchange process failed because of no response.
-    @retval EFI_NO_MAPPING        No IPv6 address has been bound to the configured IA after the DHCPv6
-                                  renew/rebind exchange process.
-    @retval EFI_ABORTED           The DHCPv6 renew/rebind exchange process aborted by user.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, bool, EFI_STATUS> RenewRebind;
-  /**
-    Inform that one or more IPv6 addresses assigned by a server are already in use by
-    another node.
-
-    The Decline() function is used to manually decline the assignment of IPv6 addresses, which
-    have been already used by another node. If all IPv6 addresses of the configured IA are declined
-    through this function, the state of the IA will switch through Dhcp6Declining to Dhcp6Init,
-    otherwise, the state of the IA will restore to Dhcp6Bound after the declining process. The
-    Decline() can only be called when the IA is in Dhcp6Bound state. If the
-    EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL, this function is a blocking operation. It
-    will return after the declining process finishes, or aborted by user.
-
-    @param[in]  This              Pointer to the EFI_DHCP4_PROTOCOL instance.
-    @param[in]  AddressCount      Number of declining IPv6 addresses.
-    @param[in]  Addresses         Pointer to the buffer stored all the declining IPv6 addresses.
-
-    @retval EFI_SUCCESS           The DHCPv6 decline exchange process has completed when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
-                                  The EFI DHCPv6 Protocol instance has sent Decline packet when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
-                                  - This is NULL.
-                                  - AddressCount is zero or Addresses is NULL.
-    @retval EFI_NOT_FOUND         Any specified IPv6 address is not correlated with the configured IA
-                                  for this instance.
-    @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured, or the
-                                  state of the configured IA is not in Dhcp6Bound.
-    @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
-    @retval EFI_ABORTED           The DHCPv6 decline exchange process aborted by user.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, uint, EFI_IPv6_ADDRESS*, EFI_STATUS> Decline;
-  /**
-    Release one or more IPv6 addresses associated with the configured IA for current instance.
-
-    The Release() function is used to manually release the one or more IPv6 address. If AddressCount
-    is zero, it will release all IPv6 addresses of the configured IA. If all IPv6 addresses of the IA
-    are released through this function, the state of the IA will switch through Dhcp6Releasing to
-    Dhcp6Init, otherwise, the state of the IA will restore to Dhcp6Bound after the releasing process.
-    The Release() can only be called when the IA is in Dhcp6Bound state. If the
-    EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL, the function is a blocking operation. It will return
-    after the releasing process finishes, or aborted by user.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-    @param[in]  AddressCount      Number of releasing IPv6 addresses.
-    @param[in]  Addresses         Pointer to the buffer stored all the releasing IPv6 addresses.
-                                  Ignored if AddressCount is zero.
-    @retval EFI_SUCCESS           The DHCPv6 release exchange process has completed when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
-                                  The EFI DHCPv6 Protocol instance has sent Release packet when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
-                                  - This is NULL.
-                                  - AddressCount is not zero or Addresses is NULL.
-    @retval EFI_NOT_FOUND         Any specified IPv6 address is not correlated with the configured
-                                  IA for this instance.
-    @retval EFI_ACCESS_DENIED     The EFI DHCPv6 Child instance hasn't been configured, or the
-                                  state of the configured IA is not in Dhcp6Bound.
-    @retval EFI_DEVICE_ERROR      An unexpected network or system error occurred.
-    @retval EFI_ABORTED           The DHCPv6 release exchange process aborted by user.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, uint, EFI_IPv6_ADDRESS*, EFI_STATUS> Release;
-  /**
-    Stop the DHCPv6 S.A.R.R process.
-
-    The Stop() function is used to stop the DHCPv6 S.A.R.R process. If this function is called
-    successfully, all the IPv6 addresses of the configured IA will be released and the state of
-    the configured IA will be transferred to Dhcp6Init.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-
-    @retval EFI_SUCCESS           The DHCPv6 S.A.R.R process has been stopped when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is NULL.
-                                  The EFI DHCPv6 Protocol instance has sent Release packet if
-                                  need release or has been stopped if needn't, when
-                                  EFI_DHCP6_CONFIG_DATA.IaInfoEvent is not NULL.
-    @retval EFI_INVALID_PARAMETER This is NULL.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, EFI_STATUS> Stop;
-  /**
-    Parse the option data in the DHCPv6 packet.
-
-    The Parse() function is used to retrieve the option list in the DHCPv6 packet.
-
-    @param[in]  This              Pointer to the EFI_DHCP6_PROTOCOL instance.
-
-    @param[in]  Packet            Pointer to packet to be parsed.
-    @param[in]  OptionCount       On input, the number of entries in the PacketOptionList.
-                                  On output, the number of DHCPv6 options in the Packet.
-    @param[in]  PacketOptionList  List of pointers to the DHCPv6 options in the Packet.
-                                  The OpCode and OpLen in EFI_DHCP6_PACKET_OPTION are
-                                  both stored in network byte order.
-    @retval EFI_SUCCESS           The packet was successfully parsed.
-    @retval EFI_INVALID_PARAMETER One or more following conditions are TRUE
-                                  - This is NULL.
-                                  - Packet is NULL.
-                                  - Packet is not a well-formed DHCPv6 packet.
-                                  - OptionCount is NULL.
-                                  - *OptionCount is not zero and PacketOptionList is NULL.
-    @retval EFI_BUFFER_TOO_SMALL  *OptionCount is smaller than the number of options that were
-                                  found in the Packet.
-
-  **/
-  public readonly delegate* unmanaged<EFI_DHCP6_PROTOCOL*, EFI_DHCP6_PACKET*, uint*, EFI_DHCP6_PACKET_OPTION*, EFI_STATUS> Parse;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* OUT */EFI_DHCP6_MODE_DATA* /*Dhcp6ModeData*/,/* OUT */EFI_DHCP6_CONFIG_DATA* /*Dhcp6ConfigData*/, EFI_STATUS> /*EFI_DHCP6_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */EFI_DHCP6_CONFIG_DATA* /*Dhcp6CfgData*/, EFI_STATUS> /*EFI_DHCP6_CONFIGURE*/ Configure;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_DHCP6_START*/ Start;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */bool /*SendClientId*/,/* IN */EFI_DHCP6_PACKET_OPTION* /*OptionRequest*/,/* IN */uint /*OptionCount*/,/* IN */EFI_DHCP6_PACKET_OPTION* /*OptionList*/,/* IN */EFI_DHCP6_RETRANSMISSION* /*Retransmission*/,/* IN */EFI_EVENT /*TimeoutEvent*/,/* IN */EFI_DHCP6_INFO_CALLBACK /*ReplyCallback*/,/* IN */void* /*CallbackContext*/, EFI_STATUS> /*EFI_DHCP6_INFO_REQUEST*/ InfoRequest;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */bool /*RebindRequest*/, EFI_STATUS> /*EFI_DHCP6_RENEW_REBIND*/ RenewRebind;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */uint /*AddressCount*/,/* IN */EFI_IPv6_ADDRESS* /*Addresses*/, EFI_STATUS> /*EFI_DHCP6_DECLINE*/ Decline;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */uint /*AddressCount*/,/* IN */EFI_IPv6_ADDRESS* /*Addresses*/, EFI_STATUS> /*EFI_DHCP6_RELEASE*/ Release;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_DHCP6_STOP*/ Stop;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */EFI_DHCP6_PACKET* /*Packet*/,/* IN OUT */uint* /*OptionCount*/,/* OUT */EFI_DHCP6_PACKET_OPTION* /*PacketOptionList*/, EFI_STATUS> /*EFI_DHCP6_PARSE*/ Parse;
 }
 
 // extern EFI_GUID  gEfiDhcp6ProtocolGuid;

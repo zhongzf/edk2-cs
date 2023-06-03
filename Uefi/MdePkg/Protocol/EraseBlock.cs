@@ -43,6 +43,43 @@ public unsafe struct EFI_ERASE_BLOCK_TOKEN
   public EFI_STATUS TransactionStatus;
 }
 
+// /**
+//   Erase a specified number of device blocks.
+// 
+//   @param[in]       This           Indicates a pointer to the calling context.
+//   @param[in]       MediaId        The media ID that the erase request is for.
+//   @param[in]       LBA            The starting logical block address to be
+//                                   erased. The caller is responsible for erasing
+//                                   only legitimate locations.
+//   @param[in, out]  Token          A pointer to the token associated with the
+//                                   transaction.
+//   @param[in]       Size           The size in bytes to be erased. This must be
+//                                   a multiple of the physical block size of the
+//                                   device.
+// 
+//   @retval EFI_SUCCESS             The erase request was queued if Event is not
+//                                   NULL. The data was erased correctly to the
+//                                   device if the Event is NULL.to the device.
+//   @retval EFI_WRITE_PROTECTED     The device cannot be erased due to write
+//                                   protection.
+//   @retval EFI_DEVICE_ERROR        The device reported an error while attempting
+//                                   to perform the erase operation.
+//   @retval EFI_INVALID_PARAMETER   The erase request contains LBAs that are not
+//                                   valid.
+//   @retval EFI_NO_MEDIA            There is no media in the device.
+//   @retval EFI_MEDIA_CHANGED       The MediaId is not for the current media.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_BLOCK_ERASE)(
+//   IN     EFI_ERASE_BLOCK_PROTOCOL      *This,
+//   IN     uint                        MediaId,
+//   IN     EFI_LBA                       LBA,
+//   IN OUT EFI_ERASE_BLOCK_TOKEN         *Token,
+//   IN     ulong                         Size
+//   );
+
 ///
 /// The EFI Erase Block Protocol provides the ability for a device to expose
 /// erase functionality. This optional protocol is installed on the same handle
@@ -62,34 +99,7 @@ public unsafe struct EFI_ERASE_BLOCK_PROTOCOL
   // value of 1 means the erase granularity is one logical block.
   //
   public uint EraseLengthGranularity;
-  /**
-    Erase a specified number of device blocks.
-
-    @param[in]       This           Indicates a pointer to the calling context.
-    @param[in]       MediaId        The media ID that the erase request is for.
-    @param[in]       LBA            The starting logical block address to be
-                                    erased. The caller is responsible for erasing
-                                    only legitimate locations.
-    @param[in, out]  Token          A pointer to the token associated with the
-                                    transaction.
-    @param[in]       Size           The size in bytes to be erased. This must be
-                                    a multiple of the physical block size of the
-                                    device.
-
-    @retval EFI_SUCCESS             The erase request was queued if Event is not
-                                    NULL. The data was erased correctly to the
-                                    device if the Event is NULL.to the device.
-    @retval EFI_WRITE_PROTECTED     The device cannot be erased due to write
-                                    protection.
-    @retval EFI_DEVICE_ERROR        The device reported an error while attempting
-                                    to perform the erase operation.
-    @retval EFI_INVALID_PARAMETER   The erase request contains LBAs that are not
-                                    valid.
-    @retval EFI_NO_MEDIA            There is no media in the device.
-    @retval EFI_MEDIA_CHANGED       The MediaId is not for the current media.
-
-  **/
-  public readonly delegate* unmanaged<EFI_ERASE_BLOCK_PROTOCOL*, uint, EFI_LBA, EFI_ERASE_BLOCK_TOKEN*, ulong, EFI_STATUS> EraseBlocks;
+  public readonly delegate* unmanaged</* IN */EFI_ERASE_BLOCK_PROTOCOL* /*This*/,/* IN */uint /*MediaId*/,/* IN */EFI_LBA /*LBA*/,/* IN OUT */EFI_ERASE_BLOCK_TOKEN* /*Token*/,/* IN */ulong /*Size*/, EFI_STATUS> /*EFI_BLOCK_ERASE*/ EraseBlocks;
 }
 
 // extern EFI_GUID  gEfiEraseBlockProtocolGuid;

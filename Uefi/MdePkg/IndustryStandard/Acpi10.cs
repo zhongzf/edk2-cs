@@ -139,29 +139,29 @@ public unsafe struct EFI_ACPI_ADDRESS_SPACE_DESCRIPTOR
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct ACPI_SMALL_RESOURCE_HEADER
 {
   [FieldOffset(0)] public byte Byte;
-  PACKED struct {
-   [FieldOffset(0)] public byte Length = 3;
+  /*   PACKED struct { */
+  [FieldOffset(0)] public byte Length = 3;
   [FieldOffset(0)] public byte Name = 4;
   [FieldOffset(0)] public byte Type = 1;
+  /*   } Bits; */
 }
-} ACPI_SMALL_RESOURCE_HEADER;
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Bits
-{
-  PACKED union
-  {
-   public byte Byte;
-  PACKED struct {
-     public byte Name = 7;
-  public byte Type = 1;
-}
-  } Header;
-ushort Length;
-} ACPI_LARGE_RESOURCE_HEADER;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Bits
+//{
+//  PACKED union
+//  {
+//    public byte Byte;
+//  PACKED struct {
+//      public byte Name = 7;
+//  public byte Type = 1;
+//}
+//  } Header;
+//ushort Length;
+//} ACPI_LARGE_RESOURCE_HEADER;
 
 ///
 /// IRQ Descriptor.

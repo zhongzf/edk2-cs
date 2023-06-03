@@ -23,9 +23,9 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_SPI_SMM_CONFIGURATION_PROTOCOL_GUID = new GUID(0x995c6eca, 0x171b, 0x45fd,
       { 0xa3, 0xaa, 0xfd, 0x4c, 0x9c, 0x9d, 0xef, 0x59 });
 
-typedef
-  struct _EFI_SPI_CONFIGURATION_PROTOCOL
-EFI_SPI_SMM_CONFIGURATION_PROTOCOL;
+//typedef
+//  struct _EFI_SPI_CONFIGURATION_PROTOCOL
+//EFI_SPI_SMM_CONFIGURATION_PROTOCOL;
 
 // extern EFI_GUID  gEfiSpiSmmConfigurationProtocolGuid;
 }

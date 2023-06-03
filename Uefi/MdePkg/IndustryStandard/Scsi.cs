@@ -235,7 +235,7 @@ public unsafe struct EFI_SCSI_INQUIRY_DATA
   public byte Version;
   public byte Response_Data_Format;
   public byte Addnl_Length;
-  public bytepublic public Reserved_5_95[95 - 5 + 1];
+  public fixed byte Reserved_5_95[95 - 5 + 1];
 }
 
 ///

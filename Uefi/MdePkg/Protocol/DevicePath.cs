@@ -300,12 +300,12 @@ public unsafe partial class EFI
   //    Compressed ASCII is 5 bits per character 0b00001 = 'A' 0b11010 = 'Z'
   //
   public const ulong PNP_EISA_ID_CONST = 0x41d0;
-  public const ulong EISA_ID = (_Name, _Num)((uint)((_Name) | (_Num) << 16));
-  public const ulong EISA_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
-  public const ulong EFI_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
+  //public const ulong EISA_ID = (_Name, _Num)((uint)((_Name) | (_Num) << 16));
+  //public const ulong EISA_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
+  //public const ulong EFI_PNP_ID = (_PNPId)(EISA_ID(PNP_EISA_ID_CONST, (_PNPId)));
 
   public const ulong PNP_EISA_ID_MASK = 0xffff;
-  public const ulong EISA_ID_TO_NUM = (_Id)((_Id) >> 16);
+  //public const ulong EISA_ID_TO_NUM = (_Id)((_Id) >> 16);
 
   ///
   /// ACPI _ADR Device Path SubType.
@@ -361,29 +361,30 @@ public unsafe partial class EFI
   public const ulong ACPI_ADR_DISPLAY_TYPE_EXTERNAL_DIGITAL = 3;
   public const ulong ACPI_ADR_DISPLAY_TYPE_INTERNAL_DIGITAL = 4;
 
-  public const ulong ACPI_DISPLAY_ADR = (_DeviceIdScheme, _HeadId, _NonVgaOutput, _BiosCanDetect, _VendorInfo, _Type, _Port, _Index) \;
-  ((uint)(((uint)((_DeviceIdScheme) & 0x1) << 31) |  \
-                      (((_HeadId)                 & 0x7) << 18) |  \
-                      (((_NonVgaOutput)           & 0x1) << 17) |  \
-                      (((_BiosCanDetect)          & 0x1) << 16) |  \
-                      (((_VendorInfo)             & 0xf) << 12) |  \
-                      (((_Type)                   & 0xf) << 8)  |  \
-                      (((_Port)                   & 0xf) << 4)  |  \
-                       ((_Index)                  & 0xf) ))
+  //public const ulong ACPI_DISPLAY_ADR = (_DeviceIdScheme, _HeadId, _NonVgaOutput, _BiosCanDetect, _VendorInfo, _Type, _Port, _Index) \;
+  //((uint)(((uint)((_DeviceIdScheme) & 0x1) << 31) |  \
+  //                    (((_HeadId)                 & 0x7) << 18) |  \
+  //                    (((_NonVgaOutput)           & 0x1) << 17) |  \
+  //                    (((_BiosCanDetect)          & 0x1) << 16) |  \
+  //                    (((_VendorInfo)             & 0xf) << 12) |  \
+  //                    (((_Type)                   & 0xf) << 8)  |  \
+  //                    (((_Port)                   & 0xf) << 4)  |  \
+  //                     ((_Index)                  & 0xf) ))
 
-///
-/// Messaging Device Paths.
-/// This Device Path is used to describe the connection of devices outside the resource domain of the
-/// system. This Device Path can describe physical messaging information like SCSI ID, or abstract
-/// information like networking protocol IP addresses.
-///
-public const ulong MESSAGING_DEVICE_PATH = 0x03;
+  ///
+  /// Messaging Device Paths.
+  /// This Device Path is used to describe the connection of devices outside the resource domain of the
+  /// system. This Device Path can describe physical messaging information like SCSI ID, or abstract
+  /// information like networking protocol IP addresses.
+  ///
+  public const ulong MESSAGING_DEVICE_PATH = 0x03;
+
+  ///
+  /// ATAPI Device Path SubType
+  ///
+  public const ulong MSG_ATAPI_DP = 0x01;
 }
 
-///
-/// ATAPI Device Path SubType
-///
-public const ulong MSG_ATAPI_DP = 0x01;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ATAPI_DEVICE_PATH
 {
@@ -1532,32 +1533,32 @@ public unsafe struct EFI_DEV_PATH
 
   [FieldOffset(0)] public ATAPI_DEVICE_PATH Atapi;
   [FieldOffset(0)] public SCSI_DEVICE_PATH Scsi;
-  ISCSI_DEVICE_PATH Iscsi;
+  [FieldOffset(0)] public ISCSI_DEVICE_PATH Iscsi;
   [FieldOffset(0)] public FIBRECHANNEL_DEVICE_PATH FibreChannel;
   [FieldOffset(0)] public FIBRECHANNELEX_DEVICE_PATH FibreChannelEx;
 
   [FieldOffset(0)] public F1394_DEVICE_PATH F1394;
-  USB_DEVICE_PATH Usb;
+  [FieldOffset(0)] public USB_DEVICE_PATH Usb;
   [FieldOffset(0)] public SATA_DEVICE_PATH Sata;
-  USB_CLASS_DEVICE_PATH UsbClass;
-  USB_WWID_DEVICE_PATH UsbWwid;
+  [FieldOffset(0)] public USB_CLASS_DEVICE_PATH UsbClass;
+  [FieldOffset(0)] public USB_WWID_DEVICE_PATH UsbWwid;
   [FieldOffset(0)] public DEVICE_LOGICAL_UNIT_DEVICE_PATH LogicUnit;
-  I2O_DEVICE_PATH I2O;
+  [FieldOffset(0)] public I2O_DEVICE_PATH I2O;
   [FieldOffset(0)] public MAC_ADDR_DEVICE_PATH MacAddr;
-  IPv4_DEVICE_PATH Ipv4;
-  IPv6_DEVICE_PATH Ipv6;
+  [FieldOffset(0)] public IPv4_DEVICE_PATH Ipv4;
+  [FieldOffset(0)] public IPv6_DEVICE_PATH Ipv6;
   [FieldOffset(0)] public VLAN_DEVICE_PATH Vlan;
-  INFINIBAND_DEVICE_PATH InfiniBand;
-  UART_DEVICE_PATH Uart;
-  UART_FLOW_CONTROL_DEVICE_PATH UartFlowControl;
+  [FieldOffset(0)] public INFINIBAND_DEVICE_PATH InfiniBand;
+  [FieldOffset(0)] public UART_DEVICE_PATH Uart;
+  [FieldOffset(0)] public UART_FLOW_CONTROL_DEVICE_PATH UartFlowControl;
   [FieldOffset(0)] public SAS_DEVICE_PATH Sas;
   [FieldOffset(0)] public SASEX_DEVICE_PATH SasEx;
-  NVME_NAMESPACE_DEVICE_PATH NvmeNamespace;
+  [FieldOffset(0)] public NVME_NAMESPACE_DEVICE_PATH NvmeNamespace;
   [FieldOffset(0)] public DNS_DEVICE_PATH Dns;
-  URI_DEVICE_PATH Uri;
+  [FieldOffset(0)] public URI_DEVICE_PATH Uri;
   [FieldOffset(0)] public BLUETOOTH_DEVICE_PATH Bluetooth;
   [FieldOffset(0)] public WIFI_DEVICE_PATH WiFi;
-  UFS_DEVICE_PATH Ufs;
+  [FieldOffset(0)] public UFS_DEVICE_PATH Ufs;
   [FieldOffset(0)] public SD_DEVICE_PATH Sd;
   [FieldOffset(0)] public EMMC_DEVICE_PATH Emmc;
   [FieldOffset(0)] public HARDDRIVE_DEVICE_PATH HardDrive;
@@ -1590,32 +1591,32 @@ public unsafe struct EFI_DEV_PATH_PTR
 
   [FieldOffset(0)] public ATAPI_DEVICE_PATH* Atapi;
   [FieldOffset(0)] public SCSI_DEVICE_PATH* Scsi;
-  ISCSI_DEVICE_PATH* Iscsi;
+  [FieldOffset(0)] public ISCSI_DEVICE_PATH* Iscsi;
   [FieldOffset(0)] public FIBRECHANNEL_DEVICE_PATH* FibreChannel;
   [FieldOffset(0)] public FIBRECHANNELEX_DEVICE_PATH* FibreChannelEx;
 
   [FieldOffset(0)] public F1394_DEVICE_PATH* F1394;
-  USB_DEVICE_PATH* Usb;
+  [FieldOffset(0)] public USB_DEVICE_PATH* Usb;
   [FieldOffset(0)] public SATA_DEVICE_PATH* Sata;
-  USB_CLASS_DEVICE_PATH* UsbClass;
-  USB_WWID_DEVICE_PATH* UsbWwid;
+  [FieldOffset(0)] public USB_CLASS_DEVICE_PATH* UsbClass;
+  [FieldOffset(0)] public USB_WWID_DEVICE_PATH* UsbWwid;
   [FieldOffset(0)] public DEVICE_LOGICAL_UNIT_DEVICE_PATH* LogicUnit;
-  I2O_DEVICE_PATH* I2O;
+  [FieldOffset(0)] public I2O_DEVICE_PATH* I2O;
   [FieldOffset(0)] public MAC_ADDR_DEVICE_PATH* MacAddr;
-  IPv4_DEVICE_PATH* Ipv4;
-  IPv6_DEVICE_PATH* Ipv6;
+  [FieldOffset(0)] public IPv4_DEVICE_PATH* Ipv4;
+  [FieldOffset(0)] public IPv6_DEVICE_PATH* Ipv6;
   [FieldOffset(0)] public VLAN_DEVICE_PATH* Vlan;
-  INFINIBAND_DEVICE_PATH* InfiniBand;
-  UART_DEVICE_PATH* Uart;
-  UART_FLOW_CONTROL_DEVICE_PATH* UartFlowControl;
+  [FieldOffset(0)] public INFINIBAND_DEVICE_PATH* InfiniBand;
+  [FieldOffset(0)] public UART_DEVICE_PATH* Uart;
+  [FieldOffset(0)] public UART_FLOW_CONTROL_DEVICE_PATH* UartFlowControl;
   [FieldOffset(0)] public SAS_DEVICE_PATH* Sas;
   [FieldOffset(0)] public SASEX_DEVICE_PATH* SasEx;
-  NVME_NAMESPACE_DEVICE_PATH* NvmeNamespace;
+  [FieldOffset(0)] public NVME_NAMESPACE_DEVICE_PATH* NvmeNamespace;
   [FieldOffset(0)] public DNS_DEVICE_PATH* Dns;
-  URI_DEVICE_PATH* Uri;
+  [FieldOffset(0)] public URI_DEVICE_PATH* Uri;
   [FieldOffset(0)] public BLUETOOTH_DEVICE_PATH* Bluetooth;
   [FieldOffset(0)] public WIFI_DEVICE_PATH* WiFi;
-  UFS_DEVICE_PATH* Ufs;
+  [FieldOffset(0)] public UFS_DEVICE_PATH* Ufs;
   [FieldOffset(0)] public SD_DEVICE_PATH* Sd;
   [FieldOffset(0)] public EMMC_DEVICE_PATH* Emmc;
   [FieldOffset(0)] public HARDDRIVE_DEVICE_PATH* HardDrive;

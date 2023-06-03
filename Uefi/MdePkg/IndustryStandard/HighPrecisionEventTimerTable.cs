@@ -23,18 +23,18 @@ namespace Uefi;
 /// HPET Event Timer Block ID described in IA-PC HPET Specification, 3.2.4.
 ///
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_BLOCK_ID
 {
-  struct {
-   [FieldOffset(0)] public uint Revision = 8;
+  /*   struct { */
+  [FieldOffset(0)] public uint Revision = 8;
   [FieldOffset(0)] public uint NumberOfTimers = 5;
   [FieldOffset(0)] public uint CounterSize = 1;
   [FieldOffset(0)] public uint Reserved = 1;
   [FieldOffset(0)] public uint LegacyRoute = 1;
   [FieldOffset(0)] public uint VendorId = 16;
+  /*   }      Bits; */
+  [FieldOffset(0)] public uint Uint32;
 }
-uint Uint32;
-} EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_BLOCK_ID;
 
 ///
 /// High Precision Event Timer Table header definition.

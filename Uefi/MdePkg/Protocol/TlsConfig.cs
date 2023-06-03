@@ -56,6 +56,67 @@ public enum EFI_TLS_CONFIG_DATA_TYPE
   EfiTlsConfigDataTypeMaximum
 }
 
+// /**
+//   Set TLS configuration data.
+// 
+//   The SetData() function sets TLS configuration to non-volatile storage or volatile
+//   storage.
+// 
+//   @param[in]  This                Pointer to the EFI_TLS_CONFIGURATION_PROTOCOL instance.
+//   @param[in]  DataType            Configuration data type.
+//   @param[in]  Data                Pointer to configuration data.
+//   @param[in]  DataSize            Total size of configuration data.
+// 
+//   @retval EFI_SUCCESS             The TLS configuration data is set successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   Data is NULL.
+//                                   DataSize is 0.
+//   @retval EFI_UNSUPPORTED         The DataType is unsupported.
+//   @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_TLS_CONFIGURATION_SET_DATA)(
+//   IN EFI_TLS_CONFIGURATION_PROTOCOL  *This,
+//   IN EFI_TLS_CONFIG_DATA_TYPE        DataType,
+//   IN void                            *Data,
+//   IN ulong                           DataSize
+//   );
+
+// /**
+//   Get TLS configuration data.
+// 
+//   The GetData() function gets TLS configuration.
+// 
+//   @param[in]       This           Pointer to the EFI_TLS_CONFIGURATION_PROTOCOL instance.
+//   @param[in]       DataType       Configuration data type.
+//   @param[in, out]  Data           Pointer to configuration data.
+//   @param[in, out]  DataSize       Total size of configuration data. On input, it means
+//                                   the size of Data buffer. On output, it means the size
+//                                   of copied Data buffer if EFI_SUCCESS, and means the
+//                                   size of desired Data buffer if EFI_BUFFER_TOO_SMALL.
+// 
+//   @retval EFI_SUCCESS             The TLS configuration data is got successfully.
+//   @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
+//                                   This is NULL.
+//                                   DataSize is NULL.
+//                                   Data is NULL if *DataSize is not zero.
+//   @retval EFI_UNSUPPORTED         The DataType is unsupported.
+//   @retval EFI_NOT_FOUND           The TLS configuration data is not found.
+//   @retval EFI_BUFFER_TOO_SMALL    The buffer is too small to hold the data.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_TLS_CONFIGURATION_GET_DATA)(
+//   IN EFI_TLS_CONFIGURATION_PROTOCOL  *This,
+//   IN EFI_TLS_CONFIG_DATA_TYPE        DataType,
+//   IN OUT void                        *Data   OPTIONAL,
+//   IN OUT ulong                       *DataSize
+//   );
+
 ///
 /// The EFI_TLS_CONFIGURATION_PROTOCOL is designed to provide a way to set and get
 /// TLS configuration, such as Certificate, private key data.
@@ -63,51 +124,8 @@ public enum EFI_TLS_CONFIG_DATA_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TLS_CONFIGURATION_PROTOCOL
 {
-  /**
-    Set TLS configuration data.
-
-    The SetData() function sets TLS configuration to non-volatile storage or volatile
-    storage.
-
-    @param[in]  This                Pointer to the EFI_TLS_CONFIGURATION_PROTOCOL instance.
-    @param[in]  DataType            Configuration data type.
-    @param[in]  Data                Pointer to configuration data.
-    @param[in]  DataSize            Total size of configuration data.
-
-    @retval EFI_SUCCESS             The TLS configuration data is set successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    Data is NULL.
-                                    DataSize is 0.
-    @retval EFI_UNSUPPORTED         The DataType is unsupported.
-    @retval EFI_OUT_OF_RESOURCES    Required system resources could not be allocated.
-
-  **/
-  public readonly delegate* unmanaged<EFI_TLS_CONFIGURATION_PROTOCOL*, EFI_TLS_CONFIG_DATA_TYPE, void*, ulong, EFI_STATUS> SetData;
-  /**
-    Get TLS configuration data.
-
-    The GetData() function gets TLS configuration.
-
-    @param[in]       This           Pointer to the EFI_TLS_CONFIGURATION_PROTOCOL instance.
-    @param[in]       DataType       Configuration data type.
-    @param[in, out]  Data           Pointer to configuration data.
-    @param[in, out]  DataSize       Total size of configuration data. On input, it means
-                                    the size of Data buffer. On output, it means the size
-                                    of copied Data buffer if EFI_SUCCESS, and means the
-                                    size of desired Data buffer if EFI_BUFFER_TOO_SMALL.
-
-    @retval EFI_SUCCESS             The TLS configuration data is got successfully.
-    @retval EFI_INVALID_PARAMETER   One or more of the following conditions is TRUE:
-                                    This is NULL.
-                                    DataSize is NULL.
-                                    Data is NULL if *DataSize is not zero.
-    @retval EFI_UNSUPPORTED         The DataType is unsupported.
-    @retval EFI_NOT_FOUND           The TLS configuration data is not found.
-    @retval EFI_BUFFER_TOO_SMALL    The buffer is too small to hold the data.
-
-  **/
-  public readonly delegate* unmanaged<EFI_TLS_CONFIGURATION_PROTOCOL*, EFI_TLS_CONFIG_DATA_TYPE, void*, ulong*, EFI_STATUS> GetData;
+  public readonly delegate* unmanaged</* IN */EFI_TLS_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_TLS_CONFIG_DATA_TYPE /*DataType*/,/* IN */void* /*Data*/,/* IN */ulong /*DataSize*/, EFI_STATUS> /*EFI_TLS_CONFIGURATION_SET_DATA*/ SetData;
+  public readonly delegate* unmanaged</* IN */EFI_TLS_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_TLS_CONFIG_DATA_TYPE /*DataType*/,/* IN OUT */void* /*Data*/,/* IN OUT */ulong* /*DataSize*/, EFI_STATUS> /*EFI_TLS_CONFIGURATION_GET_DATA*/ GetData;
 }
 
 // extern EFI_GUID  gEfiTlsConfigurationProtocolGuid;

@@ -53,9 +53,9 @@ public unsafe struct CHAP_RADIUS_AUTH_NODE
   ///
   public fixed byte RadiusIpAddr[16];      ///< IPv4 or IPv6 address.
 
-                                           ///
-                                           /// Reserved for future use.
-                                           ///
+  ///
+  /// Reserved for future use.
+  ///
   public ushort Reserved;
 
   ///
@@ -63,9 +63,9 @@ public unsafe struct CHAP_RADIUS_AUTH_NODE
   ///
   public fixed byte NasIpAddr[16];         ///< IPv4 or IPv6 address.
 
-                                           ///
-                                           /// Network Access Server Secret Length in bytes (OPTIONAL).
-                                           ///
+  ///
+  /// Network Access Server Secret Length in bytes (OPTIONAL).
+  ///
   public ushort NasSecretLength;
 
   ///
@@ -172,6 +172,55 @@ public unsafe struct CHAP_LOCAL_AUTH_NODE
 }
 // #pragma pack()
 
+// /**
+//   Retrieves the authentication information associated with a particular controller handle.
+// 
+//   @param[in]  This                  The pointer to the EFI_AUTHENTICATION_INFO_PROTOCOL.
+//   @param[in]  ControllerHandle      The handle to the Controller.
+//   @param[out] Buffer                The pointer to the authentication information. This function is
+//                                     responsible for allocating the buffer and it is the caller's
+//                                     responsibility to free buffer when the caller is finished with buffer.
+// 
+//   @retval EFI_SUCCESS           Successfully retrieved authentication information
+//                                 for the given ControllerHandle.
+//   @retval EFI_INVALID_PARAMETER No matching authentication information found for
+//                                 the given ControllerHandle.
+//   @retval EFI_DEVICE_ERROR      The authentication information could not be retrieved
+//                                 due to a hardware error.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_AUTHENTICATION_INFO_PROTOCOL_GET)(
+//   IN  EFI_AUTHENTICATION_INFO_PROTOCOL *This,
+//   IN  EFI_HANDLE                       ControllerHandle,
+//   OUT void                             **Buffer
+//   );
+
+// /**
+//   Set the authentication information for a given controller handle.
+// 
+//   @param[in]  This                 The pointer to the EFI_AUTHENTICATION_INFO_PROTOCOL.
+//   @param[in]  ControllerHandle     The handle to the Controller.
+//   @param[in]  Buffer               The pointer to the authentication information.
+// 
+//   @retval EFI_SUCCESS          Successfully set authentication information for the
+//                                given ControllerHandle.
+//   @retval EFI_UNSUPPORTED      If the platform policies do not allow setting of
+//                                the authentication information.
+//   @retval EFI_DEVICE_ERROR     The authentication information could not be configured
+//                                due to a hardware error.
+//   @retval EFI_OUT_OF_RESOURCES Not enough storage is available to hold the data.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_AUTHENTICATION_INFO_PROTOCOL_SET)(
+//   IN EFI_AUTHENTICATION_INFO_PROTOCOL  *This,
+//   IN EFI_HANDLE                        ControllerHandle,
+//   IN void                              *Buffer
+//   );
+
 ///
 /// This protocol is used on any device handle to obtain authentication
 /// information associated with the physical or logical device.
@@ -179,41 +228,8 @@ public unsafe struct CHAP_LOCAL_AUTH_NODE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_AUTHENTICATION_INFO_PROTOCOL
 {
-  /**
-    Retrieves the authentication information associated with a particular controller handle.
-
-    @param[in]  This                  The pointer to the EFI_AUTHENTICATION_INFO_PROTOCOL.
-    @param[in]  ControllerHandle      The handle to the Controller.
-    @param[out] Buffer                The pointer to the authentication information. This function is
-                                      responsible for allocating the buffer and it is the caller's
-                                      responsibility to free buffer when the caller is finished with buffer.
-
-    @retval EFI_SUCCESS           Successfully retrieved authentication information
-                                  for the given ControllerHandle.
-    @retval EFI_INVALID_PARAMETER No matching authentication information found for
-                                  the given ControllerHandle.
-    @retval EFI_DEVICE_ERROR      The authentication information could not be retrieved
-                                  due to a hardware error.
-
-  **/
-  public readonly delegate* unmanaged<EFI_AUTHENTICATION_INFO_PROTOCOL*, EFI_HANDLE, void**, EFI_STATUS> Get;
-  /**
-    Set the authentication information for a given controller handle.
-
-    @param[in]  This                 The pointer to the EFI_AUTHENTICATION_INFO_PROTOCOL.
-    @param[in]  ControllerHandle     The handle to the Controller.
-    @param[in]  Buffer               The pointer to the authentication information.
-
-    @retval EFI_SUCCESS          Successfully set authentication information for the
-                                 given ControllerHandle.
-    @retval EFI_UNSUPPORTED      If the platform policies do not allow setting of
-                                 the authentication information.
-    @retval EFI_DEVICE_ERROR     The authentication information could not be configured
-                                 due to a hardware error.
-    @retval EFI_OUT_OF_RESOURCES Not enough storage is available to hold the data.
-
-  **/
-  public readonly delegate* unmanaged<EFI_AUTHENTICATION_INFO_PROTOCOL*, EFI_HANDLE, void*, EFI_STATUS> Set;
+  public readonly delegate* unmanaged</* IN */EFI_AUTHENTICATION_INFO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* OUT */void** /*Buffer*/, EFI_STATUS> /*EFI_AUTHENTICATION_INFO_PROTOCOL_GET*/ Get;
+  public readonly delegate* unmanaged</* IN */EFI_AUTHENTICATION_INFO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_AUTHENTICATION_INFO_PROTOCOL_SET*/ Set;
 }
 
 // extern EFI_GUID  gEfiAuthenticationInfoProtocolGuid;

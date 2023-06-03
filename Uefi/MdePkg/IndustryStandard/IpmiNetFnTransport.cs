@@ -124,19 +124,19 @@ public enum IPMI_LAN_DEST_ADDRESS_VERSION
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_AUTH_TYPE
 {
-  struct {
-   [FieldOffset(0)] public byte NoAuth = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte NoAuth = 1;
   [FieldOffset(0)] public byte MD2Auth = 1;
   [FieldOffset(0)] public byte MD5Auth = 1;
   [FieldOffset(0)] public byte Reserved1 = 1;
   [FieldOffset(0)] public byte StraightPswd = 1;
   [FieldOffset(0)] public byte OemType = 1;
   [FieldOffset(0)] public byte Reserved2 = 2;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_AUTH_TYPE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_IP_ADDRESS
@@ -145,14 +145,14 @@ public unsafe struct IPMI_LAN_IP_ADDRESS
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_IP_ADDRESS_SRC
 {
-  struct {
-   [FieldOffset(0)] public byte AddressSrc = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte AddressSrc = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_IP_ADDRESS_SRC;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_MAC_ADDRESS
@@ -167,32 +167,32 @@ public unsafe struct IPMI_LAN_SUBNET_MASK
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_IPV4_HDR_PARAM_DATA_2
 {
-  struct {
-   [FieldOffset(0)] public byte IpFlag = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte IpFlag = 3;
   [FieldOffset(0)] public byte Reserved = 5;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_IPV4_HDR_PARAM_DATA_2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_IPV4_HDR_PARAM_DATA_3
 {
-  struct {
-   [FieldOffset(0)] public byte Precedence = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte Precedence = 3;
   [FieldOffset(0)] public byte Reserved = 1;
   [FieldOffset(0)] public byte ServiceType = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_IPV4_HDR_PARAM_DATA_3;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_IPV4_HDR_PARAM
 {
   public byte TimeToLive;
-  IPMI_LAN_IPV4_HDR_PARAM_DATA_2 Data2;
-  IPMI_LAN_IPV4_HDR_PARAM_DATA_3 Data3;
+  public IPMI_LAN_IPV4_HDR_PARAM_DATA_2 Data2;
+  public IPMI_LAN_IPV4_HDR_PARAM_DATA_3 Data3;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -203,15 +203,15 @@ public unsafe struct IPMI_LAN_RCMP_PORT
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_BMC_GENERATED_ARP_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public byte EnableBmcArpResponse = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte EnableBmcArpResponse = 1;
   [FieldOffset(0)] public byte EnableBmcGratuitousArp = 1;
   [FieldOffset(0)] public byte Reserved = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_BMC_GENERATED_ARP_CONTROL;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_ARP_INTERVAL
@@ -232,61 +232,61 @@ public unsafe struct IPMI_LAN_COMMUNITY_STRING
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_SET_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte DestinationSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte DestinationSelector = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_SET_SELECTOR;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_DEST_TYPE_DESTINATION_TYPE
 {
-  struct {
-   [FieldOffset(0)] public byte DestinationType = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte DestinationType = 3;
   [FieldOffset(0)] public byte Reserved = 4;
   [FieldOffset(0)] public byte AlertAcknowledged = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_DEST_TYPE_DESTINATION_TYPE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_DEST_TYPE
 {
-  IPMI_LAN_SET_SELECTOR SetSelector;
-  IPMI_LAN_DEST_TYPE_DESTINATION_TYPE DestinationType;
+  public IPMI_LAN_SET_SELECTOR SetSelector;
+  public IPMI_LAN_DEST_TYPE_DESTINATION_TYPE DestinationType;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_ADDRESS_FORMAT
 {
-  struct {
-   [FieldOffset(0)] public byte AlertingIpAddressSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte AlertingIpAddressSelector = 4;
   [FieldOffset(0)] public byte AddressFormat = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_ADDRESS_FORMAT;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_GATEWAY_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte UseDefaultGateway = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte UseDefaultGateway = 1;
   [FieldOffset(0)] public byte Reserved2 = 7;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_GATEWAY_SELECTOR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_DEST_ADDRESS
 {
-  IPMI_LAN_SET_SELECTOR SetSelector;
-  IPMI_LAN_ADDRESS_FORMAT AddressFormat;
-  IPMI_LAN_GATEWAY_SELECTOR GatewaySelector;
-  IPMI_LAN_IP_ADDRESS AlertingIpAddress;
-  IPMI_LAN_MAC_ADDRESS AlertingMacAddress;
+  public IPMI_LAN_SET_SELECTOR SetSelector;
+  public IPMI_LAN_ADDRESS_FORMAT AddressFormat;
+  public IPMI_LAN_GATEWAY_SELECTOR GatewaySelector;
+  public IPMI_LAN_IP_ADDRESS AlertingIpAddress;
+  public IPMI_LAN_MAC_ADDRESS AlertingMacAddress;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -296,56 +296,56 @@ public unsafe struct IPMI_LAN_VLAN_ID_DATA1
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_VLAN_ID_DATA2
 {
-  struct {
-   [FieldOffset(0)] public byte VanIdHighByte = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte VanIdHighByte = 4;
   [FieldOffset(0)] public byte Reserved = 3;
   [FieldOffset(0)] public byte Enabled = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_VLAN_ID_DATA2;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_VLAN_ID
 {
-  IPMI_LAN_VLAN_ID_DATA1 Data1;
-  IPMI_LAN_VLAN_ID_DATA2 Data2;
+  public IPMI_LAN_VLAN_ID_DATA1 Data1;
+  public IPMI_LAN_VLAN_ID_DATA2 Data2;
 }
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct IPMI_LAN_OPTIONS
 {
-  IPMI_LAN_AUTH_TYPE IpmiLanAuthType;
-  IPMI_LAN_IP_ADDRESS IpmiLanIpAddress;
-  IPMI_LAN_IP_ADDRESS_SRC IpmiLanIpAddressSrc;
-  IPMI_LAN_MAC_ADDRESS IpmiLanMacAddress;
-  IPMI_LAN_SUBNET_MASK IpmiLanSubnetMask;
-  IPMI_LAN_IPV4_HDR_PARAM IpmiLanIpv4HdrParam;
-  IPMI_LAN_RCMP_PORT IpmiLanPrimaryRcmpPort;
-  IPMI_LAN_BMC_GENERATED_ARP_CONTROL IpmiLanArpControl;
-  IPMI_LAN_ARP_INTERVAL IpmiLanArpInterval;
-  IPMI_LAN_COMMUNITY_STRING IpmiLanCommunityString;
-  IPMI_LAN_DEST_TYPE IpmiLanDestType;
-  IPMI_LAN_DEST_ADDRESS IpmiLanDestAddress;
+  [FieldOffset(0)] public IPMI_LAN_AUTH_TYPE IpmiLanAuthType;
+  [FieldOffset(0)] public IPMI_LAN_IP_ADDRESS IpmiLanIpAddress;
+  [FieldOffset(0)] public IPMI_LAN_IP_ADDRESS_SRC IpmiLanIpAddressSrc;
+  [FieldOffset(0)] public IPMI_LAN_MAC_ADDRESS IpmiLanMacAddress;
+  [FieldOffset(0)] public IPMI_LAN_SUBNET_MASK IpmiLanSubnetMask;
+  [FieldOffset(0)] public IPMI_LAN_IPV4_HDR_PARAM IpmiLanIpv4HdrParam;
+  [FieldOffset(0)] public IPMI_LAN_RCMP_PORT IpmiLanPrimaryRcmpPort;
+  [FieldOffset(0)] public IPMI_LAN_BMC_GENERATED_ARP_CONTROL IpmiLanArpControl;
+  [FieldOffset(0)] public IPMI_LAN_ARP_INTERVAL IpmiLanArpInterval;
+  [FieldOffset(0)] public IPMI_LAN_COMMUNITY_STRING IpmiLanCommunityString;
+  [FieldOffset(0)] public IPMI_LAN_DEST_TYPE IpmiLanDestType;
+  [FieldOffset(0)] public IPMI_LAN_DEST_ADDRESS IpmiLanDestAddress;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_IPV6_ADDRESS_SOURCE_TYPE
 {
-  struct {
-   [FieldOffset(0)] public byte AddressSourceType = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte AddressSourceType = 4;
   [FieldOffset(0)] public byte Reserved = 3;
   [FieldOffset(0)] public byte EnableStatus = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_IPV6_ADDRESS_SOURCE_TYPE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_LAN_IPV6_STATIC_ADDRESS
 {
   public byte SetSelector;
-  IPMI_LAN_IPV6_ADDRESS_SOURCE_TYPE AddressSourceType;
+  public IPMI_LAN_IPV6_ADDRESS_SOURCE_TYPE AddressSourceType;
   public fixed byte Ipv6Address[16];
   public byte AddressPrefixLen;
   public byte AddressStatus;
@@ -355,29 +355,29 @@ public unsafe struct IPMI_LAN_IPV6_STATIC_ADDRESS
 //  Set in progress parameter
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_LAN_SET_IN_PROGRESS
 {
-  struct {
-   [FieldOffset(0)] public byte SetInProgress = 2;
+  /*   struct { */
+  [FieldOffset(0)] public byte SetInProgress = 2;
   [FieldOffset(0)] public byte Reserved = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_LAN_SET_IN_PROGRESS;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SET_LAN_CONFIG_CHANNEL_NUM
 {
-  struct {
-   [FieldOffset(0)] public byte ChannelNo = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChannelNo = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SET_LAN_CONFIG_CHANNEL_NUM;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SET_LAN_CONFIGURATION_PARAMETERS_COMMAND_REQUEST
 {
-  IPMI_SET_LAN_CONFIG_CHANNEL_NUM ChannelNumber;
+  public IPMI_SET_LAN_CONFIG_CHANNEL_NUM ChannelNumber;
   public byte ParameterSelector;
   public fixed byte ParameterData[0];
 }
@@ -394,20 +394,20 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Get Lan Configuration Parameters" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_GET_LAN_CONFIG_CHANNEL_NUM
 {
-  struct {
-   [FieldOffset(0)] public byte ChannelNo = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChannelNo = 4;
   [FieldOffset(0)] public byte Reserved = 3;
   [FieldOffset(0)] public byte GetParameter = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_GET_LAN_CONFIG_CHANNEL_NUM;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_LAN_CONFIGURATION_PARAMETERS_REQUEST
 {
-  IPMI_GET_LAN_CONFIG_CHANNEL_NUM ChannelNumber;
+  public IPMI_GET_LAN_CONFIG_CHANNEL_NUM ChannelNumber;
   public byte ParameterSelector;
   public byte SetSelector;
   public byte BlockSelector;
@@ -459,95 +459,95 @@ public unsafe partial class EFI
 // EMP OPTION DATA
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_AUTH_TYPE
 {
-  struct {
-   [FieldOffset(0)] public byte NoAuthentication = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte NoAuthentication = 1;
   [FieldOffset(0)] public byte MD2Authentication = 1;
   [FieldOffset(0)] public byte MD5Authentication = 1;
   [FieldOffset(0)] public byte Reserved1 = 1;
   [FieldOffset(0)] public byte StraightPassword = 1;
   [FieldOffset(0)] public byte OemProprietary = 1;
   [FieldOffset(0)] public byte Reservd2 = 2;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_AUTH_TYPE;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_CONNECTION_TYPE
 {
-  struct {
-   [FieldOffset(0)] public byte EnableBasicMode = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte EnableBasicMode = 1;
   [FieldOffset(0)] public byte EnablePPPMode = 1;
   [FieldOffset(0)] public byte EnableTerminalMode = 1;
   [FieldOffset(0)] public byte Reserved1 = 2;
   [FieldOffset(0)] public byte SnoopOsPPPNegotiation = 1;
   [FieldOffset(0)] public byte Reserved2 = 1;
   [FieldOffset(0)] public byte DirectConnect = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_CONNECTION_TYPE;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_INACTIVITY_TIMEOUT
 {
-  struct {
-   [FieldOffset(0)] public byte InactivityTimeout = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte InactivityTimeout = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_INACTIVITY_TIMEOUT;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_CHANNEL_CALLBACK_CONTROL_ENABLE
 {
-  struct {
-   [FieldOffset(0)] public byte IpmiCallback = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte IpmiCallback = 1;
   [FieldOffset(0)] public byte CBCPCallback = 1;
   [FieldOffset(0)] public byte Reserved = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_CHANNEL_CALLBACK_CONTROL_ENABLE;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_CHANNEL_CALLBACK_CONTROL_CBCP
 {
-  struct {
-   [FieldOffset(0)] public byte CbcpEnableNoCallback = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte CbcpEnableNoCallback = 1;
   [FieldOffset(0)] public byte CbcpEnablePreSpecifiedNumber = 1;
   [FieldOffset(0)] public byte CbcpEnableUserSpecifiedNumber = 1;
   [FieldOffset(0)] public byte CbcpEnableCallbackFromList = 1;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_CHANNEL_CALLBACK_CONTROL_CBCP;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_EMP_CHANNEL_CALLBACK_CONTROL
 {
-  IPMI_CHANNEL_CALLBACK_CONTROL_ENABLE CallbackEnable;
-  IPMI_CHANNEL_CALLBACK_CONTROL_CBCP CBCPNegotiation;
+  public IPMI_CHANNEL_CALLBACK_CONTROL_ENABLE CallbackEnable;
+  public IPMI_CHANNEL_CALLBACK_CONTROL_CBCP CBCPNegotiation;
   public byte CallbackDestination1;
   public byte CallbackDestination2;
   public byte CallbackDestination3;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_SESSION_TERMINATION
 {
-  struct {
-   [FieldOffset(0)] public byte CloseSessionOnDCDLoss = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte CloseSessionOnDCDLoss = 1;
   [FieldOffset(0)] public byte EnableSessionInactivityTimeout = 1;
   [FieldOffset(0)] public byte Reserved = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_SESSION_TERMINATION;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_MESSAGING_COM_SETTING
 {
-  struct {
-   [FieldOffset(0)] public byte Reserved1 = 5;
+  /*   struct { */
+  [FieldOffset(0)] public byte Reserved1 = 5;
   [FieldOffset(0)] public byte EnableDtrHangup = 1;
   [FieldOffset(0)] public byte FlowControl = 2;
   [FieldOffset(0)] public byte BitRate = 4;
@@ -555,22 +555,22 @@ public unsafe struct Bits
   [FieldOffset(0)] public byte SaveSetting = 1;
   [FieldOffset(0)] public byte SetComPort = 1;
   [FieldOffset(0)] public byte Reserved3 = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
+  [FieldOffset(0)] public ushort Uint16;
 }
-byte Uint8;
-ushort Uint16;
-} IPMI_EMP_MESSAGING_COM_SETTING;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_MODEM_RING_TIME
 {
-  struct {
-   [FieldOffset(0)] public byte RingDurationInterval = 6;
+  /*   struct { */
+  [FieldOffset(0)] public byte RingDurationInterval = 6;
   [FieldOffset(0)] public byte Reserved1 = 2;
   [FieldOffset(0)] public byte RingDeadTime = 4;
   [FieldOffset(0)] public byte Reserved2 = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_MODEM_RING_TIME;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_EMP_MODEM_INIT_STRING
@@ -610,24 +610,24 @@ public unsafe struct IPMI_EMP_COMMUNITY_STRING
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_DIAL_PAGE_DESTINATION
 {
-  struct {
-   [FieldOffset(0)] public byte Reserved = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte Reserved = 4;
   [FieldOffset(0)] public byte DialStringSelector = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_DIAL_PAGE_DESTINATION;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_TAP_PAGE_DESTINATION
 {
-  struct {
-   [FieldOffset(0)] public byte TapAccountSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte TapAccountSelector = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_TAP_PAGE_DESTINATION;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_PPP_ALERT_DESTINATION
@@ -639,99 +639,99 @@ public unsafe struct IPMI_PPP_ALERT_DESTINATION
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct IPMI_DEST_TYPE_SPECIFIC
 {
-  IPMI_DIAL_PAGE_DESTINATION DialPageDestination;
-  IPMI_TAP_PAGE_DESTINATION TapPageDestination;
-  IPMI_PPP_ALERT_DESTINATION PppAlertDestination;
+  [FieldOffset(0)] public IPMI_DIAL_PAGE_DESTINATION DialPageDestination;
+  [FieldOffset(0)] public IPMI_TAP_PAGE_DESTINATION TapPageDestination;
+  [FieldOffset(0)] public IPMI_PPP_ALERT_DESTINATION PppAlertDestination;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_DESTINATION_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte DestinationSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte DestinationSelector = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_DESTINATION_SELECTOR;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_DESTINATION_TYPE
 {
-  struct {
-   [FieldOffset(0)] public byte DestinationType = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte DestinationType = 4;
   [FieldOffset(0)] public byte Reserved = 3;
   [FieldOffset(0)] public byte AlertAckRequired = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_DESTINATION_TYPE;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_RETRIES
 {
-  struct {
-   [FieldOffset(0)] public byte NumRetriesCall = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte NumRetriesCall = 3;
   [FieldOffset(0)] public byte Reserved1 = 1;
   [FieldOffset(0)] public byte NumRetryAlert = 3;
   [FieldOffset(0)] public byte Reserved2 = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_RETRIES;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_EMP_DESTINATION_INFO
 {
-  IPMI_EMP_DESTINATION_SELECTOR DestinationSelector;
-  IPMI_EMP_DESTINATION_TYPE DestinationType;
+  public IPMI_EMP_DESTINATION_SELECTOR DestinationSelector;
+  public IPMI_EMP_DESTINATION_TYPE DestinationType;
   public byte AlertAckTimeoutSeconds;
-  IPMI_EMP_RETRIES Retries;
-  IPMI_DEST_TYPE_SPECIFIC DestinationTypeSpecific;
+  public IPMI_EMP_RETRIES Retries;
+  public IPMI_DEST_TYPE_SPECIFIC DestinationTypeSpecific;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_DESTINATION_COM_SETTING_DATA_2
 {
-  struct {
-   [FieldOffset(0)] public byte Parity = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte Parity = 3;
   [FieldOffset(0)] public byte CharacterSize = 1;
   [FieldOffset(0)] public byte StopBit = 1;
   [FieldOffset(0)] public byte DtrHangup = 1;
   [FieldOffset(0)] public byte FlowControl = 2;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_DESTINATION_COM_SETTING_DATA_2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_EMP_BIT_RATE
 {
-  struct {
-   [FieldOffset(0)] public byte BitRate = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte BitRate = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_EMP_BIT_RATE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_EMP_DESTINATION_COM_SETTING
 {
-  IPMI_EMP_DESTINATION_SELECTOR DestinationSelector;
-  IPMI_EMP_DESTINATION_COM_SETTING_DATA_2 Data2;
-  IPMI_EMP_BIT_RATE BitRate;
+  public IPMI_EMP_DESTINATION_SELECTOR DestinationSelector;
+  public IPMI_EMP_DESTINATION_COM_SETTING_DATA_2 Data2;
+  public IPMI_EMP_BIT_RATE BitRate;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_DIAL_STRING_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte DialStringSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte DialStringSelector = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_DIAL_STRING_SELECTOR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_DESTINATION_DIAL_STRING
 {
-  IPMI_DIAL_STRING_SELECTOR DestinationSelector;
+  public IPMI_DIAL_STRING_SELECTOR DestinationSelector;
   public byte Reserved;
   public fixed byte DialString[48];
 }
@@ -744,37 +744,37 @@ public unsafe struct IPMI_PPP_IP_ADDRESS
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_DESTINATION_IP_ADDRESS_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte IpAddressSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte IpAddressSelector = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_DESTINATION_IP_ADDRESS_SELECTOR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_DESTINATION_IP_ADDRESS
 {
-  IPMI_DESTINATION_IP_ADDRESS_SELECTOR DestinationSelector;
-  IPMI_PPP_IP_ADDRESS PppIpAddress;
+  public IPMI_DESTINATION_IP_ADDRESS_SELECTOR DestinationSelector;
+  public IPMI_PPP_IP_ADDRESS PppIpAddress;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_TAP_DIAL_STRING_SERVICE_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte TapServiceSelector = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte TapServiceSelector = 4;
   [FieldOffset(0)] public byte TapDialStringSelector = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_TAP_DIAL_STRING_SERVICE_SELECTOR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_DESTINATION_TAP_ACCOUNT
 {
   public byte TapSelector;
-  IPMI_TAP_DIAL_STRING_SERVICE_SELECTOR TapDialStringServiceSelector;
+  public IPMI_TAP_DIAL_STRING_SERVICE_SELECTOR TapDialStringServiceSelector;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -788,26 +788,26 @@ public unsafe struct IPMI_TAP_PAGER_ID_STRING
 public unsafe struct IPMI_EMP_OPTIONS
 {
   [FieldOffset(0)] public byte OptionData;
-  IPMI_EMP_AUTH_TYPE EmpAuthType;
-  IPMI_EMP_CONNECTION_TYPE EmpConnectionType;
-  IPMI_EMP_INACTIVITY_TIMEOUT EmpInactivityTimeout;
-  IPMI_EMP_CHANNEL_CALLBACK_CONTROL EmpCallbackControl;
-  IPMI_EMP_SESSION_TERMINATION EmpSessionTermination;
-  IPMI_EMP_MESSAGING_COM_SETTING EmpMessagingComSetting;
-  IPMI_EMP_MODEM_RING_TIME EmpModemRingTime;
-  IPMI_EMP_MODEM_INIT_STRING EmpModemInitString;
-  IPMI_EMP_MODEM_ESC_SEQUENCE EmpModemEscSequence;
-  IPMI_EMP_MODEM_HANGUP_SEQUENCE EmpModemHangupSequence;
-  IPMI_MODEM_DIALUP_COMMAND EmpModemDialupCommand;
-  IPMI_PAGE_BLACKOUT_INTERVAL EmpPageBlackoutInterval;
-  IPMI_EMP_COMMUNITY_STRING EmpCommunityString;
-  IPMI_EMP_DESTINATION_INFO EmpDestinationInfo;
-  IPMI_EMP_DESTINATION_COM_SETTING EmpDestinationComSetting;
+  [FieldOffset(0)] public IPMI_EMP_AUTH_TYPE EmpAuthType;
+  [FieldOffset(0)] public IPMI_EMP_CONNECTION_TYPE EmpConnectionType;
+  [FieldOffset(0)] public IPMI_EMP_INACTIVITY_TIMEOUT EmpInactivityTimeout;
+  [FieldOffset(0)] public IPMI_EMP_CHANNEL_CALLBACK_CONTROL EmpCallbackControl;
+  [FieldOffset(0)] public IPMI_EMP_SESSION_TERMINATION EmpSessionTermination;
+  [FieldOffset(0)] public IPMI_EMP_MESSAGING_COM_SETTING EmpMessagingComSetting;
+  [FieldOffset(0)] public IPMI_EMP_MODEM_RING_TIME EmpModemRingTime;
+  [FieldOffset(0)] public IPMI_EMP_MODEM_INIT_STRING EmpModemInitString;
+  [FieldOffset(0)] public IPMI_EMP_MODEM_ESC_SEQUENCE EmpModemEscSequence;
+  [FieldOffset(0)] public IPMI_EMP_MODEM_HANGUP_SEQUENCE EmpModemHangupSequence;
+  [FieldOffset(0)] public IPMI_MODEM_DIALUP_COMMAND EmpModemDialupCommand;
+  [FieldOffset(0)] public IPMI_PAGE_BLACKOUT_INTERVAL EmpPageBlackoutInterval;
+  [FieldOffset(0)] public IPMI_EMP_COMMUNITY_STRING EmpCommunityString;
+  [FieldOffset(0)] public IPMI_EMP_DESTINATION_INFO EmpDestinationInfo;
+  [FieldOffset(0)] public IPMI_EMP_DESTINATION_COM_SETTING EmpDestinationComSetting;
   [FieldOffset(0)] public byte CallRetryBusySignalInterval;
-  IPMI_DESTINATION_DIAL_STRING DestinationDialString;
-  IPMI_DESTINATION_IP_ADDRESS DestinationIpAddress;
-  IPMI_DESTINATION_TAP_ACCOUNT DestinationTapAccount;
-  IPMI_TAP_PAGER_ID_STRING TapPagerIdString;
+  [FieldOffset(0)] public IPMI_DESTINATION_DIAL_STRING DestinationDialString;
+  [FieldOffset(0)] public IPMI_DESTINATION_IP_ADDRESS DestinationIpAddress;
+  [FieldOffset(0)] public IPMI_DESTINATION_TAP_ACCOUNT DestinationTapAccount;
+  [FieldOffset(0)] public IPMI_TAP_PAGER_ID_STRING TapPagerIdString;
 }
 
 public unsafe partial class EFI
@@ -851,52 +851,52 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_MUX_CHANNEL_NUM
 {
-  struct {
-   [FieldOffset(0)] public byte ChannelNo = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChannelNo = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_MUX_CHANNEL_NUM;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_MUX_SETTING_REQUEST
 {
-  struct {
-   [FieldOffset(0)] public byte MuxSetting = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte MuxSetting = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_MUX_SETTING_REQUEST;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SET_SERIAL_MODEM_MUX_COMMAND_REQUEST
 {
-  IPMI_MUX_CHANNEL_NUM ChannelNumber;
-  IPMI_MUX_SETTING_REQUEST MuxSetting;
+  public IPMI_MUX_CHANNEL_NUM ChannelNumber;
+  public IPMI_MUX_SETTING_REQUEST MuxSetting;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_MUX_SETTING_PRESENT_STATE
 {
-  struct {
-   [FieldOffset(0)] public byte MuxSetToBmc = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte MuxSetToBmc = 1;
   [FieldOffset(0)] public byte CommandStatus = 1;
   [FieldOffset(0)] public byte MessagingSessionActive = 1;
   [FieldOffset(0)] public byte AlertInProgress = 1;
   [FieldOffset(0)] public byte Reserved = 2;
   [FieldOffset(0)] public byte MuxToBmcAllowed = 1;
   [FieldOffset(0)] public byte MuxToSystemBlocked = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_MUX_SETTING_PRESENT_STATE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SET_SERIAL_MODEM_MUX_COMMAND_RESPONSE
 {
   public byte CompletionCode;
-  IPMI_MUX_SETTING_PRESENT_STATE MuxSetting;
+  public IPMI_MUX_SETTING_PRESENT_STATE MuxSetting;
 }
 
 public unsafe partial class EFI
@@ -996,19 +996,19 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "SOL activating" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SOL_SESSION_STATE
 {
-  struct {
-   [FieldOffset(0)] public byte SessionState = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte SessionState = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SOL_SESSION_STATE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SOL_ACTIVATING_REQUEST
 {
-  IPMI_SOL_SESSION_STATE SessionState;
+  public IPMI_SOL_SESSION_STATE SessionState;
   public byte PayloadInstance;
   public byte FormatVersionMajor; // 1
   public byte FormatVersionMinor; // 0
@@ -1040,19 +1040,19 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SET_SOL_CONFIG_PARAM_CHANNEL_NUM
 {
-  struct {
-   [FieldOffset(0)] public byte ChannelNumber = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChannelNumber = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SET_SOL_CONFIG_PARAM_CHANNEL_NUM;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SET_SOL_CONFIGURATION_PARAMETERS_REQUEST
 {
-  IPMI_SET_SOL_CONFIG_PARAM_CHANNEL_NUM ChannelNumber;
+  public IPMI_SET_SOL_CONFIG_PARAM_CHANNEL_NUM ChannelNumber;
   public byte ParameterSelector;
   public fixed byte ParameterData[0];
 }
@@ -1069,20 +1069,20 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Get SOL Configuration Parameters" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_GET_SOL_CONFIG_PARAM_CHANNEL_NUM
 {
-  struct {
-   [FieldOffset(0)] public byte ChannelNumber = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChannelNumber = 4;
   [FieldOffset(0)] public byte Reserved = 3;
   [FieldOffset(0)] public byte GetParameter = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_GET_SOL_CONFIG_PARAM_CHANNEL_NUM;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_SOL_CONFIGURATION_PARAMETERS_REQUEST
 {
-  IPMI_GET_SOL_CONFIG_PARAM_CHANNEL_NUM ChannelNumber;
+  public IPMI_GET_SOL_CONFIG_PARAM_CHANNEL_NUM ChannelNumber;
   public byte ParameterSelector;
   public byte SetSelector;
   public byte BlockSelector;

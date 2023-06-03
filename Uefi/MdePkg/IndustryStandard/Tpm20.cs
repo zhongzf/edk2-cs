@@ -806,7 +806,7 @@ public unsafe struct TPMA_ALGORITHM
   public uint symmetric = 1;
   public uint hash = 1;
   public uint object        = 1;
- public uint reserved4_7 = 4;
+  public uint reserved4_7 = 4;
   public uint signing = 1;
   public uint encrypting = 1;
   public uint method = 1;
@@ -1033,8 +1033,8 @@ public unsafe struct TPMI_ST_COMMAND_TAG { TPM_ST Value; public static implicit 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ALGORITHM_DESCRIPTION
 {
-  TPM_ALG_ID alg;
-  TPMA_ALGORITHM attributes;
+  public TPM_ALG_ID alg;
+  public TPMA_ALGORITHM attributes;
 }
 
 // Table 66 - TPMU_HA Union
@@ -1052,8 +1052,8 @@ public unsafe struct TPMU_HA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_HA
 {
-  TPMI_ALG_HASH hashAlg;
-  TPMU_HA digest;
+  public TPMI_ALG_HASH hashAlg;
+  public TPMU_HA digest;
 }
 
 // Table 68 - TPM2B_DIGEST Structure
@@ -1061,7 +1061,7 @@ public unsafe struct TPMT_HA
 public unsafe struct TPM2B_DIGEST
 {
   public ushort size;
-  public BYTEpublic public public buffer[sizeof(TPMU_HA)];
+  BYTE buffer[sizeof(TPMU_HA)];
 }
 
 // Table 69 - TPM2B_DATA Structure
@@ -1069,7 +1069,7 @@ public unsafe struct TPM2B_DIGEST
 public unsafe struct TPM2B_DATA
 {
   public ushort size;
-  public BYTEpublic public public buffer[sizeof(TPMT_HA)];
+  BYTE buffer[sizeof(TPMT_HA)];
 }
 
 // Table 70 - TPM2B_NONCE Types
@@ -1113,7 +1113,7 @@ public unsafe struct TPM2B_MAX_NV_BUFFER
 public unsafe struct TPM2B_TIMEOUT
 {
   public ushort size;
-  public BYTEpublic public public buffer[sizeof(ulong)];
+  BYTE buffer[sizeof(ulong)];
 }
 
 // Table 77 -- TPM2B_IV Structure <I/O>
@@ -1128,8 +1128,8 @@ public unsafe struct TPM2B_IV
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_NAME
 {
-  TPMT_HA digest;
-  TPM_HANDLE handle;
+  [FieldOffset(0)] public TPMT_HA digest;
+  [FieldOffset(0)] public TPM_HANDLE handle;
 }
 
 // Table 79 - TPM2B_NAME Structure
@@ -1137,7 +1137,7 @@ public unsafe struct TPMU_NAME
 public unsafe struct TPM2B_NAME
 {
   public ushort size;
-  public BYTEpublic public public name[sizeof(TPMU_NAME)];
+  BYTE name[sizeof(TPMU_NAME)];
 }
 
 // Table 80 - TPMS_PCR_SELECT Structure
@@ -1152,7 +1152,7 @@ public unsafe struct TPMS_PCR_SELECT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_PCR_SELECTION
 {
-  TPMI_ALG_HASH hash;
+  public TPMI_ALG_HASH hash;
   public byte sizeofSelect;
   public fixed BYTE pcrSelect[PCR_SELECT_MAX];
 }
@@ -1161,51 +1161,51 @@ public unsafe struct TPMS_PCR_SELECTION
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_TK_CREATION
 {
-  TPM_ST tag;
-  TPMI_RH_HIERARCHY hierarchy;
-  TPM2B_DIGEST digest;
+  public TPM_ST tag;
+  public TPMI_RH_HIERARCHY hierarchy;
+  public TPM2B_DIGEST digest;
 }
 
 // Table 85 - TPMT_TK_VERIFIED Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_TK_VERIFIED
 {
-  TPM_ST tag;
-  TPMI_RH_HIERARCHY hierarchy;
-  TPM2B_DIGEST digest;
+  public TPM_ST tag;
+  public TPMI_RH_HIERARCHY hierarchy;
+  public TPM2B_DIGEST digest;
 }
 
 // Table 86 - TPMT_TK_AUTH Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_TK_AUTH
 {
-  TPM_ST tag;
-  TPMI_RH_HIERARCHY hierarchy;
-  TPM2B_DIGEST digest;
+  public TPM_ST tag;
+  public TPMI_RH_HIERARCHY hierarchy;
+  public TPM2B_DIGEST digest;
 }
 
 // Table 87 - TPMT_TK_HASHCHECK Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_TK_HASHCHECK
 {
-  TPM_ST tag;
-  TPMI_RH_HIERARCHY hierarchy;
-  TPM2B_DIGEST digest;
+  public TPM_ST tag;
+  public TPMI_RH_HIERARCHY hierarchy;
+  public TPM2B_DIGEST digest;
 }
 
 // Table 88 - TPMS_ALG_PROPERTY Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ALG_PROPERTY
 {
-  TPM_ALG_ID alg;
-  TPMA_ALGORITHM algProperties;
+  public TPM_ALG_ID alg;
+  public TPMA_ALGORITHM algProperties;
 }
 
 // Table 89 - TPMS_TAGGED_PROPERTY Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_TAGGED_PROPERTY
 {
-  TPM_PT property;
+  public TPM_PT property;
   public uint value;
 }
 
@@ -1213,7 +1213,7 @@ public unsafe struct TPMS_TAGGED_PROPERTY
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_TAGGED_PCR_SELECT
 {
-  TPM_PT tag;
+  public TPM_PT tag;
   public byte sizeofSelect;
   public fixed BYTE pcrSelect[PCR_SELECT_MAX];
 }
@@ -1223,7 +1223,7 @@ public unsafe struct TPMS_TAGGED_PCR_SELECT
 public unsafe struct TPML_CC
 {
   public uint count;
-  TPM_CC commandCodes[MAX_CAP_CC];
+  public fixed TPM_CC commandCodes[MAX_CAP_CC];
 }
 
 // Table 92 - TPML_CCA Structure
@@ -1231,7 +1231,7 @@ public unsafe struct TPML_CC
 public unsafe struct TPML_CCA
 {
   public uint count;
-  TPMA_CC commandAttributes[MAX_CAP_CC];
+  public fixed TPMA_CC commandAttributes[MAX_CAP_CC];
 }
 
 // Table 93 - TPML_ALG Structure
@@ -1239,7 +1239,7 @@ public unsafe struct TPML_CCA
 public unsafe struct TPML_ALG
 {
   public uint count;
-  TPM_ALG_ID algorithms[MAX_ALG_LIST_SIZE];
+  public fixed TPM_ALG_ID algorithms[MAX_ALG_LIST_SIZE];
 }
 
 // Table 94 - TPML_HANDLE Structure
@@ -1247,7 +1247,7 @@ public unsafe struct TPML_ALG
 public unsafe struct TPML_HANDLE
 {
   public uint count;
-  TPM_HANDLE handle[MAX_CAP_HANDLES];
+  public fixed TPM_HANDLE handle[MAX_CAP_HANDLES];
 }
 
 // Table 95 - TPML_DIGEST Structure
@@ -1255,7 +1255,7 @@ public unsafe struct TPML_HANDLE
 public unsafe struct TPML_DIGEST
 {
   public uint count;
-  TPM2B_DIGEST digests[8];
+  public fixed TPM2B_DIGEST digests[8];
 }
 
 // Table 96 -- TPML_DIGEST_VALUES Structure <I/O>
@@ -1263,7 +1263,7 @@ public unsafe struct TPML_DIGEST
 public unsafe struct TPML_DIGEST_VALUES
 {
   public uint count;
-  TPMT_HA digests[HASH_COUNT];
+  public fixed TPMT_HA digests[HASH_COUNT];
 }
 
 // Table 97 - TPM2B_DIGEST_VALUES Structure
@@ -1271,7 +1271,7 @@ public unsafe struct TPML_DIGEST_VALUES
 public unsafe struct TPM2B_DIGEST_VALUES
 {
   public ushort size;
-  public BYTEpublic public public buffer[sizeof(TPML_DIGEST_VALUES)];
+  BYTE buffer[sizeof(TPML_DIGEST_VALUES)];
 }
 
 // Table 98 - TPML_PCR_SELECTION Structure
@@ -1279,7 +1279,7 @@ public unsafe struct TPM2B_DIGEST_VALUES
 public unsafe struct TPML_PCR_SELECTION
 {
   public uint count;
-  TPMS_PCR_SELECTION pcrSelections[HASH_COUNT];
+  public fixed TPMS_PCR_SELECTION pcrSelections[HASH_COUNT];
 }
 
 // Table 99 - TPML_ALG_PROPERTY Structure
@@ -1287,7 +1287,7 @@ public unsafe struct TPML_PCR_SELECTION
 public unsafe struct TPML_ALG_PROPERTY
 {
   public uint count;
-  TPMS_ALG_PROPERTY algProperties[MAX_CAP_ALGS];
+  public fixed TPMS_ALG_PROPERTY algProperties[MAX_CAP_ALGS];
 }
 
 // Table 100 - TPML_TAGGED_TPM_PROPERTY Structure
@@ -1295,7 +1295,7 @@ public unsafe struct TPML_ALG_PROPERTY
 public unsafe struct TPML_TAGGED_TPM_PROPERTY
 {
   public uint count;
-  TPMS_TAGGED_PROPERTY tpmProperty[MAX_TPM_PROPERTIES];
+  public fixed TPMS_TAGGED_PROPERTY tpmProperty[MAX_TPM_PROPERTIES];
 }
 
 // Table 101 - TPML_TAGGED_PCR_PROPERTY Structure
@@ -1303,7 +1303,7 @@ public unsafe struct TPML_TAGGED_TPM_PROPERTY
 public unsafe struct TPML_TAGGED_PCR_PROPERTY
 {
   public uint count;
-  TPMS_TAGGED_PCR_SELECT pcrProperty[MAX_PCR_PROPERTIES];
+  public fixed TPMS_TAGGED_PCR_SELECT pcrProperty[MAX_PCR_PROPERTIES];
 }
 
 // Table 102 - TPML_ECC_CURVE Structure
@@ -1311,30 +1311,30 @@ public unsafe struct TPML_TAGGED_PCR_PROPERTY
 public unsafe struct TPML_ECC_CURVE
 {
   public uint count;
-  TPM_ECC_CURVE eccCurves[MAX_ECC_CURVES];
+  public fixed TPM_ECC_CURVE eccCurves[MAX_ECC_CURVES];
 }
 
 // Table 103 - TPMU_CAPABILITIES Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_CAPABILITIES
 {
-  TPML_ALG_PROPERTY algorithms;
-  TPML_HANDLE handles;
-  TPML_CCA command;
-  TPML_CC ppCommands;
-  TPML_CC auditCommands;
-  TPML_PCR_SELECTION assignedPCR;
-  TPML_TAGGED_TPM_PROPERTY tpmProperties;
-  TPML_TAGGED_PCR_PROPERTY pcrProperties;
-  TPML_ECC_CURVE eccCurves;
+  [FieldOffset(0)] public TPML_ALG_PROPERTY algorithms;
+  [FieldOffset(0)] public TPML_HANDLE handles;
+  [FieldOffset(0)] public TPML_CCA command;
+  [FieldOffset(0)] public TPML_CC ppCommands;
+  [FieldOffset(0)] public TPML_CC auditCommands;
+  [FieldOffset(0)] public TPML_PCR_SELECTION assignedPCR;
+  [FieldOffset(0)] public TPML_TAGGED_TPM_PROPERTY tpmProperties;
+  [FieldOffset(0)] public TPML_TAGGED_PCR_PROPERTY pcrProperties;
+  [FieldOffset(0)] public TPML_ECC_CURVE eccCurves;
 }
 
 // Table 104 - TPMS_CAPABILITY_DATA Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_CAPABILITY_DATA
 {
-  TPM_CAP capability;
-  TPMU_CAPABILITIES data;
+  public TPM_CAP capability;
+  public TPMU_CAPABILITIES data;
 }
 
 // Table 105 - TPMS_CLOCK_INFO Structure
@@ -1344,7 +1344,7 @@ public unsafe struct TPMS_CLOCK_INFO
   public ulong clock;
   public uint resetCount;
   public uint restartCount;
-  TPMI_YES_NO safe;
+  public TPMI_YES_NO safe;
 }
 
 // Table 106 - TPMS_TIME_INFO Structure
@@ -1352,14 +1352,14 @@ public unsafe struct TPMS_CLOCK_INFO
 public unsafe struct TPMS_TIME_INFO
 {
   public ulong time;
-  TPMS_CLOCK_INFO clockInfo;
+  public TPMS_CLOCK_INFO clockInfo;
 }
 
 // Table 107 - TPMS_TIME_ATTEST_INFO Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_TIME_ATTEST_INFO
 {
-  TPMS_TIME_INFO time;
+  public TPMS_TIME_INFO time;
   public ulong firmwareVersion;
 }
 
@@ -1367,16 +1367,16 @@ public unsafe struct TPMS_TIME_ATTEST_INFO
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_CERTIFY_INFO
 {
-  TPM2B_NAME name;
-  TPM2B_NAME qualifiedName;
+  public TPM2B_NAME name;
+  public TPM2B_NAME qualifiedName;
 }
 
 // Table 109 - TPMS_QUOTE_INFO Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_QUOTE_INFO
 {
-  TPML_PCR_SELECTION pcrSelect;
-  TPM2B_DIGEST pcrDigest;
+  public TPML_PCR_SELECTION pcrSelect;
+  public TPM2B_DIGEST pcrDigest;
 }
 
 // Table 110 - TPMS_COMMAND_AUDIT_INFO Structure
@@ -1384,34 +1384,34 @@ public unsafe struct TPMS_QUOTE_INFO
 public unsafe struct TPMS_COMMAND_AUDIT_INFO
 {
   public ulong auditCounter;
-  TPM_ALG_ID digestAlg;
-  TPM2B_DIGEST auditDigest;
-  TPM2B_DIGEST commandDigest;
+  public TPM_ALG_ID digestAlg;
+  public TPM2B_DIGEST auditDigest;
+  public TPM2B_DIGEST commandDigest;
 }
 
 // Table 111 - TPMS_SESSION_AUDIT_INFO Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SESSION_AUDIT_INFO
 {
-  TPMI_YES_NO exclusiveSession;
-  TPM2B_DIGEST sessionDigest;
+  public TPMI_YES_NO exclusiveSession;
+  public TPM2B_DIGEST sessionDigest;
 }
 
 // Table 112 - TPMS_CREATION_INFO Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_CREATION_INFO
 {
-  TPM2B_NAME objectName;
-  TPM2B_DIGEST creationHash;
+  public TPM2B_NAME objectName;
+  public TPM2B_DIGEST creationHash;
 }
 
 // Table 113 - TPMS_NV_CERTIFY_INFO Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_NV_CERTIFY_INFO
 {
-  TPM2B_NAME indexName;
+  public TPM2B_NAME indexName;
   public ushort offset;
-  TPM2B_MAX_NV_BUFFER nvContents;
+  public TPM2B_MAX_NV_BUFFER nvContents;
 }
 
 // Table 114 - TPMI_ST_ATTEST Type
@@ -1422,26 +1422,26 @@ public unsafe struct TPMI_ST_ATTEST { TPM_ST Value; public static implicit opera
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_ATTEST
 {
-  TPMS_CERTIFY_INFO certify;
-  TPMS_CREATION_INFO creation;
-  TPMS_QUOTE_INFO quote;
-  TPMS_COMMAND_AUDIT_INFO commandAudit;
-  TPMS_SESSION_AUDIT_INFO sessionAudit;
-  TPMS_TIME_ATTEST_INFO time;
-  TPMS_NV_CERTIFY_INFO nv;
+  [FieldOffset(0)] public TPMS_CERTIFY_INFO certify;
+  [FieldOffset(0)] public TPMS_CREATION_INFO creation;
+  [FieldOffset(0)] public TPMS_QUOTE_INFO quote;
+  [FieldOffset(0)] public TPMS_COMMAND_AUDIT_INFO commandAudit;
+  [FieldOffset(0)] public TPMS_SESSION_AUDIT_INFO sessionAudit;
+  [FieldOffset(0)] public TPMS_TIME_ATTEST_INFO time;
+  [FieldOffset(0)] public TPMS_NV_CERTIFY_INFO nv;
 }
 
 // Table 116 - TPMS_ATTEST Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ATTEST
 {
-  TPM_GENERATED magic;
-  TPMI_ST_ATTEST type;
-  TPM2B_NAME qualifiedSigner;
-  TPM2B_DATA extraData;
-  TPMS_CLOCK_INFO clockInfo;
+  public TPM_GENERATED magic;
+  public TPMI_ST_ATTEST type;
+  public TPM2B_NAME qualifiedSigner;
+  public TPM2B_DATA extraData;
+  public TPMS_CLOCK_INFO clockInfo;
   public ulong firmwareVersion;
-  TPMU_ATTEST attested;
+  public TPMU_ATTEST attested;
 }
 
 // Table 117 - TPM2B_ATTEST Structure
@@ -1449,26 +1449,26 @@ public unsafe struct TPMS_ATTEST
 public unsafe struct TPM2B_ATTEST
 {
   public ushort size;
-  public BYTEpublic public public attestationData[sizeof(TPMS_ATTEST)];
+  BYTE attestationData[sizeof(TPMS_ATTEST)];
 }
 
 // Table 118 - TPMS_AUTH_COMMAND Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_AUTH_COMMAND
 {
-  TPMI_SH_AUTH_SESSION sessionHandle;
-  TPM2B_NONCE nonce;
-  TPMA_SESSION sessionAttributes;
-  TPM2B_AUTH hmac;
+  public TPMI_SH_AUTH_SESSION sessionHandle;
+  public TPM2B_NONCE nonce;
+  public TPMA_SESSION sessionAttributes;
+  public TPM2B_AUTH hmac;
 }
 
 // Table 119 - TPMS_AUTH_RESPONSE Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_AUTH_RESPONSE
 {
-  TPM2B_NONCE nonce;
-  TPMA_SESSION sessionAttributes;
-  TPM2B_AUTH hmac;
+  public TPM2B_NONCE nonce;
+  public TPMA_SESSION sessionAttributes;
+  public TPM2B_AUTH hmac;
 }
 
 // 11 Algorithm Parameters and Structures
@@ -1485,37 +1485,37 @@ public unsafe struct TPMI_SM4_KEY_BITS { TPM_KEY_BITS Value; public static impli
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_SYM_KEY_BITS
 {
-  TPMI_AES_KEY_BITS aes;
-  TPMI_SM4_KEY_BITS SM4;
-  TPM_KEY_BITS sym;
-  TPMI_ALG_HASH xor;
+  [FieldOffset(0)] public TPMI_AES_KEY_BITS aes;
+  [FieldOffset(0)] public TPMI_SM4_KEY_BITS SM4;
+  [FieldOffset(0)] public TPM_KEY_BITS sym;
+  [FieldOffset(0)] public TPMI_ALG_HASH xor;
 }
 
 // Table 123 - TPMU_SYM_MODE Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_SYM_MODE
 {
-  TPMI_ALG_SYM_MODE aes;
-  TPMI_ALG_SYM_MODE SM4;
-  TPMI_ALG_SYM_MODE sym;
+  [FieldOffset(0)] public TPMI_ALG_SYM_MODE aes;
+  [FieldOffset(0)] public TPMI_ALG_SYM_MODE SM4;
+  [FieldOffset(0)] public TPMI_ALG_SYM_MODE sym;
 }
 
 // Table 125 - TPMT_SYM_DEF Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_SYM_DEF
 {
-  TPMI_ALG_SYM algorithm;
-  TPMU_SYM_KEY_BITS keyBits;
-  TPMU_SYM_MODE mode;
+  public TPMI_ALG_SYM algorithm;
+  public TPMU_SYM_KEY_BITS keyBits;
+  public TPMU_SYM_MODE mode;
 }
 
 // Table 126 - TPMT_SYM_DEF_OBJECT Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_SYM_DEF_OBJECT
 {
-  TPMI_ALG_SYM_OBJECT algorithm;
-  TPMU_SYM_KEY_BITS keyBits;
-  TPMU_SYM_MODE mode;
+  public TPMI_ALG_SYM_OBJECT algorithm;
+  public TPMU_SYM_KEY_BITS keyBits;
+  public TPMU_SYM_MODE mode;
 }
 
 // Table 127 - TPM2B_SYM_KEY Structure
@@ -1530,7 +1530,7 @@ public unsafe struct TPM2B_SYM_KEY
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SYMCIPHER_PARMS
 {
-  TPMT_SYM_DEF_OBJECT sym;
+  public TPMT_SYM_DEF_OBJECT sym;
 }
 
 // Table 129 - TPM2B_SENSITIVE_DATA Structure
@@ -1545,8 +1545,8 @@ public unsafe struct TPM2B_SENSITIVE_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SENSITIVE_CREATE
 {
-  TPM2B_AUTH userAuth;
-  TPM2B_SENSITIVE_DATA data;
+  public TPM2B_AUTH userAuth;
+  public TPM2B_SENSITIVE_DATA data;
 }
 
 // Table 131 - TPM2B_SENSITIVE_CREATE Structure
@@ -1554,14 +1554,14 @@ public unsafe struct TPMS_SENSITIVE_CREATE
 public unsafe struct TPM2B_SENSITIVE_CREATE
 {
   public ushort size;
-  TPMS_SENSITIVE_CREATE sensitive;
+  public TPMS_SENSITIVE_CREATE sensitive;
 }
 
 // Table 132 - TPMS_SCHEME_SIGHASH Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_SIGHASH
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 133 - TPMI_ALG_KEYEDHASH_SCHEME Type
@@ -1576,24 +1576,24 @@ public unsafe struct TPMS_SCHEME_HMAC { TPMS_SCHEME_SIGHASH Value; public static
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_XOR
 {
-  TPMI_ALG_HASH hashAlg;
-  TPMI_ALG_KDF kdf;
+  public TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_KDF kdf;
 }
 
 // Table 136 - TPMU_SCHEME_KEYEDHASH Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_SCHEME_KEYEDHASH
 {
-  TPMS_SCHEME_HMAC hmac;
-  TPMS_SCHEME_XOR xor;
+  [FieldOffset(0)] public TPMS_SCHEME_HMAC hmac;
+  [FieldOffset(0)] public TPMS_SCHEME_XOR xor;
 }
 
 // Table 137 - TPMT_KEYEDHASH_SCHEME Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_KEYEDHASH_SCHEME
 {
-  TPMI_ALG_KEYEDHASH_SCHEME scheme;
-  TPMU_SCHEME_KEYEDHASH details;
+  public TPMI_ALG_KEYEDHASH_SCHEME scheme;
+  public TPMU_SCHEME_KEYEDHASH details;
 }
 
 // Table 138 - RSA_SIG_SCHEMES Types
@@ -1614,7 +1614,7 @@ public unsafe struct TPMS_SCHEME_ECSCHNORR { TPMS_SCHEME_SIGHASH Value; public s
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_ECDAA
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
   public ushort count;
 }
 
@@ -1622,81 +1622,81 @@ public unsafe struct TPMS_SCHEME_ECDAA
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_SIG_SCHEME
 {
-  TPMS_SCHEME_RSASSA rsassa;
-  TPMS_SCHEME_RSAPSS rsapss;
-  TPMS_SCHEME_ECDSA ecdsa;
-  TPMS_SCHEME_ECDAA ecdaa;
-  TPMS_SCHEME_ECSCHNORR ecSchnorr;
-  TPMS_SCHEME_HMAC hmac;
-  TPMS_SCHEME_SIGHASH any;
+  [FieldOffset(0)] public TPMS_SCHEME_RSASSA rsassa;
+  [FieldOffset(0)] public TPMS_SCHEME_RSAPSS rsapss;
+  [FieldOffset(0)] public TPMS_SCHEME_ECDSA ecdsa;
+  [FieldOffset(0)] public TPMS_SCHEME_ECDAA ecdaa;
+  [FieldOffset(0)] public TPMS_SCHEME_ECSCHNORR ecSchnorr;
+  [FieldOffset(0)] public TPMS_SCHEME_HMAC hmac;
+  [FieldOffset(0)] public TPMS_SCHEME_SIGHASH any;
 }
 
 // Table 142 - TPMT_SIG_SCHEME Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_SIG_SCHEME
 {
-  TPMI_ALG_SIG_SCHEME scheme;
-  TPMU_SIG_SCHEME details;
+  public TPMI_ALG_SIG_SCHEME scheme;
+  public TPMU_SIG_SCHEME details;
 }
 
 // Table 143 - TPMS_SCHEME_OAEP Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_OAEP
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 144 - TPMS_SCHEME_ECDH Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_ECDH
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 145 - TPMS_SCHEME_MGF1 Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_MGF1
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 146 - TPMS_SCHEME_KDF1_SP800_56a Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_KDF1_SP800_56a
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 147 - TPMS_SCHEME_KDF2 Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_KDF2
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 148 - TPMS_SCHEME_KDF1_SP800_108 Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SCHEME_KDF1_SP800_108
 {
-  TPMI_ALG_HASH hashAlg;
+  public TPMI_ALG_HASH hashAlg;
 }
 
 // Table 149 - TPMU_KDF_SCHEME Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_KDF_SCHEME
 {
-  TPMS_SCHEME_MGF1 mgf1;
-  TPMS_SCHEME_KDF1_SP800_56a kdf1_SP800_56a;
-  TPMS_SCHEME_KDF2 kdf2;
-  TPMS_SCHEME_KDF1_SP800_108 kdf1_sp800_108;
+  [FieldOffset(0)] public TPMS_SCHEME_MGF1 mgf1;
+  [FieldOffset(0)] public TPMS_SCHEME_KDF1_SP800_56a kdf1_SP800_56a;
+  [FieldOffset(0)] public TPMS_SCHEME_KDF2 kdf2;
+  [FieldOffset(0)] public TPMS_SCHEME_KDF1_SP800_108 kdf1_sp800_108;
 }
 
 // Table 150 - TPMT_KDF_SCHEME Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_KDF_SCHEME
 {
-  TPMI_ALG_KDF scheme;
-  TPMU_KDF_SCHEME details;
+  public TPMI_ALG_KDF scheme;
+  public TPMU_KDF_SCHEME details;
 }
 
 // Table 151 - TPMI_ALG_ASYM_SCHEME Type
@@ -1707,21 +1707,21 @@ public unsafe struct TPMI_ALG_ASYM_SCHEME { TPM_ALG_ID Value; public static impl
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_ASYM_SCHEME
 {
-  TPMS_SCHEME_RSASSA rsassa;
-  TPMS_SCHEME_RSAPSS rsapss;
-  TPMS_SCHEME_OAEP oaep;
-  TPMS_SCHEME_ECDSA ecdsa;
-  TPMS_SCHEME_ECDAA ecdaa;
-  TPMS_SCHEME_ECSCHNORR ecSchnorr;
-  TPMS_SCHEME_SIGHASH anySig;
+  [FieldOffset(0)] public TPMS_SCHEME_RSASSA rsassa;
+  [FieldOffset(0)] public TPMS_SCHEME_RSAPSS rsapss;
+  [FieldOffset(0)] public TPMS_SCHEME_OAEP oaep;
+  [FieldOffset(0)] public TPMS_SCHEME_ECDSA ecdsa;
+  [FieldOffset(0)] public TPMS_SCHEME_ECDAA ecdaa;
+  [FieldOffset(0)] public TPMS_SCHEME_ECSCHNORR ecSchnorr;
+  [FieldOffset(0)] public TPMS_SCHEME_SIGHASH anySig;
 }
 
 // Table 153 - TPMT_ASYM_SCHEME Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_ASYM_SCHEME
 {
-  TPMI_ALG_ASYM_SCHEME scheme;
-  TPMU_ASYM_SCHEME details;
+  public TPMI_ALG_ASYM_SCHEME scheme;
+  public TPMU_ASYM_SCHEME details;
 }
 
 // Table 154 - TPMI_ALG_RSA_SCHEME Type
@@ -1732,8 +1732,8 @@ public unsafe struct TPMI_ALG_RSA_SCHEME { TPM_ALG_ID Value; public static impli
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_RSA_SCHEME
 {
-  TPMI_ALG_RSA_SCHEME scheme;
-  TPMU_ASYM_SCHEME details;
+  public TPMI_ALG_RSA_SCHEME scheme;
+  public TPMU_ASYM_SCHEME details;
 }
 
 // Table 156 - TPMI_ALG_RSA_DECRYPT Type
@@ -1744,8 +1744,8 @@ public unsafe struct TPMI_ALG_RSA_DECRYPT { TPM_ALG_ID Value; public static impl
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_RSA_DECRYPT
 {
-  TPMI_ALG_RSA_DECRYPT scheme;
-  TPMU_ASYM_SCHEME details;
+  public TPMI_ALG_RSA_DECRYPT scheme;
+  public TPMU_ASYM_SCHEME details;
 }
 
 // Table 158 - TPM2B_PUBLIC_KEY_RSA Structure
@@ -1765,7 +1765,7 @@ public unsafe struct TPMI_RSA_KEY_BITS { TPM_KEY_BITS Value; public static impli
 public unsafe struct TPM2B_PRIVATE_KEY_RSA
 {
   public ushort size;
-  public BYTEpublic public public buffer[MAX_RSA_KEY_BYTES / 2];
+  BYTE buffer[MAX_RSA_KEY_BYTES / 2];
 }
 
 // Table 161 - TPM2B_ECC_PARAMETER Structure
@@ -1780,8 +1780,8 @@ public unsafe struct TPM2B_ECC_PARAMETER
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ECC_POINT
 {
-  TPM2B_ECC_PARAMETER x;
-  TPM2B_ECC_PARAMETER y;
+  public TPM2B_ECC_PARAMETER x;
+  public TPM2B_ECC_PARAMETER y;
 }
 
 // Table 163 -- TPM2B_ECC_POINT Structure <I/O>
@@ -1789,7 +1789,7 @@ public unsafe struct TPMS_ECC_POINT
 public unsafe struct TPM2B_ECC_POINT
 {
   public ushort size;
-  TPMS_ECC_POINT point;
+  public TPMS_ECC_POINT point;
 }
 
 // Table 164 - TPMI_ALG_ECC_SCHEME Type
@@ -1804,82 +1804,82 @@ public unsafe struct TPMI_ECC_CURVE { TPM_ECC_CURVE Value; public static implici
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_ECC_SCHEME
 {
-  TPMI_ALG_ECC_SCHEME scheme;
-  TPMU_SIG_SCHEME details;
+  public TPMI_ALG_ECC_SCHEME scheme;
+  public TPMU_SIG_SCHEME details;
 }
 
 // Table 167 - TPMS_ALGORITHM_DETAIL_ECC Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ALGORITHM_DETAIL_ECC
 {
-  TPM_ECC_CURVE curveID;
+  public TPM_ECC_CURVE curveID;
   public ushort keySize;
-  TPMT_KDF_SCHEME kdf;
-  TPMT_ECC_SCHEME sign;
-  TPM2B_ECC_PARAMETER p;
-  TPM2B_ECC_PARAMETER a;
-  TPM2B_ECC_PARAMETER b;
-  TPM2B_ECC_PARAMETER gX;
-  TPM2B_ECC_PARAMETER gY;
-  TPM2B_ECC_PARAMETER n;
-  TPM2B_ECC_PARAMETER h;
+  public TPMT_KDF_SCHEME kdf;
+  public TPMT_ECC_SCHEME sign;
+  public TPM2B_ECC_PARAMETER p;
+  public TPM2B_ECC_PARAMETER a;
+  public TPM2B_ECC_PARAMETER b;
+  public TPM2B_ECC_PARAMETER gX;
+  public TPM2B_ECC_PARAMETER gY;
+  public TPM2B_ECC_PARAMETER n;
+  public TPM2B_ECC_PARAMETER h;
 }
 
 // Table 168 - TPMS_SIGNATURE_RSASSA Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SIGNATURE_RSASSA
 {
-  TPMI_ALG_HASH hash;
-  TPM2B_PUBLIC_KEY_RSA sig;
+  public TPMI_ALG_HASH hash;
+  public TPM2B_PUBLIC_KEY_RSA sig;
 }
 
 // Table 169 - TPMS_SIGNATURE_RSAPSS Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SIGNATURE_RSAPSS
 {
-  TPMI_ALG_HASH hash;
-  TPM2B_PUBLIC_KEY_RSA sig;
+  public TPMI_ALG_HASH hash;
+  public TPM2B_PUBLIC_KEY_RSA sig;
 }
 
 // Table 170 - TPMS_SIGNATURE_ECDSA Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_SIGNATURE_ECDSA
 {
-  TPMI_ALG_HASH hash;
-  TPM2B_ECC_PARAMETER signatureR;
-  TPM2B_ECC_PARAMETER signatureS;
+  public TPMI_ALG_HASH hash;
+  public TPM2B_ECC_PARAMETER signatureR;
+  public TPM2B_ECC_PARAMETER signatureS;
 }
 
 // Table 171 - TPMU_SIGNATURE Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_SIGNATURE
 {
-  TPMS_SIGNATURE_RSASSA rsassa;
-  TPMS_SIGNATURE_RSAPSS rsapss;
-  TPMS_SIGNATURE_ECDSA ecdsa;
-  TPMS_SIGNATURE_ECDSA sm2;
-  TPMS_SIGNATURE_ECDSA ecdaa;
-  TPMS_SIGNATURE_ECDSA ecschnorr;
-  TPMT_HA hmac;
-  TPMS_SCHEME_SIGHASH any;
+  [FieldOffset(0)] public TPMS_SIGNATURE_RSASSA rsassa;
+  [FieldOffset(0)] public TPMS_SIGNATURE_RSAPSS rsapss;
+  [FieldOffset(0)] public TPMS_SIGNATURE_ECDSA ecdsa;
+  [FieldOffset(0)] public TPMS_SIGNATURE_ECDSA sm2;
+  [FieldOffset(0)] public TPMS_SIGNATURE_ECDSA ecdaa;
+  [FieldOffset(0)] public TPMS_SIGNATURE_ECDSA ecschnorr;
+  [FieldOffset(0)] public TPMT_HA hmac;
+  [FieldOffset(0)] public TPMS_SCHEME_SIGHASH any;
 }
 
 // Table 172 - TPMT_SIGNATURE Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_SIGNATURE
 {
-  TPMI_ALG_SIG_SCHEME sigAlg;
-  TPMU_SIGNATURE signature;
+  public TPMI_ALG_SIG_SCHEME sigAlg;
+  public TPMU_SIGNATURE signature;
 }
 
 // Table 173 - TPMU_ENCRYPTED_SECRET Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_ENCRYPTED_SECRET
 {
-  [FieldOffset(0)] public BYTE[FieldOffset(0)] public  [FieldOffset(0)] public ecc[sizeof(TPMS_ECC_POINT)];
- [FieldOffset(0)] public fixed BYTE rsa[MAX_RSA_KEY_BYTES];
-  [FieldOffset(0)] public BYTE[FieldOffset(0)] public  [FieldOffset(0)] public symmetric[sizeof(TPM2B_DIGEST)];
-[FieldOffset(0)] public BYTE[FieldOffset(0)] public  [FieldOffset(0)] public keyedHash[sizeof(TPM2B_DIGEST)];
+  BYTE ecc[sizeof(TPMS_ECC_POINT)];
+  [FieldOffset(0)] public fixed BYTE rsa[MAX_RSA_KEY_BYTES];
+  BYTE symmetric[sizeof(TPM2B_DIGEST)];
+  BYTE keyedHash[sizeof(TPM2B_DIGEST)];
 }
 
 // Table 174 - TPM2B_ENCRYPTED_SECRET Structure
@@ -1887,7 +1887,7 @@ public unsafe struct TPMU_ENCRYPTED_SECRET
 public unsafe struct TPM2B_ENCRYPTED_SECRET
 {
   public ushort size;
-  public BYTEpublic public public secret[sizeof(TPMU_ENCRYPTED_SECRET)];
+  BYTE secret[sizeof(TPMU_ENCRYPTED_SECRET)];
 }
 
 // 12 Key/Object Complex
@@ -1900,34 +1900,34 @@ public unsafe struct TPMI_ALG_PUBLIC { TPM_ALG_ID Value; public static implicit 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_PUBLIC_ID
 {
-  TPM2B_DIGEST keyedHash;
-  TPM2B_DIGEST sym;
-  TPM2B_PUBLIC_KEY_RSA rsa;
-  TPMS_ECC_POINT ecc;
+  [FieldOffset(0)] public TPM2B_DIGEST keyedHash;
+  [FieldOffset(0)] public TPM2B_DIGEST sym;
+  [FieldOffset(0)] public TPM2B_PUBLIC_KEY_RSA rsa;
+  [FieldOffset(0)] public TPMS_ECC_POINT ecc;
 }
 
 // Table 177 - TPMS_KEYEDHASH_PARMS Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_KEYEDHASH_PARMS
 {
-  TPMT_KEYEDHASH_SCHEME scheme;
+  public TPMT_KEYEDHASH_SCHEME scheme;
 }
 
 // Table 178 - TPMS_ASYM_PARMS Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ASYM_PARMS
 {
-  TPMT_SYM_DEF_OBJECT symmetric;
-  TPMT_ASYM_SCHEME scheme;
+  public TPMT_SYM_DEF_OBJECT symmetric;
+  public TPMT_ASYM_SCHEME scheme;
 }
 
 // Table 179 - TPMS_RSA_PARMS Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_RSA_PARMS
 {
-  TPMT_SYM_DEF_OBJECT symmetric;
-  TPMT_RSA_SCHEME scheme;
-  TPMI_RSA_KEY_BITS keyBits;
+  public TPMT_SYM_DEF_OBJECT symmetric;
+  public TPMT_RSA_SCHEME scheme;
+  public TPMI_RSA_KEY_BITS keyBits;
   public uint exponent;
 }
 
@@ -1935,41 +1935,41 @@ public unsafe struct TPMS_RSA_PARMS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_ECC_PARMS
 {
-  TPMT_SYM_DEF_OBJECT symmetric;
-  TPMT_ECC_SCHEME scheme;
-  TPMI_ECC_CURVE curveID;
-  TPMT_KDF_SCHEME kdf;
+  public TPMT_SYM_DEF_OBJECT symmetric;
+  public TPMT_ECC_SCHEME scheme;
+  public TPMI_ECC_CURVE curveID;
+  public TPMT_KDF_SCHEME kdf;
 }
 
 // Table 181 - TPMU_PUBLIC_PARMS Union
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_PUBLIC_PARMS
 {
-  TPMS_KEYEDHASH_PARMS keyedHashDetail;
-  TPMT_SYM_DEF_OBJECT symDetail;
-  TPMS_RSA_PARMS rsaDetail;
-  TPMS_ECC_PARMS eccDetail;
-  TPMS_ASYM_PARMS asymDetail;
+  [FieldOffset(0)] public TPMS_KEYEDHASH_PARMS keyedHashDetail;
+  [FieldOffset(0)] public TPMT_SYM_DEF_OBJECT symDetail;
+  [FieldOffset(0)] public TPMS_RSA_PARMS rsaDetail;
+  [FieldOffset(0)] public TPMS_ECC_PARMS eccDetail;
+  [FieldOffset(0)] public TPMS_ASYM_PARMS asymDetail;
 }
 
 // Table 182 - TPMT_PUBLIC_PARMS Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_PUBLIC_PARMS
 {
-  TPMI_ALG_PUBLIC type;
-  TPMU_PUBLIC_PARMS parameters;
+  public TPMI_ALG_PUBLIC type;
+  public TPMU_PUBLIC_PARMS parameters;
 }
 
 // Table 183 - TPMT_PUBLIC Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_PUBLIC
 {
-  TPMI_ALG_PUBLIC type;
-  TPMI_ALG_HASH nameAlg;
-  TPMA_OBJECT objectAttributes;
-  TPM2B_DIGEST authPolicy;
-  TPMU_PUBLIC_PARMS parameters;
-  TPMU_PUBLIC_ID unique;
+  public TPMI_ALG_PUBLIC type;
+  public TPMI_ALG_HASH nameAlg;
+  public TPMA_OBJECT objectAttributes;
+  public TPM2B_DIGEST authPolicy;
+  public TPMU_PUBLIC_PARMS parameters;
+  public TPMU_PUBLIC_ID unique;
 }
 
 // Table 184 - TPM2B_PUBLIC Structure
@@ -1977,7 +1977,7 @@ public unsafe struct TPMT_PUBLIC
 public unsafe struct TPM2B_PUBLIC
 {
   public ushort size;
-  TPMT_PUBLIC publicArea;
+  public TPMT_PUBLIC publicArea;
 }
 
 // Table 185 - TPM2B_PRIVATE_VENDOR_SPECIFIC Structure
@@ -1992,21 +1992,21 @@ public unsafe struct TPM2B_PRIVATE_VENDOR_SPECIFIC
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct TPMU_SENSITIVE_COMPOSITE
 {
-  TPM2B_PRIVATE_KEY_RSA rsa;
-  TPM2B_ECC_PARAMETER ecc;
-  TPM2B_SENSITIVE_DATA bits;
-  TPM2B_SYM_KEY sym;
-  TPM2B_PRIVATE_VENDOR_SPECIFIC any;
+  [FieldOffset(0)] public TPM2B_PRIVATE_KEY_RSA rsa;
+  [FieldOffset(0)] public TPM2B_ECC_PARAMETER ecc;
+  [FieldOffset(0)] public TPM2B_SENSITIVE_DATA bits;
+  [FieldOffset(0)] public TPM2B_SYM_KEY sym;
+  [FieldOffset(0)] public TPM2B_PRIVATE_VENDOR_SPECIFIC any;
 }
 
 // Table 187 - TPMT_SENSITIVE Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMT_SENSITIVE
 {
-  TPMI_ALG_PUBLIC sensitiveType;
-  TPM2B_AUTH authValue;
-  TPM2B_DIGEST seedValue;
-  TPMU_SENSITIVE_COMPOSITE sensitive;
+  public TPMI_ALG_PUBLIC sensitiveType;
+  public TPM2B_AUTH authValue;
+  public TPM2B_DIGEST seedValue;
+  public TPMU_SENSITIVE_COMPOSITE sensitive;
 }
 
 // Table 188 - TPM2B_SENSITIVE Structure
@@ -2014,16 +2014,16 @@ public unsafe struct TPMT_SENSITIVE
 public unsafe struct TPM2B_SENSITIVE
 {
   public ushort size;
-  TPMT_SENSITIVE sensitiveArea;
+  public TPMT_SENSITIVE sensitiveArea;
 }
 
 // Table 189 - _PRIVATE Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct _PRIVATE
 {
-  TPM2B_DIGEST integrityOuter;
-  TPM2B_DIGEST integrityInner;
-  TPMT_SENSITIVE sensitive;
+  public TPM2B_DIGEST integrityOuter;
+  public TPM2B_DIGEST integrityInner;
+  public TPMT_SENSITIVE sensitive;
 }
 
 // Table 190 - TPM2B_PRIVATE Structure
@@ -2031,15 +2031,15 @@ public unsafe struct _PRIVATE
 public unsafe struct TPM2B_PRIVATE
 {
   public ushort size;
-  public BYTEpublic public public buffer[sizeof(_PRIVATE)];
+  BYTE buffer[sizeof(_PRIVATE)];
 }
 
 // Table 191 - _ID_OBJECT Structure
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct _ID_OBJECT
 {
-  TPM2B_DIGEST integrityHMAC;
-  TPM2B_DIGEST encIdentity;
+  public TPM2B_DIGEST integrityHMAC;
+  public TPM2B_DIGEST encIdentity;
 }
 
 // Table 192 - TPM2B_ID_OBJECT Structure
@@ -2047,7 +2047,7 @@ public unsafe struct _ID_OBJECT
 public unsafe struct TPM2B_ID_OBJECT
 {
   public ushort size;
-  public BYTEpublic public public credential[sizeof(_ID_OBJECT)];
+  BYTE credential[sizeof(_ID_OBJECT)];
 }
 
 // 13 NV Storage Structures
@@ -2098,10 +2098,10 @@ public unsafe struct TPMA_NV
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_NV_PUBLIC
 {
-  TPMI_RH_NV_INDEX nvIndex;
-  TPMI_ALG_HASH nameAlg;
-  TPMA_NV attributes;
-  TPM2B_DIGEST authPolicy;
+  public TPMI_RH_NV_INDEX nvIndex;
+  public TPMI_ALG_HASH nameAlg;
+  public TPMA_NV attributes;
+  public TPM2B_DIGEST authPolicy;
   public ushort dataSize;
 }
 
@@ -2110,7 +2110,7 @@ public unsafe struct TPMS_NV_PUBLIC
 public unsafe struct TPM2B_NV_PUBLIC
 {
   public ushort size;
-  TPMS_NV_PUBLIC nvPublic;
+  public TPMS_NV_PUBLIC nvPublic;
 }
 
 // 14 Context Data
@@ -2127,8 +2127,8 @@ public unsafe struct TPM2B_CONTEXT_SENSITIVE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_CONTEXT_DATA
 {
-  TPM2B_DIGEST integrity;
-  TPM2B_CONTEXT_SENSITIVE encrypted;
+  public TPM2B_DIGEST integrity;
+  public TPM2B_CONTEXT_SENSITIVE encrypted;
 }
 
 // Table 200 - TPM2B_CONTEXT_DATA Structure
@@ -2136,7 +2136,7 @@ public unsafe struct TPMS_CONTEXT_DATA
 public unsafe struct TPM2B_CONTEXT_DATA
 {
   public ushort size;
-  public BYTEpublic public public buffer[sizeof(TPMS_CONTEXT_DATA)];
+  BYTE buffer[sizeof(TPMS_CONTEXT_DATA)];
 }
 
 // Table 201 - TPMS_CONTEXT Structure
@@ -2144,9 +2144,9 @@ public unsafe struct TPM2B_CONTEXT_DATA
 public unsafe struct TPMS_CONTEXT
 {
   public ulong sequence;
-  TPMI_DH_CONTEXT savedHandle;
-  TPMI_RH_HIERARCHY hierarchy;
-  TPM2B_CONTEXT_DATA contextBlob;
+  public TPMI_DH_CONTEXT savedHandle;
+  public TPMI_RH_HIERARCHY hierarchy;
+  public TPM2B_CONTEXT_DATA contextBlob;
 }
 
 // 15 Creation Data
@@ -2155,13 +2155,13 @@ public unsafe struct TPMS_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMS_CREATION_DATA
 {
-  TPML_PCR_SELECTION pcrSelect;
-  TPM2B_DIGEST pcrDigest;
-  TPMA_LOCALITY locality;
-  TPM_ALG_ID parentNameAlg;
-  TPM2B_NAME parentName;
-  TPM2B_NAME parentQualifiedName;
-  TPM2B_DATA outsideInfo;
+  public TPML_PCR_SELECTION pcrSelect;
+  public TPM2B_DIGEST pcrDigest;
+  public TPMA_LOCALITY locality;
+  public TPM_ALG_ID parentNameAlg;
+  public TPM2B_NAME parentName;
+  public TPM2B_NAME parentQualifiedName;
+  public TPM2B_DATA outsideInfo;
 }
 
 // Table 204 - TPM2B_CREATION_DATA Structure
@@ -2169,7 +2169,7 @@ public unsafe struct TPMS_CREATION_DATA
 public unsafe struct TPM2B_CREATION_DATA
 {
   public ushort size;
-  TPMS_CREATION_DATA creationData;
+  public TPMS_CREATION_DATA creationData;
 }
 
 //
@@ -2178,17 +2178,17 @@ public unsafe struct TPM2B_CREATION_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM2_COMMAND_HEADER
 {
-  TPM_ST tag;
+  public TPM_ST tag;
   public uint paramSize;
-  TPM_CC commandCode;
+  public TPM_CC commandCode;
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPM2_RESPONSE_HEADER
 {
-  TPM_ST tag;
+  public TPM_ST tag;
   public uint paramSize;
-  TPM_RC responseCode;
+  public TPM_RC responseCode;
 }
 
 // #pragma pack ()

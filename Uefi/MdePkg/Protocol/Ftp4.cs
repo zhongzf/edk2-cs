@@ -142,6 +142,29 @@ public unsafe struct EFI_FTP4_CONFIG_DATA
 
 // typedef struct _EFI_FTP4_COMMAND_TOKEN EFI_FTP4_COMMAND_TOKEN;
 
+// /**
+//   Callback function when process inbound or outbound data.
+// 
+//   If it is receiving function that leads to inbound data, the callback function
+//   is called when data buffer is full. Then, old data in the data buffer should be
+//   flushed and new data is stored from the beginning of data buffer.
+//   If it is a transmit function that lead to outbound data and the size of
+//   Data in daata buffer has been transmitted, this callback function is called to
+//   supply additional data to be transmitted.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] Token               Pointer to the token structure to provide the parameters that
+//                                  are used in this operation.
+//   @return  User defined Status.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_DATA_CALLBACK)(
+//   IN EFI_FTP4_PROTOCOL           *This,
+//   IN EFI_FTP4_COMMAND_TOKEN      *Token
+//   );
+
 ///
 /// EFI_FTP4_COMMAND_TOKEN
 ///
@@ -182,23 +205,7 @@ public unsafe struct EFI_FTP4_COMMAND_TOKEN
   /// DataBufferSize, again. If there is no data remained,
   /// DataBufferSize should be set to 0.
   ///
-  /**
-    Callback function when process inbound or outbound data.
-
-    If it is receiving function that leads to inbound data, the callback function
-    is called when data buffer is full. Then, old data in the data buffer should be
-    flushed and new data is stored from the beginning of data buffer.
-    If it is a transmit function that lead to outbound data and the size of
-    Data in daata buffer has been transmitted, this callback function is called to
-    supply additional data to be transmitted.
-
-    @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
-    @param[in] Token               Pointer to the token structure to provide the parameters that
-                                   are used in this operation.
-    @return  User defined Status.
-
-  **/
-  public readonly delegate* unmanaged<EFI_FTP4_PROTOCOL*, EFI_FTP4_COMMAND_TOKEN*, EFI_STATUS> DataCallback;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_COMMAND_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FTP4_DATA_CALLBACK*/ DataCallback;
   ///
   /// Pointer to the parameter for DataCallback.
   ///
@@ -210,34 +217,289 @@ public unsafe struct EFI_FTP4_COMMAND_TOKEN
   /// EFI_CONNECTION_RESET:     The connect fails because the connection is reset either
   ///                           by instance itself or communication peer.
   /// EFI_TIMEOUT:              The connection establishment timer expired and no more
+  ///                           specific information is available.
+  /// EFI_NETWORK_UNREACHABLE:  The active open fails because an ICMP network unreachable
+  ///                           error is received.
+  /// EFI_HOST_UNREACHABLE:     The active open fails because an ICMP host unreachable
+  ///                           error is received.
+  /// EFI_PROTOCOL_UNREACHABLE: The active open fails because an ICMP protocol unreachable
+  ///                           error is received.
+  /// EFI_PORT_UNREACHABLE:     The connection establishment timer times out and an ICMP port
+  ///                           unreachable error is received.
+  /// EFI_ICMP_ERROR:           The connection establishment timer timeout and some other ICMP
+  ///                           error is received.
+  /// EFI_DEVICE_ERROR:         An unexpected system or network error occurred.
+  ///
+  public EFI_STATUS Status;
+}
 
-                                 - This is NULL.
+// /**
+//   Gets the current operational settings.
+// 
+//   The GetModeData() function reads the current operational settings of this
+//   EFI FTPv4 Protocol driver instance. EFI_FTP4_CONFIG_DATA  is defined in the
+//   EFI_FTP4_PROTOCOL.Configure.
+// 
+//   @param[in]  This               Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[out] ModeData           Pointer to storage for the EFI FTPv4 Protocol driver
+//                                  mode data. The string buffers for Username and Password
+//                                  in EFI_FTP4_CONFIG_DATA are allocated by the function,
+//                                  and the caller should take the responsibility to free the
+//                                  buffer later.
+// 
+//   @retval EFI_SUCCESS            This function is called successfully.
+//   @retval EFI_INVALID_PARAMETER  One or more of the following are TRUE:
+//                                  - This is NULL.
+//                                  - ModeData is NULL.
+//   @retval EFI_NOT_STARTED        The EFI FTPv4 Protocol driver has not been started
+//   @retval EFI_OUT_OF_RESOURCES   Could not allocate enough resource to finish the operation.
+//   @retval EFI_DEVICE_ERROR       An unexpected system or network error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_GET_MODE_DATA)(
+//   IN EFI_FTP4_PROTOCOL        *This,
+//   OUT EFI_FTP4_CONFIG_DATA    *ModeData
+//   );
 
-                                 - This is NULL.
+// /**
+//   Disconnecting a FTP connection gracefully.
+// 
+//   The Connect() function will initiate a connection request to the remote FTP server
+//   with the corresponding connection token. If this function returns EFI_SUCCESS, the
+//   connection sequence is initiated successfully.  If the connection succeeds or faild
+//   due to any error, the Token->Event will be signaled and Token->Status will be updated
+//   accordingly.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] Token               Pointer to the token used to establish control connection.
+// 
+//   @retval EFI_SUCCESS            The connection sequence is successfully initiated.
+//   @retval EFI_INVALID_PARAMETER  One or more of the following are TRUE:
+//                                  - This is NULL.
+//                                  - Token is NULL.
+//                                  - Token->Event is NULL.
+//   @retval EFI_NOT_STARTED        The EFI FTPv4 Protocol driver has not been started.
+//   @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+//                                  RARP, etc.) is not finished yet.
+//   @retval EFI_OUT_OF_RESOURCES   Could not allocate enough resource to finish the operation.
+//   @retval EFI_DEVICE_ERROR       An unexpected system or network error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_CONNECT)(
+//   IN EFI_FTP4_PROTOCOL           *This,
+//   IN EFI_FTP4_CONNECTION_TOKEN   *Token
+//   );
 
-  @retval EFI_NO_MAPPING         When using a default address, configuration(DHCP, BOOTP,
+// /**
+//   Disconnecting a FTP connection gracefully.
+// 
+//   The Close() function will initiate a close request to the remote FTP server with the
+//   corresponding connection token. If this function returns EFI_SUCCESS, the control
+//   connection with the remote FTP server is closed.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] Token               Pointer to the token used to close control connection.
+// 
+//   @retval EFI_SUCCESS            The close request is successfully initiated.
+//   @retval EFI_INVALID_PARAMETER  One or more of the following are TRUE:
+//                                  - This is NULL.
+//                                  - Token is NULL.
+//                                  - Token->Event is NULL.
+//   @retval EFI_NOT_STARTED        The EFI FTPv4 Protocol driver has not been started.
+//   @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+//                                  RARP, etc.) is not finished yet.
+//   @retval EFI_OUT_OF_RESOURCES   Could not allocate enough resource to finish the operation.
+//   @retval EFI_DEVICE_ERROR       An unexpected system or network error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_CLOSE)(
+//   IN EFI_FTP4_PROTOCOL             *This,
+//   IN EFI_FTP4_CONNECTION_TOKEN     *Token
+//   );
 
-                                 - Token.Pathname is NULL.
+// /**
+//   Sets or clears the operational parameters for the FTP child driver.
+// 
+//   The Configure() function will configure the connected FTP session with the
+//   configuration setting specified in  FtpConfigData. The configuration data can
+//   be reset by calling Configure() with FtpConfigData set to NULL.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] FtpConfigData       Pointer to configuration data that will be assigned to
+//                                  the FTP child driver instance. If NULL, the FTP child
+//                                  driver instance is reset to startup defaults and all
+//                                  pending transmit and receive requests are flushed.
+// 
+//   @retval EFI_SUCCESS            The FTPv4 driver was configured successfully.
+//   @retval EFI_INVALID_PARAMETER  One or more following conditions are TRUE:
+//                                  - This is NULL.
+//                                  - FtpConfigData.RepType is invalid.
+//                                  - FtpConfigData.FileStruct is invalid.
+//                                  - FtpConfigData.TransMode is invalid.
+//                                  - IP address in FtpConfigData is invalid.
+//   @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+//                                  RARP, etc.) is not finished yet.
+//   @retval EFI_UNSUPPORTED        One or more of the configuration parameters are not supported
+//                                  by this implementation.
+//   @retval EFI_OUT_OF_RESOURCES   The EFI FTPv4 Protocol driver instance data could not be
+//                                  allocated.
+//   @retval EFI_DEVICE_ERROR       An unexpected system or network error occurred. The EFI FTPv4
+//                                  Protocol driver instance is not configured.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_CONFIGURE)(
+//   IN EFI_FTP4_PROTOCOL           *This,
+//   IN EFI_FTP4_CONFIG_DATA        *FtpConfigData OPTIONAL
+//   );
 
-                                 - Token.Pathname is NULL.
+// /**
+//   Downloads a file from an FTPv4 server.
+// 
+//   The ReadFile() function is used to initialize and start an FTPv4 download process
+//   and optionally wait for completion. When the download operation completes, whether
+//   successfully or not, the Token.Status field is updated by the EFI FTPv4 Protocol
+//   driver and then Token.Event is signaled (if it is not NULL).
+// 
+//   Data will be downloaded from the FTPv4 server into Token.DataBuffer. If the file size
+//   is larger than Token.DataBufferSize, Token.DataCallback will be called to allow for
+//   processing data and then new data will be placed at the beginning of Token.DataBuffer.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] Token               Pointer to the token structure to provide the parameters that
+//                                  are used in this operation.
+// 
+//   @retval EFI_SUCCESS            The data file is being downloaded successfully.
+//   @retval EFI_INVALID_PARAMETER  One or more of the parameters is not valid.
+//                                  - This is NULL.
+//                                  - Token is NULL.
+//                                  - Token.Pathname is NULL.
+//                                  - Token. DataBuffer is NULL.
+//                                  - Token. DataBufferSize is 0.
+//   @retval EFI_NOT_STARTED        The EFI FTPv4 Protocol driver has not been started.
+//   @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+//                                  RARP, etc.) is not finished yet.
+//   @retval EFI_OUT_OF_RESOURCES   Required system resources could not be allocated.
+//   @retval EFI_DEVICE_ERROR       An unexpected network error or system error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_READ_FILE)(
+//   IN EFI_FTP4_PROTOCOL         *This,
+//   IN EFI_FTP4_COMMAND_TOKEN    *Token
+//   );
 
-                                 - Token is NULL.
+// /**
+//   Uploads a file from an FTPv4 server.
+// 
+//   The WriteFile() function is used to initialize and start an FTPv4 upload process and
+//   optionally wait for completion. When the upload operation completes, whether successfully
+//   or not, the Token.Status field is updated by the EFI FTPv4 Protocol driver and then
+//   Token.Event is signaled (if it is not NULL). Data to be  uploaded to server is stored
+//   into Token.DataBuffer. Token.DataBufferSize is the number bytes to be transferred.
+//   If the file size is larger than Token.DataBufferSize, Token.DataCallback will be called
+//   to allow for processing data and then new data will be placed at the beginning of
+//   Token.DataBuffer. Token.DataBufferSize is updated to reflect the actual number of bytes
+//   to be transferred. Token.DataBufferSize is set to 0 by the call back to indicate the
+//   completion of data transfer.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] Token               Pointer to the token structure to provide the parameters that
+//                                  are used in this operation.
+// 
+//   @retval EFI_SUCCESS            TThe data file is being uploaded successfully.
+//   @retval EFI_UNSUPPORTED        The operation is not supported by this implementation.
+//   @retval EFI_INVALID_PARAMETER  One or more of the parameters is not valid.
+//                                  - This is NULL.
+//                                  - Token is NULL.
+//                                  - Token.Pathname is NULL.
+//                                  - Token. DataBuffer is NULL.
+//                                  - Token. DataBufferSize is 0.
+//   @retval EFI_NOT_STARTED        The EFI FTPv4 Protocol driver has not been started.
+//   @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+//                                  RARP, etc.) is not finished yet.
+//   @retval EFI_OUT_OF_RESOURCES   Required system resources could not be allocated.
+//   @retval EFI_DEVICE_ERROR       An unexpected network error or system error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_WRITE_FILE)(
+//   IN EFI_FTP4_PROTOCOL         *This,
+//   IN EFI_FTP4_COMMAND_TOKEN    *Token
+//   );
 
-  @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+// /**
+//   Download a data file "directory" from a FTPv4 server. May be unsupported in some EFI
+//   implementations.
+// 
+//   The ReadDirectory() function is used to return a list of files on the FTPv4 server that
+//   logically (or operationally) related to Token.Pathname, and optionally wait for completion.
+//   When the download operation completes, whether successfully or not, the Token.Status field
+//   is updated by the EFI FTPv4 Protocol driver and then Token.Event is signaled (if it is not
+//   NULL). Data will be downloaded from the FTPv4 server into Token.DataBuffer. If the file size
+//   is larger than Token.DataBufferSize, Token.DataCallback will be called to allow for processing
+//   data and then new data will be placed at the beginning of Token.DataBuffer.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+//   @param[in] Token               Pointer to the token structure to provide the parameters that
+//                                  are used in this operation.
+// 
+//   @retval EFI_SUCCESS            The file list information is being downloaded successfully.
+//   @retval EFI_UNSUPPORTED        The operation is not supported by this implementation.
+//   @retval EFI_INVALID_PARAMETER  One or more of the parameters is not valid.
+//                                  - This is NULL.
+//                                  - Token is NULL.
+//                                  - Token. DataBuffer is NULL.
+//                                  - Token. DataBufferSize is 0.
+//   @retval EFI_NOT_STARTED        The EFI FTPv4 Protocol driver has not been started.
+//   @retval EFI_NO_MAPPING         When using a default address, configuration (DHCP, BOOTP,
+//                                  RARP, etc.) is not finished yet.
+//   @retval EFI_OUT_OF_RESOURCES   Required system resources could not be allocated.
+//   @retval EFI_DEVICE_ERROR       An unexpected network error or system error occurred.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_READ_DIRECTORY)(
+//   IN EFI_FTP4_PROTOCOL           *This,
+//   IN EFI_FTP4_COMMAND_TOKEN      *Token
+//   );
 
-  @retval EFI_SUCCESS            Incoming or outgoing data was processed.
-  @retval EFI_NOT_STARTED        This EFI FTPv4 Protocol instance has not been started.
-  @retval EFI_INVALID_PARAMETER  This is NULL.
-  @retval EFI_DEVICE_ERROR       EapAuthType An unexpected system or network error occurred.
-  @retval EFI_TIMEOUT            Data was dropped out of the transmit and/or receive queue.
-                                 Consider increasing the polling rate.
-
-**/
-typedef
-EFI_STATUS
-(EFIAPI* EFI_FTP4_POLL)(
-  IN EFI_FTP4_PROTOCOL        * This
-  );
+// /**
+//   Polls for incoming data packets and processes outgoing data packets.
+// 
+//   The Poll() function can be used by network drivers and applications to increase the
+//   rate that data packets are moved between the communications device and the transmit
+//   and receive queues. In some systems, the periodic timer event in the managed network
+//   driver may not poll the underlying communications device fast enough to transmit
+//   and/or receive all data packets without missing incoming packets or dropping outgoing
+//   packets. Drivers and applications that are experiencing packet loss should try calling
+//   the Poll() function more often.
+// 
+//   @param[in] This                Pointer to the EFI_FTP4_PROTOCOL instance.
+// 
+//   @retval EFI_SUCCESS            Incoming or outgoing data was processed.
+//   @retval EFI_NOT_STARTED        This EFI FTPv4 Protocol instance has not been started.
+//   @retval EFI_INVALID_PARAMETER  This is NULL.
+//   @retval EFI_DEVICE_ERROR       EapAuthType An unexpected system or network error occurred.
+//   @retval EFI_TIMEOUT            Data was dropped out of the transmit and/or receive queue.
+//                                  Consider increasing the polling rate.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_FTP4_POLL)(
+//   IN EFI_FTP4_PROTOCOL        *This
+//   );
 
 ///
 /// EFI_FTP4_PROTOCOL
@@ -247,14 +509,14 @@ EFI_STATUS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FTP4_PROTOCOL
 {
-  public EFI_FTP4_GET_MODE_DATA GetModeData;
-  public EFI_FTP4_CONNECT Connect;
-  public EFI_FTP4_CLOSE Close;
-  public EFI_FTP4_CONFIGURE Configure;
-  public EFI_FTP4_READ_FILE ReadFile;
-  public EFI_FTP4_WRITE_FILE WriteFile;
-  public EFI_FTP4_READ_DIRECTORY ReadDirectory;
-  public EFI_FTP4_POLL Poll;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* OUT */EFI_FTP4_CONFIG_DATA* /*ModeData*/, EFI_STATUS> /*EFI_FTP4_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_CONNECTION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FTP4_CONNECT*/ Connect;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_CONNECTION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FTP4_CLOSE*/ Close;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_CONFIG_DATA* /*FtpConfigData*/, EFI_STATUS> /*EFI_FTP4_CONFIGURE*/ Configure;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_COMMAND_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FTP4_READ_FILE*/ ReadFile;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_COMMAND_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FTP4_WRITE_FILE*/ WriteFile;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/,/* IN */EFI_FTP4_COMMAND_TOKEN* /*Token*/, EFI_STATUS> /*EFI_FTP4_READ_DIRECTORY*/ ReadDirectory;
+  public readonly delegate* unmanaged</* IN */EFI_FTP4_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_FTP4_POLL*/ Poll;
 }
 
 // extern EFI_GUID  gEfiFtp4ServiceBindingProtocolGuid;

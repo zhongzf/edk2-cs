@@ -37,7 +37,7 @@ public unsafe partial class EFI
 }
 
 // #ifndef VFRCOMPILE
-# include <Guid/WinCertificate.h>
+//# include <Guid/WinCertificate.h>
 ///
 /// Enumeration of memory types introduced in UEFI.
 ///

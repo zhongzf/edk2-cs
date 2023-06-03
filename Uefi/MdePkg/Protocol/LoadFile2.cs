@@ -30,6 +30,44 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_LOAD_FILE2_PROTOCOL EFI_LOAD_FILE2_PROTOCOL;
 
+  // /**
+  //   Causes the driver to load a specified file.
+  // 
+  //   @param  This       Protocol instance pointer.
+  //   @param  FilePath   The device specific path of the file to load.
+  //   @param  BootPolicy Should always be FALSE.
+  //   @param  BufferSize On input the size of Buffer in bytes. On output with a return
+  //                      code of EFI_SUCCESS, the amount of data transferred to
+  //                      Buffer. On output with a return code of EFI_BUFFER_TOO_SMALL,
+  //                      the size of Buffer required to retrieve the requested file.
+  //   @param  Buffer     The memory buffer to transfer the file to. IF Buffer is NULL,
+  //                      then no the size of the requested file is returned in
+  //                      BufferSize.
+  // 
+  //   @retval EFI_SUCCESS           The file was loaded.
+  //   @retval EFI_UNSUPPORTED       BootPolicy is TRUE.
+  //   @retval EFI_INVALID_PARAMETER FilePath is not a valid device path, or
+  //                                 BufferSize is NULL.
+  //   @retval EFI_NO_MEDIA          No medium was present to load the file.
+  //   @retval EFI_DEVICE_ERROR      The file was not loaded due to a device error.
+  //   @retval EFI_NO_RESPONSE       The remote system did not respond.
+  //   @retval EFI_NOT_FOUND         The file was not found
+  //   @retval EFI_ABORTED           The file load process was manually canceled.
+  //   @retval EFI_BUFFER_TOO_SMALL  The BufferSize is too small to read the current
+  //                                 directory entry. BufferSize has been updated with
+  //                                 the size needed to complete the request.
+  // 
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_LOAD_FILE2)(
+  //   IN EFI_LOAD_FILE2_PROTOCOL           *This,
+  //   IN EFI_DEVICE_PATH_PROTOCOL         *FilePath,
+  //   IN bool                          BootPolicy,
+  //   IN OUT ulong                        *BufferSize,
+  //   IN void                             *Buffer OPTIONAL
+  //   );
 }
 
 ///
@@ -38,35 +76,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_LOAD_FILE2_PROTOCOL
 {
-  /**
-    Causes the driver to load a specified file.
-
-    @param  This       Protocol instance pointer.
-    @param  FilePath   The device specific path of the file to load.
-    @param  BootPolicy Should always be FALSE.
-    @param  BufferSize On input the size of Buffer in bytes. On output with a return
-                       code of EFI_SUCCESS, the amount of data transferred to
-                       Buffer. On output with a return code of EFI_BUFFER_TOO_SMALL,
-                       the size of Buffer required to retrieve the requested file.
-    @param  Buffer     The memory buffer to transfer the file to. IF Buffer is NULL,
-                       then no the size of the requested file is returned in
-                       BufferSize.
-
-    @retval EFI_SUCCESS           The file was loaded.
-    @retval EFI_UNSUPPORTED       BootPolicy is TRUE.
-    @retval EFI_INVALID_PARAMETER FilePath is not a valid device path, or
-                                  BufferSize is NULL.
-    @retval EFI_NO_MEDIA          No medium was present to load the file.
-    @retval EFI_DEVICE_ERROR      The file was not loaded due to a device error.
-    @retval EFI_NO_RESPONSE       The remote system did not respond.
-    @retval EFI_NOT_FOUND         The file was not found
-    @retval EFI_ABORTED           The file load process was manually canceled.
-    @retval EFI_BUFFER_TOO_SMALL  The BufferSize is too small to read the current
-                                  directory entry. BufferSize has been updated with
-                                  the size needed to complete the request.
-
-  **/
-  public readonly delegate* unmanaged<EFI_LOAD_FILE2_PROTOCOL*, EFI_DEVICE_PATH_PROTOCOL*, bool, ulong*, void*, EFI_STATUS> LoadFile;
+  public readonly delegate* unmanaged</* IN */EFI_LOAD_FILE2_PROTOCOL* /*This*/,/* IN */EFI_DEVICE_PATH_PROTOCOL* /*FilePath*/,/* IN */bool /*BootPolicy*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_LOAD_FILE2*/ LoadFile;
 }
 
 // extern EFI_GUID  gEfiLoadFile2ProtocolGuid;

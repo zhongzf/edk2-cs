@@ -25,6 +25,39 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_MM_COMMUNICATION2_PROTOCOL EFI_MM_COMMUNICATION2_PROTOCOL;
 
+  // /**
+  //   Communicates with a registered handler.
+  // 
+  //   This function provides a service to send and receive messages from a registered UEFI service.
+  // 
+  //   @param[in] This                     The EFI_MM_COMMUNICATION_PROTOCOL instance.
+  //   @param[in, out] CommBufferPhysical  Physical address of the MM communication buffer
+  //   @param[in, out] CommBufferVirtual   Virtual address of the MM communication buffer
+  //   @param[in, out] CommSize            The size of the data buffer being passed in. On exit, the
+  //                                       size of data being returned. Zero if the handler does not
+  //                                       wish to reply with any data. This parameter is optional
+  //                                       and may be NULL.
+  // 
+  //   @retval EFI_SUCCESS            The message was successfully posted.
+  //   @retval EFI_INVALID_PARAMETER  CommBufferPhysical was NULL or CommBufferVirtual was NULL.
+  //   @retval EFI_BAD_BUFFER_SIZE    The buffer is too large for the MM implementation.
+  //                                  If this error is returned, the MessageLength field
+  //                                  in the CommBuffer header or the integer pointed by
+  //                                  CommSize, are updated to reflect the maximum payload
+  //                                  size the implementation can accommodate.
+  //   @retval EFI_ACCESS_DENIED      The CommunicateBuffer parameter or CommSize parameter,
+  //                                  if not omitted, are in address range that cannot be
+  //                                  accessed by the MM environment.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_MM_COMMUNICATE2)(
+  //   IN CONST EFI_MM_COMMUNICATION2_PROTOCOL   *This,
+  //   IN OUT void                               *CommBufferPhysical,
+  //   IN OUT void                               *CommBufferVirtual,
+  //   IN OUT ulong                              *CommSize OPTIONAL
+  //   );
 }
 
 ///
@@ -34,32 +67,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_COMMUNICATION2_PROTOCOL
 {
-  /**
-    Communicates with a registered handler.
-
-    This function provides a service to send and receive messages from a registered UEFI service.
-
-    @param[in] This                     The EFI_MM_COMMUNICATION_PROTOCOL instance.
-    @param[in, out] CommBufferPhysical  Physical address of the MM communication buffer
-    @param[in, out] CommBufferVirtual   Virtual address of the MM communication buffer
-    @param[in, out] CommSize            The size of the data buffer being passed in. On exit, the
-                                        size of data being returned. Zero if the handler does not
-                                        wish to reply with any data. This parameter is optional
-                                        and may be NULL.
-
-    @retval EFI_SUCCESS            The message was successfully posted.
-    @retval EFI_INVALID_PARAMETER  CommBufferPhysical was NULL or CommBufferVirtual was NULL.
-    @retval EFI_BAD_BUFFER_SIZE    The buffer is too large for the MM implementation.
-                                   If this error is returned, the MessageLength field
-                                   in the CommBuffer header or the integer pointed by
-                                   CommSize, are updated to reflect the maximum payload
-                                   size the implementation can accommodate.
-    @retval EFI_ACCESS_DENIED      The CommunicateBuffer parameter or CommSize parameter,
-                                   if not omitted, are in address range that cannot be
-                                   accessed by the MM environment.
-
-  **/
-  public readonly delegate* unmanaged<CONST, void*, void*, ulong*, EFI_STATUS> Communicate;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_COMMUNICATION2_PROTOCOL* /*This*/,/* IN OUT */void* /*CommBufferPhysical*/,/* IN OUT */void* /*CommBufferVirtual*/,/* IN OUT */ulong* /*CommSize*/, EFI_STATUS> /*EFI_MM_COMMUNICATE2*/ Communicate;
 }
 
 // extern EFI_GUID  gEfiMmCommunication2ProtocolGuid;

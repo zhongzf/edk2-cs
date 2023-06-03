@@ -22,6 +22,113 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_MEMORY_ATTRIBUTE_PROTOCOL EFI_MEMORY_ATTRIBUTE_PROTOCOL;
 
+  // /**
+  //   This function set given attributes of the memory region specified by
+  //   BaseAddress and Length.
+  // 
+  //   The valid Attributes is EFI_MEMORY_RP, EFI_MEMORY_XP, and EFI_MEMORY_RO.
+  // 
+  //   @param  This              The EFI_MEMORY_ATTRIBUTE_PROTOCOL instance.
+  //   @param  BaseAddress       The physical address that is the start address of
+  //                             a memory region.
+  //   @param  Length            The size in bytes of the memory region.
+  //   @param  Attributes        The bit mask of attributes to set for the memory
+  //                             region.
+  // 
+  //   @retval EFI_SUCCESS           The attributes were set for the memory region.
+  //   @retval EFI_INVALID_PARAMETER Length is zero.
+  //                                 Attributes specified an illegal combination of
+  //                                 attributes that cannot be set together.
+  //   @retval EFI_UNSUPPORTED       The processor does not support one or more
+  //                                 bytes of the memory resource range specified
+  //                                 by BaseAddress and Length.
+  //                                 The bit mask of attributes is not supported for
+  //                                 the memory resource range specified by
+  //                                 BaseAddress and Length.
+  //   @retval EFI_OUT_OF_RESOURCES  Requested attributes cannot be applied due to
+  //                                 lack of system resources.
+  //   @retval EFI_ACCESS_DENIED     Attributes for the requested memory region are
+  //                                 controlled by system firmware and cannot be
+  //                                 updated via the protocol.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SET_MEMORY_ATTRIBUTES)(
+  //   IN  EFI_MEMORY_ATTRIBUTE_PROTOCOL       *This,
+  //   IN  EFI_PHYSICAL_ADDRESS                BaseAddress,
+  //   IN  ulong                              Length,
+  //   IN  ulong                              Attributes
+  //   );
+
+  // /**
+  //   This function clears given attributes of the memory region specified by
+  //   BaseAddress and Length.
+  // 
+  //   The valid Attributes is EFI_MEMORY_RP, EFI_MEMORY_XP, and EFI_MEMORY_RO.
+  // 
+  //   @param  This              The EFI_MEMORY_ATTRIBUTE_PROTOCOL instance.
+  //   @param  BaseAddress       The physical address that is the start address of
+  //                             a memory region.
+  //   @param  Length            The size in bytes of the memory region.
+  //   @param  Attributes        The bit mask of attributes to clear for the memory
+  //                             region.
+  // 
+  //   @retval EFI_SUCCESS           The attributes were cleared for the memory region.
+  //   @retval EFI_INVALID_PARAMETER Length is zero.
+  //                                 Attributes specified an illegal combination of
+  //                                 attributes that cannot be cleared together.
+  //   @retval EFI_UNSUPPORTED       The processor does not support one or more
+  //                                 bytes of the memory resource range specified
+  //                                 by BaseAddress and Length.
+  //                                 The bit mask of attributes is not supported for
+  //                                 the memory resource range specified by
+  //                                 BaseAddress and Length.
+  //   @retval EFI_OUT_OF_RESOURCES  Requested attributes cannot be applied due to
+  //                                 lack of system resources.
+  //   @retval EFI_ACCESS_DENIED     Attributes for the requested memory region are
+  //                                 controlled by system firmware and cannot be
+  //                                 updated via the protocol.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_CLEAR_MEMORY_ATTRIBUTES)(
+  //   IN  EFI_MEMORY_ATTRIBUTE_PROTOCOL       *This,
+  //   IN  EFI_PHYSICAL_ADDRESS                BaseAddress,
+  //   IN  ulong                              Length,
+  //   IN  ulong                              Attributes
+  //   );
+
+  // /**
+  //   This function retrieves the attributes of the memory region specified by
+  //   BaseAddress and Length. If different attributes are obtained from different
+  //   parts of the memory region, EFI_NO_MAPPING will be returned.
+  // 
+  //   @param  This              The EFI_MEMORY_ATTRIBUTE_PROTOCOL instance.
+  //   @param  BaseAddress       The physical address that is the start address of
+  //                             a memory region.
+  //   @param  Length            The size in bytes of the memory region.
+  //   @param  Attributes        Pointer to attributes returned.
+  // 
+  //   @retval EFI_SUCCESS           The attributes got for the memory region.
+  //   @retval EFI_INVALID_PARAMETER Length is zero.
+  //                                 Attributes is NULL.
+  //   @retval EFI_NO_MAPPING        Attributes are not consistent cross the memory
+  //                                 region.
+  //   @retval EFI_UNSUPPORTED       The processor does not support one or more
+  //                                 bytes of the memory resource range specified
+  //                                 by BaseAddress and Length.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_GET_MEMORY_ATTRIBUTES)(
+  //   IN  EFI_MEMORY_ATTRIBUTE_PROTOCOL       *This,
+  //   IN  EFI_PHYSICAL_ADDRESS                BaseAddress,
+  //   IN  ulong                              Length,
+  //   OUT ulong                              *Attributes
+  //   );
 }
 
 ///
@@ -31,90 +138,9 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MEMORY_ATTRIBUTE_PROTOCOL
 {
-  /**
-    This function retrieves the attributes of the memory region specified by
-    BaseAddress and Length. If different attributes are obtained from different
-    parts of the memory region, EFI_NO_MAPPING will be returned.
-
-    @param  This              The EFI_MEMORY_ATTRIBUTE_PROTOCOL instance.
-    @param  BaseAddress       The physical address that is the start address of
-                              a memory region.
-    @param  Length            The size in bytes of the memory region.
-    @param  Attributes        Pointer to attributes returned.
-
-    @retval EFI_SUCCESS           The attributes got for the memory region.
-    @retval EFI_INVALID_PARAMETER Length is zero.
-                                  Attributes is NULL.
-    @retval EFI_NO_MAPPING        Attributes are not consistent cross the memory
-                                  region.
-    @retval EFI_UNSUPPORTED       The processor does not support one or more
-                                  bytes of the memory resource range specified
-                                  by BaseAddress and Length.
-
-  **/
-  public readonly delegate* unmanaged<EFI_MEMORY_ATTRIBUTE_PROTOCOL*, EFI_PHYSICAL_ADDRESS, ulong, ulong*, EFI_STATUS> GetMemoryAttributes;
-  /**
-    This function set given attributes of the memory region specified by
-    BaseAddress and Length.
-
-    The valid Attributes is EFI_MEMORY_RP, EFI_MEMORY_XP, and EFI_MEMORY_RO.
-
-    @param  This              The EFI_MEMORY_ATTRIBUTE_PROTOCOL instance.
-    @param  BaseAddress       The physical address that is the start address of
-                              a memory region.
-    @param  Length            The size in bytes of the memory region.
-    @param  Attributes        The bit mask of attributes to set for the memory
-                              region.
-
-    @retval EFI_SUCCESS           The attributes were set for the memory region.
-    @retval EFI_INVALID_PARAMETER Length is zero.
-                                  Attributes specified an illegal combination of
-                                  attributes that cannot be set together.
-    @retval EFI_UNSUPPORTED       The processor does not support one or more
-                                  bytes of the memory resource range specified
-                                  by BaseAddress and Length.
-                                  The bit mask of attributes is not supported for
-                                  the memory resource range specified by
-                                  BaseAddress and Length.
-    @retval EFI_OUT_OF_RESOURCES  Requested attributes cannot be applied due to
-                                  lack of system resources.
-    @retval EFI_ACCESS_DENIED     Attributes for the requested memory region are
-                                  controlled by system firmware and cannot be
-                                  updated via the protocol.
-
-  **/
-  public readonly delegate* unmanaged<EFI_MEMORY_ATTRIBUTE_PROTOCOL*, EFI_PHYSICAL_ADDRESS, ulong, ulong, EFI_STATUS> SetMemoryAttributes;
-  /**
-    This function clears given attributes of the memory region specified by
-    BaseAddress and Length.
-
-    The valid Attributes is EFI_MEMORY_RP, EFI_MEMORY_XP, and EFI_MEMORY_RO.
-
-    @param  This              The EFI_MEMORY_ATTRIBUTE_PROTOCOL instance.
-    @param  BaseAddress       The physical address that is the start address of
-                              a memory region.
-    @param  Length            The size in bytes of the memory region.
-    @param  Attributes        The bit mask of attributes to clear for the memory
-                              region.
-
-    @retval EFI_SUCCESS           The attributes were cleared for the memory region.
-    @retval EFI_INVALID_PARAMETER Length is zero.
-                                  Attributes specified an illegal combination of
-                                  attributes that cannot be cleared together.
-    @retval EFI_UNSUPPORTED       The processor does not support one or more
-                                  bytes of the memory resource range specified
-                                  by BaseAddress and Length.
-                                  The bit mask of attributes is not supported for
-                                  the memory resource range specified by
-                                  BaseAddress and Length.
-    @retval EFI_OUT_OF_RESOURCES  Requested attributes cannot be applied due to
-                                  lack of system resources.
-    @retval EFI_ACCESS_DENIED     Attributes for the requested memory region are
-                                  controlled by system firmware and cannot be
-                                  updated via the protocol.
-
-  **/
-  public readonly delegate* unmanaged<EFI_MEMORY_ATTRIBUTE_PROTOCOL*, EFI_PHYSICAL_ADDRESS, ulong, ulong, EFI_STATUS> ClearMemoryAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_MEMORY_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*BaseAddress*/,/* IN */ulong /*Length*/,/* OUT */ulong* /*Attributes*/, EFI_STATUS> /*EFI_GET_MEMORY_ATTRIBUTES*/ GetMemoryAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_MEMORY_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*BaseAddress*/,/* IN */ulong /*Length*/,/* IN */ulong /*Attributes*/, EFI_STATUS> /*EFI_SET_MEMORY_ATTRIBUTES*/ SetMemoryAttributes;
+  public readonly delegate* unmanaged</* IN */EFI_MEMORY_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*BaseAddress*/,/* IN */ulong /*Length*/,/* IN */ulong /*Attributes*/, EFI_STATUS> /*EFI_CLEAR_MEMORY_ATTRIBUTES*/ ClearMemoryAttributes;
 }
 
 // extern EFI_GUID  gEfiMemoryAttributeProtocolGuid;

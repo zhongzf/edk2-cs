@@ -80,6 +80,46 @@ public unsafe struct EFI_SIMPLE_POINTER_MODE
   public bool RightButton;
 }
 
+// /**
+//   Resets the pointer device hardware.
+// 
+//   @param  This                  A pointer to the EFI_SIMPLE_POINTER_PROTOCOL
+//                                 instance.
+//   @param  ExtendedVerification  Indicates that the driver may perform a more exhaustive
+//                                 verification operation of the device during reset.
+// 
+//   @retval EFI_SUCCESS           The device was reset.
+//   @retval EFI_DEVICE_ERROR      The device is not functioning correctly and could not be reset.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SIMPLE_POINTER_RESET)(
+//   IN EFI_SIMPLE_POINTER_PROTOCOL            *This,
+//   IN bool                                ExtendedVerification
+//   );
+
+// /**
+//   Retrieves the current state of a pointer device.
+// 
+//   @param  This                  A pointer to the EFI_SIMPLE_POINTER_PROTOCOL
+//                                 instance.
+//   @param  State                 A pointer to the state information on the pointer device.
+// 
+//   @retval EFI_SUCCESS           The state of the pointer device was returned in State.
+//   @retval EFI_NOT_READY         The state of the pointer device has not changed since the last call to
+//                                 GetState().
+//   @retval EFI_DEVICE_ERROR      A device error occurred while attempting to retrieve the pointer device's
+//                                 current state.
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_SIMPLE_POINTER_GET_STATE)(
+//   IN EFI_SIMPLE_POINTER_PROTOCOL          *This,
+//   OUT EFI_SIMPLE_POINTER_STATE            *State
+//   );
+
 ///
 /// The EFI_SIMPLE_POINTER_PROTOCOL provides a set of services for a pointer
 /// device that can use used as an input device from an application written
@@ -90,34 +130,8 @@ public unsafe struct EFI_SIMPLE_POINTER_MODE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIMPLE_POINTER_PROTOCOL
 {
-  /**
-    Resets the pointer device hardware.
-
-    @param  This                  A pointer to the EFI_SIMPLE_POINTER_PROTOCOL
-                                  instance.
-    @param  ExtendedVerification  Indicates that the driver may perform a more exhaustive
-                                  verification operation of the device during reset.
-
-    @retval EFI_SUCCESS           The device was reset.
-    @retval EFI_DEVICE_ERROR      The device is not functioning correctly and could not be reset.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_POINTER_PROTOCOL*, bool, EFI_STATUS> Reset;
-  /**
-    Retrieves the current state of a pointer device.
-
-    @param  This                  A pointer to the EFI_SIMPLE_POINTER_PROTOCOL
-                                  instance.
-    @param  State                 A pointer to the state information on the pointer device.
-
-    @retval EFI_SUCCESS           The state of the pointer device was returned in State.
-    @retval EFI_NOT_READY         The state of the pointer device has not changed since the last call to
-                                  GetState().
-    @retval EFI_DEVICE_ERROR      A device error occurred while attempting to retrieve the pointer device's
-                                  current state.
-
-  **/
-  public readonly delegate* unmanaged<EFI_SIMPLE_POINTER_PROTOCOL*, EFI_SIMPLE_POINTER_STATE*, EFI_STATUS> GetState;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_POINTER_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_SIMPLE_POINTER_RESET*/ Reset;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_POINTER_PROTOCOL* /*This*/,/* OUT */EFI_SIMPLE_POINTER_STATE* /*State*/, EFI_STATUS> /*EFI_SIMPLE_POINTER_GET_STATE*/ GetState;
   ///
   /// Event to use with WaitForEvent() to wait for input from the pointer device.
   ///

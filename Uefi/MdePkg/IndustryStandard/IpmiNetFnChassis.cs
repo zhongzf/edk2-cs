@@ -83,19 +83,19 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Chassis Control" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_CHASSIS_CONTROL_CHASSIS_CONTROL
 {
-  struct {
-   [FieldOffset(0)] public byte ChassisControl = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChassisControl = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_CHASSIS_CONTROL_CHASSIS_CONTROL;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_CHASSIS_CONTROL_REQUEST
 {
-  IPMI_CHASSIS_CONTROL_CHASSIS_CONTROL ChassisControl;
+  public IPMI_CHASSIS_CONTROL_CHASSIS_CONTROL ChassisControl;
 }
 
 public unsafe partial class EFI
@@ -137,19 +137,19 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Set Power Restore Policy" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_POWER_RESTORE_POLICY
 {
-  struct {
-   [FieldOffset(0)] public byte PowerRestorePolicy = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte PowerRestorePolicy = 3;
   [FieldOffset(0)] public byte Reserved = 5;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_POWER_RESTORE_POLICY;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SET_POWER_RESTORE_POLICY_REQUEST
 {
-  IPMI_POWER_RESTORE_POLICY PowerRestorePolicy;
+  public IPMI_POWER_RESTORE_POLICY PowerRestorePolicy;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -184,20 +184,20 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SYSTEM_RESTART_CAUSE
 {
-  struct {
-   [FieldOffset(0)] public byte Cause = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte Cause = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SYSTEM_RESTART_CAUSE;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_SYSTEM_RESTART_CAUSE_RESPONSE
 {
   public byte CompletionCode;
-  IPMI_SYSTEM_RESTART_CAUSE RestartCause;
+  public IPMI_SYSTEM_RESTART_CAUSE RestartCause;
   public byte ChannelNumber;
 }
 
@@ -213,19 +213,19 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Set System boot options" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_SET_BOOT_OPTIONS_PARAMETER_VALID
 {
-  struct {
-   [FieldOffset(0)] public byte ParameterSelector = 7;
+  /*   struct { */
+  [FieldOffset(0)] public byte ParameterSelector = 7;
   [FieldOffset(0)] public byte MarkParameterInvalid = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_SET_BOOT_OPTIONS_PARAMETER_VALID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_SET_BOOT_OPTIONS_REQUEST
 {
-  IPMI_SET_BOOT_OPTIONS_PARAMETER_VALID ParameterValid;
+  public IPMI_SET_BOOT_OPTIONS_PARAMETER_VALID ParameterValid;
   public fixed byte ParameterData[0];
 }
 
@@ -247,19 +247,19 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Get System boot options" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_GET_BOOT_OPTIONS_PARAMETER_SELECTOR
 {
-  struct {
-   [FieldOffset(0)] public byte ParameterSelector = 7;
+  /*   struct { */
+  [FieldOffset(0)] public byte ParameterSelector = 7;
   [FieldOffset(0)] public byte Reserved = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_GET_BOOT_OPTIONS_PARAMETER_SELECTOR;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_BOOT_OPTIONS_REQUEST
 {
-  IPMI_GET_BOOT_OPTIONS_PARAMETER_SELECTOR ParameterSelector;
+  public IPMI_GET_BOOT_OPTIONS_PARAMETER_SELECTOR ParameterSelector;
   public byte SetSelector;
   public byte BlockSelector;
 }
@@ -308,14 +308,14 @@ public unsafe partial class EFI
 // Response Parameters for IPMI Get Boot Options
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_0
 {
-  struct {
-   [FieldOffset(0)] public byte SetInProgress = 2;
+  /*   struct { */
+  [FieldOffset(0)] public byte SetInProgress = 2;
   [FieldOffset(0)] public byte Reserved = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_0;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_1
@@ -324,25 +324,25 @@ public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_1
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_2
 {
-  struct {
-   [FieldOffset(0)] public byte ServicePartitionDiscovered = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte ServicePartitionDiscovered = 1;
   [FieldOffset(0)] public byte ServicePartitionScanRequest = 1;
   [FieldOffset(0)] public byte Reserved = 6;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_3
 {
-  struct {
-   [FieldOffset(0)] public byte BmcBootFlagValid = 5;
+  /*   struct { */
+  [FieldOffset(0)] public byte BmcBootFlagValid = 5;
   [FieldOffset(0)] public byte Reserved = 3;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_3;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_4
@@ -380,89 +380,89 @@ public unsafe partial class EFI
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_1
 {
-  struct {
-   [FieldOffset(0)] public byte Reserved = 5;
+  /*   struct { */
+  [FieldOffset(0)] public byte Reserved = 5;
   [FieldOffset(0)] public byte BiosBootType = 1;
   [FieldOffset(0)] public byte PersistentOptions = 1;
   [FieldOffset(0)] public byte BootFlagValid = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_1;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_2
 {
-  struct {
-   [FieldOffset(0)] public byte LockReset = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte LockReset = 1;
   [FieldOffset(0)] public byte ScreenBlank = 1;
   [FieldOffset(0)] public byte BootDeviceSelector = 4;
   [FieldOffset(0)] public byte LockKeyboard = 1;
   [FieldOffset(0)] public byte CmosClear = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_2;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_3
 {
-  struct {
-   [FieldOffset(0)] public byte ConsoleRedirection = 2;
+  /*   struct { */
+  [FieldOffset(0)] public byte ConsoleRedirection = 2;
   [FieldOffset(0)] public byte LockSleep = 1;
   [FieldOffset(0)] public byte UserPasswordBypass = 1;
   [FieldOffset(0)] public byte ForceProgressEventTrap = 1;
   [FieldOffset(0)] public byte BiosVerbosity = 2;
   [FieldOffset(0)] public byte LockPower = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_3;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_4
 {
-  struct {
-   [FieldOffset(0)] public byte BiosMuxControlOverride = 3;
+  /*   struct { */
+  [FieldOffset(0)] public byte BiosMuxControlOverride = 3;
   [FieldOffset(0)] public byte BiosSharedModeOverride = 1;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_4;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_5
 {
-  struct {
-   [FieldOffset(0)] public byte DeviceInstanceSelector = 5;
+  /*   struct { */
+  [FieldOffset(0)] public byte DeviceInstanceSelector = 5;
   [FieldOffset(0)] public byte Reserved = 3;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_5;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5
 {
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_1 Data1;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_2 Data2;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_3 Data3;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_4 Data4;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_5 Data5;
+  public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_1 Data1;
+  public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_2 Data2;
+  public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_3 Data3;
+  public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_4 Data4;
+  public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5_DATA_5 Data5;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_BOOT_OPTIONS_CHANNEL_NUMBER
 {
-  struct {
-   [FieldOffset(0)] public byte ChannelNumber = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ChannelNumber = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_BOOT_OPTIONS_CHANNEL_NUMBER;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_6
 {
-  IPMI_BOOT_OPTIONS_CHANNEL_NUMBER ChannelNumber;
+  public IPMI_BOOT_OPTIONS_CHANNEL_NUMBER ChannelNumber;
   public fixed byte SessionId[4];
   public fixed byte BootInfoTimeStamp[4];
 }
@@ -477,42 +477,42 @@ public unsafe struct IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_7
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct IPMI_BOOT_OPTIONS_PARAMETERS
 {
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_0 Parm0;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_1 Parm1;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_2 Parm2;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_3 Parm3;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_4 Parm4;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5 Parm5;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_6 Parm6;
-  IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_7 Parm7;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_0 Parm0;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_1 Parm1;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_2 Parm2;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_3 Parm3;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_4 Parm4;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_5 Parm5;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_6 Parm6;
+  [FieldOffset(0)] public IPMI_BOOT_OPTIONS_RESPONSE_PARAMETER_7 Parm7;
 }
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_GET_BOOT_OPTIONS_PARAMETER_VERSION
 {
-  struct {
-   [FieldOffset(0)] public byte ParameterVersion = 4;
+  /*   struct { */
+  [FieldOffset(0)] public byte ParameterVersion = 4;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_GET_BOOT_OPTIONS_PARAMETER_VERSION;
 
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_GET_BOOT_OPTIONS_PARAMETER_VALID
 {
-  struct {
-   [FieldOffset(0)] public byte ParameterSelector = 7;
+  /*   struct { */
+  [FieldOffset(0)] public byte ParameterSelector = 7;
   [FieldOffset(0)] public byte ParameterValid = 1;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_GET_BOOT_OPTIONS_PARAMETER_VALID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_GET_BOOT_OPTIONS_RESPONSE
 {
   public byte CompletionCode;
-  IPMI_GET_BOOT_OPTIONS_PARAMETER_VERSION ParameterVersion;
-  IPMI_GET_BOOT_OPTIONS_PARAMETER_VALID ParameterValid;
+  public IPMI_GET_BOOT_OPTIONS_PARAMETER_VERSION ParameterVersion;
+  public IPMI_GET_BOOT_OPTIONS_PARAMETER_VALID ParameterValid;
   public fixed byte ParameterData[0];
 }
 
@@ -528,22 +528,22 @@ public unsafe partial class EFI
 //  Constants and Structure definitions for "Set front panel button enables" command to follow here
 //
 [StructLayout(LayoutKind.Explicit)]
-public unsafe struct Bits
+public unsafe struct IPMI_FRONT_PANEL_BUTTON_ENABLES
 {
-  struct {
-   [FieldOffset(0)] public byte DisablePoweroffButton = 1;
+  /*   struct { */
+  [FieldOffset(0)] public byte DisablePoweroffButton = 1;
   [FieldOffset(0)] public byte DisableResetButton = 1;
   [FieldOffset(0)] public byte DisableDiagnosticInterruptButton = 1;
   [FieldOffset(0)] public byte DisableStandbyButton = 1;
   [FieldOffset(0)] public byte Reserved = 4;
+  /*   } Bits; */
+  [FieldOffset(0)] public byte Uint8;
 }
-byte Uint8;
-} IPMI_FRONT_PANEL_BUTTON_ENABLES;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct IPMI_CHASSIS_SET_FRONT_PANEL_BUTTON_ENABLES_REQUEST
 {
-  IPMI_FRONT_PANEL_BUTTON_ENABLES FrontPanelButtonEnables;
+  public IPMI_FRONT_PANEL_BUTTON_ENABLES FrontPanelButtonEnables;
 }
 
 public unsafe partial class EFI

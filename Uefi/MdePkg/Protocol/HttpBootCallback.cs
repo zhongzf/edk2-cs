@@ -58,6 +58,37 @@ public enum EFI_HTTP_BOOT_CALLBACK_DATA_TYPE
   HttpBootTypeMax
 }
 
+// /**
+//   Callback function that is invoked when the HTTP Boot driver is about to transmit or has received a
+//   packet.
+// 
+//   This function is invoked when the HTTP Boot driver is about to transmit or has received packet.
+//   Parameters DataType and Received specify the type of event and the format of the buffer pointed
+//   to by Data. Due to the polling nature of UEFI device drivers, this callback function should not
+//   execute for more than 5 ms.
+//   The returned status code determines the behavior of the HTTP Boot driver.
+// 
+//   @param[in]  This                Pointer to the EFI_HTTP_BOOT_CALLBACK_PROTOCOL instance.
+//   @param[in]  DataType            The event that occurs in the current state.
+//   @param[in]  Received            TRUE if the callback is being invoked due to a receive event.
+//                                   FALSE if the callback is being invoked due to a transmit event.
+//   @param[in]  DataLength          The length in bytes of the buffer pointed to by Data.
+//   @param[in]  Data                A pointer to the buffer of data, the data type is specified by
+//                                   DataType.
+// 
+//   @retval EFI_SUCCESS             Tells the HTTP Boot driver to continue the HTTP Boot process.
+//   @retval EFI_ABORTED             Tells the HTTP Boot driver to abort the current HTTP Boot process.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_HTTP_BOOT_CALLBACK)(
+//   IN EFI_HTTP_BOOT_CALLBACK_PROTOCOL    *This,
+//   IN EFI_HTTP_BOOT_CALLBACK_DATA_TYPE   DataType,
+//   IN bool                            Received,
+//   IN uint                             DataLength,
+//   IN void                               *Data   OPTIONAL
+//   );
+
 ///
 /// EFI HTTP Boot Callback Protocol is invoked when the HTTP Boot driver is about to transmit or
 /// has received a packet. The EFI HTTP Boot Callback Protocol must be installed on the same handle
@@ -66,28 +97,7 @@ public enum EFI_HTTP_BOOT_CALLBACK_DATA_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HTTP_BOOT_CALLBACK_PROTOCOL
 {
-  /**
-    Callback function that is invoked when the HTTP Boot driver is about to transmit or has received a
-    packet.
-
-    This function is invoked when the HTTP Boot driver is about to transmit or has received packet.
-    Parameters DataType and Received specify the type of event and the format of the buffer pointed
-    to by Data. Due to the polling nature of UEFI device drivers, this callback function should not
-    execute for more than 5 ms.
-    The returned status code determines the behavior of the HTTP Boot driver.
-
-    @param[in]  This                Pointer to the EFI_HTTP_BOOT_CALLBACK_PROTOCOL instance.
-    @param[in]  DataType            The event that occurs in the current state.
-    @param[in]  Received            TRUE if the callback is being invoked due to a receive event.
-                                    FALSE if the callback is being invoked due to a transmit event.
-    @param[in]  DataLength          The length in bytes of the buffer pointed to by Data.
-    @param[in]  Data                A pointer to the buffer of data, the data type is specified by
-                                    DataType.
-
-    @retval EFI_SUCCESS             Tells the HTTP Boot driver to continue the HTTP Boot process.
-    @retval EFI_ABORTED             Tells the HTTP Boot driver to abort the current HTTP Boot process.
-  **/
-  public readonly delegate* unmanaged<EFI_HTTP_BOOT_CALLBACK_PROTOCOL*, EFI_HTTP_BOOT_CALLBACK_DATA_TYPE, bool, uint, void*, EFI_STATUS> Callback;
+  public readonly delegate* unmanaged</* IN */EFI_HTTP_BOOT_CALLBACK_PROTOCOL* /*This*/,/* IN */EFI_HTTP_BOOT_CALLBACK_DATA_TYPE /*DataType*/,/* IN */bool /*Received*/,/* IN */uint /*DataLength*/,/* IN */void* /*Data*/, EFI_STATUS> /*EFI_HTTP_BOOT_CALLBACK*/ Callback;
 }
 
 // extern EFI_GUID  gEfiHttpBootCallbackProtocolGuid;
