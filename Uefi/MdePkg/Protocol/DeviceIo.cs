@@ -25,7 +25,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID name defined in EFI1.1.
   ///
-  public const ulong DEVICE_IO_PROTOCOL = EFI_DEVICE_IO_PROTOCOL_GUID;
+  public static EFI_GUID DEVICE_IO_PROTOCOL = EFI_DEVICE_IO_PROTOCOL_GUID;
 }
 
 ///

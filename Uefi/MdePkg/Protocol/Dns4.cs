@@ -542,12 +542,12 @@ public unsafe struct EFI_DNS4_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* OUT */EFI_DNS4_MODE_DATA* /*DnsModeData*/, EFI_STATUS> /*EFI_DNS4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */EFI_DNS4_CONFIG_DATA* /*DnsConfigData*/, EFI_STATUS> /*EFI_DNS4_CONFIGURE*/ Configure;
-  public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */char* /*HostName*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_HOST_NAME_TO_IP*/ HostNameToIp;
-  public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */EFI_IPv4_ADDRESS /*IpAddress*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_IP_TO_HOST_NAME*/ IpToHostName;
-  public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */byte* /*QName*/,/* IN */ushort /*QType*/,/* IN */ushort /*QClass*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_GENERAL_LOOKUP*/ GeneralLookUp;
+  //public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */char* /*HostName*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_HOST_NAME_TO_IP*/ HostNameToIp;
+  //public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */EFI_IPv4_ADDRESS /*IpAddress*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_IP_TO_HOST_NAME*/ IpToHostName;
+  //public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */byte* /*QName*/,/* IN */ushort /*QType*/,/* IN */ushort /*QClass*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_GENERAL_LOOKUP*/ GeneralLookUp;
   public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */bool /*DeleteFlag*/,/* IN */bool /*Override*/,/* IN */EFI_DNS4_CACHE_ENTRY /*DnsCacheEntry*/, EFI_STATUS> /*EFI_DNS4_UPDATE_DNS_CACHE*/ UpdateDnsCache;
   public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_DNS4_POLL*/ Poll;
-  public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_CANCEL*/ Cancel;
+  //public readonly delegate* unmanaged</* IN */EFI_DNS4_PROTOCOL* /*This*/,/* IN */EFI_DNS4_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_DNS4_CANCEL*/ Cancel;
 }
 
 // extern EFI_GUID  gEfiDns4ServiceBindingProtocolGuid;

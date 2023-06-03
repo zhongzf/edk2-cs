@@ -25,7 +25,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID name defined in EFI1.1.
   ///
-  public const ulong SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
+  public static EFI_GUID SIMPLE_INPUT_PROTOCOL = EFI_SIMPLE_TEXT_INPUT_PROTOCOL_GUID;
 
   ///
   /// Protocol name in EFI1.1 for backward-compatible.

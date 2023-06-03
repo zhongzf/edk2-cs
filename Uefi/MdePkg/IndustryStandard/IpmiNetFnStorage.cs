@@ -917,9 +917,9 @@ public unsafe partial class EFI
   public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_END = 0x46;
   public const ulong IPMI_SWID_TERMINAL_REMOTE_CONSOLE_ID = 0x47;
 
-  public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
-  public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
-  public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
+  //public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
+  //public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
+  //public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
 
   public const ulong IPMI_EVM_REVISION = 0x04;
   public const ulong IPMI_BIOS_ID = 0x18;
@@ -927,7 +927,7 @@ public unsafe partial class EFI
   public const ulong IPMI_FORMAT_REV1 = 0x01;
   public const ulong IPMI_SOFTWARE_ID = 0x01;
   public const ulong IPMI_PLATFORM_VAL_ID = 0x01;
-  public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
+  //public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
 
   public const ulong IPMI_SENSOR_TYPE_EVENT_CODE_DISCRETE = 0x6F;
 

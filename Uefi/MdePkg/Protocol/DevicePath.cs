@@ -893,10 +893,10 @@ public unsafe struct VENDOR_DEFINED_DEVICE_PATH { VENDOR_DEVICE_PATH Value; publ
 
 public unsafe partial class EFI
 {
-  public const ulong DEVICE_PATH_MESSAGING_PC_ANSI = EFI_PC_ANSI_GUID;
-  public const ulong DEVICE_PATH_MESSAGING_VT_100 = EFI_VT_100_GUID;
-  public const ulong DEVICE_PATH_MESSAGING_VT_100_PLUS = EFI_VT_100_PLUS_GUID;
-  public const ulong DEVICE_PATH_MESSAGING_VT_UTF8 = EFI_VT_UTF8_GUID;
+  //public const ulong DEVICE_PATH_MESSAGING_PC_ANSI = EFI_PC_ANSI_GUID;
+  //public const ulong DEVICE_PATH_MESSAGING_VT_100 = EFI_VT_100_GUID;
+  //public const ulong DEVICE_PATH_MESSAGING_VT_100_PLUS = EFI_VT_100_PLUS_GUID;
+  //public const ulong DEVICE_PATH_MESSAGING_VT_UTF8 = EFI_VT_UTF8_GUID;
 }
 
 ///

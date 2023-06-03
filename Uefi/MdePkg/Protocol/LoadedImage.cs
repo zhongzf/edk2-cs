@@ -26,7 +26,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID defined in EFI1.1.
   ///
-  public const ulong LOADED_IMAGE_PROTOCOL = EFI_LOADED_IMAGE_PROTOCOL_GUID;
+  public static EFI_GUID LOADED_IMAGE_PROTOCOL = EFI_LOADED_IMAGE_PROTOCOL_GUID;
 
   ///
   /// EFI_SYSTEM_TABLE & EFI_IMAGE_UNLOAD are defined in EfiApi.h

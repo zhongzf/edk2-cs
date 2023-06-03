@@ -56,7 +56,7 @@ public unsafe struct EFI_UDP4_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle;
   public uint ServiceCount;
-  public fixed EFI_UDP4_SERVICE_POINT Services[1];
+  //public fixed EFI_UDP4_SERVICE_POINT Services[1];
 }
 
 [StructLayout(LayoutKind.Sequential)]

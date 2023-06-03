@@ -215,7 +215,7 @@ public unsafe struct EFI_PXE_BASE_CODE_DISCOVER_INFO
   public bool MustUseList;
   public EFI_IP_ADDRESS ServerMCastIp;
   public ushort IpCnt;
-  public fixed EFI_PXE_BASE_CODE_SRVLIST SrvList[1];
+  public EFI_PXE_BASE_CODE_SRVLIST SrvList[1];
 }
 
 ///
@@ -342,9 +342,9 @@ public unsafe struct EFI_PXE_BASE_CODE_MODE
   public EFI_PXE_BASE_CODE_PACKET PxeBisReply;
   public EFI_PXE_BASE_CODE_IP_FILTER IpFilter;
   public uint ArpCacheEntries;
-  public fixed EFI_PXE_BASE_CODE_ARP_ENTRY ArpCache[EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES];
+  public EFI_PXE_BASE_CODE_ARP_ENTRY ArpCache[EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES];
   public uint RouteTableEntries;
-  public fixed EFI_PXE_BASE_CODE_ROUTE_ENTRY RouteTable[EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES];
+  public EFI_PXE_BASE_CODE_ROUTE_ENTRY RouteTable[EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES];
   public EFI_PXE_BASE_CODE_ICMP_ERROR IcmpError;
   public EFI_PXE_BASE_CODE_TFTP_ERROR TftpError;
 }

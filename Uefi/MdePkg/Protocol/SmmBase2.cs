@@ -20,7 +20,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_SMM_BASE2_PROTOCOL_GUID = EFI_MM_BASE_PROTOCOL_GUID;
+  public static EFI_GUID EFI_SMM_BASE2_PROTOCOL_GUID = EFI_MM_BASE_PROTOCOL_GUID;
 
   // typedef struct _EFI_SMM_BASE2_PROTOCOL EFI_SMM_BASE2_PROTOCOL;
 

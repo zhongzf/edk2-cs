@@ -21,7 +21,7 @@ public unsafe partial class EFI
   /// The version of an HTTP message is indicated by an HTTP-Version field
   /// in the first line of the message.
   ///
-  public const ulong HTTP_VERSION = "HTTP/1.1";
+  public const string HTTP_VERSION = "HTTP/1.1";
 
   ///
   /// HTTP Request Method definitions
@@ -29,21 +29,21 @@ public unsafe partial class EFI
   /// The Method  token indicates the method to be performed on the
   /// resource identified by the Request-URI. The method is case-sensitive.
   ///
-  public const ulong HTTP_METHOD_OPTIONS = "OPTIONS";
-  public const ulong HTTP_METHOD_GET = "GET";
-  public const ulong HTTP_METHOD_HEAD = "HEAD";
-  public const ulong HTTP_METHOD_POST = "POST";
-  public const ulong HTTP_METHOD_PUT = "PUT";
-  public const ulong HTTP_METHOD_DELETE = "DELETE";
-  public const ulong HTTP_METHOD_TRACE = "TRACE";
-  public const ulong HTTP_METHOD_CONNECT = "CONNECT";
-  public const ulong HTTP_METHOD_PATCH = "PATCH";
+  public const string HTTP_METHOD_OPTIONS = "OPTIONS";
+  public const string HTTP_METHOD_GET = "GET";
+  public const string HTTP_METHOD_HEAD = "HEAD";
+  public const string HTTP_METHOD_POST = "POST";
+  public const string HTTP_METHOD_PUT = "PUT";
+  public const string HTTP_METHOD_DELETE = "DELETE";
+  public const string HTTP_METHOD_TRACE = "TRACE";
+  public const string HTTP_METHOD_CONNECT = "CONNECT";
+  public const string HTTP_METHOD_PATCH = "PATCH";
 
   ///
   /// Connect method has maximum length according to EFI_HTTP_METHOD defined in
   /// UEFI2.5 spec so use this.
   ///
-  public const ulong HTTP_METHOD_MAXIMUM_LEN = sizeof(HTTP_METHOD_CONNECT);
+  public const string HTTP_METHOD_MAXIMUM_LEN = sizeof(HTTP_METHOD_CONNECT);
 
   ///
   /// Accept Request Header
@@ -52,7 +52,7 @@ public unsafe partial class EFI
   /// is specifically limited to a small set of desired types, as in the case of a request
   /// for an in-line image.
   ///
-  public const ulong HTTP_HEADER_ACCEPT = "Accept";
+  public const string HTTP_HEADER_ACCEPT = "Accept";
 
   ///
   /// Accept-Charset Request Header
@@ -61,7 +61,7 @@ public unsafe partial class EFI
   /// more comprehensive or special-purpose character sets to signal that capability to a
   /// server which is capable of representing documents in those character sets.
   ///
-  public const ulong HTTP_HEADER_ACCEPT_CHARSET = "Accept-Charset";
+  public const string HTTP_HEADER_ACCEPT_CHARSET = "Accept-Charset";
 
   ///
   /// Accept-Language Request Header
@@ -69,21 +69,21 @@ public unsafe partial class EFI
   /// but restricts the set of natural languages that are preferred
   /// as a response to the request.
   ///
-  public const ulong HTTP_HEADER_ACCEPT_LANGUAGE = "Accept-Language";
+  public const string HTTP_HEADER_ACCEPT_LANGUAGE = "Accept-Language";
 
   ///
   /// Accept-Ranges Request Header
   /// The Accept-Ranges response-header field allows the server to
   /// indicate its acceptance of range requests for a resource:
   ///
-  public const ulong HTTP_HEADER_ACCEPT_RANGES = "Accept-Ranges";
+  public const string HTTP_HEADER_ACCEPT_RANGES = "Accept-Ranges";
 
   ///
   /// Accept-Encoding Request Header
   /// The Accept-Encoding request-header field is similar to Accept,
   /// but restricts the content-codings that are acceptable in the response.
   ///
-  public const ulong HTTP_HEADER_ACCEPT_ENCODING = "Accept-Encoding";
+  public const string HTTP_HEADER_ACCEPT_ENCODING = "Accept-Encoding";
 
   ///
   /// Content-Encoding Header
@@ -94,16 +94,16 @@ public unsafe partial class EFI
   /// is primarily used to allow a document to be compressed without losing the identity
   /// of its underlying media type.
   ///
-  public const ulong HTTP_HEADER_CONTENT_ENCODING = "Content-Encoding";
+  public const string HTTP_HEADER_CONTENT_ENCODING = "Content-Encoding";
 
   ///
   /// HTTP Content-Encoding Compression types
   ///
 
-  public const ulong HTTP_CONTENT_ENCODING_IDENTITY = "identity"; ///  No transformation is used. This is the default value for content coding.
-  public const ulong HTTP_CONTENT_ENCODING_GZIP = "gzip"; ///  Content-Encoding: GNU zip format (described in RFC 1952).
-  public const ulong HTTP_CONTENT_ENCODING_COMPRESS = "compress"; ///  encoding format produced by the common UNIX file compression program "compress".
-  public const ulong HTTP_CONTENT_ENCODING_DEFLATE = "deflate"; ///  The "zlib" format defined in RFC 1950 in combination with the "deflate"
+  public const string HTTP_CONTENT_ENCODING_IDENTITY = "identity"; ///  No transformation is used. This is the default value for content coding.
+  public const string HTTP_CONTENT_ENCODING_GZIP = "gzip"; ///  Content-Encoding: GNU zip format (described in RFC 1952).
+  public const string HTTP_CONTENT_ENCODING_COMPRESS = "compress"; ///  encoding format produced by the common UNIX file compression program "compress".
+  public const string HTTP_CONTENT_ENCODING_DEFLATE = "deflate"; ///  The "zlib" format defined in RFC 1950 in combination with the "deflate"
                                                                 /// compression mechanism described in RFC 1951.
 
                                                                 ///
@@ -112,22 +112,22 @@ public unsafe partial class EFI
                                                                 /// the recipient or, in the case of the HEAD method, the media type that would have been sent
                                                                 /// had the request been a GET.
                                                                 ///
-  public const ulong HTTP_HEADER_CONTENT_TYPE = "Content-Type";
+  public const string HTTP_HEADER_CONTENT_TYPE = "Content-Type";
   //
   // Common Media Types defined in http://www.iana.org/assignments/media-types/media-types.xhtml
   //
-  public const ulong HTTP_CONTENT_TYPE_APP_JSON = "application/json";
-  public const ulong HTTP_CONTENT_TYPE_APP_OCTET_STREAM = "application/octet-stream";
+  public const string HTTP_CONTENT_TYPE_APP_JSON = "application/json";
+  public const string HTTP_CONTENT_TYPE_APP_OCTET_STREAM = "application/octet-stream";
 
-  public const ulong HTTP_CONTENT_TYPE_TEXT_HTML = "text/html";
-  public const ulong HTTP_CONTENT_TYPE_TEXT_PLAIN = "text/plain";
-  public const ulong HTTP_CONTENT_TYPE_TEXT_CSS = "text/css";
-  public const ulong HTTP_CONTENT_TYPE_TEXT_XML = "text/xml";
+  public const string HTTP_CONTENT_TYPE_TEXT_HTML = "text/html";
+  public const string HTTP_CONTENT_TYPE_TEXT_PLAIN = "text/plain";
+  public const string HTTP_CONTENT_TYPE_TEXT_CSS = "text/css";
+  public const string HTTP_CONTENT_TYPE_TEXT_XML = "text/xml";
 
-  public const ulong HTTP_CONTENT_TYPE_IMAGE_GIF = "image/gif";
-  public const ulong HTTP_CONTENT_TYPE_IMAGE_JPEG = "image/jpeg";
-  public const ulong HTTP_CONTENT_TYPE_IMAGE_PNG = "image/png";
-  public const ulong HTTP_CONTENT_TYPE_IMAGE_SVG_XML = "image/svg+xml";
+  public const string HTTP_CONTENT_TYPE_IMAGE_GIF = "image/gif";
+  public const string HTTP_CONTENT_TYPE_IMAGE_JPEG = "image/jpeg";
+  public const string HTTP_CONTENT_TYPE_IMAGE_PNG = "image/png";
+  public const string HTTP_CONTENT_TYPE_IMAGE_SVG_XML = "image/svg+xml";
 
   ///
   /// Content-Length Header
@@ -135,7 +135,7 @@ public unsafe partial class EFI
   /// in decimal number of OCTETs, sent to the recipient or, in the case of the HEAD
   /// method, the size of the entity-body that would have been sent had the request been a GET.
   ///
-  public const ulong HTTP_HEADER_CONTENT_LENGTH = "Content-Length";
+  public const string HTTP_HEADER_CONTENT_LENGTH = "Content-Length";
 
   ///
   /// Transfer-Encoding Header
@@ -144,12 +144,12 @@ public unsafe partial class EFI
   /// and the recipient. This differs from the content-coding in that the transfer-coding
   /// is a property of the message, not of the entity.
   ///
-  public const ulong HTTP_HEADER_TRANSFER_ENCODING = "Transfer-Encoding";
-  public const ulong HTTP_HEADER_TRANSFER_ENCODING_CHUNKED = "chunked";
-  public const ulong CHUNKED_TRANSFER_CODING_CR = '\r';
-  public const ulong CHUNKED_TRANSFER_CODING_LF = '\n';
-  public const ulong CHUNKED_TRANSFER_CODING_LAST_CHUNK = '0';
-  public const ulong CHUNKED_TRANSFER_CODING_EXTENSION_SEPARATOR = ';';
+  public const string HTTP_HEADER_TRANSFER_ENCODING = "Transfer-Encoding";
+  public const string HTTP_HEADER_TRANSFER_ENCODING_CHUNKED = "chunked";
+  public const string CHUNKED_TRANSFER_CODING_CR = '\r';
+  public const string CHUNKED_TRANSFER_CODING_LF = '\n';
+  public const string CHUNKED_TRANSFER_CODING_LAST_CHUNK = '0';
+  public const string CHUNKED_TRANSFER_CODING_EXTENSION_SEPARATOR = ';';
 
   ///
   /// User Agent Request Header
@@ -163,7 +163,7 @@ public unsafe partial class EFI
   /// By convention, the product tokens are listed in order of their significance for
   /// identifying the application.
   ///
-  public const ulong HTTP_HEADER_USER_AGENT = "User-Agent";
+  public const string HTTP_HEADER_USER_AGENT = "User-Agent";
 
   ///
   /// Host Request Header
@@ -171,7 +171,7 @@ public unsafe partial class EFI
   /// The Host request-header field specifies the Internet host and port number of the resource
   /// being requested, as obtained from the original URI given by the user or referring resource
   ///
-  public const ulong HTTP_HEADER_HOST = "Host";
+  public const string HTTP_HEADER_HOST = "Host";
 
   ///
   /// Location Response Header
@@ -182,7 +182,7 @@ public unsafe partial class EFI
   /// the request. For 3xx responses, the location SHOULD indicate the server's preferred URI for
   /// automatic redirection to the resource. The field value consists of a single absolute URI.
   ///
-  public const ulong HTTP_HEADER_LOCATION = "Location";
+  public const string HTTP_HEADER_LOCATION = "Location";
 
   ///
   /// The If-Match request-header field is used with a method to make it conditional.
@@ -194,7 +194,7 @@ public unsafe partial class EFI
   /// to prevent inadvertent modification of the wrong version of a resource.
   /// As a special case, the value "*" matches any current entity of the resource.
   ///
-  public const ulong HTTP_HEADER_IF_MATCH = "If-Match";
+  public const string HTTP_HEADER_IF_MATCH = "If-Match";
 
   ///
   /// The If-None-Match request-header field is used with a method to make it conditional.
@@ -205,7 +205,7 @@ public unsafe partial class EFI
   /// to prevent a method (e.g. PUT) from inadvertently modifying an existing resource when the
   /// client believes that the resource does not exist.
   ///
-  public const ulong HTTP_HEADER_IF_NONE_MATCH = "If-None-Match";
+  public const string HTTP_HEADER_IF_NONE_MATCH = "If-None-Match";
 
   ///
   /// The WWW-Authenticate Response Header
@@ -213,7 +213,7 @@ public unsafe partial class EFI
   /// acceptable Authorization header is not sent, the server responds with
   /// a "401 Unauthorized" status code, and a WWW-Authenticate header.
   ///
-  public const ulong HTTP_HEADER_WWW_AUTHENTICATE = "WWW-Authenticate";
+  public const string HTTP_HEADER_WWW_AUTHENTICATE = "WWW-Authenticate";
 
   ///
   /// Authorization Request Header
@@ -221,21 +221,21 @@ public unsafe partial class EFI
   /// containing the authentication information of the user agent for
   /// the realm of the resource being requested.
   ///
-  public const ulong HTTP_HEADER_AUTHORIZATION = "Authorization";
+  public const string HTTP_HEADER_AUTHORIZATION = "Authorization";
 
   ///
   /// ETAG Response Header
   /// The ETag response-header field provides the current value of the entity tag
   /// for the requested variant.
   ///
-  public const ulong HTTP_HEADER_ETAG = "ETag";
+  public const string HTTP_HEADER_ETAG = "ETag";
 
   ///
   /// Custom header field checked by the iLO web server to
   /// specify a client session key.
   /// Example:     X-Auth-Token: 24de6b1f8fa147ad59f6452def628798
   ///
-  public const ulong HTTP_HEADER_X_AUTH_TOKEN = "X-Auth-Token";
+  public const string HTTP_HEADER_X_AUTH_TOKEN = "X-Auth-Token";
 
   ///
   /// Expect Header
@@ -244,12 +244,12 @@ public unsafe partial class EFI
   /// order to properly handle this request. The only such expectation
   /// defined by this specification is 100-continue.
   ///
-  public const ulong HTTP_HEADER_EXPECT = "Expect";
+  public const string HTTP_HEADER_EXPECT = "Expect";
 
   ///
   /// Expect Header Value
   ///
-  public const ulong HTTP_EXPECT_100_CONTINUE = "100-continue";
+  public const string HTTP_EXPECT_100_CONTINUE = "100-continue";
 
   // #pragma pack()
 }

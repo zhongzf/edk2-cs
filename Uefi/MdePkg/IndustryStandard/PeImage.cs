@@ -50,10 +50,10 @@ public unsafe partial class EFI
   //
   // EXE file formats
   //
-  public const ulong EFI_IMAGE_DOS_SIGNATURE = SIGNATURE_16('M', 'Z');
-  public const ulong EFI_IMAGE_OS2_SIGNATURE = SIGNATURE_16('N', 'E');
-  public const ulong EFI_IMAGE_OS2_SIGNATURE_LE = SIGNATURE_16('L', 'E');
-  public const ulong EFI_IMAGE_NT_SIGNATURE = SIGNATURE_32('P', 'E', '\0', '\0');
+  //public const ulong EFI_IMAGE_DOS_SIGNATURE = SIGNATURE_16('M', 'Z');
+  //public const ulong EFI_IMAGE_OS2_SIGNATURE = SIGNATURE_16('N', 'E');
+  //public const ulong EFI_IMAGE_OS2_SIGNATURE_LE = SIGNATURE_16('L', 'E');
+  //public const ulong EFI_IMAGE_NT_SIGNATURE = SIGNATURE_32('P', 'E', '\0', '\0');
 }
 
 ///
@@ -725,8 +725,9 @@ public unsafe partial class EFI
   ///
   /// Debug Data Structure defined in Microsoft C++.
   ///
-  public const ulong CODEVIEW_SIGNATURE_RSDS = SIGNATURE_32('R', 'S', 'D', 'S');
+  //public const ulong CODEVIEW_SIGNATURE_RSDS = SIGNATURE_32('R', 'S', 'D', 'S');
 }
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_RSDS_ENTRY
 {
@@ -853,7 +854,7 @@ public unsafe struct EFI_TE_IMAGE_HEADER
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_TE_IMAGE_HEADER_SIGNATURE = SIGNATURE_16('V', 'Z');
+  //public const ulong EFI_TE_IMAGE_HEADER_SIGNATURE = SIGNATURE_16('V', 'Z');
 
   //
   // Data directory indexes in our TE image header

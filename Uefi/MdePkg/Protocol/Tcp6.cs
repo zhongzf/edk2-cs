@@ -75,7 +75,7 @@ public unsafe struct EFI_TCP6_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle; ///< The handle of the driver that creates this entry.
   public uint ServiceCount; ///< The number of address/port pairs following this data structure.
-  public fixed EFI_TCP6_SERVICE_POINT Services[1];  ///< List of address/port pairs that are currently in use.
+  //public fixed EFI_TCP6_SERVICE_POINT Services[1];  ///< List of address/port pairs that are currently in use.
 }
 
 ///

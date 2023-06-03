@@ -22,7 +22,7 @@ public unsafe partial class EFI
   ///
   /// EFI Partition Table Signature: "EFI PART".
   ///
-  public const ulong EFI_PTAB_HEADER_ID = SIGNATURE_64('E', 'F', 'I', ' ', 'P', 'A', 'R', 'T');
+  //public const ulong EFI_PTAB_HEADER_ID = SIGNATURE_64('E', 'F', 'I', ' ', 'P', 'A', 'R', 'T');
   ///
   /// Minimum bytes reserve for EFI entry array buffer.
   ///

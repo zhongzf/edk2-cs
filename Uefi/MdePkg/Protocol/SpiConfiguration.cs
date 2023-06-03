@@ -26,9 +26,9 @@ public unsafe partial class EFI
   ///
   /// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
   ///
-  public const ulong Hz = (Frequency)(Frequency);
-  public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
-  public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
+  //public const ulong Hz = (Frequency)(Frequency);
+  //public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
+  //public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
 
   // typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
 

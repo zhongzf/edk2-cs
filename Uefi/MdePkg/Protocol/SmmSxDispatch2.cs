@@ -19,7 +19,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_SMM_SX_DISPATCH2_PROTOCOL_GUID = EFI_MM_SX_DISPATCH_PROTOCOL_GUID;
+  public static EFI_GUID EFI_SMM_SX_DISPATCH2_PROTOCOL_GUID = EFI_MM_SX_DISPATCH_PROTOCOL_GUID;
 }
 
 ///

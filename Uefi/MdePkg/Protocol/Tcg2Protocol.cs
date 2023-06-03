@@ -117,9 +117,9 @@ public unsafe partial class EFI
   //
   // This bit shall be set when the intent is to measure a PE/COFF image.
   //
-  public const ulong PE_COFF_IMAGE = 0x0000000000000010;
+  //public const ulong PE_COFF_IMAGE = 0x0000000000000010;
 
-  public const ulong MAX_PCR_INDEX = 23;
+  //public const ulong MAX_PCR_INDEX = 23;
 
   // #pragma pack(1)
 

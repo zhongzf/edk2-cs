@@ -25,7 +25,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID defined in EFI1.1.
   ///
-  public const ulong SIMPLE_TEXT_OUTPUT_PROTOCOL = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID;
+  public static EFI_GUID SIMPLE_TEXT_OUTPUT_PROTOCOL = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID;
 
   // typedef struct _EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL;
 }
@@ -136,7 +136,7 @@ public unsafe partial class EFI
   //
   // Do not use EFI_BACKGROUND_xxx values with this macro.
   //
-  public const ulong EFI_TEXT_ATTR = (Foreground, Background)((Foreground) | ((Background) << 4));
+  //public const ulong EFI_TEXT_ATTR = (Foreground, Background)((Foreground) | ((Background) << 4));
 
   public const ulong EFI_BACKGROUND_BLACK = 0x00;
   public const ulong EFI_BACKGROUND_BLUE = 0x10;

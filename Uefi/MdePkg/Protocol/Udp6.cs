@@ -258,7 +258,7 @@ public unsafe struct EFI_UDP6_RECEIVE_DATA
   ///
   /// Array of fragment descriptors. Maybe zero.
   ///
-  public fixed EFI_UDP6_FRAGMENT_DATA FragmentTable[1];
+  //public fixed EFI_UDP6_FRAGMENT_DATA FragmentTable[1];
 }
 
 ///
@@ -582,9 +582,9 @@ public unsafe struct EFI_UDP6_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP6_GROUPS*/ Groups;
-  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;
-  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_RECEIVE*/ Receive;
-  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_CANCEL*/ Cancel;
+  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;
+  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_RECEIVE*/ Receive;
+  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_CANCEL*/ Cancel;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_UDP6_POLL*/ Poll;
 }
 

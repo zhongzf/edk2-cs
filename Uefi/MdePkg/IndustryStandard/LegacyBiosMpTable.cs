@@ -140,24 +140,24 @@ public unsafe struct EFI_LEGACY_MP_TABLE_ENTRY_BUS
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUS = "CBUS  "; //  Corollary CBus
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUSII = "CBUSII"; //  Corollary CBUS II
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_EISA = "EISA  "; //  Extended ISA
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_FUTURE = "FUTURE"; //  IEEE FutureBus
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_INTERN = "INTERN"; //  Internal bus
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_ISA = "ISA   "; //  Industry Standard Architecture
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MBI = "MBI   "; //  Multibus I
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MBII = "MBII  "; //  Multibus II
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MCA = "MCA   "; //  Micro Channel Architecture
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MPI = "MPI   "; //  MPI
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MPSA = "MPSA  "; //  MPSA
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_NUBUS = "NUBUS "; //  Apple Macintosh NuBus
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_PCI = "PCI   "; //  Peripheral Component Interconnect
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_PCMCIA = "PCMCIA"; //  PC Memory Card International Assoc.
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_TC = "TC    "; //  DEC TurboChannel
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_VL = "VL    "; //  VESA Local Bus
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_VME = "VME   "; //  VMEbus
-  public const ulong EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_XPRESS = "XPRESS"; //  Express System Bus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUS = "CBUS  "; //  Corollary CBus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_CBUSII = "CBUSII"; //  Corollary CBUS II
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_EISA = "EISA  "; //  Extended ISA
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_FUTURE = "FUTURE"; //  IEEE FutureBus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_INTERN = "INTERN"; //  Internal bus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_ISA = "ISA   "; //  Industry Standard Architecture
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MBI = "MBI   "; //  Multibus I
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MBII = "MBII  "; //  Multibus II
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MCA = "MCA   "; //  Micro Channel Architecture
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MPI = "MPI   "; //  MPI
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_MPSA = "MPSA  "; //  MPSA
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_NUBUS = "NUBUS "; //  Apple Macintosh NuBus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_PCI = "PCI   "; //  Peripheral Component Interconnect
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_PCMCIA = "PCMCIA"; //  PC Memory Card International Assoc.
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_TC = "TC    "; //  DEC TurboChannel
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_VL = "VL    "; //  VESA Local Bus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_VME = "VME   "; //  VMEbus
+  public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_XPRESS = "XPRESS"; //  Express System Bus
                                                                              //
                                                                              // Entry Type 2: I/O APIC.
                                                                              //

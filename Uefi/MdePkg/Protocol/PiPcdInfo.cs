@@ -77,7 +77,7 @@ public unsafe struct EFI_GET_PCD_INFO_PROTOCOL
   ///
   /// Retrieve the currently set SKU Id.
   ///
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_GET_PCD_INFO_PROTOCOL_GET_SKU*/ GetSku;
+  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*EFI_GET_PCD_INFO_PROTOCOL_GET_SKU*/ GetSku;
 }
 
 // #endif

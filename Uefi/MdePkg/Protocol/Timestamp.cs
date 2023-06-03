@@ -91,7 +91,7 @@ public unsafe struct EFI_TIMESTAMP_PROPERTIES
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TIMESTAMP_PROTOCOL
 {
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*TIMESTAMP_GET*/ GetTimestamp;
+  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*TIMESTAMP_GET*/ GetTimestamp;
   public readonly delegate* unmanaged</* OUT */EFI_TIMESTAMP_PROPERTIES* /*Properties*/, EFI_STATUS> /*TIMESTAMP_GET_PROPERTIES*/ GetProperties;
 }
 

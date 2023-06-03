@@ -28,12 +28,12 @@ public unsafe partial class EFI
   ///
   /// CDROM_VOLUME_DESCRIPTOR.Id
   ///
-  public const ulong CDVOL_ID = "CD001";
+  public const string CDVOL_ID = "CD001";
 
   ///
   /// CDROM_VOLUME_DESCRIPTOR.SystemId
   ///
-  public const ulong CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
+  public const string CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
 
   //
   // Indicator types

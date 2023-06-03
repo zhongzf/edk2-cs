@@ -26,7 +26,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID defined in EFI1.1.
   ///
-  public const ulong SERIAL_IO_PROTOCOL = EFI_SERIAL_IO_PROTOCOL_GUID;
+  public static EFI_GUID SERIAL_IO_PROTOCOL = EFI_SERIAL_IO_PROTOCOL_GUID;
 
   // typedef struct _EFI_SERIAL_IO_PROTOCOL EFI_SERIAL_IO_PROTOCOL;
 }

@@ -31,7 +31,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID name defined in EFI1.1.
   ///
-  public const ulong SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
+  public static EFI_GUID SIMPLE_FILE_SYSTEM_PROTOCOL = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
 }
 
 ///

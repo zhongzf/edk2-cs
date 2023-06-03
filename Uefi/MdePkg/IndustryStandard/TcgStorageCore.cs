@@ -202,8 +202,8 @@ public unsafe partial class EFI
   public const ulong TCG_TOKEN_LONGATOM_MAX_BYTE_SIZE = 0xFFFFFF;
 
   public const ulong TCG_TOKEN_TINYATOM_UNSIGNED_MAX_VALUE = 0x3F;
-  public const ulong TCG_TOKEN_TINYATOM_SIGNED_MAX_VALUE = 0x1F;
-  public const ulong TCG_TOKEN_TINYATOM_SIGNED_MIN_VALUE = -32;
+  public const long TCG_TOKEN_TINYATOM_SIGNED_MAX_VALUE = 0x1F;
+  public const long TCG_TOKEN_TINYATOM_SIGNED_MIN_VALUE = -32;
 
   // TOKEN TYPES
   public const ulong TCG_TOKEN_TINYATOM = 0x00;
