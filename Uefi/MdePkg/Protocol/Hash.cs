@@ -71,12 +71,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct EFI_HASH_OUTPUT
 {
-  [FieldOffset(0)] public EFI_MD5_HASH* Md5Hash;
-  [FieldOffset(0)] public EFI_SHA1_HASH* Sha1Hash;
-  [FieldOffset(0)] public EFI_SHA224_HASH* Sha224Hash;
-  [FieldOffset(0)] public EFI_SHA256_HASH* Sha256Hash;
-  [FieldOffset(0)] public EFI_SHA384_HASH* Sha384Hash;
-  [FieldOffset(0)] public EFI_SHA512_HASH* Sha512Hash;
+  //[FieldOffset(0)] public EFI_MD5_HASH* Md5Hash;
+  //[FieldOffset(0)] public EFI_SHA1_HASH* Sha1Hash;
+  //[FieldOffset(0)] public EFI_SHA224_HASH* Sha224Hash;
+  //[FieldOffset(0)] public EFI_SHA256_HASH* Sha256Hash;
+  //[FieldOffset(0)] public EFI_SHA384_HASH* Sha384Hash;
+  //[FieldOffset(0)] public EFI_SHA512_HASH* Sha512Hash;
 }
 
 // /**

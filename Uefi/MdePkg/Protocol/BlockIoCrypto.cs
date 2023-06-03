@@ -94,8 +94,8 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_IV_INPUT_AES_XTS
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
-        0x689e4c62, 0x70bf, 0x4cf3, new byte[] { 0x88, 0xbb, 0x33, 0xb3, 0x18, 0x26, 0x86, 0x70 });
+  //public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
+  //      0x689e4c62, 0x70bf, 0x4cf3, new byte[] { 0x88, 0xbb, 0x33, 0xb3, 0x18, 0x26, 0x86, 0x70 });
 
   // extern EFI_GUID  gEfiBlockIoCryptoAlgoAesCbcMsBitlockerGuid;
 }

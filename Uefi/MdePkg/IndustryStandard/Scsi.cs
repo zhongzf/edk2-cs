@@ -60,7 +60,7 @@ public unsafe partial class EFI
   public const ulong EFI_SCSI_OP_SEARCH_DATA_L = 0x32;
   public const ulong EFI_SCSI_OP_SEEK6 = 0x0b;
   public const ulong EFI_SCSI_OP_SEEK10 = 0x2b;
-  public const ulong EFI_SCSI_OP_SEND_DIAG = 0x1d;
+  //public const ulong EFI_SCSI_OP_SEND_DIAG = 0x1d;
   public const ulong EFI_SCSI_OP_SET_LIMIT = 0x33;
   public const ulong EFI_SCSI_OP_START_STOP_UNIT = 0x1b;
   public const ulong EFI_SCSI_OP_SYNC_CACHE = 0x35;
