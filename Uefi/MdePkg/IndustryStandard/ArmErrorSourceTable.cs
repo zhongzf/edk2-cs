@@ -26,7 +26,7 @@ public unsafe partial class EFI
   ///
   /// "AEST" Arm Error Source Table
   ///
-  public const ulong EFI_ACPI_6_3_ARM_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('A', 'E', 'S', 'T');
+  //public const ulong EFI_ACPI_6_3_ARM_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('A', 'E', 'S', 'T');
 
   public const ulong EFI_ACPI_ARM_ERROR_SOURCE_TABLE_REVISION = 1;
 

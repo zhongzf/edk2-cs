@@ -26,12 +26,12 @@ namespace Uefi;
 public unsafe struct EFI_ACPI_HIGH_PRECISION_EVENT_TIMER_BLOCK_ID
 {
   /*   struct { */
-  [FieldOffset(0)] public uint Revision = 8;
-  [FieldOffset(0)] public uint NumberOfTimers = 5;
-  [FieldOffset(0)] public uint CounterSize = 1;
-  [FieldOffset(0)] public uint Reserved = 1;
-  [FieldOffset(0)] public uint LegacyRoute = 1;
-  [FieldOffset(0)] public uint VendorId = 16;
+  [FieldOffset(0)] public uint Revision;// = 8;
+  [FieldOffset(0)] public uint NumberOfTimers;// = 5;
+  [FieldOffset(0)] public uint CounterSize;// = 1;
+  [FieldOffset(0)] public uint Reserved;// = 1;
+  [FieldOffset(0)] public uint LegacyRoute;// = 1;
+  [FieldOffset(0)] public uint VendorId;// = 16;
   /*   }      Bits; */
   [FieldOffset(0)] public uint Uint32;
 }

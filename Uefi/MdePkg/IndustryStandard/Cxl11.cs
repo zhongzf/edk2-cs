@@ -46,12 +46,12 @@ public unsafe partial class EFI
     @param  ExpectedSize  The expected size, in bytes, of the data type specified
                           by TypeName.
   **/
-  public const ulong CXL_11_SIZE_ASSERT = (TypeName, ExpectedSize)        \;
-  STATIC_ASSERT(                                         \
-    sizeof (TypeName) == ExpectedSize,                    \
-    "Size of " #TypeName                                  \
-    " does not meet CXL 1.1 Specification requirements."  \
-    )
+  //public const ulong CXL_11_SIZE_ASSERT = (TypeName, ExpectedSize)        \;
+  //STATIC_ASSERT(                                         \
+  //  sizeof (TypeName) == ExpectedSize,                    \
+  //  "Size of " #TypeName                                  \
+  //  " does not meet CXL 1.1 Specification requirements."  \
+  //  )
 
 /**
   Macro used to verify the offset of a field in a data type at compile time and
@@ -64,12 +64,12 @@ public unsafe partial class EFI
   @param  ExpectedOffset  The expected offset, in bytes, of the field specified
                           by TypeName and FieldName.
 **/
-public const ulong CXL_11_OFFSET_ASSERT = (TypeName, FieldName, ExpectedOffset)  \;
-  STATIC_ASSERT(                                                  \
-    OFFSET_OF (TypeName, FieldName) == ExpectedOffset,             \
-    "Offset of " #TypeName "." #FieldName                          \
-    " does not meet CXL 1.1 Specification requirements."           \
-    )
+//public const ulong CXL_11_OFFSET_ASSERT = (TypeName, FieldName, ExpectedOffset)  \;
+//  STATIC_ASSERT(                                                  \
+//    OFFSET_OF (TypeName, FieldName) == ExpectedOffset,             \
+//    "Offset of " #TypeName "." #FieldName                          \
+//    " does not meet CXL 1.1 Specification requirements."           \
+//    )
 }
 
 ///

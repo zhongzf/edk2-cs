@@ -43,7 +43,7 @@ public unsafe partial class EFI
   /// Connect method has maximum length according to EFI_HTTP_METHOD defined in
   /// UEFI2.5 spec so use this.
   ///
-  public const string HTTP_METHOD_MAXIMUM_LEN = sizeof(HTTP_METHOD_CONNECT);
+  //public const int HTTP_METHOD_MAXIMUM_LEN = sizeof(HTTP_METHOD_CONNECT);
 
   ///
   /// Accept Request Header
@@ -146,10 +146,10 @@ public unsafe partial class EFI
   ///
   public const string HTTP_HEADER_TRANSFER_ENCODING = "Transfer-Encoding";
   public const string HTTP_HEADER_TRANSFER_ENCODING_CHUNKED = "chunked";
-  public const string CHUNKED_TRANSFER_CODING_CR = '\r';
-  public const string CHUNKED_TRANSFER_CODING_LF = '\n';
-  public const string CHUNKED_TRANSFER_CODING_LAST_CHUNK = '0';
-  public const string CHUNKED_TRANSFER_CODING_EXTENSION_SEPARATOR = ';';
+  public const string CHUNKED_TRANSFER_CODING_CR = "\r";
+  public const string CHUNKED_TRANSFER_CODING_LF = "\n";
+  public const string CHUNKED_TRANSFER_CODING_LAST_CHUNK = "0";
+  public const string CHUNKED_TRANSFER_CODING_EXTENSION_SEPARATOR = ";";
 
   ///
   /// User Agent Request Header

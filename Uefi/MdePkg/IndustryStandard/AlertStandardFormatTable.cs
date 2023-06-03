@@ -154,7 +154,7 @@ public unsafe partial class EFI
   ///
   /// "ASF!" ASF Description Table Signature
   ///
-  public const ulong EFI_ACPI_ASF_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'S', 'F', '!');
+  //public const ulong EFI_ACPI_ASF_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'S', 'F', '!');
 
   // #pragma pack ()
 }

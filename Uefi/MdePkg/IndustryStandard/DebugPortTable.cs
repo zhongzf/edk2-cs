@@ -29,7 +29,7 @@ public unsafe struct EFI_ACPI_DEBUG_PORT_DESCRIPTION_TABLE
   public EFI_ACPI_DESCRIPTION_HEADER Header;
   public byte InterfaceType;
   public fixed byte Reserved_37[3];
-  public EFI_ACPI_2_0_GENERIC_ADDRESS_STRUCTURE BaseAddress;
+  //public EFI_ACPI_2_0_GENERIC_ADDRESS_STRUCTURE BaseAddress;
 }
 
 // #pragma pack()
