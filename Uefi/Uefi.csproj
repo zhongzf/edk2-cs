@@ -15,8 +15,10 @@
     <Compile Remove="MdePkg\IndustryStandard\Cxl11.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Tpm12.cs" />
     <Compile Remove="MdePkg\IndustryStandard\Tpm20.cs" />
+    <Compile Remove="MdePkg\IndustryStandard\Udf.cs" />
     <Compile Remove="MdePkg\Protocol\DebugSupport.cs" />
     <Compile Remove="MdePkg\Protocol\LegacySpiController.cs" />
+    <Compile Remove="MdePkg\Uefi\UefiPxe.cs" />
   </ItemGroup>
 
   <ItemGroup>

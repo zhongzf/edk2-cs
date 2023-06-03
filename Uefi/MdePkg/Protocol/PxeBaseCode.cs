@@ -176,18 +176,18 @@ public unsafe partial class EFI
 // These identifiers are defined by IETF:
 // http://www.ietf.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
 //
-#if defined (MDE_CPU_IA32)
-public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0006;
-#elif defined (MDE_CPU_X64)
-public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0007;
-#elif defined (MDE_CPU_ARM)
-public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000A;
-#elif defined (MDE_CPU_AARCH64)
-public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000B;
-#elif defined (MDE_CPU_RISCV64)
-public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x001B;
-#elif defined (MDE_CPU_LOONGARCH64)
-public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0027;
+//#if defined (MDE_CPU_IA32)
+//public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0006;
+//#elif defined (MDE_CPU_X64)
+//public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0007;
+//#elif defined (MDE_CPU_ARM)
+//public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000A;
+//#elif defined (MDE_CPU_AARCH64)
+//public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000B;
+//#elif defined (MDE_CPU_RISCV64)
+//public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x001B;
+//#elif defined (MDE_CPU_LOONGARCH64)
+//public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0027;
 // #endif
 }
 

@@ -68,7 +68,7 @@ public unsafe partial class EFI
   //public const ulong PXE_VOLATILE = volatile;
 }
 
-[StructLayout(LayoutKind.Sequential)]
+//[StructLayout(LayoutKind.Sequential)]
 //public unsafe struct PXE_VOID { void Value; public static implicit operator PXE_VOID(void value) => new PXE_VOID() { Value = value }; public static implicit operator void(PXE_VOID value) => value.Value; }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_UINT8 { byte Value; public static implicit operator PXE_UINT8(byte value) => new PXE_UINT8() { Value = value }; public static implicit operator byte(PXE_UINT8 value) => value.Value; }
@@ -713,12 +713,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PXE_IPV4 { PXE_UINT32 Value; public static implicit operator PXE_IPV4(PXE_UINT32 value) => new PXE_IPV4() { Value = value }; public static implicit operator PXE_UINT32(PXE_IPV4 value) => value.Value; }
 
-typedef PXE_UINT32 PXE_IPV6[4];
+//typedef PXE_UINT32 PXE_IPV6[4];
 public unsafe partial class EFI
 {
   public const ulong PXE_MAC_LENGTH = 32;
 
-  typedef PXE_UINT8 PXE_MAC_ADDR[PXE_MAC_LENGTH];
+  //typedef PXE_UINT8 PXE_MAC_ADDR[PXE_MAC_LENGTH];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -876,15 +876,15 @@ public unsafe struct PXE_SW_UNDI
   public PXE_UINT8 reserved1;      ///< zero, not used.
   public PXE_UINT32 Implementation; ///< Implementation flags.
   public PXE_UINT64 EntryPoint;     ///< API entry point.
-  public fixed PXE_UINT8 reserved2[3];   ///< zero, not used.
+  public fixed byte reserved2[3];   ///< zero, not used.
   public PXE_UINT8 BusCnt;         ///< number of bustypes supported.
-  public fixed PXE_UINT32 BusType[1];     ///< list of supported bustypes.
+  public fixed byte BusType[1];     ///< list of supported bustypes.
 }
 
-typedef union u_pxe_undi {
-  PXE_HW_UNDI hw;
-PXE_SW_UNDI sw;
-} PXE_UNDI;
+//typedef union u_pxe_undi {
+//  PXE_HW_UNDI hw;
+//PXE_SW_UNDI sw;
+//} PXE_UNDI;
 
 public unsafe partial class EFI
 {
@@ -948,33 +948,33 @@ public unsafe struct PXE_CDB
   public PXE_CONTROL Control;
 }
 
-typedef union u_pxe_ip_addr {
-  PXE_IPV6    IPv6;
-PXE_IPV4 IPv4;
-} PXE_IP_ADDR;
+//typedef union u_pxe_ip_addr {
+//  PXE_IPV6    IPv6;
+//PXE_IPV4 IPv4;
+//} PXE_IP_ADDR;
 
-typedef union pxe_device {
-  ///
-  /// PCI and PC Card NICs are both identified using bus, device
-  /// and function numbers.  For PC Card, this may require PC
-  /// Card services to be loaded in the BIOS or preboot
-  /// environment.
-  ///
-  struct {
-    ///
-    /// See S/W UNDI ROMID structure definition for PCI and
-    /// PCC BusType definitions.
-    ///
-    PXE_UINT32 BusType;
+//typedef union pxe_device {
+//  ///
+//  /// PCI and PC Card NICs are both identified using bus, device
+//  /// and function numbers.  For PC Card, this may require PC
+//  /// Card services to be loaded in the BIOS or preboot
+//  /// environment.
+//  ///
+//  struct {
+//    ///
+//    /// See S/W UNDI ROMID structure definition for PCI and
+//    /// PCC BusType definitions.
+//    ///
+//    PXE_UINT32 BusType;
 
-///
-/// Bus, device & function numbers that locate this device.
-///
-PXE_UINT16 Bus;
-PXE_UINT8 Device;
-PXE_UINT8 Function;
-  } PCI, PCC;
-} PXE_DEVICE;
+/////
+///// Bus, device & function numbers that locate this device.
+/////
+//PXE_UINT16 Bus;
+//PXE_UINT8 Device;
+//PXE_UINT8 Function;
+//  } PCI, PCC;
+//} PXE_DEVICE;
 
 public unsafe partial class EFI
 {
@@ -1281,337 +1281,338 @@ public unsafe struct Config
   /// This is a copy of the PCI configuration space for this
   /// network device.
   ///
-  union {
-    public fixed byte Byte[256];
-  public fixed ushort Word[128];
-  public fixed uint Dword[64];
-}
-} PXE_PCI_CONFIG_INFO;
+  //  union {
+  //    public fixed byte Byte[256];
+  //  public fixed ushort Word[128];
+  //  public fixed uint Dword[64];
+  //}
+  //} PXE_PCI_CONFIG_INFO;
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Config
-{
-  ///
-  /// This is the flag field for the PXE_DB_GET_CONFIG_INFO union.
-  /// For PCC bus devices, this field is set to PXE_BUSTYPE_PCC.
-  ///
-  public PXE_UINT32 BusType;
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_PCC_CONFIG_INFO
+  {
+    ///
+    /// This is the flag field for the PXE_DB_GET_CONFIG_INFO union.
+    /// For PCC bus devices, this field is set to PXE_BUSTYPE_PCC.
+    ///
+    public PXE_UINT32 BusType;
 
-  ///
-  /// This identifies the PCC network device that this UNDI interface
-  /// is bound to.
-  ///
-  public PXE_UINT16 Bus;
-  public PXE_UINT8 Device;
-  public PXE_UINT8 Function;
+    ///
+    /// This identifies the PCC network device that this UNDI interface
+    /// is bound to.
+    ///
+    public PXE_UINT16 Bus;
+    public PXE_UINT8 Device;
+    public PXE_UINT8 Function;
 
-  ///
-  /// This is a copy of the PCC configuration space for this
-  /// network device.
-  ///
-  union {
-    public fixed PXE_UINT8 Byte[256];
-  public fixed PXE_UINT16 Word[128];
-  public fixed PXE_UINT32 Dword[64];
-}
-} PXE_PCC_CONFIG_INFO;
+    ///
+    /// This is a copy of the PCC configuration space for this
+    /// network device.
+    ///
+    //  union {
+    //    public fixed PXE_UINT8 Byte[256];
+    //  public fixed PXE_UINT16 Word[128];
+    //  public fixed PXE_UINT32 Dword[64];
+    //}
+  };
 
-typedef union u_pxe_db_get_config_info {
-  PXE_PCI_CONFIG_INFO    pci;
-PXE_PCC_CONFIG_INFO pcc;
-} PXE_DB_GET_CONFIG_INFO;
+  //typedef union u_pxe_db_get_config_info {
+  //  PXE_PCI_CONFIG_INFO    pci;
+  //PXE_PCC_CONFIG_INFO pcc;
+  //} PXE_DB_GET_CONFIG_INFO;
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_CPB_INITIALIZE
-{
-  ///
-  /// Address of first (lowest) byte of the memory buffer.  This buffer must
-  /// be in contiguous physical memory and cannot be swapped out.  The UNDI
-  /// will be using this for transmit and receive buffering.
-  ///
-  public PXE_UINT64 MemoryAddr;
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_CPB_INITIALIZE
+  {
+    ///
+    /// Address of first (lowest) byte of the memory buffer.  This buffer must
+    /// be in contiguous physical memory and cannot be swapped out.  The UNDI
+    /// will be using this for transmit and receive buffering.
+    ///
+    public PXE_UINT64 MemoryAddr;
 
-  ///
-  /// MemoryLength must be greater than or equal to MemoryRequired
-  /// returned by the Get Init Info command.
-  ///
-  public PXE_UINT32 MemoryLength;
+    ///
+    /// MemoryLength must be greater than or equal to MemoryRequired
+    /// returned by the Get Init Info command.
+    ///
+    public PXE_UINT32 MemoryLength;
 
-  ///
-  /// Desired link speed in Mbit/sec.  Common ethernet values are 10, 100
-  /// and 1000.  Setting a value of zero will auto-detect and/or use the
-  /// default link speed (operation depends on UNDI/NIC functionality).
-  ///
-  public PXE_UINT32 LinkSpeed;
+    ///
+    /// Desired link speed in Mbit/sec.  Common ethernet values are 10, 100
+    /// and 1000.  Setting a value of zero will auto-detect and/or use the
+    /// default link speed (operation depends on UNDI/NIC functionality).
+    ///
+    public PXE_UINT32 LinkSpeed;
 
-  ///
-  /// Suggested number and size of receive and transmit buffers to
-  /// allocate.  If MemoryAddr and MemoryLength are non-zero, this
-  /// allocation comes out of the supplied memory buffer.  If MemoryAddr
-  /// and MemoryLength are zero, this allocation comes out of memory
-  /// on the NIC.
-  ///
-  /// If these fields are set to zero, the UNDI will allocate buffer
-  /// counts and sizes as it sees fit.
-  ///
-  public PXE_UINT16 TxBufCnt;
-  public PXE_UINT16 TxBufSize;
-  public PXE_UINT16 RxBufCnt;
-  public PXE_UINT16 RxBufSize;
+    ///
+    /// Suggested number and size of receive and transmit buffers to
+    /// allocate.  If MemoryAddr and MemoryLength are non-zero, this
+    /// allocation comes out of the supplied memory buffer.  If MemoryAddr
+    /// and MemoryLength are zero, this allocation comes out of memory
+    /// on the NIC.
+    ///
+    /// If these fields are set to zero, the UNDI will allocate buffer
+    /// counts and sizes as it sees fit.
+    ///
+    public PXE_UINT16 TxBufCnt;
+    public PXE_UINT16 TxBufSize;
+    public PXE_UINT16 RxBufCnt;
+    public PXE_UINT16 RxBufSize;
 
-  ///
-  /// The following configuration parameters are optional and must be zero
-  /// to use the default values.
-  ///
-  public PXE_UINT8 DuplexMode;
+    ///
+    /// The following configuration parameters are optional and must be zero
+    /// to use the default values.
+    ///
+    public PXE_UINT8 DuplexMode;
 
-  public PXE_UINT8 LoopBackMode;
-}
+    public PXE_UINT8 LoopBackMode;
+  }
 
-public unsafe partial class EFI
-{
-  public const ulong PXE_DUPLEX_DEFAULT = 0x00;
-  public const ulong PXE_FORCE_FULL_DUPLEX = 0x01;
-  public const ulong PXE_ENABLE_FULL_DUPLEX = 0x02;
-  public const ulong PXE_FORCE_HALF_DUPLEX = 0x04;
-  public const ulong PXE_DISABLE_FULL_DUPLEX = 0x08;
+  public unsafe partial class EFI
+  {
+    public const ulong PXE_DUPLEX_DEFAULT = 0x00;
+    public const ulong PXE_FORCE_FULL_DUPLEX = 0x01;
+    public const ulong PXE_ENABLE_FULL_DUPLEX = 0x02;
+    public const ulong PXE_FORCE_HALF_DUPLEX = 0x04;
+    public const ulong PXE_DISABLE_FULL_DUPLEX = 0x08;
 
-  public const ulong LOOPBACK_NORMAL = 0;
-  public const ulong LOOPBACK_INTERNAL = 1;
-  public const ulong LOOPBACK_EXTERNAL = 2;
-}
+    public const ulong LOOPBACK_NORMAL = 0;
+    public const ulong LOOPBACK_INTERNAL = 1;
+    public const ulong LOOPBACK_EXTERNAL = 2;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_DB_INITIALIZE
-{
-  ///
-  /// Actual amount of memory used from the supplied memory buffer.  This
-  /// may be less that the amount of memory suppllied and may be zero if
-  /// the UNDI and network device do not use external memory buffers.
-  ///
-  /// Memory used by the UNDI and network device is allocated from the
-  /// lowest memory buffer address.
-  ///
-  public PXE_UINT32 MemoryUsed;
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_DB_INITIALIZE
+  {
+    ///
+    /// Actual amount of memory used from the supplied memory buffer.  This
+    /// may be less that the amount of memory suppllied and may be zero if
+    /// the UNDI and network device do not use external memory buffers.
+    ///
+    /// Memory used by the UNDI and network device is allocated from the
+    /// lowest memory buffer address.
+    ///
+    public PXE_UINT32 MemoryUsed;
 
-  ///
-  /// Actual number and size of receive and transmit buffers that were
-  /// allocated.
-  ///
-  public PXE_UINT16 TxBufCnt;
-  public PXE_UINT16 TxBufSize;
-  public PXE_UINT16 RxBufCnt;
-  public PXE_UINT16 RxBufSize;
-}
+    ///
+    /// Actual number and size of receive and transmit buffers that were
+    /// allocated.
+    ///
+    public PXE_UINT16 TxBufCnt;
+    public PXE_UINT16 TxBufSize;
+    public PXE_UINT16 RxBufCnt;
+    public PXE_UINT16 RxBufSize;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_CPB_RECEIVE_FILTERS
-{
-  ///
-  /// List of multicast MAC addresses.  This list, if present, will
-  /// replace the existing multicast MAC address filter list.
-  ///
-  public fixed PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
-}
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_CPB_RECEIVE_FILTERS
+  {
+    ///
+    /// List of multicast MAC addresses.  This list, if present, will
+    /// replace the existing multicast MAC address filter list.
+    ///
+    public fixed PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_DB_RECEIVE_FILTERS
-{
-  ///
-  /// Filtered multicast MAC address list.
-  ///
-  public fixed PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
-}
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_DB_RECEIVE_FILTERS
+  {
+    ///
+    /// Filtered multicast MAC address list.
+    ///
+    public fixed PXE_MAC_ADDR MCastList[MAX_MCAST_ADDRESS_CNT];
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_CPB_STATION_ADDRESS
-{
-  ///
-  /// If supplied and supported, the current station MAC address
-  /// will be changed.
-  ///
-  public PXE_MAC_ADDR StationAddr;
-}
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_CPB_STATION_ADDRESS
+  {
+    ///
+    /// If supplied and supported, the current station MAC address
+    /// will be changed.
+    ///
+    public PXE_MAC_ADDR StationAddr;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_DB_STATION_ADDRESS
-{
-  ///
-  /// Current station MAC address.
-  ///
-  public PXE_MAC_ADDR StationAddr;
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_DB_STATION_ADDRESS
+  {
+    ///
+    /// Current station MAC address.
+    ///
+    public PXE_MAC_ADDR StationAddr;
 
-  ///
-  /// Station broadcast MAC address.
-  ///
-  public PXE_MAC_ADDR BroadcastAddr;
+    ///
+    /// Station broadcast MAC address.
+    ///
+    public PXE_MAC_ADDR BroadcastAddr;
 
-  ///
-  /// Permanent station MAC address.
-  ///
-  public PXE_MAC_ADDR PermanentAddr;
-}
+    ///
+    /// Permanent station MAC address.
+    ///
+    public PXE_MAC_ADDR PermanentAddr;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_DB_STATISTICS
-{
-  ///
-  /// Bit field identifying what statistic data is collected by the
-  /// UNDI/NIC.
-  /// If bit 0x00 is set, Data[0x00] is collected.
-  /// If bit 0x01 is set, Data[0x01] is collected.
-  /// If bit 0x20 is set, Data[0x20] is collected.
-  /// If bit 0x21 is set, Data[0x21] is collected.
-  /// Etc.
-  ///
-  public PXE_UINT64 Supported;
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_DB_STATISTICS
+  {
+    ///
+    /// Bit field identifying what statistic data is collected by the
+    /// UNDI/NIC.
+    /// If bit 0x00 is set, Data[0x00] is collected.
+    /// If bit 0x01 is set, Data[0x01] is collected.
+    /// If bit 0x20 is set, Data[0x20] is collected.
+    /// If bit 0x21 is set, Data[0x21] is collected.
+    /// Etc.
+    ///
+    public PXE_UINT64 Supported;
 
-  ///
-  /// Statistic data.
-  ///
-  public fixed PXE_UINT64 Data[64];
-}
+    ///
+    /// Statistic data.
+    ///
+    public fixed PXE_UINT64 Data[64];
+  }
 
-public unsafe partial class EFI
-{
-  ///
-  /// Total number of frames received.  Includes frames with errors and
-  /// dropped frames.
-  ///
-  public const ulong PXE_STATISTICS_RX_TOTAL_FRAMES = 0x00;
+  public unsafe partial class EFI
+  {
+    ///
+    /// Total number of frames received.  Includes frames with errors and
+    /// dropped frames.
+    ///
+    public const ulong PXE_STATISTICS_RX_TOTAL_FRAMES = 0x00;
 
-  ///
-  /// Number of valid frames received and copied into receive buffers.
-  ///
-  public const ulong PXE_STATISTICS_RX_GOOD_FRAMES = 0x01;
+    ///
+    /// Number of valid frames received and copied into receive buffers.
+    ///
+    public const ulong PXE_STATISTICS_RX_GOOD_FRAMES = 0x01;
 
-  ///
-  /// Number of frames below the minimum length for the media.
-  /// This would be <64 for ethernet.
-  ///
-  public const ulong PXE_STATISTICS_RX_UNDERSIZE_FRAMES = 0x02;
+    ///
+    /// Number of frames below the minimum length for the media.
+    /// This would be <64 for ethernet.
+    ///
+    public const ulong PXE_STATISTICS_RX_UNDERSIZE_FRAMES = 0x02;
 
-  ///
-  /// Number of frames longer than the maxminum length for the
-  /// media.  This would be >1500 for ethernet.
-  ///
-  public const ulong PXE_STATISTICS_RX_OVERSIZE_FRAMES = 0x03;
+    ///
+    /// Number of frames longer than the maxminum length for the
+    /// media.  This would be >1500 for ethernet.
+    ///
+    public const ulong PXE_STATISTICS_RX_OVERSIZE_FRAMES = 0x03;
 
-  ///
-  /// Valid frames that were dropped because receive buffers were full.
-  ///
-  public const ulong PXE_STATISTICS_RX_DROPPED_FRAMES = 0x04;
+    ///
+    /// Valid frames that were dropped because receive buffers were full.
+    ///
+    public const ulong PXE_STATISTICS_RX_DROPPED_FRAMES = 0x04;
 
-  ///
-  /// Number of valid unicast frames received and not dropped.
-  ///
-  public const ulong PXE_STATISTICS_RX_UNICAST_FRAMES = 0x05;
+    ///
+    /// Number of valid unicast frames received and not dropped.
+    ///
+    public const ulong PXE_STATISTICS_RX_UNICAST_FRAMES = 0x05;
 
-  ///
-  /// Number of valid broadcast frames received and not dropped.
-  ///
-  public const ulong PXE_STATISTICS_RX_BROADCAST_FRAMES = 0x06;
+    ///
+    /// Number of valid broadcast frames received and not dropped.
+    ///
+    public const ulong PXE_STATISTICS_RX_BROADCAST_FRAMES = 0x06;
 
-  ///
-  /// Number of valid mutlicast frames received and not dropped.
-  ///
-  public const ulong PXE_STATISTICS_RX_MULTICAST_FRAMES = 0x07;
+    ///
+    /// Number of valid mutlicast frames received and not dropped.
+    ///
+    public const ulong PXE_STATISTICS_RX_MULTICAST_FRAMES = 0x07;
 
-  ///
-  /// Number of frames w/ CRC or alignment errors.
-  ///
-  public const ulong PXE_STATISTICS_RX_CRC_ERROR_FRAMES = 0x08;
+    ///
+    /// Number of frames w/ CRC or alignment errors.
+    ///
+    public const ulong PXE_STATISTICS_RX_CRC_ERROR_FRAMES = 0x08;
 
-  ///
-  /// Total number of bytes received.  Includes frames with errors
-  /// and dropped frames.
-  ///
-  public const ulong PXE_STATISTICS_RX_TOTAL_BYTES = 0x09;
+    ///
+    /// Total number of bytes received.  Includes frames with errors
+    /// and dropped frames.
+    ///
+    public const ulong PXE_STATISTICS_RX_TOTAL_BYTES = 0x09;
 
-  ///
-  /// Transmit statistics.
-  ///
-  public const ulong PXE_STATISTICS_TX_TOTAL_FRAMES = 0x0A;
-  public const ulong PXE_STATISTICS_TX_GOOD_FRAMES = 0x0B;
-  public const ulong PXE_STATISTICS_TX_UNDERSIZE_FRAMES = 0x0C;
-  public const ulong PXE_STATISTICS_TX_OVERSIZE_FRAMES = 0x0D;
-  public const ulong PXE_STATISTICS_TX_DROPPED_FRAMES = 0x0E;
-  public const ulong PXE_STATISTICS_TX_UNICAST_FRAMES = 0x0F;
-  public const ulong PXE_STATISTICS_TX_BROADCAST_FRAMES = 0x10;
-  public const ulong PXE_STATISTICS_TX_MULTICAST_FRAMES = 0x11;
-  public const ulong PXE_STATISTICS_TX_CRC_ERROR_FRAMES = 0x12;
-  public const ulong PXE_STATISTICS_TX_TOTAL_BYTES = 0x13;
+    ///
+    /// Transmit statistics.
+    ///
+    public const ulong PXE_STATISTICS_TX_TOTAL_FRAMES = 0x0A;
+    public const ulong PXE_STATISTICS_TX_GOOD_FRAMES = 0x0B;
+    public const ulong PXE_STATISTICS_TX_UNDERSIZE_FRAMES = 0x0C;
+    public const ulong PXE_STATISTICS_TX_OVERSIZE_FRAMES = 0x0D;
+    public const ulong PXE_STATISTICS_TX_DROPPED_FRAMES = 0x0E;
+    public const ulong PXE_STATISTICS_TX_UNICAST_FRAMES = 0x0F;
+    public const ulong PXE_STATISTICS_TX_BROADCAST_FRAMES = 0x10;
+    public const ulong PXE_STATISTICS_TX_MULTICAST_FRAMES = 0x11;
+    public const ulong PXE_STATISTICS_TX_CRC_ERROR_FRAMES = 0x12;
+    public const ulong PXE_STATISTICS_TX_TOTAL_BYTES = 0x13;
 
-  ///
-  /// Number of collisions detection on this subnet.
-  ///
-  public const ulong PXE_STATISTICS_COLLISIONS = 0x14;
+    ///
+    /// Number of collisions detection on this subnet.
+    ///
+    public const ulong PXE_STATISTICS_COLLISIONS = 0x14;
 
-  ///
-  /// Number of frames destined for unsupported protocol.
-  ///
-  public const ulong PXE_STATISTICS_UNSUPPORTED_PROTOCOL = 0x15;
+    ///
+    /// Number of frames destined for unsupported protocol.
+    ///
+    public const ulong PXE_STATISTICS_UNSUPPORTED_PROTOCOL = 0x15;
 
-  ///
-  /// Number of valid frames received that were duplicated.
-  ///
-  public const ulong PXE_STATISTICS_RX_DUPLICATED_FRAMES = 0x16;
+    ///
+    /// Number of valid frames received that were duplicated.
+    ///
+    public const ulong PXE_STATISTICS_RX_DUPLICATED_FRAMES = 0x16;
 
-  ///
-  /// Number of encrypted frames received that failed to decrypt.
-  ///
-  public const ulong PXE_STATISTICS_RX_DECRYPT_ERROR_FRAMES = 0x17;
+    ///
+    /// Number of encrypted frames received that failed to decrypt.
+    ///
+    public const ulong PXE_STATISTICS_RX_DECRYPT_ERROR_FRAMES = 0x17;
 
-  ///
-  /// Number of frames that failed to transmit after exceeding the retry limit.
-  ///
-  public const ulong PXE_STATISTICS_TX_ERROR_FRAMES = 0x18;
+    ///
+    /// Number of frames that failed to transmit after exceeding the retry limit.
+    ///
+    public const ulong PXE_STATISTICS_TX_ERROR_FRAMES = 0x18;
 
-  ///
-  /// Number of frames transmitted successfully after more than one attempt.
-  ///
-  public const ulong PXE_STATISTICS_TX_RETRY_FRAMES = 0x19;
-}
+    ///
+    /// Number of frames transmitted successfully after more than one attempt.
+    ///
+    public const ulong PXE_STATISTICS_TX_RETRY_FRAMES = 0x19;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_CPB_MCAST_IP_TO_MAC
-{
-  ///
-  /// Multicast IP address to be converted to multicast MAC address.
-  ///
-  public PXE_IP_ADDR IP;
-}
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_CPB_MCAST_IP_TO_MAC
+  {
+    ///
+    /// Multicast IP address to be converted to multicast MAC address.
+    ///
+    public PXE_IP_ADDR IP;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct PXE_DB_MCAST_IP_TO_MAC
-{
-  ///
-  /// Multicast MAC address.
-  ///
-  public PXE_MAC_ADDR MAC;
-}
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct PXE_DB_MCAST_IP_TO_MAC
+  {
+    ///
+    /// Multicast MAC address.
+    ///
+    public PXE_MAC_ADDR MAC;
+  }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Data
-{
-  ///
-  /// NvData item list.  Only items in this list will be updated.
-  ///
-  struct {
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct Data
+  {
+    ///
+    /// NvData item list.  Only items in this list will be updated.
+    ///
+    struct {
     ///
     ///  Non-volatile storage address to be changed.
     ///
     public PXE_UINT32 Addr;
 
-  ///
-  /// Data item to write into above storage address.
-  ///
-  union {
+    ///
+    /// Data item to write into above storage address.
+    ///
+    union {
       public PXE_UINT8 Byte;
-  public PXE_UINT16 Word;
-  public PXE_UINT32 Dword;
+    public PXE_UINT16 Word;
+    public PXE_UINT32 Dword;
+  }
 }
-  } Item[MAX_EEPROM_LEN];
+Item[MAX_EEPROM_LEN];
 } PXE_CPB_NVDATA_SPARSE;
 
 ///

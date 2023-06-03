@@ -21,7 +21,7 @@ public unsafe partial class EFI
   /// Global ID for the SPI SMM Host Controller Protocol
   ///
   public static EFI_GUID EFI_SPI_SMM_HC_PROTOCOL_GUID = new GUID(0xe9f02217, 0x2093, 0x4470,
-      { 0x8a, 0x54, 0x5c, 0x2c, 0xff, 0xe7, 0x3e, 0xcb });
+    new byte[] { 0x8a, 0x54, 0x5c, 0x2c, 0xff, 0xe7, 0x3e, 0xcb });
 
 //typedef
 //  struct _EFI_SPI_HC_PROTOCOL

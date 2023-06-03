@@ -213,8 +213,8 @@ public unsafe struct TDINFO
   public fixed byte Mrconfigid[48];
   public fixed byte Mrowner[48];
   public fixed byte Mrownerconfig[48];
-  byte Rtmrs[4][48];
-  public fixed byte Rsvd[112];
+  //byte Rtmrs[4][48];
+  //public fixed byte Rsvd[112];
 }
 
 [StructLayout(LayoutKind.Sequential)]

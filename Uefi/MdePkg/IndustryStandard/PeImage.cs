@@ -565,15 +565,15 @@ public unsafe partial class EFI
 ///
 /// Line number format.
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct Type
-{
-  union {
-    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
-  public uint VirtualAddress;   ///< Virtual address of line number.
-}
-ushort Linenumber;       ///< Line number.
-} EFI_IMAGE_LINENUMBER;
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct Type
+//{
+//  union {
+//    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
+//  public uint VirtualAddress;   ///< Virtual address of line number.
+//}
+//ushort Linenumber;       ///< Line number.
+//} EFI_IMAGE_LINENUMBER;
 
 public unsafe partial class EFI
 {
