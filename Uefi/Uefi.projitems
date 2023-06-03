@@ -47,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Protocol\BlockIo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Protocol\BlockIo2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Protocol\DevicePath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Protocol\GraphicsOutput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Protocol\SimpleTextIn.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Protocol\SimpleTextOut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\Uefi.cs" />
