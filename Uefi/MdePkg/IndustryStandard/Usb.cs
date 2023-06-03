@@ -395,7 +395,7 @@ public unsafe struct EFI_USB_HID_DESCRIPTOR
   public ushort BcdHID;
   public byte CountryCode;
   public byte NumDescriptors;
-  public fixed EFI_USB_HID_CLASS_DESCRIPTOR HidClassDesc[1];
+  //public fixed EFI_USB_HID_CLASS_DESCRIPTOR HidClassDesc[1];
 }
 
 // #pragma pack()
