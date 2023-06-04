@@ -113,18 +113,14 @@ public unsafe partial class EFI
   ///
 }
 
-public unsafe partial class EFI
-{
-  ///
-  /// No information.
-  ///
-  public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
-  ///
-  /// Provide the user's name for the enrolled user.
-  ///
-  public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
-}
-
+///
+/// No information.
+///
+public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
+///
+/// Provide the user's name for the enrolled user.
+///
+public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_NAME { char* Value; public static implicit operator EFI_USER_INFO_NAME(char* value) => new EFI_USER_INFO_NAME() { Value = value }; public static implicit operator char*(EFI_USER_INFO_NAME value) => value.Value; }
 public unsafe partial class EFI
@@ -160,7 +156,7 @@ public unsafe partial class EFI
   /// Provides a unique non-volatile user identifier for each enrolled user.
   ///
   public const ulong EFI_USER_INFO_IDENTIFIER_RECORD = 0x05;
-  //typedef byte EFI_USER_INFO_IDENTIFIER[16];
+  typedef byte EFI_USER_INFO_IDENTIFIER[16];
   ///
   /// Specifies the type of a particular credential associated with the user profile.
   ///

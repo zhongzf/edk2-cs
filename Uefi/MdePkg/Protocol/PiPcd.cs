@@ -316,14 +316,14 @@ public unsafe partial class EFI
   //   IN        bool   Value
   //   );
 
-  //typedef
-  //VOID
-  //(EFIAPI* EFI_PCD_PROTOCOL_CALLBACK)(
-  //  IN EFI_GUID * Guid           OPTIONAL,
-  //IN ulong CallBackToken,
-  //IN OUT void* TokenData,
-  //IN     ulong TokenDataSize
-  //);
+  typedef
+  VOID
+  (EFIAPI* EFI_PCD_PROTOCOL_CALLBACK)(
+    IN EFI_GUID * Guid           OPTIONAL,
+  IN ulong CallBackToken,
+  IN OUT void* TokenData,
+  IN     ulong TokenDataSize
+  );
 
   // /**
   //   Specifies a function to be called anytime the value of a designated token is changed.

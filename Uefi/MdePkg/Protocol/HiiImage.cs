@@ -27,183 +27,185 @@ public unsafe partial class EFI
   /// Flags in EFI_IMAGE_INPUT
   ///
   public const ulong EFI_IMAGE_TRANSPARENT = 0x00000001;
+
+  /**
+
+    Definition of EFI_IMAGE_INPUT.
+
+    @param Flags  Describe image characteristics. If
+                  EFI_IMAGE_TRANSPARENT is set, then the image was
+                  designed for transparent display.
+
+    @param Width  Image width, in pixels.
+
+    @param Height Image height, in pixels.
+
+    @param Bitmap A pointer to the actual bitmap, organized left-to-right,
+                  top-to-bottom. The size of the bitmap is
+                  Width*Height*sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL).
+
 }
 
-/**
+  **/
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct EFI_IMAGE_INPUT
+  {
+    public uint Flags;
+    public ushort Width;
+    public ushort Height;
+    public EFI_GRAPHICS_OUTPUT_BLT_PIXEL* Bitmap;
+  }
 
-  Definition of EFI_IMAGE_INPUT.
+  // /**
+  // 
+  //   This function adds the image Image to the group of images
+  //   owned by PackageList, and returns a new image identifier
+  //   (ImageId).
+  // 
+  //   @param This        A pointer to the EFI_HII_IMAGE_PROTOCOL instance.
+  // 
+  //   @param PackageList Handle of the package list where this image will be added.
+  // 
+  //   @param ImageId     On return, contains the new image id, which is
+  //                      unique within PackageList.
+  // 
+  //   @param Image       Points to the image.
+  // 
+  //   @retval EFI_SUCCESS             The new image was added
+  //                                   successfully
+  // 
+  //   @retval EFI_OUT_OF_RESOURCES    Could not add the image.
+  // 
+  //   @retval EFI_INVALID_PARAMETER   Image is NULL or ImageId is
+  //                                   NULL.
+  // 
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_HII_NEW_IMAGE)(
+  //   IN CONST  EFI_HII_IMAGE_PROTOCOL  *This,
+  //   IN        EFI_HII_HANDLE          PackageList,
+  //   OUT       EFI_IMAGE_ID            *ImageId,
+  //   IN CONST  EFI_IMAGE_INPUT         *Image
+  //   );
 
-  @param Flags  Describe image characteristics. If
-                EFI_IMAGE_TRANSPARENT is set, then the image was
-                designed for transparent display.
+  // /**
+  // 
+  //   This function retrieves the image specified by ImageId which
+  //   is associated with the specified PackageList and copies it
+  //   into the buffer specified by Image. If the image specified by
+  //   ImageId is not present in the specified PackageList, then
+  //   EFI_NOT_FOUND is returned. If the buffer specified by
+  //   ImageSize is too small to hold the image, then
+  //   EFI_BUFFER_TOO_SMALL will be returned. ImageSize will be
+  //   updated to the size of buffer actually required to hold the
+  //   image.
+  // 
+  //   @param This         A pointer to the EFI_HII_IMAGE_PROTOCOL instance.
+  // 
+  //   @param PackageList  The package list in the HII database to
+  //                       search for the specified image.
+  // 
+  //   @param ImageId      The image's id, which is unique within
+  //                       PackageList.
+  // 
+  //   @param Image        Points to the new image.
+  // 
+  //   @retval EFI_SUCCESS            The image was returned successfully.
+  // 
+  //   @retval EFI_NOT_FOUND          The image specified by ImageId is not
+  //                                  available. Or The specified PackageList is not in the database.
+  // 
+  //   @retval EFI_INVALID_PARAMETER  The Image or Langugae was NULL.
+  //   @retval EFI_OUT_OF_RESOURCES   The bitmap could not be retrieved because there was not
+  //                                  enough memory.
+  // 
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_HII_GET_IMAGE)(
+  //   IN CONST  EFI_HII_IMAGE_PROTOCOL  *This,
+  //   IN        EFI_HII_HANDLE          PackageList,
+  //   IN        EFI_IMAGE_ID            ImageId,
+  //   OUT       EFI_IMAGE_INPUT         *Image
+  //   );
 
-  @param Width  Image width, in pixels.
+  // /**
+  // 
+  //   This function updates the image specified by ImageId in the
+  //   specified PackageListHandle to the image specified by Image.
+  // 
+  // 
+  //   @param This         A pointer to the EFI_HII_IMAGE_PROTOCOL instance.
+  // 
+  //   @param PackageList  The package list containing the images.
+  // 
+  //   @param ImageId      The image id, which is unique within PackageList.
+  // 
+  //   @param Image        Points to the image.
+  // 
+  //   @retval EFI_SUCCESS           The image was successfully updated.
+  // 
+  //   @retval EFI_NOT_FOUND         The image specified by ImageId is not in the database.
+  //                                 The specified PackageList is not in the database.
+  // 
+  //   @retval EFI_INVALID_PARAMETER The Image or Language was NULL.
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_HII_SET_IMAGE)(
+  //   IN CONST  EFI_HII_IMAGE_PROTOCOL  *This,
+  //   IN        EFI_HII_HANDLE          PackageList,
+  //   IN        EFI_IMAGE_ID            ImageId,
+  //   IN CONST  EFI_IMAGE_INPUT         *Image
+  //   );
 
-  @param Height Image height, in pixels.
+  ///
+  /// EFI_HII_DRAW_FLAGS describes how the image is to be drawn.
+  /// These flags are defined as EFI_HII_DRAW_FLAG_***
+  ///
+  [StructLayout(LayoutKind.Sequential)]
+  public unsafe struct EFI_HII_DRAW_FLAGS { uint Value; public static implicit operator EFI_HII_DRAW_FLAGS(uint value) => new EFI_HII_DRAW_FLAGS() { Value = value }; public static implicit operator uint(EFI_HII_DRAW_FLAGS value) => value.Value; }
 
-  @param Bitmap A pointer to the actual bitmap, organized left-to-right,
-                top-to-bottom. The size of the bitmap is
-                Width*Height*sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL).
-**/
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_IMAGE_INPUT
-{
-  public uint Flags;
-  public ushort Width;
-  public ushort Height;
-  public EFI_GRAPHICS_OUTPUT_BLT_PIXEL* Bitmap;
+  public unsafe partial class EFI
+  {
+    public const ulong EFI_HII_DRAW_FLAG_CLIP = 0x00000001;
+    public const ulong EFI_HII_DRAW_FLAG_TRANSPARENT = 0x00000030;
+    public const ulong EFI_HII_DRAW_FLAG_DEFAULT = 0x00000000;
+    public const ulong EFI_HII_DRAW_FLAG_FORCE_TRANS = 0x00000010;
+    public const ulong EFI_HII_DRAW_FLAG_FORCE_OPAQUE = 0x00000020;
+    public const ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
+
+    /**
+
+      Definition of EFI_IMAGE_OUTPUT.
+
+      @param Width  Width of the output image.
+
+      @param Height Height of the output image.
+
+      @param Bitmap Points to the output bitmap.
+
+      @param Screen Points to the EFI_GRAPHICS_OUTPUT_PROTOCOL which
+                    describes the screen on which to draw the
+                    specified image.
 }
 
-// /**
-// 
-//   This function adds the image Image to the group of images
-//   owned by PackageList, and returns a new image identifier
-//   (ImageId).
-// 
-//   @param This        A pointer to the EFI_HII_IMAGE_PROTOCOL instance.
-// 
-//   @param PackageList Handle of the package list where this image will be added.
-// 
-//   @param ImageId     On return, contains the new image id, which is
-//                      unique within PackageList.
-// 
-//   @param Image       Points to the image.
-// 
-//   @retval EFI_SUCCESS             The new image was added
-//                                   successfully
-// 
-//   @retval EFI_OUT_OF_RESOURCES    Could not add the image.
-// 
-//   @retval EFI_INVALID_PARAMETER   Image is NULL or ImageId is
-//                                   NULL.
-// 
-// 
-// **/
-// typedef
-// EFI_STATUS
-// (EFIAPI *EFI_HII_NEW_IMAGE)(
-//   IN CONST  EFI_HII_IMAGE_PROTOCOL  *This,
-//   IN        EFI_HII_HANDLE          PackageList,
-//   OUT       EFI_IMAGE_ID            *ImageId,
-//   IN CONST  EFI_IMAGE_INPUT         *Image
-//   );
-
-// /**
-// 
-//   This function retrieves the image specified by ImageId which
-//   is associated with the specified PackageList and copies it
-//   into the buffer specified by Image. If the image specified by
-//   ImageId is not present in the specified PackageList, then
-//   EFI_NOT_FOUND is returned. If the buffer specified by
-//   ImageSize is too small to hold the image, then
-//   EFI_BUFFER_TOO_SMALL will be returned. ImageSize will be
-//   updated to the size of buffer actually required to hold the
-//   image.
-// 
-//   @param This         A pointer to the EFI_HII_IMAGE_PROTOCOL instance.
-// 
-//   @param PackageList  The package list in the HII database to
-//                       search for the specified image.
-// 
-//   @param ImageId      The image's id, which is unique within
-//                       PackageList.
-// 
-//   @param Image        Points to the new image.
-// 
-//   @retval EFI_SUCCESS            The image was returned successfully.
-// 
-//   @retval EFI_NOT_FOUND          The image specified by ImageId is not
-//                                  available. Or The specified PackageList is not in the database.
-// 
-//   @retval EFI_INVALID_PARAMETER  The Image or Langugae was NULL.
-//   @retval EFI_OUT_OF_RESOURCES   The bitmap could not be retrieved because there was not
-//                                  enough memory.
-// 
-// 
-// **/
-// typedef
-// EFI_STATUS
-// (EFIAPI *EFI_HII_GET_IMAGE)(
-//   IN CONST  EFI_HII_IMAGE_PROTOCOL  *This,
-//   IN        EFI_HII_HANDLE          PackageList,
-//   IN        EFI_IMAGE_ID            ImageId,
-//   OUT       EFI_IMAGE_INPUT         *Image
-//   );
-
-// /**
-// 
-//   This function updates the image specified by ImageId in the
-//   specified PackageListHandle to the image specified by Image.
-// 
-// 
-//   @param This         A pointer to the EFI_HII_IMAGE_PROTOCOL instance.
-// 
-//   @param PackageList  The package list containing the images.
-// 
-//   @param ImageId      The image id, which is unique within PackageList.
-// 
-//   @param Image        Points to the image.
-// 
-//   @retval EFI_SUCCESS           The image was successfully updated.
-// 
-//   @retval EFI_NOT_FOUND         The image specified by ImageId is not in the database.
-//                                 The specified PackageList is not in the database.
-// 
-//   @retval EFI_INVALID_PARAMETER The Image or Language was NULL.
-// 
-// **/
-// typedef
-// EFI_STATUS
-// (EFIAPI *EFI_HII_SET_IMAGE)(
-//   IN CONST  EFI_HII_IMAGE_PROTOCOL  *This,
-//   IN        EFI_HII_HANDLE          PackageList,
-//   IN        EFI_IMAGE_ID            ImageId,
-//   IN CONST  EFI_IMAGE_INPUT         *Image
-//   );
-
-///
-/// EFI_HII_DRAW_FLAGS describes how the image is to be drawn.
-/// These flags are defined as EFI_HII_DRAW_FLAG_***
-///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HII_DRAW_FLAGS { uint Value; public static implicit operator EFI_HII_DRAW_FLAGS(uint value) => new EFI_HII_DRAW_FLAGS() { Value = value }; public static implicit operator uint(EFI_HII_DRAW_FLAGS value) => value.Value; }
-
-public unsafe partial class EFI
-{
-  public const ulong EFI_HII_DRAW_FLAG_CLIP = 0x00000001;
-  public const ulong EFI_HII_DRAW_FLAG_TRANSPARENT = 0x00000030;
-  public const ulong EFI_HII_DRAW_FLAG_DEFAULT = 0x00000000;
-  public const ulong EFI_HII_DRAW_FLAG_FORCE_TRANS = 0x00000010;
-  public const ulong EFI_HII_DRAW_FLAG_FORCE_OPAQUE = 0x00000020;
-  public const ulong EFI_HII_DIRECT_TO_SCREEN = 0x00000080;
-}
-
-/**
-
-  Definition of EFI_IMAGE_OUTPUT.
-
-  @param Width  Width of the output image.
-
-  @param Height Height of the output image.
-
-  @param Bitmap Points to the output bitmap.
-
-  @param Screen Points to the EFI_GRAPHICS_OUTPUT_PROTOCOL which
-                describes the screen on which to draw the
-                specified image.
-
-**/
-//  [StructLayout(LayoutKind.Sequential)]
-//  public unsafe struct Image
-//  {
-//    public ushort Width;
-//    public ushort Height;
-//    union {
-//  public EFI_GRAPHICS_OUTPUT_BLT_PIXEL* Bitmap;
-//    public EFI_GRAPHICS_OUTPUT_PROTOCOL* Screen;
-//  }
-//}
-//EFI_IMAGE_OUTPUT;
+    **/
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct Image
+    {
+      public ushort Width;
+      public ushort Height;
+      union {
+    public EFI_GRAPHICS_OUTPUT_BLT_PIXEL* Bitmap;
+      public EFI_GRAPHICS_OUTPUT_PROTOCOL* Screen;
+    }
+  }
+  EFI_IMAGE_OUTPUT;
 
 // /**
 // 
@@ -346,14 +348,14 @@ public unsafe partial class EFI
 /// Services to access to images in the images database.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_HII_IMAGE_PROTOCOL
-{
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* OUT */EFI_IMAGE_ID* /*ImageId*/,/* IN CONST */EFI_IMAGE_INPUT* /*Image*/, EFI_STATUS> /*EFI_HII_NEW_IMAGE*/ NewImage;
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_IMAGE_ID /*ImageId*/,/* OUT */EFI_IMAGE_INPUT* /*Image*/, EFI_STATUS> /*EFI_HII_GET_IMAGE*/ GetImage;
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_IMAGE_ID /*ImageId*/,/* IN CONST */EFI_IMAGE_INPUT* /*Image*/, EFI_STATUS> /*EFI_HII_SET_IMAGE*/ SetImage;
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_DRAW_FLAGS /*Flags*/,/* IN CONST */EFI_IMAGE_INPUT* /*Image*/,/* IN OUT */EFI_IMAGE_OUTPUT** /*Blt*/,/* IN */ulong /*BltX*/,/* IN */ulong /*BltY*/, EFI_STATUS> /*EFI_HII_DRAW_IMAGE*/ DrawImage;
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_DRAW_FLAGS /*Flags*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_IMAGE_ID /*ImageId*/,/* IN OUT */EFI_IMAGE_OUTPUT** /*Blt*/,/* IN */ulong /*BltX*/,/* IN */ulong /*BltY*/, EFI_STATUS> /*EFI_HII_DRAW_IMAGE_ID*/ DrawImageId;
-}
+  public unsafe struct EFI_HII_IMAGE_PROTOCOL
+  {
+    public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* OUT */EFI_IMAGE_ID* /*ImageId*/,/* IN CONST */EFI_IMAGE_INPUT* /*Image*/, EFI_STATUS> /*EFI_HII_NEW_IMAGE*/ NewImage;
+    public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_IMAGE_ID /*ImageId*/,/* OUT */EFI_IMAGE_INPUT* /*Image*/, EFI_STATUS> /*EFI_HII_GET_IMAGE*/ GetImage;
+    public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_IMAGE_ID /*ImageId*/,/* IN CONST */EFI_IMAGE_INPUT* /*Image*/, EFI_STATUS> /*EFI_HII_SET_IMAGE*/ SetImage;
+    public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_DRAW_FLAGS /*Flags*/,/* IN CONST */EFI_IMAGE_INPUT* /*Image*/,/* IN OUT */EFI_IMAGE_OUTPUT** /*Blt*/,/* IN */ulong /*BltX*/,/* IN */ulong /*BltY*/, EFI_STATUS> /*EFI_HII_DRAW_IMAGE*/ DrawImage;
+    public readonly delegate* unmanaged</* IN CONST */EFI_HII_IMAGE_PROTOCOL* /*This*/,/* IN */EFI_HII_DRAW_FLAGS /*Flags*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_IMAGE_ID /*ImageId*/,/* IN OUT */EFI_IMAGE_OUTPUT** /*Blt*/,/* IN */ulong /*BltX*/,/* IN */ulong /*BltY*/, EFI_STATUS> /*EFI_HII_DRAW_IMAGE_ID*/ DrawImageId;
+  }
 
 // extern EFI_GUID  gEfiHiiImageProtocolGuid;
 

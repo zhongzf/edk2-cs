@@ -25,7 +25,7 @@ public unsafe partial class EFI
       0xa9a048f6, 0x48a0, 0x4714, new byte[] { 0xb7, 0xda, 0xa9, 0xad, 0x87, 0xd4, 0xda, 0xc9 });
 }
 
-//typedef struct _EFI_REST_JSON_STRUCTURE_PROTOCOL  EFI_REST_JSON_STRUCTURE_PROTOCOL;
+typedef struct _EFI_REST_JSON_STRUCTURE_PROTOCOL  EFI_REST_JSON_STRUCTURE_PROTOCOL;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_REST_JSON_RESOURCE_TYPE_DATATYPE { byte* Value; public static implicit operator EFI_REST_JSON_RESOURCE_TYPE_DATATYPE(byte* value) => new EFI_REST_JSON_RESOURCE_TYPE_DATATYPE() { Value = value }; public static implicit operator byte*(EFI_REST_JSON_RESOURCE_TYPE_DATATYPE value) => value.Value; }
 

@@ -38,7 +38,7 @@ public unsafe struct EFI_SMBUS_DEVICE_ADDRESS
   ///
   /// The SMBUS hardware address to which the SMBUS device is preassigned or allocated.
   ///
-  public ulong SmbusDeviceAddress = 7;
+  public ulong SmbusDeviceAddress; // = 7;
 }
 
 [StructLayout(LayoutKind.Sequential)]

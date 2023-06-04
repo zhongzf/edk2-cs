@@ -59,18 +59,18 @@ public unsafe partial class EFI
   public const ulong EV_EFI_SPDM_FIRMWARE_BLOB = (EV_EFI_EVENT_BASE + 0xE1);
   public const ulong EV_EFI_SPDM_FIRMWARE_CONFIG = (EV_EFI_EVENT_BASE + 0xE2);
 
-  //#define EFI_CALLING_EFI_APPLICATION         \
-  //  "Calling EFI Application from Boot Option"
-  //#define EFI_RETURNING_FROM_EFI_APPLICATION  \
-  //  "Returning from EFI Application from Boot Option"
-  //#define EFI_EXIT_BOOT_SERVICES_INVOCATION   \
-  //  "Exit Boot Services Invocation"
-  //#define EFI_EXIT_BOOT_SERVICES_FAILED       \
-  //  "Exit Boot Services Returned with Failure"
-  //#define EFI_EXIT_BOOT_SERVICES_SUCCEEDED    \
-  //  "Exit Boot Services Returned with Success"
+#define EFI_CALLING_EFI_APPLICATION         \
+  "Calling EFI Application from Boot Option"
+#define EFI_RETURNING_FROM_EFI_APPLICATION  \
+  "Returning from EFI Application from Boot Option"
+#define EFI_EXIT_BOOT_SERVICES_INVOCATION   \
+  "Exit Boot Services Invocation"
+#define EFI_EXIT_BOOT_SERVICES_FAILED       \
+  "Exit Boot Services Returned with Failure"
+#define EFI_EXIT_BOOT_SERVICES_SUCCEEDED    \
+  "Exit Boot Services Returned with Success"
 
-  public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
+public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
   public const ulong POST_CODE_STR_LEN = (sizeof(EV_POSTCODE_INFO_POST_CODE) - 1);
 
   public const ulong EV_POSTCODE_INFO_SMM_CODE = "SMM CODE";

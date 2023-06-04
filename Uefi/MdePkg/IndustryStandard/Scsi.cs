@@ -60,7 +60,7 @@ public unsafe partial class EFI
   public const ulong EFI_SCSI_OP_SEARCH_DATA_L = 0x32;
   public const ulong EFI_SCSI_OP_SEEK6 = 0x0b;
   public const ulong EFI_SCSI_OP_SEEK10 = 0x2b;
-  //public const ulong EFI_SCSI_OP_SEND_DIAG = 0x1d;
+  public const ulong EFI_SCSI_OP_SEND_DIAG = 0x1d;
   public const ulong EFI_SCSI_OP_SET_LIMIT = 0x33;
   public const ulong EFI_SCSI_OP_START_STOP_UNIT = 0x1b;
   public const ulong EFI_SCSI_OP_SYNC_CACHE = 0x35;
@@ -228,10 +228,10 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SCSI_INQUIRY_DATA
 {
-  public byte Peripheral_Type = 5;
-  public byte Peripheral_Qualifier = 3;
-  public byte DeviceType_Modifier = 7;
-  public byte Rmb = 1;
+  public byte Peripheral_Type; // = 5;
+  public byte Peripheral_Qualifier; // = 3;
+  public byte DeviceType_Modifier; // = 7;
+  public byte Rmb; // = 1;
   public byte Version;
   public byte Response_Data_Format;
   public byte Addnl_Length;
@@ -244,8 +244,8 @@ public unsafe struct EFI_SCSI_INQUIRY_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SCSI_SUPPORTED_VPD_PAGES_VPD_PAGE
 {
-  public byte Peripheral_Type = 5;
-  public byte Peripheral_Qualifier = 3;
+  public byte Peripheral_Type; // = 5;
+  public byte Peripheral_Qualifier; // = 3;
   public byte PageCode;
   public byte PageLength2;
   public byte PageLength1;
@@ -258,13 +258,13 @@ public unsafe struct EFI_SCSI_SUPPORTED_VPD_PAGES_VPD_PAGE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SCSI_BLOCK_LIMITS_VPD_PAGE
 {
-  public byte Peripheral_Type = 5;
-  public byte Peripheral_Qualifier = 3;
+  public byte Peripheral_Type; // = 5;
+  public byte Peripheral_Qualifier; // = 3;
   public byte PageCode;
   public byte PageLength2;
   public byte PageLength1;
-  public byte WriteSameNonZero = 1;
-  public byte Reserved_4 = 7;
+  public byte WriteSameNonZero; // = 1;
+  public byte Reserved_4; // = 7;
   public byte MaximumCompareAndWriteLength;
   public byte OptimalTransferLengthGranularity2;
   public byte OptimalTransferLengthGranularity1;
@@ -292,8 +292,8 @@ public unsafe struct EFI_SCSI_BLOCK_LIMITS_VPD_PAGE
   public byte OptimalUnmapGranularity3;
   public byte OptimalUnmapGranularity2;
   public byte OptimalUnmapGranularity1;
-  public byte UnmapGranularityAlignment4 = 7;
-  public byte UnmapGranularityAlignmentValid = 1;
+  public byte UnmapGranularityAlignment4; // = 7;
+  public byte UnmapGranularityAlignmentValid; // = 1;
   public byte UnmapGranularityAlignment3;
   public byte UnmapGranularityAlignment2;
   public byte UnmapGranularityAlignment1;
@@ -329,13 +329,13 @@ public unsafe struct EFI_SCSI_BLOCK_LIMITS_VPD_PAGE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SCSI_SENSE_DATA
 {
-  public byte Error_Code = 7;
-  public byte Valid = 1;
+  public byte Error_Code; // = 7;
+  public byte Valid; // = 1;
   public byte Segment_Number;
-  public byte Sense_Key = 4;
-  public byte Reserved_21 = 1;
-  public byte Ili = 1;
-  public byte Reserved_22 = 2;
+  public byte Sense_Key; // = 4;
+  public byte Reserved_21; // = 1;
+  public byte Ili; // = 1;
+  public byte Reserved_22; // = 2;
   public fixed byte Information_3_6[4];
   public byte Addnl_Sense_Length;        ///< Additional sense length (n-7)
   public fixed byte Vendor_Specific_8_11[4];

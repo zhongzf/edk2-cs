@@ -258,7 +258,7 @@ public unsafe struct EFI_UDP6_RECEIVE_DATA
   ///
   /// Array of fragment descriptors. Maybe zero.
   ///
-  //public fixed EFI_UDP6_FRAGMENT_DATA FragmentTable[1];
+  public fixed EFI_UDP6_FRAGMENT_DATA FragmentTable[1];
 }
 
 ///
@@ -270,46 +270,46 @@ public unsafe struct EFI_UDP6_RECEIVE_DATA
 /// client. After a packet is received, RxData and Status are filled in by the EFI UDPv6 Protocol
 /// and the Event is signaled.
 ///
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Packet
-//{
-//  ///
-//  /// This Event will be signaled after the Status field is updated by the EFI UDPv6 Protocol
-//  /// driver. The type of Event must be EVT_NOTIFY_SIGNAL.
-//  ///
-//  public EFI_EVENT Event;
-//  ///
-//  /// Will be set to one of the following values:
-//  ///   - EFI_SUCCESS: The receive or transmit operation completed successfully.
-//  ///   - EFI_ABORTED: The receive or transmit was aborted.
-//  ///   - EFI_TIMEOUT: The transmit timeout expired.
-//  ///   - EFI_NETWORK_UNREACHABLE: The destination network is unreachable. RxData is set to
-//  ///     NULL in this situation.
-//  ///   - EFI_HOST_UNREACHABLE: The destination host is unreachable. RxData is set to NULL in
-//  ///     this situation.
-//  ///   - EFI_PROTOCOL_UNREACHABLE: The UDP protocol is unsupported in the remote system.
-//  ///     RxData is set to NULL in this situation.
-//  ///   - EFI_PORT_UNREACHABLE: No service is listening on the remote port. RxData is set to
-//  ///     NULL in this situation.
-//  ///   - EFI_ICMP_ERROR: Some other Internet Control Message Protocol (ICMP) error report was
-//  ///     received. For example, packets are being sent too fast for the destination to receive them
-//  ///     and the destination sent an ICMP source quench report. RxData is set to NULL in this situation.
-//  ///   - EFI_DEVICE_ERROR: An unexpected system or network error occurred.
-//  ///   - EFI_SECURITY_VIOLATION: The transmit or receive was failed because of IPsec policy check.
-//  ///   - EFI_NO_MEDIA: There was a media error.
-//  ///
-//  public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
-//    ///
-//    public EFI_UDP6_RECEIVE_DATA* RxData;
-//  ///
-//  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
-//  ///
-//  public EFI_UDP6_TRANSMIT_DATA* TxData;
-//}
-//} EFI_UDP6_COMPLETION_TOKEN;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Packet
+{
+  ///
+  /// This Event will be signaled after the Status field is updated by the EFI UDPv6 Protocol
+  /// driver. The type of Event must be EVT_NOTIFY_SIGNAL.
+  ///
+  public EFI_EVENT Event;
+  ///
+  /// Will be set to one of the following values:
+  ///   - EFI_SUCCESS: The receive or transmit operation completed successfully.
+  ///   - EFI_ABORTED: The receive or transmit was aborted.
+  ///   - EFI_TIMEOUT: The transmit timeout expired.
+  ///   - EFI_NETWORK_UNREACHABLE: The destination network is unreachable. RxData is set to
+  ///     NULL in this situation.
+  ///   - EFI_HOST_UNREACHABLE: The destination host is unreachable. RxData is set to NULL in
+  ///     this situation.
+  ///   - EFI_PROTOCOL_UNREACHABLE: The UDP protocol is unsupported in the remote system.
+  ///     RxData is set to NULL in this situation.
+  ///   - EFI_PORT_UNREACHABLE: No service is listening on the remote port. RxData is set to
+  ///     NULL in this situation.
+  ///   - EFI_ICMP_ERROR: Some other Internet Control Message Protocol (ICMP) error report was
+  ///     received. For example, packets are being sent too fast for the destination to receive them
+  ///     and the destination sent an ICMP source quench report. RxData is set to NULL in this situation.
+  ///   - EFI_DEVICE_ERROR: An unexpected system or network error occurred.
+  ///   - EFI_SECURITY_VIOLATION: The transmit or receive was failed because of IPsec policy check.
+  ///   - EFI_NO_MEDIA: There was a media error.
+  ///
+  public EFI_STATUS Status;
+  union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
+    ///
+    public EFI_UDP6_RECEIVE_DATA* RxData;
+  ///
+  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
+  ///
+  public EFI_UDP6_TRANSMIT_DATA* TxData;
+}
+} EFI_UDP6_COMPLETION_TOKEN;
 
 // /**
 //   Read the current operational settings.
@@ -582,9 +582,9 @@ public unsafe struct EFI_UDP6_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP6_GROUPS*/ Groups;
-  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;
-  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_RECEIVE*/ Receive;
-  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_CANCEL*/ Cancel;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_RECEIVE*/ Receive;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_CANCEL*/ Cancel;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_UDP6_POLL*/ Poll;
 }
 

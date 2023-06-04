@@ -97,7 +97,7 @@ public unsafe struct IPMI_READ_FRU_DATA_RESPONSE
 {
   public byte CompletionCode;
   public byte CountReturned;
-  public fixed byte Data[0];
+  public byte[] Data;
 }
 
 public unsafe partial class EFI
@@ -123,7 +123,7 @@ public unsafe struct IPMI_WRITE_FRU_DATA_REQUEST
 {
   public byte DeviceId;
   public ushort InventoryOffset;
-  public fixed byte Data[0];
+  public byte[] Data;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -152,13 +152,13 @@ public unsafe partial class EFI
 public unsafe struct IPMI_SDR_OPERATION_SUPPORT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte SdrRepAllocInfoCmd = 1;
-  [FieldOffset(0)] public byte SdrRepReserveCmd = 1;
-  [FieldOffset(0)] public byte PartialAddSdrCmd = 1;
-  [FieldOffset(0)] public byte DeleteSdrRepCmd = 1;
-  [FieldOffset(0)] public byte Reserved = 1;
-  [FieldOffset(0)] public byte SdrRepUpdateOp = 2;
-  [FieldOffset(0)] public byte Overflow = 1;
+  [FieldOffset(0)] public byte SdrRepAllocInfoCmd; // = 1;
+  [FieldOffset(0)] public byte SdrRepReserveCmd; // = 1;
+  [FieldOffset(0)] public byte PartialAddSdrCmd; // = 1;
+  [FieldOffset(0)] public byte DeleteSdrRepCmd; // = 1;
+  [FieldOffset(0)] public byte Reserved; // = 1;
+  [FieldOffset(0)] public byte SdrRepUpdateOp; // = 2;
+  [FieldOffset(0)] public byte Overflow; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -217,14 +217,14 @@ public unsafe partial class EFI
 public unsafe struct IPMI_SDR_RECORD_SENSOR_INIT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte EventScanningEnabled = 1;
-  [FieldOffset(0)] public byte EventScanningDisabled = 1;
-  [FieldOffset(0)] public byte InitSensorType = 1;
-  [FieldOffset(0)] public byte InitHysteresis = 1;
-  [FieldOffset(0)] public byte InitThresholds = 1;
-  [FieldOffset(0)] public byte InitEvent = 1;
-  [FieldOffset(0)] public byte InitScanning = 1;
-  [FieldOffset(0)] public byte SettableSensor = 1;
+  [FieldOffset(0)] public byte EventScanningEnabled; // = 1;
+  [FieldOffset(0)] public byte EventScanningDisabled; // = 1;
+  [FieldOffset(0)] public byte InitSensorType; // = 1;
+  [FieldOffset(0)] public byte InitHysteresis; // = 1;
+  [FieldOffset(0)] public byte InitThresholds; // = 1;
+  [FieldOffset(0)] public byte InitEvent; // = 1;
+  [FieldOffset(0)] public byte InitScanning; // = 1;
+  [FieldOffset(0)] public byte SettableSensor; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -233,11 +233,11 @@ public unsafe struct IPMI_SDR_RECORD_SENSOR_INIT
 public unsafe struct IPMI_SDR_RECORD_SENSOR_CAP
 {
   /*   struct { */
-  [FieldOffset(0)] public byte EventMessageControl = 2;
-  [FieldOffset(0)] public byte ThresholdAccessSupport = 2;
-  [FieldOffset(0)] public byte HysteresisSupport = 2;
-  [FieldOffset(0)] public byte ReArmSupport = 1;
-  [FieldOffset(0)] public byte IgnoreSensor = 1;
+  [FieldOffset(0)] public byte EventMessageControl; // = 2;
+  [FieldOffset(0)] public byte ThresholdAccessSupport; // = 2;
+  [FieldOffset(0)] public byte HysteresisSupport; // = 2;
+  [FieldOffset(0)] public byte ReArmSupport; // = 1;
+  [FieldOffset(0)] public byte IgnoreSensor; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -246,8 +246,8 @@ public unsafe struct IPMI_SDR_RECORD_SENSOR_CAP
 public unsafe struct IPMI_SDR_RECORD_LINEARIZATION
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Linearization = 7;
-  [FieldOffset(0)] public byte Reserved = 1;
+  [FieldOffset(0)] public byte Linearization; // = 7;
+  [FieldOffset(0)] public byte Reserved; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -256,8 +256,8 @@ public unsafe struct IPMI_SDR_RECORD_LINEARIZATION
 public unsafe struct IPMI_SDR_RECORD_M_TOLERANCE
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Toleremce = 6;
-  [FieldOffset(0)] public byte MHi = 2;
+  [FieldOffset(0)] public byte Toleremce; // = 6;
+  [FieldOffset(0)] public byte MHi; // = 2;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -266,8 +266,8 @@ public unsafe struct IPMI_SDR_RECORD_M_TOLERANCE
 public unsafe struct IPMI_SDR_RECORD_B_ACCURACY
 {
   /*   struct { */
-  [FieldOffset(0)] public byte AccuracyLow = 6;
-  [FieldOffset(0)] public byte BHi = 2;
+  [FieldOffset(0)] public byte AccuracyLow; // = 6;
+  [FieldOffset(0)] public byte BHi; // = 2;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -276,9 +276,9 @@ public unsafe struct IPMI_SDR_RECORD_B_ACCURACY
 public unsafe struct IPMI_SDR_RECORD_ACCURACY_SENSOR_DIR
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Reserved = 2;
-  [FieldOffset(0)] public byte AccuracyExp = 2;
-  [FieldOffset(0)] public byte AccuracyHi = 4;
+  [FieldOffset(0)] public byte Reserved; // = 2;
+  [FieldOffset(0)] public byte AccuracyExp; // = 2;
+  [FieldOffset(0)] public byte AccuracyHi; // = 4;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -287,8 +287,8 @@ public unsafe struct IPMI_SDR_RECORD_ACCURACY_SENSOR_DIR
 public unsafe struct IPMI_SDR_RECORD_R_EXP_B_EXP
 {
   /*   struct { */
-  [FieldOffset(0)] public byte BExp = 4;
-  [FieldOffset(0)] public byte RExp = 4;
+  [FieldOffset(0)] public byte BExp; // = 4;
+  [FieldOffset(0)] public byte RExp; // = 4;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -297,10 +297,10 @@ public unsafe struct IPMI_SDR_RECORD_R_EXP_B_EXP
 public unsafe struct IPMI_SDR_RECORD_ANALOG_FLAGS
 {
   /*   struct { */
-  [FieldOffset(0)] public byte NominalReadingSpscified = 1;
-  [FieldOffset(0)] public byte NominalMaxSpscified = 1;
-  [FieldOffset(0)] public byte NominalMinSpscified = 1;
-  [FieldOffset(0)] public byte Reserved = 5;
+  [FieldOffset(0)] public byte NominalReadingSpscified; // = 1;
+  [FieldOffset(0)] public byte NominalMaxSpscified; // = 1;
+  [FieldOffset(0)] public byte NominalMinSpscified; // = 1;
+  [FieldOffset(0)] public byte Reserved; // = 5;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -372,15 +372,15 @@ public unsafe struct IPMI_SDR_RECORD_STRUCT_2
 public unsafe struct IPMI_FRU_DATA_INFO
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Reserved1 = 1;
-  [FieldOffset(0)] public byte ControllerSlaveAddress = 7;
+  [FieldOffset(0)] public byte Reserved1; // = 1;
+  [FieldOffset(0)] public byte ControllerSlaveAddress; // = 7;
   [FieldOffset(0)] public byte FruDeviceId;
-  [FieldOffset(0)] public byte BusId = 3;
-  [FieldOffset(0)] public byte Lun = 2;
-  [FieldOffset(0)] public byte Reserved2 = 2;
-  [FieldOffset(0)] public byte LogicalFruDevice = 1;
-  [FieldOffset(0)] public byte Reserved3 = 4;
-  [FieldOffset(0)] public byte ChannelNumber = 4;
+  [FieldOffset(0)] public byte BusId; // = 3;
+  [FieldOffset(0)] public byte Lun; // = 2;
+  [FieldOffset(0)] public byte Reserved2; // = 2;
+  [FieldOffset(0)] public byte LogicalFruDevice; // = 1;
+  [FieldOffset(0)] public byte Reserved3; // = 4;
+  [FieldOffset(0)] public byte ChannelNumber; // = 4;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -389,9 +389,9 @@ public unsafe struct IPMI_FRU_DATA_INFO
 public unsafe struct IPMI_SDR_RECORD_DEV_ID_STR_TYPE_LENGTH
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Length = 4;
-  [FieldOffset(0)] public byte Reserved = 1;
-  [FieldOffset(0)] public byte StringType = 3;
+  [FieldOffset(0)] public byte Length; // = 4;
+  [FieldOffset(0)] public byte Reserved; // = 1;
+  [FieldOffset(0)] public byte StringType; // = 3;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -710,7 +710,7 @@ public unsafe struct IPMI_PARTIAL_ADD_SEL_ENTRY_REQUEST
   public ushort RecordId;
   public byte OffsetIntoRecord;
   public byte InProgress;
-  public fixed byte RecordData[0];
+  public byte[] RecordData;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -917,9 +917,9 @@ public unsafe partial class EFI
   public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_END = 0x46;
   public const ulong IPMI_SWID_TERMINAL_REMOTE_CONSOLE_ID = 0x47;
 
-  //public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
-  //public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
-  //public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
+  public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
+  public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
+  public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
 
   public const ulong IPMI_EVM_REVISION = 0x04;
   public const ulong IPMI_BIOS_ID = 0x18;
@@ -927,7 +927,7 @@ public unsafe partial class EFI
   public const ulong IPMI_FORMAT_REV1 = 0x01;
   public const ulong IPMI_SOFTWARE_ID = 0x01;
   public const ulong IPMI_PLATFORM_VAL_ID = 0x01;
-  //public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
+  public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
 
   public const ulong IPMI_SENSOR_TYPE_EVENT_CODE_DISCRETE = 0x6F;
 

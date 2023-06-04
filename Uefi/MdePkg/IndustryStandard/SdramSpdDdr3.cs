@@ -21,10 +21,10 @@ namespace Uefi;
 public unsafe struct SPD3_DEVICE_DESCRIPTION_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte BytesUsed = 4;                       ///< Bits 3:0
-  [FieldOffset(0)] public byte BytesTotal = 3;                       ///< Bits 6:4
-  [FieldOffset(0)] public byte CrcCoverage = 1;                       ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte BytesUsed; // =  4;                       ///< Bits 3:0
+  [FieldOffset(0)] public byte BytesTotal; // =  3;                       ///< Bits 6:4
+  [FieldOffset(0)] public byte CrcCoverage; // =  1;                       ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -32,9 +32,9 @@ public unsafe struct SPD3_DEVICE_DESCRIPTION_STRUCT
 public unsafe struct SPD3_REVISION_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Minor = 4;                             ///< Bits 3:0
-  [FieldOffset(0)] public byte Major = 4;                             ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte Minor; // =  4;                             ///< Bits 3:0
+  [FieldOffset(0)] public byte Major; // =  4;                             ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -42,8 +42,8 @@ public unsafe struct SPD3_REVISION_STRUCT
 public unsafe struct SPD3_DRAM_DEVICE_TYPE_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Type = 8;                              ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte Type; // =  8;                              ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -51,9 +51,9 @@ public unsafe struct SPD3_DRAM_DEVICE_TYPE_STRUCT
 public unsafe struct SPD3_MODULE_TYPE_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte ModuleType = 4;                        ///< Bits 3:0
-  [FieldOffset(0)] public byte Reserved = 4;                        ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte ModuleType; // =  4;                        ///< Bits 3:0
+  [FieldOffset(0)] public byte Reserved; // =  4;                        ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -61,10 +61,10 @@ public unsafe struct SPD3_MODULE_TYPE_STRUCT
 public unsafe struct SPD3_SDRAM_DENSITY_BANKS_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Density = 4;                       ///< Bits 3:0
-  [FieldOffset(0)] public byte BankAddress = 3;                       ///< Bits 6:4
-  [FieldOffset(0)] public byte Reserved = 1;                       ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte Density; // =  4;                       ///< Bits 3:0
+  [FieldOffset(0)] public byte BankAddress; // =  3;                       ///< Bits 6:4
+  [FieldOffset(0)] public byte Reserved; // =  1;                       ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -72,10 +72,10 @@ public unsafe struct SPD3_SDRAM_DENSITY_BANKS_STRUCT
 public unsafe struct SPD3_SDRAM_ADDRESSING_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte ColumnAddress = 3;                     ///< Bits 2:0
-  [FieldOffset(0)] public byte RowAddress = 3;                     ///< Bits 5:3
-  [FieldOffset(0)] public byte Reserved = 2;                     ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte ColumnAddress; // =  3;                     ///< Bits 2:0
+  [FieldOffset(0)] public byte RowAddress; // =  3;                     ///< Bits 5:3
+  [FieldOffset(0)] public byte Reserved; // =  2;                     ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -83,11 +83,11 @@ public unsafe struct SPD3_SDRAM_ADDRESSING_STRUCT
 public unsafe struct SPD3_MODULE_NOMINAL_VOLTAGE_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte OperationAt1_50 = 1;                   ///< Bits 0:0
-  [FieldOffset(0)] public byte OperationAt1_35 = 1;                   ///< Bits 1:1
-  [FieldOffset(0)] public byte OperationAt1_25 = 1;                   ///< Bits 2:2
-  [FieldOffset(0)] public byte Reserved = 5;                   ///< Bits 7:3
-/*   } Bits; */
+  [FieldOffset(0)] public byte OperationAt1_50; // =  1;                   ///< Bits 0:0
+  [FieldOffset(0)] public byte OperationAt1_35; // =  1;                   ///< Bits 1:1
+  [FieldOffset(0)] public byte OperationAt1_25; // =  1;                   ///< Bits 2:2
+  [FieldOffset(0)] public byte Reserved; // =  5;                   ///< Bits 7:3
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -95,10 +95,10 @@ public unsafe struct SPD3_MODULE_NOMINAL_VOLTAGE_STRUCT
 public unsafe struct SPD3_MODULE_ORGANIZATION_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte SdramDeviceWidth = 3;                  ///< Bits 2:0
-  [FieldOffset(0)] public byte RankCount = 3;                  ///< Bits 5:3
-  [FieldOffset(0)] public byte Reserved = 2;                  ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte SdramDeviceWidth; // =  3;                  ///< Bits 2:0
+  [FieldOffset(0)] public byte RankCount; // =  3;                  ///< Bits 5:3
+  [FieldOffset(0)] public byte Reserved; // =  2;                  ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -106,10 +106,10 @@ public unsafe struct SPD3_MODULE_ORGANIZATION_STRUCT
 public unsafe struct SPD3_MODULE_MEMORY_BUS_WIDTH_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte PrimaryBusWidth = 3;                 ///< Bits 2:0
-  [FieldOffset(0)] public byte BusWidthExtension = 2;                 ///< Bits 4:3
-  [FieldOffset(0)] public byte Reserved = 3;                 ///< Bits 7:5
-/*   } Bits; */
+  [FieldOffset(0)] public byte PrimaryBusWidth; // =  3;                 ///< Bits 2:0
+  [FieldOffset(0)] public byte BusWidthExtension; // =  2;                 ///< Bits 4:3
+  [FieldOffset(0)] public byte Reserved; // =  3;                 ///< Bits 7:5
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -117,9 +117,9 @@ public unsafe struct SPD3_MODULE_MEMORY_BUS_WIDTH_STRUCT
 public unsafe struct SPD3_FINE_TIMEBASE_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Divisor = 4;                          ///< Bits 3:0
-  [FieldOffset(0)] public byte Dividend = 4;                          ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte Divisor; // =  4;                          ///< Bits 3:0
+  [FieldOffset(0)] public byte Dividend; // =  4;                          ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -127,8 +127,8 @@ public unsafe struct SPD3_FINE_TIMEBASE_STRUCT
 public unsafe struct SPD3_MEDIUM_TIMEBASE_DIVIDEND_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Dividend = 8;                          ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte Dividend; // =  8;                          ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -136,8 +136,8 @@ public unsafe struct SPD3_MEDIUM_TIMEBASE_DIVIDEND_STRUCT
 public unsafe struct SPD3_MEDIUM_TIMEBASE_DIVISOR_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Divisor = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte Divisor; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -152,8 +152,8 @@ public unsafe struct SPD3_MEDIUM_TIMEBASE
 public unsafe struct SPD3_TCK_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tCKmin = 8;                            ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tCKmin; // =  8;                            ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -161,23 +161,23 @@ public unsafe struct SPD3_TCK_MIN_MTB_STRUCT
 public unsafe struct SPD3_CAS_LATENCIES_SUPPORTED_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public ushort Cl4 = 1;                         ///< Bits 0:0
-  [FieldOffset(0)] public ushort Cl5 = 1;                         ///< Bits 1:1
-  [FieldOffset(0)] public ushort Cl6 = 1;                         ///< Bits 2:2
-  [FieldOffset(0)] public ushort Cl7 = 1;                         ///< Bits 3:3
-  [FieldOffset(0)] public ushort Cl8 = 1;                         ///< Bits 4:4
-  [FieldOffset(0)] public ushort Cl9 = 1;                         ///< Bits 5:5
-  [FieldOffset(0)] public ushort Cl10 = 1;                         ///< Bits 6:6
-  [FieldOffset(0)] public ushort Cl11 = 1;                         ///< Bits 7:7
-  [FieldOffset(0)] public ushort Cl12 = 1;                         ///< Bits 8:8
-  [FieldOffset(0)] public ushort Cl13 = 1;                         ///< Bits 9:9
-  [FieldOffset(0)] public ushort Cl14 = 1;                         ///< Bits 10:10
-  [FieldOffset(0)] public ushort Cl15 = 1;                         ///< Bits 11:11
-  [FieldOffset(0)] public ushort Cl16 = 1;                         ///< Bits 12:12
-  [FieldOffset(0)] public ushort Cl17 = 1;                         ///< Bits 13:13
-  [FieldOffset(0)] public ushort Cl18 = 1;                         ///< Bits 14:14
-  [FieldOffset(0)] public ushort Reserved = 1;                         ///< Bits 15:15
-/*   } Bits; */
+  [FieldOffset(0)] public ushort Cl4; // =  1;                         ///< Bits 0:0
+  [FieldOffset(0)] public ushort Cl5; // =  1;                         ///< Bits 1:1
+  [FieldOffset(0)] public ushort Cl6; // =  1;                         ///< Bits 2:2
+  [FieldOffset(0)] public ushort Cl7; // =  1;                         ///< Bits 3:3
+  [FieldOffset(0)] public ushort Cl8; // =  1;                         ///< Bits 4:4
+  [FieldOffset(0)] public ushort Cl9; // =  1;                         ///< Bits 5:5
+  [FieldOffset(0)] public ushort Cl10; // =  1;                         ///< Bits 6:6
+  [FieldOffset(0)] public ushort Cl11; // =  1;                         ///< Bits 7:7
+  [FieldOffset(0)] public ushort Cl12; // =  1;                         ///< Bits 8:8
+  [FieldOffset(0)] public ushort Cl13; // =  1;                         ///< Bits 9:9
+  [FieldOffset(0)] public ushort Cl14; // =  1;                         ///< Bits 10:10
+  [FieldOffset(0)] public ushort Cl15; // =  1;                         ///< Bits 11:11
+  [FieldOffset(0)] public ushort Cl16; // =  1;                         ///< Bits 12:12
+  [FieldOffset(0)] public ushort Cl17; // =  1;                         ///< Bits 13:13
+  [FieldOffset(0)] public ushort Cl18; // =  1;                         ///< Bits 14:14
+  [FieldOffset(0)] public ushort Reserved; // =  1;                         ///< Bits 15:15
+  /*   } Bits; */
   [FieldOffset(0)] public ushort Data;
   [FieldOffset(0)] public fixed byte Data8[2];
 }
@@ -186,8 +186,8 @@ public unsafe struct SPD3_CAS_LATENCIES_SUPPORTED_STRUCT
 public unsafe struct SPD3_TAA_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tAAmin = 8;                            ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tAAmin; // =  8;                            ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -195,8 +195,8 @@ public unsafe struct SPD3_TAA_MIN_MTB_STRUCT
 public unsafe struct SPD3_TWR_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tWRmin = 8;                            ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tWRmin; // =  8;                            ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -204,8 +204,8 @@ public unsafe struct SPD3_TWR_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRCD_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRCDmin = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRCDmin; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -213,8 +213,8 @@ public unsafe struct SPD3_TRCD_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRRD_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRRDmin = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRRDmin; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -222,8 +222,8 @@ public unsafe struct SPD3_TRRD_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRP_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRPmin = 8;                            ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRPmin; // =  8;                            ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -231,9 +231,9 @@ public unsafe struct SPD3_TRP_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRAS_TRC_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRASminUpper = 4;                      ///< Bits 3:0
-  [FieldOffset(0)] public byte tRCminUpper = 4;                      ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRASminUpper; // =  4;                      ///< Bits 3:0
+  [FieldOffset(0)] public byte tRCminUpper; // =  4;                      ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -241,8 +241,8 @@ public unsafe struct SPD3_TRAS_TRC_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRAS_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRASmin = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRASmin; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -250,8 +250,8 @@ public unsafe struct SPD3_TRAS_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRC_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRCmin = 8;                            ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRCmin; // =  8;                            ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -259,8 +259,8 @@ public unsafe struct SPD3_TRC_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRFC_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public ushort tRFCmin = 16;                          ///< Bits 15:0
-/*   } Bits; */
+  [FieldOffset(0)] public ushort tRFCmin; // =  16;                          ///< Bits 15:0
+  /*   } Bits; */
   [FieldOffset(0)] public ushort Data;
   [FieldOffset(0)] public fixed byte Data8[2];
 }
@@ -269,8 +269,8 @@ public unsafe struct SPD3_TRFC_MIN_MTB_STRUCT
 public unsafe struct SPD3_TWTR_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tWTRmin = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tWTRmin; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -278,8 +278,8 @@ public unsafe struct SPD3_TWTR_MIN_MTB_STRUCT
 public unsafe struct SPD3_TRTP_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tRTPmin = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tRTPmin; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -287,9 +287,9 @@ public unsafe struct SPD3_TRTP_MIN_MTB_STRUCT
 public unsafe struct SPD3_TFAW_MIN_MTB_UPPER_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tFAWminUpper = 4;                      ///< Bits 3:0
-  [FieldOffset(0)] public byte Reserved = 4;                      ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte tFAWminUpper; // =  4;                      ///< Bits 3:0
+  [FieldOffset(0)] public byte Reserved; // =  4;                      ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -297,8 +297,8 @@ public unsafe struct SPD3_TFAW_MIN_MTB_UPPER_STRUCT
 public unsafe struct SPD3_TFAW_MIN_MTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte tFAWmin = 8;                           ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public byte tFAWmin; // =  8;                           ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -306,11 +306,11 @@ public unsafe struct SPD3_TFAW_MIN_MTB_STRUCT
 public unsafe struct SPD3_SDRAM_OPTIONAL_FEATURES_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Rzq6 = 1;                          ///< Bits 0:0
-  [FieldOffset(0)] public byte Rzq7 = 1;                          ///< Bits 1:1
-  [FieldOffset(0)] public byte Reserved = 5;                          ///< Bits 6:2
-  [FieldOffset(0)] public byte DllOff = 1;                          ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte Rzq6; // =  1;                          ///< Bits 0:0
+  [FieldOffset(0)] public byte Rzq7; // =  1;                          ///< Bits 1:1
+  [FieldOffset(0)] public byte Reserved; // =  5;                          ///< Bits 6:2
+  [FieldOffset(0)] public byte DllOff; // =  1;                          ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -318,13 +318,13 @@ public unsafe struct SPD3_SDRAM_OPTIONAL_FEATURES_STRUCT
 public unsafe struct SPD3_SDRAM_THERMAL_REFRESH_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte ExtendedTemperatureRange = 1;    ///< Bits 0:0
-  [FieldOffset(0)] public byte ExtendedTemperatureRefreshRate = 1;    ///< Bits 1:1
-  [FieldOffset(0)] public byte AutoSelfRefresh = 1;    ///< Bits 2:2
-  [FieldOffset(0)] public byte OnDieThermalSensor = 1;    ///< Bits 3:3
-  [FieldOffset(0)] public byte Reserved = 3;    ///< Bits 6:4
-  [FieldOffset(0)] public byte PartialArraySelfRefresh = 1;    ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte ExtendedTemperatureRange; // =  1;    ///< Bits 0:0
+  [FieldOffset(0)] public byte ExtendedTemperatureRefreshRate; // =  1;    ///< Bits 1:1
+  [FieldOffset(0)] public byte AutoSelfRefresh; // =  1;    ///< Bits 2:2
+  [FieldOffset(0)] public byte OnDieThermalSensor; // =  1;    ///< Bits 3:3
+  [FieldOffset(0)] public byte Reserved; // =  3;    ///< Bits 6:4
+  [FieldOffset(0)] public byte PartialArraySelfRefresh; // =  1;    ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -332,9 +332,9 @@ public unsafe struct SPD3_SDRAM_THERMAL_REFRESH_STRUCT
 public unsafe struct SPD3_MODULE_THERMAL_SENSOR_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte ThermalSensorAccuracy = 7;             ///< Bits 6:0
-  [FieldOffset(0)] public byte ThermalSensorPresence = 1;             ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte ThermalSensorAccuracy; // =  7;             ///< Bits 6:0
+  [FieldOffset(0)] public byte ThermalSensorPresence; // =  1;             ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -342,11 +342,11 @@ public unsafe struct SPD3_MODULE_THERMAL_SENSOR_STRUCT
 public unsafe struct SPD3_SDRAM_DEVICE_TYPE_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte SignalLoading = 2;                   ///< Bits 1:0
-  [FieldOffset(0)] public byte Reserved = 2;                   ///< Bits 3:2
-  [FieldOffset(0)] public byte DieCount = 3;                   ///< Bits 6:4
-  [FieldOffset(0)] public byte SdramDeviceType = 1;                   ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte SignalLoading; // =  2;                   ///< Bits 1:0
+  [FieldOffset(0)] public byte Reserved; // =  2;                   ///< Bits 3:2
+  [FieldOffset(0)] public byte DieCount; // =  3;                   ///< Bits 6:4
+  [FieldOffset(0)] public byte SdramDeviceType; // =  1;                   ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -354,8 +354,8 @@ public unsafe struct SPD3_SDRAM_DEVICE_TYPE_STRUCT
 public unsafe struct SPD3_TCK_MIN_FTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public sbyte tCKminFine = 8;                         ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public sbyte tCKminFine; // =  8;                         ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public sbyte Data;
 }
 
@@ -363,8 +363,8 @@ public unsafe struct SPD3_TCK_MIN_FTB_STRUCT
 public unsafe struct SPD3_TAA_MIN_FTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public sbyte tAAminFine = 8;                         ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public sbyte tAAminFine; // =  8;                         ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public sbyte Data;
 }
 
@@ -372,8 +372,8 @@ public unsafe struct SPD3_TAA_MIN_FTB_STRUCT
 public unsafe struct SPD3_TRCD_MIN_FTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public sbyte tRCDminFine = 8;                        ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public sbyte tRCDminFine; // =  8;                        ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public sbyte Data;
 }
 
@@ -381,8 +381,8 @@ public unsafe struct SPD3_TRCD_MIN_FTB_STRUCT
 public unsafe struct SPD3_TRP_MIN_FTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public sbyte tRPminFine = 8;                         ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public sbyte tRPminFine; // =  8;                         ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public sbyte Data;
 }
 
@@ -390,8 +390,8 @@ public unsafe struct SPD3_TRP_MIN_FTB_STRUCT
 public unsafe struct SPD3_TRC_MIN_FTB_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public sbyte tRCminFine = 8;                         ///< Bits 7:0
-/*   } Bits; */
+  [FieldOffset(0)] public sbyte tRCminFine; // =  8;                         ///< Bits 7:0
+  /*   } Bits; */
   [FieldOffset(0)] public sbyte Data;
 }
 
@@ -399,10 +399,10 @@ public unsafe struct SPD3_TRC_MIN_FTB_STRUCT
 public unsafe struct SPD3_MAXIMUM_ACTIVE_COUNT_STRUCT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte MaximumActivateCount = 4;             ///< Bits 3:0
-  [FieldOffset(0)] public byte MaximumActivateWindow = 2;             ///< Bits 5:4
-  [FieldOffset(0)] public byte VendorSpecific = 2;             ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte MaximumActivateCount; // =  4;             ///< Bits 3:0
+  [FieldOffset(0)] public byte MaximumActivateWindow; // =  2;             ///< Bits 5:4
+  [FieldOffset(0)] public byte VendorSpecific; // =  2;             ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -410,9 +410,9 @@ public unsafe struct SPD3_MAXIMUM_ACTIVE_COUNT_STRUCT
 public unsafe struct SPD3_UNBUF_MODULE_NOMINAL_HEIGHT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Height = 5;                  ///< Bits 4:0
-  [FieldOffset(0)] public byte RawCardExtension = 3;                  ///< Bits 7:5
-/*   } Bits; */
+  [FieldOffset(0)] public byte Height; // =  5;                  ///< Bits 4:0
+  [FieldOffset(0)] public byte RawCardExtension; // =  3;                  ///< Bits 7:5
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -420,9 +420,9 @@ public unsafe struct SPD3_UNBUF_MODULE_NOMINAL_HEIGHT
 public unsafe struct SPD3_UNBUF_MODULE_NOMINAL_THICKNESS
 {
   /*   struct { */
-  [FieldOffset(0)] public byte FrontThickness = 4;                    ///< Bits 3:0
-  [FieldOffset(0)] public byte BackThickness = 4;                    ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte FrontThickness; // =  4;                    ///< Bits 3:0
+  [FieldOffset(0)] public byte BackThickness; // =  4;                    ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -430,10 +430,10 @@ public unsafe struct SPD3_UNBUF_MODULE_NOMINAL_THICKNESS
 public unsafe struct SPD3_UNBUF_REFERENCE_RAW_CARD
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Card = 5;                         ///< Bits 4:0
-  [FieldOffset(0)] public byte Revision = 2;                         ///< Bits 6:5
-  [FieldOffset(0)] public byte Extension = 1;                         ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte Card; // =  5;                         ///< Bits 4:0
+  [FieldOffset(0)] public byte Revision; // =  2;                         ///< Bits 6:5
+  [FieldOffset(0)] public byte Extension; // =  1;                         ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -441,9 +441,9 @@ public unsafe struct SPD3_UNBUF_REFERENCE_RAW_CARD
 public unsafe struct SPD3_UNBUF_ADDRESS_MAPPING
 {
   /*   struct { */
-  [FieldOffset(0)] public byte MappingRank1 = 1;                      ///< Bits 0:0
-  [FieldOffset(0)] public byte Reserved = 7;                      ///< Bits 7:1
-/*   } Bits; */
+  [FieldOffset(0)] public byte MappingRank1; // =  1;                      ///< Bits 0:0
+  [FieldOffset(0)] public byte Reserved; // =  7;                      ///< Bits 7:1
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -451,9 +451,9 @@ public unsafe struct SPD3_UNBUF_ADDRESS_MAPPING
 public unsafe struct SPD3_RDIMM_MODULE_NOMINAL_HEIGHT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Height = 5;                          ///< Bits 4:0
-  [FieldOffset(0)] public byte Reserved = 3;                          ///< Bits 7:5
-/*   } Bits; */
+  [FieldOffset(0)] public byte Height; // =  5;                          ///< Bits 4:0
+  [FieldOffset(0)] public byte Reserved; // =  3;                          ///< Bits 7:5
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -461,9 +461,9 @@ public unsafe struct SPD3_RDIMM_MODULE_NOMINAL_HEIGHT
 public unsafe struct SPD3_RDIMM_MODULE_NOMINAL_THICKNESS
 {
   /*   struct { */
-  [FieldOffset(0)] public byte FrontThickness = 4;                    ///< Bits 3:0
-  [FieldOffset(0)] public byte BackThickness = 4;                    ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte FrontThickness; // =  4;                    ///< Bits 3:0
+  [FieldOffset(0)] public byte BackThickness; // =  4;                    ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -471,10 +471,10 @@ public unsafe struct SPD3_RDIMM_MODULE_NOMINAL_THICKNESS
 public unsafe struct SPD3_RDIMM_REFERENCE_RAW_CARD
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Card = 5;                         ///< Bits 4:0
-  [FieldOffset(0)] public byte Revision = 2;                         ///< Bits 6:5
-  [FieldOffset(0)] public byte Extension = 1;                         ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte Card; // =  5;                         ///< Bits 4:0
+  [FieldOffset(0)] public byte Revision; // =  2;                         ///< Bits 6:5
+  [FieldOffset(0)] public byte Extension; // =  1;                         ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -482,10 +482,10 @@ public unsafe struct SPD3_RDIMM_REFERENCE_RAW_CARD
 public unsafe struct SPD3_RDIMM_MODULE_ATTRIBUTES
 {
   /*   struct { */
-  [FieldOffset(0)] public byte RegisterCount = 2;                     ///< Bits 1:0
-  [FieldOffset(0)] public byte DramRowCount = 2;                     ///< Bits 3:2
-  [FieldOffset(0)] public byte RegisterType = 4;                     ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte RegisterCount; // =  2;                     ///< Bits 1:0
+  [FieldOffset(0)] public byte DramRowCount; // =  2;                     ///< Bits 3:2
+  [FieldOffset(0)] public byte RegisterType; // =  4;                     ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -493,9 +493,9 @@ public unsafe struct SPD3_RDIMM_MODULE_ATTRIBUTES
 public unsafe struct SPD3_RDIMM_THERMAL_HEAT_SPREADER_SOLUTION
 {
   /*   struct { */
-  [FieldOffset(0)] public byte HeatSpreaderThermalCharacteristics = 7; ///< Bits 6:0
-  [FieldOffset(0)] public byte HeatSpreaderSolution = 1; ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte HeatSpreaderThermalCharacteristics; // =  7; ///< Bits 6:0
+  [FieldOffset(0)] public byte HeatSpreaderSolution; // =  1; ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -503,10 +503,10 @@ public unsafe struct SPD3_RDIMM_THERMAL_HEAT_SPREADER_SOLUTION
 public unsafe struct SPD3_MANUFACTURER_ID_CODE
 {
   /*   struct { */
-  [FieldOffset(0)] public ushort ContinuationCount = 7;               ///< Bits 6:0
-  [FieldOffset(0)] public ushort ContinuationParity = 1;               ///< Bits 7:7
-  [FieldOffset(0)] public ushort LastNonZeroByte = 8;               ///< Bits 15:8
-/*   } Bits; */
+  [FieldOffset(0)] public ushort ContinuationCount; // =  7;               ///< Bits 6:0
+  [FieldOffset(0)] public ushort ContinuationParity; // =  1;               ///< Bits 7:7
+  [FieldOffset(0)] public ushort LastNonZeroByte; // =  8;               ///< Bits 15:8
+  /*   } Bits; */
   [FieldOffset(0)] public ushort Data;
   [FieldOffset(0)] public fixed byte Data8[2];
 }
@@ -524,11 +524,11 @@ public unsafe struct SPD3_RDIMM_REGISTER_REVISION_NUMBER
 public unsafe struct SPD3_RDIMM_REGISTER_TYPE
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Bit0 = 1;                         ///< Bits 0:0
-  [FieldOffset(0)] public byte Bit1 = 1;                         ///< Bits 1:1
-  [FieldOffset(0)] public byte Bit2 = 1;                         ///< Bits 2:2
-  [FieldOffset(0)] public byte Reserved = 5;                         ///< Bits 7:3
-/*   } Bits; */
+  [FieldOffset(0)] public byte Bit0; // =  1;                         ///< Bits 0:0
+  [FieldOffset(0)] public byte Bit1; // =  1;                         ///< Bits 1:1
+  [FieldOffset(0)] public byte Bit2; // =  1;                         ///< Bits 2:2
+  [FieldOffset(0)] public byte Reserved; // =  5;                         ///< Bits 7:3
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -536,10 +536,10 @@ public unsafe struct SPD3_RDIMM_REGISTER_TYPE
 public unsafe struct SPD3_RDIMM_REGISTER_CONTROL_COMMAND_ADDRESS
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Reserved = 4;           ///< Bits 0:3
-  [FieldOffset(0)] public byte CommandAddressAOutputs = 2;           ///< Bits 5:4
-  [FieldOffset(0)] public byte CommandAddressBOutputs = 2;           ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte Reserved; // =  4;           ///< Bits 0:3
+  [FieldOffset(0)] public byte CommandAddressAOutputs; // =  2;           ///< Bits 5:4
+  [FieldOffset(0)] public byte CommandAddressBOutputs; // =  2;           ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -547,11 +547,11 @@ public unsafe struct SPD3_RDIMM_REGISTER_CONTROL_COMMAND_ADDRESS
 public unsafe struct SPD3_RDIMM_REGISTER_CONTROL_CONTROL_CLOCK
 {
   /*   struct { */
-  [FieldOffset(0)] public byte ControlSignalsAOutputs = 2;           ///< Bits 0:1
-  [FieldOffset(0)] public byte ControlSignalsBOutputs = 2;           ///< Bits 3:2
-  [FieldOffset(0)] public byte Y1Y3ClockOutputs = 2;           ///< Bits 5:4
-  [FieldOffset(0)] public byte Y0Y2ClockOutputs = 2;           ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte ControlSignalsAOutputs; // =  2;           ///< Bits 0:1
+  [FieldOffset(0)] public byte ControlSignalsBOutputs; // =  2;           ///< Bits 3:2
+  [FieldOffset(0)] public byte Y1Y3ClockOutputs; // =  2;           ///< Bits 5:4
+  [FieldOffset(0)] public byte Y0Y2ClockOutputs; // =  2;           ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -559,9 +559,9 @@ public unsafe struct SPD3_RDIMM_REGISTER_CONTROL_CONTROL_CLOCK
 public unsafe struct SPD3_RDIMM_REGISTER_CONTROL_RESERVED
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Reserved0 = 4;                        ///< Bits 0:3
-  [FieldOffset(0)] public byte Reserved1 = 4;                        ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte Reserved0; // =  4;                        ///< Bits 0:3
+  [FieldOffset(0)] public byte Reserved1; // =  4;                        ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -569,9 +569,9 @@ public unsafe struct SPD3_RDIMM_REGISTER_CONTROL_RESERVED
 public unsafe struct SPD3_LRDIMM_MODULE_NOMINAL_HEIGHT
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Height = 5;                         ///< Bits 4:0
-  [FieldOffset(0)] public byte Reserved = 3;                         ///< Bits 7:5
-/*   } Bits; */
+  [FieldOffset(0)] public byte Height; // =  5;                         ///< Bits 4:0
+  [FieldOffset(0)] public byte Reserved; // =  3;                         ///< Bits 7:5
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -579,9 +579,9 @@ public unsafe struct SPD3_LRDIMM_MODULE_NOMINAL_HEIGHT
 public unsafe struct SPD3_LRDIMM_MODULE_NOMINAL_THICKNESS
 {
   /*   struct { */
-  [FieldOffset(0)] public byte FrontThickness = 4;                   ///< Bits 3:0
-  [FieldOffset(0)] public byte BackThickness = 4;                   ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte FrontThickness; // =  4;                   ///< Bits 3:0
+  [FieldOffset(0)] public byte BackThickness; // =  4;                   ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -589,10 +589,10 @@ public unsafe struct SPD3_LRDIMM_MODULE_NOMINAL_THICKNESS
 public unsafe struct SPD3_LRDIMM_REFERENCE_RAW_CARD
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Card = 5;                        ///< Bits 4:0
-  [FieldOffset(0)] public byte Revision = 2;                        ///< Bits 6:5
-  [FieldOffset(0)] public byte Extension = 1;                        ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte Card; // =  5;                        ///< Bits 4:0
+  [FieldOffset(0)] public byte Revision; // =  2;                        ///< Bits 6:5
+  [FieldOffset(0)] public byte Extension; // =  1;                        ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -600,10 +600,10 @@ public unsafe struct SPD3_LRDIMM_REFERENCE_RAW_CARD
 public unsafe struct SPD3_LRDIMM_MODULE_ATTRIBUTES
 {
   /*   struct { */
-  [FieldOffset(0)] public byte RegisterCount = 2;                    ///< Bits 1:0
-  [FieldOffset(0)] public byte DramRowCount = 2;                    ///< Bits 3:2
-  [FieldOffset(0)] public byte RegisterType = 4;                    ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte RegisterCount; // =  2;                    ///< Bits 1:0
+  [FieldOffset(0)] public byte DramRowCount; // =  2;                    ///< Bits 3:2
+  [FieldOffset(0)] public byte RegisterType; // =  4;                    ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -611,13 +611,13 @@ public unsafe struct SPD3_LRDIMM_MODULE_ATTRIBUTES
 public unsafe struct SPD3_LRDIMM_TIMING_CONTROL_DRIVE_STRENGTH
 {
   /*   struct { */
-  [FieldOffset(0)] public byte AddressCommandPrelaunch = 1;          ///< Bits 0:0
-  [FieldOffset(0)] public byte Rank1Rank5Swap = 1;          ///< Bits 1:1
-  [FieldOffset(0)] public byte Reserved0 = 1;          ///< Bits 2:2
-  [FieldOffset(0)] public byte Reserved1 = 1;          ///< Bits 3:3
-  [FieldOffset(0)] public byte AddressCommandOutputs = 2;          ///< Bits 5:4
-  [FieldOffset(0)] public byte QxCS_nOutputs = 2;          ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte AddressCommandPrelaunch; // =  1;          ///< Bits 0:0
+  [FieldOffset(0)] public byte Rank1Rank5Swap; // =  1;          ///< Bits 1:1
+  [FieldOffset(0)] public byte Reserved0; // =  1;          ///< Bits 2:2
+  [FieldOffset(0)] public byte Reserved1; // =  1;          ///< Bits 3:3
+  [FieldOffset(0)] public byte AddressCommandOutputs; // =  2;          ///< Bits 5:4
+  [FieldOffset(0)] public byte QxCS_nOutputs; // =  2;          ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -625,11 +625,11 @@ public unsafe struct SPD3_LRDIMM_TIMING_CONTROL_DRIVE_STRENGTH
 public unsafe struct SPD3_LRDIMM_TIMING_DRIVE_STRENGTH
 {
   /*   struct { */
-  [FieldOffset(0)] public byte QxOdtOutputs = 2;                 ///< Bits 1:0
-  [FieldOffset(0)] public byte QxCkeOutputs = 2;                 ///< Bits 3:2
-  [FieldOffset(0)] public byte Y1Y3ClockOutputs = 2;                 ///< Bits 5:4
-  [FieldOffset(0)] public byte Y0Y2ClockOutputs = 2;                 ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte QxOdtOutputs; // =  2;                 ///< Bits 1:0
+  [FieldOffset(0)] public byte QxCkeOutputs; // =  2;                 ///< Bits 3:2
+  [FieldOffset(0)] public byte Y1Y3ClockOutputs; // =  2;                 ///< Bits 5:4
+  [FieldOffset(0)] public byte Y0Y2ClockOutputs; // =  2;                 ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -637,11 +637,11 @@ public unsafe struct SPD3_LRDIMM_TIMING_DRIVE_STRENGTH
 public unsafe struct SPD3_LRDIMM_EXTENDED_DELAY
 {
   /*   struct { */
-  [FieldOffset(0)] public byte YExtendedDelay = 2;                   ///< Bits 1:0
-  [FieldOffset(0)] public byte QxCS_n = 2;                   ///< Bits 3:2
-  [FieldOffset(0)] public byte QxOdt = 2;                   ///< Bits 5:4
-  [FieldOffset(0)] public byte QxCke = 2;                   ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte YExtendedDelay; // =  2;                   ///< Bits 1:0
+  [FieldOffset(0)] public byte QxCS_n; // =  2;                   ///< Bits 3:2
+  [FieldOffset(0)] public byte QxOdt; // =  2;                   ///< Bits 5:4
+  [FieldOffset(0)] public byte QxCke; // =  2;                   ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -649,10 +649,10 @@ public unsafe struct SPD3_LRDIMM_EXTENDED_DELAY
 public unsafe struct SPD3_LRDIMM_ADDITIVE_DELAY_FOR_QXCS_N_QXCA
 {
   /*   struct { */
-  [FieldOffset(0)] public byte DelayY = 3;                         ///< Bits 2:0
-  [FieldOffset(0)] public byte Reserved = 1;                         ///< Bits 3:3
-  [FieldOffset(0)] public byte QxCS_n = 4;                         ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte DelayY; // =  3;                         ///< Bits 2:0
+  [FieldOffset(0)] public byte Reserved; // =  1;                         ///< Bits 3:3
+  [FieldOffset(0)] public byte QxCS_n; // =  4;                         ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -660,9 +660,9 @@ public unsafe struct SPD3_LRDIMM_ADDITIVE_DELAY_FOR_QXCS_N_QXCA
 public unsafe struct SPD3_LRDIMM_ADDITIVE_DELAY_FOR_QXODT_QXCKE
 {
   /*   struct { */
-  [FieldOffset(0)] public byte QxCS_n = 4;                           ///< Bits 3:0
-  [FieldOffset(0)] public byte QxOdt = 4;                           ///< Bits 7:4
-/*   } Bits; */
+  [FieldOffset(0)] public byte QxCS_n; // =  4;                           ///< Bits 3:0
+  [FieldOffset(0)] public byte QxOdt; // =  4;                           ///< Bits 7:4
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -670,11 +670,11 @@ public unsafe struct SPD3_LRDIMM_ADDITIVE_DELAY_FOR_QXODT_QXCKE
 public unsafe struct SPD3_LRDIMM_MDQ_TERMINATION_DRIVE_STRENGTH
 {
   /*   struct { */
-  [FieldOffset(0)] public byte RC8MdqOdtStrength = 3;                ///< Bits 2:0
-  [FieldOffset(0)] public byte RC8Reserved = 1;                ///< Bits 3:3
-  [FieldOffset(0)] public byte RC9MdqOdtStrength = 3;                ///< Bits 6:4
-  [FieldOffset(0)] public byte RC9Reserved = 1;                ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte RC8MdqOdtStrength; // =  3;                ///< Bits 2:0
+  [FieldOffset(0)] public byte RC8Reserved; // =  1;                ///< Bits 3:3
+  [FieldOffset(0)] public byte RC9MdqOdtStrength; // =  3;                ///< Bits 6:4
+  [FieldOffset(0)] public byte RC9Reserved; // =  1;                ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -682,15 +682,15 @@ public unsafe struct SPD3_LRDIMM_MDQ_TERMINATION_DRIVE_STRENGTH
 public unsafe struct SPD3_LRDIMM_RANK_READ_WRITE_QXODT_CONTROL
 {
   /*   struct { */
-  [FieldOffset(0)] public byte RC10DA3ValueR0 = 1;                   ///< Bits 0:0
-  [FieldOffset(0)] public byte RC10DA4ValueR0 = 1;                   ///< Bits 1:1
-  [FieldOffset(0)] public byte RC10DA3ValueR1 = 1;                   ///< Bits 2:2
-  [FieldOffset(0)] public byte RC10DA4ValueR1 = 1;                   ///< Bits 3:3
-  [FieldOffset(0)] public byte RC11DA3ValueR0 = 1;                   ///< Bits 4:4
-  [FieldOffset(0)] public byte RC11DA4ValueR0 = 1;                   ///< Bits 5:5
-  [FieldOffset(0)] public byte RC11DA3ValueR1 = 1;                   ///< Bits 6:6
-  [FieldOffset(0)] public byte RC11DA4ValueR1 = 1;                   ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte RC10DA3ValueR0; // =  1;                   ///< Bits 0:0
+  [FieldOffset(0)] public byte RC10DA4ValueR0; // =  1;                   ///< Bits 1:1
+  [FieldOffset(0)] public byte RC10DA3ValueR1; // =  1;                   ///< Bits 2:2
+  [FieldOffset(0)] public byte RC10DA4ValueR1; // =  1;                   ///< Bits 3:3
+  [FieldOffset(0)] public byte RC11DA3ValueR0; // =  1;                   ///< Bits 4:4
+  [FieldOffset(0)] public byte RC11DA4ValueR0; // =  1;                   ///< Bits 5:5
+  [FieldOffset(0)] public byte RC11DA3ValueR1; // =  1;                   ///< Bits 6:6
+  [FieldOffset(0)] public byte RC11DA4ValueR1; // =  1;                   ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -698,11 +698,11 @@ public unsafe struct SPD3_LRDIMM_RANK_READ_WRITE_QXODT_CONTROL
 public unsafe struct SPD3_LRDIMM_MR_1_2
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Driver_Impedance = 2;                 ///< Bits 1:0
-  [FieldOffset(0)] public byte Rtt_Nom = 3;                 ///< Bits 4:2
-  [FieldOffset(0)] public byte Reserved = 1;                 ///< Bits 5:5
-  [FieldOffset(0)] public byte Rtt_WR = 2;                 ///< Bits 7:6
-/*   } Bits; */
+  [FieldOffset(0)] public byte Driver_Impedance; // =  2;                 ///< Bits 1:0
+  [FieldOffset(0)] public byte Rtt_Nom; // =  3;                 ///< Bits 4:2
+  [FieldOffset(0)] public byte Reserved; // =  1;                 ///< Bits 5:5
+  [FieldOffset(0)] public byte Rtt_WR; // =  2;                 ///< Bits 7:6
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -710,9 +710,9 @@ public unsafe struct SPD3_LRDIMM_MR_1_2
 public unsafe struct SPD3_LRDIMM_MODULE_DELAY_TIME
 {
   /*   struct { */
-  [FieldOffset(0)] public byte MinimumDelayTime = 7;                 ///< Bits 0:6
-  [FieldOffset(0)] public byte Reserved = 1;                 ///< Bits 7:7
-/*   } Bits; */
+  [FieldOffset(0)] public byte MinimumDelayTime; // =  7;                 ///< Bits 0:6
+  [FieldOffset(0)] public byte Reserved; // =  1;                 ///< Bits 7:7
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 

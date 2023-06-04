@@ -58,7 +58,7 @@ public unsafe partial class EFI
   /// Table 1 - SMBIOS 2.1 (32-bit) Entry Point structure, offset 00h
   /// _SM_, specified as four ASCII characters (5F 53 4D 5F).
   ///@{
-  public const string SMBIOS_ANCHOR_STRING = "_SM_";
+  public const ulong SMBIOS_ANCHOR_STRING = "_SM_";
   public const ulong SMBIOS_ANCHOR_STRING_LENGTH = 4;
   ///@}
 
@@ -67,7 +67,7 @@ public unsafe partial class EFI
   /// Table 2 - SMBIOS 3.0 (64-bit) Entry Point structure, offset 00h
   /// _SM3_, specified as five ASCII characters (5F 53 4D 33 5F).
   ///@{
-  public const string SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
+  public const ulong SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
   public const ulong SMBIOS_3_0_ANCHOR_STRING_LENGTH = 5;
   ///@}
 
@@ -229,39 +229,39 @@ public unsafe struct SMBIOS_TABLE_STRING { byte Value; public static implicit op
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_BIOS_CHARACTERISTICS
 {
-  public uint Reserved = 2; ///< Bits 0-1.
-  public uint Unknown = 1;
-  public uint BiosCharacteristicsNotSupported = 1;
-  public uint IsaIsSupported = 1;
-  public uint McaIsSupported = 1;
-  public uint EisaIsSupported = 1;
-  public uint PciIsSupported = 1;
-  public uint PcmciaIsSupported = 1;
-  public uint PlugAndPlayIsSupported = 1;
-  public uint ApmIsSupported = 1;
-  public uint BiosIsUpgradable = 1;
-  public uint BiosShadowingAllowed = 1;
-  public uint VlVesaIsSupported = 1;
-  public uint EscdSupportIsAvailable = 1;
-  public uint BootFromCdIsSupported = 1;
-  public uint SelectableBootIsSupported = 1;
-  public uint RomBiosIsSocketed = 1;
-  public uint BootFromPcmciaIsSupported = 1;
-  public uint EDDSpecificationIsSupported = 1;
-  public uint JapaneseNecFloppyIsSupported = 1;
-  public uint JapaneseToshibaFloppyIsSupported = 1;
-  public uint Floppy525_360IsSupported = 1;
-  public uint Floppy525_12IsSupported = 1;
-  public uint Floppy35_720IsSupported = 1;
-  public uint Floppy35_288IsSupported = 1;
-  public uint PrintScreenIsSupported = 1;
-  public uint Keyboard8042IsSupported = 1;
-  public uint SerialIsSupported = 1;
-  public uint PrinterIsSupported = 1;
-  public uint CgaMonoIsSupported = 1;
-  public uint NecPc98 = 1;
-  public uint ReservedForVendor = 32; ///< Bits 32-63. Bits 32-47 reserved for BIOS vendor
-                                      ///< and bits 48-63 reserved for System Vendor.
+  public uint Reserved; // = 2; ///< Bits 0-1.
+  public uint Unknown; // = 1;
+  public uint BiosCharacteristicsNotSupported; // = 1;
+  public uint IsaIsSupported; // = 1;
+  public uint McaIsSupported; // = 1;
+  public uint EisaIsSupported; // = 1;
+  public uint PciIsSupported; // = 1;
+  public uint PcmciaIsSupported; // = 1;
+  public uint PlugAndPlayIsSupported; // = 1;
+  public uint ApmIsSupported; // = 1;
+  public uint BiosIsUpgradable; // = 1;
+  public uint BiosShadowingAllowed; // = 1;
+  public uint VlVesaIsSupported; // = 1;
+  public uint EscdSupportIsAvailable; // = 1;
+  public uint BootFromCdIsSupported; // = 1;
+  public uint SelectableBootIsSupported; // = 1;
+  public uint RomBiosIsSocketed; // = 1;
+  public uint BootFromPcmciaIsSupported; // = 1;
+  public uint EDDSpecificationIsSupported; // = 1;
+  public uint JapaneseNecFloppyIsSupported; // = 1;
+  public uint JapaneseToshibaFloppyIsSupported; // = 1;
+  public uint Floppy525_360IsSupported; // = 1;
+  public uint Floppy525_12IsSupported; // = 1;
+  public uint Floppy35_720IsSupported; // = 1;
+  public uint Floppy35_288IsSupported; // = 1;
+  public uint PrintScreenIsSupported; // = 1;
+  public uint Keyboard8042IsSupported; // = 1;
+  public uint SerialIsSupported; // = 1;
+  public uint PrinterIsSupported; // = 1;
+  public uint CgaMonoIsSupported; // = 1;
+  public uint NecPc98; // = 1;
+  public uint ReservedForVendor; // = 32; ///< Bits 32-63. Bits 32-47 reserved for BIOS vendor
+  ///< and bits 48-63 reserved for System Vendor.
 }
 
 ///
@@ -272,14 +272,14 @@ public unsafe struct MISC_BIOS_CHARACTERISTICS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MBCE_BIOS_RESERVED
 {
-  public byte AcpiIsSupported = 1;
-  public byte UsbLegacyIsSupported = 1;
-  public byte AgpIsSupported = 1;
-  public byte I2OBootIsSupported = 1;
-  public byte Ls120BootIsSupported = 1;
-  public byte AtapiZipDriveBootIsSupported = 1;
-  public byte Boot1394IsSupported = 1;
-  public byte SmartBatteryIsSupported = 1;
+  public byte AcpiIsSupported; // = 1;
+  public byte UsbLegacyIsSupported; // = 1;
+  public byte AgpIsSupported; // = 1;
+  public byte I2OBootIsSupported; // = 1;
+  public byte Ls120BootIsSupported; // = 1;
+  public byte AtapiZipDriveBootIsSupported; // = 1;
+  public byte Boot1394IsSupported; // = 1;
+  public byte SmartBatteryIsSupported; // = 1;
 }
 
 ///
@@ -290,14 +290,14 @@ public unsafe struct MBCE_BIOS_RESERVED
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MBCE_SYSTEM_RESERVED
 {
-  public byte BiosBootSpecIsSupported = 1;
-  public byte FunctionKeyNetworkBootIsSupported = 1;
-  public byte TargetContentDistributionEnabled = 1;
-  public byte UefiSpecificationSupported = 1;
-  public byte VirtualMachineSupported = 1;
-  public byte ManufacturingModeSupported = 1;
-  public byte ManufacturingModeEnabled = 1;
-  public byte ExtensionByte2Reserved = 1;
+  public byte BiosBootSpecIsSupported; // = 1;
+  public byte FunctionKeyNetworkBootIsSupported; // = 1;
+  public byte TargetContentDistributionEnabled; // = 1;
+  public byte UefiSpecificationSupported; // = 1;
+  public byte VirtualMachineSupported; // = 1;
+  public byte ManufacturingModeSupported; // = 1;
+  public byte ManufacturingModeEnabled; // = 1;
+  public byte ExtensionByte2Reserved; // = 1;
 }
 
 ///
@@ -316,8 +316,8 @@ public unsafe struct MISC_BIOS_CHARACTERISTICS_EXTENSION
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EXTENDED_BIOS_ROM_SIZE
 {
-  public ushort Size = 14;
-  public ushort Unit = 2;
+  public ushort Size; // = 14;
+  public ushort Unit; // = 2;
 }
 
 ///
@@ -388,12 +388,12 @@ public unsafe struct SMBIOS_TABLE_TYPE1
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct BASE_BOARD_FEATURE_FLAGS
 {
-  public byte Motherboard = 1;
-  public byte RequiresDaughterCard = 1;
-  public byte Removable = 1;
-  public byte Replaceable = 1;
-  public byte HotSwappable = 1;
-  public byte Reserved = 3;
+  public byte Motherboard; // = 1;
+  public byte RequiresDaughterCard; // = 1;
+  public byte Removable; // = 1;
+  public byte Replaceable; // = 1;
+  public byte HotSwappable; // = 1;
+  public byte Reserved; // = 3;
 }
 
 ///
@@ -827,12 +827,12 @@ public enum PROCESSOR_FAMILY2_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PROCESSOR_VOLTAGE
 {
-  public byte ProcessorVoltageCapability5V = 1;
-  public byte ProcessorVoltageCapability3_3V = 1;
-  public byte ProcessorVoltageCapability2_9V = 1;
-  public byte ProcessorVoltageCapabilityReserved = 1; ///< Bit 3, must be zero.
-  public byte ProcessorVoltageReserved = 3; ///< Bits 4-6, must be zero.
-  public byte ProcessorVoltageIndicateLegacy = 1;
+  public byte ProcessorVoltageCapability5V; // = 1;
+  public byte ProcessorVoltageCapability3_3V; // = 1;
+  public byte ProcessorVoltageCapability2_9V; // = 1;
+  public byte ProcessorVoltageCapabilityReserved; // = 1; ///< Bit 3, must be zero.
+  public byte ProcessorVoltageReserved; // = 3; ///< Bits 4-6, must be zero.
+  public byte ProcessorVoltageIndicateLegacy; // = 1;
 }
 
 ///
@@ -920,66 +920,66 @@ public enum PROCESSOR_UPGRADE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PROCESSOR_SIGNATURE
 {
-  public uint ProcessorSteppingId = 4;
-  public uint ProcessorModel = 4;
-  public uint ProcessorFamily = 4;
-  public uint ProcessorType = 2;
-  public uint ProcessorReserved1 = 2;
-  public uint ProcessorXModel = 4;
-  public uint ProcessorXFamily = 8;
-  public uint ProcessorReserved2 = 4;
+  public uint ProcessorSteppingId; // = 4;
+  public uint ProcessorModel; // = 4;
+  public uint ProcessorFamily; // = 4;
+  public uint ProcessorType; // = 2;
+  public uint ProcessorReserved1; // = 2;
+  public uint ProcessorXModel; // = 4;
+  public uint ProcessorXFamily; // = 8;
+  public uint ProcessorReserved2; // = 4;
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PROCESSOR_FEATURE_FLAGS
 {
-  public uint ProcessorFpu = 1;
-  public uint ProcessorVme = 1;
-  public uint ProcessorDe = 1;
-  public uint ProcessorPse = 1;
-  public uint ProcessorTsc = 1;
-  public uint ProcessorMsr = 1;
-  public uint ProcessorPae = 1;
-  public uint ProcessorMce = 1;
-  public uint ProcessorCx8 = 1;
-  public uint ProcessorApic = 1;
-  public uint ProcessorReserved1 = 1;
-  public uint ProcessorSep = 1;
-  public uint ProcessorMtrr = 1;
-  public uint ProcessorPge = 1;
-  public uint ProcessorMca = 1;
-  public uint ProcessorCmov = 1;
-  public uint ProcessorPat = 1;
-  public uint ProcessorPse36 = 1;
-  public uint ProcessorPsn = 1;
-  public uint ProcessorClfsh = 1;
-  public uint ProcessorReserved2 = 1;
-  public uint ProcessorDs = 1;
-  public uint ProcessorAcpi = 1;
-  public uint ProcessorMmx = 1;
-  public uint ProcessorFxsr = 1;
-  public uint ProcessorSse = 1;
-  public uint ProcessorSse2 = 1;
-  public uint ProcessorSs = 1;
-  public uint ProcessorReserved3 = 1;
-  public uint ProcessorTm = 1;
-  public uint ProcessorReserved4 = 2;
+  public uint ProcessorFpu; // = 1;
+  public uint ProcessorVme; // = 1;
+  public uint ProcessorDe; // = 1;
+  public uint ProcessorPse; // = 1;
+  public uint ProcessorTsc; // = 1;
+  public uint ProcessorMsr; // = 1;
+  public uint ProcessorPae; // = 1;
+  public uint ProcessorMce; // = 1;
+  public uint ProcessorCx8; // = 1;
+  public uint ProcessorApic; // = 1;
+  public uint ProcessorReserved1; // = 1;
+  public uint ProcessorSep; // = 1;
+  public uint ProcessorMtrr; // = 1;
+  public uint ProcessorPge; // = 1;
+  public uint ProcessorMca; // = 1;
+  public uint ProcessorCmov; // = 1;
+  public uint ProcessorPat; // = 1;
+  public uint ProcessorPse36; // = 1;
+  public uint ProcessorPsn; // = 1;
+  public uint ProcessorClfsh; // = 1;
+  public uint ProcessorReserved2; // = 1;
+  public uint ProcessorDs; // = 1;
+  public uint ProcessorAcpi; // = 1;
+  public uint ProcessorMmx; // = 1;
+  public uint ProcessorFxsr; // = 1;
+  public uint ProcessorSse; // = 1;
+  public uint ProcessorSse2; // = 1;
+  public uint ProcessorSs; // = 1;
+  public uint ProcessorReserved3; // = 1;
+  public uint ProcessorTm; // = 1;
+  public uint ProcessorReserved4; // = 2;
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PROCESSOR_CHARACTERISTIC_FLAGS
 {
-  public ushort ProcessorReserved1 = 1;
-  public ushort ProcessorUnknown = 1;
-  public ushort Processor64BitCapable = 1;
-  public ushort ProcessorMultiCore = 1;
-  public ushort ProcessorHardwareThread = 1;
-  public ushort ProcessorExecuteProtection = 1;
-  public ushort ProcessorEnhancedVirtualization = 1;
-  public ushort ProcessorPowerPerformanceCtrl = 1;
-  public ushort Processor128BitCapable = 1;
-  public ushort ProcessorArm64SocId = 1;
-  public ushort ProcessorReserved2 = 6;
+  public ushort ProcessorReserved1; // = 1;
+  public ushort ProcessorUnknown; // = 1;
+  public ushort Processor64BitCapable; // = 1;
+  public ushort ProcessorMultiCore; // = 1;
+  public ushort ProcessorHardwareThread; // = 1;
+  public ushort ProcessorExecuteProtection; // = 1;
+  public ushort ProcessorEnhancedVirtualization; // = 1;
+  public ushort ProcessorPowerPerformanceCtrl; // = 1;
+  public ushort Processor128BitCapable; // = 1;
+  public ushort ProcessorArm64SocId; // = 1;
+  public ushort ProcessorReserved2; // = 6;
 }
 
 ///
@@ -989,11 +989,11 @@ public unsafe struct PROCESSOR_CHARACTERISTIC_FLAGS
 public unsafe struct PROCESSOR_STATUS_DATA
 {
   /*   struct { */
-  [FieldOffset(0)] public byte CpuStatus = 3; ///< Indicates the status of the processor.
-  [FieldOffset(0)] public byte Reserved1 = 3; ///< Reserved for future use. Must be set to zero.
-  [FieldOffset(0)] public byte SocketPopulated = 1; ///< Indicates if the processor socket is populated or not.
-  [FieldOffset(0)] public byte Reserved2 = 1; ///< Reserved for future use. Must be set to zero.
-/*   } Bits; */
+  [FieldOffset(0)] public byte CpuStatus; // = 3; ///< Indicates the status of the processor.
+  [FieldOffset(0)] public byte Reserved1; // = 3; ///< Reserved for future use. Must be set to zero.
+  [FieldOffset(0)] public byte SocketPopulated; // = 1; ///< Indicates if the processor socket is populated or not.
+  [FieldOffset(0)] public byte Reserved2; // = 1; ///< Reserved for future use. Must be set to zero.
+  /*   } Bits; */
   [FieldOffset(0)] public byte Data;
 }
 
@@ -1079,13 +1079,13 @@ public enum MEMORY_ERROR_DETECT_METHOD
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MEMORY_ERROR_CORRECT_CAPABILITY
 {
-  public byte Other = 1;
-  public byte Unknown = 1;
-  public byte None = 1;
-  public byte SingleBitErrorCorrect = 1;
-  public byte DoubleBitErrorCorrect = 1;
-  public byte ErrorScrubbing = 1;
-  public byte Reserved = 2;
+  public byte Other; // = 1;
+  public byte Unknown; // = 1;
+  public byte None; // = 1;
+  public byte SingleBitErrorCorrect; // = 1;
+  public byte DoubleBitErrorCorrect; // = 1;
+  public byte ErrorScrubbing; // = 1;
+  public byte Reserved; // = 2;
 }
 
 ///
@@ -1108,12 +1108,12 @@ public enum MEMORY_SUPPORT_INTERLEAVE_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MEMORY_SPEED_TYPE
 {
-  public ushort Other = 1;
-  public ushort Unknown = 1;
-  public ushort SeventyNs = 1;
-  public ushort SixtyNs = 1;
-  public ushort FiftyNs = 1;
-  public ushort Reserved = 11;
+  public ushort Other; // = 1;
+  public ushort Unknown; // = 1;
+  public ushort SeventyNs; // = 1;
+  public ushort SixtyNs; // = 1;
+  public ushort FiftyNs; // = 1;
+  public ushort Reserved; // = 11;
 }
 
 ///
@@ -1150,18 +1150,18 @@ public unsafe struct SMBIOS_TABLE_TYPE5
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MEMORY_CURRENT_TYPE
 {
-  public ushort Other = 1;
-  public ushort Unknown = 1;
-  public ushort Standard = 1;
-  public ushort FastPageMode = 1;
-  public ushort Edo = 1;
-  public ushort Parity = 1;
-  public ushort Ecc = 1;
-  public ushort Simm = 1;
-  public ushort Dimm = 1;
-  public ushort BurstEdo = 1;
-  public ushort Sdram = 1;
-  public ushort Reserved = 5;
+  public ushort Other; // = 1;
+  public ushort Unknown; // = 1;
+  public ushort Standard; // = 1;
+  public ushort FastPageMode; // = 1;
+  public ushort Edo; // = 1;
+  public ushort Parity; // = 1;
+  public ushort Ecc; // = 1;
+  public ushort Simm; // = 1;
+  public ushort Dimm; // = 1;
+  public ushort BurstEdo; // = 1;
+  public ushort Sdram; // = 1;
+  public ushort Reserved; // = 5;
 }
 
 ///
@@ -1170,8 +1170,8 @@ public unsafe struct MEMORY_CURRENT_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MEMORY_INSTALLED_ENABLED_SIZE
 {
-  public byte InstalledOrEnabledSize = 7; ///< Size (n), where 2**n is the size in MB.
-  public byte SingleOrDoubleBank = 1;
+  public byte InstalledOrEnabledSize; // = 7; ///< Size (n), where 2**n is the size in MB.
+  public byte SingleOrDoubleBank; // = 1;
 }
 
 ///
@@ -1204,14 +1204,14 @@ public unsafe struct SMBIOS_TABLE_TYPE6
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct CACHE_SRAM_TYPE_DATA
 {
-  public ushort Other = 1;
-  public ushort Unknown = 1;
-  public ushort NonBurst = 1;
-  public ushort Burst = 1;
-  public ushort PipelineBurst = 1;
-  public ushort Synchronous = 1;
-  public ushort Asynchronous = 1;
-  public ushort Reserved = 9;
+  public ushort Other; // = 1;
+  public ushort Unknown; // = 1;
+  public ushort NonBurst; // = 1;
+  public ushort Burst; // = 1;
+  public ushort PipelineBurst; // = 1;
+  public ushort Synchronous; // = 1;
+  public ushort Asynchronous; // = 1;
+  public ushort Reserved; // = 9;
 }
 
 ///
@@ -1573,14 +1573,14 @@ public enum MISC_SLOT_LENGTH
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_SLOT_CHARACTERISTICS1
 {
-  public byte CharacteristicsUnknown = 1;
-  public byte Provides50Volts = 1;
-  public byte Provides33Volts = 1;
-  public byte SharedSlot = 1;
-  public byte PcCard16Supported = 1;
-  public byte CardBusSupported = 1;
-  public byte ZoomVideoSupported = 1;
-  public byte ModemRingResumeSupported = 1;
+  public byte CharacteristicsUnknown; // = 1;
+  public byte Provides50Volts; // = 1;
+  public byte Provides33Volts; // = 1;
+  public byte SharedSlot; // = 1;
+  public byte PcCard16Supported; // = 1;
+  public byte CardBusSupported; // = 1;
+  public byte ZoomVideoSupported; // = 1;
+  public byte ModemRingResumeSupported; // = 1;
 }
 ///
 /// System Slots - Slot Characteristics 2.
@@ -1588,14 +1588,14 @@ public unsafe struct MISC_SLOT_CHARACTERISTICS1
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_SLOT_CHARACTERISTICS2
 {
-  public byte PmeSignalSupported = 1;
-  public byte HotPlugDevicesSupported = 1;
-  public byte SmbusSignalSupported = 1;
-  public byte BifurcationSupported = 1;
-  public byte AsyncSurpriseRemoval = 1;
-  public byte FlexbusSlotCxl10Capable = 1;
-  public byte FlexbusSlotCxl20Capable = 1;
-  public byte Reserved = 1; ///< Set to 0.
+  public byte PmeSignalSupported; // = 1;
+  public byte HotPlugDevicesSupported; // = 1;
+  public byte SmbusSignalSupported; // = 1;
+  public byte BifurcationSupported; // = 1;
+  public byte AsyncSurpriseRemoval; // = 1;
+  public byte FlexbusSlotCxl10Capable; // = 1;
+  public byte FlexbusSlotCxl20Capable; // = 1;
+  public byte Reserved; // = 1; ///< Set to 0.
 }
 
 ///
@@ -2012,22 +2012,22 @@ public enum MEMORY_DEVICE_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MEMORY_DEVICE_TYPE_DETAIL
 {
-  public ushort Reserved = 1;
-  public ushort Other = 1;
-  public ushort Unknown = 1;
-  public ushort FastPaged = 1;
-  public ushort StaticColumn = 1;
-  public ushort PseudoStatic = 1;
-  public ushort Rambus = 1;
-  public ushort Synchronous = 1;
-  public ushort Cmos = 1;
-  public ushort Edo = 1;
-  public ushort WindowDram = 1;
-  public ushort CacheDram = 1;
-  public ushort Nonvolatile = 1;
-  public ushort Registered = 1;
-  public ushort Unbuffered = 1;
-  public ushort LrDimm = 1;
+  public ushort Reserved; // = 1;
+  public ushort Other; // = 1;
+  public ushort Unknown; // = 1;
+  public ushort FastPaged; // = 1;
+  public ushort StaticColumn; // = 1;
+  public ushort PseudoStatic; // = 1;
+  public ushort Rambus; // = 1;
+  public ushort Synchronous; // = 1;
+  public ushort Cmos; // = 1;
+  public ushort Edo; // = 1;
+  public ushort WindowDram; // = 1;
+  public ushort CacheDram; // = 1;
+  public ushort Nonvolatile; // = 1;
+  public ushort Registered; // = 1;
+  public ushort Unbuffered; // = 1;
+  public ushort LrDimm; // = 1;
 }
 
 ///
@@ -2058,14 +2058,14 @@ public unsafe struct MEMORY_DEVICE_OPERATING_MODE_CAPABILITY
   /// Individual bit fields
   ///
   /*   struct { */
-  [FieldOffset(0)] public ushort Reserved = 1; ///< Set to 0.
-  [FieldOffset(0)] public ushort Other = 1;
-  [FieldOffset(0)] public ushort Unknown = 1;
-  [FieldOffset(0)] public ushort VolatileMemory = 1;
-  [FieldOffset(0)] public ushort ByteAccessiblePersistentMemory = 1;
-  [FieldOffset(0)] public ushort BlockAccessiblePersistentMemory = 1;
-  [FieldOffset(0)] public ushort Reserved2 = 10; ///< Set to 0.
-/*   } Bits; */
+  [FieldOffset(0)] public ushort Reserved; // = 1; ///< Set to 0.
+  [FieldOffset(0)] public ushort Other; // = 1;
+  [FieldOffset(0)] public ushort Unknown; // = 1;
+  [FieldOffset(0)] public ushort VolatileMemory; // = 1;
+  [FieldOffset(0)] public ushort ByteAccessiblePersistentMemory; // = 1;
+  [FieldOffset(0)] public ushort BlockAccessiblePersistentMemory; // = 1;
+  [FieldOffset(0)] public ushort Reserved2; // = 10; ///< Set to 0.
+  /*   } Bits; */
   ///
   /// All bit fields as a 16-bit value
   ///
@@ -2402,8 +2402,8 @@ public unsafe struct SMBIOS_TABLE_TYPE25
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_VOLTAGE_PROBE_LOCATION
 {
-  public byte VoltageProbeSite = 5;
-  public byte VoltageProbeStatus = 3;
+  public byte VoltageProbeSite; // = 5;
+  public byte VoltageProbeStatus; // = 3;
 }
 
 ///
@@ -2433,8 +2433,8 @@ public unsafe struct SMBIOS_TABLE_TYPE26
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_COOLING_DEVICE_TYPE
 {
-  public byte CoolingDevice = 5;
-  public byte CoolingDeviceStatus = 3;
+  public byte CoolingDevice; // = 5;
+  public byte CoolingDeviceStatus; // = 3;
 }
 
 ///
@@ -2464,8 +2464,8 @@ public unsafe struct SMBIOS_TABLE_TYPE27
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_TEMPERATURE_PROBE_LOCATION
 {
-  public byte TemperatureProbeSite = 5;
-  public byte TemperatureProbeStatus = 3;
+  public byte TemperatureProbeSite; // = 5;
+  public byte TemperatureProbeStatus; // = 3;
 }
 
 ///
@@ -2495,8 +2495,8 @@ public unsafe struct SMBIOS_TABLE_TYPE28
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct MISC_ELECTRICAL_CURRENT_PROBE_LOCATION
 {
-  public byte ElectricalCurrentProbeSite = 5;
-  public byte ElectricalCurrentProbeStatus = 3;
+  public byte ElectricalCurrentProbeSite; // = 5;
+  public byte ElectricalCurrentProbeStatus; // = 3;
 }
 
 ///
@@ -2773,13 +2773,13 @@ public unsafe struct SMBIOS_TABLE_TYPE38
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SYS_POWER_SUPPLY_CHARACTERISTICS
 {
-  public ushort PowerSupplyHotReplaceable = 1;
-  public ushort PowerSupplyPresent = 1;
-  public ushort PowerSupplyUnplugged = 1;
-  public ushort InputVoltageRangeSwitch = 4;
-  public ushort PowerSupplyStatus = 3;
-  public ushort PowerSupplyType = 4;
-  public ushort Reserved = 2;
+  public ushort PowerSupplyHotReplaceable; // = 1;
+  public ushort PowerSupplyPresent; // = 1;
+  public ushort PowerSupplyUnplugged; // = 1;
+  public ushort InputVoltageRangeSwitch; // = 4;
+  public ushort PowerSupplyStatus; // = 3;
+  public ushort PowerSupplyType; // = 4;
+  public ushort Reserved; // = 2;
 }
 
 ///
@@ -3039,9 +3039,9 @@ public enum FIRMWARE_INVENTORY_FIRMWARE_ID_FORMAT_TYPE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FIRMWARE_CHARACTERISTICS
 {
-  public ushort Updatable = 1;
-  public ushort WriteProtected = 1;
-  public ushort Reserved = 14;
+  public ushort Updatable; // = 1;
+  public ushort WriteProtected; // = 1;
+  public ushort Reserved; // = 14;
 }
 
 ///

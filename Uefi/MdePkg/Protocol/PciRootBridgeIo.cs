@@ -109,12 +109,12 @@ public unsafe partial class EFI
 
   public const ulong EFI_PCI_ATTRIBUTE_INVALID_FOR_ALLOCATE_BUFFER = (~EFI_PCI_ATTRIBUTE_VALID_FOR_ALLOCATE_BUFFER);
 
-  //public const ulong EFI_PCI_ADDRESS = (bus, dev, func, reg) \;
-  //(ulong) ( \
-  //(((ulong) bus) << 24) | \
-  //(((ulong) dev) << 16) | \
-  //(((ulong) func) << 8) | \
-  //(((ulong) (reg)) < 256 ? ((ulong) (reg)) : (ulong) (LShiftU64 ((ulong) (reg), 32))))
+  public const ulong EFI_PCI_ADDRESS = (bus, dev, func, reg) \;
+  (ulong) ( \
+  (((ulong) bus) << 24) | \
+  (((ulong) dev) << 16) | \
+  (((ulong) func) << 8) | \
+  (((ulong) (reg)) < 256 ? ((ulong) (reg)) : (ulong) (LShiftU64 ((ulong) (reg), 32))))
 }
 
 [StructLayout(LayoutKind.Sequential)]

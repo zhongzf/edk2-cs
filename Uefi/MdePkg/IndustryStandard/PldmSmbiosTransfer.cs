@@ -112,7 +112,7 @@ public unsafe struct PLDM_GET_SMBIOS_STRUCTURE_TABLE_RESPONSE
 {
   public uint NextDataTransferHandle;
   public byte TransferFlag;
-  public fixed byte Table[0];
+  public byte[] Table;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -130,7 +130,7 @@ public unsafe struct PLDM_SET_SMBIOS_STRUCTURE_TABLE_REQUEST
 {
   public uint DataTransferHandle;
   public byte TransferFlag;
-  public fixed byte Table[0];
+  public byte[] Table;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -177,7 +177,7 @@ public unsafe struct PLDM_GET_SMBIOS_STRUCTURE_BY_TYPE_RESPONSE
 {
   public uint NextDataTransferHandle;
   public byte TransferFlag;
-  public fixed byte Table[0];
+  public byte[] Table;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -213,7 +213,7 @@ public unsafe struct PLDM_GET_SMBIOS_STRUCTURE_BY_HANDLE_RESPONSE
 {
   public uint NextDataTransferHandle;
   public byte TransferFlag;
-  public fixed byte Table[0];
+  public byte[] Table;
 }
 
 [StructLayout(LayoutKind.Sequential)]

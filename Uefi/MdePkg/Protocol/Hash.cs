@@ -60,23 +60,23 @@ public unsafe partial class EFI
 
   // typedef struct _EFI_HASH_PROTOCOL EFI_HASH_PROTOCOL;
 
-  //typedef byte EFI_MD5_HASH[16];
-  //typedef byte EFI_SHA1_HASH[20];
-  //typedef byte EFI_SHA224_HASH[28];
-  //typedef byte EFI_SHA256_HASH[32];
-  //typedef byte EFI_SHA384_HASH[48];
-  //typedef byte EFI_SHA512_HASH[64];
+  typedef byte EFI_MD5_HASH[16];
+  typedef byte EFI_SHA1_HASH[20];
+  typedef byte EFI_SHA224_HASH[28];
+  typedef byte EFI_SHA256_HASH[32];
+  typedef byte EFI_SHA384_HASH[48];
+  typedef byte EFI_SHA512_HASH[64];
 }
 
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct EFI_HASH_OUTPUT
 {
-  //[FieldOffset(0)] public EFI_MD5_HASH* Md5Hash;
-  //[FieldOffset(0)] public EFI_SHA1_HASH* Sha1Hash;
-  //[FieldOffset(0)] public EFI_SHA224_HASH* Sha224Hash;
-  //[FieldOffset(0)] public EFI_SHA256_HASH* Sha256Hash;
-  //[FieldOffset(0)] public EFI_SHA384_HASH* Sha384Hash;
-  //[FieldOffset(0)] public EFI_SHA512_HASH* Sha512Hash;
+  [FieldOffset(0)] public EFI_MD5_HASH* Md5Hash;
+  [FieldOffset(0)] public EFI_SHA1_HASH* Sha1Hash;
+  [FieldOffset(0)] public EFI_SHA224_HASH* Sha224Hash;
+  [FieldOffset(0)] public EFI_SHA256_HASH* Sha256Hash;
+  [FieldOffset(0)] public EFI_SHA384_HASH* Sha384Hash;
+  [FieldOffset(0)] public EFI_SHA512_HASH* Sha512Hash;
 }
 
 // /**

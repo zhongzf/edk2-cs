@@ -71,14 +71,14 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EAP_MANAGEMENT2_PROTOCOL
 {
-  //public EFI_EAP_GET_SYSTEM_CONFIGURATION GetSystemConfiguration;
-  //public EFI_EAP_SET_SYSTEM_CONFIGURATION SetSystemConfiguration;
-  //public EFI_EAP_INITIALIZE_PORT InitializePort;
-  //public EFI_EAP_USER_LOGON UserLogon;
-  //public EFI_EAP_USER_LOGOFF UserLogoff;
-  //public EFI_EAP_GET_SUPPLICANT_STATUS GetSupplicantStatus;
-  //public EFI_EAP_SET_SUPPLICANT_CONFIGURATION SetSupplicantConfiguration;
-  //public EFI_EAP_GET_SUPPLICANT_STATISTICS GetSupplicantStatistics;
+  public EFI_EAP_GET_SYSTEM_CONFIGURATION GetSystemConfiguration;
+  public EFI_EAP_SET_SYSTEM_CONFIGURATION SetSystemConfiguration;
+  public EFI_EAP_INITIALIZE_PORT InitializePort;
+  public EFI_EAP_USER_LOGON UserLogon;
+  public EFI_EAP_USER_LOGOFF UserLogoff;
+  public EFI_EAP_GET_SUPPLICANT_STATUS GetSupplicantStatus;
+  public EFI_EAP_SET_SUPPLICANT_CONFIGURATION SetSupplicantConfiguration;
+  public EFI_EAP_GET_SUPPLICANT_STATISTICS GetSupplicantStatistics;
   public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT2_PROTOCOL* /*This*/,/* IN OUT */byte* /*Msk*/,/* IN OUT */ulong* /*MskSize*/,/* IN OUT */byte* /*Emsk*/,/* IN OUT */byte* /*EmskSize*/, EFI_STATUS> /*EFI_EAP_GET_KEY*/ GetKey;
 }
 

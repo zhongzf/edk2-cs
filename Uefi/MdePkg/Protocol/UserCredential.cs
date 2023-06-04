@@ -278,10 +278,10 @@ public unsafe struct EFI_USER_CREDENTIAL_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* OUT */EFI_HII_HANDLE* /*Hii*/,/* OUT */EFI_GUID* /*FormSetId*/,/* OUT */EFI_FORM_ID* /*FormId*/, EFI_STATUS> /*EFI_CREDENTIAL_FORM*/ Form;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* IN OUT */ulong* /*Width*/,/* IN OUT */ulong* /*Height*/,/* OUT */EFI_HII_HANDLE* /*Hii*/,/* OUT */EFI_IMAGE_ID* /*Image*/, EFI_STATUS> /*EFI_CREDENTIAL_TILE*/ Tile;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* OUT */EFI_HII_HANDLE* /*Hii*/,/* OUT */EFI_STRING_ID* /*String*/, EFI_STATUS> /*EFI_CREDENTIAL_TITLE*/ Title;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* IN */EFI_USER_PROFILE_HANDLE /*User*/,/* OUT */EFI_USER_INFO_IDENTIFIER* /*Identifier*/, EFI_STATUS> /*EFI_CREDENTIAL_USER*/ User;
+  public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* IN */EFI_USER_PROFILE_HANDLE /*User*/,/* OUT */EFI_USER_INFO_IDENTIFIER* /*Identifier*/, EFI_STATUS> /*EFI_CREDENTIAL_USER*/ User;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* OUT */EFI_CREDENTIAL_LOGON_FLAGS* /*AutoLogon*/, EFI_STATUS> /*EFI_CREDENTIAL_SELECT*/ Select;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_CREDENTIAL_DESELECT*/ Deselect;
-  public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* OUT */EFI_CREDENTIAL_LOGON_FLAGS* /*AutoLogon*/, EFI_STATUS> /*EFI_CREDENTIAL_DEFAULT*/ Default;
+  public readonly delegate* unmanaged</* IN */CONST /*EFI_USER_CREDENTIAL_PROTOCOL*/,/* OUT */EFI_CREDENTIAL_LOGON_FLAGS* /*AutoLogon*/, EFI_STATUS> /*EFI_CREDENTIAL_DEFAULT*/ Default;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* IN */EFI_USER_INFO_HANDLE /*UserInfo*/,/* OUT */EFI_USER_INFO* /*Info*/,/* IN OUT */ulong* /*InfoSize*/, EFI_STATUS> /*EFI_CREDENTIAL_GET_INFO*/ GetInfo;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL_PROTOCOL* /*This*/,/* IN OUT */EFI_USER_INFO_HANDLE* /*UserInfo*/, EFI_STATUS> /*EFI_CREDENTIAL_GET_NEXT_INFO*/ GetNextInfo;
   public EFI_CREDENTIAL_CAPABILITIES Capabilities;

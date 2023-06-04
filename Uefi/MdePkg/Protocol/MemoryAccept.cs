@@ -13,20 +13,20 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EDKII_MEMORY_ACCEPT_PROTOCOL_GUID = new GUID(0x38c74800, 0x5590, 0x4db4, new byte[] { 0xa0, 0xf3, 0x67, 0x5d, 0x9b, 0x8e, 0x80, 0x26 });
+  public static EFI_GUID EDKII_MEMORY_ACCEPT_PROTOCOL_GUID = new GUID(0x38c74800, 0x5590, 0x4db4, new byte[] { 0xa0, 0xf3, 0x67, 0x5d, 0x9b, 0x8e, 0x80, 0x26 });;
 
-  // typedef struct _EDKII_MEMORY_ACCEPT_PROTOCOL EDKII_MEMORY_ACCEPT_PROTOCOL;
+// typedef struct _EDKII_MEMORY_ACCEPT_PROTOCOL EDKII_MEMORY_ACCEPT_PROTOCOL;
 
-  // /**
-  //   @param This                   A pointer to a EDKII_MEMORY_ACCEPT_PROTOCOL.
-  // **/
-  // typedef
-  // EFI_STATUS
-  // (EFIAPI *EDKII_ACCEPT_MEMORY)(
-  //   IN  EDKII_MEMORY_ACCEPT_PROTOCOL  *This,
-  //   IN  EFI_PHYSICAL_ADDRESS          StartAddress,
-  //   IN  ulong                         Size
-  //   );
+// /**
+//   @param This                   A pointer to a EDKII_MEMORY_ACCEPT_PROTOCOL.
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EDKII_ACCEPT_MEMORY)(
+//   IN  EDKII_MEMORY_ACCEPT_PROTOCOL  *This,
+//   IN  EFI_PHYSICAL_ADDRESS          StartAddress,
+//   IN  ulong                         Size
+//   );
 }
 
 ///

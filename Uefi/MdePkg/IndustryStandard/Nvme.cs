@@ -45,10 +45,10 @@ public unsafe partial class EFI
   // These register offsets are defined as 0x1000 + (N * (4 << CAP.DSTRD))
   // Get the doorbell stride bit shift value from the controller capabilities.
   //
-  //  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
-  //public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
+  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
+public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
 
-  // #pragma pack(1)
+// #pragma pack(1)
 }
 
 //
@@ -58,20 +58,20 @@ public unsafe partial class EFI
 public unsafe struct NVME_CAP
 {
   public ushort Mqes;       // Maximum Queue Entries Supported
-  public byte Cqr = 1; // Contiguous Queues Required
-  public byte Ams = 2; // Arbitration Mechanism Supported
-  public byte Rsvd1 = 5;
+  public byte Cqr; // = 1; // Contiguous Queues Required
+  public byte Ams; // = 2; // Arbitration Mechanism Supported
+  public byte Rsvd1; // = 5;
   public byte To;     // Timeout
-  public ushort Dstrd = 4;
-  public ushort Nssrs = 1; // NVM Subsystem Reset Supported NSSRS
-  public ushort Css = 8; // Command Sets Supported - Bit 37
-  public ushort Bps = 1; // Boot Partition Support - Bit 45 in NVMe1.4
-  public ushort Rsvd3 = 2;
-  public byte Mpsmin = 4;
-  public byte Mpsmax = 4;
-  public byte Pmrs = 1;
-  public byte Cmbs = 1;
-  public byte Rsvd4 = 6;
+  public ushort Dstrd; // = 4;
+  public ushort Nssrs; // = 1; // NVM Subsystem Reset Supported NSSRS
+  public ushort Css; // = 8; // Command Sets Supported - Bit 37
+  public ushort Bps; // = 1; // Boot Partition Support - Bit 45 in NVMe1.4
+  public ushort Rsvd3; // = 2;
+  public byte Mpsmin; // = 4;
+  public byte Mpsmax; // = 4;
+  public byte Pmrs; // = 1;
+  public byte Cmbs; // = 1;
+  public byte Rsvd4; // = 6;
 }
 
 //
@@ -90,14 +90,14 @@ public unsafe struct NVME_VER
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_CC
 {
-  public ushort En = 1; // Enable
-  public ushort Rsvd1 = 3;
-  public ushort Css = 3; // I/O Command Set Selected
-  public ushort Mps = 4; // Memory Page Size
-  public ushort Ams = 3; // Arbitration Mechanism Selected
-  public ushort Shn = 2; // Shutdown Notification
-  public byte Iosqes = 4; // I/O Submission Queue Entry Size
-  public byte Iocqes = 4; // I/O Completion Queue Entry Size
+  public ushort En; // = 1; // Enable
+  public ushort Rsvd1; // = 3;
+  public ushort Css; // = 3; // I/O Command Set Selected
+  public ushort Mps; // = 4; // Memory Page Size
+  public ushort Ams; // = 3; // Arbitration Mechanism Selected
+  public ushort Shn; // = 2; // Shutdown Notification
+  public byte Iosqes; // = 4; // I/O Submission Queue Entry Size
+  public byte Iocqes; // = 4; // I/O Completion Queue Entry Size
   public byte Rsvd2;
 }
 public unsafe partial class EFI
@@ -112,11 +112,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_CSTS
 {
-  public uint Rdy = 1; // Ready
-  public uint Cfs = 1; // Controller Fatal Status
-  public uint Shst = 2; // Shutdown Status
-  public uint Nssro = 1; // NVM Subsystem Reset Occurred
-  public uint Rsvd1 = 27;
+  public uint Rdy; // = 1; // Ready
+  public uint Cfs; // = 1; // Controller Fatal Status
+  public uint Shst; // = 2; // Shutdown Status
+  public uint Nssro; // = 1; // NVM Subsystem Reset Occurred
+  public uint Rsvd1; // = 27;
 }
 public unsafe partial class EFI
 {
@@ -129,10 +129,10 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_AQA
 {
-  public ushort Asqs = 12; // Submission Queue Size
-  public ushort Rsvd1 = 4;
-  public ushort Acqs = 12; // Completion Queue Size
-  public ushort Rsvd2 = 4;
+  public ushort Asqs; // = 12; // Submission Queue Size
+  public ushort Rsvd1; // = 4;
+  public ushort Acqs; // = 12; // Completion Queue Size
+  public ushort Rsvd2; // = 4;
 }
 
 public unsafe partial class EFI
@@ -153,11 +153,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_BPINFO
 {
-  public uint Bpsz = 15; // Boot Partition Size
-  public uint Rsvd1 = 9;
-  public uint Brs = 2;  // Boot Read Status
-  public uint Rsvd2 = 5;
-  public uint Abpid = 1;  // Active Boot Partition ID
+  public uint Bpsz; // = 15; // Boot Partition Size
+  public uint Rsvd1; // = 9;
+  public uint Brs; // = 2;  // Boot Read Status
+  public uint Rsvd2; // = 5;
+  public uint Abpid; // = 1;  // Active Boot Partition ID
 }
 
 //
@@ -166,10 +166,10 @@ public unsafe struct NVME_BPINFO
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_BPRSEL
 {
-  public uint Bprsz = 10; // Boot Partition Read Size
-  public uint Bprof = 20; // Boot Partition Read Offset
-  public uint Rsvd1 = 1;
-  public uint Bpid = 1;  // Boot Partition Identifier
+  public uint Bprsz; // = 10; // Boot Partition Read Size
+  public uint Bprof; // = 20; // Boot Partition Read Offset
+  public uint Rsvd1; // = 1;
+  public uint Bpid; // = 1;  // Boot Partition Identifier
 }
 
 //
@@ -178,8 +178,8 @@ public unsafe struct NVME_BPRSEL
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_BPMBL
 {
-  public ulong Rsvd1 = 12;
-  public ulong Bmbba = 52; // Boot Partition Memory Buffer Base Address
+  public ulong Rsvd1; // = 12;
+  public ulong Bmbba; // = 52; // Boot Partition Memory Buffer Base Address
 }
 
 //
@@ -218,18 +218,18 @@ public unsafe struct NVME_READ
   // CDW 12
   //
   public ushort Nlb;              /* Number of Sectors */
-  public ushort Rsvd1 = 10;
-  public ushort Prinfo = 4;       /* Protection Info Check */
-  public ushort Fua = 1;       /* Force Unit Access */
-  public ushort Lr = 1;       /* Limited Retry */
+  public ushort Rsvd1; // = 10;
+  public ushort Prinfo; // = 4;       /* Protection Info Check */
+  public ushort Fua; // = 1;       /* Force Unit Access */
+  public ushort Lr; // = 1;       /* Limited Retry */
   //
   // CDW 13
   //
-  public uint Af = 4;       /* Access Frequency */
-  public uint Al = 2;       /* Access Latency */
-  public uint Sr = 1;       /* Sequential Request */
-  public uint In = 1;       /* Incompressible */
-  public uint Rsvd2 = 24;
+  public uint Af; // = 4;       /* Access Frequency */
+  public uint Al; // = 2;       /* Access Latency */
+  public uint Sr; // = 1;       /* Sequential Request */
+  public uint In; // = 1;       /* Incompressible */
+  public uint Rsvd2; // = 24;
   //
   // CDW 14
   //
@@ -255,18 +255,18 @@ public unsafe struct NVME_WRITE
   // CDW 12
   //
   public ushort Nlb;              /* Number of Sectors */
-  public ushort Rsvd1 = 10;
-  public ushort Prinfo = 4;       /* Protection Info Check */
-  public ushort Fua = 1;       /* Force Unit Access */
-  public ushort Lr = 1;       /* Limited Retry */
+  public ushort Rsvd1; // = 10;
+  public ushort Prinfo; // = 4;       /* Protection Info Check */
+  public ushort Fua; // = 1;       /* Force Unit Access */
+  public ushort Lr; // = 1;       /* Limited Retry */
   //
   // CDW 13
   //
-  public uint Af = 4;       /* Access Frequency */
-  public uint Al = 2;       /* Access Latency */
-  public uint Sr = 1;       /* Sequential Request */
-  public uint In = 1;       /* Incompressible */
-  public uint Rsvd2 = 24;
+  public uint Af; // = 4;       /* Access Frequency */
+  public uint Al; // = 2;       /* Access Latency */
+  public uint Sr; // = 1;       /* Sequential Request */
+  public uint In; // = 1;       /* Incompressible */
+  public uint Rsvd2; // = 24;
   //
   // CDW 14
   //
@@ -303,8 +303,8 @@ public unsafe struct NVME_WRITE_UNCORRECTABLE
   //
   // CDW 12
   //
-  public uint Nlb = 16;       /* Number of  Logical Blocks */
-  public uint Rsvd1 = 16;
+  public uint Nlb; // = 16;       /* Number of  Logical Blocks */
+  public uint Rsvd1; // = 16;
 }
 
 //
@@ -321,10 +321,10 @@ public unsafe struct NVME_WRITE_ZEROES
   // CDW 12
   //
   public ushort Nlb;              /* Number of Logical Blocks */
-  public ushort Rsvd1 = 10;
-  public ushort Prinfo = 4;       /* Protection Info Check */
-  public ushort Fua = 1;       /* Force Unit Access */
-  public ushort Lr = 1;       /* Limited Retry */
+  public ushort Rsvd1; // = 10;
+  public ushort Prinfo; // = 4;       /* Protection Info Check */
+  public ushort Fua; // = 1;       /* Force Unit Access */
+  public ushort Lr; // = 1;       /* Limited Retry */
   //
   // CDW 13
   //
@@ -354,10 +354,10 @@ public unsafe struct NVME_COMPARE
   // CDW 12
   //
   public ushort Nlb;              /* Number of Logical Blocks */
-  public ushort Rsvd1;// = 10;
-  public ushort Prinfo;// = 4;       /* Protection Info Check */
-  public ushort Fua;// = 1;       /* Force Unit Access */
-  public ushort Lr;// = 1;       /* Limited Retry */
+  public ushort Rsvd1; // = 10;
+  public ushort Prinfo; // = 4;       /* Protection Info Check */
+  public ushort Fua; // = 1;       /* Force Unit Access */
+  public ushort Lr; // = 1;       /* Limited Retry */
   //
   // CDW 13
   //
@@ -389,20 +389,20 @@ public unsafe struct NVME_PSDESCRIPTOR
 {
   public ushort Mp;             /* Maximum Power */
   public byte Rsvd1;          /* Reserved as of Nvm Express 1.1 Spec */
-  public byte Mps = 1;      /* Max Power Scale */
-  public byte Nops = 1;      /* Non-Operational State */
-  public byte Rsvd2 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
+  public byte Mps; // = 1;      /* Max Power Scale */
+  public byte Nops; // = 1;      /* Non-Operational State */
+  public byte Rsvd2; // = 6;      /* Reserved as of Nvm Express 1.1 Spec */
   public uint Enlat;          /* Entry Latency */
   public uint Exlat;          /* Exit Latency */
-  public byte Rrt = 5;      /* Relative Read Throughput */
-  public byte Rsvd3 = 3;      /* Reserved as of Nvm Express 1.1 Spec */
-  public byte Rrl = 5;      /* Relative Read Latency */
-  public byte Rsvd4 = 3;      /* Reserved as of Nvm Express 1.1 Spec */
-  public byte Rwt = 5;      /* Relative Write Throughput */
-  public byte Rsvd5 = 3;      /* Reserved as of Nvm Express 1.1 Spec */
-  public byte Rwl = 5;      /* Relative Write Latency */
-  public byte Rsvd6 = 3;      /* Reserved as of Nvm Express 1.1 Spec */
-  //public fixed byte Rsvd7[16];      /* Reserved as of Nvm Express 1.1 Spec */
+  public byte Rrt; // = 5;      /* Relative Read Throughput */
+  public byte Rsvd3; // = 3;      /* Reserved as of Nvm Express 1.1 Spec */
+  public byte Rrl; // = 5;      /* Relative Read Latency */
+  public byte Rsvd4; // = 3;      /* Reserved as of Nvm Express 1.1 Spec */
+  public byte Rwt; // = 5;      /* Relative Write Throughput */
+  public byte Rsvd5; // = 3;      /* Reserved as of Nvm Express 1.1 Spec */
+  public byte Rwl; // = 5;      /* Relative Write Latency */
+  public byte Rsvd6; // = 3;      /* Reserved as of Nvm Express 1.1 Spec */
+  public fixed byte Rsvd7[16];      /* Reserved as of Nvm Express 1.1 Spec */
 }
 
 //
@@ -432,10 +432,10 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
   public ushort Oacs;  /* Optional Admin Command Support */
   public unsafe partial class EFI
   {
-    //public const ulong NAMESPACE_MANAGEMENT_SUPPORTED = BIT3;
-    //public const ulong FW_DOWNLOAD_ACTIVATE_SUPPORTED = BIT2;
-    //public const ulong FORMAT_NVM_SUPPORTED = BIT1;
-    //public const ulong SECURITY_SEND_RECEIVE_SUPPORTED = BIT0;
+    public const ulong NAMESPACE_MANAGEMENT_SUPPORTED = BIT3;
+    public const ulong FW_DOWNLOAD_ACTIVATE_SUPPORTED = BIT2;
+    public const ulong FORMAT_NVM_SUPPORTED = BIT1;
+    public const ulong SECURITY_SEND_RECEIVE_SUPPORTED = BIT0;
     public byte Acl;   /* Abort Command Limit */
     public byte Aerl;  /* Async Event Request Limit */
     public byte Frmw;  /* Firmware updates */
@@ -452,13 +452,13 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
     public ushort Mtfa;        /* Maximum Time for Firmware Activation */
     public uint Hmpre;       /* Host Memory Buffer Preferred Size */
     public uint Hmmin;       /* Host Memory Buffer Minimum Size */
-    //public fixed byte Tnvmcap[16]; /* Total NVM Capacity */
-    //public fixed byte Unvmcap[16]; /* Unallocated NVM Capacity */
+    public fixed byte Tnvmcap[16]; /* Total NVM Capacity */
+    public fixed byte Unvmcap[16]; /* Unallocated NVM Capacity */
     public uint Rpmbs;       /* Replay Protected Memory Block Support */
     public ushort Edstt;       /* Extended Device Self-test Time */
     public byte Dsto;        /* Device Self-test Options  */
     public byte Fwug;        /* Firmware Update Granularity */
-    //public fixed byte Rsvd2[192];  /* Reserved as of Nvm Express 1.4 Spec */
+    public fixed byte Rsvd2[192];  /* Reserved as of Nvm Express 1.4 Spec */
     //
     // NVM Command Set Attributes
     //
@@ -477,17 +477,17 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
     public ushort Acwu;       /* Atomic Compare & Write Unit */
     public ushort Rsvd5;      /* Reserved as of Nvm Express 1.1 Spec */
     public uint Sgls;       /* SGL Support  */
-    //public fixed byte Rsvd6[164]; /* Reserved as of Nvm Express 1.1 Spec */
-    ////
-    //// I/O Command set Attributes
-    ////
-    //public fixed byte Rsvd7[1344]; /* Reserved as of Nvm Express 1.1 Spec */
-    ////
-    //// Power State Descriptors
-    ////
-    //public fixed NVME_PSDESCRIPTOR PsDescriptor[32];
+    public fixed byte Rsvd6[164]; /* Reserved as of Nvm Express 1.1 Spec */
+    //
+    // I/O Command set Attributes
+    //
+    public fixed byte Rsvd7[1344]; /* Reserved as of Nvm Express 1.1 Spec */
+    //
+    // Power State Descriptors
+    //
+    public fixed NVME_PSDESCRIPTOR PsDescriptor[32];
 
-    //public fixed byte VendorData[1024]; /* Vendor specific data */
+    public fixed byte VendorData[1024]; /* Vendor specific data */
   }
 }
 
@@ -496,14 +496,14 @@ public unsafe struct NVME_LBAFORMAT
 {
   public ushort Ms;             /* Metadata Size */
   public byte Lbads;          /* LBA Data Size */
-  public byte Rp = 2;      /* Relative Performance */
+  public byte Rp; // = 2;      /* Relative Performance */
   public unsafe partial class EFI
   {
-    public const ulong LBAF_RP_BEST = 00;
-    public const ulong LBAF_RP_BETTER = 01;
-    public const ulong LBAF_RP_GOOD = 10;
-    public const ulong LBAF_RP_DEGRADED = 11;
-    public byte Rsvd1 = 6;      /* Reserved as of Nvm Express 1.1 Spec */
+    public const ulong LBAF_RP_BEST = 00b;
+public const ulong LBAF_RP_BETTER = 01b;
+public const ulong LBAF_RP_GOOD = 10b;
+public const ulong LBAF_RP_DEGRADED = 11b;
+  public byte Rsvd1; // = 6;      /* Reserved as of Nvm Express 1.1 Spec */
   }
 }
 
@@ -630,9 +630,9 @@ public unsafe struct NVME_BOOT_PARTITION_HEADER
 {
   public byte LogIdentifier;   /* Log Identifier, shall be set to 15h */
   public fixed byte Rsvd1[3];
-  public uint Bpsz = 15;      /* Boot Partition Size */
-  public uint Rsvd2 = 16;
-  public uint Abpid = 1;       /* Active Boot Partition ID */
+  public uint Bpsz; // = 15;      /* Boot Partition Size */
+  public uint Rsvd2; // = 16;
+  public uint Abpid; // = 1;       /* Active Boot Partition ID */
   public fixed byte Rsvd3[8];
 }
 
@@ -645,8 +645,8 @@ public unsafe struct NVME_ADMIN_IDENTIFY
   //
   // CDW 10
   //
-  public uint Cns = 2;
-  public uint Rsvd1 = 30;
+  public uint Cns; // = 2;
+  public uint Rsvd1; // = 30;
 }
 
 //
@@ -658,16 +658,16 @@ public unsafe struct NVME_ADMIN_CRIOCQ
   //
   // CDW 10
   //
-  public uint Qid = 16;       /* Queue Identifier */
-  public uint Qsize = 16;       /* Queue Size */
+  public uint Qid; // = 16;       /* Queue Identifier */
+  public uint Qsize; // = 16;       /* Queue Size */
 
   //
   // CDW 11
   //
-  public uint Pc = 1;        /* Physically Contiguous */
-  public uint Ien = 1;        /* Interrupts Enabled */
-  public uint Rsvd1 = 14;       /* reserved as of Nvm Express 1.1 Spec */
-  public uint Iv = 16;       /* Interrupt Vector for MSI-X or MSI*/
+  public uint Pc; // = 1;        /* Physically Contiguous */
+  public uint Ien; // = 1;        /* Interrupts Enabled */
+  public uint Rsvd1; // = 14;       /* reserved as of Nvm Express 1.1 Spec */
+  public uint Iv; // = 16;       /* Interrupt Vector for MSI-X or MSI*/
 }
 
 //
@@ -679,16 +679,16 @@ public unsafe struct NVME_ADMIN_CRIOSQ
   //
   // CDW 10
   //
-  public uint Qid = 16;       /* Queue Identifier */
-  public uint Qsize = 16;       /* Queue Size */
+  public uint Qid; // = 16;       /* Queue Identifier */
+  public uint Qsize; // = 16;       /* Queue Size */
 
   //
   // CDW 11
   //
-  public uint Pc = 1;        /* Physically Contiguous */
-  public uint Qprio = 2;        /* Queue Priority */
-  public uint Rsvd1 = 13;       /* Reserved as of Nvm Express 1.1 Spec */
-  public uint Cqid = 16;       /* Completion Queue ID */
+  public uint Pc; // = 1;        /* Physically Contiguous */
+  public uint Qprio; // = 2;        /* Queue Priority */
+  public uint Rsvd1; // = 13;       /* Reserved as of Nvm Express 1.1 Spec */
+  public uint Cqid; // = 16;       /* Completion Queue ID */
 }
 
 //
@@ -726,8 +726,8 @@ public unsafe struct NVME_ADMIN_ABORT
   //
   // CDW 10
   //
-  public uint Sqid = 16;        /* Submission Queue identifier */
-  public uint Cid = 16;        /* Command Identifier */
+  public uint Sqid; // = 16;        /* Submission Queue identifier */
+  public uint Cid; // = 16;        /* Command Identifier */
 }
 
 //
@@ -739,9 +739,9 @@ public unsafe struct NVME_ADMIN_FIRMWARE_ACTIVATE
   //
   // CDW 10
   //
-  public uint Fs = 3;        /* Submission Queue identifier */
-  public uint Aa = 2;        /* Command Identifier */
-  public uint Rsvd1 = 27;
+  public uint Fs; // = 3;        /* Submission Queue identifier */
+  public uint Aa; // = 2;        /* Command Identifier */
+  public uint Rsvd1; // = 27;
 }
 
 //
@@ -769,9 +769,9 @@ public unsafe struct NVME_ADMIN_GET_FEATURES
   //
   // CDW 10
   //
-  public uint Fid = 8;         /* Feature Identifier */
-  public uint Sel = 3;         /* Select */
-  public uint Rsvd1 = 21;
+  public uint Fid; // = 8;         /* Feature Identifier */
+  public uint Sel; // = 3;         /* Select */
+  public uint Rsvd1; // = 21;
 }
 
 //
@@ -783,16 +783,16 @@ public unsafe struct NVME_ADMIN_GET_LOG_PAGE
   //
   // CDW 10
   //
-  public uint Lid = 8;        /* Log Page Identifier */
+  public uint Lid; // = 8;        /* Log Page Identifier */
   public unsafe partial class EFI
   {
     public const ulong LID_ERROR_INFO = 0x1;
     public const ulong LID_SMART_INFO = 0x2;
     public const ulong LID_FW_SLOT_INFO = 0x3;
     public const ulong LID_BP_INFO = 0x15;
-    public uint Rsvd1 = 8;
-    public uint Numd = 12;       /* Number of Dwords */
-    public uint Rsvd2 = 4;        /* Reserved as of Nvm Express 1.1 Spec */
+    public uint Rsvd1; // = 8;
+    public uint Numd; // = 12;       /* Number of Dwords */
+    public uint Rsvd2; // = 4;        /* Reserved as of Nvm Express 1.1 Spec */
   }
 }
 
@@ -805,9 +805,9 @@ public unsafe struct NVME_ADMIN_SET_FEATURES
   //
   // CDW 10
   //
-  public uint Fid = 8;        /* Feature Identifier */
-  public uint Rsvd1 = 23;
-  public uint Sv = 1;        /* Save */
+  public uint Fid; // = 8;        /* Feature Identifier */
+  public uint Rsvd1; // = 23;
+  public uint Sv; // = 1;        /* Save */
 }
 
 //
@@ -819,12 +819,12 @@ public unsafe struct NVME_ADMIN_FORMAT_NVM
   //
   // CDW 10
   //
-  public uint Lbaf = 4;        /* LBA Format */
-  public uint Ms = 1;        /* Metadata Settings */
-  public uint Pi = 3;        /* Protection Information */
-  public uint Pil = 1;        /* Protection Information Location */
-  public uint Ses = 3;        /* Secure Erase Settings */
-  public uint Rsvd1 = 20;
+  public uint Lbaf; // = 4;        /* LBA Format */
+  public uint Ms; // = 1;        /* Metadata Settings */
+  public uint Pi; // = 3;        /* Protection Information */
+  public uint Pil; // = 1;        /* Protection Information Location */
+  public uint Ses; // = 3;        /* Secure Erase Settings */
+  public uint Rsvd1; // = 20;
 }
 
 //
@@ -836,9 +836,9 @@ public unsafe struct NVME_ADMIN_SECURITY_RECEIVE
   //
   // CDW 10
   //
-  public uint Rsvd1 = 8;
-  public uint Spsp = 16;       /* SP Specific */
-  public uint Secp = 8;        /* Security Protocol */
+  public uint Rsvd1; // = 8;
+  public uint Spsp; // = 16;       /* SP Specific */
+  public uint Secp; // = 8;        /* Security Protocol */
   //
   // CDW 11
   //
@@ -854,9 +854,9 @@ public unsafe struct NVME_ADMIN_SECURITY_SEND
   //
   // CDW 10
   //
-  public uint Rsvd1 = 8;
-  public uint Spsp = 16;       /* SP Specific */
-  public uint Secp = 8;        /* Security Protocol */
+  public uint Rsvd1; // = 8;
+  public uint Spsp; // = 16;       /* SP Specific */
+  public uint Secp; // = 8;        /* Security Protocol */
   //
   // CDW 11
   //
@@ -911,9 +911,9 @@ public unsafe struct NVME_SQ
   // CDW 0, Common to all commands
   //
   public byte Opc;       // Opcode
-  public byte Fuse = 2; // Fused Operation
-  public byte Rsvd1 = 5;
-  public byte Psdt = 1; // PRP or SGL for Data Transfer
+  public byte Fuse; // = 2; // Fused Operation
+  public byte Rsvd1; // = 5;
+  public byte Psdt; // = 1; // PRP or SGL for Data Transfer
   public ushort Cid;       // Command Identifier
 
   //
@@ -962,12 +962,12 @@ public unsafe struct NVME_CQ
   // CDW 3
   //
   public ushort Cid;            // Command Identifier
-  public ushort Pt = 1;      // Phase Tag
-  public ushort Sc = 8;      // Status Code
-  public ushort Sct = 3;      // Status Code Type
-  public ushort Rsvd2 = 2;
-  public ushort Mo = 1;      // More
-  public ushort Dnr = 1;      // Do Not Retry
+  public ushort Pt; // = 1;      // Phase Tag
+  public ushort Sc; // = 8;      // Status Code
+  public ushort Sct; // = 3;      // Status Code Type
+  public ushort Rsvd2; // = 2;
+  public ushort Mo; // = 1;      // More
+  public ushort Dnr; // = 1;      // Do Not Retry
 }
 
 public unsafe partial class EFI
@@ -1063,9 +1063,9 @@ public enum NVME_FW_ACTIVATE_SLOT
 //
 public enum NVME_LOG_ID
 {
-  //ErrorInfoLogID = LID_ERROR_INFO,
-  //SmartHealthInfoLogID = LID_SMART_INFO,
-  //FirmwareSlotInfoLogID = LID_FW_SLOT_INFO
+  ErrorInfoLogID = LID_ERROR_INFO,
+  SmartHealthInfoLogID = LID_SMART_INFO,
+  FirmwareSlotInfoLogID = LID_FW_SLOT_INFO
 }
 
 //
@@ -1078,13 +1078,13 @@ public unsafe struct NVME_ACTIVE_FW_INFO
   //
   // Indicates the firmware slot from which the actively running firmware revision was loaded.
   //
-  public byte ActivelyRunningFwSlot;// = 3;
-  //public byte                          = 1;
+  public byte ActivelyRunningFwSlot; // = 3;
+  public byte                         ; // = 1;
   //
   // Indicates the firmware slot that is going to be activated at the next controller reset. If this field is 0h, then the controller does not indicate the firmware slot that is going to be activated at the next controller reset.
   //
-  public byte NextActiveFwSlot;// = 3;
-  //public byte                          = 1;
+  public byte NextActiveFwSlot; // = 3;
+  public byte                         ; // = 1;
 }
 
 //
@@ -1098,12 +1098,12 @@ public unsafe struct NVME_FW_SLOT_INFO_LOG
   // Specifies information about the active firmware revision.
   // s
   public NVME_ACTIVE_FW_INFO ActiveFwInfo;
-  //public fixed byte Reserved1[7];
-  ////
-  //// Contains the revision of the firmware downloaded to firmware slot 1/7. If no valid firmware revision is present or if this slot is unsupported, all zeros shall be returned.
-  ////
-  //byte FwRevisionSlot[7][8];
-  //public fixed byte Reserved2[448];
+  public fixed byte Reserved1[7];
+  //
+  // Contains the revision of the firmware downloaded to firmware slot 1/7. If no valid firmware revision is present or if this slot is unsupported, all zeros shall be returned.
+  //
+  byte FwRevisionSlot[7][8];
+  public fixed byte Reserved2[448];
 }
 
 //
@@ -1116,12 +1116,12 @@ public unsafe struct NVME_SMART_HEALTH_INFO_LOG
   //
   // This field indicates critical warnings for the state of the controller.
   //
-  public byte CriticalWarningAvailableSpare = 1;
-  public byte CriticalWarningTemperature = 1;
-  public byte CriticalWarningReliability = 1;
-  public byte CriticalWarningMediaReadOnly = 1;
-  public byte CriticalWarningVolatileBackup = 1;
-  public byte CriticalWarningReserved = 3;
+  public byte CriticalWarningAvailableSpare; // = 1;
+  public byte CriticalWarningTemperature; // = 1;
+  public byte CriticalWarningReliability; // = 1;
+  public byte CriticalWarningMediaReadOnly; // = 1;
+  public byte CriticalWarningVolatileBackup; // = 1;
+  public byte CriticalWarningReserved; // = 3;
   //
   // Contains a value corresponding to a temperature in degrees Kelvin that represents the current composite temperature of the controller and namespace(s) associated with that controller. The manner in which this value is computed is implementation specific and may not represent the actual temperature of any physical point in the NVM subsystem.
   //

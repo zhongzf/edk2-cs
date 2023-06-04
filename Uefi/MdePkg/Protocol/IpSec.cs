@@ -34,8 +34,8 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_IPSEC2_PROTOCOL_GUID = new GUID(
       0xa3979e64, 0xace8, 0x4ddc, new byte[] { 0xbc, 0x7, 0x4d, 0x66, 0xb8, 0xfd, 0x9, 0x77 });
 
-  //  typedef struct _EFI_IPSEC_PROTOCOL   EFI_IPSEC_PROTOCOL;
-  //typedef struct _EFI_IPSEC2_PROTOCOL  EFI_IPSEC2_PROTOCOL;
+  typedef struct _EFI_IPSEC_PROTOCOL   EFI_IPSEC_PROTOCOL;
+typedef struct _EFI_IPSEC2_PROTOCOL  EFI_IPSEC2_PROTOCOL;
 }
 
 ///

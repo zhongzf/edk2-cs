@@ -86,10 +86,10 @@ public unsafe struct SPDM_VERSION_RESPONSE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SPDM_VERSION_NUMBER
 {
-  public ushort Alpha = 4;
-  public ushort UpdateVersionNumber = 4;
-  public ushort MinorVersion = 4;
-  public ushort MajorVersion = 4;
+  public ushort Alpha; // = 4;
+  public ushort UpdateVersionNumber; // = 4;
+  public ushort MinorVersion; // = 4;
+  public ushort MajorVersion; // = 4;
 }
 
 ///

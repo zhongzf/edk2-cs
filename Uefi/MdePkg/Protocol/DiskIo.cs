@@ -24,7 +24,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID name defined in EFI1.1.
   ///
-  public static EFI_GUID DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
+  public const ulong DISK_IO_PROTOCOL = EFI_DISK_IO_PROTOCOL_GUID;
 
   // typedef struct _EFI_DISK_IO_PROTOCOL EFI_DISK_IO_PROTOCOL;
 }

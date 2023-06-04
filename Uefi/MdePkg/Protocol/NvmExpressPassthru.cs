@@ -67,9 +67,9 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NVME_CDW0
 {
-  public uint Opcode = 8;
-  public uint FusedOperation = 2;
-  public uint Reserved = 22;
+  public uint Opcode; // = 8;
+  public uint FusedOperation; // = 2;
+  public uint Reserved; // = 22;
 }
 
 public unsafe partial class EFI

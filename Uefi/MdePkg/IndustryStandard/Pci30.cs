@@ -42,7 +42,7 @@ public unsafe partial class EFI
     @retval FALSE   Device is not a SATA controller.
 
   **/
-  //public const ulong IS_PCI_SATADPA = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SATADPA);
+  public const ulong IS_PCI_SATADPA = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SATADPA);
 
   ///
   /// PCI Capability List IDs and records

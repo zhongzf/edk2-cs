@@ -28,17 +28,17 @@ public unsafe partial class EFI
 public unsafe struct PCI_EXPRESS_REG_L1_PM_SUBSTATES_CAPABILITY
 {
   /*   struct { */
-  [FieldOffset(0)] public uint PciPmL12 = 1;
-  [FieldOffset(0)] public uint PciPmL11 = 1;
-  [FieldOffset(0)] public uint AspmL12 = 1;
-  [FieldOffset(0)] public uint AspmL11 = 1;
-  [FieldOffset(0)] public uint L1PmSubstates = 1;
-  [FieldOffset(0)] public uint Reserved = 3;
-  [FieldOffset(0)] public uint CommonModeRestoreTime = 8;
-  [FieldOffset(0)] public uint TPowerOnScale = 2;
-  [FieldOffset(0)] public uint Reserved2 = 1;
-  [FieldOffset(0)] public uint TPowerOnValue = 5;
-  [FieldOffset(0)] public uint Reserved3 = 8;
+  [FieldOffset(0)] public uint PciPmL12; // = 1;
+  [FieldOffset(0)] public uint PciPmL11; // = 1;
+  [FieldOffset(0)] public uint AspmL12; // = 1;
+  [FieldOffset(0)] public uint AspmL11; // = 1;
+  [FieldOffset(0)] public uint L1PmSubstates; // = 1;
+  [FieldOffset(0)] public uint Reserved; // = 3;
+  [FieldOffset(0)] public uint CommonModeRestoreTime; // = 8;
+  [FieldOffset(0)] public uint TPowerOnScale; // = 2;
+  [FieldOffset(0)] public uint Reserved2; // = 1;
+  [FieldOffset(0)] public uint TPowerOnValue; // = 5;
+  [FieldOffset(0)] public uint Reserved3; // = 8;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -47,15 +47,15 @@ public unsafe struct PCI_EXPRESS_REG_L1_PM_SUBSTATES_CAPABILITY
 public unsafe struct PCI_EXPRESS_REG_L1_PM_SUBSTATES_CONTROL1
 {
   /*   struct { */
-  [FieldOffset(0)] public uint PciPmL12 = 1;
-  [FieldOffset(0)] public uint PciPmL11 = 1;
-  [FieldOffset(0)] public uint AspmL12 = 1;
-  [FieldOffset(0)] public uint AspmL11 = 1;
-  [FieldOffset(0)] public uint Reserved = 4;
-  [FieldOffset(0)] public uint CommonModeRestoreTime = 8;
-  [FieldOffset(0)] public uint LtrL12ThresholdValue = 10;
-  [FieldOffset(0)] public uint Reserved2 = 3;
-  [FieldOffset(0)] public uint LtrL12ThresholdScale = 3;
+  [FieldOffset(0)] public uint PciPmL12; // = 1;
+  [FieldOffset(0)] public uint PciPmL11; // = 1;
+  [FieldOffset(0)] public uint AspmL12; // = 1;
+  [FieldOffset(0)] public uint AspmL11; // = 1;
+  [FieldOffset(0)] public uint Reserved; // = 4;
+  [FieldOffset(0)] public uint CommonModeRestoreTime; // = 8;
+  [FieldOffset(0)] public uint LtrL12ThresholdValue; // = 10;
+  [FieldOffset(0)] public uint Reserved2; // = 3;
+  [FieldOffset(0)] public uint LtrL12ThresholdScale; // = 3;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -64,10 +64,10 @@ public unsafe struct PCI_EXPRESS_REG_L1_PM_SUBSTATES_CONTROL1
 public unsafe struct PCI_EXPRESS_REG_L1_PM_SUBSTATES_CONTROL2
 {
   /*   struct { */
-  [FieldOffset(0)] public uint TPowerOnScale = 2;
-  [FieldOffset(0)] public uint Reserved = 1;
-  [FieldOffset(0)] public uint TPowerOnValue = 5;
-  [FieldOffset(0)] public uint Reserved2 = 24;
+  [FieldOffset(0)] public uint TPowerOnScale; // = 2;
+  [FieldOffset(0)] public uint Reserved; // = 1;
+  [FieldOffset(0)] public uint TPowerOnValue; // = 5;
+  [FieldOffset(0)] public uint Reserved2; // = 24;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }

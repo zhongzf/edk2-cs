@@ -538,27 +538,27 @@ public unsafe struct EFI_IPSEC_SA_DATA2
 /// specifies the identifier for PAD entry, which is also used for SPD lookup.
 /// IpAddress Pointer to the IPv4 or IPv6 address range.
 ///
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Id
-//{
-//  ///
-//  /// Flag to identify which type of PAD Id is used.
-//  ///
-//  public bool PeerIdValid;
-//  union {
-//    ///
-//    /// Pointer to the IPv4 or IPv6 address range.
-//    ///
-//    public EFI_IP_ADDRESS_INFO IpAddress;
-//  ///
-//  /// Pointer to a null terminated ASCII string
-//  /// representing the symbolic names. A PeerId can be a DNS
-//  /// name, Distinguished Name, RFC 822 email address or Key ID
-//  /// (specified in section 4.4.3.1 of RFC 4301)
-//  ///
-//  public fixed byte PeerId[MAX_PEERID_LEN];
-//}
-//} EFI_IPSEC_PAD_ID;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Id
+{
+  ///
+  /// Flag to identify which type of PAD Id is used.
+  ///
+  public bool PeerIdValid;
+  union {
+    ///
+    /// Pointer to the IPv4 or IPv6 address range.
+    ///
+    public EFI_IP_ADDRESS_INFO IpAddress;
+  ///
+  /// Pointer to a null terminated ASCII string
+  /// representing the symbolic names. A PeerId can be a DNS
+  /// name, Distinguished Name, RFC 822 email address or Key ID
+  /// (specified in section 4.4.3.1 of RFC 4301)
+  ///
+  public fixed byte PeerId[MAX_PEERID_LEN];
+}
+} EFI_IPSEC_PAD_ID;
 
 ///
 /// EFI_IPSEC_CONFIG_SELECTOR
@@ -570,7 +570,7 @@ public unsafe struct EFI_IPSEC_CONFIG_SELECTOR
 {
   [FieldOffset(0)] public EFI_IPSEC_SPD_SELECTOR SpdSelector;
   [FieldOffset(0)] public EFI_IPSEC_SA_ID SaId;
-  //[FieldOffset(0)] public EFI_IPSEC_PAD_ID PadId;
+  [FieldOffset(0)] public EFI_IPSEC_PAD_ID PadId;
 }
 
 ///

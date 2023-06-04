@@ -72,7 +72,7 @@ public unsafe struct IPMI_KCS_REQUEST_HEADER
 {
   public byte NetFunc;
   public byte Command;
-  //public fixed byte Data[];
+  public fixed byte Data[];
 }
 
 ///

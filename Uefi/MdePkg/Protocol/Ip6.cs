@@ -417,10 +417,10 @@ public unsafe struct EFI_IP6_MODE_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IP6_HEADER
 {
-  public byte TrafficClassH = 4;
-  public byte Version = 4;
-  public byte FlowLabelH = 4;
-  public byte TrafficClassL = 4;
+  public byte TrafficClassH; // = 4;
+  public byte Version; // = 4;
+  public byte FlowLabelH; // = 4;
+  public byte TrafficClassL; // = 4;
   public ushort FlowLabelL;
   public ushort PayloadLength;
   public byte NextHeader;
@@ -546,39 +546,39 @@ public unsafe struct EFI_IP6_TRANSMIT_DATA
 /// EFI_IP6_COMPLETION_TOKEN
 /// structures are used for both transmit and receive operations.
 ///
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Packet
-//{
-//  ///
-//  /// This Event will be signaled after the Status field is updated by
-//  /// the EFI IPv6 Protocol driver. The type of Event must be EFI_NOTIFY_SIGNAL.
-//  ///
-//  public EFI_EVENT Event;
-//  ///
-//  /// Will be set to one of the following values:
-//  /// - EFI_SUCCESS:  The receive or transmit completed
-//  ///   successfully.
-//  /// - EFI_ABORTED:  The receive or transmit was aborted
-//  /// - EFI_TIMEOUT:  The transmit timeout expired.
-//  /// - EFI_ICMP_ERROR:  An ICMP error packet was received.
-//  /// - EFI_DEVICE_ERROR:  An unexpected system or network
-//  ///   error occurred.
-//  /// - EFI_SECURITY_VIOLATION: The transmit or receive was
-//  ///   failed because of an IPsec policy check.
-//  /// - EFI_NO_MEDIA: There was a media error.
-//  ///
-//  public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
-//    ///
-//    public EFI_IP6_RECEIVE_DATA* RxData;
-//  ///
-//  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
-//  ///
-//  public EFI_IP6_TRANSMIT_DATA* TxData;
-//}
-//} EFI_IP6_COMPLETION_TOKEN;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Packet
+{
+  ///
+  /// This Event will be signaled after the Status field is updated by
+  /// the EFI IPv6 Protocol driver. The type of Event must be EFI_NOTIFY_SIGNAL.
+  ///
+  public EFI_EVENT Event;
+  ///
+  /// Will be set to one of the following values:
+  /// - EFI_SUCCESS:  The receive or transmit completed
+  ///   successfully.
+  /// - EFI_ABORTED:  The receive or transmit was aborted
+  /// - EFI_TIMEOUT:  The transmit timeout expired.
+  /// - EFI_ICMP_ERROR:  An ICMP error packet was received.
+  /// - EFI_DEVICE_ERROR:  An unexpected system or network
+  ///   error occurred.
+  /// - EFI_SECURITY_VIOLATION: The transmit or receive was
+  ///   failed because of an IPsec policy check.
+  /// - EFI_NO_MEDIA: There was a media error.
+  ///
+  public EFI_STATUS Status;
+  union {
+    ///
+    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
+    ///
+    public EFI_IP6_RECEIVE_DATA* RxData;
+  ///
+  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
+  ///
+  public EFI_IP6_TRANSMIT_DATA* TxData;
+}
+} EFI_IP6_COMPLETION_TOKEN;
 
 // /**
 //   Gets the current operational settings for this instance of the EFI IPv6 Protocol driver.

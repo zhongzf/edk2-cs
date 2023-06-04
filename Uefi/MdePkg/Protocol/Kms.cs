@@ -242,7 +242,7 @@ public unsafe struct EFI_KMS_DYNAMIC_ATTRIBUTE
   ///
   /// An array of EFI_KMS_DYNAMIC_FIELD structures.
   ///
-  //public EFI_KMS_DYNAMIC_FIELD Field[1];
+  public fixed EFI_KMS_DYNAMIC_FIELD Field[1];
 }
 
 [StructLayout(LayoutKind.Sequential)]

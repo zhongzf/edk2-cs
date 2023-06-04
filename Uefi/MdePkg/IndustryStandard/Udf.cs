@@ -20,8 +20,8 @@ public unsafe partial class EFI
   public const ulong UDF_TEA_IDENTIFIER = "TEA01";
 
   public const ulong UDF_LOGICAL_SECTOR_SHIFT = 11;
-  public const ulong UDF_LOGICAL_SECTOR_SIZE = ((ulong)(1u << UDF_LOGICAL_SECTOR_SHIFT));
-  public const ulong UDF_VRS_START_OFFSET = ((ulong)(16u << UDF_LOGICAL_SECTOR_SHIFT));
+  public const ulong UDF_LOGICAL_SECTOR_SIZE = ((ulong)(1ULL << UDF_LOGICAL_SECTOR_SHIFT));
+public const ulong UDF_VRS_START_OFFSET = ((ulong)(16ULL << UDF_LOGICAL_SECTOR_SHIFT));
 }
 
 public enum UDF_VOLUME_DESCRIPTOR_ID

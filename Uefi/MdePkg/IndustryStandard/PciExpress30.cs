@@ -28,9 +28,9 @@ public unsafe partial class EFI
 public unsafe struct PCI_EXPRESS_REG_LINK_CONTROL3
 {
   /*   struct { */
-  [FieldOffset(0)] public uint PerformEqualization = 1;
-  [FieldOffset(0)] public uint LinkEqualizationRequestInterruptEnable = 1;
-  [FieldOffset(0)] public uint Reserved = 30;
+  [FieldOffset(0)] public uint PerformEqualization; // = 1;
+  [FieldOffset(0)] public uint LinkEqualizationRequestInterruptEnable; // = 1;
+  [FieldOffset(0)] public uint Reserved; // = 30;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -39,12 +39,12 @@ public unsafe struct PCI_EXPRESS_REG_LINK_CONTROL3
 public unsafe struct PCI_EXPRESS_REG_LANE_EQUALIZATION_CONTROL
 {
   /*   struct { */
-  [FieldOffset(0)] public ushort DownstreamPortTransmitterPreset = 4;
-  [FieldOffset(0)] public ushort DownstreamPortReceiverPresetHint = 3;
-  [FieldOffset(0)] public ushort Reserved = 1;
-  [FieldOffset(0)] public ushort UpstreamPortTransmitterPreset = 4;
-  [FieldOffset(0)] public ushort UpstreamPortReceiverPresetHint = 3;
-  [FieldOffset(0)] public ushort Reserved2 = 1;
+  [FieldOffset(0)] public ushort DownstreamPortTransmitterPreset; // = 4;
+  [FieldOffset(0)] public ushort DownstreamPortReceiverPresetHint; // = 3;
+  [FieldOffset(0)] public ushort Reserved; // = 1;
+  [FieldOffset(0)] public ushort UpstreamPortTransmitterPreset; // = 4;
+  [FieldOffset(0)] public ushort UpstreamPortReceiverPresetHint; // = 3;
+  [FieldOffset(0)] public ushort Reserved2; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public ushort Uint16;
 }

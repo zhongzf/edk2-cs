@@ -42,8 +42,8 @@ public unsafe partial class EFI
   //
   // Parameters type definition
   //
-  //public byte[SCARD_AID_MAXSIZE] SMART_CARD_AID;
-  //public byte[SCARD_CSN_SIZE SMART_CARD_CSN];
+  typedef byte SMART_CARD_AID[SCARD_AID_MAXSIZE];
+  typedef byte SMART_CARD_CSN[SCARD_CSN_SIZE];
 
   //
   // Type of data elements in credentials list

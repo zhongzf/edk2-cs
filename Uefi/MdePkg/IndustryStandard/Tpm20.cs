@@ -802,50 +802,50 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_ALGORITHM
 {
-  public uint asymmetric = 1;
-  public uint symmetric = 1;
-  public uint hash = 1;
-  public uint object        = 1;
-  public uint reserved4_7 = 4;
-  public uint signing = 1;
-  public uint encrypting = 1;
-  public uint method = 1;
-  public uint reserved11_31 = 21;
+  public uint asymmetric; // = 1;
+  public uint symmetric; // = 1;
+  public uint hash; // = 1;
+  public uint object       ; // = 1;
+  public uint reserved4_7; // = 4;
+  public uint signing; // = 1;
+  public uint encrypting; // = 1;
+  public uint method; // = 1;
+  public uint reserved11_31; // = 21;
 }
 
 // Table 30 - TPMA_OBJECT Bits
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_OBJECT
 {
-  public uint reserved1 = 1;
-  public uint fixedTPM = 1;
-  public uint stClear = 1;
-  public uint reserved4 = 1;
-  public uint fixedParent = 1;
-  public uint sensitiveDataOrigin = 1;
-  public uint userWithAuth = 1;
-  public uint adminWithPolicy = 1;
-  public uint reserved8_9 = 2;
-  public uint noDA = 1;
-  public uint encryptedDuplication = 1;
-  public uint reserved12_15 = 4;
-  public uint restricted = 1;
-  public uint decrypt = 1;
-  public uint sign = 1;
-  public uint reserved19_31 = 13;
+  public uint reserved1; // = 1;
+  public uint fixedTPM; // = 1;
+  public uint stClear; // = 1;
+  public uint reserved4; // = 1;
+  public uint fixedParent; // = 1;
+  public uint sensitiveDataOrigin; // = 1;
+  public uint userWithAuth; // = 1;
+  public uint adminWithPolicy; // = 1;
+  public uint reserved8_9; // = 2;
+  public uint noDA; // = 1;
+  public uint encryptedDuplication; // = 1;
+  public uint reserved12_15; // = 4;
+  public uint restricted; // = 1;
+  public uint decrypt; // = 1;
+  public uint sign; // = 1;
+  public uint reserved19_31; // = 13;
 }
 
 // Table 31 - TPMA_SESSION Bits
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_SESSION
 {
-  public byte continueSession = 1;
-  public byte auditExclusive = 1;
-  public byte auditReset = 1;
-  public byte reserved3_4 = 2;
-  public byte decrypt = 1;
-  public byte encrypt = 1;
-  public byte audit = 1;
+  public byte continueSession; // = 1;
+  public byte auditExclusive; // = 1;
+  public byte auditReset; // = 1;
+  public byte reserved3_4; // = 2;
+  public byte decrypt; // = 1;
+  public byte encrypt; // = 1;
+  public byte audit; // = 1;
 }
 
 // Table 32 - TPMA_LOCALITY Bits
@@ -855,62 +855,62 @@ public unsafe struct TPMA_SESSION
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_LOCALITY
 {
-  public byte locZero = 1;
-  public byte locOne = 1;
-  public byte locTwo = 1;
-  public byte locThree = 1;
-  public byte locFour = 1;
-  public byte Extended = 3;
+  public byte locZero; // = 1;
+  public byte locOne; // = 1;
+  public byte locTwo; // = 1;
+  public byte locThree; // = 1;
+  public byte locFour; // = 1;
+  public byte Extended; // = 3;
 }
 
 // Table 33 - TPMA_PERMANENT Bits
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_PERMANENT
 {
-  public uint ownerAuthSet = 1;
-  public uint endorsementAuthSet = 1;
-  public uint lockoutAuthSet = 1;
-  public uint reserved3_7 = 5;
-  public uint disableClear = 1;
-  public uint inLockout = 1;
-  public uint tpmGeneratedEPS = 1;
-  public uint reserved11_31 = 21;
+  public uint ownerAuthSet; // = 1;
+  public uint endorsementAuthSet; // = 1;
+  public uint lockoutAuthSet; // = 1;
+  public uint reserved3_7; // = 5;
+  public uint disableClear; // = 1;
+  public uint inLockout; // = 1;
+  public uint tpmGeneratedEPS; // = 1;
+  public uint reserved11_31; // = 21;
 }
 
 // Table 34 - TPMA_STARTUP_CLEAR Bits
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_STARTUP_CLEAR
 {
-  public uint phEnable = 1;
-  public uint shEnable = 1;
-  public uint ehEnable = 1;
-  public uint reserved3_30 = 28;
-  public uint orderly = 1;
+  public uint phEnable; // = 1;
+  public uint shEnable; // = 1;
+  public uint ehEnable; // = 1;
+  public uint reserved3_30; // = 28;
+  public uint orderly; // = 1;
 }
 
 // Table 35 - TPMA_MEMORY Bits
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_MEMORY
 {
-  public uint sharedRAM = 1;
-  public uint sharedNV = 1;
-  public uint objectCopiedToRam = 1;
-  public uint reserved3_31 = 29;
+  public uint sharedRAM; // = 1;
+  public uint sharedNV; // = 1;
+  public uint objectCopiedToRam; // = 1;
+  public uint reserved3_31; // = 29;
 }
 
 // Table 36 - TPMA_CC Bits
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_CC
 {
-  public uint commandIndex = 16;
-  public uint reserved16_21 = 6;
-  public uint nv = 1;
-  public uint extensive = 1;
-  public uint flushed = 1;
-  public uint cHandles = 3;
-  public uint rHandle = 1;
-  public uint V = 1;
-  public uint Res = 2;
+  public uint commandIndex; // = 16;
+  public uint reserved16_21; // = 6;
+  public uint nv; // = 1;
+  public uint extensive; // = 1;
+  public uint flushed; // = 1;
+  public uint cHandles; // = 3;
+  public uint rHandle; // = 1;
+  public uint V; // = 1;
+  public uint Res; // = 2;
 }
 
 // 9 Interface Types
@@ -2066,32 +2066,32 @@ public unsafe struct TPM2B_ID_OBJECT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TPMA_NV
 {
-  public uint TPMA_NV_PPWRITE = 1;
-  public uint TPMA_NV_OWNERWRITE = 1;
-  public uint TPMA_NV_AUTHWRITE = 1;
-  public uint TPMA_NV_POLICYWRITE = 1;
-  public uint TPMA_NV_COUNTER = 1;
-  public uint TPMA_NV_BITS = 1;
-  public uint TPMA_NV_EXTEND = 1;
-  public uint reserved7_9 = 3;
-  public uint TPMA_NV_POLICY_DELETE = 1;
-  public uint TPMA_NV_WRITELOCKED = 1;
-  public uint TPMA_NV_WRITEALL = 1;
-  public uint TPMA_NV_WRITEDEFINE = 1;
-  public uint TPMA_NV_WRITE_STCLEAR = 1;
-  public uint TPMA_NV_GLOBALLOCK = 1;
-  public uint TPMA_NV_PPREAD = 1;
-  public uint TPMA_NV_OWNERREAD = 1;
-  public uint TPMA_NV_AUTHREAD = 1;
-  public uint TPMA_NV_POLICYREAD = 1;
-  public uint reserved20_24 = 5;
-  public uint TPMA_NV_NO_DA = 1;
-  public uint TPMA_NV_ORDERLY = 1;
-  public uint TPMA_NV_CLEAR_STCLEAR = 1;
-  public uint TPMA_NV_READLOCKED = 1;
-  public uint TPMA_NV_WRITTEN = 1;
-  public uint TPMA_NV_PLATFORMCREATE = 1;
-  public uint TPMA_NV_READ_STCLEAR = 1;
+  public uint TPMA_NV_PPWRITE; // = 1;
+  public uint TPMA_NV_OWNERWRITE; // = 1;
+  public uint TPMA_NV_AUTHWRITE; // = 1;
+  public uint TPMA_NV_POLICYWRITE; // = 1;
+  public uint TPMA_NV_COUNTER; // = 1;
+  public uint TPMA_NV_BITS; // = 1;
+  public uint TPMA_NV_EXTEND; // = 1;
+  public uint reserved7_9; // = 3;
+  public uint TPMA_NV_POLICY_DELETE; // = 1;
+  public uint TPMA_NV_WRITELOCKED; // = 1;
+  public uint TPMA_NV_WRITEALL; // = 1;
+  public uint TPMA_NV_WRITEDEFINE; // = 1;
+  public uint TPMA_NV_WRITE_STCLEAR; // = 1;
+  public uint TPMA_NV_GLOBALLOCK; // = 1;
+  public uint TPMA_NV_PPREAD; // = 1;
+  public uint TPMA_NV_OWNERREAD; // = 1;
+  public uint TPMA_NV_AUTHREAD; // = 1;
+  public uint TPMA_NV_POLICYREAD; // = 1;
+  public uint reserved20_24; // = 5;
+  public uint TPMA_NV_NO_DA; // = 1;
+  public uint TPMA_NV_ORDERLY; // = 1;
+  public uint TPMA_NV_CLEAR_STCLEAR; // = 1;
+  public uint TPMA_NV_READLOCKED; // = 1;
+  public uint TPMA_NV_WRITTEN; // = 1;
+  public uint TPMA_NV_PLATFORMCREATE; // = 1;
+  public uint TPMA_NV_READ_STCLEAR; // = 1;
 }
 
 // Table 196 - TPMS_NV_PUBLIC Structure

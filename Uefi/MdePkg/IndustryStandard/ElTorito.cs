@@ -28,12 +28,12 @@ public unsafe partial class EFI
   ///
   /// CDROM_VOLUME_DESCRIPTOR.Id
   ///
-  public const string CDVOL_ID = "CD001";
+  public const ulong CDVOL_ID = "CD001";
 
   ///
   /// CDROM_VOLUME_DESCRIPTOR.SystemId
   ///
-  public const string CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
+  public const ulong CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
 
   //
   // Indicator types
@@ -123,8 +123,8 @@ public unsafe struct ELTORITO_CATALOG
   ///
   /*   struct { */
   [FieldOffset(0)] public byte Indicator;     ///< 88 = Bootable, 00 = Not Bootable
-  [FieldOffset(0)] public byte MediaType = 4;
-  [FieldOffset(0)] public byte Reserved1 = 4; ///< Must be 0
+  [FieldOffset(0)] public byte MediaType; // = 4;
+  [FieldOffset(0)] public byte Reserved1; // = 4; ///< Must be 0
   [FieldOffset(0)] public ushort LoadSegment;
   [FieldOffset(0)] public byte SystemType;
   [FieldOffset(0)] public byte Reserved2;     ///< Must be 0

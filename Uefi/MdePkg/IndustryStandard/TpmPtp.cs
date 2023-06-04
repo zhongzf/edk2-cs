@@ -111,18 +111,18 @@ public unsafe struct PTP_FIFO_REGISTERS_PTR { PTP_FIFO_REGISTERS* Value; public 
 public unsafe struct PTP_FIFO_INTERFACE_IDENTIFIER
 {
   /*   struct { */
-  [FieldOffset(0)] public uint InterfaceType = 4;
-  [FieldOffset(0)] public uint InterfaceVersion = 4;
-  [FieldOffset(0)] public uint CapLocality = 1;
-  [FieldOffset(0)] public uint Reserved1 = 2;
-  [FieldOffset(0)] public uint CapDataXferSizeSupport = 2;
-  [FieldOffset(0)] public uint CapFIFO = 1;
-  [FieldOffset(0)] public uint CapCRB = 1;
-  [FieldOffset(0)] public uint CapIFRes = 2;
-  [FieldOffset(0)] public uint InterfaceSelector = 2;
-  [FieldOffset(0)] public uint IntfSelLock = 1;
-  [FieldOffset(0)] public uint Reserved2 = 4;
-  [FieldOffset(0)] public uint Reserved3 = 8;
+  [FieldOffset(0)] public uint InterfaceType; // = 4;
+  [FieldOffset(0)] public uint InterfaceVersion; // = 4;
+  [FieldOffset(0)] public uint CapLocality; // = 1;
+  [FieldOffset(0)] public uint Reserved1; // = 2;
+  [FieldOffset(0)] public uint CapDataXferSizeSupport; // = 2;
+  [FieldOffset(0)] public uint CapFIFO; // = 1;
+  [FieldOffset(0)] public uint CapCRB; // = 1;
+  [FieldOffset(0)] public uint CapIFRes; // = 2;
+  [FieldOffset(0)] public uint InterfaceSelector; // = 2;
+  [FieldOffset(0)] public uint IntfSelLock; // = 1;
+  [FieldOffset(0)] public uint Reserved2; // = 4;
+  [FieldOffset(0)] public uint Reserved3; // = 8;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -134,19 +134,19 @@ public unsafe struct PTP_FIFO_INTERFACE_IDENTIFIER
 public unsafe struct PTP_FIFO_INTERFACE_CAPABILITY
 {
   /*   struct { */
-  [FieldOffset(0)] public uint DataAvailIntSupport = 1;
-  [FieldOffset(0)] public uint StsValidIntSupport = 1;
-  [FieldOffset(0)] public uint LocalityChangeIntSupport = 1;
-  [FieldOffset(0)] public uint InterruptLevelHigh = 1;
-  [FieldOffset(0)] public uint InterruptLevelLow = 1;
-  [FieldOffset(0)] public uint InterruptEdgeRising = 1;
-  [FieldOffset(0)] public uint InterruptEdgeFalling = 1;
-  [FieldOffset(0)] public uint CommandReadyIntSupport = 1;
-  [FieldOffset(0)] public uint BurstCountStatic = 1;
-  [FieldOffset(0)] public uint DataTransferSizeSupport = 2;
-  [FieldOffset(0)] public uint Reserved = 17;
-  [FieldOffset(0)] public uint InterfaceVersion = 3;
-  [FieldOffset(0)] public uint Reserved2 = 1;
+  [FieldOffset(0)] public uint DataAvailIntSupport; // = 1;
+  [FieldOffset(0)] public uint StsValidIntSupport; // = 1;
+  [FieldOffset(0)] public uint LocalityChangeIntSupport; // = 1;
+  [FieldOffset(0)] public uint InterruptLevelHigh; // = 1;
+  [FieldOffset(0)] public uint InterruptLevelLow; // = 1;
+  [FieldOffset(0)] public uint InterruptEdgeRising; // = 1;
+  [FieldOffset(0)] public uint InterruptEdgeFalling; // = 1;
+  [FieldOffset(0)] public uint CommandReadyIntSupport; // = 1;
+  [FieldOffset(0)] public uint BurstCountStatic; // = 1;
+  [FieldOffset(0)] public uint DataTransferSizeSupport; // = 2;
+  [FieldOffset(0)] public uint Reserved; // = 17;
+  [FieldOffset(0)] public uint InterfaceVersion; // = 3;
+  [FieldOffset(0)] public uint Reserved2; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -345,19 +345,19 @@ public unsafe struct PTP_CRB_REGISTERS_PTR { PTP_CRB_REGISTERS* Value; public st
 public unsafe struct PTP_CRB_INTERFACE_IDENTIFIER
 {
   /*   struct { */
-  [FieldOffset(0)] public uint InterfaceType = 4;
-  [FieldOffset(0)] public uint InterfaceVersion = 4;
-  [FieldOffset(0)] public uint CapLocality = 1;
-  [FieldOffset(0)] public uint CapCRBIdleBypass = 1;
-  [FieldOffset(0)] public uint Reserved1 = 1;
-  [FieldOffset(0)] public uint CapDataXferSizeSupport = 2;
-  [FieldOffset(0)] public uint CapFIFO = 1;
-  [FieldOffset(0)] public uint CapCRB = 1;
-  [FieldOffset(0)] public uint CapIFRes = 2;
-  [FieldOffset(0)] public uint InterfaceSelector = 2;
-  [FieldOffset(0)] public uint IntfSelLock = 1;
-  [FieldOffset(0)] public uint Reserved2 = 4;
-  [FieldOffset(0)] public uint Rid = 8;
+  [FieldOffset(0)] public uint InterfaceType; // = 4;
+  [FieldOffset(0)] public uint InterfaceVersion; // = 4;
+  [FieldOffset(0)] public uint CapLocality; // = 1;
+  [FieldOffset(0)] public uint CapCRBIdleBypass; // = 1;
+  [FieldOffset(0)] public uint Reserved1; // = 1;
+  [FieldOffset(0)] public uint CapDataXferSizeSupport; // = 2;
+  [FieldOffset(0)] public uint CapFIFO; // = 1;
+  [FieldOffset(0)] public uint CapCRB; // = 1;
+  [FieldOffset(0)] public uint CapIFRes; // = 2;
+  [FieldOffset(0)] public uint InterfaceSelector; // = 2;
+  [FieldOffset(0)] public uint IntfSelLock; // = 1;
+  [FieldOffset(0)] public uint Reserved2; // = 4;
+  [FieldOffset(0)] public uint Rid; // = 8;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }

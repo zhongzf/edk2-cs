@@ -290,12 +290,12 @@ public unsafe struct ATAPI_INQUIRY_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct ATAPI_REQUEST_SENSE_DATA
 {
-  public byte error_code;// = 7;
-  public byte valid;// = 1;
+  public byte error_code; // = 7;
+  public byte valid; // = 1;
   public byte reserved_1;
-  public byte sense_key;// = 4;
-  public byte reserved_2;// = 1;
-  public byte Vendor_specifc_1;// = 3;
+  public byte sense_key; // = 4;
+  public byte reserved_2; // = 1;
+  public byte Vendor_specifc_1; // = 3;
   public byte vendor_specific_3;
   public byte vendor_specific_4;
   public byte vendor_specific_5;
@@ -308,8 +308,8 @@ public unsafe struct ATAPI_REQUEST_SENSE_DATA
   public byte addnl_sense_code;            ///< mandatory
   public byte addnl_sense_code_qualifier;  ///< mandatory
   public byte field_replaceable_unit_code; ///< optional
-  public byte sense_key_specific_15;// = 7;
-  public byte SKSV;// = 1;
+  public byte sense_key_specific_15; // = 7;
+  public byte SKSV; // = 1;
   public byte sense_key_specific_16;
   public byte sense_key_specific_17;
 }
@@ -345,8 +345,8 @@ public unsafe struct ATAPI_READ_FORMAT_CAPACITY_DATA
   public byte LastLba2;
   public byte LastLba1;
   public byte LastLba0;
-  public byte DesCode;// = 2;
-  public byte reserved_9;// = 6;
+  public byte DesCode; // = 2;
+  public byte reserved_9; // = 6;
   public byte BlockSize2;
   public byte BlockSize1;
   public byte BlockSize0;
@@ -379,8 +379,8 @@ public unsafe struct ATAPI_TEST_UNIT_READY_CMD
 public unsafe struct ATAPI_INQUIRY_CMD
 {
   public byte opcode;
-  public byte reserved_1;// = 5;
-  public byte lun;// = 3;
+  public byte reserved_1; // = 5;
+  public byte lun; // = 3;
   public byte page_code;     ///< defined in SFF8090i, V6
   public byte reserved_3;
   public byte allocation_length;
@@ -400,8 +400,8 @@ public unsafe struct ATAPI_INQUIRY_CMD
 public unsafe struct ATAPI_REQUEST_SENSE_CMD
 {
   public byte opcode;
-  public byte reserved_1;// = 5;
-  public byte lun;// = 3;
+  public byte reserved_1; // = 5;
+  public byte lun; // = 3;
   public byte reserved_2;
   public byte reserved_3;
   public byte allocation_length;
@@ -421,8 +421,8 @@ public unsafe struct ATAPI_REQUEST_SENSE_CMD
 public unsafe struct ATAPI_READ10_CMD
 {
   public byte opcode;
-  public byte reserved_1;// = 5;
-  public byte lun;// = 3;
+  public byte reserved_1; // = 5;
+  public byte lun; // = 3;
   public byte Lba0;
   public byte Lba1;
   public byte Lba2;
@@ -442,8 +442,8 @@ public unsafe struct ATAPI_READ10_CMD
 public unsafe struct ATAPI_READ_FORMAT_CAP_CMD
 {
   public byte opcode;
-  public byte reserved_1;// = 5;
-  public byte lun;// = 3;
+  public byte reserved_1; // = 5;
+  public byte lun; // = 3;
   public byte reserved_2;
   public byte reserved_3;
   public byte reserved_4;
@@ -463,10 +463,10 @@ public unsafe struct ATAPI_READ_FORMAT_CAP_CMD
 public unsafe struct ATAPI_MODE_SENSE_CMD
 {
   public byte opcode;
-  public byte reserved_1;// = 5;
-  public byte lun;// = 3;
-  public byte page_code;// = 6;
-  public byte page_control;// = 2;
+  public byte reserved_1; // = 5;
+  public byte lun; // = 3;
+  public byte page_code; // = 6;
+  public byte page_control; // = 2;
   public byte reserved_3;
   public byte reserved_4;
   public byte reserved_5;

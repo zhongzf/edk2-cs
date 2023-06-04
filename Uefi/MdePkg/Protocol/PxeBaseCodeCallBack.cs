@@ -32,8 +32,8 @@ public unsafe partial class EFI
   ///
   /// EFI 1.1 Revision Number defintion.
   ///
-  //#define EFI_PXE_BASE_CODE_CALLBACK_INTERFACE_REVISION  \
-  //  EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION
+#define EFI_PXE_BASE_CODE_CALLBACK_INTERFACE_REVISION  \
+  EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION
 
   ///
   /// UEFI Protocol name.

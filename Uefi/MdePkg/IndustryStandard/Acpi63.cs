@@ -1759,12 +1759,12 @@ public unsafe struct EFI_ACPI_6_3_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_STRUCTURE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_NFIT_DEVICE_HANDLE
 {
-  public uint DIMMNumber = 4;
-  public uint MemoryChannelNumber = 4;
-  public uint MemoryControllerID = 4;
-  public uint SocketID = 4;
-  public uint NodeControllerID = 12;
-  public uint Reserved_28 = 4;
+  public uint DIMMNumber; // = 4;
+  public uint MemoryChannelNumber; // = 4;
+  public uint MemoryControllerID; // = 4;
+  public uint SocketID; // = 4;
+  public uint NodeControllerID; // = 12;
+  public uint Reserved_28; // = 4;
 }
 
 public unsafe partial class EFI
@@ -2007,12 +2007,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_ERROR_BLOCK_STATUS
 {
-  public uint UncorrectableErrorValid = 1;
-  public uint CorrectableErrorValid = 1;
-  public uint MultipleUncorrectableErrors = 1;
-  public uint MultipleCorrectableErrors = 1;
-  public uint ErrorDataEntryCount = 10;
-  public uint Reserved = 18;
+  public uint UncorrectableErrorValid; // = 1;
+  public uint CorrectableErrorValid; // = 1;
+  public uint MultipleUncorrectableErrors; // = 1;
+  public uint MultipleCorrectableErrors; // = 1;
+  public uint ErrorDataEntryCount; // = 10;
+  public uint Reserved; // = 18;
 }
 
 ///
@@ -2176,13 +2176,13 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_HARDWARE_ERROR_NOTIFICATION_CONFIGURATION_WRITE_ENABLE_STRUCTURE
 {
-  public ushort Type = 1;
-  public ushort PollInterval = 1;
-  public ushort SwitchToPollingThresholdValue = 1;
-  public ushort SwitchToPollingThresholdWindow = 1;
-  public ushort ErrorThresholdValue = 1;
-  public ushort ErrorThresholdWindow = 1;
-  public ushort Reserved = 10;
+  public ushort Type; // = 1;
+  public ushort PollInterval; // = 1;
+  public ushort SwitchToPollingThresholdValue; // = 1;
+  public ushort SwitchToPollingThresholdWindow; // = 1;
+  public ushort ErrorThresholdValue; // = 1;
+  public ushort ErrorThresholdWindow; // = 1;
+  public ushort Reserved; // = 10;
 }
 
 ///
@@ -2424,8 +2424,8 @@ public unsafe struct EFI_ACPI_6_3_HMAT_STRUCTURE_HEADER
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_HMAT_STRUCTURE_MEMORY_PROXIMITY_DOMAIN_ATTRIBUTES_FLAGS
 {
-  public ushort InitiatorProximityDomainValid = 1;
-  public ushort Reserved = 15;
+  public ushort InitiatorProximityDomainValid; // = 1;
+  public ushort Reserved; // = 15;
 }
 
 ///
@@ -2450,8 +2450,8 @@ public unsafe struct EFI_ACPI_6_3_HMAT_STRUCTURE_MEMORY_PROXIMITY_DOMAIN_ATTRIBU
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_HMAT_STRUCTURE_SYSTEM_LOCALITY_LATENCY_AND_BANDWIDTH_INFO_FLAGS
 {
-  public byte MemoryHierarchy = 4;
-  public byte Reserved = 4;
+  public byte MemoryHierarchy; // = 4;
+  public byte Reserved; // = 4;
 }
 
 ///
@@ -2478,11 +2478,11 @@ public unsafe struct EFI_ACPI_6_3_HMAT_STRUCTURE_SYSTEM_LOCALITY_LATENCY_AND_BAN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_HMAT_STRUCTURE_MEMORY_SIDE_CACHE_INFO_CACHE_ATTRIBUTES
 {
-  public uint TotalCacheLevels = 4;
-  public uint CacheLevel = 4;
-  public uint CacheAssociativity = 4;
-  public uint WritePolicy = 4;
-  public uint CacheLineSize = 16;
+  public uint TotalCacheLevels; // = 4;
+  public uint CacheLevel; // = 4;
+  public uint CacheAssociativity; // = 4;
+  public uint WritePolicy; // = 4;
+  public uint CacheLineSize; // = 16;
 }
 
 ///
@@ -2763,18 +2763,18 @@ public unsafe struct EFI_ACPI_6_3_PCCT_SUBSPACE_GENERIC
 public unsafe struct EFI_ACPI_6_3_PCCT_GENERIC_SHARED_MEMORY_REGION_COMMAND
 {
   public byte Command;
-  public byte Reserved = 7;
-  public byte NotifyOnCompletion = 1;
+  public byte Reserved; // = 7;
+  public byte NotifyOnCompletion; // = 1;
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_PCCT_GENERIC_SHARED_MEMORY_REGION_STATUS
 {
-  public byte CommandComplete = 1;
-  public byte PlatformInterrupt = 1;
-  public byte Error = 1;
-  public byte PlatformNotification = 1;
-  public byte Reserved = 4;
+  public byte CommandComplete; // = 1;
+  public byte PlatformInterrupt; // = 1;
+  public byte Error; // = 1;
+  public byte PlatformNotification; // = 1;
+  public byte Reserved; // = 4;
   public byte Reserved1;
 }
 
@@ -2915,11 +2915,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_PDTT_PCC_IDENTIFIER
 {
-  public ushort SubChannelIdentifer = 8;
-  public ushort Runtime = 1;
-  public ushort WaitForCompletion = 1;
-  public ushort TriggerOrder = 1;
-  public ushort Reserved = 5;
+  public ushort SubChannelIdentifer; // = 8;
+  public ushort Runtime; // = 1;
+  public ushort WaitForCompletion; // = 1;
+  public ushort TriggerOrder; // = 1;
+  public ushort Reserved; // = 5;
 }
 
 public unsafe partial class EFI
@@ -2995,12 +2995,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_PPTT_STRUCTURE_PROCESSOR_FLAGS
 {
-  public uint PhysicalPackage = 1;
-  public uint AcpiProcessorIdValid = 1;
-  public uint ProcessorIsAThread = 1;
-  public uint NodeIsALeaf = 1;
-  public uint IdenticalImplementation = 1;
-  public uint Reserved = 27;
+  public uint PhysicalPackage; // = 1;
+  public uint AcpiProcessorIdValid; // = 1;
+  public uint ProcessorIsAThread; // = 1;
+  public uint NodeIsALeaf; // = 1;
+  public uint IdenticalImplementation; // = 1;
+  public uint Reserved; // = 27;
 }
 
 ///
@@ -3045,14 +3045,14 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_PPTT_STRUCTURE_CACHE_FLAGS
 {
-  public uint SizePropertyValid = 1;
-  public uint NumberOfSetsValid = 1;
-  public uint AssociativityValid = 1;
-  public uint AllocationTypeValid = 1;
-  public uint CacheTypeValid = 1;
-  public uint WritePolicyValid = 1;
-  public uint LineSizeValid = 1;
-  public uint Reserved = 25;
+  public uint SizePropertyValid; // = 1;
+  public uint NumberOfSetsValid; // = 1;
+  public uint AssociativityValid; // = 1;
+  public uint AllocationTypeValid; // = 1;
+  public uint CacheTypeValid; // = 1;
+  public uint WritePolicyValid; // = 1;
+  public uint LineSizeValid; // = 1;
+  public uint Reserved; // = 25;
 }
 
 public unsafe partial class EFI
@@ -3076,10 +3076,10 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_PPTT_STRUCTURE_CACHE_ATTRIBUTES
 {
-  public byte AllocationType = 2;
-  public byte CacheType = 2;
-  public byte WritePolicy = 1;
-  public byte Reserved = 3;
+  public byte AllocationType; // = 2;
+  public byte CacheType; // = 2;
+  public byte WritePolicy; // = 1;
+  public byte Reserved; // = 3;
 }
 
 ///

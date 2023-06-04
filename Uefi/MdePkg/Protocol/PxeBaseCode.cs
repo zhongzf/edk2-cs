@@ -48,23 +48,23 @@ public unsafe partial class EFI
 ///
 /// ICMP error format.
 ///
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Echo
-//{
-//  public byte Type;
-//  public byte Code;
-//  public ushort Checksum;
-//  union {
-//    public uint reserved;
-//  public uint Mtu;
-//  public uint Pointer;
-//  struct {
-//      public ushort Identifier;
-//  public ushort Sequence;
-//}
-//  } u;
-//byte Data[494];
-//} EFI_PXE_BASE_CODE_ICMP_ERROR;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Echo
+{
+  public byte Type;
+  public byte Code;
+  public ushort Checksum;
+  union {
+    public uint reserved;
+  public uint Mtu;
+  public uint Pointer;
+  struct {
+      public ushort Identifier;
+  public ushort Sequence;
+}
+  } u;
+byte Data[494];
+} EFI_PXE_BASE_CODE_ICMP_ERROR;
 
 ///
 /// TFTP error format.
@@ -170,59 +170,56 @@ public unsafe partial class EFI
   public const ulong EFI_PXE_BASE_CODE_BOOT_LAYER_MASK = 0x7FFF;
   public const ulong EFI_PXE_BASE_CODE_BOOT_LAYER_INITIAL = 0x0000;
 
-  //
-  // PXE Tag definition that identifies the processor
-  // and programming environment of the client system.
-  // These identifiers are defined by IETF:
-  // http://www.ietf.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
-  //
-  //#if defined (MDE_CPU_IA32)
-  //public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0006;
-  //#elif defined (MDE_CPU_X64)
-  //public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0007;
-  //#elif defined (MDE_CPU_ARM)
-  //public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000A;
-  //#elif defined (MDE_CPU_AARCH64)
-  //public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000B;
-  //#elif defined (MDE_CPU_RISCV64)
-  //public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x001B;
-  //#elif defined (MDE_CPU_LOONGARCH64)
-  //public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0027;
-  // #endif
+//
+// PXE Tag definition that identifies the processor
+// and programming environment of the client system.
+// These identifiers are defined by IETF:
+// http://www.ietf.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml
+//
+#if defined (MDE_CPU_IA32)
+public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0006;
+#elif defined (MDE_CPU_X64)
+public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0007;
+#elif defined (MDE_CPU_ARM)
+public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000A;
+#elif defined (MDE_CPU_AARCH64)
+public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x000B;
+#elif defined (MDE_CPU_RISCV64)
+public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x001B;
+#elif defined (MDE_CPU_LOONGARCH64)
+public const ulong EFI_PXE_CLIENT_SYSTEM_ARCHITECTURE = 0x0027;
+// #endif
 }
 
 ///
 /// Discover() server list structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_SRVLIST
-{
-  public ushort Type;
-  public bool AcceptAnyResponse;
-  public byte Reserved;
-  public EFI_IP_ADDRESS IpAddr;
+public unsafe struct EFI_PXE_BASE_CODE_SRVLIST {
+  public ushort            Type;
+  public bool           AcceptAnyResponse;
+  public byte             Reserved;
+  public EFI_IP_ADDRESS    IpAddr;
 }
 
 ///
 /// Discover() information override structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_DISCOVER_INFO
-{
-  public bool UseMCast;
-  public bool UseBCast;
-  public bool UseUCast;
-  public bool MustUseList;
-  public EFI_IP_ADDRESS ServerMCastIp;
-  public ushort IpCnt;
-  public EFI_PXE_BASE_CODE_SRVLIST SrvList[1];
+public unsafe struct EFI_PXE_BASE_CODE_DISCOVER_INFO {
+  public bool                      UseMCast;
+  public bool                      UseBCast;
+  public bool                      UseUCast;
+  public bool                      MustUseList;
+  public EFI_IP_ADDRESS               ServerMCastIp;
+  public ushort                       IpCnt;
+  public fixed EFI_PXE_BASE_CODE_SRVLIST    SrvList[1];
 }
 
 ///
 /// TFTP opcode definitions.
 ///
-public enum EFI_PXE_BASE_CODE_TFTP_OPCODE
-{
+public enum EFI_PXE_BASE_CODE_TFTP_OPCODE {
   EFI_PXE_BASE_CODE_TFTP_FIRST,
   EFI_PXE_BASE_CODE_TFTP_GET_FILE_SIZE,
   EFI_PXE_BASE_CODE_TFTP_READ_FILE,
@@ -240,68 +237,63 @@ public enum EFI_PXE_BASE_CODE_TFTP_OPCODE
 /// perform the "get file size" and "read directory" operations of MTFTP.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_MTFTP_INFO
-{
-  public EFI_IP_ADDRESS MCastIp;
-  public EFI_PXE_BASE_CODE_UDP_PORT CPort;
-  public EFI_PXE_BASE_CODE_UDP_PORT SPort;
-  public ushort ListenTimeout;
-  public ushort TransmitTimeout;
+public unsafe struct EFI_PXE_BASE_CODE_MTFTP_INFO {
+  public EFI_IP_ADDRESS                MCastIp;
+  public EFI_PXE_BASE_CODE_UDP_PORT    CPort;
+  public EFI_PXE_BASE_CODE_UDP_PORT    SPort;
+  public ushort                        ListenTimeout;
+  public ushort                        TransmitTimeout;
 }
 
 ///
 /// DHCPV4 Packet structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_DHCPV4_PACKET
-{
-  public byte BootpOpcode;
-  public byte BootpHwType;
-  public byte BootpHwAddrLen;
-  public byte BootpGateHops;
-  public uint BootpIdent;
-  public ushort BootpSeconds;
-  public ushort BootpFlags;
-  public fixed byte BootpCiAddr[4];
-  public fixed byte BootpYiAddr[4];
-  public fixed byte BootpSiAddr[4];
-  public fixed byte BootpGiAddr[4];
-  public fixed byte BootpHwAddr[16];
-  public fixed byte BootpSrvName[64];
-  public fixed byte BootpBootFile[128];
-  public uint DhcpMagik;
-  public fixed byte DhcpOptions[56];
+public unsafe struct EFI_PXE_BASE_CODE_DHCPV4_PACKET {
+  public byte     BootpOpcode;
+  public byte     BootpHwType;
+  public byte     BootpHwAddrLen;
+  public byte     BootpGateHops;
+  public uint    BootpIdent;
+  public ushort    BootpSeconds;
+  public ushort    BootpFlags;
+  public fixed byte     BootpCiAddr[4];
+  public fixed byte     BootpYiAddr[4];
+  public fixed byte     BootpSiAddr[4];
+  public fixed byte     BootpGiAddr[4];
+  public fixed byte     BootpHwAddr[16];
+  public fixed byte     BootpSrvName[64];
+  public fixed byte     BootpBootFile[128];
+  public uint    DhcpMagik;
+  public fixed byte     DhcpOptions[56];
 }
 
 ///
 /// DHCPV6 Packet structure.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_DHCPV6_PACKET
-{
-  public uint MessageType = 8;
-  public uint TransactionId = 24;
-  public fixed byte DhcpOptions[1024];
+public unsafe struct EFI_PXE_BASE_CODE_DHCPV6_PACKET {
+  public uint    MessageType  ; // = 8;
+  public uint    TransactionId; // = 24;
+  public fixed byte     DhcpOptions[1024];
 }
 
 ///
 /// Packet structure.
 ///
-[StructLayout(LayoutKind.Explicit)]
-public unsafe struct EFI_PXE_BASE_CODE_PACKET
-{
-  [FieldOffset(0)] public fixed byte Raw[1472];
-  [FieldOffset(0)] public EFI_PXE_BASE_CODE_DHCPV4_PACKET Dhcpv4;
-  [FieldOffset(0)] public EFI_PXE_BASE_CODE_DHCPV6_PACKET Dhcpv6;
+[StructLayout(LayoutKind.Explicit)] public unsafe struct EFI_PXE_BASE_CODE_PACKET {
+  [FieldOffset(0)] public fixed byte                              Raw[1472];
+  [FieldOffset(0)] public EFI_PXE_BASE_CODE_DHCPV4_PACKET    Dhcpv4;
+  [FieldOffset(0)] public EFI_PXE_BASE_CODE_DHCPV6_PACKET    Dhcpv6;
 }
 
 public unsafe partial class EFI
 {
-  //
-  // PXE Base Code Mode structure
-  //
-  public const ulong EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES = 8;
-  public const ulong EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES = 8;
+//
+// PXE Base Code Mode structure
+//
+public const ulong EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES = 8;
+public const ulong EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES = 8;
 }
 
 ///
@@ -311,42 +303,41 @@ public unsafe partial class EFI
 /// EFI_PXE_BASE_CODE_PROTOCOL functions.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_MODE
-{
-  public bool Started;
-  public bool Ipv6Available;
-  public bool Ipv6Supported;
-  public bool UsingIpv6;
-  public bool BisSupported;
-  public bool BisDetected;
-  public bool AutoArp;
-  public bool SendGUID;
-  public bool DhcpDiscoverValid;
-  public bool DhcpAckReceived;
-  public bool ProxyOfferReceived;
-  public bool PxeDiscoverValid;
-  public bool PxeReplyReceived;
-  public bool PxeBisReplyReceived;
-  public bool IcmpErrorReceived;
-  public bool TftpErrorReceived;
-  public bool MakeCallbacks;
-  public byte TTL;
-  public byte ToS;
-  public EFI_IP_ADDRESS StationIp;
-  public EFI_IP_ADDRESS SubnetMask;
-  public EFI_PXE_BASE_CODE_PACKET DhcpDiscover;
-  public EFI_PXE_BASE_CODE_PACKET DhcpAck;
-  public EFI_PXE_BASE_CODE_PACKET ProxyOffer;
-  public EFI_PXE_BASE_CODE_PACKET PxeDiscover;
-  public EFI_PXE_BASE_CODE_PACKET PxeReply;
-  public EFI_PXE_BASE_CODE_PACKET PxeBisReply;
-  public EFI_PXE_BASE_CODE_IP_FILTER IpFilter;
-  public uint ArpCacheEntries;
-  public EFI_PXE_BASE_CODE_ARP_ENTRY ArpCache[EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES];
-  public uint RouteTableEntries;
-  public EFI_PXE_BASE_CODE_ROUTE_ENTRY RouteTable[EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES];
-  public EFI_PXE_BASE_CODE_ICMP_ERROR IcmpError;
-  public EFI_PXE_BASE_CODE_TFTP_ERROR TftpError;
+public unsafe struct EFI_PXE_BASE_CODE_MODE {
+  public bool                          Started;
+  public bool                          Ipv6Available;
+  public bool                          Ipv6Supported;
+  public bool                          UsingIpv6;
+  public bool                          BisSupported;
+  public bool                          BisDetected;
+  public bool                          AutoArp;
+  public bool                          SendGUID;
+  public bool                          DhcpDiscoverValid;
+  public bool                          DhcpAckReceived;
+  public bool                          ProxyOfferReceived;
+  public bool                          PxeDiscoverValid;
+  public bool                          PxeReplyReceived;
+  public bool                          PxeBisReplyReceived;
+  public bool                          IcmpErrorReceived;
+  public bool                          TftpErrorReceived;
+  public bool                          MakeCallbacks;
+  public byte                            TTL;
+  public byte                            ToS;
+  public EFI_IP_ADDRESS                   StationIp;
+  public EFI_IP_ADDRESS                   SubnetMask;
+  public EFI_PXE_BASE_CODE_PACKET         DhcpDiscover;
+  public EFI_PXE_BASE_CODE_PACKET         DhcpAck;
+  public EFI_PXE_BASE_CODE_PACKET         ProxyOffer;
+  public EFI_PXE_BASE_CODE_PACKET         PxeDiscover;
+  public EFI_PXE_BASE_CODE_PACKET         PxeReply;
+  public EFI_PXE_BASE_CODE_PACKET         PxeBisReply;
+  public EFI_PXE_BASE_CODE_IP_FILTER      IpFilter;
+  public uint                           ArpCacheEntries;
+  public fixed EFI_PXE_BASE_CODE_ARP_ENTRY      ArpCache[EFI_PXE_BASE_CODE_MAX_ARP_ENTRIES];
+  public uint                           RouteTableEntries;
+  public fixed EFI_PXE_BASE_CODE_ROUTE_ENTRY    RouteTable[EFI_PXE_BASE_CODE_MAX_ROUTE_ENTRIES];
+  public EFI_PXE_BASE_CODE_ICMP_ERROR     IcmpError;
+  public EFI_PXE_BASE_CODE_TFTP_ERROR     TftpError;
 }
 
 //
@@ -933,15 +924,15 @@ public unsafe struct EFI_PXE_BASE_CODE_MODE
 
 public unsafe partial class EFI
 {
-  //
-  // PXE Base Code Protocol structure
-  //
-  public const ulong EFI_PXE_BASE_CODE_PROTOCOL_REVISION = 0x00010000;
+//
+// PXE Base Code Protocol structure
+//
+public const ulong EFI_PXE_BASE_CODE_PROTOCOL_REVISION = 0x00010000;
 
-  //
-  // Revision defined in EFI1.1
-  //
-  public const ulong EFI_PXE_BASE_CODE_INTERFACE_REVISION = EFI_PXE_BASE_CODE_PROTOCOL_REVISION;
+//
+// Revision defined in EFI1.1
+//
+public const ulong EFI_PXE_BASE_CODE_INTERFACE_REVISION = EFI_PXE_BASE_CODE_PROTOCOL_REVISION;
 }
 
 ///
@@ -953,30 +944,29 @@ public unsafe partial class EFI
 /// boot manager if the boot path is from the remote device.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_PXE_BASE_CODE_PROTOCOL
-{
+public unsafe struct EFI_PXE_BASE_CODE_PROTOCOL {
   ///
   ///  The revision of the EFI_PXE_BASE_CODE_PROTOCOL. All future revisions must
   ///  be backwards compatible. If a future version is not backwards compatible
   ///  it is not the same GUID.
   ///
-  public ulong Revision;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */bool /*UseIpv6*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_START*/ Start;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_STOP*/ Stop;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */bool /*SortOffers*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_DHCP*/ Dhcp;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */ushort /*Type*/,/* IN */ushort* /*Layer*/,/* IN */bool /*UseBis*/,/* IN */EFI_PXE_BASE_CODE_DISCOVER_INFO* /*Info*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_DISCOVER*/ Discover;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_TFTP_OPCODE /*Operation*/,/* IN OUT */void* /*BufferPtr*/,/* IN */bool /*Overwrite*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */ulong* /*BlockSize*/,/* IN */EFI_IP_ADDRESS* /*ServerIp*/,/* IN */byte* /*Filename*/,/* IN */EFI_PXE_BASE_CODE_MTFTP_INFO* /*Info*/,/* IN */bool /*DontUseBuffer*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_MTFTP*/ Mtftp;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */ushort /*OpFlags*/,/* IN */EFI_IP_ADDRESS* /*DestIp*/,/* IN */EFI_PXE_BASE_CODE_UDP_PORT* /*DestPort*/,/* IN */EFI_IP_ADDRESS* /*GatewayIp*/,/* IN */EFI_IP_ADDRESS* /*SrcIp*/,/* IN OUT */EFI_PXE_BASE_CODE_UDP_PORT* /*SrcPort*/,/* IN */ulong* /*HeaderSize*/,/* IN */void* /*HeaderPtr*/,/* IN */ulong* /*BufferSize*/,/* IN */void* /*BufferPtr*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_UDP_WRITE*/ UdpWrite;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */ushort /*OpFlags*/,/* IN OUT */EFI_IP_ADDRESS* /*DestIp*/,/* IN OUT */EFI_PXE_BASE_CODE_UDP_PORT* /*DestPort*/,/* IN OUT */EFI_IP_ADDRESS* /*SrcIp*/,/* IN OUT */EFI_PXE_BASE_CODE_UDP_PORT* /*SrcPort*/,/* IN */ulong* /*HeaderSize*/,/* IN */void* /*HeaderPtr*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*BufferPtr*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_UDP_READ*/ UdpRead;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_IP_FILTER* /*NewFilter*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_IP_FILTER*/ SetIpFilter;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_IP_ADDRESS* /*IpAddr*/,/* IN */EFI_MAC_ADDRESS* /*MacAddr*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_ARP*/ Arp;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */bool* /*NewAutoArp*/,/* IN */bool* /*NewSendGUID*/,/* IN */byte* /*NewTTL*/,/* IN */byte* /*NewToS*/,/* IN */bool* /*NewMakeCallback*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_PARAMETERS*/ SetParameters;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_IP_ADDRESS* /*NewStationIp*/,/* IN */EFI_IP_ADDRESS* /*NewSubnetMask*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_STATION_IP*/ SetStationIp;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/, bool* /*NewDhcpDiscoverValid*/, bool* /*NewDhcpAckReceived*/, bool* /*NewProxyOfferReceived*/, bool* /*NewPxeDiscoverValid*/, bool* /*NewPxeReplyReceived*/, bool* /*NewPxeBisReplyReceived*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewDhcpDiscover*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewDhcpAck*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewProxyOffer*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewPxeDiscover*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewPxeReply*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewPxeBisReply*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_PACKETS*/ SetPackets;
+  public ulong                              Revision;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */bool /*UseIpv6*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_START*/ Start;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_STOP*/ Stop;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */bool /*SortOffers*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_DHCP*/ Dhcp;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */ushort /*Type*/,/* IN */ushort* /*Layer*/,/* IN */bool /*UseBis*/,/* IN */EFI_PXE_BASE_CODE_DISCOVER_INFO* /*Info*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_DISCOVER*/ Discover;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_TFTP_OPCODE /*Operation*/,/* IN OUT */void* /*BufferPtr*/,/* IN */bool /*Overwrite*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */ulong* /*BlockSize*/,/* IN */EFI_IP_ADDRESS* /*ServerIp*/,/* IN */byte* /*Filename*/,/* IN */EFI_PXE_BASE_CODE_MTFTP_INFO* /*Info*/,/* IN */bool /*DontUseBuffer*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_MTFTP*/ Mtftp;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */ushort /*OpFlags*/,/* IN */EFI_IP_ADDRESS* /*DestIp*/,/* IN */EFI_PXE_BASE_CODE_UDP_PORT* /*DestPort*/,/* IN */EFI_IP_ADDRESS* /*GatewayIp*/,/* IN */EFI_IP_ADDRESS* /*SrcIp*/,/* IN OUT */EFI_PXE_BASE_CODE_UDP_PORT* /*SrcPort*/,/* IN */ulong* /*HeaderSize*/,/* IN */void* /*HeaderPtr*/,/* IN */ulong* /*BufferSize*/,/* IN */void* /*BufferPtr*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_UDP_WRITE*/ UdpWrite;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */ushort /*OpFlags*/,/* IN OUT */EFI_IP_ADDRESS* /*DestIp*/,/* IN OUT */EFI_PXE_BASE_CODE_UDP_PORT* /*DestPort*/,/* IN OUT */EFI_IP_ADDRESS* /*SrcIp*/,/* IN OUT */EFI_PXE_BASE_CODE_UDP_PORT* /*SrcPort*/,/* IN */ulong* /*HeaderSize*/,/* IN */void* /*HeaderPtr*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*BufferPtr*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_UDP_READ*/ UdpRead;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_IP_FILTER* /*NewFilter*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_IP_FILTER*/ SetIpFilter;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_IP_ADDRESS* /*IpAddr*/,/* IN */EFI_MAC_ADDRESS* /*MacAddr*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_ARP*/ Arp;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */bool* /*NewAutoArp*/,/* IN */bool* /*NewSendGUID*/,/* IN */byte* /*NewTTL*/,/* IN */byte* /*NewToS*/,/* IN */bool* /*NewMakeCallback*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_PARAMETERS*/ SetParameters;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,/* IN */EFI_IP_ADDRESS* /*NewStationIp*/,/* IN */EFI_IP_ADDRESS* /*NewSubnetMask*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_STATION_IP*/ SetStationIp;
+public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_PROTOCOL* /*This*/,bool* /*NewDhcpDiscoverValid*/,bool* /*NewDhcpAckReceived*/,bool* /*NewProxyOfferReceived*/,bool* /*NewPxeDiscoverValid*/,bool* /*NewPxeReplyReceived*/,bool* /*NewPxeBisReplyReceived*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewDhcpDiscover*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewDhcpAck*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewProxyOffer*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewPxeDiscover*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewPxeReply*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*NewPxeBisReply*/, EFI_STATUS> /*EFI_PXE_BASE_CODE_SET_PACKETS*/ SetPackets;
   ///
   /// The pointer to the EFI_PXE_BASE_CODE_MODE data for this device.
   ///
-  public EFI_PXE_BASE_CODE_MODE* Mode;
+  public EFI_PXE_BASE_CODE_MODE              *Mode;
 }
 
 // extern EFI_GUID  gEfiPxeBaseCodeProtocolGuid;

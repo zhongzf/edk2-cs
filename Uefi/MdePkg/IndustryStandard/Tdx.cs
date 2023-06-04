@@ -131,13 +131,13 @@ public unsafe struct VMX_EXIT_QUALIFICATION
 {
   [FieldOffset(0)] public ulong Val;
   /*   struct { */
-  [FieldOffset(0)] public uint Size = 3;
-  [FieldOffset(0)] public uint Direction = 1;
-  [FieldOffset(0)] public uint String = 1;
-  [FieldOffset(0)] public uint Rep = 1;
-  [FieldOffset(0)] public uint Encoding = 1;
-  [FieldOffset(0)] public uint Resv = 9;
-  [FieldOffset(0)] public uint Port = 16;
+  [FieldOffset(0)] public uint Size; // = 3;
+  [FieldOffset(0)] public uint Direction; // = 1;
+  [FieldOffset(0)] public uint String; // = 1;
+  [FieldOffset(0)] public uint Rep; // = 1;
+  [FieldOffset(0)] public uint Encoding; // = 1;
+  [FieldOffset(0)] public uint Resv; // = 9;
+  [FieldOffset(0)] public uint Port; // = 16;
   [FieldOffset(0)] public uint Resv2;
   /*   } Io; */
 }
@@ -213,8 +213,8 @@ public unsafe struct TDINFO
   public fixed byte Mrconfigid[48];
   public fixed byte Mrowner[48];
   public fixed byte Mrownerconfig[48];
-  //byte Rtmrs[4][48];
-  //public fixed byte Rsvd[112];
+  byte Rtmrs[4][48];
+  public fixed byte Rsvd[112];
 }
 
 [StructLayout(LayoutKind.Sequential)]

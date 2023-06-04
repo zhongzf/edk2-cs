@@ -95,15 +95,15 @@ public const ulong MCTP_ENDPOINT_ID_BROADCAST = 0xff;
 public unsafe struct MCTP_CONTROL_MESSAGE
 {
   /*   struct { */
-  [FieldOffset(0)] public uint MessageType = 7; ///< Message type.
-  [FieldOffset(0)] public uint IntegrityCheck = 1; ///< Message integrity check.
-  [FieldOffset(0)] public uint InstanceId = 5; ///< Instance ID.
-  [FieldOffset(0)] public uint Reserved = 1; ///< Reserved bit.
-  [FieldOffset(0)] public uint DatagramBit = 1; ///< Datagram bit.
-  [FieldOffset(0)] public uint RequestBit = 1; ///< Request bit.
-  [FieldOffset(0)] public uint CommandCode = 8; ///< Command code of request message.
-  [FieldOffset(0)] public uint CompletionCode = 8; ///< Completion code in response message.
-/*   } Bits; */
+  [FieldOffset(0)] public uint MessageType; // = 7; ///< Message type.
+  [FieldOffset(0)] public uint IntegrityCheck; // = 1; ///< Message integrity check.
+  [FieldOffset(0)] public uint InstanceId; // = 5; ///< Instance ID.
+  [FieldOffset(0)] public uint Reserved; // = 1; ///< Reserved bit.
+  [FieldOffset(0)] public uint DatagramBit; // = 1; ///< Datagram bit.
+  [FieldOffset(0)] public uint RequestBit; // = 1; ///< Request bit.
+  [FieldOffset(0)] public uint CommandCode; // = 8; ///< Command code of request message.
+  [FieldOffset(0)] public uint CompletionCode; // = 8; ///< Completion code in response message.
+  /*   } Bits; */
   [FieldOffset(0)] public uint BodyHeader;
 }
 
@@ -121,20 +121,20 @@ public unsafe partial class EFI
 public unsafe struct MCTP_TRANSPORT_HEADER
 {
   /*   struct { */
-  [FieldOffset(0)] public uint HeaderVersion = 4; ///< The version of header.
-  [FieldOffset(0)] public uint Reserved = 4; ///< Reserved for future definitions.
-  [FieldOffset(0)] public uint DestinationEndpointId = 8; ///< Destination endpoint Id (EID).
-  [FieldOffset(0)] public uint SourceEndpointIdId = 8; ///< Source endpoint Id (EID)
-  [FieldOffset(0)] public uint MessageTag = 3; ///< Check the MCTP Base specification for the
-                                               ///< usages.
-  [FieldOffset(0)] public uint TagOwner = 1; ///< Tag owner identifies the message was
-                                             ///< originated by the source EID or
-                                             ///< destination EID.
-  [FieldOffset(0)] public uint PacketSequence = 2; ///< Sequence number increments Modulo 4 on
-                                                   ///< each packet.
-  [FieldOffset(0)] public uint EndOfMessage = 1; ///< Indicates the last packet of message.
-  [FieldOffset(0)] public uint StartOfMessage = 1; ///< Indicates the first packet of message.
-/*   } Bits; */
+  [FieldOffset(0)] public uint HeaderVersion; // = 4; ///< The version of header.
+  [FieldOffset(0)] public uint Reserved; // = 4; ///< Reserved for future definitions.
+  [FieldOffset(0)] public uint DestinationEndpointId; // = 8; ///< Destination endpoint Id (EID).
+  [FieldOffset(0)] public uint SourceEndpointIdId; // = 8; ///< Source endpoint Id (EID)
+  [FieldOffset(0)] public uint MessageTag; // = 3; ///< Check the MCTP Base specification for the
+  ///< usages.
+  [FieldOffset(0)] public uint TagOwner; // = 1; ///< Tag owner identifies the message was
+  ///< originated by the source EID or
+  ///< destination EID.
+  [FieldOffset(0)] public uint PacketSequence; // = 2; ///< Sequence number increments Modulo 4 on
+  ///< each packet.
+  [FieldOffset(0)] public uint EndOfMessage; // = 1; ///< Indicates the last packet of message.
+  [FieldOffset(0)] public uint StartOfMessage; // = 1; ///< Indicates the first packet of message.
+  /*   } Bits; */
   [FieldOffset(0)] public uint Header;
 }
 
@@ -145,8 +145,8 @@ public unsafe struct MCTP_TRANSPORT_HEADER
 public unsafe struct MCTP_MESSAGE_HEADER
 {
   /*   struct { */
-  [FieldOffset(0)] public byte MessageType = 7;
-  [FieldOffset(0)] public byte IntegrityCheck = 1;
+  [FieldOffset(0)] public byte MessageType; // = 7;
+  [FieldOffset(0)] public byte IntegrityCheck; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public byte MessageHeader;
 }

@@ -601,12 +601,12 @@ public unsafe partial class EFI
 public unsafe struct PCI_CONFIG_ACCESS_CF8
 {
   /*   struct { */
-  [FieldOffset(0)] public uint Reg = 8;
-  [FieldOffset(0)] public uint Func = 3;
-  [FieldOffset(0)] public uint Dev = 5;
-  [FieldOffset(0)] public uint Bus = 8;
-  [FieldOffset(0)] public uint Reserved = 7;
-  [FieldOffset(0)] public uint Enable = 1;
+  [FieldOffset(0)] public uint Reg; // = 8;
+  [FieldOffset(0)] public uint Func; // = 3;
+  [FieldOffset(0)] public uint Dev; // = 5;
+  [FieldOffset(0)] public uint Bus; // = 8;
+  [FieldOffset(0)] public uint Reserved; // = 7;
+  [FieldOffset(0)] public uint Enable; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public uint Uint32;
 }
@@ -695,14 +695,14 @@ public unsafe struct EFI_PCI_CAPABILITY_HDR
 public unsafe struct EFI_PCI_PMC
 {
   /*   struct { */
-  [FieldOffset(0)] public ushort Version = 3;
-  [FieldOffset(0)] public ushort PmeClock = 1;
-  [FieldOffset(0)] public ushort Reserved = 1;
-  [FieldOffset(0)] public ushort DeviceSpecificInitialization = 1;
-  [FieldOffset(0)] public ushort AuxCurrent = 3;
-  [FieldOffset(0)] public ushort D1Support = 1;
-  [FieldOffset(0)] public ushort D2Support = 1;
-  [FieldOffset(0)] public ushort PmeSupport = 5;
+  [FieldOffset(0)] public ushort Version; // = 3;
+  [FieldOffset(0)] public ushort PmeClock; // = 1;
+  [FieldOffset(0)] public ushort Reserved; // = 1;
+  [FieldOffset(0)] public ushort DeviceSpecificInitialization; // = 1;
+  [FieldOffset(0)] public ushort AuxCurrent; // = 3;
+  [FieldOffset(0)] public ushort D1Support; // = 1;
+  [FieldOffset(0)] public ushort D2Support; // = 1;
+  [FieldOffset(0)] public ushort PmeSupport; // = 5;
   /*   } Bits; */
   [FieldOffset(0)] public ushort Data;
 }
@@ -720,14 +720,14 @@ public unsafe partial class EFI
 public unsafe struct EFI_PCI_PMCSR
 {
   /*   struct { */
-  [FieldOffset(0)] public ushort PowerState = 2;
-  [FieldOffset(0)] public ushort ReservedForPciExpress = 1;
-  [FieldOffset(0)] public ushort NoSoftReset = 1;
-  [FieldOffset(0)] public ushort Reserved = 4;
-  [FieldOffset(0)] public ushort PmeEnable = 1;
-  [FieldOffset(0)] public ushort DataSelect = 4;
-  [FieldOffset(0)] public ushort DataScale = 2;
-  [FieldOffset(0)] public ushort PmeStatus = 1;
+  [FieldOffset(0)] public ushort PowerState; // = 2;
+  [FieldOffset(0)] public ushort ReservedForPciExpress; // = 1;
+  [FieldOffset(0)] public ushort NoSoftReset; // = 1;
+  [FieldOffset(0)] public ushort Reserved; // = 4;
+  [FieldOffset(0)] public ushort PmeEnable; // = 1;
+  [FieldOffset(0)] public ushort DataSelect; // = 4;
+  [FieldOffset(0)] public ushort DataScale; // = 2;
+  [FieldOffset(0)] public ushort PmeStatus; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public ushort Data;
 }
@@ -748,9 +748,9 @@ public unsafe partial class EFI
 public unsafe struct EFI_PCI_PMCSR_BSE
 {
   /*   struct { */
-  [FieldOffset(0)] public byte Reserved = 6;
-  [FieldOffset(0)] public byte B2B3 = 1;
-  [FieldOffset(0)] public byte BusPowerClockControl = 1;
+  [FieldOffset(0)] public byte Reserved; // = 6;
+  [FieldOffset(0)] public byte B2B3; // = 1;
+  [FieldOffset(0)] public byte BusPowerClockControl; // = 1;
   /*   } Bits; */
   [FieldOffset(0)] public byte Uint8;
 }
@@ -859,11 +859,11 @@ public unsafe partial class EFI
   ///
   /// EFI PCI Option ROM definitions
   ///
-  public const string EFI_ROOT_BRIDGE_LIST = "eprb";
+  public const ulong EFI_ROOT_BRIDGE_LIST = 'eprb';
   public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1; /// < defined in UEFI Spec.
 
   public const ulong PCI_EXPANSION_ROM_HEADER_SIGNATURE = 0xaa55;
-  //public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
+  public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
   public const ulong PCI_CODE_TYPE_PCAT_IMAGE = 0x00;
   public const ulong EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED = 0x0001; /// < defined in UEFI spec.
 }

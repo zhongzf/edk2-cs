@@ -227,56 +227,56 @@ public unsafe struct DNS6_GENERAL_LOOKUP_DATA
 ///
 /// EFI_DNS6_COMPLETION_TOKEN
 ///
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct RspData
-//{
-//  ///
-//  /// This Event will be signaled after the Status field is updated by the EFI DNSv6
-//  /// protocol driver. The type of Event must be EFI_NOTIFY_SIGNAL.
-//  ///
-//  public EFI_EVENT Event;
-//  ///
-//  /// Will be set to one of the following values:
-//  ///   EFI_SUCCESS:      The host name to address translation completed successfully.
-//  ///   EFI_NOT_FOUND:    No matching Resource Record (RR) is found.
-//  ///   EFI_TIMEOUT:      No DNS server reachable, or RetryCount was exhausted without
-//  ///                     response from all specified DNS servers.
-//  ///   EFI_DEVICE_ERROR: An unexpected system or network error occurred.
-//  ///   EFI_NO_MEDIA:     There was a media error.
-//  ///
-//  public EFI_STATUS Status;
-//  ///
-//  /// The parameter configured through DNSv6.Configure() interface. Retry number if no
-//  /// response received after RetryInterval.
-//  ///
-//  public uint RetryCount;
-//  ///
-//  /// The parameter configured through DNSv6.Configure() interface. Minimum interval of
-//  /// retry is 2 seconds. If the retry interval is less than 2 seconds, then use the 2
-//  /// seconds.
-//  ///
-//  public uint RetryInterval;
-//  ///
-//  /// DNSv6 completion token data
-//  ///
-//  union {
-//    ///
-//    /// When the Token is used for host name to address translation, H2AData is a pointer
-//    /// to the DNS6_HOST_TO_ADDR_DATA.
-//    ///
-//    public DNS6_HOST_TO_ADDR_DATA* H2AData;
-//  ///
-//  /// When the Token is used for host address to host name translation, A2HData is a
-//  /// pointer to the DNS6_ADDR_TO_HOST_DATA.
-//  ///
-//  public DNS6_ADDR_TO_HOST_DATA* A2HData;
-//  ///
-//  /// When the Token is used for a general lookup function, GLookupDATA is a pointer to
-//  /// the DNS6_GENERAL_LOOKUP_DATA.
-//  ///
-//  public DNS6_GENERAL_LOOKUP_DATA* GLookupData;
-//}
-//} EFI_DNS6_COMPLETION_TOKEN;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct RspData
+{
+  ///
+  /// This Event will be signaled after the Status field is updated by the EFI DNSv6
+  /// protocol driver. The type of Event must be EFI_NOTIFY_SIGNAL.
+  ///
+  public EFI_EVENT Event;
+  ///
+  /// Will be set to one of the following values:
+  ///   EFI_SUCCESS:      The host name to address translation completed successfully.
+  ///   EFI_NOT_FOUND:    No matching Resource Record (RR) is found.
+  ///   EFI_TIMEOUT:      No DNS server reachable, or RetryCount was exhausted without
+  ///                     response from all specified DNS servers.
+  ///   EFI_DEVICE_ERROR: An unexpected system or network error occurred.
+  ///   EFI_NO_MEDIA:     There was a media error.
+  ///
+  public EFI_STATUS Status;
+  ///
+  /// The parameter configured through DNSv6.Configure() interface. Retry number if no
+  /// response received after RetryInterval.
+  ///
+  public uint RetryCount;
+  ///
+  /// The parameter configured through DNSv6.Configure() interface. Minimum interval of
+  /// retry is 2 seconds. If the retry interval is less than 2 seconds, then use the 2
+  /// seconds.
+  ///
+  public uint RetryInterval;
+  ///
+  /// DNSv6 completion token data
+  ///
+  union {
+    ///
+    /// When the Token is used for host name to address translation, H2AData is a pointer
+    /// to the DNS6_HOST_TO_ADDR_DATA.
+    ///
+    public DNS6_HOST_TO_ADDR_DATA* H2AData;
+  ///
+  /// When the Token is used for host address to host name translation, A2HData is a
+  /// pointer to the DNS6_ADDR_TO_HOST_DATA.
+  ///
+  public DNS6_ADDR_TO_HOST_DATA* A2HData;
+  ///
+  /// When the Token is used for a general lookup function, GLookupDATA is a pointer to
+  /// the DNS6_GENERAL_LOOKUP_DATA.
+  ///
+  public DNS6_GENERAL_LOOKUP_DATA* GLookupData;
+}
+} EFI_DNS6_COMPLETION_TOKEN;
 
 // /**
 //   Retrieve mode data of this DNS instance.

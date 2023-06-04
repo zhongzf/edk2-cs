@@ -33,13 +33,13 @@ public enum UGA_DEVICE_TYPE
   UgaDtOther
 }
 
-//typedef uint UGA_DEVICE_ID, * PUGA_DEVICE_ID;
+typedef uint UGA_DEVICE_ID, * PUGA_DEVICE_ID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UGA_DEVICE_DATA
 {
   public UGA_DEVICE_TYPE deviceType;
-  public uint deviceId;
+  public UGA_DEVICE_ID deviceId;
   public uint ui32DeviceContextSize;
   public uint ui32SharedContextSize;
 }
@@ -50,7 +50,7 @@ public unsafe struct UGA_DEVICE
   public void* pvDeviceContext;
   public void* pvSharedContext;
   public void* pvRunTimeContext;
-  public UGA_DEVICE* pParentDevice;
+  struct public _UGA_DEVICE* pParentDevice;
   public void* pvBusIoServices;
   public void* pvStdIoServices;
   public UGA_DEVICE_DATA deviceData;
@@ -178,7 +178,7 @@ public unsafe struct EFI_UGA_IO_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_UGA_IO_PROTOCOL* /*This*/,/* IN */UGA_DEVICE* /*ParentDevice*/,/* IN */UGA_DEVICE_DATA* /*DeviceData*/,/* IN */void* /*RunTimeContext*/,/* OUT */UGA_DEVICE** /*Device*/, EFI_STATUS> /*EFI_UGA_IO_PROTOCOL_CREATE_DEVICE*/ CreateDevice;
   public readonly delegate* unmanaged</* IN */EFI_UGA_IO_PROTOCOL* /*This*/,/* IN */UGA_DEVICE* /*Device*/, EFI_STATUS> /*EFI_UGA_IO_PROTOCOL_DELETE_DEVICE*/ DeleteDevice;
-  //public readonly delegate* unmanaged</* IN OUT */PUGA_IO_REQUEST /*pIoRequest*/, EFI_STATUS> /*PUGA_FW_SERVICE_DISPATCH*/ DispatchService;
+  public readonly delegate* unmanaged</* IN OUT */PUGA_IO_REQUEST /*pIoRequest*/, EFI_STATUS> /*PUGA_FW_SERVICE_DISPATCH*/ DispatchService;
 }
 
 // extern EFI_GUID  gEfiUgaIoProtocolGuid;

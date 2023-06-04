@@ -38,15 +38,15 @@ public unsafe partial class EFI
 public unsafe struct ACPI_LPI_STATE_FLAGS
 {
   /*   struct { */
-  [FieldOffset(0)] public uint Disabled = 1; ///< If set, LPI state is not used
+  [FieldOffset(0)] public uint Disabled; // = 1; ///< If set, LPI state is not used
 
   /**
     If set, Residency counter is not available for this LPI state and
     Residency Counter Frequency is invalid
   **/
-  [FieldOffset(0)] public uint CounterUnavailable = 1;
-  [FieldOffset(0)] public uint Reserved = 30; ///< Reserved for future use. Must be zero
-/*   } Bits; */
+  [FieldOffset(0)] public uint CounterUnavailable; // = 1;
+  [FieldOffset(0)] public uint Reserved; // = 30; ///< Reserved for future use. Must be zero
+  /*   } Bits; */
   [FieldOffset(0)] public uint Data32;
 }
 

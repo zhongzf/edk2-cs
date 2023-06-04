@@ -30,7 +30,7 @@ public unsafe partial class EFI
       0x843dc720, 0xab1e, 0x42cb, new byte[] { 0x93, 0x57, 0x8a, 0x0, 0x78, 0xf3, 0x56, 0x1b });
 }
 
-//typedef struct _EFI_MM_CONTROL_PROTOCOL  EFI_MM_CONTROL_PROTOCOL;
+typedef struct _EFI_MM_CONTROL_PROTOCOL  EFI_MM_CONTROL_PROTOCOL;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_PERIOD { ulong Value; public static implicit operator EFI_MM_PERIOD(ulong value) => new EFI_MM_PERIOD() { Value = value }; public static implicit operator ulong(EFI_MM_PERIOD value) => value.Value; }
 

@@ -290,12 +290,11 @@ public unsafe partial class EFI
   public const ulong MAX_TLS_SESSION_ID_LENGTH = 32;
   // #pragma pack (1)
 }
-
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TLS_SESSION_ID
 {
   public ushort Length;
-  //public fixed byte Data[MAX_TLS_SESSION_ID_LENGTH];
+  public fixed byte Data[MAX_TLS_SESSION_ID_LENGTH];
 }
 // #pragma pack ()
 

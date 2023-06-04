@@ -1893,14 +1893,14 @@ public unsafe partial class EFI
   public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_PROXIMITY_DOMAIN_VALID = BIT1;
   public const ulong EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_SPA_LOCATION_COOKIE_VALID = BIT2;
 
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_VOLATILE_MEMORY_REGION = { 0x7305944F, 0xFDDA, 0x44E3, { 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0 } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_REGION = { 0x66F0D379, 0xB4F3, 0x4074, { 0xAC, 0x43, 0x0D, 0x33, 0x18, 0xB7, 0x8C, 0xDB } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_CONTROL_REGION = { 0x92F701F6, 0x13B4, 0x405D, { 0x91, 0x0B, 0x29, 0x93, 0x67, 0xE8, 0x23, 0x4C } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_BLOCK_DATA_WINDOW_REGION = { 0x91AF0530, 0x5D86, 0x470E, { 0xA6, 0xB0, 0x0A, 0x2D, 0xB9, 0x40, 0x82, 0x49 } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE = { 0x77AB535A, 0x45FC, 0x6.5B, { 0x55, 0x60, 0xF7, 0xB2, 0x81, 0xD1, 0xF9, 0x6E } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE = { 0x3D5ABD30, 0x4175, 0x87CE, { 0x6D, 0x64, 0xD2, 0xAD, 0xE5, 0x23, 0xC4, 0xBB } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT = { 0x5CEA02C9, 0x4D07, 0x69D3, { 0x26, 0x9F, 0x44, 0x96, 0xFB, 0xE0, 0x96, 0xF9 } };
-  //public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT = { 0x08018188, 0x42CD, 0xBB48, { 0x10, 0x0F, 0x53, 0x87, 0xD5, 0x3D, 0xED, 0x3D } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_VOLATILE_MEMORY_REGION = { 0x7305944F, 0xFDDA, 0x44E3, { 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0 } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_REGION = { 0x66F0D379, 0xB4F3, 0x4074, { 0xAC, 0x43, 0x0D, 0x33, 0x18, 0xB7, 0x8C, 0xDB } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_CONTROL_REGION = { 0x92F701F6, 0x13B4, 0x405D, { 0x91, 0x0B, 0x29, 0x93, 0x67, 0xE8, 0x23, 0x4C } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_NVDIMM_BLOCK_DATA_WINDOW_REGION = { 0x91AF0530, 0x5D86, 0x470E, { 0xA6, 0xB0, 0x0A, 0x2D, 0xB9, 0x40, 0x82, 0x49 } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE = { 0x77AB535A, 0x45FC, 0x6.5B, { 0x55, 0x60, 0xF7, 0xB2, 0x81, 0xD1, 0xF9, 0x6E } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE = { 0x3D5ABD30, 0x4175, 0x87CE, { 0x6D, 0x64, 0xD2, 0xAD, 0xE5, 0x23, 0xC4, 0xBB } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT = { 0x5CEA02C9, 0x4D07, 0x69D3, { 0x26, 0x9F, 0x44, 0x96, 0xFB, 0xE0, 0x96, 0xF9 } };
+  public const ulong EFI_ACPI_6_5_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT = { 0x08018188, 0x42CD, 0xBB48, { 0x10, 0x0F, 0x53, 0x87, 0xD5, 0x3D, 0xED, 0x3D } };
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -1925,12 +1925,12 @@ public unsafe struct EFI_ACPI_6_5_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_STRUCTURE
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_NFIT_DEVICE_HANDLE
 {
-  public uint DIMMNumber = 4;
-  public uint MemoryChannelNumber = 4;
-  public uint MemoryControllerID = 4;
-  public uint SocketID = 4;
-  public uint NodeControllerID = 12;
-  public uint Reserved_28 = 4;
+  public uint DIMMNumber; // = 4;
+  public uint MemoryChannelNumber; // = 4;
+  public uint MemoryControllerID; // = 4;
+  public uint SocketID; // = 4;
+  public uint NodeControllerID; // = 12;
+  public uint Reserved_28; // = 4;
 }
 
 public unsafe partial class EFI
@@ -2214,12 +2214,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_ERROR_BLOCK_STATUS
 {
-  public uint UncorrectableErrorValid = 1;
-  public uint CorrectableErrorValid = 1;
-  public uint MultipleUncorrectableErrors = 1;
-  public uint MultipleCorrectableErrors = 1;
-  public uint ErrorDataEntryCount = 10;
-  public uint Reserved = 18;
+  public uint UncorrectableErrorValid; // = 1;
+  public uint CorrectableErrorValid; // = 1;
+  public uint MultipleUncorrectableErrors; // = 1;
+  public uint MultipleCorrectableErrors; // = 1;
+  public uint ErrorDataEntryCount; // = 10;
+  public uint Reserved; // = 18;
 }
 
 ///
@@ -2383,13 +2383,13 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_HARDWARE_ERROR_NOTIFICATION_CONFIGURATION_WRITE_ENABLE_STRUCTURE
 {
-  public ushort Type = 1;
-  public ushort PollInterval = 1;
-  public ushort SwitchToPollingThresholdValue = 1;
-  public ushort SwitchToPollingThresholdWindow = 1;
-  public ushort ErrorThresholdValue = 1;
-  public ushort ErrorThresholdWindow = 1;
-  public ushort Reserved = 10;
+  public ushort Type; // = 1;
+  public ushort PollInterval; // = 1;
+  public ushort SwitchToPollingThresholdValue; // = 1;
+  public ushort SwitchToPollingThresholdWindow; // = 1;
+  public ushort ErrorThresholdValue; // = 1;
+  public ushort ErrorThresholdWindow; // = 1;
+  public ushort Reserved; // = 10;
 }
 
 ///
@@ -2631,8 +2631,8 @@ public unsafe struct EFI_ACPI_6_5_HMAT_STRUCTURE_HEADER
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_HMAT_STRUCTURE_MEMORY_PROXIMITY_DOMAIN_ATTRIBUTES_FLAGS
 {
-  public ushort InitiatorProximityDomainValid = 1;
-  public ushort Reserved = 15;
+  public ushort InitiatorProximityDomainValid; // = 1;
+  public ushort Reserved; // = 15;
 }
 
 ///
@@ -2657,9 +2657,9 @@ public unsafe struct EFI_ACPI_6_5_HMAT_STRUCTURE_MEMORY_PROXIMITY_DOMAIN_ATTRIBU
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_HMAT_STRUCTURE_SYSTEM_LOCALITY_LATENCY_AND_BANDWIDTH_INFO_FLAGS
 {
-  public byte MemoryHierarchy = 4;
-  public byte AccessAttributes = 2;
-  public byte Reserved = 2;
+  public byte MemoryHierarchy; // = 4;
+  public byte AccessAttributes; // = 2;
+  public byte Reserved; // = 2;
 }
 
 ///
@@ -2687,11 +2687,11 @@ public unsafe struct EFI_ACPI_6_5_HMAT_STRUCTURE_SYSTEM_LOCALITY_LATENCY_AND_BAN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_HMAT_STRUCTURE_MEMORY_SIDE_CACHE_INFO_CACHE_ATTRIBUTES
 {
-  public uint TotalCacheLevels = 4;
-  public uint CacheLevel = 4;
-  public uint CacheAssociativity = 4;
-  public uint WritePolicy = 4;
-  public uint CacheLineSize = 16;
+  public uint TotalCacheLevels; // = 4;
+  public uint CacheLevel; // = 4;
+  public uint CacheAssociativity; // = 4;
+  public uint WritePolicy; // = 4;
+  public uint CacheLineSize; // = 16;
 }
 
 ///
@@ -2973,18 +2973,18 @@ public unsafe struct EFI_ACPI_6_5_PCCT_SUBSPACE_GENERIC
 public unsafe struct EFI_ACPI_6_5_PCCT_GENERIC_SHARED_MEMORY_REGION_COMMAND
 {
   public byte Command;
-  public byte Reserved = 7;
-  public byte NotifyOnCompletion = 1;
+  public byte Reserved; // = 7;
+  public byte NotifyOnCompletion; // = 1;
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PCCT_GENERIC_SHARED_MEMORY_REGION_STATUS
 {
-  public byte CommandComplete = 1;
-  public byte PlatformInterrupt = 1;
-  public byte Error = 1;
-  public byte PlatformNotification = 1;
-  public byte Reserved = 4;
+  public byte CommandComplete; // = 1;
+  public byte PlatformInterrupt; // = 1;
+  public byte Error; // = 1;
+  public byte PlatformNotification; // = 1;
+  public byte Reserved; // = 4;
   public byte Reserved1;
 }
 
@@ -3157,11 +3157,11 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PDTT_PCC_IDENTIFIER
 {
-  public ushort SubChannelIdentifer = 8;
-  public ushort Runtime = 1;
-  public ushort WaitForCompletion = 1;
-  public ushort TriggerOrder = 1;
-  public ushort Reserved = 5;
+  public ushort SubChannelIdentifer; // = 8;
+  public ushort Runtime; // = 1;
+  public ushort WaitForCompletion; // = 1;
+  public ushort TriggerOrder; // = 1;
+  public ushort Reserved; // = 5;
 }
 
 public unsafe partial class EFI
@@ -3236,12 +3236,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PPTT_STRUCTURE_PROCESSOR_FLAGS
 {
-  public uint PhysicalPackage = 1;
-  public uint AcpiProcessorIdValid = 1;
-  public uint ProcessorIsAThread = 1;
-  public uint NodeIsALeaf = 1;
-  public uint IdenticalImplementation = 1;
-  public uint Reserved = 27;
+  public uint PhysicalPackage; // = 1;
+  public uint AcpiProcessorIdValid; // = 1;
+  public uint ProcessorIsAThread; // = 1;
+  public uint NodeIsALeaf; // = 1;
+  public uint IdenticalImplementation; // = 1;
+  public uint Reserved; // = 27;
 }
 
 ///
@@ -3288,15 +3288,15 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PPTT_STRUCTURE_CACHE_FLAGS
 {
-  public uint SizePropertyValid = 1;
-  public uint NumberOfSetsValid = 1;
-  public uint AssociativityValid = 1;
-  public uint AllocationTypeValid = 1;
-  public uint CacheTypeValid = 1;
-  public uint WritePolicyValid = 1;
-  public uint LineSizeValid = 1;
-  public uint CacheIdValid = 1;
-  public uint Reserved = 24;
+  public uint SizePropertyValid; // = 1;
+  public uint NumberOfSetsValid; // = 1;
+  public uint AssociativityValid; // = 1;
+  public uint AllocationTypeValid; // = 1;
+  public uint CacheTypeValid; // = 1;
+  public uint WritePolicyValid; // = 1;
+  public uint LineSizeValid; // = 1;
+  public uint CacheIdValid; // = 1;
+  public uint Reserved; // = 24;
 }
 
 public unsafe partial class EFI
@@ -3320,10 +3320,10 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_5_PPTT_STRUCTURE_CACHE_ATTRIBUTES
 {
-  public byte AllocationType = 2;
-  public byte CacheType = 2;
-  public byte WritePolicy = 1;
-  public byte Reserved = 3;
+  public byte AllocationType; // = 2;
+  public byte CacheType; // = 2;
+  public byte WritePolicy; // = 1;
+  public byte Reserved; // = 3;
 }
 
 ///

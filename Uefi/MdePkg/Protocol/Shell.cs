@@ -1234,11 +1234,11 @@ public unsafe struct EFI_SHELL_PROTOCOL
   public readonly delegate* unmanaged</* IN */char* /*Path*/,/* IN */ulong /*OpenMode*/,/* IN OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_OPEN_FILE_LIST*/ OpenFileList;
   public readonly delegate* unmanaged</* IN */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FREE_FILE_LIST*/ FreeFileList;
   public readonly delegate* unmanaged</* IN */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_REMOVE_DUP_IN_FILE_LIST*/ RemoveDupInFileList;
-  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*EFI_SHELL_BATCH_IS_ACTIVE*/ BatchIsActive;
-  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*EFI_SHELL_IS_ROOT_SHELL*/ IsRootShell;
-  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*EFI_SHELL_ENABLE_PAGE_BREAK*/ EnablePageBreak;
-  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*EFI_SHELL_DISABLE_PAGE_BREAK*/ DisablePageBreak;
-  public readonly delegate* unmanaged<void /**/, EFI_STATUS> /*EFI_SHELL_GET_PAGE_BREAK*/ GetPageBreak;
+  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_BATCH_IS_ACTIVE*/ BatchIsActive;
+  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_IS_ROOT_SHELL*/ IsRootShell;
+  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_ENABLE_PAGE_BREAK*/ EnablePageBreak;
+  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_DISABLE_PAGE_BREAK*/ DisablePageBreak;
+  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_GET_PAGE_BREAK*/ GetPageBreak;
   public readonly delegate* unmanaged</* IN */EFI_HANDLE /*DeviceHandle*/,/* IN */EFI_SHELL_DEVICE_NAME_FLAGS /*Flags*/,/* IN */byte* /*Language*/,/* OUT */char** /*BestDeviceName*/, EFI_STATUS> /*EFI_SHELL_GET_DEVICE_NAME*/ GetDeviceName;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_GET_FILE_INFO*/ GetFileInfo;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* IN CONST */EFI_FILE_INFO* /*FileInfo*/, EFI_STATUS> /*EFI_SHELL_SET_FILE_INFO*/ SetFileInfo;

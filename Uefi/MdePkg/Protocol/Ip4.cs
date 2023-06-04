@@ -200,8 +200,8 @@ public unsafe struct EFI_IP4_MODE_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IP4_HEADER
 {
-  public byte HeaderLength = 4;
-  public byte Version = 4;
+  public byte HeaderLength; // = 4;
+  public byte Version; // = 4;
   public byte TypeOfService;
   public ushort TotalLength;
   public ushort Identification;
@@ -258,32 +258,32 @@ public unsafe struct EFI_IP4_TRANSMIT_DATA
   public fixed EFI_IP4_FRAGMENT_DATA FragmentTable[1];
 }
 
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Packet
-//{
-//  ///
-//  /// This Event will be signaled after the Status field is updated
-//  /// by the EFI IPv4 Protocol driver. The type of Event must be
-//  /// EFI_NOTIFY_SIGNAL. The Task Priority Level (TPL) of
-//  /// Event must be lower than or equal to TPL_CALLBACK.
-//  ///
-//  public EFI_EVENT Event;
-//  ///
-//  /// The status that is returned to the caller at the end of the operation
-//  /// to indicate whether this operation completed successfully.
-//  ///
-//  public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to the EFI_IP4_RECEIVE_DATA.
-//    ///
-//    public EFI_IP4_RECEIVE_DATA* RxData;
-//  ///
-//  /// When this token is used for transmitting, TxData is a pointer to the EFI_IP4_TRANSMIT_DATA.
-//  ///
-//  public EFI_IP4_TRANSMIT_DATA* TxData;
-//}
-//} EFI_IP4_COMPLETION_TOKEN;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Packet
+{
+  ///
+  /// This Event will be signaled after the Status field is updated
+  /// by the EFI IPv4 Protocol driver. The type of Event must be
+  /// EFI_NOTIFY_SIGNAL. The Task Priority Level (TPL) of
+  /// Event must be lower than or equal to TPL_CALLBACK.
+  ///
+  public EFI_EVENT Event;
+  ///
+  /// The status that is returned to the caller at the end of the operation
+  /// to indicate whether this operation completed successfully.
+  ///
+  public EFI_STATUS Status;
+  union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to the EFI_IP4_RECEIVE_DATA.
+    ///
+    public EFI_IP4_RECEIVE_DATA* RxData;
+  ///
+  /// When this token is used for transmitting, TxData is a pointer to the EFI_IP4_TRANSMIT_DATA.
+  ///
+  public EFI_IP4_TRANSMIT_DATA* TxData;
+}
+} EFI_IP4_COMPLETION_TOKEN;
 
 // /**
 //   Gets the current operational settings for this instance of the EFI IPv4 Protocol driver.

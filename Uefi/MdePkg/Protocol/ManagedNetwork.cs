@@ -122,35 +122,35 @@ public unsafe struct EFI_MANAGED_NETWORK_TRANSMIT_DATA
   public uint DataLength;
   public ushort HeaderLength;     // OPTIONAL
   public ushort FragmentCount;
-  //public fixed EFI_MANAGED_NETWORK_FRAGMENT_DATA FragmentTable[1];
+  public fixed EFI_MANAGED_NETWORK_FRAGMENT_DATA FragmentTable[1];
 }
 
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct Packet
-//{
-//  ///
-//  /// This Event will be signaled after the Status field is updated
-//  /// by the MNP. The type of Event must be
-//  /// EFI_NOTIFY_SIGNAL. The Task Priority Level (TPL) of
-//  /// Event must be lower than or equal to TPL_CALLBACK.
-//  ///
-//  public EFI_EVENT Event;
-//  ///
-//  /// The status that is returned to the caller at the end of the operation
-//  /// to indicate whether this operation completed successfully.
-//  ///
-//  public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to the EFI_MANAGED_NETWORK_RECEIVE_DATA.
-//    ///
-//    public EFI_MANAGED_NETWORK_RECEIVE_DATA* RxData;
-//  ///
-//  /// When this token is used for transmitting, TxData is a pointer to the EFI_MANAGED_NETWORK_TRANSMIT_DATA.
-//  ///
-//  public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
-//}
-//} EFI_MANAGED_NETWORK_COMPLETION_TOKEN;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct Packet
+{
+  ///
+  /// This Event will be signaled after the Status field is updated
+  /// by the MNP. The type of Event must be
+  /// EFI_NOTIFY_SIGNAL. The Task Priority Level (TPL) of
+  /// Event must be lower than or equal to TPL_CALLBACK.
+  ///
+  public EFI_EVENT Event;
+  ///
+  /// The status that is returned to the caller at the end of the operation
+  /// to indicate whether this operation completed successfully.
+  ///
+  public EFI_STATUS Status;
+  union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to the EFI_MANAGED_NETWORK_RECEIVE_DATA.
+    ///
+    public EFI_MANAGED_NETWORK_RECEIVE_DATA* RxData;
+  ///
+  /// When this token is used for transmitting, TxData is a pointer to the EFI_MANAGED_NETWORK_TRANSMIT_DATA.
+  ///
+  public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
+}
+} EFI_MANAGED_NETWORK_COMPLETION_TOKEN;
 
 // /**
 //   Returns the operational parameters for the current MNP child driver.

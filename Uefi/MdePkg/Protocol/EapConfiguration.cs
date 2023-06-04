@@ -28,7 +28,7 @@ public unsafe partial class EFI
   ///
   /// Make sure it not conflict with any real EapTypeXXX
   ///
-  //public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
+  public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
 }
 
 public enum EFI_EAP_CONFIG_DATA_TYPE

@@ -75,7 +75,7 @@ public unsafe struct EFI_TCP6_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle; ///< The handle of the driver that creates this entry.
   public uint ServiceCount; ///< The number of address/port pairs following this data structure.
-  //public fixed EFI_TCP6_SERVICE_POINT Services[1];  ///< List of address/port pairs that are currently in use.
+  public fixed EFI_TCP6_SERVICE_POINT Services[1];  ///< List of address/port pairs that are currently in use.
 }
 
 ///
@@ -427,7 +427,7 @@ public unsafe struct EFI_TCP6_TRANSMIT_DATA
 /// returns When transmission finishes or meets any unexpected error.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_TCP6_IO_TOKEN
+public unsafe struct Packet
 {
   ///
   /// When transmission finishes or meets any unexpected error it will
@@ -459,19 +459,19 @@ public unsafe struct EFI_TCP6_IO_TOKEN
   /// EFI_NO_MEDIA:             There was a media error.
   ///
   public EFI_TCP6_COMPLETION_TOKEN CompletionToken;
-  //  union {
-  //    ///
-  //    /// When this token is used for receiving, RxData is a pointer to
-  //    /// EFI_TCP6_RECEIVE_DATA.
-  //    ///
-  //    public EFI_TCP6_RECEIVE_DATA* RxData;
-  //  ///
-  //  /// When this token is used for transmitting, TxData is a pointer to
-  //  /// EFI_TCP6_TRANSMIT_DATA.
-  //  ///
-  //  public EFI_TCP6_TRANSMIT_DATA* TxData;
-  //}
-};
+  union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to
+    /// EFI_TCP6_RECEIVE_DATA.
+    ///
+    public EFI_TCP6_RECEIVE_DATA* RxData;
+  ///
+  /// When this token is used for transmitting, TxData is a pointer to
+  /// EFI_TCP6_TRANSMIT_DATA.
+  ///
+  public EFI_TCP6_TRANSMIT_DATA* TxData;
+}
+} EFI_TCP6_IO_TOKEN;
 
 ///
 /// EFI_TCP6_CLOSE_TOKEN

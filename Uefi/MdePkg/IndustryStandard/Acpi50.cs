@@ -1578,12 +1578,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_5_0_ERROR_BLOCK_STATUS
 {
-  public uint UncorrectableErrorValid = 1;
-  public uint CorrectableErrorValid = 1;
-  public uint MultipleUncorrectableErrors = 1;
-  public uint MultipleCorrectableErrors = 1;
-  public uint ErrorDataEntryCount = 10;
-  public uint Reserved = 18;
+  public uint UncorrectableErrorValid; // = 1;
+  public uint CorrectableErrorValid; // = 1;
+  public uint MultipleUncorrectableErrors; // = 1;
+  public uint MultipleCorrectableErrors; // = 1;
+  public uint ErrorDataEntryCount; // = 10;
+  public uint Reserved; // = 18;
 }
 
 ///
@@ -1731,13 +1731,13 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_5_0_HARDWARE_ERROR_NOTIFICATION_CONFIGURATION_WRITE_ENABLE_STRUCTURE
 {
-  public ushort Type = 1;
-  public ushort PollInterval = 1;
-  public ushort SwitchToPollingThresholdValue = 1;
-  public ushort SwitchToPollingThresholdWindow = 1;
-  public ushort ErrorThresholdValue = 1;
-  public ushort ErrorThresholdWindow = 1;
-  public ushort Reserved = 10;
+  public ushort Type; // = 1;
+  public ushort PollInterval; // = 1;
+  public ushort SwitchToPollingThresholdValue; // = 1;
+  public ushort SwitchToPollingThresholdWindow; // = 1;
+  public ushort ErrorThresholdValue; // = 1;
+  public ushort ErrorThresholdWindow; // = 1;
+  public ushort Reserved; // = 10;
 }
 
 ///
@@ -2153,18 +2153,18 @@ public unsafe struct EFI_ACPI_5_0_PCCT_SUBSPACE_GENERIC
 public unsafe struct EFI_ACPI_5_0_PCCT_GENERIC_SHARED_MEMORY_REGION_COMMAND
 {
   public byte Command;
-  public byte Reserved = 7;
-  public byte GenerateSci = 1;
+  public byte Reserved; // = 7;
+  public byte GenerateSci; // = 1;
 }
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_5_0_PCCT_GENERIC_SHARED_MEMORY_REGION_STATUS
 {
-  public byte CommandComplete = 1;
-  public byte SciDoorbell = 1;
-  public byte Error = 1;
-  public byte PlatformNotification = 1;
-  public byte Reserved = 4;
+  public byte CommandComplete; // = 1;
+  public byte SciDoorbell; // = 1;
+  public byte Error; // = 1;
+  public byte PlatformNotification; // = 1;
+  public byte Reserved; // = 4;
   public byte Reserved1;
 }
 

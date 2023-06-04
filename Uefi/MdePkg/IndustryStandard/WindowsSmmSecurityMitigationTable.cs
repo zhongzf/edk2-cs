@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  //public const ulong EFI_ACPI_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
+  public const ulong EFI_ACPI_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
 
   // #pragma pack(1)
 

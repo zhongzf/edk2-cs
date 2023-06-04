@@ -101,7 +101,7 @@ public unsafe struct EFI_NVDIMM_LABEL_INDEX_BLOCK
   /// padded with additional zero bytes to make the Index Block size a multiple of EFI_NVDIMM_LABEL_INDEX_ALIGN.
   /// Any bits allocated beyond NSlot bits must be zero.
   ///
-  //public fixed byte Free[];
+  public fixed byte Free[];
 }
 
 public unsafe partial class EFI
@@ -259,7 +259,7 @@ public unsafe struct EFI_NVDIMM_LABEL_SET_COOKIE_INFO
   ///
   /// Array size is 1 if EFI_NVDIMM_LABEL_FLAGS_LOCAL is set indicating a Local Namespaces.
   ///
-  public fixed EFI_NVDIMM_LABEL_SET_COOKIE_MAP Mapping[0];
+  public EFI_NVDIMM_LABEL_SET_COOKIE_MAP[] Mapping;
 }
 
 // /**

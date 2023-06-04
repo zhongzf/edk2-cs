@@ -238,11 +238,11 @@ public unsafe partial class EFI
   ///
   /// The function will be called when the key sequence is typed specified by KeyData.
   ///
-  //typedef
-  //EFI_STATUS
-  //(EFIAPI* EFI_KEY_NOTIFY_FUNCTION)(
-  //  IN EFI_KEY_DATA * KeyData
-  //);
+  typedef
+  EFI_STATUS
+  (EFIAPI* EFI_KEY_NOTIFY_FUNCTION)(
+    IN EFI_KEY_DATA * KeyData
+  );
 
   // /**
   //   The RegisterKeystrokeNotify() function registers a function
@@ -318,7 +318,7 @@ public unsafe struct EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL
   ///
   public EFI_EVENT WaitForKeyEx;
   public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_TOGGLE_STATE* /*KeyToggleState*/, EFI_STATUS> /*EFI_SET_STATE*/ SetState;
-  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_DATA* /*KeyData*/,/* IN */EFI_KEY_NOTIFY_FUNCTION /*KeyNotificationFunction*/,/* OUT */void** /*NotifyHandle*/, EFI_STATUS> /*EFI_REGISTER_KEYSTROKE_NOTIFY*/ RegisterKeyNotify;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_DATA* /*KeyData*/,/* IN */EFI_KEY_NOTIFY_FUNCTION /*KeyNotificationFunction*/,/* OUT */void** /*NotifyHandle*/, EFI_STATUS> /*EFI_REGISTER_KEYSTROKE_NOTIFY*/ RegisterKeyNotify;
   public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */void* /*NotificationHandle*/, EFI_STATUS> /*EFI_UNREGISTER_KEYSTROKE_NOTIFY*/ UnregisterKeyNotify;
 }
 

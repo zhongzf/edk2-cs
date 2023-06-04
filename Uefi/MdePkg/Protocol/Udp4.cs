@@ -56,7 +56,7 @@ public unsafe struct EFI_UDP4_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle;
   public uint ServiceCount;
-  //public fixed EFI_UDP4_SERVICE_POINT Services[1];
+  public fixed EFI_UDP4_SERVICE_POINT Services[1];
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -125,15 +125,15 @@ public unsafe struct EFI_UDP4_RECEIVE_DATA
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_UDP4_COMPLETION_TOKEN
+public unsafe struct Packet
 {
   public EFI_EVENT Event;
   public EFI_STATUS Status;
-  //  union {
-  //    public EFI_UDP4_RECEIVE_DATA* RxData;
-  //  public EFI_UDP4_TRANSMIT_DATA* TxData;
-  //}
-};
+  union {
+    public EFI_UDP4_RECEIVE_DATA* RxData;
+  public EFI_UDP4_TRANSMIT_DATA* TxData;
+}
+} EFI_UDP4_COMPLETION_TOKEN;
 
 // /**
 //   Reads the current operational settings.

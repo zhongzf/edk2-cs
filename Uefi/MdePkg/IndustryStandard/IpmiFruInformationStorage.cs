@@ -32,8 +32,8 @@ public unsafe struct IPMI_FRU_COMMON_HEADER_FORMAT_VERSION
   /// Individual bit fields
   ///
   /*   struct { */
-  [FieldOffset(0)] public byte FormatVersionNumber = 4;
-  [FieldOffset(0)] public byte Reserved = 4;
+  [FieldOffset(0)] public byte FormatVersionNumber; // = 4;
+  [FieldOffset(0)] public byte Reserved; // = 4;
   /*   } Bits; */
   ///
   /// All bit fields as a 8-bit value
@@ -64,9 +64,9 @@ public unsafe struct IPMI_FRU_MULTI_RECORD_HEADER_FORMAT_VERSION
   /// Individual bit fields
   ///
   /*   struct { */
-  [FieldOffset(0)] public byte RecordFormatVersion = 4;
-  [FieldOffset(0)] public byte Reserved = 3;
-  [FieldOffset(0)] public byte EndofList = 1;
+  [FieldOffset(0)] public byte RecordFormatVersion; // = 4;
+  [FieldOffset(0)] public byte Reserved; // = 3;
+  [FieldOffset(0)] public byte EndofList; // = 1;
   /*   } Bits; */
   ///
   /// All bit fields as a 8-bit value
