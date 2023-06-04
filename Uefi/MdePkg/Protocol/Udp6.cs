@@ -79,7 +79,7 @@ public unsafe struct EFI_UDP6_VARIABLE_DATA
   ///
   /// List of address/port pairs that are currently in use.
   ///
-  public fixed EFI_UDP6_SERVICE_POINT Services[1];
+  public EFI_UDP6_SERVICE_POINT[/*1*/] Services;
 }
 
 // typedef struct _EFI_UDP6_PROTOCOL EFI_UDP6_PROTOCOL;
@@ -218,7 +218,7 @@ public unsafe struct EFI_UDP6_TRANSMIT_DATA
   ///
   /// Array of fragment descriptors.
   ///
-  public fixed EFI_UDP6_FRAGMENT_DATA FragmentTable[1];
+  public EFI_UDP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -258,7 +258,7 @@ public unsafe struct EFI_UDP6_RECEIVE_DATA
   ///
   /// Array of fragment descriptors. Maybe zero.
   ///
-  public fixed EFI_UDP6_FRAGMENT_DATA FragmentTable[1];
+  public EFI_UDP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -271,7 +271,7 @@ public unsafe struct EFI_UDP6_RECEIVE_DATA
 /// and the Event is signaled.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_UDP6_COMPLETION_TOKEN
 {
   ///
   /// This Event will be signaled after the Status field is updated by the EFI UDPv6 Protocol
@@ -299,17 +299,17 @@ public unsafe struct Packet
   ///   - EFI_NO_MEDIA: There was a media error.
   ///
   public EFI_STATUS Status;
-  union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
-    ///
-    public EFI_UDP6_RECEIVE_DATA* RxData;
-  ///
-  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
-  ///
-  public EFI_UDP6_TRANSMIT_DATA* TxData;
-}
-} EFI_UDP6_COMPLETION_TOKEN;
+//  union {
+//    ///
+//    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
+//    ///
+//    public EFI_UDP6_RECEIVE_DATA* RxData;
+//  ///
+//  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
+//  ///
+//  public EFI_UDP6_TRANSMIT_DATA* TxData;
+//}
+} 
 
 // /**
 //   Read the current operational settings.
@@ -579,7 +579,7 @@ public unsafe struct Packet
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UDP6_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP6_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;

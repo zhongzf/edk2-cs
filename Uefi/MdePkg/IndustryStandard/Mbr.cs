@@ -55,7 +55,7 @@ public unsafe struct MASTER_BOOT_RECORD
   public fixed byte BootStrapCode[440];
   public fixed byte UniqueMbrSignature[4];
   public fixed byte Unknown[2];
-  public fixed MBR_PARTITION_RECORD Partition[MAX_MBR_PARTITIONS];
+  public MBR_PARTITION_RECORD[/*MAX_MBR_PARTITIONS*/] Partition;
   public ushort Signature;
 }
 

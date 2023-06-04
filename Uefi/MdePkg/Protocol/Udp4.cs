@@ -56,7 +56,7 @@ public unsafe struct EFI_UDP4_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle;
   public uint ServiceCount;
-  public fixed EFI_UDP4_SERVICE_POINT Services[1];
+  public EFI_UDP4_SERVICE_POINT[/*1*/] Services;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -110,7 +110,7 @@ public unsafe struct EFI_UDP4_TRANSMIT_DATA
   public EFI_IPv4_ADDRESS* GatewayAddress;       // OPTIONAL
   public uint DataLength;
   public uint FragmentCount;
-  public fixed EFI_UDP4_FRAGMENT_DATA FragmentTable[1];
+  public EFI_UDP4_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -121,19 +121,19 @@ public unsafe struct EFI_UDP4_RECEIVE_DATA
   public EFI_UDP4_SESSION_DATA UdpSession;
   public uint DataLength;
   public uint FragmentCount;
-  public fixed EFI_UDP4_FRAGMENT_DATA FragmentTable[1];
+  public EFI_UDP4_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_UDP4_COMPLETION_TOKEN
 {
   public EFI_EVENT Event;
   public EFI_STATUS Status;
-  union {
-    public EFI_UDP4_RECEIVE_DATA* RxData;
-  public EFI_UDP4_TRANSMIT_DATA* TxData;
-}
-} EFI_UDP4_COMPLETION_TOKEN;
+//  union {
+//    public EFI_UDP4_RECEIVE_DATA* RxData;
+//  public EFI_UDP4_TRANSMIT_DATA* TxData;
+//}
+} 
 
 // /**
 //   Reads the current operational settings.
@@ -441,7 +441,7 @@ public unsafe struct Packet
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UDP4_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* OUT */EFI_UDP4_CONFIG_DATA* /*Udp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP4_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* OUT */EFI_UDP4_CONFIG_DATA* /*Udp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* IN */EFI_UDP4_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP4_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv4_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP4_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetAddress*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetMask*/,/* IN */EFI_IPv4_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_UDP4_ROUTES*/ Routes;

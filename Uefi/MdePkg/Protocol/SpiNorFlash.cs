@@ -23,7 +23,7 @@ public unsafe partial class EFI
   /// Global ID for the SPI NOR Flash Protocol
   ///
   public static EFI_GUID EFI_SPI_NOR_FLASH_PROTOCOL_GUID = new GUID(0xb57ec3fe, 0xf833, 0x4ba6,
-      { 0x85, 0x78, 0x2a, 0x7d, 0x6a, 0x87, 0x44, 0x4b });
+     new byte[] { 0x85, 0x78, 0x2a, 0x7d, 0x6a, 0x87, 0x44, 0x4b });
 
 // typedef struct _EFI_SPI_NOR_FLASH_PROTOCOL EFI_SPI_NOR_FLASH_PROTOCOL;
 
@@ -226,22 +226,22 @@ public unsafe struct EFI_SPI_NOR_FLASH_PROTOCOL
   ///
   /// Read the 3 byte manufacture and device ID from the SPI flash.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SPI_NOR_FLASH_PROTOCOL*/,/* OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_GET_FLASH_ID*/ GetFlashid;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SPI_NOR_FLASH_PROTOCOL* /*This*/,/* OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_GET_FLASH_ID*/ GetFlashid;
 
   ///
   /// Read data from the SPI flash.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SPI_NOR_FLASH_PROTOCOL*/,/* IN */uint /*FlashAddress*/,/* IN */uint /*LengthInBytes*/,/* OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_READ_DATA*/ ReadData;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SPI_NOR_FLASH_PROTOCOL* /*This*/,/* IN */uint /*FlashAddress*/,/* IN */uint /*LengthInBytes*/,/* OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_READ_DATA*/ ReadData;
 
   ///
   /// Low frequency read data from the SPI flash.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SPI_NOR_FLASH_PROTOCOL*/,/* IN */uint /*FlashAddress*/,/* IN */uint /*LengthInBytes*/,/* OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_READ_DATA*/ LfReadData;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SPI_NOR_FLASH_PROTOCOL* /*This*/,/* IN */uint /*FlashAddress*/,/* IN */uint /*LengthInBytes*/,/* OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_READ_DATA*/ LfReadData;
 
   ///
   /// Read the flash status register.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SPI_NOR_FLASH_PROTOCOL*/,/* IN */uint /*LengthInBytes*/,/* OUT */byte* /*FlashStatus*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_READ_STATUS*/ ReadStatus;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SPI_NOR_FLASH_PROTOCOL* /*This*/,/* IN */uint /*LengthInBytes*/,/* OUT */byte* /*FlashStatus*/, EFI_STATUS> /*EFI_SPI_NOR_FLASH_PROTOCOL_READ_STATUS*/ ReadStatus;
 
   ///
   /// Write the flash status register.

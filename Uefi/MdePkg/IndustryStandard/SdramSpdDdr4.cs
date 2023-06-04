@@ -256,20 +256,20 @@ public unsafe struct SPD4_CAS_LATENCIES_SUPPORTED_STRUCT
   [FieldOffset(0)] public uint ClRange; // =  1;                         ///< Bits 31:31
   /*   } Bits; */
   /*   struct { */
-  [FieldOffset(0)] public uint Cl23; // =  1;                         ///< Bits 0:0
-  [FieldOffset(0)] public uint Cl24; // =  1;                         ///< Bits 1:1
-  [FieldOffset(0)] public uint Cl25; // =  1;                         ///< Bits 2:2
-  [FieldOffset(0)] public uint Cl26; // =  1;                         ///< Bits 3:3
-  [FieldOffset(0)] public uint Cl27; // =  1;                         ///< Bits 4:4
-  [FieldOffset(0)] public uint Cl28; // =  1;                         ///< Bits 5:5
-  [FieldOffset(0)] public uint Cl29; // =  1;                         ///< Bits 6:6
-  [FieldOffset(0)] public uint Cl30; // =  1;                         ///< Bits 7:7
-  [FieldOffset(0)] public uint Cl31; // =  1;                         ///< Bits 8:8
-  [FieldOffset(0)] public uint Cl32; // =  1;                         ///< Bits 9:9
-  [FieldOffset(0)] public uint Cl33; // =  1;                         ///< Bits 10:10
-  [FieldOffset(0)] public uint Cl34; // =  1;                         ///< Bits 11:11
-  [FieldOffset(0)] public uint Cl35; // =  1;                         ///< Bits 12:12
-  [FieldOffset(0)] public uint Cl36; // =  1;                         ///< Bits 13:13
+  //[FieldOffset(0)] public uint Cl23; // =  1;                         ///< Bits 0:0
+  //[FieldOffset(0)] public uint Cl24; // =  1;                         ///< Bits 1:1
+  //[FieldOffset(0)] public uint Cl25; // =  1;                         ///< Bits 2:2
+  //[FieldOffset(0)] public uint Cl26; // =  1;                         ///< Bits 3:3
+  //[FieldOffset(0)] public uint Cl27; // =  1;                         ///< Bits 4:4
+  //[FieldOffset(0)] public uint Cl28; // =  1;                         ///< Bits 5:5
+  //[FieldOffset(0)] public uint Cl29; // =  1;                         ///< Bits 6:6
+  //[FieldOffset(0)] public uint Cl30; // =  1;                         ///< Bits 7:7
+  //[FieldOffset(0)] public uint Cl31; // =  1;                         ///< Bits 8:8
+  //[FieldOffset(0)] public uint Cl32; // =  1;                         ///< Bits 9:9
+  //[FieldOffset(0)] public uint Cl33; // =  1;                         ///< Bits 10:10
+  //[FieldOffset(0)] public uint Cl34; // =  1;                         ///< Bits 11:11
+  //[FieldOffset(0)] public uint Cl35; // =  1;                         ///< Bits 12:12
+  //[FieldOffset(0)] public uint Cl36; // =  1;                         ///< Bits 13:13
   [FieldOffset(0)] public uint Cl37; // =  1;                         ///< Bits 14:14
   [FieldOffset(0)] public uint Cl38; // =  1;                         ///< Bits 15:15
   [FieldOffset(0)] public uint Cl39; // =  1;                         ///< Bits 16:16
@@ -286,8 +286,8 @@ public unsafe struct SPD4_CAS_LATENCIES_SUPPORTED_STRUCT
   [FieldOffset(0)] public uint Cl50; // =  1;                         ///< Bits 27:27
   [FieldOffset(0)] public uint Cl51; // =  1;                         ///< Bits 28:28
   [FieldOffset(0)] public uint Cl52; // =  1;                         ///< Bits 29:29
-  [FieldOffset(0)] public uint Reserved; // =  1;                         ///< Bits 30:30
-  [FieldOffset(0)] public uint ClRange; // =  1;                         ///< Bits 31:31
+  //[FieldOffset(0)] public uint Reserved; // =  1;                         ///< Bits 30:30
+  //[FieldOffset(0)] public uint ClRange; // =  1;                         ///< Bits 31:31
   /*   } HighRangeBits; */
   [FieldOffset(0)] public uint Data;
   [FieldOffset(0)] public fixed ushort Data16[2];
@@ -1000,7 +1000,7 @@ public unsafe struct SPD4_BASE_SECTION
   public SPD4_TWTR_MIN_MTB_STRUCT tWTR_Smin;                 ///< 44      Minimum Write to Read Time (tWTR_Smin), Different Bank Group
   public SPD4_TWTR_MIN_MTB_STRUCT tWTR_Lmin;                 ///< 45      Minimum Write to Read Time (tWTR_Lmin), Same Bank Group
   public fixed byte Reserved1[59 - 46 + 1];    ///< 46-59   Reserved
-  public fixed SPD4_CONNECTOR_BIT_MAPPING_BYTE_STRUCT BitMapping[77 - 60 + 1];   ///< 60-77   Connector to SDRAM Bit Mapping
+  public SPD4_CONNECTOR_BIT_MAPPING_BYTE_STRUCT[/*77 - 60 + 1*/] BitMapping;   ///< 60-77   Connector to SDRAM Bit Mapping
   public fixed byte Reserved2[116 - 78 + 1];   ///< 78-116  Reserved
   public SPD4_TCCD_MIN_FTB_STRUCT tCCD_LminFine;             ///< 117     Fine Offset for Minimum CAS to CAS Delay Time (tCCD_Lmin), same bank group
   public SPD4_TRRD_MIN_FTB_STRUCT tRRD_LminFine;             ///< 118     Fine Offset for Minimum Activate to Activate Delay Time (tRRD_Lmin), different bank group
@@ -1089,7 +1089,7 @@ public unsafe struct SPD4_MODULE_NVDIMM
   public SPD4_NVDIMM_MODULE_CHARACTERISTICS ModuleCharacteristics;                      ///< 200      Module Characteristics
   public SPD4_NVDIMM_HYBRID_MODULE_MEDIA_TYPES HybridModuleMediaTypes;                     ///< 201-202  Hybrid Module Media Types
   public SPD4_NVDIMM_MAXIMUM_NONVOLATILE_MEMORY_INITIALIZATION_TIME MaximumNonVolatileMemoryInitializationTime; ///< 203 Maximum Non-Volatile Memory Initialization Time
-  public fixed SPD4_NVDIMM_FUNCTION_INTERFACE_DESCRIPTOR FunctionInterfaceDescriptors[8];            ///< 204-219  Function Interface Descriptors
+  public SPD4_NVDIMM_FUNCTION_INTERFACE_DESCRIPTOR[/*8*/] FunctionInterfaceDescriptors;            ///< 204-219  Function Interface Descriptors
   public fixed byte Reserved[253 - 220 + 1];                    ///< 220-253  Reserved
   public SPD4_CYCLIC_REDUNDANCY_CODE Crc;                                        ///< 254-255  Cyclical Redundancy Code (CRC)
 }

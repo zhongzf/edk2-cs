@@ -19,7 +19,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_SMM_SX_DISPATCH2_PROTOCOL_GUID = EFI_MM_SX_DISPATCH_PROTOCOL_GUID;
+  public static EFI_GUID EFI_SMM_SX_DISPATCH2_PROTOCOL_GUID = EFI_MM_SX_DISPATCH_PROTOCOL_GUID;
 }
 
 ///
@@ -31,11 +31,11 @@ public unsafe struct EFI_SMM_SX_REGISTER_CONTEXT { EFI_MM_SX_REGISTER_CONTEXT Va
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_SX_DISPATCH2_PROTOCOL { EFI_MM_SX_DISPATCH_PROTOCOL Value; public static implicit operator EFI_SMM_SX_DISPATCH2_PROTOCOL(EFI_MM_SX_DISPATCH_PROTOCOL value) => new EFI_SMM_SX_DISPATCH2_PROTOCOL() { Value = value }; public static implicit operator EFI_MM_SX_DISPATCH_PROTOCOL(EFI_SMM_SX_DISPATCH2_PROTOCOL value) => value.Value; }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_SX_REGISTER2 { EFI_MM_SX_REGISTER Value; public static implicit operator EFI_SMM_SX_REGISTER2(EFI_MM_SX_REGISTER value) => new EFI_SMM_SX_REGISTER2() { Value = value }; public static implicit operator EFI_MM_SX_REGISTER(EFI_SMM_SX_REGISTER2 value) => value.Value; }
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct EFI_SMM_SX_REGISTER2 { EFI_MM_SX_REGISTER Value; public static implicit operator EFI_SMM_SX_REGISTER2(EFI_MM_SX_REGISTER value) => new EFI_SMM_SX_REGISTER2() { Value = value }; public static implicit operator EFI_MM_SX_REGISTER(EFI_SMM_SX_REGISTER2 value) => value.Value; }
 
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_SMM_SX_UNREGISTER2 { EFI_MM_SX_UNREGISTER Value; public static implicit operator EFI_SMM_SX_UNREGISTER2(EFI_MM_SX_UNREGISTER value) => new EFI_SMM_SX_UNREGISTER2() { Value = value }; public static implicit operator EFI_MM_SX_UNREGISTER(EFI_SMM_SX_UNREGISTER2 value) => value.Value; }
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct EFI_SMM_SX_UNREGISTER2 { EFI_MM_SX_UNREGISTER Value; public static implicit operator EFI_SMM_SX_UNREGISTER2(EFI_MM_SX_UNREGISTER value) => new EFI_SMM_SX_UNREGISTER2() { Value = value }; public static implicit operator EFI_MM_SX_UNREGISTER(EFI_SMM_SX_UNREGISTER2 value) => value.Value; }
 
 // extern EFI_GUID  gEfiSmmSxDispatch2ProtocolGuid;
 

@@ -890,7 +890,7 @@ public unsafe struct EFI_ACPI_6_3_DEVICE_HANDLE_PCI
 /// Generic Initiator Affinity Structure
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct DeviceHandle
+public unsafe struct EFI_ACPI_6_3_GENERIC_INITIATOR_AFFINITY_STRUCTURE
 {
   public byte Type;
   public byte Length;
@@ -898,14 +898,14 @@ public unsafe struct DeviceHandle
   public byte DeviceHandleType;
   public uint ProximityDomain;
 
-  union {
-    public EFI_ACPI_6_3_DEVICE_HANDLE_ACPI Acpi;
+  //union {
+  //  public EFI_ACPI_6_3_DEVICE_HANDLE_ACPI Acpi;
   public EFI_ACPI_6_3_DEVICE_HANDLE_PCI Pci;
-}
+  //}
 
-uint Flags;
-byte Reserved2[4];
-} EFI_ACPI_6_3_GENERIC_INITIATOR_AFFINITY_STRUCTURE;
+  public uint Flags;
+  public fixed byte Reserved2[4];
+};
 
 public unsafe partial class EFI
 {

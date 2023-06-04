@@ -294,7 +294,7 @@ public unsafe partial class EFI
 public unsafe struct EFI_TLS_SESSION_ID
 {
   public ushort Length;
-  public fixed byte Data[MAX_TLS_SESSION_ID_LENGTH];
+  public byte[/*MAX_TLS_SESSION_ID_LENGTH*/] Data;
 }
 // #pragma pack ()
 

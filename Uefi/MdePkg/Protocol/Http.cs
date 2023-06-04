@@ -156,7 +156,7 @@ public unsafe struct EFI_HTTPv6_ACCESS_POINT
 ///
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct AccessPoint
+public unsafe struct EFI_HTTP_CONFIG_DATA
 {
   ///
   /// HTTP version that this instance will support.
@@ -173,19 +173,19 @@ public unsafe struct AccessPoint
   ///
   public bool LocalAddressIsIPv6;
 
-  union {
-    ///
-    /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
-    /// port used by the underlying TCP protocol.
-    ///
-    public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
-  ///
-  /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
-  /// used by the underlying TCP protocol.
-  ///
-  public EFI_HTTPv6_ACCESS_POINT* IPv6Node;
-}
-} EFI_HTTP_CONFIG_DATA;
+//  union {
+//    ///
+//    /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
+//    /// port used by the underlying TCP protocol.
+//    ///
+//    public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
+//  ///
+//  /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
+//  /// used by the underlying TCP protocol.
+//  ///
+//  public EFI_HTTPv6_ACCESS_POINT* IPv6Node;
+//}
+} 
 
 ///
 /// EFI_HTTP_REQUEST_DATA
@@ -240,45 +240,45 @@ public unsafe struct EFI_HTTP_HEADER
 /// EFI_HTTP_MESSAGE
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Data
+public unsafe struct EFI_HTTP_MESSAGE
 {
   ///
   /// HTTP message data.
   ///
-  union {
-    ///
-    /// When the token is used to send a HTTP request, Request is a pointer to storage that
-    /// contains such data as URL and HTTP method.
-    ///
-    public EFI_HTTP_REQUEST_DATA* Request;
-  ///
-  /// When used to await a response, Response points to storage containing HTTP response
-  /// status code.
-  ///
-  public EFI_HTTP_RESPONSE_DATA* Response;
-}
+//  union {
+//    ///
+//    /// When the token is used to send a HTTP request, Request is a pointer to storage that
+//    /// contains such data as URL and HTTP method.
+//    ///
+//    public EFI_HTTP_REQUEST_DATA* Request;
+//  ///
+//  /// When used to await a response, Response points to storage containing HTTP response
+//  /// status code.
+//  ///
+//  public EFI_HTTP_RESPONSE_DATA* Response;
+//}
 ///
 /// Number of HTTP header structures in Headers list. On request, this count is
 /// provided by the caller. On response, this count is provided by the HTTP driver.
 ///
-ulong HeaderCount;
-///
-/// Array containing list of HTTP headers. On request, this array is populated by the
-/// caller. On response, this array is allocated and populated by the HTTP driver. It
-/// is the responsibility of the caller to free this memory on both request and
-/// response.
-///
-EFI_HTTP_HEADER* Headers;
-///
-/// Length in bytes of the HTTP body. This can be zero depending on the HttpMethod type.
-///
-ulong BodyLength;
-///
-/// Body associated with the HTTP request or response. This can be NULL depending on
-/// the HttpMethod type.
-///
-void* Body;
-} EFI_HTTP_MESSAGE;
+public ulong HeaderCount;
+  ///
+  /// Array containing list of HTTP headers. On request, this array is populated by the
+  /// caller. On response, this array is allocated and populated by the HTTP driver. It
+  /// is the responsibility of the caller to free this memory on both request and
+  /// response.
+  ///
+  public EFI_HTTP_HEADER* Headers;
+  ///
+  /// Length in bytes of the HTTP body. This can be zero depending on the HttpMethod type.
+  ///
+  public ulong BodyLength;
+  ///
+  /// Body associated with the HTTP request or response. This can be NULL depending on
+  /// the HttpMethod type.
+  ///
+  public void* Body;
+} 
 
 ///
 /// EFI_HTTP_TOKEN

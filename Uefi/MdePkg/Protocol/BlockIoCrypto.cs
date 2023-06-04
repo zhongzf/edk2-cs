@@ -94,8 +94,8 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_IV_INPUT_AES_XTS
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
-        0x689e4c62, 0x70bf, 0x4cf3, new byte[] { 0x88, 0xbb, 0x33, 0xb3, 0x18, 0x26, 0x86, 0x70 });
+  //public static EFI_GUID EFI_BLOCK_IO_CRYPTO_ALGO_GUID = new GUID(
+  //      0x689e4c62, 0x70bf, 0x4cf3, new byte[] { 0x88, 0xbb, 0x33, 0xb3, 0x18, 0x26, 0x86, 0x70 });
 
   // extern EFI_GUID  gEfiBlockIoCryptoAlgoAesCbcMsBitlockerGuid;
 }
@@ -131,7 +131,7 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_CAPABILITIES
   //
   // Array of supported capabilities.
   //
-  public fixed EFI_BLOCK_IO_CRYPTO_CAPABILITY Capabilities[1];
+  public  EFI_BLOCK_IO_CRYPTO_CAPABILITY[/*1*/] Capabilities;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -537,7 +537,7 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_PROTOCOL
 {
   public EFI_BLOCK_IO_MEDIA* Media;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_RESET*/ Reset;
-  public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* OUT */EFI_BLOCK_IO_CRYPTO_CAPABILITIES* /*Capabilities*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_GET_CAPABILITIES*/ GetCapabilities;
+  //public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* OUT */EFI_BLOCK_IO_CRYPTO_CAPABILITIES* /*Capabilities*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_GET_CAPABILITIES*/ GetCapabilities;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */ulong /*ConfigurationCount*/,/* IN */EFI_BLOCK_IO_CRYPTO_CONFIGURATION_TABLE_ENTRY* /*ConfigurationTable*/,/* OUT */EFI_BLOCK_IO_CRYPTO_RESPONSE_CONFIGURATION_ENTRY* /*ResultingTable*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_SET_CONFIGURATION*/ SetConfiguration;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */ulong /*StartIndex*/,/* IN */ulong /*ConfigurationCount*/,/* IN */EFI_GUID* /*KeyOwnerGuid*/,/* OUT */EFI_BLOCK_IO_CRYPTO_RESPONSE_CONFIGURATION_ENTRY* /*ConfigurationTable*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_GET_CONFIGURATION*/ GetConfiguration;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */uint /*MediaId*/,/* IN */EFI_LBA /*LBA*/,/* IN OUT */EFI_BLOCK_IO_CRYPTO_TOKEN* /*Token*/,/* IN */ulong /*BufferSize*/,/* OUT */void* /*Buffer*/,/* IN */ulong* /*Index*/,/* IN */void* /*CryptoIvInput*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_READ_EXTENDED*/ ReadExtended;

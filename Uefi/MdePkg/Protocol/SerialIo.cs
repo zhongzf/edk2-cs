@@ -26,7 +26,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID defined in EFI1.1.
   ///
-  public const ulong SERIAL_IO_PROTOCOL = EFI_SERIAL_IO_PROTOCOL_GUID;
+  public static EFI_GUID SERIAL_IO_PROTOCOL = EFI_SERIAL_IO_PROTOCOL_GUID;
 
   // typedef struct _EFI_SERIAL_IO_PROTOCOL EFI_SERIAL_IO_PROTOCOL;
 }
@@ -89,6 +89,7 @@ public unsafe partial class EFI
   public const ulong EFI_SERIAL_HARDWARE_LOOPBACK_ENABLE = 0x00001000;
   public const ulong EFI_SERIAL_SOFTWARE_LOOPBACK_ENABLE = 0x00002000;
   public const ulong EFI_SERIAL_HARDWARE_FLOW_CONTROL_ENABLE = 0x00004000;
+}
 
   //
   // Serial IO Member Functions

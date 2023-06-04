@@ -15,12 +15,13 @@ namespace Uefi;
 // #ifndef __DISK_IO2_H__
 // #define __DISK_IO2_H__
 
-#define EFI_DISK_IO2_PROTOCOL_GUID \
-  { \
-    0x151c8eae, 0x7f2c, 0x472c, 0x9e, 0x54, 0x98, 0x28, 0x19, 0x4f, 0x6a, 0x88 \
-  }
+public unsafe partial class EFI
+{
+  public static EFI_GUID EFI_DISK_IO2_PROTOCOL_GUID = new GUID(
+    0x151c8eae, 0x7f2c, 0x472c, new byte[] { 0x9e, 0x54, 0x98, 0x28, 0x19, 0x4f, 0x6a, 0x88 });
 
-// typedef struct _EFI_DISK_IO2_PROTOCOL EFI_DISK_IO2_PROTOCOL;
+  // typedef struct _EFI_DISK_IO2_PROTOCOL EFI_DISK_IO2_PROTOCOL;
+}
 
 /**
   The struct of Disk IO2 Token.

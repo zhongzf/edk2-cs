@@ -55,7 +55,7 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_SECONDARY_PCIE
   public PCI_EXPRESS_EXTENDED_CAPABILITIES_HEADER Header;
   public PCI_EXPRESS_REG_LINK_CONTROL3 LinkControl3;
   public uint LaneErrorStatus;
-  public fixed PCI_EXPRESS_REG_LANE_EQUALIZATION_CONTROL EqualizationControl[2];
+  public PCI_EXPRESS_REG_LANE_EQUALIZATION_CONTROL[/*2*/] EqualizationControl;
 }
 
 // #pragma pack()

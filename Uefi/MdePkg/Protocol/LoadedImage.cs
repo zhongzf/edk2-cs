@@ -26,7 +26,7 @@ public unsafe partial class EFI
   ///
   /// Protocol GUID defined in EFI1.1.
   ///
-  public const ulong LOADED_IMAGE_PROTOCOL = EFI_LOADED_IMAGE_PROTOCOL_GUID;
+  public static EFI_GUID LOADED_IMAGE_PROTOCOL = EFI_LOADED_IMAGE_PROTOCOL_GUID;
 
   ///
   /// EFI_SYSTEM_TABLE & EFI_IMAGE_UNLOAD are defined in EfiApi.h
@@ -72,7 +72,7 @@ public unsafe struct EFI_LOADED_IMAGE_PROTOCOL
   public ulong ImageSize;     ///< The size in bytes of the loaded image.
   public EFI_MEMORY_TYPE ImageCodeType; ///< The memory type that the code sections were loaded as.
   public EFI_MEMORY_TYPE ImageDataType; ///< The memory type that the data sections were loaded as.
-  public EFI_IMAGE_UNLOAD Unload;
+  //public EFI_IMAGE_UNLOAD Unload;
 }
 
 //

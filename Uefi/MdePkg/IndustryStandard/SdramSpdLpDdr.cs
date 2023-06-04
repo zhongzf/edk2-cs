@@ -496,7 +496,7 @@ public unsafe struct SPD_LPDDR_BASE_SECTION
   public SPD_LPDDR_TRFC_AB_MTB_STRUCT tRFCab;                   ///< 29-30   Minimum Refresh Recovery Delay Time (tRFCab), all banks
   public SPD_LPDDR_TRFC_PB_MTB_STRUCT tRFCpb;                   ///< 31-32   Minimum Refresh Recovery Delay Time (tRFCpb), per bank
   public fixed byte Reserved1[59 - 33 + 1];   ///< 33-59   Reserved
-  public fixed SPD_LPDDR_CONNECTOR_BIT_MAPPING_BYTE_STRUCT BitMapping[77 - 60 + 1];  ///< 60-77   Connector to SDRAM Bit Mapping
+  public SPD_LPDDR_CONNECTOR_BIT_MAPPING_BYTE_STRUCT[/*77 - 60 + 1*/] BitMapping;  ///< 60-77   Connector to SDRAM Bit Mapping
   public fixed byte Reserved2[119 - 78 + 1];  ///< 78-119  Reserved
   public SPD_LPDDR_TRP_PB_FTB_STRUCT tRPpbFine;                ///< 120     Fine Offset for Minimum Row Precharge Delay Time (tRPpbFine), per bank
   public SPD_LPDDR_TRP_AB_FTB_STRUCT tRPabFine;                ///< 121     Fine Offset for Minimum Row Precharge Delay Time (tRPabFine), all ranks

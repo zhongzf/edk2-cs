@@ -121,7 +121,7 @@ public unsafe partial class EFI
   // For MOV instructions, need a mask for the opcode when immediate
   // data applies to R2.
   //
-  public const ulong OPCODE_M_IMMED_OP2 = 0x40;
+  //public const ulong OPCODE_M_IMMED_OP2 = 0x40;
 
   //
   // The MOVI/MOVIn instructions use bit 6 of operands byte to indicate
@@ -160,17 +160,17 @@ public unsafe partial class EFI
   //
   // Macros to determine if a given operand is indirect
   //
-  public const ulong OPERAND1_INDIRECT = (op)((op) & OPERAND_M_INDIRECT1);
-  public const ulong OPERAND2_INDIRECT = (op)((op) & OPERAND_M_INDIRECT2);
+  //public const ulong OPERAND1_INDIRECT = (op)((op) & OPERAND_M_INDIRECT1);
+  //public const ulong OPERAND2_INDIRECT = (op)((op) & OPERAND_M_INDIRECT2);
 
   //
   // Macros to extract the operands from second byte of instructions
   //
-  public const ulong OPERAND1_REGNUM = (op)((op) & OPERAND_M_OP1);
-  public const ulong OPERAND2_REGNUM = (op)(((op) & OPERAND_M_OP2) >> 4);
+  //public const ulong OPERAND1_REGNUM = (op)((op) & OPERAND_M_OP1);
+  //public const ulong OPERAND2_REGNUM = (op)(((op) & OPERAND_M_OP2) >> 4);
 
-  public const ulong OPERAND1_CHAR = (op)('0' + OPERAND1_REGNUM(op));
-  public const ulong OPERAND2_CHAR = (op)('0' + OPERAND2_REGNUM(op));
+  //public const ulong OPERAND1_CHAR = (op)('0' + OPERAND1_REGNUM(op));
+  //public const ulong OPERAND2_CHAR = (op)('0' + OPERAND2_REGNUM(op));
 
   //
   // Condition masks usually for byte 1 encodings of code
@@ -181,7 +181,7 @@ public unsafe partial class EFI
   ///
   /// Protocol Guid Name defined in spec.
   ///
-  public const ulong EFI_EBC_PROTOCOL_GUID = EFI_EBC_INTERPRETER_PROTOCOL_GUID;
+  public static EFI_GUID EFI_EBC_PROTOCOL_GUID = EFI_EBC_INTERPRETER_PROTOCOL_GUID;
 
   ///
   /// Define for forward reference.
@@ -302,7 +302,7 @@ public unsafe struct EFI_EBC_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/,/* IN */void* /*EbcEntryPoint*/,/* OUT */void** /*Thunk*/, EFI_STATUS> /*EFI_EBC_CREATE_THUNK*/ CreateThunk;
   public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/, EFI_STATUS> /*EFI_EBC_UNLOAD_IMAGE*/ UnloadImage;
-  public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EBC_ICACHE_FLUSH /*Flush*/, EFI_STATUS> /*EFI_EBC_REGISTER_ICACHE_FLUSH*/ RegisterICacheFlush;
+  //public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EBC_ICACHE_FLUSH /*Flush*/, EFI_STATUS> /*EFI_EBC_REGISTER_ICACHE_FLUSH*/ RegisterICacheFlush;
   public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN OUT */ulong* /*Version*/, EFI_STATUS> /*EFI_EBC_GET_VERSION*/ GetVersion;
 }
 

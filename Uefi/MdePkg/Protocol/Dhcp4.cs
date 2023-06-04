@@ -74,7 +74,7 @@ public unsafe struct EFI_DHCP4_HEADER
 
 // #pragma pack(1)
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Dhcp4
+public unsafe struct EFI_DHCP4_PACKET
 {
   ///
   /// Size of the EFI_DHCP4_PACKET buffer.
@@ -86,21 +86,21 @@ public unsafe struct Dhcp4
   ///
   public uint Length;
 
-  struct {
-    ///
-    /// DHCP packet header.
-    ///
-    public EFI_DHCP4_HEADER Header;
-  ///
-  /// DHCP magik cookie in network byte order.
-  ///
-  public uint Magik;
-  ///
-  /// Start of the DHCP packed option data.
-  ///
-  public fixed byte Option[1];
-}
-} EFI_DHCP4_PACKET;
+//  struct {
+//    ///
+//    /// DHCP packet header.
+//    ///
+//    public EFI_DHCP4_HEADER Header;
+//  ///
+//  /// DHCP magik cookie in network byte order.
+//  ///
+//  public uint Magik;
+//  ///
+//  /// Start of the DHCP packed option data.
+//  ///
+//  public fixed byte Option[1];
+//}
+} 
 // #pragma pack()
 
 public enum EFI_DHCP4_STATE

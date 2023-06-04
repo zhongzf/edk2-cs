@@ -158,14 +158,14 @@ public enum SHELL_STATUS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SHELL_FILE_INFO
 {
-  public LIST_ENTRY Link;      ///< Linked list members.
+  //public LIST_ENTRY Link;      ///< Linked list members.
   public EFI_STATUS Status;    ///< Status of opening the file.  Valid only if Handle != NULL.
   /*CONST*/
   public char* FullName; ///< Fully qualified filename.
   /*CONST*/
   public char* FileName; ///< name of this file.
   public SHELL_FILE_HANDLE Handle;    ///< Handle for interacting with the opened file or NULL if closed.
-  public EFI_FILE_INFO* Info;     ///< Pointer to the FileInfo struct for this file or NULL.
+  //public EFI_FILE_INFO* Info;     ///< Pointer to the FileInfo struct for this file or NULL.
 }
 
 // /**
@@ -1221,7 +1221,7 @@ public unsafe struct EFI_SHELL_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_HANDLE* /*ParentImageHandle*/,/* IN */char* /*CommandLine*/,/* IN */char** /*Environment*/,/* OUT */EFI_STATUS* /*StatusCode*/, EFI_STATUS> /*EFI_SHELL_EXECUTE*/ Execute;
   public readonly delegate* unmanaged</* IN CONST */char* /*Name*/, EFI_STATUS> /*EFI_SHELL_GET_ENV*/ GetEnv;
   public readonly delegate* unmanaged</* IN CONST */char* /*Name*/,/* IN CONST */char* /*Value*/,/* IN */bool /*Volatile*/, EFI_STATUS> /*EFI_SHELL_SET_ENV*/ SetEnv;
-  public readonly delegate* unmanaged</* IN */CONST /*char*/,/* OUT */bool* /*Volatile*/, EFI_STATUS> /*EFI_SHELL_GET_ALIAS*/ GetAlias;
+  public readonly delegate* unmanaged</* IN CONST */char*,/* OUT */bool* /*Volatile*/, EFI_STATUS> /*EFI_SHELL_GET_ALIAS*/ GetAlias;
   public readonly delegate* unmanaged</* IN CONST */char* /*Command*/,/* IN CONST */char* /*Alias*/,/* IN */bool /*Replace*/,/* IN */bool /*Volatile*/, EFI_STATUS> /*EFI_SHELL_SET_ALIAS*/ SetAlias;
   public readonly delegate* unmanaged</* IN CONST */char* /*Command*/,/* IN CONST */char* /*Sections*/,/* OUT */char** /*HelpText*/, EFI_STATUS> /*EFI_SHELL_GET_HELP_TEXT*/ GetHelpText;
   public readonly delegate* unmanaged</* IN CONST */char* /*Mapping*/, EFI_STATUS> /*EFI_SHELL_GET_DEVICE_PATH_FROM_MAP*/ GetDevicePathFromMap;
@@ -1231,17 +1231,17 @@ public unsafe struct EFI_SHELL_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*DevicePath*/,/* IN CONST */char* /*Mapping*/, EFI_STATUS> /*EFI_SHELL_SET_MAP*/ SetMap;
   public readonly delegate* unmanaged</* IN CONST */char* /*FileSystemMapping*/, EFI_STATUS> /*EFI_SHELL_GET_CUR_DIR*/ GetCurDir;
   public readonly delegate* unmanaged</* IN CONST */char* /*FileSystem*/,/* IN CONST */char* /*Dir*/, EFI_STATUS> /*EFI_SHELL_SET_CUR_DIR*/ SetCurDir;
-  public readonly delegate* unmanaged</* IN */char* /*Path*/,/* IN */ulong /*OpenMode*/,/* IN OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_OPEN_FILE_LIST*/ OpenFileList;
-  public readonly delegate* unmanaged</* IN */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FREE_FILE_LIST*/ FreeFileList;
-  public readonly delegate* unmanaged</* IN */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_REMOVE_DUP_IN_FILE_LIST*/ RemoveDupInFileList;
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_BATCH_IS_ACTIVE*/ BatchIsActive;
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_IS_ROOT_SHELL*/ IsRootShell;
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_ENABLE_PAGE_BREAK*/ EnablePageBreak;
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_DISABLE_PAGE_BREAK*/ DisablePageBreak;
-  public readonly delegate* unmanaged<VOID /**/, EFI_STATUS> /*EFI_SHELL_GET_PAGE_BREAK*/ GetPageBreak;
+  //public readonly delegate* unmanaged</* IN */char* /*Path*/,/* IN */ulong /*OpenMode*/,/* IN OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_OPEN_FILE_LIST*/ OpenFileList;
+  //public readonly delegate* unmanaged</* IN */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FREE_FILE_LIST*/ FreeFileList;
+  //public readonly delegate* unmanaged</* IN */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_REMOVE_DUP_IN_FILE_LIST*/ RemoveDupInFileList;
+  public readonly delegate* unmanaged<EFI_STATUS> /*EFI_SHELL_BATCH_IS_ACTIVE*/ BatchIsActive;
+  public readonly delegate* unmanaged<EFI_STATUS> /*EFI_SHELL_IS_ROOT_SHELL*/ IsRootShell;
+  public readonly delegate* unmanaged<EFI_STATUS> /*EFI_SHELL_ENABLE_PAGE_BREAK*/ EnablePageBreak;
+  public readonly delegate* unmanaged<EFI_STATUS> /*EFI_SHELL_DISABLE_PAGE_BREAK*/ DisablePageBreak;
+  public readonly delegate* unmanaged<EFI_STATUS> /*EFI_SHELL_GET_PAGE_BREAK*/ GetPageBreak;
   public readonly delegate* unmanaged</* IN */EFI_HANDLE /*DeviceHandle*/,/* IN */EFI_SHELL_DEVICE_NAME_FLAGS /*Flags*/,/* IN */byte* /*Language*/,/* OUT */char** /*BestDeviceName*/, EFI_STATUS> /*EFI_SHELL_GET_DEVICE_NAME*/ GetDeviceName;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_GET_FILE_INFO*/ GetFileInfo;
-  public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* IN CONST */EFI_FILE_INFO* /*FileInfo*/, EFI_STATUS> /*EFI_SHELL_SET_FILE_INFO*/ SetFileInfo;
+  //public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* IN CONST */EFI_FILE_INFO* /*FileInfo*/, EFI_STATUS> /*EFI_SHELL_SET_FILE_INFO*/ SetFileInfo;
   public readonly delegate* unmanaged</* IN CONST */char* /*FileName*/,/* OUT */SHELL_FILE_HANDLE* /*FileHandle*/,/* IN */ulong /*OpenMode*/, EFI_STATUS> /*EFI_SHELL_OPEN_FILE_BY_NAME*/ OpenFileByName;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_CLOSE_FILE*/ CloseFile;
   public readonly delegate* unmanaged</* IN CONST */char* /*FileName*/,/* IN */ulong /*FileAttribs*/,/* OUT */SHELL_FILE_HANDLE* /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_CREATE_FILE*/ CreateFile;
@@ -1252,8 +1252,8 @@ public unsafe struct EFI_SHELL_PROTOCOL
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* OUT */ulong* /*Position*/, EFI_STATUS> /*EFI_SHELL_GET_FILE_POSITION*/ GetFilePosition;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* IN */ulong /*Position*/, EFI_STATUS> /*EFI_SHELL_SET_FILE_POSITION*/ SetFilePosition;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_FLUSH_FILE*/ FlushFile;
-  public readonly delegate* unmanaged</* IN CONST */char* /*FilePattern*/,/* OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FIND_FILES*/ FindFiles;
-  public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileDirHandle*/,/* OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FIND_FILES_IN_DIR*/ FindFilesInDir;
+  //public readonly delegate* unmanaged</* IN CONST */char* /*FilePattern*/,/* OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FIND_FILES*/ FindFiles;
+  //public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileDirHandle*/,/* OUT */EFI_SHELL_FILE_INFO** /*FileList*/, EFI_STATUS> /*EFI_SHELL_FIND_FILES_IN_DIR*/ FindFilesInDir;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* OUT */ulong* /*Size*/, EFI_STATUS> /*EFI_SHELL_GET_FILE_SIZE*/ GetFileSize;
   public readonly delegate* unmanaged</* IN */EFI_DEVICE_PATH_PROTOCOL* /*DevicePath*/,/* OUT */SHELL_FILE_HANDLE* /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_OPEN_ROOT*/ OpenRoot;
   public readonly delegate* unmanaged</* IN */EFI_HANDLE /*DeviceHandle*/,/* OUT */SHELL_FILE_HANDLE* /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_OPEN_ROOT_BY_HANDLE*/ OpenRootByHandle;
@@ -1262,9 +1262,9 @@ public unsafe struct EFI_SHELL_PROTOCOL
   public uint MinorVersion;
   // Added for Shell 2.1
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN CONST */char* /*GuidName*/, EFI_STATUS> /*EFI_SHELL_REGISTER_GUID_NAME*/ RegisterGuidName;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_GUID*/,/* OUT */CONST /*char*/, EFI_STATUS> /*EFI_SHELL_GET_GUID_NAME*/ GetGuidName;
-  public readonly delegate* unmanaged</* IN */CONST /*char*/,/* OUT */EFI_GUID* /*Guid*/, EFI_STATUS> /*EFI_SHELL_GET_GUID_FROM_NAME*/ GetGuidFromName;
-  public readonly delegate* unmanaged</* IN */CONST /*char*/,/* OUT */uint* /*Attributes*/, EFI_STATUS> /*EFI_SHELL_GET_ENV_EX*/ GetEnvEx;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* OUT CONST */char*, EFI_STATUS> /*EFI_SHELL_GET_GUID_NAME*/ GetGuidName;
+  public readonly delegate* unmanaged</* IN CONST */char*,/* OUT */EFI_GUID* /*Guid*/, EFI_STATUS> /*EFI_SHELL_GET_GUID_FROM_NAME*/ GetGuidFromName;
+  public readonly delegate* unmanaged</* IN CONST */char*,/* OUT */uint* /*Attributes*/, EFI_STATUS> /*EFI_SHELL_GET_ENV_EX*/ GetEnvEx;
 }
 
 // extern EFI_GUID  gEfiShellProtocolGuid;

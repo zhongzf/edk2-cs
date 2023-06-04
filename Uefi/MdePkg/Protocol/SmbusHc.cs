@@ -281,7 +281,7 @@ public unsafe struct EFI_SMBUS_HC_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */EFI_SMBUS_DEVICE_COMMAND /*Command*/,/* IN */EFI_SMBUS_OPERATION /*Operation*/,/* IN */bool /*PecCheck*/,/* IN OUT */ulong* /*Length*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_SMBUS_HC_EXECUTE_OPERATION*/ Execute;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */bool /*ArpAll*/,/* IN */EFI_SMBUS_UDID* /*SmbusUdid*/,/* IN OUT */EFI_SMBUS_DEVICE_ADDRESS* /*SlaveAddress*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_ARP_DEVICE*/ ArpDevice;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN OUT */ulong* /*Length*/,/* IN OUT */EFI_SMBUS_DEVICE_MAP** /*SmbusDeviceMap*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_GET_ARP_MAP*/ GetArpMap;
-  public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */ulong /*Data*/,/* IN */EFI_SMBUS_NOTIFY_FUNCTION /*NotifyFunction*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_NOTIFY*/ Notify;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */ulong /*Data*/,/* IN */EFI_SMBUS_NOTIFY_FUNCTION /*NotifyFunction*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_NOTIFY*/ Notify;
 }
 
 // extern EFI_GUID  gEfiSmbusHcProtocolGuid;

@@ -60,8 +60,8 @@ public unsafe struct EFI_MM_CONFIGURATION_PROTOCOL
   ///
   /// A pointer to an array MMRAM ranges used by the initial MM entry code.
   ///
-  public EFI_MM_RESERVED_MMRAM_REGION* MmramReservedRegions;
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_MM_ENTRY_POINT /*MmEntryPoint*/, EFI_STATUS> /*EFI_MM_REGISTER_MM_ENTRY*/ RegisterMmEntry;
+  //public EFI_MM_RESERVED_MMRAM_REGION[] MmramReservedRegions;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_MM_ENTRY_POINT /*MmEntryPoint*/, EFI_STATUS> /*EFI_MM_REGISTER_MM_ENTRY*/ RegisterMmEntry;
 }
 
 // extern EFI_GUID  gEfiMmConfigurationProtocolGuid;

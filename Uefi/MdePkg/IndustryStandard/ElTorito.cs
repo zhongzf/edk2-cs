@@ -28,12 +28,12 @@ public unsafe partial class EFI
   ///
   /// CDROM_VOLUME_DESCRIPTOR.Id
   ///
-  public const ulong CDVOL_ID = "CD001";
+  public static string CDVOL_ID = "CD001";
 
   ///
   /// CDROM_VOLUME_DESCRIPTOR.SystemId
   ///
-  public const ulong CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
+  public static string CDVOL_ELTORITO_ID = "EL TORITO SPECIFICATION";
 
   //
   // Indicator types
@@ -64,35 +64,35 @@ public unsafe struct CDROM_VOLUME_DESCRIPTOR
 {
   /*   struct { */
   [FieldOffset(0)] public byte Type;
-  [FieldOffset(0)] public fixed byte Id[5];          ///< "CD001"
-  [FieldOffset(0)] public fixed byte Reserved[82];
+  [FieldOffset(2)] public fixed byte Id[5];          ///< "CD001"
+  [FieldOffset(4)] public fixed byte Reserved[82];
   /*   } Unknown; */
 
   ///
   /// Boot Record Volume Descriptor, defined in "El Torito" Specification.
   ///
   /*   struct { */
-  [FieldOffset(0)] public byte Type;           ///< Must be 0
-  [FieldOffset(0)] public fixed byte Id[5];          ///< "CD001"
-  [FieldOffset(0)] public byte Version;        ///< Must be 1
-  [FieldOffset(0)] public fixed byte SystemId[32];   ///< "EL TORITO SPECIFICATION"
-  [FieldOffset(0)] public fixed byte Unused[32];     ///< Must be 0
-  [FieldOffset(0)] public fixed byte EltCatalog[4];  ///< Absolute pointer to first sector of Boot Catalog
-  [FieldOffset(0)] public fixed byte Unused2[13];    ///< Must be 0
+  //[FieldOffset(0)] public byte Type;           ///< Must be 0
+  //[FieldOffset(0)] public fixed byte Id[5];          ///< "CD001"
+  //[FieldOffset(0)] public byte Version;        ///< Must be 1
+  //[FieldOffset(0)] public fixed byte SystemId[32];   ///< "EL TORITO SPECIFICATION"
+  //[FieldOffset(0)] public fixed byte Unused[32];     ///< Must be 0
+  //[FieldOffset(0)] public fixed byte EltCatalog[4];  ///< Absolute pointer to first sector of Boot Catalog
+  //[FieldOffset(0)] public fixed byte Unused2[13];    ///< Must be 0
   /*   } BootRecordVolume; */
 
   ///
   /// Primary Volume Descriptor, defined in ISO 9660.
   ///
   /*   struct { */
-  [FieldOffset(0)] public byte Type;
-  [FieldOffset(0)] public fixed byte Id[5];         ///< "CD001"
-  [FieldOffset(0)] public byte Version;
-  [FieldOffset(0)] public byte Unused;        ///< Must be 0
-  [FieldOffset(0)] public fixed byte SystemId[32];
-  [FieldOffset(0)] public fixed byte VolumeId[32];
-  [FieldOffset(0)] public fixed byte Unused2[8];      ///< Must be 0
-  [FieldOffset(0)] public fixed uint VolSpaceSize[2]; ///< the number of Logical Blocks
+  //[FieldOffset(0)] public byte Type;
+  //[FieldOffset(0)] public fixed byte Id[5];         ///< "CD001"
+  //[FieldOffset(0)] public byte Version;
+  //[FieldOffset(0)] public byte Unused;        ///< Must be 0
+  //[FieldOffset(0)] public fixed byte SystemId[32];
+  //[FieldOffset(0)] public fixed byte VolumeId[32];
+  //[FieldOffset(0)] public fixed byte Unused2[8];      ///< Must be 0
+  //[FieldOffset(0)] public fixed uint VolSpaceSize[2]; ///< the number of Logical Blocks
 /*   } PrimaryVolume; */
 }
 
@@ -110,26 +110,26 @@ public unsafe struct ELTORITO_CATALOG
   /// Catalog validation entry (Catalog header)
   ///
   /*   struct { */
-  [FieldOffset(0)] public byte Indicator;     ///< Must be 01
-  [FieldOffset(0)] public byte PlatformId;
-  [FieldOffset(0)] public ushort Reserved;
-  [FieldOffset(0)] public fixed byte ManufacId[24];
-  [FieldOffset(0)] public ushort Checksum;
-  [FieldOffset(0)] public ushort Id55AA;
+  //[FieldOffset(0)] public byte Indicator;     ///< Must be 01
+  //[FieldOffset(0)] public byte PlatformId;
+  //[FieldOffset(0)] public ushort Reserved;
+  //[FieldOffset(0)] public fixed byte ManufacId[24];
+  //[FieldOffset(0)] public ushort Checksum;
+  //[FieldOffset(0)] public ushort Id55AA;
   /*   } Catalog; */
 
   ///
   /// Initial/Default Entry or Section Entry
   ///
   /*   struct { */
-  [FieldOffset(0)] public byte Indicator;     ///< 88 = Bootable, 00 = Not Bootable
-  [FieldOffset(0)] public byte MediaType; // = 4;
-  [FieldOffset(0)] public byte Reserved1; // = 4; ///< Must be 0
-  [FieldOffset(0)] public ushort LoadSegment;
-  [FieldOffset(0)] public byte SystemType;
-  [FieldOffset(0)] public byte Reserved2;     ///< Must be 0
-  [FieldOffset(0)] public ushort SectorCount;
-  [FieldOffset(0)] public uint Lba;
+  //[FieldOffset(0)] public byte Indicator;     ///< 88 = Bootable, 00 = Not Bootable
+  //[FieldOffset(0)] public byte MediaType; // = 4;
+  //[FieldOffset(0)] public byte Reserved1; // = 4; ///< Must be 0
+  //[FieldOffset(0)] public ushort LoadSegment;
+  //[FieldOffset(0)] public byte SystemType;
+  //[FieldOffset(0)] public byte Reserved2;     ///< Must be 0
+  //[FieldOffset(0)] public ushort SectorCount;
+  //[FieldOffset(0)] public uint Lba;
   /*   } Boot; */
 
   ///

@@ -23,8 +23,8 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_MTFTP4_PROTOCOL_GUID = new GUID(
       0x78247c57, 0x63db, 0x4708, new byte[] { 0x99, 0xc2, 0xa8, 0xb4, 0xa9, 0xa6, 0x1f, 0x6b });
 
-  typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
-typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
+//  typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
+//typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
 
 //
 // MTFTP4 packet opcode definition
@@ -597,7 +597,7 @@ public unsafe struct EFI_MTFTP4_TOKEN
   ///
   /// The pointer to the function to provide the needed packet contents.
   ///
-  public readonly delegate* unmanaged</* IN */EFI_MTFTP4_PROTOCOL* /*This*/,/* IN */EFI_MTFTP4_TOKEN* /*Token*/,/* IN */OUT /*ushort*/,/* OUT */void** /*Buffer*/, EFI_STATUS> /*EFI_MTFTP4_PACKET_NEEDED*/ PacketNeeded;
+  public readonly delegate* unmanaged</* IN */EFI_MTFTP4_PROTOCOL* /*This*/,/* IN */EFI_MTFTP4_TOKEN* /*Token*/,/* IN OUT*/ushort*,/* OUT */void** /*Buffer*/, EFI_STATUS> /*EFI_MTFTP4_PACKET_NEEDED*/ PacketNeeded;
 }
 
 // extern EFI_GUID  gEfiMtftp4ServiceBindingProtocolGuid;

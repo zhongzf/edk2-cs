@@ -82,12 +82,13 @@ public unsafe partial class EFI
   public const ulong MCTP_MESSAGE_TYPE_CXL_CCI = 0x08;
   public const ulong MCTP_MESSAGE_TYPE_VENDOR_DEFINED_PCI = 0x7E;
   public const ulong MCTP_MESSAGE_TYPE_VENDOR_DEFINED_IANA = 0x7F;
+
+  public const ulong MCTP_ENDPOINT_ID_NULL = 0;
+  public const ulong MCTP_ENDPOINT_ID_RESERVED_START = 1;
+  public const ulong MCTP_ENDPOINT_ID_RESERVED_END = 7;
+  public const ulong MCTP_ENDPOINT_ID_BROADCAST = 0xff;
 }
 
-public const ulong MCTP_ENDPOINT_ID_NULL = 0;
-public const ulong MCTP_ENDPOINT_ID_RESERVED_START = 1;
-public const ulong MCTP_ENDPOINT_ID_RESERVED_END = 7;
-public const ulong MCTP_ENDPOINT_ID_BROADCAST = 0xff;
 ///
 /// MCTP Control Message Format
 ///

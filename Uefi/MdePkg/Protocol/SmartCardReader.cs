@@ -52,8 +52,8 @@ public unsafe partial class EFI
   //
   // Macro to generate a ControlCode & PC/SC part 10 control code
   //
-  public const ulong SCARD_CTL_CODE = (code)(0x42000000 + (code));
-  public const ulong CM_IOCTL_GET_FEATURE_REQUEST = SCARD_CTL_CODE(3400);
+  //public const ulong SCARD_CTL_CODE = (code)(0x42000000 + (code));
+  //public const ulong CM_IOCTL_GET_FEATURE_REQUEST = SCARD_CTL_CODE(3400);
 
   // /**
   //   This function requests connection to the smart card or the reader, using the

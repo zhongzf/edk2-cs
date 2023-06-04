@@ -32,8 +32,8 @@ public unsafe partial class EFI
   ///
   /// EFI 1.1 Revision Number defintion.
   ///
-#define EFI_PXE_BASE_CODE_CALLBACK_INTERFACE_REVISION  \
-  EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION
+//#define EFI_PXE_BASE_CODE_CALLBACK_INTERFACE_REVISION  \
+//  EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_REVISION
 
   ///
   /// UEFI Protocol name.
@@ -124,7 +124,7 @@ public unsafe struct EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL
   ///  it is not the same GUID.
   ///
   public ulong Revision;
-  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_FUNCTION /*Function*/,/* IN */bool /*Received*/,/* IN */uint /*PacketLen*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*Packet*/, EFI_STATUS> /*EFI_PXE_CALLBACK*/ Callback;
+  //public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_FUNCTION /*Function*/,/* IN */bool /*Received*/,/* IN */uint /*PacketLen*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*Packet*/, EFI_STATUS> /*EFI_PXE_CALLBACK*/ Callback;
 }
 
 // extern EFI_GUID  gEfiPxeBaseCodeCallbackProtocolGuid;

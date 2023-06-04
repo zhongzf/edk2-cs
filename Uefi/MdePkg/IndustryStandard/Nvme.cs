@@ -45,10 +45,10 @@ public unsafe partial class EFI
   // These register offsets are defined as 0x1000 + (N * (4 << CAP.DSTRD))
   // Get the doorbell stride bit shift value from the controller capabilities.
   //
-  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
-public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
+  //  public const ulong NVME_SQTDBL_OFFSET = (QID, DSTRD)  0x1000 + ((2 * (QID)) * (4 << (DSTRD)))         ; //  Submission Queue y (NVM) Tail Doorbell
+  //public const ulong NVME_CQHDBL_OFFSET = (QID, DSTRD)  0x1000 + (((2 * (QID)) + 1) * (4 << (DSTRD)))   ; //  Completion Queue y (NVM) Head Doorbell
 
-// #pragma pack(1)
+  // #pragma pack(1)
 }
 
 //
@@ -485,9 +485,9 @@ public unsafe struct NVME_ADMIN_CONTROLLER_DATA
     //
     // Power State Descriptors
     //
-    public fixed NVME_PSDESCRIPTOR PsDescriptor[32];
+    public NVME_PSDESCRIPTOR[/*32*/] PsDescriptor;
 
-    public fixed byte VendorData[1024]; /* Vendor specific data */
+    public byte[/*1024*/] VendorData; /* Vendor specific data */
   }
 }
 
@@ -497,15 +497,16 @@ public unsafe struct NVME_LBAFORMAT
   public ushort Ms;             /* Metadata Size */
   public byte Lbads;          /* LBA Data Size */
   public byte Rp; // = 2;      /* Relative Performance */
-  public unsafe partial class EFI
-  {
-    public const ulong LBAF_RP_BEST = 00b;
-public const ulong LBAF_RP_BETTER = 01b;
-public const ulong LBAF_RP_GOOD = 10b;
-public const ulong LBAF_RP_DEGRADED = 11b;
   public byte Rsvd1; // = 6;      /* Reserved as of Nvm Express 1.1 Spec */
-  }
 }
+
+public unsafe partial class EFI
+{
+  public const ulong LBAF_RP_BEST = 00;
+  public const ulong LBAF_RP_BETTER = 01;
+  public const ulong LBAF_RP_GOOD = 10;
+  public const ulong LBAF_RP_DEGRADED = 11;
+}}
 
 //
 // Identify Namespace Data

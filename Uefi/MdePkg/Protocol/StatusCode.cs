@@ -52,7 +52,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_STATUS_CODE_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_STATUS_CODE_TYPE /*Type*/,/* IN */EFI_STATUS_CODE_VALUE /*Value*/,/* IN */uint /*Instance*/,/* IN */EFI_GUID* /*CallerId*/,/* IN */EFI_STATUS_CODE_DATA* /*Data*/, EFI_STATUS> /*EFI_REPORT_STATUS_CODE*/ ReportStatusCode;
+  //public readonly delegate* unmanaged</* IN */EFI_STATUS_CODE_TYPE /*Type*/,/* IN */EFI_STATUS_CODE_VALUE /*Value*/,/* IN */uint /*Instance*/,/* IN */EFI_GUID* /*CallerId*/,/* IN */EFI_STATUS_CODE_DATA* /*Data*/, EFI_STATUS> /*EFI_REPORT_STATUS_CODE*/ ReportStatusCode;
 }
 
 // extern EFI_GUID  gEfiStatusCodeRuntimeProtocolGuid;

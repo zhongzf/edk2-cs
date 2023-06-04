@@ -34,15 +34,15 @@ public unsafe partial class EFI
 // Bluetooth UUID
 //
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Data
+public unsafe struct EFI_BLUETOOTH_UUID
 {
   public byte Length;
-  union {
-    public ushort Uuid16;
-  public uint Uuid32;
-  public fixed byte Uuid128[16];
+  //  union {
+  //    public ushort Uuid16;
+  //  public uint Uuid32;
+  //  public fixed byte Uuid128[16];
+  //}
 }
-} EFI_BLUETOOTH_UUID;
 
 public unsafe partial class EFI
 {
@@ -50,7 +50,7 @@ public unsafe partial class EFI
   public const ulong UUID_32BIT_TYPE_LEN = 4;
   public const ulong UUID_128BIT_TYPE_LEN = 16;
 
-  public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
+  //public const ulong BLUETOOTH_IS_ATTRIBUTE_OF_TYPE = (a, t)((a)->Type.Length == UUID_16BIT_TYPE_LEN && (a)->Type.Data.Uuid16 == (t));
 }
 
 //
@@ -133,15 +133,15 @@ public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_INDICATION
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Parameter
+public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER
 {
   public uint Version;
   public byte AttributeOpCode;
-  union {
-    public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_NOTIFICATION Notification;
-  public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_INDICATION Indication;
-}
-} EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER;
+//  union {
+//    public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_NOTIFICATION Notification;
+//  public EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER_INDICATION Indication;
+//}
+} 
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLUETOOTH_LE_DEVICE_INFO
@@ -291,8 +291,8 @@ public unsafe struct EFI_BLUETOOTH_LE_DEVICE_INFO
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_SEND_REQUEST*/ SendRequest;
-  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER* /*CallbackParameter*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_REGISTER_FOR_SERVER_NOTIFICATION*/ RegisterForServerNotification;
+  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_SEND_REQUEST*/ SendRequest;
+  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER* /*CallbackParameter*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_REGISTER_FOR_SERVER_NOTIFICATION*/ RegisterForServerNotification;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* OUT */ulong* /*ServiceInfoSize*/,/* OUT */void** /*ServiceInfo*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_GET_SERVICE_INFO*/ GetServiceInfo;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* OUT */ulong* /*DeviceInfoSize*/,/* OUT */void** /*DeviceInfo*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_GET_DEVICE_INFO*/ GetDeviceInfo;
 }

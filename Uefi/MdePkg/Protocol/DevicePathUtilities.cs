@@ -181,7 +181,7 @@ public unsafe struct EFI_DEVICE_PATH_UTILITIES_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*Src1*/,/* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*Src2*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_APPEND_PATH*/ AppendDevicePath;
   public readonly delegate* unmanaged</* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*DevicePath*/,/* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*DeviceNode*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_APPEND_NODE*/ AppendDeviceNode;
   public readonly delegate* unmanaged</* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*DevicePath*/,/* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*DevicePathInstance*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_APPEND_INSTANCE*/ AppendDevicePathInstance;
-  public readonly delegate* unmanaged</* IN */OUT /*EFI_DEVICE_PATH_PROTOCOL*/,/* OUT */ulong* /*DevicePathInstanceSize*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_GET_NEXT_INSTANCE*/ GetNextDevicePathInstance;
+  public readonly delegate* unmanaged</* IN OUT*/ EFI_DEVICE_PATH_PROTOCOL*,/* OUT */ulong* /*DevicePathInstanceSize*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_GET_NEXT_INSTANCE*/ GetNextDevicePathInstance;
   public readonly delegate* unmanaged</* IN CONST */EFI_DEVICE_PATH_PROTOCOL* /*DevicePath*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_IS_MULTI_INSTANCE*/ IsDevicePathMultiInstance;
   public readonly delegate* unmanaged</* IN */byte /*NodeType*/,/* IN */byte /*NodeSubType*/,/* IN */ushort /*NodeLength*/, EFI_STATUS> /*EFI_DEVICE_PATH_UTILS_CREATE_NODE*/ CreateDeviceNode;
 }

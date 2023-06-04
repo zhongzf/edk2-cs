@@ -42,8 +42,8 @@ public unsafe partial class EFI
   //
   // Parameters type definition
   //
-  typedef byte SMART_CARD_AID[SCARD_AID_MAXSIZE];
-  typedef byte SMART_CARD_CSN[SCARD_CSN_SIZE];
+  //typedef byte SMART_CARD_AID[SCARD_AID_MAXSIZE];
+  //typedef byte SMART_CARD_CSN[SCARD_CSN_SIZE];
 
   //
   // Type of data elements in credentials list
@@ -712,7 +712,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMART_CARD_EDGE_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberAidSupported*/,/* IN OUT */ulong* /*AidTableSize*/,/* OUT */SMART_CARD_AID* /*AidTable*/,/* OUT */ulong* /*NumberSCPresent*/,/* IN OUT */ulong* /*CsnTableSize*/,/* OUT */SMART_CARD_CSN* /*CsnTable*/,/* OUT */uint* /*VersionScEdgeProtocol*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_GET_CONTEXT*/ GetContext;
+  //public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberAidSupported*/,/* IN OUT */ulong* /*AidTableSize*/,/* OUT */SMART_CARD_AID* /*AidTable*/,/* OUT */ulong* /*NumberSCPresent*/,/* IN OUT */ulong* /*CsnTableSize*/,/* OUT */SMART_CARD_CSN* /*CsnTable*/,/* OUT */uint* /*VersionScEdgeProtocol*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_GET_CONTEXT*/ GetContext;
   public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* OUT */EFI_HANDLE* /*SCardHandle*/,/* IN */byte* /*ScardCsn*/,/* OUT */byte* /*ScardAid*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_CONNECT*/ Connect;
   public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*SCardHandle*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_DISCONNECT*/ Disconnect;
   public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*SCardHandle*/,/* OUT */byte /*Csn*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_GET_CSN*/ GetCsn;

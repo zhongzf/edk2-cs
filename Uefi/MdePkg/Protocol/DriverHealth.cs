@@ -238,7 +238,7 @@ public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE
 public unsafe struct EFI_DRIVER_HEALTH_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_DRIVER_HEALTH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */EFI_HANDLE /*ChildHandle*/,/* OUT */EFI_DRIVER_HEALTH_STATUS* /*HealthStatus*/,/* OUT */EFI_DRIVER_HEALTH_HII_MESSAGE** /*MessageList*/,/* OUT */EFI_HII_HANDLE* /*FormHiiHandle*/, EFI_STATUS> /*EFI_DRIVER_HEALTH_GET_HEALTH_STATUS*/ GetHealthStatus;
-  public readonly delegate* unmanaged</* IN */EFI_DRIVER_HEALTH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */EFI_HANDLE /*ChildHandle*/,/* IN */EFI_DRIVER_HEALTH_REPAIR_NOTIFY /*RepairNotify*/, EFI_STATUS> /*EFI_DRIVER_HEALTH_REPAIR*/ Repair;
+  //public readonly delegate* unmanaged</* IN */EFI_DRIVER_HEALTH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */EFI_HANDLE /*ChildHandle*/,/* IN */EFI_DRIVER_HEALTH_REPAIR_NOTIFY /*RepairNotify*/, EFI_STATUS> /*EFI_DRIVER_HEALTH_REPAIR*/ Repair;
 }
 
 // extern EFI_GUID  gEfiDriverHealthProtocolGuid;

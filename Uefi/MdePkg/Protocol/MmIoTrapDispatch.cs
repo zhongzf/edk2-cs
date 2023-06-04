@@ -131,7 +131,7 @@ public unsafe struct EFI_MM_IO_TRAP_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_IO_TRAP_DISPATCH_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_IO_TRAP_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN OUT */EFI_MM_IO_TRAP_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_IO_TRAP_DISPATCH_REGISTER*/ Register;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_IO_TRAP_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN OUT */EFI_MM_IO_TRAP_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_IO_TRAP_DISPATCH_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_IO_TRAP_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_IO_TRAP_DISPATCH_UNREGISTER*/ UnRegister;
 }
 

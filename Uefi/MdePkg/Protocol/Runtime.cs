@@ -34,8 +34,8 @@ public unsafe partial class EFI
 ///
 /// LIST_ENTRY from BaseType
 ///
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_LIST_ENTRY { LIST_ENTRY Value; public static implicit operator EFI_LIST_ENTRY(LIST_ENTRY value) => new EFI_LIST_ENTRY() { Value = value }; public static implicit operator LIST_ENTRY(EFI_LIST_ENTRY value) => value.Value; }
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct EFI_LIST_ENTRY { LIST_ENTRY Value; public static implicit operator EFI_LIST_ENTRY(LIST_ENTRY value) => new EFI_LIST_ENTRY() { Value = value }; public static implicit operator LIST_ENTRY(EFI_LIST_ENTRY value) => value.Value; }
 
 // typedef struct _EFI_RUNTIME_IMAGE_ENTRY EFI_RUNTIME_IMAGE_ENTRY;
 
@@ -66,7 +66,7 @@ public unsafe struct EFI_RUNTIME_IMAGE_ENTRY
   ///
   /// Entry for this node in the EFI_RUNTIME_ARCHITECTURE_PROTOCOL.ImageHead list.
   ///
-  public EFI_LIST_ENTRY Link;
+  //public EFI_LIST_ENTRY Link;
 }
 
 // typedef struct _EFI_RUNTIME_EVENT_ENTRY EFI_RUNTIME_EVENT_ENTRY;
@@ -88,7 +88,7 @@ public unsafe struct EFI_RUNTIME_EVENT_ENTRY
   ///
   /// The same as NotifyFunction passed into CreateEvent().
   ///
-  public EFI_EVENT_NOTIFY NotifyFunction;
+  //public EFI_EVENT_NOTIFY NotifyFunction;
   ///
   /// The same as NotifyContext passed into CreateEvent().
   ///
@@ -101,7 +101,7 @@ public unsafe struct EFI_RUNTIME_EVENT_ENTRY
   /// Entry for this node in the
   /// EFI_RUNTIME_ARCHITECTURE_PROTOCOL.EventHead list.
   ///
-  public EFI_LIST_ENTRY Link;
+  //public EFI_LIST_ENTRY Link;
 }
 
 ///
@@ -117,8 +117,8 @@ public unsafe struct EFI_RUNTIME_EVENT_ENTRY
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RUNTIME_ARCH_PROTOCOL
 {
-  public EFI_LIST_ENTRY ImageHead;              ///< A list of type EFI_RUNTIME_IMAGE_ENTRY.
-  public EFI_LIST_ENTRY EventHead;              ///< A list of type EFI_RUNTIME_EVENT_ENTRY.
+  //public EFI_LIST_ENTRY ImageHead;              ///< A list of type EFI_RUNTIME_IMAGE_ENTRY.
+  //public EFI_LIST_ENTRY EventHead;              ///< A list of type EFI_RUNTIME_EVENT_ENTRY.
   public ulong MemoryDescriptorSize;   ///< Size of a memory descriptor that is returned by GetMemoryMap().
   public uint MemoryDesciptorVersion; ///< Version of a memory descriptor that is returned by GetMemoryMap().
   public ulong MemoryMapSize;          ///< Size of the memory map in bytes contained in MemoryMapPhysical and MemoryMapVirtual.

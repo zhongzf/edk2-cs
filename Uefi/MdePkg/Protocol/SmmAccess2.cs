@@ -26,7 +26,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_SMM_ACCESS2_PROTOCOL_GUID = EFI_MM_ACCESS_PROTOCOL_GUID;
+  public static EFI_GUID EFI_SMM_ACCESS2_PROTOCOL_GUID = EFI_MM_ACCESS_PROTOCOL_GUID;
 }
 
 [StructLayout(LayoutKind.Sequential)]

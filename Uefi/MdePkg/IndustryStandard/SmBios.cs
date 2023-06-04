@@ -58,7 +58,7 @@ public unsafe partial class EFI
   /// Table 1 - SMBIOS 2.1 (32-bit) Entry Point structure, offset 00h
   /// _SM_, specified as four ASCII characters (5F 53 4D 5F).
   ///@{
-  public const ulong SMBIOS_ANCHOR_STRING = "_SM_";
+  public static string SMBIOS_ANCHOR_STRING = "_SM_";
   public const ulong SMBIOS_ANCHOR_STRING_LENGTH = 4;
   ///@}
 
@@ -67,7 +67,7 @@ public unsafe partial class EFI
   /// Table 2 - SMBIOS 3.0 (64-bit) Entry Point structure, offset 00h
   /// _SM3_, specified as five ASCII characters (5F 53 4D 33 5F).
   ///@{
-  public const ulong SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
+  public static string SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
   public const ulong SMBIOS_3_0_ANCHOR_STRING_LENGTH = 5;
   ///@}
 
@@ -166,7 +166,7 @@ public unsafe struct SMBIOS_HANDLE { ushort Value; public static implicit operat
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SMBIOS_TABLE_ENTRY_POINT
 {
-  public fixed byte AnchorString[SMBIOS_ANCHOR_STRING_LENGTH];
+  public byte[/*SMBIOS_ANCHOR_STRING_LENGTH*/] AnchorString;
   public byte EntryPointStructureChecksum;
   public byte EntryPointLength;
   public byte MajorVersion;
@@ -185,7 +185,7 @@ public unsafe struct SMBIOS_TABLE_ENTRY_POINT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SMBIOS_TABLE_3_0_ENTRY_POINT
 {
-  public fixed byte AnchorString[SMBIOS_3_0_ANCHOR_STRING_LENGTH];
+  public byte[/*SMBIOS_3_0_ANCHOR_STRING_LENGTH*/] AnchorString;
   public byte EntryPointStructureChecksum;
   public byte EntryPointLength;
   public byte MajorVersion;
@@ -548,7 +548,7 @@ public unsafe struct SMBIOS_TABLE_TYPE3
   //
   // Can have 0 to (ContainedElementCount * ContainedElementRecordLength) contained elements
   //
-  public fixed CONTAINED_ELEMENT ContainedElements[1];
+  public CONTAINED_ELEMENT[/*1*/] ContainedElements;
   //
   // Add for smbios 2.7
   //
@@ -1652,7 +1652,7 @@ public unsafe struct SMBIOS_TABLE_TYPE9
   //
   public byte DataBusWidth;
   public byte PeerGroupingCount;
-  public fixed MISC_SLOT_PEER_GROUP PeerGroups[1];
+  public MISC_SLOT_PEER_GROUP[/*1*/] PeerGroups;
   //
   // Since PeerGroups has a variable number of entries, must not define new
   // fields in the structure. Remaining fields can be referenced using
@@ -1720,7 +1720,7 @@ public unsafe struct DEVICE_STRUCT
 public unsafe struct SMBIOS_TABLE_TYPE10
 {
   public SMBIOS_STRUCTURE Hdr;
-  public fixed DEVICE_STRUCT Device[1];
+  public DEVICE_STRUCT[/*1*/] Device;
 }
 
 ///
@@ -1784,7 +1784,7 @@ public unsafe struct SMBIOS_TABLE_TYPE14
 {
   public SMBIOS_STRUCTURE Hdr;
   public SMBIOS_TABLE_STRING GroupName;
-  public fixed GROUP_STRUCT Group[1];
+  public GROUP_STRUCT[/*1*/] Group;
 }
 
 ///
@@ -1868,7 +1868,7 @@ public unsafe struct SMBIOS_TABLE_TYPE15
   public byte LogHeaderFormat;
   public byte NumberOfSupportedLogTypeDescriptors;
   public byte LengthOfLogTypeDescriptor;
-  public fixed EVENT_LOG_TYPE EventLogTypeDescriptors[1];
+  public EVENT_LOG_TYPE[/*1*/] EventLogTypeDescriptors;
 }
 
 ///
@@ -2728,7 +2728,7 @@ public unsafe struct SMBIOS_TABLE_TYPE37
   public byte ChannelType;
   public byte MaximumChannelLoad;
   public byte MemoryDeviceCount;
-  public fixed MEMORY_DEVICE MemoryDevice[1];
+  public MEMORY_DEVICE[/*1*/] MemoryDevice;
 }
 
 ///
@@ -2831,7 +2831,7 @@ public unsafe struct SMBIOS_TABLE_TYPE40
 {
   public SMBIOS_STRUCTURE Hdr;
   public byte NumberOfAdditionalInformationEntries;
-  public fixed ADDITIONAL_INFORMATION_ENTRY AdditionalInfoEntries[1];
+  public ADDITIONAL_INFORMATION_ENTRY[/*1*/] AdditionalInfoEntries;
 }
 
 ///
@@ -3150,19 +3150,19 @@ public unsafe struct SMBIOS_STRUCTURE_POINTER
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE0* Type0;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE1* Type1;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE2* Type2;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE3* Type3;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE3* Type3;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE4* Type4;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE5* Type5;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE6* Type6;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE7* Type7;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE8* Type8;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE9* Type9;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE10* Type10;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE9* Type9;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE10* Type10;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE11* Type11;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE12* Type12;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE13* Type13;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE14* Type14;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE15* Type15;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE14* Type14;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE15* Type15;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE16* Type16;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE17* Type17;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE18* Type18;
@@ -3184,10 +3184,10 @@ public unsafe struct SMBIOS_STRUCTURE_POINTER
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE34* Type34;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE35* Type35;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE36* Type36;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE37* Type37;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE37* Type37;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE38* Type38;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE39* Type39;
-  [FieldOffset(0)] public SMBIOS_TABLE_TYPE40* Type40;
+  //[FieldOffset(0)] public SMBIOS_TABLE_TYPE40* Type40;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE41* Type41;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE42* Type42;
   [FieldOffset(0)] public SMBIOS_TABLE_TYPE43* Type43;

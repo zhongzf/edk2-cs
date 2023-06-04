@@ -112,7 +112,7 @@ public unsafe struct EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_STANDBY_BUTTON_REGISTER*/ Register;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_STANDBY_BUTTON_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_STANDBY_BUTTON_UNREGISTER*/ UnRegister;
 }
 

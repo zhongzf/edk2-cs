@@ -71,12 +71,12 @@ public enum EFI_EAP_CONFIG_DATA_TYPE
 public unsafe struct EFI_EAP_TYPE { byte Value; public static implicit operator EFI_EAP_TYPE(byte value) => new EFI_EAP_TYPE() { Value = value }; public static implicit operator byte(EFI_EAP_TYPE value) => value.Value; }
 public unsafe partial class EFI
 {
-  public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
+  //public const ulong EFI_EAP_TYPE_ATTRIBUTE = 0;
   public const ulong EFI_EAP_TYPE_IDENTITY = 1;
   public const ulong EFI_EAP_TYPE_NOTIFICATION = 2;
   public const ulong EFI_EAP_TYPE_NAK = 3;
   public const ulong EFI_EAP_TYPE_MD5CHALLENGE = 4;
-  public const ulong EFI_EAP_TYPE_OTP = 5;
+  //public const ulong EFI_EAP_TYPE_OTP = 5;
   public const ulong EFI_EAP_TYPE_GTC = 6;
   public const ulong EFI_EAP_TYPE_EAPTLS = 13;
   public const ulong EFI_EAP_TYPE_EAPSIM = 18;

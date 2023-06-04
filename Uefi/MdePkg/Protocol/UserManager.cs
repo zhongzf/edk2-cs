@@ -111,8 +111,6 @@ public unsafe partial class EFI
   ///
   /// User information record types
   ///
-}
-
 ///
 /// No information.
 ///
@@ -121,6 +119,8 @@ public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
 /// Provide the user's name for the enrolled user.
 ///
 public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
+}
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_NAME { char* Value; public static implicit operator EFI_USER_INFO_NAME(char* value) => new EFI_USER_INFO_NAME() { Value = value }; public static implicit operator char*(EFI_USER_INFO_NAME value) => value.Value; }
 public unsafe partial class EFI
@@ -156,7 +156,7 @@ public unsafe partial class EFI
   /// Provides a unique non-volatile user identifier for each enrolled user.
   ///
   public const ulong EFI_USER_INFO_IDENTIFIER_RECORD = 0x05;
-  typedef byte EFI_USER_INFO_IDENTIFIER[16];
+  //typedef byte EFI_USER_INFO_IDENTIFIER[16];
   ///
   /// Specifies the type of a particular credential associated with the user profile.
   ///
@@ -283,8 +283,6 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_ADMIN_GUID = new GUID(0x85b75607, 0xf7ce, 0x471e, new byte[] { 0xb7, 0xe4, 0x2a, 0xea, 0x5f, 0x72, 0x32, 0xee });
   public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_NORMAL_GUID = new GUID(0x1db29ae0, 0x9dcb, 0x43bc, new byte[] { 0x8d, 0x87, 0x5d, 0xa1, 0x49, 0x64, 0xdd, 0xe2 });
   public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_RESTRICTED_GUID = new GUID(0xbdb38125, 0x4d63, 0x49f4, new byte[] { 0x82, 0x12, 0x61, 0xcf, 0x5a, 0x19, 0xa, 0xf8 });
-}
-
 ///
 /// Forbids UEFI drivers from being started from the specified device path(s) or any child device paths.
 ///
@@ -297,6 +295,8 @@ public const ulong EFI_USER_INFO_ACCESS_PERMIT_CONNECT = 0x00000008;
 /// Modifies the boot order.
 ///
 public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER = 0x00000009;
+}
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR { uint Value; public static implicit operator EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR(uint value) => new EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR() { Value = value }; public static implicit operator uint(EFI_USER_INFO_ACCESS_BOOT_ORDER_HDR value) => value.Value; }
 
@@ -346,12 +346,12 @@ public unsafe partial class EFI
   public const ulong EFI_USER_INFO_IDENTITY_NOT = 0x10;
   public const ulong EFI_USER_INFO_IDENTITY_AND = 0x11;
   public const ulong EFI_USER_INFO_IDENTITY_OR = 0x12;
-}
-
 ///
 /// Provides placeholder for additional user profile information identified by a GUID.
 ///
 public const ulong EFI_USER_INFO_GUID_RECORD = 0xFF;
+}
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_USER_INFO_GUID { EFI_GUID Value; public static implicit operator EFI_USER_INFO_GUID(EFI_GUID value) => new EFI_USER_INFO_GUID() { Value = value }; public static implicit operator EFI_GUID(EFI_USER_INFO_GUID value) => value.Value; }
 

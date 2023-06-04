@@ -21,14 +21,14 @@ public unsafe partial class EFI
   /// Global ID for the SPI Configuration Protocol
   ///
   public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
-      { 0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8 });
+    new byte[] { 0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8 });
 
 ///
 /// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
 ///
-public const ulong Hz = (Frequency)(Frequency);
-public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
-public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
+//public const ulong Hz = (Frequency)(Frequency);
+//public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
+//public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
 
 // typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
 
@@ -303,7 +303,7 @@ public unsafe struct EFI_SPI_CONFIGURATION_PROTOCOL
   ///
   /// The address of an array of EFI_SPI_BUS data structure addresses.
   ///
-  CONST EFI_SPI_BUS *CONST* CONST    Buslist;
+  //CONST EFI_SPI_BUS *CONST* CONST    Buslist;
 }
 
 // extern EFI_GUID  gEfiSpiConfigurationProtocolGuid;

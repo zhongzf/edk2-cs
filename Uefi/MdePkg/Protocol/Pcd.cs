@@ -796,10 +796,10 @@ public unsafe struct PCD_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN OUT */ulong* /*SizeOfBuffer*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*PCD_PROTOCOL_SET_EX_POINTER*/ SetPtrEx;
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */bool /*Value*/, EFI_STATUS> /*PCD_PROTOCOL_SET_EX_BOOLEAN*/ SetBoolEx;
 
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_GUID*/,/* IN */ulong /*TokenNumber*/,/* IN */PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CALLBACK_ONSET*/ CallbackOnSet;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_GUID*/,/* IN */ulong /*TokenNumber*/,/* IN */PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CANCEL_CALLBACK*/ CancelCallback;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_GUID*/,/* IN OUT */ulong* /*TokenNumber*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKEN*/ GetNextToken;
-  public readonly delegate* unmanaged</* IN */OUT /*CONST*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKENSPACE*/ GetNextTokenSpace;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CALLBACK_ONSET*/ CallbackOnSet;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CANCEL_CALLBACK*/ CancelCallback;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN OUT */ulong* /*TokenNumber*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKEN*/ GetNextToken;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKENSPACE*/ GetNextTokenSpace;
 }
 
 // #endif

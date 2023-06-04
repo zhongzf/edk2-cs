@@ -58,7 +58,7 @@ public unsafe struct EFI_IP4_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle;
   public uint AddressCount;
-  public fixed EFI_IP4_ADDRESS_PAIR AddressPairs[1];
+  public EFI_IP4_ADDRESS_PAIR[/*1*/] AddressPairs;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -232,7 +232,7 @@ public unsafe struct EFI_IP4_RECEIVE_DATA
   public void* Options;
   public uint DataLength;
   public uint FragmentCount;
-  public fixed EFI_IP4_FRAGMENT_DATA FragmentTable[1];
+  public EFI_IP4_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -255,11 +255,11 @@ public unsafe struct EFI_IP4_TRANSMIT_DATA
   public void* OptionsBuffer;   // OPTIONAL
   public uint TotalDataLength;
   public uint FragmentCount;
-  public fixed EFI_IP4_FRAGMENT_DATA FragmentTable[1];
+  public EFI_IP4_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_IP4_COMPLETION_TOKEN
 {
   ///
   /// This Event will be signaled after the Status field is updated
@@ -273,17 +273,17 @@ public unsafe struct Packet
   /// to indicate whether this operation completed successfully.
   ///
   public EFI_STATUS Status;
-  union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to the EFI_IP4_RECEIVE_DATA.
-    ///
-    public EFI_IP4_RECEIVE_DATA* RxData;
-  ///
-  /// When this token is used for transmitting, TxData is a pointer to the EFI_IP4_TRANSMIT_DATA.
-  ///
-  public EFI_IP4_TRANSMIT_DATA* TxData;
-}
-} EFI_IP4_COMPLETION_TOKEN;
+//  union {
+//    ///
+//    /// When this token is used for receiving, RxData is a pointer to the EFI_IP4_RECEIVE_DATA.
+//    ///
+//    public EFI_IP4_RECEIVE_DATA* RxData;
+//  ///
+//  /// When this token is used for transmitting, TxData is a pointer to the EFI_IP4_TRANSMIT_DATA.
+//  ///
+//  public EFI_IP4_TRANSMIT_DATA* TxData;
+//}
+} 
 
 // /**
 //   Gets the current operational settings for this instance of the EFI IPv4 Protocol driver.
@@ -614,7 +614,7 @@ public unsafe struct Packet
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IP4_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_IP4_PROTOCOL* /*This*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP4_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_IP4_PROTOCOL* /*This*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_IP4_PROTOCOL* /*This*/,/* IN */EFI_IP4_CONFIG_DATA* /*IpConfigData*/, EFI_STATUS> /*EFI_IP4_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_IP4_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv4_ADDRESS* /*GroupAddress*/, EFI_STATUS> /*EFI_IP4_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_IP4_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetAddress*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetMask*/,/* IN */EFI_IPv4_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_IP4_ROUTES*/ Routes;

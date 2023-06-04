@@ -54,7 +54,7 @@ public unsafe struct EFI_TCP4_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle;
   public uint ServiceCount;
-  public fixed EFI_TCP4_SERVICE_POINT Services[1];
+  public EFI_TCP4_SERVICE_POINT[/*1*/] Services;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -186,7 +186,7 @@ public unsafe struct EFI_TCP4_RECEIVE_DATA
   public bool UrgentFlag;
   public uint DataLength;
   public uint FragmentCount;
-  public fixed EFI_TCP4_FRAGMENT_DATA FragmentTable[1];
+  public EFI_TCP4_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -196,11 +196,11 @@ public unsafe struct EFI_TCP4_TRANSMIT_DATA
   public bool Urgent;
   public uint DataLength;
   public uint FragmentCount;
-  public fixed EFI_TCP4_FRAGMENT_DATA FragmentTable[1];
+  public EFI_TCP4_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_TCP4_IO_TOKEN
 {
   ///
   /// When transmission finishes or meets any unexpected error it will
@@ -230,17 +230,17 @@ public unsafe struct Packet
   /// EFI_NO_MEDIA:             There was a media error.
   ///
   public EFI_TCP4_COMPLETION_TOKEN CompletionToken;
-  union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to EFI_TCP4_RECEIVE_DATA.
-    ///
-    public EFI_TCP4_RECEIVE_DATA* RxData;
-  ///
-  /// When this token is used for transmitting, TxData is a pointer to EFI_TCP4_TRANSMIT_DATA.
-  ///
-  public EFI_TCP4_TRANSMIT_DATA* TxData;
-}
-} EFI_TCP4_IO_TOKEN;
+//  union {
+//    ///
+//    /// When this token is used for receiving, RxData is a pointer to EFI_TCP4_RECEIVE_DATA.
+//    ///
+//    public EFI_TCP4_RECEIVE_DATA* RxData;
+//  ///
+//  /// When this token is used for transmitting, TxData is a pointer to EFI_TCP4_TRANSMIT_DATA.
+//  ///
+//  public EFI_TCP4_TRANSMIT_DATA* TxData;
+//}
+} 
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCP4_CLOSE_TOKEN
@@ -580,7 +580,7 @@ public unsafe struct EFI_TCP4_CLOSE_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCP4_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* OUT */EFI_TCP4_CONNECTION_STATE* /*Tcp4State*/,/* OUT */EFI_TCP4_CONFIG_DATA* /*Tcp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP4_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* OUT */EFI_TCP4_CONNECTION_STATE* /*Tcp4State*/,/* OUT */EFI_TCP4_CONFIG_DATA* /*Tcp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* IN */EFI_TCP4_CONFIG_DATA* /*TcpConfigData*/, EFI_STATUS> /*EFI_TCP4_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetAddress*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetMask*/,/* IN */EFI_IPv4_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_TCP4_ROUTES*/ Routes;
   public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* IN */EFI_TCP4_CONNECTION_TOKEN* /*ConnectionToken*/, EFI_STATUS> /*EFI_TCP4_CONNECT*/ Connect;

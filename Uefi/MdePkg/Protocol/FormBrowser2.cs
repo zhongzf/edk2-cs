@@ -22,6 +22,7 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_FORM_BROWSER2_PROTOCOL_GUID = new GUID(0xb9d4c360, 0xbcfb, 0x4f9b, new byte[] { 0x92, 0x98, 0x53, 0xc1, 0x36, 0x98, 0x22, 0x58 });
 
   // typedef struct _EFI_FORM_BROWSER2_PROTOCOL EFI_FORM_BROWSER2_PROTOCOL;
+}
 
   /**
 
@@ -172,8 +173,8 @@ public unsafe partial class EFI
   [StructLayout(LayoutKind.Sequential)]
   public unsafe struct EFI_FORM_BROWSER2_PROTOCOL
   {
-    public readonly delegate* unmanaged</* IN CONST */EFI_FORM_BROWSER2_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE* /*Handle*/,/* IN */ulong /*HandleCount*/,/* IN */EFI_GUID* /*FormSetGuid*/,/* IN */EFI_FORM_ID /*FormId*/,/* IN CONST */EFI_SCREEN_DESCRIPTOR* /*ScreenDimensions*/,/* OUT */EFI_BROWSER_ACTION_REQUEST* /*ActionRequest*/, EFI_STATUS> /*EFI_SEND_FORM2*/ SendForm;
-    public readonly delegate* unmanaged</* IN CONST */EFI_FORM_BROWSER2_PROTOCOL* /*This*/,/* IN OUT */ulong* /*ResultsDataSize*/,/* IN OUT */EFI_STRING /*ResultsData*/,/* IN CONST */bool /*RetrieveData*/,/* IN CONST */EFI_GUID* /*VariableGuid*/,/* IN CONST */char* /*VariableName*/, EFI_STATUS> /*EFI_BROWSER_CALLBACK2*/ BrowserCallback;
+    //public readonly delegate* unmanaged</* IN CONST */EFI_FORM_BROWSER2_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE* /*Handle*/,/* IN */ulong /*HandleCount*/,/* IN */EFI_GUID* /*FormSetGuid*/,/* IN */EFI_FORM_ID /*FormId*/,/* IN CONST */EFI_SCREEN_DESCRIPTOR* /*ScreenDimensions*/,/* OUT */EFI_BROWSER_ACTION_REQUEST* /*ActionRequest*/, EFI_STATUS> /*EFI_SEND_FORM2*/ SendForm;
+    //public readonly delegate* unmanaged</* IN CONST */EFI_FORM_BROWSER2_PROTOCOL* /*This*/,/* IN OUT */ulong* /*ResultsDataSize*/,/* IN OUT */EFI_STRING /*ResultsData*/,/* IN CONST */bool /*RetrieveData*/,/* IN CONST */EFI_GUID* /*VariableGuid*/,/* IN CONST */char* /*VariableName*/, EFI_STATUS> /*EFI_BROWSER_CALLBACK2*/ BrowserCallback;
   }
 
 // extern EFI_GUID  gEfiFormBrowser2ProtocolGuid;

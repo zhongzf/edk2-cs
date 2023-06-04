@@ -156,7 +156,7 @@ public unsafe partial class EFI
 public unsafe struct EFI_EAP_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_EAP_PROTOCOL* /*This*/,/* IN */byte /*EapAuthType*/, EFI_STATUS> /*EFI_EAP_SET_DESIRED_AUTHENTICATION_METHOD*/ SetDesiredAuthMethod;
-  public readonly delegate* unmanaged</* IN */EFI_EAP_PROTOCOL* /*This*/,/* IN */byte /*EapAuthType*/,/* IN */EFI_EAP_BUILD_RESPONSE_PACKET /*Handler*/, EFI_STATUS> /*EFI_EAP_REGISTER_AUTHENTICATION_METHOD*/ RegisterAuthMethod;
+  //public readonly delegate* unmanaged</* IN */EFI_EAP_PROTOCOL* /*This*/,/* IN */byte /*EapAuthType*/,/* IN */EFI_EAP_BUILD_RESPONSE_PACKET /*Handler*/, EFI_STATUS> /*EFI_EAP_REGISTER_AUTHENTICATION_METHOD*/ RegisterAuthMethod;
 }
 
 // extern EFI_GUID  gEfiEapProtocolGuid;

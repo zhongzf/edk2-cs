@@ -217,7 +217,7 @@ public unsafe struct EFI_FIRMWARE_IMAGE_AUTHENTICATION
   /// Because this is defined as a signature, WIN_CERTIFICATE_UEFI_GUID.CertType must
   /// be EFI_CERT_TYPE_PKCS7_GUID.
   ///
-  public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
+  //public WIN_CERTIFICATE_UEFI_GUID AuthInfo;
 }
 
 public unsafe partial class EFI
@@ -564,11 +564,11 @@ public unsafe partial class EFI
 public unsafe struct EFI_FIRMWARE_MANAGEMENT_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN OUT */ulong* /*ImageInfoSize*/,/* IN OUT */EFI_FIRMWARE_IMAGE_DESCRIPTOR* /*ImageInfo*/,/* OUT */uint* /*DescriptorVersion*/,/* OUT */byte* /*DescriptorCount*/,/* OUT */ulong* /*DescriptorSize*/,/* OUT */uint* /*PackageVersion*/,/* OUT */char** /*PackageVersionName*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_GET_IMAGE_INFO*/ GetImageInfo;
-  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */byte /*ImageIndex*/,/* OUT */void* /*Image*/,/* IN */OUT /*ulong*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_GET_IMAGE*/ GetImage;
-  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */byte /*ImageIndex*/,/* IN */CONST /*void*/,/* IN */ulong /*ImageSize*/,/* IN */CONST /*void*/,/* IN */EFI_FIRMWARE_MANAGEMENT_UPDATE_IMAGE_PROGRESS /*Progress*/,/* OUT */char** /*AbortReason*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_SET_IMAGE*/ SetImage;
-  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */byte /*ImageIndex*/,/* IN */CONST /*void*/,/* IN */ulong /*ImageSize*/,/* OUT */uint* /*ImageUpdatable*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_CHECK_IMAGE*/ CheckImage;
+  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */byte /*ImageIndex*/,/* OUT */void* /*Image*/,/* IN OUT */ulong*, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_GET_IMAGE*/ GetImage;
+  //public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */byte /*ImageIndex*/,/* IN CONST*/ void*,/* IN */ulong /*ImageSize*/,/* IN */CONST /*void*/,/* IN */EFI_FIRMWARE_MANAGEMENT_UPDATE_IMAGE_PROGRESS /*Progress*/,/* OUT */char** /*AbortReason*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_SET_IMAGE*/ SetImage;
+  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */byte /*ImageIndex*/,/* IN CONST*/ void*,/* IN */ulong /*ImageSize*/,/* OUT */uint* /*ImageUpdatable*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_CHECK_IMAGE*/ CheckImage;
   public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* OUT */uint* /*PackageVersion*/,/* OUT */char** /*PackageVersionName*/,/* OUT */uint* /*PackageVersionNameMaxLen*/,/* OUT */ulong* /*AttributesSupported*/,/* OUT */ulong* /*AttributesSetting*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_GET_PACKAGE_INFO*/ GetPackageInfo;
-  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN */CONST /*void*/,/* IN */ulong /*ImageSize*/,/* IN */CONST /*void*/,/* IN */uint /*PackageVersion*/,/* IN */CONST /*char*/, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_SET_PACKAGE_INFO*/ SetPackageInfo;
+  public readonly delegate* unmanaged</* IN */EFI_FIRMWARE_MANAGEMENT_PROTOCOL* /*This*/,/* IN CONST*/void*,/* IN */ulong /*ImageSize*/,/* IN CONST */void*,/* IN */uint /*PackageVersion*/,/* IN CONST */char*, EFI_STATUS> /*EFI_FIRMWARE_MANAGEMENT_PROTOCOL_SET_PACKAGE_INFO*/ SetPackageInfo;
 }
 
 // extern EFI_GUID  gEfiFirmwareManagementProtocolGuid;

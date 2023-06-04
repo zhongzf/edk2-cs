@@ -238,7 +238,7 @@ public unsafe struct EFI_SUPPLICANT_KEY
   //
   // The key value.
   //
-  public fixed byte Key[EFI_MAX_KEY_LEN];
+  public byte[/*EFI_MAX_KEY_LEN*/] Key;
   //
   // Length in bytes of the Key. Should be up to EFI_MAX_KEY_LEN.
   //
@@ -293,7 +293,7 @@ public unsafe struct EFI_SUPPLICANT_GTK_LIST
   // A variable-length array of GTKs of type EFI_SUPPLICANT_KEY. The number of
   // entries is specified by GTKCount.
   //
-  public fixed EFI_SUPPLICANT_KEY GTKList[1];
+  public EFI_SUPPLICANT_KEY[/*1*/] GTKList;
 }
 
 ///

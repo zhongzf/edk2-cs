@@ -222,7 +222,7 @@ public unsafe partial class EFI
   //
   //  Definitions for Set Event Reception State command
   //
-  public const ulong IPMI_BRIDGE_SET_EVENT_RECEPTION_STATE = 0x32;
+  //public const ulong IPMI_BRIDGE_SET_EVENT_RECEPTION_STATE = 0x32;
 
   //
   //  Constants and Structure definitions for "Set Event Reception State" command to follow here

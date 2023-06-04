@@ -46,12 +46,12 @@ public unsafe partial class EFI
     @param  ExpectedSize  The expected size, in bytes, of the data type specified
                           by TypeName.
   **/
-  public const ulong CXL_11_SIZE_ASSERT = (TypeName, ExpectedSize)        \;
-  STATIC_ASSERT(                                         \
-    sizeof (TypeName) == ExpectedSize,                    \
-    "Size of " #TypeName                                  \
-    " does not meet CXL 1.1 Specification requirements."  \
-    )
+  //public const ulong CXL_11_SIZE_ASSERT = (TypeName, ExpectedSize)        \;
+  //STATIC_ASSERT(                                         \
+  //  sizeof (TypeName) == ExpectedSize,                    \
+  //  "Size of " #TypeName                                  \
+  //  " does not meet CXL 1.1 Specification requirements."  \
+  //  )
 
 /**
   Macro used to verify the offset of a field in a data type at compile time and
@@ -64,12 +64,12 @@ public unsafe partial class EFI
   @param  ExpectedOffset  The expected offset, in bytes, of the field specified
                           by TypeName and FieldName.
 **/
-public const ulong CXL_11_OFFSET_ASSERT = (TypeName, FieldName, ExpectedOffset)  \;
-  STATIC_ASSERT(                                                  \
-    OFFSET_OF (TypeName, FieldName) == ExpectedOffset,             \
-    "Offset of " #TypeName "." #FieldName                          \
-    " does not meet CXL 1.1 Specification requirements."           \
-    )
+//public const ulong CXL_11_OFFSET_ASSERT = (TypeName, FieldName, ExpectedOffset)  \;
+//  STATIC_ASSERT(                                                  \
+//    OFFSET_OF (TypeName, FieldName) == ExpectedOffset,             \
+//    "Offset of " #TypeName "." #FieldName                          \
+//    " does not meet CXL 1.1 Specification requirements."           \
+//    )
 }
 
 ///
@@ -274,24 +274,24 @@ public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_DEVICE
   public CXL_DVSEC_FLEX_BUS_DEVICE_RANGE2_BASE_LOW DeviceRange2BaseLow;                         // offset 52
 }
 
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, Header, 0x00);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DesignatedVendorSpecificHeader1, 0x04);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DesignatedVendorSpecificHeader2, 0x08);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceCapability, 0x0A);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceControl, 0x0C);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceStatus, 0x0E);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceControl2, 0x10);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceStatus2, 0x12);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceLock, 0x14);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1SizeHigh, 0x18);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1SizeLow, 0x1C);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1BaseHigh, 0x20);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1BaseLow, 0x24);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2SizeHigh, 0x28);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2SizeLow, 0x2C);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2BaseHigh, 0x30);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2BaseLow, 0x34);
-CXL_11_SIZE_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, 0x38);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, Header, 0x00);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DesignatedVendorSpecificHeader1, 0x04);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DesignatedVendorSpecificHeader2, 0x08);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceCapability, 0x0A);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceControl, 0x0C);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceStatus, 0x0E);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceControl2, 0x10);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceStatus2, 0x12);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceLock, 0x14);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1SizeHigh, 0x18);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1SizeLow, 0x1C);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1BaseHigh, 0x20);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange1BaseLow, 0x24);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2SizeHigh, 0x28);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2SizeLow, 0x2C);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2BaseHigh, 0x30);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, DeviceRange2BaseLow, 0x34);
+//CXL_11_SIZE_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_DEVICE, 0x38);
 ///@}
 
 ///
@@ -368,13 +368,13 @@ public unsafe struct CXL_1_1_DVSEC_FLEX_BUS_PORT
   public CXL_1_1_DVSEC_FLEX_BUS_PORT_STATUS PortStatus;                                  // offset 14
 }
 
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, Header, 0x00);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, DesignatedVendorSpecificHeader1, 0x04);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, DesignatedVendorSpecificHeader2, 0x08);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, PortCapability, 0x0A);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, PortControl, 0x0C);
-CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, PortStatus, 0x0E);
-CXL_11_SIZE_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, 0x10);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, Header, 0x00);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, DesignatedVendorSpecificHeader1, 0x04);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, DesignatedVendorSpecificHeader2, 0x08);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, PortCapability, 0x0A);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, PortControl, 0x0C);
+//CXL_11_OFFSET_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, PortStatus, 0x0E);
+//CXL_11_SIZE_ASSERT(CXL_1_1_DVSEC_FLEX_BUS_PORT, 0x10);
 ///@}
 
 ///

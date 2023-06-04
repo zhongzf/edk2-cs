@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_SMM_END_OF_DXE_PROTOCOL_GUID = EFI_MM_END_OF_DXE_PROTOCOL_GUID;
+  public static EFI_GUID EFI_SMM_END_OF_DXE_PROTOCOL_GUID = EFI_MM_END_OF_DXE_PROTOCOL_GUID;
 
   // extern EFI_GUID  gEfiSmmEndOfDxeProtocolGuid;
 }

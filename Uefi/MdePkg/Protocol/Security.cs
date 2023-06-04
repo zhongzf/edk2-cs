@@ -96,7 +96,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SECURITY_ARCH_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SECURITY_ARCH_PROTOCOL*/,/* IN */uint /*AuthenticationStatus*/,/* IN */CONST /*EFI_DEVICE_PATH_PROTOCOL*/, EFI_STATUS> /*EFI_SECURITY_FILE_AUTHENTICATION_STATE*/ FileAuthenticationState;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SECURITY_ARCH_PROTOCOL*,/* IN */uint /*AuthenticationStatus*/,/* IN CONST */EFI_DEVICE_PATH_PROTOCOL*, EFI_STATUS> /*EFI_SECURITY_FILE_AUTHENTICATION_STATE*/ FileAuthenticationState;
 }
 
 // extern EFI_GUID  gEfiSecurityArchProtocolGuid;

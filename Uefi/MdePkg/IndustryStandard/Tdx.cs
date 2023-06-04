@@ -213,7 +213,7 @@ public unsafe struct TDINFO
   public fixed byte Mrconfigid[48];
   public fixed byte Mrowner[48];
   public fixed byte Mrownerconfig[48];
-  byte Rtmrs[4][48];
+  byte[/*4*/][/*48*/] Rtmrs;
   public fixed byte Rsvd[112];
 }
 

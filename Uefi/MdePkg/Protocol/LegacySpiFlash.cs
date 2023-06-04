@@ -23,7 +23,7 @@ public unsafe partial class EFI
   /// Global ID for the Legacy SPI Flash Protocol
   ///
   public static EFI_GUID EFI_LEGACY_SPI_FLASH_PROTOCOL_GUID = new GUID(0xf01bed57, 0x04bc, 0x4f3f,
-      { 0x96, 0x60, 0xd6, 0xf2, 0xea, 0x22, 0x82, 0x59 });
+    new byte[]  { 0x96, 0x60, 0xd6, 0xf2, 0xea, 0x22, 0x82, 0x59 });
 
 // typedef struct _EFI_LEGACY_SPI_FLASH_PROTOCOL EFI_LEGACY_SPI_FLASH_PROTOCOL;
 
@@ -179,7 +179,7 @@ public unsafe struct EFI_LEGACY_SPI_FLASH_PROTOCOL
   ///
   /// Clear the SPI protect range registers.
   ///
-  public readonly delegate* unmanaged<, EFI_STATUS> /*EFI_LEGACY_SPI_FLASH_PROTOCOL_CLEAR_SPI_PROTECT*/ ClearSpiProtect;
+  public readonly delegate* unmanaged<EFI_STATUS> /*EFI_LEGACY_SPI_FLASH_PROTOCOL_CLEAR_SPI_PROTECT*/ ClearSpiProtect;
 
   ///
   /// Determine if the SPI range is protected.

@@ -24,12 +24,12 @@ public unsafe partial class EFI
   /// Global ID for the SPI Host Controller Protocol
   ///
   public static EFI_GUID EFI_SPI_HOST_GUID = new GUID(0xc74e5db2, 0xfa96, 0x4ae2,
-      { 0xb3, 0x99, 0x15, 0x97, 0x7f, 0xe3, 0x0, 0x2d });
+     new byte[] { 0xb3, 0x99, 0x15, 0x97, 0x7f, 0xe3, 0x0, 0x2d });
 
 ///
 /// EDK2-style name
 ///
-public const ulong EFI_SPI_HC_PROTOCOL_GUID = EFI_SPI_HOST_GUID;
+public static EFI_GUID EFI_SPI_HC_PROTOCOL_GUID = EFI_SPI_HOST_GUID;
 
 // typedef struct _EFI_SPI_HC_PROTOCOL EFI_SPI_HC_PROTOCOL;
 
@@ -187,7 +187,7 @@ public unsafe struct EFI_SPI_HC_PROTOCOL
   /// Perform the SPI transaction on the SPI peripheral using the SPI host
   /// controller.
   ///
-  public readonly delegate* unmanaged</* IN */EFI_SPI_BUS_TRANSACTION* /*BusTransaction*/, EFI_STATUS> /*EFI_SPI_HC_PROTOCOL_TRANSACTION*/ Transaction;
+  //public readonly delegate* unmanaged</* IN */EFI_SPI_BUS_TRANSACTION* /*BusTransaction*/, EFI_STATUS> /*EFI_SPI_HC_PROTOCOL_TRANSACTION*/ Transaction;
 }
 
 // extern EFI_GUID  gEfiSpiHcProtocolGuid;

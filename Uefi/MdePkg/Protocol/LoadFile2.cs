@@ -26,7 +26,7 @@ public unsafe partial class EFI
   ///
   /// Protocol Guid defined by UEFI2.1.
   ///
-  public const ulong LOAD_FILE2_PROTOCOL = EFI_LOAD_FILE2_PROTOCOL_GUID;
+  public static EFI_GUID LOAD_FILE2_PROTOCOL = EFI_LOAD_FILE2_PROTOCOL_GUID;
 
   // typedef struct _EFI_LOAD_FILE2_PROTOCOL EFI_LOAD_FILE2_PROTOCOL;
 

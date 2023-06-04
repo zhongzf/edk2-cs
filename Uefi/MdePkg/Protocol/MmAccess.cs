@@ -115,7 +115,7 @@ public unsafe struct EFI_MM_ACCESS_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_OPEN*/ Open;
   public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_CLOSE*/ Close;
   public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_LOCK*/ Lock;
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_ACCESS_PROTOCOL* /*This*/,/* IN OUT */ulong* /*MmramMapSize*/,/* IN OUT */EFI_MMRAM_DESCRIPTOR* /*MmramMap*/, EFI_STATUS> /*EFI_MM_CAPABILITIES*/ GetCapabilities;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_ACCESS_PROTOCOL* /*This*/,/* IN OUT */ulong* /*MmramMapSize*/,/* IN OUT */EFI_MMRAM_DESCRIPTOR* /*MmramMap*/, EFI_STATUS> /*EFI_MM_CAPABILITIES*/ GetCapabilities;
   ///
   /// Indicates the current state of the MMRAM. Set to TRUE if MMRAM is locked.
   ///

@@ -337,7 +337,7 @@ public unsafe struct EFI_80211_ELEMENT_COUNTRY
   /// Indicates a triplet that repeated in country element. The number of triplets is
   /// determined by the Hdr.Length field.
   ///
-  public fixed EFI_80211_COUNTRY_TRIPLET CountryTriplet[1];
+  public EFI_80211_COUNTRY_TRIPLET[/*1*/] CountryTriplet;
 }
 
 ///
@@ -475,7 +475,7 @@ public unsafe struct EFI_80211_BSS_DESCRIPTION
   /// The information required to identify the regulatory domain in which the peer STA
   /// is located.
   ///
-  public EFI_80211_ELEMENT_COUNTRY* Country;
+  public EFI_80211_ELEMENT_COUNTRY[] Country;
   ///
   /// The cipher suites and AKM suites supported in the BSS.
   ///
@@ -547,7 +547,7 @@ public unsafe struct EFI_80211_MULTIPLE_BSSID
   ///
   /// Contains zero or more sub-elements.
   ///
-  public fixed EFI_80211_SUBELEMENT_INFO SubElement[1];
+  public EFI_80211_SUBELEMENT_INFO[/*1*/] SubElement;
 }
 
 ///
@@ -587,7 +587,7 @@ public unsafe struct EFI_80211_BSS_DESP_PILOT
   ///
   /// Indicates that the BSS is within a multiple BSSID set.
   ///
-  public EFI_80211_MULTIPLE_BSSID* MultipleBSSID;
+  public EFI_80211_MULTIPLE_BSSID[] MultipleBSSID;
   ///
   /// Specifies the RCPI of the received frame.
   ///
@@ -612,7 +612,7 @@ public unsafe struct EFI_80211_SCAN_RESULT
   ///
   /// Points to zero or more instances of EFI_80211_BSS_DESCRIPTION.
   ///
-  public EFI_80211_BSS_DESCRIPTION** BSSDespSet;
+  public EFI_80211_BSS_DESCRIPTION[][] BSSDespSet;
   ///
   /// The number of EFI_80211_BSS_DESP_PILOT in BSSDespFromPilotSet. If zero,
   /// BSSDespFromPilotSet should be ignored.
@@ -621,7 +621,7 @@ public unsafe struct EFI_80211_SCAN_RESULT
   ///
   /// Points to zero or more instances of EFI_80211_BSS_DESP_PILOT.
   ///
-  public EFI_80211_BSS_DESP_PILOT** BSSDespFromPilotSet;
+  public EFI_80211_BSS_DESP_PILOT[][] BSSDespFromPilotSet;
   ///
   /// Specifies zero or more elements. This is an optional parameter and may be NULL.
   ///
@@ -659,7 +659,7 @@ public unsafe struct EFI_80211_SCAN_DATA_TOKEN
   ///
   /// Indicates the scan result. It is caller's responsibility to free this buffer.
   ///
-  public EFI_80211_SCAN_RESULT* Result;
+  public EFI_80211_SCAN_RESULT[] Result;
 }
 
 ///
@@ -691,7 +691,7 @@ public unsafe struct EFI_80211_ELEMENT_SUPP_CHANNEL
   ///
   /// Indicates one or more tuples of (first channel, number of channels).
   ///
-  public fixed EFI_80211_ELEMENT_SUPP_CHANNEL_TUPLE Subband[1];
+  public EFI_80211_ELEMENT_SUPP_CHANNEL_TUPLE[/*1*/] Subband;
 }
 
 ///
@@ -720,7 +720,7 @@ public unsafe struct EFI_80211_ASSOCIATE_DATA
   ///
   /// Indicates a list of channels in which the STA is capable of operating.
   ///
-  public EFI_80211_ELEMENT_SUPP_CHANNEL* Channels;
+  public EFI_80211_ELEMENT_SUPP_CHANNEL[] Channels;
   ///
   /// The cipher suites and AKM suites selected by the STA.
   ///
@@ -820,7 +820,7 @@ public unsafe struct EFI_80211_ASSOCIATE_DATA_TOKEN
   ///
   /// Pointer to the association data.
   ///
-  public EFI_80211_ASSOCIATE_DATA* Data;
+  public EFI_80211_ASSOCIATE_DATA[] Data;
   ///
   /// Indicates the association state.
   ///
@@ -1184,8 +1184,8 @@ public unsafe struct EFI_80211_DEAUTHENTICATE_DATA_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WIRELESS_MAC_CONNECTION_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_SCAN_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_SCAN*/ Scan;
-  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_ASSOCIATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_ASSOCIATE*/ Associate;
+  //public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_SCAN_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_SCAN*/ Scan;
+  //public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_ASSOCIATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_ASSOCIATE*/ Associate;
   public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_DISASSOCIATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_DISASSOCIATE*/ Disassociate;
   public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_AUTHENTICATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_AUTHENTICATE*/ Authenticate;
   public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_PROTOCOL* /*This*/,/* IN */EFI_80211_DEAUTHENTICATE_DATA_TOKEN* /*Data*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_DEAUTHENTICATE*/ Deauthenticate;

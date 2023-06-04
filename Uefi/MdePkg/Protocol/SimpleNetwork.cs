@@ -167,9 +167,10 @@ public unsafe partial class EFI
   public const ulong EFI_SIMPLE_NETWORK_TRANSMIT_INTERRUPT = 0x02;
   public const ulong EFI_SIMPLE_NETWORK_COMMAND_INTERRUPT = 0x04;
   public const ulong EFI_SIMPLE_NETWORK_SOFTWARE_INTERRUPT = 0x08;
+
+  public const ulong MAX_MCAST_FILTER_CNT = 16;
 }
 
-public const ulong MAX_MCAST_FILTER_CNT = 16;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIMPLE_NETWORK_MODE
 {
@@ -219,7 +220,7 @@ public unsafe struct EFI_SIMPLE_NETWORK_MODE
   ///
   /// Array containing the addresses of the current multicast address receive filters.
   ///
-  public fixed EFI_MAC_ADDRESS MCastFilter[MAX_MCAST_FILTER_CNT];
+  public EFI_MAC_ADDRESS[/*MAX_MCAST_FILTER_CNT*/] MCastFilter;
   ///
   /// The current HW MAC address for the network interface.
   ///
@@ -665,19 +666,20 @@ public unsafe struct EFI_SIMPLE_NETWORK_PROTOCOL
   /// it is not the same GUID.
   ///
   public ulong Revision;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_START*/ Start;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_STOP*/ Stop;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */ulong /*ExtraRxBufferSize*/,/* IN */ulong /*ExtraTxBufferSize*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_INITIALIZE*/ Initialize;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_RESET*/ Reset;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_SHUTDOWN*/ Shutdown;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */uint /*Enable*/,/* IN */uint /*Disable*/,/* IN */bool /*ResetMCastFilter*/,/* IN */ulong /*MCastFilterCnt*/,/* IN */EFI_MAC_ADDRESS* /*MCastFilter*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_RECEIVE_FILTERS*/ ReceiveFilters;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*Reset*/,/* IN */EFI_MAC_ADDRESS* /*New*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_STATION_ADDRESS*/ StationAddress;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*Reset*/,/* IN OUT */ulong* /*StatisticsSize*/,/* OUT */EFI_NETWORK_STATISTICS* /*StatisticsTable*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_STATISTICS*/ Statistics;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*IPv6*/,/* IN */EFI_IP_ADDRESS* /*IP*/,/* OUT */EFI_MAC_ADDRESS* /*MAC*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_MCAST_IP_TO_MAC*/ MCastIpToMac;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*ReadWrite*/,/* IN */ulong /*Offset*/,/* IN */ulong /*BufferSize*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_NVDATA*/ NvData;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* OUT */uint* /*InterruptStatus*/,/* OUT */void** /*TxBuf*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_GET_STATUS*/ GetStatus;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */ulong /*HeaderSize*/,/* IN */ulong /*BufferSize*/,/* IN */void* /*Buffer*/,/* IN */EFI_MAC_ADDRESS* /*SrcAddr*/,/* IN */EFI_MAC_ADDRESS* /*DestAddr*/,/* IN */ushort* /*Protocol*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_TRANSMIT*/ Transmit;
-  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* OUT */ulong* /*HeaderSize*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */void* /*Buffer*/,/* OUT */EFI_MAC_ADDRESS* /*SrcAddr*/,/* OUT */EFI_MAC_ADDRESS* /*DestAddr*/,/* OUT */ushort* /*Protocol*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_RECEIVE*/ Receive;
+
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_START*/ Start;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_STOP*/ Stop;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */ulong /*ExtraRxBufferSize*/,/* IN */ulong /*ExtraTxBufferSize*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_INITIALIZE*/ Initialize;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_RESET*/ Reset;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_SHUTDOWN*/ Shutdown;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */uint /*Enable*/,/* IN */uint /*Disable*/,/* IN */bool /*ResetMCastFilter*/,/* IN */ulong /*MCastFilterCnt*/,/* IN */EFI_MAC_ADDRESS* /*MCastFilter*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_RECEIVE_FILTERS*/ ReceiveFilters;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*Reset*/,/* IN */EFI_MAC_ADDRESS* /*New*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_STATION_ADDRESS*/ StationAddress;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*Reset*/,/* IN OUT */ulong* /*StatisticsSize*/,/* OUT */EFI_NETWORK_STATISTICS* /*StatisticsTable*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_STATISTICS*/ Statistics;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*IPv6*/,/* IN */EFI_IP_ADDRESS* /*IP*/,/* OUT */EFI_MAC_ADDRESS* /*MAC*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_MCAST_IP_TO_MAC*/ MCastIpToMac;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*ReadWrite*/,/* IN */ulong /*Offset*/,/* IN */ulong /*BufferSize*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_NVDATA*/ NvData;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* OUT */uint* /*InterruptStatus*/,/* OUT */void** /*TxBuf*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_GET_STATUS*/ GetStatus;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* IN */ulong /*HeaderSize*/,/* IN */ulong /*BufferSize*/,/* IN */void* /*Buffer*/,/* IN */EFI_MAC_ADDRESS* /*SrcAddr*/,/* IN */EFI_MAC_ADDRESS* /*DestAddr*/,/* IN */ushort* /*Protocol*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_TRANSMIT*/ Transmit;
+  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_NETWORK_PROTOCOL* /*This*/,/* OUT */ulong* /*HeaderSize*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */void* /*Buffer*/,/* OUT */EFI_MAC_ADDRESS* /*SrcAddr*/,/* OUT */EFI_MAC_ADDRESS* /*DestAddr*/,/* OUT */ushort* /*Protocol*/, EFI_STATUS> /*EFI_SIMPLE_NETWORK_RECEIVE*/ Receive;
   ///
   /// Event used with WaitForEvent() to wait for a packet to be received.
   ///
@@ -685,7 +687,7 @@ public unsafe struct EFI_SIMPLE_NETWORK_PROTOCOL
   ///
   /// Pointer to the EFI_SIMPLE_NETWORK_MODE data for the device.
   ///
-  public EFI_SIMPLE_NETWORK_MODE* Mode;
+  public EFI_SIMPLE_NETWORK_MODE[] Mode;
 }
 
 // extern EFI_GUID  gEfiSimpleNetworkProtocolGuid;

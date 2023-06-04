@@ -75,7 +75,7 @@ public unsafe struct EFI_TCP6_VARIABLE_DATA
 {
   public EFI_HANDLE DriverHandle; ///< The handle of the driver that creates this entry.
   public uint ServiceCount; ///< The number of address/port pairs following this data structure.
-  public fixed EFI_TCP6_SERVICE_POINT Services[1];  ///< List of address/port pairs that are currently in use.
+  public EFI_TCP6_SERVICE_POINT[/*1*/] Services;  ///< List of address/port pairs that are currently in use.
 }
 
 ///
@@ -385,7 +385,7 @@ public unsafe struct EFI_TCP6_RECEIVE_DATA
   ///
   /// An array of fragment descriptors.
   ///
-  public fixed EFI_TCP6_FRAGMENT_DATA FragmentTable[1];
+  public  EFI_TCP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -419,7 +419,7 @@ public unsafe struct EFI_TCP6_TRANSMIT_DATA
   ///
   /// An array of fragment descriptors.
   ///
-  public fixed EFI_TCP6_FRAGMENT_DATA FragmentTable[1];
+  public EFI_TCP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -427,7 +427,7 @@ public unsafe struct EFI_TCP6_TRANSMIT_DATA
 /// returns When transmission finishes or meets any unexpected error.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_TCP6_IO_TOKEN
 {
   ///
   /// When transmission finishes or meets any unexpected error it will
@@ -459,19 +459,19 @@ public unsafe struct Packet
   /// EFI_NO_MEDIA:             There was a media error.
   ///
   public EFI_TCP6_COMPLETION_TOKEN CompletionToken;
-  union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to
-    /// EFI_TCP6_RECEIVE_DATA.
-    ///
-    public EFI_TCP6_RECEIVE_DATA* RxData;
-  ///
-  /// When this token is used for transmitting, TxData is a pointer to
-  /// EFI_TCP6_TRANSMIT_DATA.
-  ///
-  public EFI_TCP6_TRANSMIT_DATA* TxData;
-}
-} EFI_TCP6_IO_TOKEN;
+//  union {
+//    ///
+//    /// When this token is used for receiving, RxData is a pointer to
+//    /// EFI_TCP6_RECEIVE_DATA.
+//    ///
+//    public EFI_TCP6_RECEIVE_DATA* RxData;
+//  ///
+//  /// When this token is used for transmitting, TxData is a pointer to
+//  /// EFI_TCP6_TRANSMIT_DATA.
+//  ///
+//  public EFI_TCP6_TRANSMIT_DATA* TxData;
+//}
+} 
 
 ///
 /// EFI_TCP6_CLOSE_TOKEN
@@ -870,7 +870,7 @@ public unsafe struct EFI_TCP6_CLOSE_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCP6_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* OUT */EFI_TCP6_CONNECTION_STATE* /*Tcp6State*/,/* OUT */EFI_TCP6_CONFIG_DATA* /*Tcp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP6_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* OUT */EFI_TCP6_CONNECTION_STATE* /*Tcp6State*/,/* OUT */EFI_TCP6_CONFIG_DATA* /*Tcp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* IN */EFI_TCP6_CONFIG_DATA* /*Tcp6ConfigData*/, EFI_STATUS> /*EFI_TCP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* IN */EFI_TCP6_CONNECTION_TOKEN* /*ConnectionToken*/, EFI_STATUS> /*EFI_TCP6_CONNECT*/ Connect;
   public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* IN */EFI_TCP6_LISTEN_TOKEN* /*ListenToken*/, EFI_STATUS> /*EFI_TCP6_ACCEPT*/ Accept;

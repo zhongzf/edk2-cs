@@ -208,7 +208,7 @@ public unsafe struct EFI_SMBIOS_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBIOS_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ProducerHandle*/,/* IN OUT */EFI_SMBIOS_HANDLE* /*SmbiosHandle*/,/* IN */EFI_SMBIOS_TABLE_HEADER* /*Record*/, EFI_STATUS> /*EFI_SMBIOS_ADD*/ Add;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBIOS_PROTOCOL* /*This*/,/* IN */EFI_SMBIOS_HANDLE* /*SmbiosHandle*/,/* IN */ulong* /*StringNumber*/,/* IN */byte* /*String*/, EFI_STATUS> /*EFI_SMBIOS_UPDATE_STRING*/ UpdateString;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBIOS_PROTOCOL* /*This*/,/* IN */EFI_SMBIOS_HANDLE /*SmbiosHandle*/, EFI_STATUS> /*EFI_SMBIOS_REMOVE*/ Remove;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SMBIOS_PROTOCOL*/,/* IN OUT */EFI_SMBIOS_HANDLE* /*SmbiosHandle*/,/* IN */EFI_SMBIOS_TYPE* /*Type*/,/* OUT */EFI_SMBIOS_TABLE_HEADER** /*Record*/,/* OUT */EFI_HANDLE* /*ProducerHandle*/, EFI_STATUS> /*EFI_SMBIOS_GET_NEXT*/ GetNext;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SMBIOS_PROTOCOL*,/* IN OUT */EFI_SMBIOS_HANDLE* /*SmbiosHandle*/,/* IN */EFI_SMBIOS_TYPE* /*Type*/,/* OUT */EFI_SMBIOS_TABLE_HEADER** /*Record*/,/* OUT */EFI_HANDLE* /*ProducerHandle*/, EFI_STATUS> /*EFI_SMBIOS_GET_NEXT*/ GetNext;
   public byte MajorVersion; ///< The major revision of the SMBIOS specification supported.
   public byte MinorVersion; ///< The minor revision of the SMBIOS specification supported.
 }

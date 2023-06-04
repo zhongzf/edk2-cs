@@ -71,11 +71,11 @@ public unsafe struct EFI_MM_IO_ACCESS
   ///
   /// This service provides the various modalities of memory and I/O read.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_MM_CPU_IO_PROTOCOL*/,/* IN */EFI_MM_IO_WIDTH /*Width*/,/* IN */ulong /*Address*/,/* IN */ulong /*Count*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_MM_CPU_IO*/ Read;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_CPU_IO_PROTOCOL*,/* IN */EFI_MM_IO_WIDTH /*Width*/,/* IN */ulong /*Address*/,/* IN */ulong /*Count*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_MM_CPU_IO*/ Read;
   ///
   /// This service provides the various modalities of memory and I/O write.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_MM_CPU_IO_PROTOCOL*/,/* IN */EFI_MM_IO_WIDTH /*Width*/,/* IN */ulong /*Address*/,/* IN */ulong /*Count*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_MM_CPU_IO*/ Write;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_CPU_IO_PROTOCOL*,/* IN */EFI_MM_IO_WIDTH /*Width*/,/* IN */ulong /*Address*/,/* IN */ulong /*Count*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_MM_CPU_IO*/ Write;
 }
 
 ///

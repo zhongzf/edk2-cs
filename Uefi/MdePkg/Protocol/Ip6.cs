@@ -76,7 +76,7 @@ public unsafe struct EFI_IP6_VARIABLE_DATA
   ///
   /// List of IPv6 address pairs that are currently in use.
   ///
-  public fixed EFI_IP6_ADDRESS_PAIR AddressPairs[1];
+  public EFI_IP6_ADDRESS_PAIR[/*1*/] AddressPairs;
 }
 
 public unsafe partial class EFI
@@ -481,7 +481,7 @@ public unsafe struct EFI_IP6_RECEIVE_DATA
   ///
   /// Array of payload fragment lengths and buffer pointers.
   ///
-  public fixed EFI_IP6_FRAGMENT_DATA FragmentTable[1];
+  public EFI_IP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -539,7 +539,7 @@ public unsafe struct EFI_IP6_TRANSMIT_DATA
   ///
   /// Start of the fragment data table.
   ///
-  public fixed EFI_IP6_FRAGMENT_DATA FragmentTable[1];
+  public EFI_IP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -547,7 +547,7 @@ public unsafe struct EFI_IP6_TRANSMIT_DATA
 /// structures are used for both transmit and receive operations.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_IP6_COMPLETION_TOKEN
 {
   ///
   /// This Event will be signaled after the Status field is updated by
@@ -568,17 +568,17 @@ public unsafe struct Packet
   /// - EFI_NO_MEDIA: There was a media error.
   ///
   public EFI_STATUS Status;
-  union {
-    ///
-    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
-    ///
-    public EFI_IP6_RECEIVE_DATA* RxData;
-  ///
-  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
-  ///
-  public EFI_IP6_TRANSMIT_DATA* TxData;
-}
-} EFI_IP6_COMPLETION_TOKEN;
+//  union {
+//    ///
+//    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
+//    ///
+//    public EFI_IP6_RECEIVE_DATA* RxData;
+//  ///
+//  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
+//  ///
+//  public EFI_IP6_TRANSMIT_DATA* TxData;
+//}
+} 
 
 // /**
 //   Gets the current operational settings for this instance of the EFI IPv6 Protocol driver.
@@ -965,7 +965,7 @@ public unsafe struct Packet
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IP6_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP6_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* IN */EFI_IP6_CONFIG_DATA* /*Ip6ConfigData*/, EFI_STATUS> /*EFI_IP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*GroupAddress*/, EFI_STATUS> /*EFI_IP6_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv6_ADDRESS* /*Destination*/,/* IN */byte /*PrefixLength*/,/* IN */EFI_IPv6_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_IP6_ROUTES*/ Routes;

@@ -338,11 +338,11 @@ public unsafe struct EFI_PCI_PLATFORM_PROTOCOL
   ///
   /// Retrieves the platform policy regarding enumeration.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_PCI_PLATFORM_PROTOCOL*/,/* OUT */EFI_PCI_PLATFORM_POLICY* /*PciPolicy*/, EFI_STATUS> /*EFI_PCI_PLATFORM_GET_PLATFORM_POLICY*/ GetPlatformPolicy;
+  public readonly delegate* unmanaged</* IN CONST */EFI_PCI_PLATFORM_PROTOCOL*,/* OUT */EFI_PCI_PLATFORM_POLICY* /*PciPolicy*/, EFI_STATUS> /*EFI_PCI_PLATFORM_GET_PLATFORM_POLICY*/ GetPlatformPolicy;
   ///
   /// Gets the PCI device's option ROM from a platform-specific location.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_PCI_PLATFORM_PROTOCOL*/,/* IN */EFI_HANDLE /*PciHandle*/,/* OUT */void** /*RomImage*/,/* OUT */ulong* /*RomSize*/, EFI_STATUS> /*EFI_PCI_PLATFORM_GET_PCI_ROM*/ GetPciRom;
+  public readonly delegate* unmanaged</* IN CONST */EFI_PCI_PLATFORM_PROTOCOL*,/* IN */EFI_HANDLE /*PciHandle*/,/* OUT */void** /*RomImage*/,/* OUT */ulong* /*RomSize*/, EFI_STATUS> /*EFI_PCI_PLATFORM_GET_PCI_ROM*/ GetPciRom;
 }
 
 // extern EFI_GUID  gEfiPciPlatformProtocolGuid;

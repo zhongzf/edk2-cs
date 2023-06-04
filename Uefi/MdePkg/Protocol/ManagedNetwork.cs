@@ -122,11 +122,11 @@ public unsafe struct EFI_MANAGED_NETWORK_TRANSMIT_DATA
   public uint DataLength;
   public ushort HeaderLength;     // OPTIONAL
   public ushort FragmentCount;
-  public fixed EFI_MANAGED_NETWORK_FRAGMENT_DATA FragmentTable[1];
+  public EFI_MANAGED_NETWORK_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Packet
+public unsafe struct EFI_MANAGED_NETWORK_COMPLETION_TOKEN
 {
   ///
   /// This Event will be signaled after the Status field is updated
@@ -140,17 +140,17 @@ public unsafe struct Packet
   /// to indicate whether this operation completed successfully.
   ///
   public EFI_STATUS Status;
-  union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to the EFI_MANAGED_NETWORK_RECEIVE_DATA.
-    ///
-    public EFI_MANAGED_NETWORK_RECEIVE_DATA* RxData;
-  ///
-  /// When this token is used for transmitting, TxData is a pointer to the EFI_MANAGED_NETWORK_TRANSMIT_DATA.
-  ///
-  public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
-}
-} EFI_MANAGED_NETWORK_COMPLETION_TOKEN;
+//  union {
+//    ///
+//    /// When this token is used for receiving, RxData is a pointer to the EFI_MANAGED_NETWORK_RECEIVE_DATA.
+//    ///
+//    public EFI_MANAGED_NETWORK_RECEIVE_DATA* RxData;
+//  ///
+//  /// When this token is used for transmitting, TxData is a pointer to the EFI_MANAGED_NETWORK_TRANSMIT_DATA.
+//  ///
+//  public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
+//}
+} 
 
 // /**
 //   Returns the operational parameters for the current MNP child driver.
@@ -362,7 +362,7 @@ public unsafe struct Packet
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MANAGED_NETWORK_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_MANAGED_NETWORK_PROTOCOL* /*This*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_MANAGED_NETWORK_GET_MODE_DATA*/ GetModeData;
+  //public readonly delegate* unmanaged</* IN */EFI_MANAGED_NETWORK_PROTOCOL* /*This*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_MANAGED_NETWORK_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_MANAGED_NETWORK_PROTOCOL* /*This*/,/* IN */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/, EFI_STATUS> /*EFI_MANAGED_NETWORK_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_MANAGED_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*Ipv6Flag*/,/* IN */EFI_IP_ADDRESS* /*IpAddress*/,/* OUT */EFI_MAC_ADDRESS* /*MacAddress*/, EFI_STATUS> /*EFI_MANAGED_NETWORK_MCAST_IP_TO_MAC*/ McastIpToMac;
   public readonly delegate* unmanaged</* IN */EFI_MANAGED_NETWORK_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_MAC_ADDRESS* /*MacAddress*/, EFI_STATUS> /*EFI_MANAGED_NETWORK_GROUPS*/ Groups;

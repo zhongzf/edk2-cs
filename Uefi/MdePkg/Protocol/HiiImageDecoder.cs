@@ -207,7 +207,7 @@ public unsafe struct EFI_HII_IMAGE_DECODER_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_HII_IMAGE_DECODER_PROTOCOL* /*This*/,/* IN OUT */EFI_GUID** /*DecoderName*/,/* IN OUT */ushort* /*NumberOfDecoderName*/, EFI_STATUS> /*EFI_HII_IMAGE_DECODER_GET_NAME*/ GetImageDecoderName;
   public readonly delegate* unmanaged</* IN */EFI_HII_IMAGE_DECODER_PROTOCOL* /*This*/,/* IN */void* /*Image*/,/* IN */ulong /*SizeOfImage*/,/* IN OUT */EFI_HII_IMAGE_DECODER_IMAGE_INFO_HEADER** /*ImageInfo*/, EFI_STATUS> /*EFI_HII_IMAGE_DECODER_GET_IMAGE_INFO*/ GetImageInfo;
-  public readonly delegate* unmanaged</* IN */EFI_HII_IMAGE_DECODER_PROTOCOL* /*This*/,/* IN */void* /*Image*/,/* IN */ulong /*ImageRawDataSize*/,/* IN OUT */EFI_IMAGE_OUTPUT** /*Bitmap*/,/* IN */bool /*Transparent*/, EFI_STATUS> /*EFI_HII_IMAGE_DECODER_DECODE*/ DecodeImage;
+  //public readonly delegate* unmanaged</* IN */EFI_HII_IMAGE_DECODER_PROTOCOL* /*This*/,/* IN */void* /*Image*/,/* IN */ulong /*ImageRawDataSize*/,/* IN OUT */EFI_IMAGE_OUTPUT** /*Bitmap*/,/* IN */bool /*Transparent*/, EFI_STATUS> /*EFI_HII_IMAGE_DECODER_DECODE*/ DecodeImage;
 }
 
 // extern EFI_GUID  gEfiHiiImageDecoderProtocolGuid;

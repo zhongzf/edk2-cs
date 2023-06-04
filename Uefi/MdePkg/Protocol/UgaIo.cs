@@ -33,7 +33,7 @@ public enum UGA_DEVICE_TYPE
   UgaDtOther
 }
 
-typedef uint UGA_DEVICE_ID, * PUGA_DEVICE_ID;
+//typedef uint UGA_DEVICE_ID, * PUGA_DEVICE_ID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UGA_DEVICE_DATA

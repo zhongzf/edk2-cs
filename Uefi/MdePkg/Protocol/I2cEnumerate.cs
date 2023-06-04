@@ -95,7 +95,7 @@ public unsafe struct EFI_I2C_ENUMERATE_PROTOCOL
   /// Traverse the set of I2C devices on an I2C bus.  This routine
   /// returns the next I2C device on an I2C bus.
   ///
-  public readonly delegate* unmanaged</* IN CONST */EFI_I2C_ENUMERATE_PROTOCOL* /*This*/,/* IN OUT */CONST /*EFI_I2C_DEVICE*/, EFI_STATUS> /*EFI_I2C_ENUMERATE_PROTOCOL_ENUMERATE*/ Enumerate;
+  public readonly delegate* unmanaged</* IN CONST */EFI_I2C_ENUMERATE_PROTOCOL* /*This*/,/* IN OUT CONST*/EFI_I2C_DEVICE*, EFI_STATUS> /*EFI_I2C_ENUMERATE_PROTOCOL_ENUMERATE*/ Enumerate;
 
   ///
   /// Get the requested I2C bus frequency for a specified bus

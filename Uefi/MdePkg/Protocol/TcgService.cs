@@ -197,9 +197,9 @@ public unsafe struct EFI_TCG_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* OUT */TCG_EFI_BOOT_SERVICE_CAPABILITY /**/,/* OUT */uint* /*TCGFeatureFlags*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*EventLogLocation*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*EventLogLastEntry*/, EFI_STATUS> /*EFI_TCG_STATUS_CHECK*/ StatusCheck;
   public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* IN */byte* /*HashData*/,/* IN */ulong /*HashDataLen*/,/* IN */TCG_ALGORITHM_ID /*AlgorithmId*/,/* IN OUT */ulong* /*HashedDataLen*/,/* IN OUT */byte** /*HashedDataResult*/, EFI_STATUS> /*EFI_TCG_HASH_ALL*/ HashAll;
-  public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* IN */TCG_PCR_EVENT* /*TCGLogData*/,/* IN OUT */uint* /*EventNumber*/,/* IN */uint /*Flags*/, EFI_STATUS> /*EFI_TCG_LOG_EVENT*/ LogEvent;
+  //public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* IN */TCG_PCR_EVENT* /*TCGLogData*/,/* IN OUT */uint* /*EventNumber*/,/* IN */uint /*Flags*/, EFI_STATUS> /*EFI_TCG_LOG_EVENT*/ LogEvent;
   public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* IN */uint /*TpmInputParameterBlockSize*/,/* IN */byte* /*TpmInputParameterBlock*/,/* IN */uint /*TpmOutputParameterBlockSize*/,/* IN */byte* /*TpmOutputParameterBlock*/, EFI_STATUS> /*EFI_TCG_PASS_THROUGH_TO_TPM*/ PassThroughToTpm;
-  public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*HashData*/,/* IN */ulong /*HashDataLen*/,/* IN */TCG_ALGORITHM_ID /*AlgorithmId*/,/* IN OUT */TCG_PCR_EVENT* /*TCGLogData*/,/* IN OUT */uint* /*EventNumber*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*EventLogLastEntry*/, EFI_STATUS> /*EFI_TCG_HASH_LOG_EXTEND_EVENT*/ HashLogExtendEvent;
+  //public readonly delegate* unmanaged</* IN */EFI_TCG_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*HashData*/,/* IN */ulong /*HashDataLen*/,/* IN */TCG_ALGORITHM_ID /*AlgorithmId*/,/* IN OUT */TCG_PCR_EVENT* /*TCGLogData*/,/* IN OUT */uint* /*EventNumber*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*EventLogLastEntry*/, EFI_STATUS> /*EFI_TCG_HASH_LOG_EXTEND_EVENT*/ HashLogExtendEvent;
 }
 
 // extern EFI_GUID  gEfiTcgProtocolGuid;

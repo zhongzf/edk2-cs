@@ -320,232 +320,232 @@ public unsafe partial class EFI
   public const ulong PCI_SUBCLASS_DPIO = 0x00;
   public const ulong PCI_SUBCLASS_DPIO_OTHER = 0x80;
 
-  /**
-    Macro that checks whether the Base Class code of device matched.
+  ///**
+  //  Macro that checks whether the Base Class code of device matched.
 
-    @param  _p      Specified device.
-    @param  c       Base Class code needs matching.
+  //  @param  _p      Specified device.
+  //  @param  c       Base Class code needs matching.
 
-    @retval TRUE    Base Class code matches the specified device.
-    @retval FALSE   Base Class code doesn't match the specified device.
+  //  @retval TRUE    Base Class code matches the specified device.
+  //  @retval FALSE   Base Class code doesn't match the specified device.
 
-  **/
-  public const ulong IS_CLASS1 = (_p, c)((_p)->Hdr.ClassCode[2] == (c));
+  //**/
+  //public const ulong IS_CLASS1 = (_p, c)((_p)->Hdr.ClassCode[2] == (c));
 
-  /**
-    Macro that checks whether the Base Class code and Sub-Class code of device matched.
+  ///**
+  //  Macro that checks whether the Base Class code and Sub-Class code of device matched.
 
-    @param  _p      Specified device.
-    @param  c       Base Class code needs matching.
-    @param  s       Sub-Class code needs matching.
+  //  @param  _p      Specified device.
+  //  @param  c       Base Class code needs matching.
+  //  @param  s       Sub-Class code needs matching.
 
-    @retval TRUE    Base Class code and Sub-Class code match the specified device.
-    @retval FALSE   Base Class code and Sub-Class code don't match the specified device.
+  //  @retval TRUE    Base Class code and Sub-Class code match the specified device.
+  //  @retval FALSE   Base Class code and Sub-Class code don't match the specified device.
 
-  **/
-  public const ulong IS_CLASS2 = (_p, c, s)(IS_CLASS1(_p, c) && ((_p)->Hdr.ClassCode[1] == (s)));
+  //**/
+  //public const ulong IS_CLASS2 = (_p, c, s)(IS_CLASS1(_p, c) && ((_p)->Hdr.ClassCode[1] == (s)));
 
-  /**
-    Macro that checks whether the Base Class code, Sub-Class code and Interface code of device matched.
+  ///**
+  //  Macro that checks whether the Base Class code, Sub-Class code and Interface code of device matched.
 
-    @param  _p      Specified device.
-    @param  c       Base Class code needs matching.
-    @param  s       Sub-Class code needs matching.
-    @param  p       Interface code needs matching.
+  //  @param  _p      Specified device.
+  //  @param  c       Base Class code needs matching.
+  //  @param  s       Sub-Class code needs matching.
+  //  @param  p       Interface code needs matching.
 
-    @retval TRUE    Base Class code, Sub-Class code and Interface code match the specified device.
-    @retval FALSE   Base Class code, Sub-Class code and Interface code don't match the specified device.
+  //  @retval TRUE    Base Class code, Sub-Class code and Interface code match the specified device.
+  //  @retval FALSE   Base Class code, Sub-Class code and Interface code don't match the specified device.
 
-  **/
-  public const ulong IS_CLASS3 = (_p, c, s, p)(IS_CLASS2(_p, c, s) && ((_p)->Hdr.ClassCode[0] == (p)));
+  //**/
+  //public const ulong IS_CLASS3 = (_p, c, s, p)(IS_CLASS2(_p, c, s) && ((_p)->Hdr.ClassCode[0] == (p)));
 
-  /**
-    Macro that checks whether device is a display controller.
+  ///**
+  //  Macro that checks whether device is a display controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a display controller.
-    @retval FALSE   Device is not a display controller.
+  //  @retval TRUE    Device is a display controller.
+  //  @retval FALSE   Device is not a display controller.
 
-  **/
-  public const ulong IS_PCI_DISPLAY = (_p)IS_CLASS1(_p, PCI_CLASS_DISPLAY);
+  //**/
+  //public const ulong IS_PCI_DISPLAY = (_p)IS_CLASS1(_p, PCI_CLASS_DISPLAY);
 
-  /**
-    Macro that checks whether device is a VGA-compatible controller.
+  ///**
+  //  Macro that checks whether device is a VGA-compatible controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a VGA-compatible controller.
-    @retval FALSE   Device is not a VGA-compatible controller.
+  //  @retval TRUE    Device is a VGA-compatible controller.
+  //  @retval FALSE   Device is not a VGA-compatible controller.
 
-  **/
-  public const ulong IS_PCI_VGA = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_VGA);
+  //**/
+  //public const ulong IS_PCI_VGA = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_VGA);
 
-  /**
-    Macro that checks whether device is an 8514-compatible controller.
+  ///**
+  //  Macro that checks whether device is an 8514-compatible controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is an 8514-compatible controller.
-    @retval FALSE   Device is not an 8514-compatible controller.
+  //  @retval TRUE    Device is an 8514-compatible controller.
+  //  @retval FALSE   Device is not an 8514-compatible controller.
 
-  **/
-  public const ulong IS_PCI_8514 = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_8514);
+  //**/
+  //public const ulong IS_PCI_8514 = (_p)IS_CLASS3(_p, PCI_CLASS_DISPLAY, PCI_CLASS_DISPLAY_VGA, PCI_IF_VGA_8514);
 
-  /**
-    Macro that checks whether device is built before the Class Code field was defined.
+  ///**
+  //  Macro that checks whether device is built before the Class Code field was defined.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is an old device.
-    @retval FALSE   Device is not an old device.
+  //  @retval TRUE    Device is an old device.
+  //  @retval FALSE   Device is not an old device.
 
-  **/
-  public const ulong IS_PCI_OLD = (_p)IS_CLASS1(_p, PCI_CLASS_OLD);
+  //**/
+  //public const ulong IS_PCI_OLD = (_p)IS_CLASS1(_p, PCI_CLASS_OLD);
 
-  /**
-    Macro that checks whether device is a VGA-compatible device built before the Class Code field was defined.
+  ///**
+  //  Macro that checks whether device is a VGA-compatible device built before the Class Code field was defined.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is an old VGA-compatible device.
-    @retval FALSE   Device is not an old VGA-compatible device.
+  //  @retval TRUE    Device is an old VGA-compatible device.
+  //  @retval FALSE   Device is not an old VGA-compatible device.
 
-  **/
-  public const ulong IS_PCI_OLD_VGA = (_p)IS_CLASS2(_p, PCI_CLASS_OLD, PCI_CLASS_OLD_VGA);
+  //**/
+  //public const ulong IS_PCI_OLD_VGA = (_p)IS_CLASS2(_p, PCI_CLASS_OLD, PCI_CLASS_OLD_VGA);
 
-  /**
-    Macro that checks whether device is an IDE controller.
+  ///**
+  //  Macro that checks whether device is an IDE controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is an IDE controller.
-    @retval FALSE   Device is not an IDE controller.
+  //  @retval TRUE    Device is an IDE controller.
+  //  @retval FALSE   Device is not an IDE controller.
 
-  **/
-  public const ulong IS_PCI_IDE = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_IDE);
+  //**/
+  //public const ulong IS_PCI_IDE = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_IDE);
 
-  /**
-    Macro that checks whether device is a SCSI bus controller.
+  ///**
+  //  Macro that checks whether device is a SCSI bus controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a SCSI bus controller.
-    @retval FALSE   Device is not a SCSI bus controller.
+  //  @retval TRUE    Device is a SCSI bus controller.
+  //  @retval FALSE   Device is not a SCSI bus controller.
 
-  **/
-  public const ulong IS_PCI_SCSI = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SCSI);
+  //**/
+  //public const ulong IS_PCI_SCSI = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_SCSI);
 
-  /**
-    Macro that checks whether device is a RAID controller.
+  ///**
+  //  Macro that checks whether device is a RAID controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a RAID controller.
-    @retval FALSE   Device is not a RAID controller.
+  //  @retval TRUE    Device is a RAID controller.
+  //  @retval FALSE   Device is not a RAID controller.
 
-  **/
-  public const ulong IS_PCI_RAID = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_RAID);
+  //**/
+  //public const ulong IS_PCI_RAID = (_p)IS_CLASS2(_p, PCI_CLASS_MASS_STORAGE, PCI_CLASS_MASS_STORAGE_RAID);
 
-  /**
-    Macro that checks whether device is an ISA bridge.
+  ///**
+  //  Macro that checks whether device is an ISA bridge.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is an ISA bridge.
-    @retval FALSE   Device is not an ISA bridge.
+  //  @retval TRUE    Device is an ISA bridge.
+  //  @retval FALSE   Device is not an ISA bridge.
 
-  **/
-  public const ulong IS_PCI_LPC = (_p)IS_CLASS2(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_ISA);
+  //**/
+  //public const ulong IS_PCI_LPC = (_p)IS_CLASS2(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_ISA);
 
-  /**
-    Macro that checks whether device is a PCI-to-PCI bridge.
+  ///**
+  //  Macro that checks whether device is a PCI-to-PCI bridge.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a PCI-to-PCI bridge.
-    @retval FALSE   Device is not a PCI-to-PCI bridge.
+  //  @retval TRUE    Device is a PCI-to-PCI bridge.
+  //  @retval FALSE   Device is not a PCI-to-PCI bridge.
 
-  **/
-  public const ulong IS_PCI_P2P = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P);
+  //**/
+  //public const ulong IS_PCI_P2P = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P);
 
-  /**
-    Macro that checks whether device is a Subtractive Decode PCI-to-PCI bridge.
+  ///**
+  //  Macro that checks whether device is a Subtractive Decode PCI-to-PCI bridge.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a Subtractive Decode PCI-to-PCI bridge.
-    @retval FALSE   Device is not a Subtractive Decode PCI-to-PCI bridge.
+  //  @retval TRUE    Device is a Subtractive Decode PCI-to-PCI bridge.
+  //  @retval FALSE   Device is not a Subtractive Decode PCI-to-PCI bridge.
 
-  **/
-  public const ulong IS_PCI_P2P_SUB = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P_SUBTRACTIVE);
+  //**/
+  //public const ulong IS_PCI_P2P_SUB = (_p)IS_CLASS3(_p, PCI_CLASS_BRIDGE, PCI_CLASS_BRIDGE_P2P, PCI_IF_BRIDGE_P2P_SUBTRACTIVE);
 
-  /**
-    Macro that checks whether device is a 16550-compatible serial controller.
+  ///**
+  //  Macro that checks whether device is a 16550-compatible serial controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a 16550-compatible serial controller.
-    @retval FALSE   Device is not a 16550-compatible serial controller.
+  //  @retval TRUE    Device is a 16550-compatible serial controller.
+  //  @retval FALSE   Device is not a 16550-compatible serial controller.
 
-  **/
-  public const ulong IS_PCI_16550_SERIAL = (_p)IS_CLASS3(_p, PCI_CLASS_SCC, PCI_SUBCLASS_SERIAL, PCI_IF_16550);
+  //**/
+  //public const ulong IS_PCI_16550_SERIAL = (_p)IS_CLASS3(_p, PCI_CLASS_SCC, PCI_SUBCLASS_SERIAL, PCI_IF_16550);
 
-  /**
-    Macro that checks whether device is a Universal Serial Bus controller.
+  ///**
+  //  Macro that checks whether device is a Universal Serial Bus controller.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a Universal Serial Bus controller.
-    @retval FALSE   Device is not a Universal Serial Bus controller.
+  //  @retval TRUE    Device is a Universal Serial Bus controller.
+  //  @retval FALSE   Device is not a Universal Serial Bus controller.
 
-  **/
-  public const ulong IS_PCI_USB = (_p)IS_CLASS2(_p, PCI_CLASS_SERIAL, PCI_CLASS_SERIAL_USB);
+  //**/
+  //public const ulong IS_PCI_USB = (_p)IS_CLASS2(_p, PCI_CLASS_SERIAL, PCI_CLASS_SERIAL_USB);
 
-  //
-  // the definition of Header Type
-  //
-  public const ulong HEADER_TYPE_DEVICE = 0x00;
-  public const ulong HEADER_TYPE_PCI_TO_PCI_BRIDGE = 0x01;
-  public const ulong HEADER_TYPE_CARDBUS_BRIDGE = 0x02;
-  public const ulong HEADER_TYPE_MULTI_FUNCTION = 0x80;
-  //
-  // Mask of Header type
-  //
-  public const ulong HEADER_LAYOUT_CODE = 0x7f;
+  ////
+  //// the definition of Header Type
+  ////
+  //public const ulong HEADER_TYPE_DEVICE = 0x00;
+  //public const ulong HEADER_TYPE_PCI_TO_PCI_BRIDGE = 0x01;
+  //public const ulong HEADER_TYPE_CARDBUS_BRIDGE = 0x02;
+  //public const ulong HEADER_TYPE_MULTI_FUNCTION = 0x80;
+  ////
+  //// Mask of Header type
+  ////
+  //public const ulong HEADER_LAYOUT_CODE = 0x7f;
 
-  /**
-    Macro that checks whether device is a PCI-PCI bridge.
+  ///**
+  //  Macro that checks whether device is a PCI-PCI bridge.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a PCI-PCI bridge.
-    @retval FALSE   Device is not a PCI-PCI bridge.
+  //  @retval TRUE    Device is a PCI-PCI bridge.
+  //  @retval FALSE   Device is not a PCI-PCI bridge.
 
-  **/
-  public const ulong IS_PCI_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_PCI_TO_PCI_BRIDGE));
+  //**/
+  //public const ulong IS_PCI_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_PCI_TO_PCI_BRIDGE));
 
-  /**
-    Macro that checks whether device is a CardBus bridge.
+  ///**
+  //  Macro that checks whether device is a CardBus bridge.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a CardBus bridge.
-    @retval FALSE   Device is not a CardBus bridge.
+  //  @retval TRUE    Device is a CardBus bridge.
+  //  @retval FALSE   Device is not a CardBus bridge.
 
-  **/
-  public const ulong IS_CARDBUS_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_CARDBUS_BRIDGE));
+  //**/
+  //public const ulong IS_CARDBUS_BRIDGE = (_p)(((_p)->Hdr.HeaderType & HEADER_LAYOUT_CODE) == (HEADER_TYPE_CARDBUS_BRIDGE));
 
-  /**
-    Macro that checks whether device is a multiple functions device.
+  ///**
+  //  Macro that checks whether device is a multiple functions device.
 
-    @param  _p      Specified device.
+  //  @param  _p      Specified device.
 
-    @retval TRUE    Device is a multiple functions device.
-    @retval FALSE   Device is not a multiple functions device.
+  //  @retval TRUE    Device is a multiple functions device.
+  //  @retval FALSE   Device is not a multiple functions device.
 
-  **/
-  public const ulong IS_PCI_MULTI_FUNC = (_p)((_p)->Hdr.HeaderType & HEADER_TYPE_MULTI_FUNCTION);
+  //**/
+  //public const ulong IS_PCI_MULTI_FUNC = (_p)((_p)->Hdr.HeaderType & HEADER_TYPE_MULTI_FUNCTION);
 
   ///
   /// Rom Base Address in Bridge, defined in PCI-to-PCI Bridge Architecture Specification,
@@ -859,11 +859,11 @@ public unsafe partial class EFI
   ///
   /// EFI PCI Option ROM definitions
   ///
-  public const ulong EFI_ROOT_BRIDGE_LIST = 'eprb';
+  public static string EFI_ROOT_BRIDGE_LIST = "eprb";
   public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1; /// < defined in UEFI Spec.
 
   public const ulong PCI_EXPANSION_ROM_HEADER_SIGNATURE = 0xaa55;
-  public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
+  //public const ulong PCI_DATA_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'C', 'I', 'R');
   public const ulong PCI_CODE_TYPE_PCAT_IMAGE = 0x00;
   public const ulong EFI_PCI_EXPANSION_ROM_HEADER_COMPRESSED = 0x0001; /// < defined in UEFI spec.
 }

@@ -22,77 +22,77 @@ public unsafe partial class EFI
   //
   // Standard event types
   //
-  public const ulong EV_PREBOOT_CERT = ((TCG_EVENTTYPE)0x00000000);
-  public const ulong EV_POST_CODE = ((TCG_EVENTTYPE)0x00000001);
-  public const ulong EV_NO_ACTION = ((TCG_EVENTTYPE)0x00000003);
-  public const ulong EV_SEPARATOR = ((TCG_EVENTTYPE)0x00000004);
-  public const ulong EV_ACTION = ((TCG_EVENTTYPE)0x00000005);
-  public const ulong EV_EVENT_TAG = ((TCG_EVENTTYPE)0x00000006);
-  public const ulong EV_S_CRTM_CONTENTS = ((TCG_EVENTTYPE)0x00000007);
-  public const ulong EV_S_CRTM_VERSION = ((TCG_EVENTTYPE)0x00000008);
-  public const ulong EV_CPU_MICROCODE = ((TCG_EVENTTYPE)0x00000009);
-  public const ulong EV_PLATFORM_CONFIG_FLAGS = ((TCG_EVENTTYPE)0x0000000A);
-  public const ulong EV_TABLE_OF_DEVICES = ((TCG_EVENTTYPE)0x0000000B);
-  public const ulong EV_COMPACT_HASH = ((TCG_EVENTTYPE)0x0000000C);
-  public const ulong EV_NONHOST_CODE = ((TCG_EVENTTYPE)0x0000000F);
-  public const ulong EV_NONHOST_CONFIG = ((TCG_EVENTTYPE)0x00000010);
-  public const ulong EV_NONHOST_INFO = ((TCG_EVENTTYPE)0x00000011);
-  public const ulong EV_OMIT_BOOT_DEVICE_EVENTS = ((TCG_EVENTTYPE)0x00000012);
+  public static TCG_EVENTTYPE EV_PREBOOT_CERT = ((TCG_EVENTTYPE)0x00000000);
+  public static TCG_EVENTTYPE EV_POST_CODE = ((TCG_EVENTTYPE)0x00000001);
+  public static TCG_EVENTTYPE EV_NO_ACTION = ((TCG_EVENTTYPE)0x00000003);
+  public static TCG_EVENTTYPE EV_SEPARATOR = ((TCG_EVENTTYPE)0x00000004);
+  public static TCG_EVENTTYPE EV_ACTION = ((TCG_EVENTTYPE)0x00000005);
+  public static TCG_EVENTTYPE EV_EVENT_TAG = ((TCG_EVENTTYPE)0x00000006);
+  public static TCG_EVENTTYPE EV_S_CRTM_CONTENTS = ((TCG_EVENTTYPE)0x00000007);
+  public static TCG_EVENTTYPE EV_S_CRTM_VERSION = ((TCG_EVENTTYPE)0x00000008);
+  public static TCG_EVENTTYPE EV_CPU_MICROCODE = ((TCG_EVENTTYPE)0x00000009);
+  public static TCG_EVENTTYPE EV_PLATFORM_CONFIG_FLAGS = ((TCG_EVENTTYPE)0x0000000A);
+  public static TCG_EVENTTYPE EV_TABLE_OF_DEVICES = ((TCG_EVENTTYPE)0x0000000B);
+  public static TCG_EVENTTYPE EV_COMPACT_HASH = ((TCG_EVENTTYPE)0x0000000C);
+  public static TCG_EVENTTYPE EV_NONHOST_CODE = ((TCG_EVENTTYPE)0x0000000F);
+  public static TCG_EVENTTYPE EV_NONHOST_CONFIG = ((TCG_EVENTTYPE)0x00000010);
+  public static TCG_EVENTTYPE EV_NONHOST_INFO = ((TCG_EVENTTYPE)0x00000011);
+  public static TCG_EVENTTYPE EV_OMIT_BOOT_DEVICE_EVENTS = ((TCG_EVENTTYPE)0x00000012);
 
   //
   // EFI specific event types
   //
-  public const ulong EV_EFI_EVENT_BASE = ((TCG_EVENTTYPE)0x80000000);
-  public const ulong EV_EFI_VARIABLE_DRIVER_CONFIG = (EV_EFI_EVENT_BASE + 1);
-  public const ulong EV_EFI_VARIABLE_BOOT = (EV_EFI_EVENT_BASE + 2);
-  public const ulong EV_EFI_BOOT_SERVICES_APPLICATION = (EV_EFI_EVENT_BASE + 3);
-  public const ulong EV_EFI_BOOT_SERVICES_DRIVER = (EV_EFI_EVENT_BASE + 4);
-  public const ulong EV_EFI_RUNTIME_SERVICES_DRIVER = (EV_EFI_EVENT_BASE + 5);
-  public const ulong EV_EFI_GPT_EVENT = (EV_EFI_EVENT_BASE + 6);
-  public const ulong EV_EFI_ACTION = (EV_EFI_EVENT_BASE + 7);
-  public const ulong EV_EFI_PLATFORM_FIRMWARE_BLOB = (EV_EFI_EVENT_BASE + 8);
-  public const ulong EV_EFI_HANDOFF_TABLES = (EV_EFI_EVENT_BASE + 9);
-  public const ulong EV_EFI_PLATFORM_FIRMWARE_BLOB2 = (EV_EFI_EVENT_BASE + 0xA);
-  public const ulong EV_EFI_HANDOFF_TABLES2 = (EV_EFI_EVENT_BASE + 0xB);
-  public const ulong EV_EFI_HCRTM_EVENT = (EV_EFI_EVENT_BASE + 0x10);
-  public const ulong EV_EFI_VARIABLE_AUTHORITY = (EV_EFI_EVENT_BASE + 0xE0);
-  public const ulong EV_EFI_SPDM_FIRMWARE_BLOB = (EV_EFI_EVENT_BASE + 0xE1);
-  public const ulong EV_EFI_SPDM_FIRMWARE_CONFIG = (EV_EFI_EVENT_BASE + 0xE2);
+  public static TCG_EVENTTYPE EV_EFI_EVENT_BASE = ((TCG_EVENTTYPE)0x80000000);
+  public static TCG_EVENTTYPE EV_EFI_VARIABLE_DRIVER_CONFIG = (EV_EFI_EVENT_BASE + 1);
+  public static TCG_EVENTTYPE EV_EFI_VARIABLE_BOOT = (EV_EFI_EVENT_BASE + 2);
+  public static TCG_EVENTTYPE EV_EFI_BOOT_SERVICES_APPLICATION = (EV_EFI_EVENT_BASE + 3);
+  public static TCG_EVENTTYPE EV_EFI_BOOT_SERVICES_DRIVER = (EV_EFI_EVENT_BASE + 4);
+  public static TCG_EVENTTYPE EV_EFI_RUNTIME_SERVICES_DRIVER = (EV_EFI_EVENT_BASE + 5);
+  public static TCG_EVENTTYPE EV_EFI_GPT_EVENT = (EV_EFI_EVENT_BASE + 6);
+  public static TCG_EVENTTYPE EV_EFI_ACTION = (EV_EFI_EVENT_BASE + 7);
+  public static TCG_EVENTTYPE EV_EFI_PLATFORM_FIRMWARE_BLOB = (EV_EFI_EVENT_BASE + 8);
+  public static TCG_EVENTTYPE EV_EFI_HANDOFF_TABLES = (EV_EFI_EVENT_BASE + 9);
+  public static TCG_EVENTTYPE EV_EFI_PLATFORM_FIRMWARE_BLOB2 = (EV_EFI_EVENT_BASE + 0xA);
+  public static TCG_EVENTTYPE EV_EFI_HANDOFF_TABLES2 = (EV_EFI_EVENT_BASE + 0xB);
+  public static TCG_EVENTTYPE EV_EFI_HCRTM_EVENT = (EV_EFI_EVENT_BASE + 0x10);
+  public static TCG_EVENTTYPE EV_EFI_VARIABLE_AUTHORITY = (EV_EFI_EVENT_BASE + 0xE0);
+  public static TCG_EVENTTYPE EV_EFI_SPDM_FIRMWARE_BLOB = (EV_EFI_EVENT_BASE + 0xE1);
+  public static TCG_EVENTTYPE EV_EFI_SPDM_FIRMWARE_CONFIG = (EV_EFI_EVENT_BASE + 0xE2);
 
-#define EFI_CALLING_EFI_APPLICATION         \
-  "Calling EFI Application from Boot Option"
-#define EFI_RETURNING_FROM_EFI_APPLICATION  \
-  "Returning from EFI Application from Boot Option"
-#define EFI_EXIT_BOOT_SERVICES_INVOCATION   \
-  "Exit Boot Services Invocation"
-#define EFI_EXIT_BOOT_SERVICES_FAILED       \
-  "Exit Boot Services Returned with Failure"
-#define EFI_EXIT_BOOT_SERVICES_SUCCEEDED    \
-  "Exit Boot Services Returned with Success"
+  //#define EFI_CALLING_EFI_APPLICATION         \
+  //  "Calling EFI Application from Boot Option"
+  //#define EFI_RETURNING_FROM_EFI_APPLICATION  \
+  //  "Returning from EFI Application from Boot Option"
+  //#define EFI_EXIT_BOOT_SERVICES_INVOCATION   \
+  //  "Exit Boot Services Invocation"
+  //#define EFI_EXIT_BOOT_SERVICES_FAILED       \
+  //  "Exit Boot Services Returned with Failure"
+  //#define EFI_EXIT_BOOT_SERVICES_SUCCEEDED    \
+  //  "Exit Boot Services Returned with Success"
 
-public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
-  public const ulong POST_CODE_STR_LEN = (sizeof(EV_POSTCODE_INFO_POST_CODE) - 1);
+  //public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
+  //  public const ulong POST_CODE_STR_LEN = (sizeof(EV_POSTCODE_INFO_POST_CODE) - 1);
 
-  public const ulong EV_POSTCODE_INFO_SMM_CODE = "SMM CODE";
-  public const ulong SMM_CODE_STR_LEN = (sizeof(EV_POSTCODE_INFO_SMM_CODE) - 1);
+  //  public const ulong EV_POSTCODE_INFO_SMM_CODE = "SMM CODE";
+  //  public const ulong SMM_CODE_STR_LEN = (sizeof(EV_POSTCODE_INFO_SMM_CODE) - 1);
 
-  public const ulong EV_POSTCODE_INFO_ACPI_DATA = "ACPI DATA";
-  public const ulong ACPI_DATA_LEN = (sizeof(EV_POSTCODE_INFO_ACPI_DATA) - 1);
+  //  public const ulong EV_POSTCODE_INFO_ACPI_DATA = "ACPI DATA";
+  //  public const ulong ACPI_DATA_LEN = (sizeof(EV_POSTCODE_INFO_ACPI_DATA) - 1);
 
-  public const ulong EV_POSTCODE_INFO_BIS_CODE = "BIS CODE";
-  public const ulong BIS_CODE_LEN = (sizeof(EV_POSTCODE_INFO_BIS_CODE) - 1);
+  //  public const ulong EV_POSTCODE_INFO_BIS_CODE = "BIS CODE";
+  //  public const ulong BIS_CODE_LEN = (sizeof(EV_POSTCODE_INFO_BIS_CODE) - 1);
 
-  public const ulong EV_POSTCODE_INFO_UEFI_PI = "UEFI PI";
-  public const ulong UEFI_PI_LEN = (sizeof(EV_POSTCODE_INFO_UEFI_PI) - 1);
+  //  public const ulong EV_POSTCODE_INFO_UEFI_PI = "UEFI PI";
+  //  public const ulong UEFI_PI_LEN = (sizeof(EV_POSTCODE_INFO_UEFI_PI) - 1);
 
-  public const ulong EV_POSTCODE_INFO_OPROM = "Embedded Option ROM";
-  public const ulong OPROM_LEN = (sizeof(EV_POSTCODE_INFO_OPROM) - 1);
+  //  public const ulong EV_POSTCODE_INFO_OPROM = "Embedded Option ROM";
+  //  public const ulong OPROM_LEN = (sizeof(EV_POSTCODE_INFO_OPROM) - 1);
 
-  public const ulong EV_POSTCODE_INFO_EMBEDDED_UEFI_DRIVER = "Embedded UEFI Driver";
-  public const ulong EMBEDDED_UEFI_DRIVER_LEN = (sizeof(EV_POSTCODE_INFO_EMBEDDED_UEFI_DRIVER) - 1);
+  //  public const ulong EV_POSTCODE_INFO_EMBEDDED_UEFI_DRIVER = "Embedded UEFI Driver";
+  //  public const ulong EMBEDDED_UEFI_DRIVER_LEN = (sizeof(EV_POSTCODE_INFO_EMBEDDED_UEFI_DRIVER) - 1);
 
-  public const ulong FIRMWARE_DEBUGGER_EVENT_STRING = "UEFI Debug Mode";
-  public const ulong FIRMWARE_DEBUGGER_EVENT_STRING_LEN = (sizeof(FIRMWARE_DEBUGGER_EVENT_STRING) - 1);
+  //  public const ulong FIRMWARE_DEBUGGER_EVENT_STRING = "UEFI Debug Mode";
+  //  public const ulong FIRMWARE_DEBUGGER_EVENT_STRING_LEN = (sizeof(FIRMWARE_DEBUGGER_EVENT_STRING) - 1);
 
   //
   // Set structure alignment to 1-byte
@@ -102,10 +102,10 @@ public const ulong EV_POSTCODE_INFO_POST_CODE = "POST CODE";
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_EVENTTYPE { uint Value; public static implicit operator TCG_EVENTTYPE(uint value) => new TCG_EVENTTYPE() { Value = value }; public static implicit operator uint(TCG_EVENTTYPE value) => value.Value; }
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct TCG_PCRINDEX { TPM_PCRINDEX Value; public static implicit operator TCG_PCRINDEX(TPM_PCRINDEX value) => new TCG_PCRINDEX() { Value = value }; public static implicit operator TPM_PCRINDEX(TCG_PCRINDEX value) => value.Value; }
-[StructLayout(LayoutKind.Sequential)]
-public unsafe struct TCG_DIGEST { TPM_DIGEST Value; public static implicit operator TCG_DIGEST(TPM_DIGEST value) => new TCG_DIGEST() { Value = value }; public static implicit operator TPM_DIGEST(TCG_DIGEST value) => value.Value; }
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct TCG_PCRINDEX { TPM_PCRINDEX Value; public static implicit operator TCG_PCRINDEX(TPM_PCRINDEX value) => new TCG_PCRINDEX() { Value = value }; public static implicit operator TPM_PCRINDEX(TCG_PCRINDEX value) => value.Value; }
+//[StructLayout(LayoutKind.Sequential)]
+//public unsafe struct TCG_DIGEST { TPM_DIGEST Value; public static implicit operator TCG_DIGEST(TPM_DIGEST value) => new TCG_DIGEST() { Value = value }; public static implicit operator TPM_DIGEST(TCG_DIGEST value) => value.Value; }
 ///
 /// Event Log Entry Structure Definition
 ///

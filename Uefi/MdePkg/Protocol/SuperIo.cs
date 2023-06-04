@@ -168,10 +168,10 @@ public unsafe struct EFI_SIO_REGISTER_MODIFY
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SIO_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SIO_PROTOCOL*/,/* IN */bool /*Write*/,/* IN */bool /*ExitCfgMode*/,/* IN */byte /*Register*/,/* IN OUT */byte* /*Value*/, EFI_STATUS> /*EFI_SIO_REGISTER_ACCESS*/ RegisterAccess;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SIO_PROTOCOL*/,/* OUT */ACPI_RESOURCE_HEADER_PTR* /*ResourceList*/, EFI_STATUS> /*EFI_SIO_GET_RESOURCES*/ GetResources;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SIO_PROTOCOL* /*This*/,/* IN */bool /*Write*/,/* IN */bool /*ExitCfgMode*/,/* IN */byte /*Register*/,/* IN OUT */byte* /*Value*/, EFI_STATUS> /*EFI_SIO_REGISTER_ACCESS*/ RegisterAccess;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SIO_PROTOCOL* /*This*/,/* OUT */ACPI_RESOURCE_HEADER_PTR* /*ResourceList*/, EFI_STATUS> /*EFI_SIO_GET_RESOURCES*/ GetResources;
   public readonly delegate* unmanaged</* IN CONST */EFI_SIO_PROTOCOL* /*This*/,/* IN */ACPI_RESOURCE_HEADER_PTR /*ResourceList*/, EFI_STATUS> /*EFI_SIO_SET_RESOURCES*/ SetResources;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SIO_PROTOCOL*/,/* OUT */ACPI_RESOURCE_HEADER_PTR* /*ResourceCollection*/, EFI_STATUS> /*EFI_SIO_POSSIBLE_RESOURCES*/ PossibleResources;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SIO_PROTOCOL* /*This*/,/* OUT */ACPI_RESOURCE_HEADER_PTR* /*ResourceCollection*/, EFI_STATUS> /*EFI_SIO_POSSIBLE_RESOURCES*/ PossibleResources;
   public readonly delegate* unmanaged</* IN CONST */EFI_SIO_PROTOCOL* /*This*/,/* IN CONST */EFI_SIO_REGISTER_MODIFY* /*Command*/,/* IN */ulong /*NumberOfCommands*/, EFI_STATUS> /*EFI_SIO_MODIFY*/ Modify;
 }
 

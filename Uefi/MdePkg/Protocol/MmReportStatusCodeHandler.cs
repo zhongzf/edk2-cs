@@ -20,15 +20,15 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_MM_RSC_HANDLER_PROTOCOL_GUID = new GUID(
       0x2ff29fa7, 0x5e80, 0x4ed9, new byte[] { 0xb3, 0x80, 0x1, 0x7d, 0x3c, 0x55, 0x4f, 0xf4 });
 
-  typedef
-  EFI_STATUS
-  (EFIAPI* EFI_MM_RSC_HANDLER_CALLBACK)(
-    IN EFI_STATUS_CODE_TYPE   CodeType,
-    IN EFI_STATUS_CODE_VALUE Value,
-    IN uint Instance,
-    IN EFI_GUID* CallerId,
-    IN EFI_STATUS_CODE_DATA* Data
-  );
+  //typedef
+  //EFI_STATUS
+  //(EFIAPI* EFI_MM_RSC_HANDLER_CALLBACK)(
+  //  IN EFI_STATUS_CODE_TYPE   CodeType,
+  //  IN EFI_STATUS_CODE_VALUE Value,
+  //  IN uint Instance,
+  //  IN EFI_GUID* CallerId,
+  //  IN EFI_STATUS_CODE_DATA* Data
+  //);
 
   // /**
   //   Register the callback function for ReportStatusCode() notification.
@@ -75,8 +75,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_RSC_HANDLER_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_MM_RSC_HANDLER_CALLBACK /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_REGISTER*/ Register;
-  public readonly delegate* unmanaged</* IN */EFI_MM_RSC_HANDLER_CALLBACK /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_UNREGISTER*/ Unregister;
+  //public readonly delegate* unmanaged</* IN */EFI_MM_RSC_HANDLER_CALLBACK /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_REGISTER*/ Register;
+  //public readonly delegate* unmanaged</* IN */EFI_MM_RSC_HANDLER_CALLBACK /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_UNREGISTER*/ Unregister;
 }
 
 // extern EFI_GUID  gEfiMmRscHandlerProtocolGuid;

@@ -50,10 +50,10 @@ public unsafe partial class EFI
   //
   // EXE file formats
   //
-  public const ulong EFI_IMAGE_DOS_SIGNATURE = SIGNATURE_16('M', 'Z');
-  public const ulong EFI_IMAGE_OS2_SIGNATURE = SIGNATURE_16('N', 'E');
-  public const ulong EFI_IMAGE_OS2_SIGNATURE_LE = SIGNATURE_16('L', 'E');
-  public const ulong EFI_IMAGE_NT_SIGNATURE = SIGNATURE_32('P', 'E', '\0', '\0');
+  //public const ulong EFI_IMAGE_DOS_SIGNATURE = SIGNATURE_16('M', 'Z');
+  //public const ulong EFI_IMAGE_OS2_SIGNATURE = SIGNATURE_16('N', 'E');
+  //public const ulong EFI_IMAGE_OS2_SIGNATURE_LE = SIGNATURE_16('L', 'E');
+  //public const ulong EFI_IMAGE_NT_SIGNATURE = SIGNATURE_32('P', 'E', '\0', '\0');
 }
 
 ///
@@ -201,7 +201,7 @@ public unsafe struct EFI_IMAGE_OPTIONAL_HEADER32
   public uint SizeOfHeapCommit;
   public uint LoaderFlags;
   public uint NumberOfRvaAndSizes;
-  public fixed EFI_IMAGE_DATA_DIRECTORY DataDirectory[EFI_IMAGE_NUMBER_OF_DIRECTORY_ENTRIES];
+  public EFI_IMAGE_DATA_DIRECTORY[/*EFI_IMAGE_NUMBER_OF_DIRECTORY_ENTRIES*/] DataDirectory;
 }
 
 public unsafe partial class EFI
@@ -256,7 +256,7 @@ public unsafe struct EFI_IMAGE_OPTIONAL_HEADER64
   public ulong SizeOfHeapCommit;
   public uint LoaderFlags;
   public uint NumberOfRvaAndSizes;
-  public fixed EFI_IMAGE_DATA_DIRECTORY DataDirectory[EFI_IMAGE_NUMBER_OF_DIRECTORY_ENTRIES];
+  public EFI_IMAGE_DATA_DIRECTORY[/*EFI_IMAGE_NUMBER_OF_DIRECTORY_ENTRIES*/] DataDirectory;
 }
 
 ///
@@ -273,7 +273,7 @@ public unsafe struct EFI_IMAGE_NT_HEADERS32
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_IMAGE_SIZEOF_NT_OPTIONAL32_HEADER = sizeof(EFI_IMAGE_NT_HEADERS32);
+  //public static int EFI_IMAGE_SIZEOF_NT_OPTIONAL32_HEADER = sizeof(EFI_IMAGE_NT_HEADERS32);
 }
 
 ///
@@ -290,7 +290,7 @@ public unsafe struct EFI_IMAGE_NT_HEADERS64
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_IMAGE_SIZEOF_NT_OPTIONAL64_HEADER = sizeof(EFI_IMAGE_NT_HEADERS64);
+  //public static int EFI_IMAGE_SIZEOF_NT_OPTIONAL64_HEADER = sizeof(EFI_IMAGE_NT_HEADERS64);
 
   //
   // Other Windows Subsystem Values
@@ -312,22 +312,22 @@ public unsafe partial class EFI
 /// Section Table. This table immediately follows the optional header.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Misc
+public unsafe struct EFI_IMAGE_SECTION_HEADER
 {
-  public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
-  union {
-    public uint PhysicalAddress;
-  public uint VirtualSize;
-}
-uint VirtualAddress;
-uint SizeOfRawData;
-uint PointerToRawData;
-uint PointerToRelocations;
-uint PointerToLinenumbers;
-ushort NumberOfRelocations;
-ushort NumberOfLinenumbers;
-uint Characteristics;
-} EFI_IMAGE_SECTION_HEADER;
+//  public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
+//  union {
+//    public uint PhysicalAddress;
+//  public uint VirtualSize;
+//}
+//uint VirtualAddress;
+//uint SizeOfRawData;
+//uint PointerToRawData;
+//uint PointerToRelocations;
+//uint PointerToLinenumbers;
+//ushort NumberOfRelocations;
+//ushort NumberOfLinenumbers;
+//uint Characteristics;
+} 
 
 public unsafe partial class EFI
 {
@@ -375,8 +375,8 @@ public unsafe partial class EFI
   // defined. Otherwise, section numbers have the following meanings:
   //
   public const ulong EFI_IMAGE_SYM_UNDEFINED = (ushort)0; /// < Symbol is undefined or is common.
-  public const ulong EFI_IMAGE_SYM_ABSOLUTE = (ushort)-1; /// < Symbol is an absolute value.
-  public const ulong EFI_IMAGE_SYM_DEBUG = (ushort)-2; /// < Symbol is a special debug item.
+  //public const ulong EFI_IMAGE_SYM_ABSOLUTE = (ushort)-1; /// < Symbol is an absolute value.
+  //public const ulong EFI_IMAGE_SYM_DEBUG = (ushort)-2; /// < Symbol is a special debug item.
 
   //
   // Symbol Type (fundamental) values.
@@ -409,7 +409,7 @@ public unsafe partial class EFI
   //
   // Storage classes.
   //
-  public const ulong EFI_IMAGE_SYM_CLASS_END_OF_FUNCTION = ((byte)-1);
+  public const long EFI_IMAGE_SYM_CLASS_END_OF_FUNCTION = (/*(byte)*/-1);
   public const ulong EFI_IMAGE_SYM_CLASS_NULL = 0;
   public const ulong EFI_IMAGE_SYM_CLASS_AUTOMATIC = 1;
   public const ulong EFI_IMAGE_SYM_CLASS_EXTERNAL = 2;
@@ -566,14 +566,14 @@ public unsafe partial class EFI
 /// Line number format.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Type
+public unsafe struct EFI_IMAGE_LINENUMBER
 {
-  union {
-    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
-  public uint VirtualAddress;   ///< Virtual address of line number.
-}
-ushort Linenumber;       ///< Line number.
-} EFI_IMAGE_LINENUMBER;
+//  union {
+//    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
+//  public uint VirtualAddress;   ///< Virtual address of line number.
+//}
+//ushort Linenumber;       ///< Line number.
+} 
 
 public unsafe partial class EFI
 {
@@ -586,11 +586,11 @@ public unsafe partial class EFI
   // Archive format.
   //
   public const ulong EFI_IMAGE_ARCHIVE_START_SIZE = 8;
-  public const ulong EFI_IMAGE_ARCHIVE_START = "!<arch>\n";
-  public const ulong EFI_IMAGE_ARCHIVE_END = "`\n";
-  public const ulong EFI_IMAGE_ARCHIVE_PAD = "\n";
-  public const ulong EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
-  public const ulong EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "; //               "
+  public static string EFI_IMAGE_ARCHIVE_START = "!<arch>\n";
+  public static string EFI_IMAGE_ARCHIVE_END = "`\n";
+  public static string EFI_IMAGE_ARCHIVE_PAD = "\n";
+  public static string EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
+  public static string EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//               "; 
 }
 
 ///
@@ -653,20 +653,20 @@ public unsafe struct EFI_IMAGE_IMPORT_BY_NAME
 /// Import Address Table RVA (Thunk Table).
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct u1
+public unsafe struct EFI_IMAGE_THUNK_DATA
 {
-  union {
-    public uint Function;
-  public uint Ordinal;
-  public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
-}
-} EFI_IMAGE_THUNK_DATA;
+//  union {
+//    public uint Function;
+//  public uint Ordinal;
+//  public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
+//}
+} 
 
 public unsafe partial class EFI
 {
   public const ulong EFI_IMAGE_ORDINAL_FLAG = BIT31; /// < Flag for PE32.
-  public const ulong EFI_IMAGE_SNAP_BY_ORDINAL = (Ordinal)((Ordinal & EFI_IMAGE_ORDINAL_FLAG) != 0);
-  public const ulong EFI_IMAGE_ORDINAL = (Ordinal)(Ordinal & 0xffff);
+  //public const ulong EFI_IMAGE_SNAP_BY_ORDINAL = (Ordinal)((Ordinal & EFI_IMAGE_ORDINAL_FLAG) != 0);
+  //public const ulong EFI_IMAGE_ORDINAL = (Ordinal)(Ordinal & 0xffff);
 }
 
 ///
@@ -702,12 +702,13 @@ public unsafe partial class EFI
 {
   public const ulong EFI_IMAGE_DEBUG_TYPE_CODEVIEW = 2; /// < The Visual C++ debug information.
   public const ulong EFI_IMAGE_DEBUG_TYPE_EX_DLLCHARACTERISTICS = 20;
-}
 
 ///
 /// Debug Data Structure defined in Microsoft C++.
 ///
-public const ulong CODEVIEW_SIGNATURE_NB10 = SIGNATURE_32('N', 'B', '1', '0');
+//public const ulong CODEVIEW_SIGNATURE_NB10 = SIGNATURE_32('N', 'B', '1', '0');
+}
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_NB10_ENTRY
 {
@@ -725,8 +726,9 @@ public unsafe partial class EFI
   ///
   /// Debug Data Structure defined in Microsoft C++.
   ///
-  public const ulong CODEVIEW_SIGNATURE_RSDS = SIGNATURE_32('R', 'S', 'D', 'S');
+  //public const ulong CODEVIEW_SIGNATURE_RSDS = SIGNATURE_32('R', 'S', 'D', 'S');
 }
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_RSDS_ENTRY
 {
@@ -746,8 +748,9 @@ public unsafe partial class EFI
   ///
   /// Debug Data Structure defined by Apple Mach-O to Coff utility.
   ///
-  public const ulong CODEVIEW_SIGNATURE_MTOC = SIGNATURE_32('M', 'T', 'O', 'C');
+  //public const ulong CODEVIEW_SIGNATURE_MTOC = SIGNATURE_32('M', 'T', 'O', 'C');
 }
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_DEBUG_CODEVIEW_MTOC_ENTRY
 {
@@ -794,23 +797,23 @@ public unsafe struct EFI_IMAGE_RESOURCE_DIRECTORY
 /// Resource directory entry format.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct s
+public unsafe struct EFI_IMAGE_RESOURCE_DIRECTORY_ENTRY
 {
-  union {
-    struct {
-      public uint NameOffset; // = 31;
-  public uint NameIsString; // = 1;
-}
-uint Id;
-  } u1;
-union {
-    uint    OffsetToData;
-struct {
-      uint OffsetToDirectory : 31;
-uint DataIsDirectory   : 1;
-    } s;
-  } u2;
-} EFI_IMAGE_RESOURCE_DIRECTORY_ENTRY;
+//  union {
+//    struct {
+//      public uint NameOffset; // = 31;
+//  public uint NameIsString; // = 1;
+//}
+//uint Id;
+//  } u1;
+//union {
+//    uint    OffsetToData;
+//struct {
+//      uint OffsetToDirectory : 31;
+//uint DataIsDirectory   : 1;
+//    } s;
+//  } u2;
+} 
 
 ///
 /// Resource directory entry for string.
@@ -848,12 +851,12 @@ public unsafe struct EFI_TE_IMAGE_HEADER
   public uint AddressOfEntryPoint; ///< Offset to entry point -- from original optional header.
   public uint BaseOfCode;          ///< From original image -- required for ITP debug.
   public ulong ImageBase;           ///< From original file header.
-  public fixed EFI_IMAGE_DATA_DIRECTORY DataDirectory[2];    ///< Only base relocation and debug directory.
+  public EFI_IMAGE_DATA_DIRECTORY[/*2*/] DataDirectory;    ///< Only base relocation and debug directory.
 }
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_TE_IMAGE_HEADER_SIGNATURE = SIGNATURE_16('V', 'Z');
+  //public const ulong EFI_TE_IMAGE_HEADER_SIGNATURE = SIGNATURE_16('V', 'Z');
 
   //
   // Data directory indexes in our TE image header
@@ -876,10 +879,10 @@ public unsafe struct EFI_IMAGE_OPTIONAL_HEADER_UNION
 [StructLayout(LayoutKind.Explicit)]
 public unsafe struct EFI_IMAGE_OPTIONAL_HEADER_PTR_UNION
 {
-  [FieldOffset(0)] public EFI_IMAGE_NT_HEADERS32* Pe32;
-  [FieldOffset(0)] public EFI_IMAGE_NT_HEADERS64* Pe32Plus;
-  [FieldOffset(0)] public EFI_TE_IMAGE_HEADER* Te;
-  [FieldOffset(0)] public EFI_IMAGE_OPTIONAL_HEADER_UNION* Union;
+  [FieldOffset(0)] public EFI_IMAGE_NT_HEADERS32[] Pe32;
+  [FieldOffset(0)] public EFI_IMAGE_NT_HEADERS64[] Pe32Plus;
+  [FieldOffset(0)] public EFI_TE_IMAGE_HEADER[] Te;
+  [FieldOffset(0)] public EFI_IMAGE_OPTIONAL_HEADER_UNION[] Union;
 }
 
 // #endif

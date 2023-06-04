@@ -97,7 +97,7 @@ public unsafe struct EFI_IP4_CONFIG2_INTERFACE_INFO
   ///
   /// The name of the interface. It is a NULL-terminated Unicode string.
   ///
-  public fixed char Name[EFI_IP4_CONFIG2_INTERFACE_INFO_NAME_SIZE];
+  public char[/*EFI_IP4_CONFIG2_INTERFACE_INFO_NAME_SIZE*/] Name;
   ///
   /// The interface type of the network interface. See RFC 1700,
   /// section "Number Hardware Type".

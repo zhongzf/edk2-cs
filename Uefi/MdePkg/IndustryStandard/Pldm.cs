@@ -92,8 +92,8 @@ public unsafe partial class EFI
   public const ulong PLDM_TRANSFER_FLAG_MIDDLE = 0x02;
   public const ulong PLDM_TRANSFER_FLAG_END = 0x04;
   public const ulong PLDM_TRANSFER_FLAG_START_AND_END = 0x05;
-}
 
-public const ulong PLDM_TRANSFER_OPERATION_FLAG_GET_NEXT_PART = 0x00;
-public const ulong PLDM_TRANSFER_OPERATION_FLAG_GET_FIRST_PART = 0x01;
+  public const ulong PLDM_TRANSFER_OPERATION_FLAG_GET_NEXT_PART = 0x00;
+  public const ulong PLDM_TRANSFER_OPERATION_FLAG_GET_FIRST_PART = 0x01;
+}
 // #endif // PLDM_H_

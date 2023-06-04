@@ -91,7 +91,7 @@ public unsafe struct PCI_EXPRESS_EXTENDED_CAPABILITIES_PHYSICAL_LAYER_16_0
   public uint FirstRetimerDataParityMismatchStatus;
   public uint SecondRetimerDataParityMismatchStatus;
   public uint Reserved;
-  public fixed PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_LANE_EQUALIZATION_CONTROL LaneEqualizationControl[1];
+  public PCI_EXPRESS_REG_PHYSICAL_LAYER_16_0_LANE_EQUALIZATION_CONTROL[/*1*/] LaneEqualizationControl;
 }
 ///@}
 

@@ -885,11 +885,11 @@ public unsafe partial class EFI
   public const ulong IPMI_SEL_OEM_NO_TIME_STAMP_RECORD_START = 0xE0;
   public const ulong IPMI_SEL_OEM_NO_TIME_STAMP_RECORD_END = 0xFF;
 
-  public const ulong IPMI_SEL_EVENT_DIR = (EventDirType)(EventDirType >> 7);
+  //public const ulong IPMI_SEL_EVENT_DIR = (EventDirType)(EventDirType >> 7);
   public const ulong IPMI_SEL_EVENT_DIR_ASSERTION_EVENT = 0x00;
   public const ulong IPMI_SEL_EVENT_DIR_DEASSERTION_EVENT = 0x01;
 
-  public const ulong IPMI_SEL_EVENT_TYPE = (EventDirType)(EventDirType & 0x7F);
+  //public const ulong IPMI_SEL_EVENT_TYPE = (EventDirType)(EventDirType & 0x7F);
   //
   // Event/Reading Type Code Ranges (Chapter 42)
   //
@@ -901,7 +901,7 @@ public unsafe partial class EFI
   public const ulong IPMI_SEL_EVENT_TYPE_OEM_START = 0x70;
   public const ulong IPMI_SEL_EVENT_TYPE_OEM_END = 0x7F;
 
-  public const ulong SOFTWARE_ID_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
+  //public const ulong SOFTWARE_ID_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
   //
   // System Software IDs definitions (Section 5.5)
   //
@@ -917,9 +917,9 @@ public unsafe partial class EFI
   public const ulong IPMI_SWID_REMOTE_CONSOLE_RANGE_END = 0x46;
   public const ulong IPMI_SWID_TERMINAL_REMOTE_CONSOLE_ID = 0x47;
 
-  public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
-  public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
-  public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
+  //public const ulong SLAVE_ADDRESS_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId & 0xFF) >> 1);
+  //public const ulong LUN_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 8) & 0x03);
+  //public const ulong CHANNEL_NUMBER_FROM_GENERATOR_ID = (GeneratorId)((GeneratorId >> 12) & 0x0F);
 
   public const ulong IPMI_EVM_REVISION = 0x04;
   public const ulong IPMI_BIOS_ID = 0x18;
@@ -927,7 +927,7 @@ public unsafe partial class EFI
   public const ulong IPMI_FORMAT_REV1 = 0x01;
   public const ulong IPMI_SOFTWARE_ID = 0x01;
   public const ulong IPMI_PLATFORM_VAL_ID = 0x01;
-  public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
+  //public const ulong IPMI_GENERATOR_ID = (i, f)((i << 1) | (f << 1) | IPMI_SOFTWARE_ID);
 
   public const ulong IPMI_SENSOR_TYPE_EVENT_CODE_DISCRETE = 0x6F;
 

@@ -271,7 +271,7 @@ public unsafe struct EFI_CPU_ARCH_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_CPU_DISABLE_INTERRUPT*/ DisableInterrupt;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* OUT */bool* /*State*/, EFI_STATUS> /*EFI_CPU_GET_INTERRUPT_STATE*/ GetInterruptState;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_CPU_INIT_TYPE /*InitType*/, EFI_STATUS> /*EFI_CPU_INIT*/ Init;
-  public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_EXCEPTION_TYPE /*InterruptType*/,/* IN */EFI_CPU_INTERRUPT_HANDLER /*InterruptHandler*/, EFI_STATUS> /*EFI_CPU_REGISTER_INTERRUPT_HANDLER*/ RegisterInterruptHandler;
+  //public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_EXCEPTION_TYPE /*InterruptType*/,/* IN */EFI_CPU_INTERRUPT_HANDLER /*InterruptHandler*/, EFI_STATUS> /*EFI_CPU_REGISTER_INTERRUPT_HANDLER*/ RegisterInterruptHandler;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */uint /*TimerIndex*/,/* OUT */ulong* /*TimerValue*/,/* OUT */ulong* /*TimerPeriod*/, EFI_STATUS> /*EFI_CPU_GET_TIMER_VALUE*/ GetTimerValue;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*BaseAddress*/,/* IN */ulong /*Length*/,/* IN */ulong /*Attributes*/, EFI_STATUS> /*EFI_CPU_SET_MEMORY_ATTRIBUTES*/ SetMemoryAttributes;
   ///

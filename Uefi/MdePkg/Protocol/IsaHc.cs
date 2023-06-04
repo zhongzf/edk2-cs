@@ -27,8 +27,8 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_ISA_HC_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
       0xfad7933a, 0x6c21, 0x4234, new byte[] { 0xa4, 0x34, 0x0a, 0x8a, 0x0d, 0x2b, 0x07, 0x81 });
 
-  typedef struct _EFI_ISA_HC_PROTOCOL  EFI_ISA_HC_PROTOCOL;
-typedef struct _EFI_ISA_HC_PROTOCOL  *PEFI_ISA_HC_PROTOCOL;
+//  typedef struct _EFI_ISA_HC_PROTOCOL  EFI_ISA_HC_PROTOCOL;
+//typedef struct _EFI_ISA_HC_PROTOCOL  *PEFI_ISA_HC_PROTOCOL;
 
 // /**
 //   Open I/O aperture.

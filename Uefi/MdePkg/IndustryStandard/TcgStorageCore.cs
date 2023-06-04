@@ -27,15 +27,15 @@ public unsafe struct TCG_UID { ulong Value; public static implicit operator TCG_
 
 public unsafe partial class EFI
 {
-  public const ulong TCG_TO_UID = (b0, b1, b2, b3, b4, b5, b6, b7)(TCG_UID)(\;
-  (ulong) (b0)         | \
-  ((ulong)(b1) << 8)  | \
-  ((ulong)(b2) << 16) | \
-  ((ulong)(b3) << 24) | \
-  ((ulong)(b4) << 32) | \
-  ((ulong)(b5) << 40) | \
-  ((ulong)(b6) << 48) | \
-  ((ulong)(b7) << 56))
+  //public const ulong TCG_TO_UID = (b0, b1, b2, b3, b4, b5, b6, b7)(TCG_UID)(\;
+  //(ulong) (b0)         | \
+  //((ulong)(b1) << 8)  | \
+  //((ulong)(b2) << 16) | \
+  //((ulong)(b3) << 24) | \
+  //((ulong)(b4) << 32) | \
+  //((ulong)(b5) << 40) | \
+  //((ulong)(b6) << 48) | \
+  //((ulong)(b7) << 56))
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -81,10 +81,10 @@ public unsafe partial class EFI
 {
   public const ulong SUBPACKET_KIND_DATA = 0x0000;
   public const ulong SUBPACKET_KIND_CREDIT_CONTROL = 0x8001;
+  public const ulong TCG_ATOM_TYPE_INTEGER = 0x0;
+  public const ulong TCG_ATOM_TYPE_BYTE = 0x1;
 }
 
-public const ulong TCG_ATOM_TYPE_INTEGER = 0x0;
-public const ulong TCG_ATOM_TYPE_BYTE = 0x1;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TCG_TINY_ATOM_BITS
 {

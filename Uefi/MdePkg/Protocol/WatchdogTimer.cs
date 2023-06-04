@@ -133,7 +133,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WATCHDOG_TIMER_ARCH_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */EFI_WATCHDOG_TIMER_NOTIFY /*NotifyFunction*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_REGISTER_HANDLER*/ RegisterHandler;
+  //public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */EFI_WATCHDOG_TIMER_NOTIFY /*NotifyFunction*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_REGISTER_HANDLER*/ RegisterHandler;
   public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */ulong /*TimerPeriod*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_SET_TIMER_PERIOD*/ SetTimerPeriod;
   public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* OUT */ulong* /*TimerPeriod*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_GET_TIMER_PERIOD*/ GetTimerPeriod;
 }

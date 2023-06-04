@@ -1532,7 +1532,7 @@ public unsafe partial class EFI
   ///
   /// FPDT Firmware Basic Boot Performance Table signature
   ///
-  public const ulong EFI_ACPI_6_4_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
+  //public const ulong EFI_ACPI_6_4_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
 }
 
 //
@@ -1552,7 +1552,7 @@ public unsafe partial class EFI
   ///
   /// FPDT "S3PT" S3 Performance Table
   ///
-  public const ulong EFI_ACPI_6_4_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
+  //public const ulong EFI_ACPI_6_4_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
 }
 
 //

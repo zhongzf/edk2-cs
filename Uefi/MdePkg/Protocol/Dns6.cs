@@ -228,7 +228,7 @@ public unsafe struct DNS6_GENERAL_LOOKUP_DATA
 /// EFI_DNS6_COMPLETION_TOKEN
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct RspData
+public unsafe struct EFI_DNS6_COMPLETION_TOKEN
 {
   ///
   /// This Event will be signaled after the Status field is updated by the EFI DNSv6
@@ -259,24 +259,24 @@ public unsafe struct RspData
   ///
   /// DNSv6 completion token data
   ///
-  union {
-    ///
-    /// When the Token is used for host name to address translation, H2AData is a pointer
-    /// to the DNS6_HOST_TO_ADDR_DATA.
-    ///
-    public DNS6_HOST_TO_ADDR_DATA* H2AData;
-  ///
-  /// When the Token is used for host address to host name translation, A2HData is a
-  /// pointer to the DNS6_ADDR_TO_HOST_DATA.
-  ///
-  public DNS6_ADDR_TO_HOST_DATA* A2HData;
-  ///
-  /// When the Token is used for a general lookup function, GLookupDATA is a pointer to
-  /// the DNS6_GENERAL_LOOKUP_DATA.
-  ///
-  public DNS6_GENERAL_LOOKUP_DATA* GLookupData;
-}
-} EFI_DNS6_COMPLETION_TOKEN;
+//  union {
+//    ///
+//    /// When the Token is used for host name to address translation, H2AData is a pointer
+//    /// to the DNS6_HOST_TO_ADDR_DATA.
+//    ///
+//    public DNS6_HOST_TO_ADDR_DATA* H2AData;
+//  ///
+//  /// When the Token is used for host address to host name translation, A2HData is a
+//  /// pointer to the DNS6_ADDR_TO_HOST_DATA.
+//  ///
+//  public DNS6_ADDR_TO_HOST_DATA* A2HData;
+//  ///
+//  /// When the Token is used for a general lookup function, GLookupDATA is a pointer to
+//  /// the DNS6_GENERAL_LOOKUP_DATA.
+//  ///
+//  public DNS6_GENERAL_LOOKUP_DATA* GLookupData;
+//}
+} 
 
 // /**
 //   Retrieve mode data of this DNS instance.

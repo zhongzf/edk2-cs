@@ -352,7 +352,7 @@ public unsafe struct EFI_IPSEC_SPD_DATA
   /// A null-terminated ASCII name string which is used as a symbolic
   /// identifier for an IPsec Local or Remote address.
   ///
-  public fixed byte Name[MAX_PEERID_LEN];
+  public  byte[/*MAX_PEERID_LEN*/] Name;
   ///
   /// Bit-mapped list describing Populate from Packet flags. When
   /// creating a SA, if PackageFlag bit is set to TRUE, instantiate
@@ -390,7 +390,7 @@ public unsafe struct EFI_IPSEC_SPD_DATA
   /// The SAD entry used for the traffic processing. The
   /// existed SAD entry links indicate this is the manual key case.
   ///
-  public fixed EFI_IPSEC_SA_ID SaId[1];
+  public EFI_IPSEC_SA_ID[/*1*/] SaId;
 }
 
 ///
@@ -539,26 +539,26 @@ public unsafe struct EFI_IPSEC_SA_DATA2
 /// IpAddress Pointer to the IPv4 or IPv6 address range.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct Id
+public unsafe struct EFI_IPSEC_PAD_ID
 {
   ///
   /// Flag to identify which type of PAD Id is used.
   ///
   public bool PeerIdValid;
-  union {
-    ///
-    /// Pointer to the IPv4 or IPv6 address range.
-    ///
-    public EFI_IP_ADDRESS_INFO IpAddress;
-  ///
-  /// Pointer to a null terminated ASCII string
-  /// representing the symbolic names. A PeerId can be a DNS
-  /// name, Distinguished Name, RFC 822 email address or Key ID
-  /// (specified in section 4.4.3.1 of RFC 4301)
-  ///
-  public fixed byte PeerId[MAX_PEERID_LEN];
-}
-} EFI_IPSEC_PAD_ID;
+//  union {
+//    ///
+//    /// Pointer to the IPv4 or IPv6 address range.
+//    ///
+//    public EFI_IP_ADDRESS_INFO IpAddress;
+//  ///
+//  /// Pointer to a null terminated ASCII string
+//  /// representing the symbolic names. A PeerId can be a DNS
+//  /// name, Distinguished Name, RFC 822 email address or Key ID
+//  /// (specified in section 4.4.3.1 of RFC 4301)
+//  ///
+//  public fixed byte PeerId[MAX_PEERID_LEN];
+//}
+} 
 
 ///
 /// EFI_IPSEC_CONFIG_SELECTOR

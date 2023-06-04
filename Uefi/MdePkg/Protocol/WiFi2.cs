@@ -89,7 +89,7 @@ public unsafe struct EFI_80211_SSID
   //
   // Specifies the service set identifier.
   //
-  public fixed byte SSId[EFI_MAX_SSID_LEN];
+  public byte[/*EFI_MAX_SSID_LEN*/] SSId;
 }
 
 ///
@@ -110,7 +110,7 @@ public unsafe struct EFI_80211_GET_NETWORKS_DATA
   // 10 elements in the SSIDList. It is the caller's responsibility to free
   // this buffer.
   //
-  public fixed EFI_80211_SSID SSIDList[1];
+  public EFI_80211_SSID[/*1*/] SSIDList;
 }
 
 ///
@@ -145,7 +145,7 @@ public unsafe struct EFI_80211_AKM_SUITE_SELECTOR
   // A variable-length array of AKM suites, as defined in IEEE 802.11 standard,
   // Table 8-101. The number of entries is specified by AKMSuiteCount.
   //
-  public fixed EFI_80211_SUITE_SELECTOR AKMSuiteList[1];
+  public EFI_80211_SUITE_SELECTOR[/*1*/] AKMSuiteList;
 }
 
 ///
@@ -164,7 +164,7 @@ public unsafe struct EFI_80211_CIPHER_SUITE_SELECTOR
   // standard, Table 8-99. The number of entries is specified by
   // CipherSuiteCount.
   //
-  public fixed EFI_80211_SUITE_SELECTOR CipherSuiteList[1];
+  public EFI_80211_SUITE_SELECTOR[/*1*/] CipherSuiteList;
 }
 
 ///
@@ -184,11 +184,11 @@ public unsafe struct EFI_80211_NETWORK
   //
   // Pointer to the AKM suites supported in the wireless network.
   //
-  public EFI_80211_AKM_SUITE_SELECTOR* AKMSuite;
+  public EFI_80211_AKM_SUITE_SELECTOR[] AKMSuite;
   //
   // Pointer to the cipher suites supported in the wireless network.
   //
-  public EFI_80211_CIPHER_SUITE_SELECTOR* CipherSuite;
+  public EFI_80211_CIPHER_SUITE_SELECTOR[] CipherSuite;
 }
 
 ///
@@ -223,7 +223,7 @@ public unsafe struct EFI_80211_GET_NETWORKS_RESULT
   // The NetworkDesc is a pointer to an array of EFI_80211_NETWORK_DESCRIPTION
   // instances. It is caller's responsibility to free this buffer.
   //
-  public fixed EFI_80211_NETWORK_DESCRIPTION NetworkDesc[1];
+  public EFI_80211_NETWORK_DESCRIPTION[/*1*/] NetworkDesc;
 }
 
 ///
@@ -252,12 +252,12 @@ public unsafe struct EFI_80211_GET_NETWORKS_TOKEN
   //
   // Pointer to the input data for getting networks.
   //
-  public EFI_80211_GET_NETWORKS_DATA* Data;
+  public EFI_80211_GET_NETWORKS_DATA[] Data;
   //
   // Indicates the scan result. It is caller's responsibility to free this
   // buffer.
   //
-  public EFI_80211_GET_NETWORKS_RESULT* Result;
+  public EFI_80211_GET_NETWORKS_RESULT[] Result;
 }
 
 ///
@@ -269,7 +269,7 @@ public unsafe struct EFI_80211_CONNECT_NETWORK_DATA
   //
   // Specifies the wireless network to connect to.
   //
-  public EFI_80211_NETWORK* Network;
+  public EFI_80211_NETWORK[] Network;
   //
   // Specifies a time limit in seconds that is optionally present, after which
   // the connection establishment procedure is terminated by the UNDI driver.
@@ -304,7 +304,7 @@ public unsafe struct EFI_80211_CONNECT_NETWORK_TOKEN
   //
   // Pointer to the connection data.
   //
-  public EFI_80211_CONNECT_NETWORK_DATA* Data;
+  public EFI_80211_CONNECT_NETWORK_DATA[] Data;
   //
   // Indicates the connection state.
   //
@@ -434,8 +434,8 @@ public unsafe struct EFI_80211_DISCONNECT_NETWORK_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_GET_NETWORKS_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_GET_NETWORKS*/ GetNetworks;
-  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_CONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_CONNECT_NETWORK*/ ConnectNetwork;
+  //public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_GET_NETWORKS_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_GET_NETWORKS*/ GetNetworks;
+  //public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_CONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_CONNECT_NETWORK*/ ConnectNetwork;
   public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_DISCONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_DISCONNECT_NETWORK*/ DisconnectNetwork;
 }
 
