@@ -898,7 +898,7 @@ public unsafe struct EFI_BOOT_SERVICES
     @retval EFI_OUT_OF_RESOURCES  The event could not be allocated.
 
   **/
-  //public readonly delegate* unmanaged<uint, EFI_TPL, EFI_EVENT_NOTIFY, void*, EFI_EVENT*, EFI_STATUS> CreateEvent;
+  public readonly delegate* unmanaged<uint, EFI_TPL, delegate* unmanaged<EFI_EVENT, void*, void>, void*, EFI_EVENT*, EFI_STATUS> CreateEvent;
   /**
     Sets the type of timer and the trigger time for a timer event.
 
@@ -1038,7 +1038,8 @@ public unsafe struct EFI_BOOT_SERVICES
 
   **/
   public readonly delegate* unmanaged<EFI_HANDLE, EFI_GUID*, void**, EFI_STATUS> HandleProtocol;
-  public void* Reserved;
+
+  public readonly delegate* unmanaged<EFI_HANDLE, EFI_GUID*, void**, EFI_STATUS> PCHandleProtocol;
   /**
     Creates an event that is to be signaled whenever an interface is installed for a specified protocol.
 
@@ -1522,7 +1523,7 @@ public unsafe struct EFI_BOOT_SERVICES
     @retval EFI_OUT_OF_RESOURCES  The event could not be allocated.
 
   **/
-  //public readonly delegate* unmanaged<uint, EFI_TPL, EFI_EVENT_NOTIFY, CONST, CONST, EFI_EVENT*, EFI_STATUS> CreateEventEx;
+  public readonly delegate* unmanaged<uint, EFI_TPL, delegate* unmanaged<EFI_EVENT, void*, void>, void*, EFI_GUID*, EFI_EVENT*, EFI_STATUS> CreateEventEx;
 }
 
 ///

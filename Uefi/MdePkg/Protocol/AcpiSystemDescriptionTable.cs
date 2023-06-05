@@ -266,7 +266,10 @@ public unsafe struct EFI_ACPI_SDT_PROTOCOL
   ///
   public EFI_ACPI_TABLE_VERSION AcpiVersion;
   public readonly delegate* unmanaged</* IN */ulong /*Index*/,/* OUT */EFI_ACPI_SDT_HEADER** /*Table*/,/* OUT */EFI_ACPI_TABLE_VERSION* /*Version*/,/* OUT */ulong* /*TableKey*/, EFI_STATUS> /*EFI_ACPI_GET_ACPI_TABLE2*/ GetAcpiTable;
+  
   //public readonly delegate* unmanaged</* IN */bool /*Register*/,/* IN */EFI_ACPI_NOTIFICATION_FN /*Notification*/, EFI_STATUS> /*EFI_ACPI_REGISTER_NOTIFY*/ RegisterNotify;
+  public void* RegisterNotify;
+
   public readonly delegate* unmanaged</* IN */void* /*Buffer*/,/* OUT */EFI_ACPI_HANDLE* /*Handle*/, EFI_STATUS> /*EFI_ACPI_OPEN*/ Open;
   public readonly delegate* unmanaged</* IN */ulong /*TableKey*/,/* OUT */EFI_ACPI_HANDLE* /*Handle*/, EFI_STATUS> /*EFI_ACPI_OPEN_SDT*/ OpenSdt;
   public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*Handle*/, EFI_STATUS> /*EFI_ACPI_CLOSE*/ Close;

@@ -537,7 +537,10 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_PROTOCOL
 {
   public EFI_BLOCK_IO_MEDIA* Media;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */bool /*ExtendedVerification*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_RESET*/ Reset;
+  
   //public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* OUT */EFI_BLOCK_IO_CRYPTO_CAPABILITIES* /*Capabilities*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_GET_CAPABILITIES*/ GetCapabilities;
+  public void* GetCapabilities;
+
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */ulong /*ConfigurationCount*/,/* IN */EFI_BLOCK_IO_CRYPTO_CONFIGURATION_TABLE_ENTRY* /*ConfigurationTable*/,/* OUT */EFI_BLOCK_IO_CRYPTO_RESPONSE_CONFIGURATION_ENTRY* /*ResultingTable*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_SET_CONFIGURATION*/ SetConfiguration;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */ulong /*StartIndex*/,/* IN */ulong /*ConfigurationCount*/,/* IN */EFI_GUID* /*KeyOwnerGuid*/,/* OUT */EFI_BLOCK_IO_CRYPTO_RESPONSE_CONFIGURATION_ENTRY* /*ConfigurationTable*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_GET_CONFIGURATION*/ GetConfiguration;
   public readonly delegate* unmanaged</* IN */EFI_BLOCK_IO_CRYPTO_PROTOCOL* /*This*/,/* IN */uint /*MediaId*/,/* IN */EFI_LBA /*LBA*/,/* IN OUT */EFI_BLOCK_IO_CRYPTO_TOKEN* /*Token*/,/* IN */ulong /*BufferSize*/,/* OUT */void* /*Buffer*/,/* IN */ulong* /*Index*/,/* IN */void* /*CryptoIvInput*/, EFI_STATUS> /*EFI_BLOCK_IO_CRYPTO_READ_EXTENDED*/ ReadExtended;

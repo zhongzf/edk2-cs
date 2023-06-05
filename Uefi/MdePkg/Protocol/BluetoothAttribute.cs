@@ -292,7 +292,11 @@ public unsafe struct EFI_BLUETOOTH_LE_DEVICE_INFO
 public unsafe struct EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL
 {
   //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_SEND_REQUEST*/ SendRequest;
+  public void* SendRequest;
+
   //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_PARAMETER* /*CallbackParameter*/,/* IN */EFI_BLUETOOTH_ATTRIBUTE_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_REGISTER_FOR_SERVER_NOTIFICATION*/ RegisterForServerNotification;
+  public void* RegisterForServerNotification;
+
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* OUT */ulong* /*ServiceInfoSize*/,/* OUT */void** /*ServiceInfo*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_GET_SERVICE_INFO*/ GetServiceInfo;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL* /*This*/,/* OUT */ulong* /*DeviceInfoSize*/,/* OUT */void** /*DeviceInfo*/, EFI_STATUS> /*EFI_BLUETOOTH_ATTRIBUTE_GET_DEVICE_INFO*/ GetDeviceInfo;
 }
