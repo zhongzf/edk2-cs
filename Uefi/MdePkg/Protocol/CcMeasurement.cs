@@ -359,7 +359,7 @@ public unsafe partial class EFI
   //
   // Define the signature and revision of CC Measurement EventLog ACPI Table
   //
-  public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
+  //public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
   public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
 }
 

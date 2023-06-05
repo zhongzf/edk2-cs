@@ -26,7 +26,10 @@
     <Compile Include="MdePkg\IndustryStandard\Acpi10.cs" />
     <Compile Include="MdePkg\IndustryStandard\Acpi20.cs" />
     <Compile Include="MdePkg\IndustryStandard\Acpi30.cs" />
+    <Compile Include="MdePkg\IndustryStandard\Acpi40.cs" />
     <Compile Include="MdePkg\IndustryStandard\Acpi50.cs" />
+    <Compile Include="MdePkg\IndustryStandard\Acpi51.cs" />
+    <Compile Include="MdePkg\IndustryStandard\Acpi60.cs" />
     <Compile Include="MdePkg\IndustryStandard\Acpi61.cs" />
     <Compile Include="MdePkg\IndustryStandard\Acpi65.cs" />
     <Compile Include="MdePkg\IndustryStandard\AcpiAml.cs" />

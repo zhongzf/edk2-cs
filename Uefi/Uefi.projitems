@@ -13,7 +13,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi10.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi20.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi30.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi40.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi50.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi51.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi60.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi61.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\Acpi65.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MdePkg\IndustryStandard\AcpiAml.cs" />
