@@ -18,10 +18,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_SERIAL_IO_PROTOCOL_GUID = new GUID(
-      0xBB25CF6F, 0xF1D4, 0x11D2, new byte[] { 0x9A, 0x0C, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0xFD });
+      0xBB25CF6F, 0xF1D4, 0x11D2, 0x9A, 0x0C, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0xFD);
 
   public static EFI_GUID EFI_SERIAL_TERMINAL_DEVICE_TYPE_GUID = new GUID(
-      0X6AD9A60F, 0X5815, 0X4C7C, new byte[] { 0X8A, 0X10, 0X50, 0X53, 0XD2, 0XBF, 0X7A, 0X1B });
+      0X6AD9A60F, 0X5815, 0X4C7C, 0X8A, 0X10, 0X50, 0X53, 0XD2, 0XBF, 0X7A, 0X1B);
 
   ///
   /// Protocol GUID defined in EFI1.1.
@@ -259,7 +259,6 @@ public unsafe partial class EFI
     If applicable, the EFI_STOP_BITS_TYPE number of stop bits per
     character. If the device does not support stop bits the value is
     the default stop bit values.
-}
 
   **/
   [StructLayout(LayoutKind.Sequential)]

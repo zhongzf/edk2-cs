@@ -18,7 +18,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_CPU_ARCH_PROTOCOL_GUID = new GUID(0x26baccb1, 0x6f42, 0x11d4, new byte[] { 0xbc, 0xe7, 0x0, 0x80, 0xc7, 0x3c, 0x88, 0x81 });
+  public static EFI_GUID EFI_CPU_ARCH_PROTOCOL_GUID = new GUID(0x26baccb1, 0x6f42, 0x11d4, 0xbc, 0xe7, 0x0, 0x80, 0xc7, 0x3c, 0x88, 0x81);
 
   // typedef struct _EFI_CPU_ARCH_PROTOCOL EFI_CPU_ARCH_PROTOCOL;
 }
@@ -271,7 +271,7 @@ public unsafe struct EFI_CPU_ARCH_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_CPU_DISABLE_INTERRUPT*/ DisableInterrupt;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* OUT */bool* /*State*/, EFI_STATUS> /*EFI_CPU_GET_INTERRUPT_STATE*/ GetInterruptState;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_CPU_INIT_TYPE /*InitType*/, EFI_STATUS> /*EFI_CPU_INIT*/ Init;
-  //public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_EXCEPTION_TYPE /*InterruptType*/,/* IN */EFI_CPU_INTERRUPT_HANDLER /*InterruptHandler*/, EFI_STATUS> /*EFI_CPU_REGISTER_INTERRUPT_HANDLER*/ RegisterInterruptHandler;
+  public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_EXCEPTION_TYPE /*InterruptType*/,/* IN */delegate* unmanaged</* IN CONST */EFI_EXCEPTION_TYPE /*InterruptType*/,/* IN CONST */EFI_SYSTEM_CONTEXT /*SystemContext*/, void> /*InterruptHandler*/, EFI_STATUS> /*EFI_CPU_REGISTER_INTERRUPT_HANDLER*/ RegisterInterruptHandler;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */uint /*TimerIndex*/,/* OUT */ulong* /*TimerValue*/,/* OUT */ulong* /*TimerPeriod*/, EFI_STATUS> /*EFI_CPU_GET_TIMER_VALUE*/ GetTimerValue;
   public readonly delegate* unmanaged</* IN */EFI_CPU_ARCH_PROTOCOL* /*This*/,/* IN */EFI_PHYSICAL_ADDRESS /*BaseAddress*/,/* IN */ulong /*Length*/,/* IN */ulong /*Attributes*/, EFI_STATUS> /*EFI_CPU_SET_MEMORY_ATTRIBUTES*/ SetMemoryAttributes;
   ///

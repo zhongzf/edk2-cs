@@ -15,7 +15,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_EBC_INTERPRETER_PROTOCOL_GUID = new GUID(
-      0x13AC6DD1, 0x73D0, 0x11D4, new byte[] { 0xB0, 0x6B, 0x00, 0xAA, 0x00, 0xBD, 0x6D, 0xE7 });
+      0x13AC6DD1, 0x73D0, 0x11D4, 0xB0, 0x6B, 0x00, 0xAA, 0x00, 0xBD, 0x6D, 0xE7);
 
   //
   // Define OPCODES
@@ -121,7 +121,7 @@ public unsafe partial class EFI
   // For MOV instructions, need a mask for the opcode when immediate
   // data applies to R2.
   //
-  //public const ulong OPCODE_M_IMMED_OP2 = 0x40;
+  public const ulong OPCODE_M_IMMED_OP2 = 0x40;
 
   //
   // The MOVI/MOVIn instructions use bit 6 of operands byte to indicate
@@ -302,7 +302,7 @@ public unsafe struct EFI_EBC_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/,/* IN */void* /*EbcEntryPoint*/,/* OUT */void** /*Thunk*/, EFI_STATUS> /*EFI_EBC_CREATE_THUNK*/ CreateThunk;
   public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ImageHandle*/, EFI_STATUS> /*EFI_EBC_UNLOAD_IMAGE*/ UnloadImage;
-  //public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */EBC_ICACHE_FLUSH /*Flush*/, EFI_STATUS> /*EFI_EBC_REGISTER_ICACHE_FLUSH*/ RegisterICacheFlush;
+  public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */EFI_PHYSICAL_ADDRESS /*Start*/,/* IN */ulong /*Length*/, EFI_STATUS> /*Flush*/, EFI_STATUS> /*EFI_EBC_REGISTER_ICACHE_FLUSH*/ RegisterICacheFlush;
   public readonly delegate* unmanaged</* IN */EFI_EBC_PROTOCOL* /*This*/,/* IN OUT */ulong* /*Version*/, EFI_STATUS> /*EFI_EBC_GET_VERSION*/ GetVersion;
 }
 

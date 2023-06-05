@@ -20,7 +20,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_SX_DISPATCH_PROTOCOL_GUID = new GUID(
-      0x456d2859, 0xa84b, 0x4e47, new byte[] { 0xa2, 0xee, 0x32, 0x76, 0xd8, 0x86, 0x99, 0x7d });
+      0x456d2859, 0xa84b, 0x4e47, 0xa2, 0xee, 0x32, 0x76, 0xd8, 0x86, 0x99, 0x7d);
 }
 
 ///
@@ -130,7 +130,7 @@ public unsafe struct EFI_MM_SX_REGISTER_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_SX_DISPATCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */CONST /*EFI_MM_SX_DISPATCH_PROTOCOL*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */CONST /*EFI_MM_SX_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SX_REGISTER*/ Register;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_SX_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */CONST /*EFI_MM_SX_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SX_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_SX_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SX_UNREGISTER*/ UnRegister;
 }
 

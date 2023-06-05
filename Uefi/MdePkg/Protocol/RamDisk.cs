@@ -20,7 +20,7 @@ public unsafe partial class EFI
   //
   // EFI RAM Disk Protocol GUID value
   //
-  public static EFI_GUID EFI_RAM_DISK_PROTOCOL_GUID = new GUID(0xab38a0df, 0x6873, 0x44a9, new byte[] { 0x87, 0xe6, 0xd4, 0xeb, 0x56, 0x14, 0x84, 0x49 });
+  public static EFI_GUID EFI_RAM_DISK_PROTOCOL_GUID = new GUID(0xab38a0df, 0x6873, 0x44a9, 0x87, 0xe6, 0xd4, 0xeb, 0x56, 0x14, 0x84, 0x49);
 
 //
 // Forward reference for pure ANSI compatability

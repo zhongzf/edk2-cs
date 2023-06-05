@@ -25,7 +25,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_ACCESS_PROTOCOL_GUID = new GUID(
-       0xc2702b74, 0x800c, 0x4131, new byte[] { 0x87, 0x46, 0x8f, 0xb5, 0xb8, 0x9c, 0xe4, 0xac });
+       0xc2702b74, 0x800c, 0x4131, 0x87, 0x46, 0x8f, 0xb5, 0xb8, 0x9c, 0xe4, 0xac);
 
   // typedef struct _EFI_MM_ACCESS_PROTOCOL EFI_MM_ACCESS_PROTOCOL;
 
@@ -115,7 +115,7 @@ public unsafe struct EFI_MM_ACCESS_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_OPEN*/ Open;
   public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_CLOSE*/ Close;
   public readonly delegate* unmanaged</* IN */EFI_MM_ACCESS_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_MM_LOCK*/ Lock;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_ACCESS_PROTOCOL* /*This*/,/* IN OUT */ulong* /*MmramMapSize*/,/* IN OUT */EFI_MMRAM_DESCRIPTOR* /*MmramMap*/, EFI_STATUS> /*EFI_MM_CAPABILITIES*/ GetCapabilities;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_ACCESS_PROTOCOL* /*This*/,/* IN OUT */ulong* /*MmramMapSize*/,/* IN OUT */EFI_MMRAM_DESCRIPTOR* /*MmramMap*/, EFI_STATUS> /*EFI_MM_CAPABILITIES*/ GetCapabilities;
   ///
   /// Indicates the current state of the MMRAM. Set to TRUE if MMRAM is locked.
   ///

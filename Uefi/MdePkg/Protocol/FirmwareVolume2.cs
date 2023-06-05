@@ -21,7 +21,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_FIRMWARE_VOLUME2_PROTOCOL_GUID = new GUID(0x220e73b6, 0x6bdb, 0x4413, new byte[] { 0x84, 0x5, 0xb9, 0x74, 0xb1, 0x8, 0x61, 0x9a });
+  public static EFI_GUID EFI_FIRMWARE_VOLUME2_PROTOCOL_GUID = new GUID(0x220e73b6, 0x6bdb, 0x4413, 0x84, 0x5, 0xb9, 0x74, 0xb1, 0x8, 0x61, 0x9a);
 
   // typedef struct _EFI_FIRMWARE_VOLUME2_PROTOCOL EFI_FIRMWARE_VOLUME2_PROTOCOL;
 }

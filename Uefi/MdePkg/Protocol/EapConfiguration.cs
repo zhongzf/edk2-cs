@@ -21,7 +21,7 @@ public unsafe partial class EFI
   /// EFI EAP Configuration protocol provides a way to set and get EAP configuration.
   ///
   public static EFI_GUID EFI_EAP_CONFIGURATION_PROTOCOL_GUID = new GUID(
-      0xe5b58dbb, 0x7688, 0x44b4, new byte[] { 0x97, 0xbf, 0x5f, 0x1d, 0x4b, 0x7c, 0xc8, 0xdb });
+      0xe5b58dbb, 0x7688, 0x44b4, 0x97, 0xbf, 0x5f, 0x1d, 0x4b, 0x7c, 0xc8, 0xdb);
 
   // typedef struct _EFI_EAP_CONFIGURATION_PROTOCOL EFI_EAP_CONFIGURATION_PROTOCOL;
 

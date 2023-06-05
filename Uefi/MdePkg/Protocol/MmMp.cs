@@ -24,7 +24,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_MP_PROTOCOL_GUID = new GUID(
-      0x5d5450d7, 0x990c, 0x4180, new byte[] { 0xa8, 0x3, 0x8e, 0x63, 0xf0, 0x60, 0x83, 0x7 });
+      0x5d5450d7, 0x990c, 0x4180, 0xa8, 0x3, 0x8e, 0x63, 0xf0, 0x60, 0x83, 0x7);
 
   //
   // Revision definition.
@@ -326,9 +326,9 @@ public unsafe struct EFI_MM_MP_PROTOCOL
   public uint Revision;
   public uint Attributes;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberOfProcessors*/, EFI_STATUS> /*EFI_MM_GET_NUMBER_OF_PROCESSORS*/ GetNumberOfProcessors;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*CpuNumber*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_DISPATCH_PROCEDURE*/ DispatchProcedure;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_BROADCAST_PROCEDURE*/ BroadcastProcedure;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN OUT */void* /*ProcedureArguments*/, EFI_STATUS> /*EFI_MM_SET_STARTUP_PROCEDURE*/ SetStartupProcedure;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*CpuNumber*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_DISPATCH_PROCEDURE*/ DispatchProcedure;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_BROADCAST_PROCEDURE*/ BroadcastProcedure;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN OUT */void* /*ProcedureArguments*/, EFI_STATUS> /*EFI_MM_SET_STARTUP_PROCEDURE*/ SetStartupProcedure;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */MM_COMPLETION /*Token*/, EFI_STATUS> /*EFI_CHECK_FOR_PROCEDURE*/ CheckForProcedure;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */MM_COMPLETION /*Token*/, EFI_STATUS> /*EFI_WAIT_FOR_PROCEDURE*/ WaitForProcedure;
 }

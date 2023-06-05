@@ -18,7 +18,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the Watchdog Timer Architectural Protocol
   ///
-  public static EFI_GUID EFI_WATCHDOG_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x665E3FF5, 0x46CC, 0x11d4, new byte[] { 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D });
+  public static EFI_GUID EFI_WATCHDOG_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x665E3FF5, 0x46CC, 0x11d4, 0x9A, 0x38, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D);
 
   ///
   /// Declare forward reference for the Timer Architectural Protocol
@@ -133,7 +133,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WATCHDOG_TIMER_ARCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */EFI_WATCHDOG_TIMER_NOTIFY /*NotifyFunction*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_REGISTER_HANDLER*/ RegisterHandler;
+  public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */ulong /*Time*/, void> /*NotifyFunction*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_REGISTER_HANDLER*/ RegisterHandler;
   public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */ulong /*TimerPeriod*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_SET_TIMER_PERIOD*/ SetTimerPeriod;
   public readonly delegate* unmanaged</* IN */EFI_WATCHDOG_TIMER_ARCH_PROTOCOL* /*This*/,/* OUT */ulong* /*TimerPeriod*/, EFI_STATUS> /*EFI_WATCHDOG_TIMER_GET_TIMER_PERIOD*/ GetTimerPeriod;
 }

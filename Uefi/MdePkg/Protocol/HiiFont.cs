@@ -20,7 +20,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_HII_FONT_PROTOCOL_GUID = new GUID(0xe9ca4775, 0x8657, 0x47fc, new byte[] { 0x97, 0xe7, 0x7e, 0xd6, 0x5a, 0x8, 0x43, 0x24 });
+  public static EFI_GUID EFI_HII_FONT_PROTOCOL_GUID = new GUID(0xe9ca4775, 0x8657, 0x47fc, 0x97, 0xe7, 0x7e, 0xd6, 0x5a, 0x8, 0x43, 0x24);
 
   // typedef struct _EFI_HII_FONT_PROTOCOL EFI_HII_FONT_PROTOCOL;
 }

@@ -23,7 +23,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID = new GUID(
-      0x7300c4a1, 0x43f2, 0x4017, new byte[] { 0xa5, 0x1b, 0xc8, 0x1a, 0x7f, 0x40, 0x58, 0x5b });
+      0x7300c4a1, 0x43f2, 0x4017, 0xa5, 0x1b, 0xc8, 0x1a, 0x7f, 0x40, 0x58, 0x5b);
 }
 
 ///
@@ -112,7 +112,7 @@ public unsafe struct EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_STANDBY_BUTTON_REGISTER*/ Register;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */EFI_MM_STANDBY_BUTTON_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_STANDBY_BUTTON_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_STANDBY_BUTTON_UNREGISTER*/ UnRegister;
 }
 

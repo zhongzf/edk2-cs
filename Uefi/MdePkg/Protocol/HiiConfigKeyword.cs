@@ -20,7 +20,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_CONFIG_KEYWORD_HANDLER_PROTOCOL_GUID = new GUID(
-    0x0a8badd5, 0x03b8, 0x4d19, new byte[] { 0xb1, 0x28, 0x7b, 0x8f, 0x0e, 0xda, 0xa5, 0x96 });
+    0x0a8badd5, 0x03b8, 0x4d19, 0xb1, 0x28, 0x7b, 0x8f, 0x0e, 0xda, 0xa5, 0x96);
 
   // ***********************************************************
   // Progress Errors

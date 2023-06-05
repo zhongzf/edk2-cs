@@ -29,7 +29,7 @@ public unsafe partial class EFI
   /// Debug Support protocol {2755590C-6F3C-42FA-9EA4-A3BA543CDA25}.
   ///
   public static EFI_GUID EFI_DEBUG_SUPPORT_PROTOCOL_GUID = new GUID(
-      0x2755590C, 0x6F3C, 0x42FA, new byte[] { 0x9E, 0xA4, 0xA3, 0xBA, 0x54, 0x3C, 0xDA, 0x25 });
+      0x2755590C, 0x6F3C, 0x42FA, 0x9E, 0xA4, 0xA3, 0xBA, 0x54, 0x3C, 0xDA, 0x25);
 }
 
 ///
@@ -985,8 +985,8 @@ public unsafe struct EFI_DEBUG_SUPPORT_PROTOCOL
   ///
   public EFI_INSTRUCTION_SET_ARCHITECTURE Isa;
   public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* OUT */ulong* /*MaxProcessorIndex*/, EFI_STATUS> /*EFI_GET_MAXIMUM_PROCESSOR_INDEX*/ GetMaximumProcessorIndex;
-  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */EFI_PERIODIC_CALLBACK /*PeriodicCallback*/, EFI_STATUS> /*EFI_REGISTER_PERIODIC_CALLBACK*/ RegisterPeriodicCallback;
-  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */EFI_EXCEPTION_CALLBACK /*ExceptionCallback*/,/* IN */EFI_EXCEPTION_TYPE /*ExceptionType*/, EFI_STATUS> /*EFI_REGISTER_EXCEPTION_CALLBACK*/ RegisterExceptionCallback;
+  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */delegate* unmanaged</* IN OUT */EFI_SYSTEM_CONTEXT /*SystemContext*/, void> /*PeriodicCallback*/, EFI_STATUS> /*EFI_REGISTER_PERIODIC_CALLBACK*/ RegisterPeriodicCallback;
+  public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */delegate* unmanaged</* IN */EFI_EXCEPTION_TYPE /*ExceptionType*/,/* IN OUT */EFI_SYSTEM_CONTEXT /*SystemContext*/, void> /*ExceptionCallback*/,/* IN */EFI_EXCEPTION_TYPE /*ExceptionType*/, EFI_STATUS> /*EFI_REGISTER_EXCEPTION_CALLBACK*/ RegisterExceptionCallback;
   public readonly delegate* unmanaged</* IN */EFI_DEBUG_SUPPORT_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorIndex*/,/* IN */void* /*Start*/,/* IN */ulong /*Length*/, EFI_STATUS> /*EFI_INVALIDATE_INSTRUCTION_CACHE*/ InvalidateInstructionCache;
 }
 

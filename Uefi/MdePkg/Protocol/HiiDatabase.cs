@@ -18,7 +18,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_HII_DATABASE_PROTOCOL_GUID = new GUID(0xef9fc172, 0xa1b2, 0x4693, new byte[] { 0xb3, 0x27, 0x6d, 0x32, 0xfc, 0x41, 0x60, 0x42 });
+  public static EFI_GUID EFI_HII_DATABASE_PROTOCOL_GUID = new GUID(0xef9fc172, 0xa1b2, 0x4693, 0xb3, 0x27, 0x6d, 0x32, 0xfc, 0x41, 0x60, 0x42);
 
   // typedef struct _EFI_HII_DATABASE_PROTOCOL EFI_HII_DATABASE_PROTOCOL;
 }
@@ -516,7 +516,7 @@ public unsafe struct EFI_HII_DATABASE_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*Handle*/,/* IN CONST */EFI_HII_PACKAGE_LIST_HEADER* /*PackageList*/, EFI_STATUS> /*EFI_HII_DATABASE_UPDATE_PACK*/ UpdatePackageList;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN */byte /*PackageType*/,/* IN CONST */EFI_GUID* /*PackageGuid*/,/* IN OUT */ulong* /*HandleBufferLength*/,/* OUT */EFI_HII_HANDLE* /*Handle*/, EFI_STATUS> /*EFI_HII_DATABASE_LIST_PACKS*/ ListPackageLists;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*Handle*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */EFI_HII_PACKAGE_LIST_HEADER* /*Buffer*/, EFI_STATUS> /*EFI_HII_DATABASE_EXPORT_PACKS*/ ExportPackageLists;
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN */byte /*PackageType*/,/* IN CONST */EFI_GUID* /*PackageGuid*/,/* IN */EFI_HII_DATABASE_NOTIFY /*PackageNotifyFn*/,/* IN */EFI_HII_DATABASE_NOTIFY_TYPE /*NotifyType*/,/* OUT */EFI_HANDLE* /*NotifyHandle*/, EFI_STATUS> /*EFI_HII_DATABASE_REGISTER_NOTIFY*/ RegisterPackageNotify;
+  public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN */byte /*PackageType*/,/* IN CONST */EFI_GUID* /*PackageGuid*/,/* IN */delegate* unmanaged</* IN */byte /*PackageType*/,/* IN CONST */EFI_GUID* /*PackageGuid*/,/* IN CONST */EFI_HII_PACKAGE_HEADER* /*Package*/,/* IN */EFI_HII_HANDLE /*Handle*/,/* IN */EFI_HII_DATABASE_NOTIFY_TYPE /*NotifyType*/, EFI_STATUS> /*PackageNotifyFn*/,/* IN */EFI_HII_DATABASE_NOTIFY_TYPE /*NotifyType*/,/* OUT */EFI_HANDLE* /*NotifyHandle*/, EFI_STATUS> /*EFI_HII_DATABASE_REGISTER_NOTIFY*/ RegisterPackageNotify;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*NotificationHandle*/, EFI_STATUS> /*EFI_HII_DATABASE_UNREGISTER_NOTIFY*/ UnregisterPackageNotify;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN OUT */ushort* /*KeyGuidBufferLength*/,/* OUT */EFI_GUID* /*KeyGuidBuffer*/, EFI_STATUS> /*EFI_HII_FIND_KEYBOARD_LAYOUTS*/ FindKeyboardLayouts;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_DATABASE_PROTOCOL* /*This*/,/* IN CONST */EFI_GUID* /*KeyGuid*/,/* IN OUT */ushort* /*KeyboardLayoutLength*/,/* OUT */EFI_HII_KEYBOARD_LAYOUT* /*KeyboardLayout*/, EFI_STATUS> /*EFI_HII_GET_KEYBOARD_LAYOUT*/ GetKeyboardLayout;

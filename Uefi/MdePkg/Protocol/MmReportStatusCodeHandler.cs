@@ -18,7 +18,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_RSC_HANDLER_PROTOCOL_GUID = new GUID(
-      0x2ff29fa7, 0x5e80, 0x4ed9, new byte[] { 0xb3, 0x80, 0x1, 0x7d, 0x3c, 0x55, 0x4f, 0xf4 });
+      0x2ff29fa7, 0x5e80, 0x4ed9, 0xb3, 0x80, 0x1, 0x7d, 0x3c, 0x55, 0x4f, 0xf4);
 
   //typedef
   //EFI_STATUS
@@ -75,8 +75,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_RSC_HANDLER_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_MM_RSC_HANDLER_CALLBACK /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_REGISTER*/ Register;
-  //public readonly delegate* unmanaged</* IN */EFI_MM_RSC_HANDLER_CALLBACK /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_UNREGISTER*/ Unregister;
+  //public readonly delegate* unmanaged</* IN */delegate* unmanaged<EFI_STATUS_CODE_TYPE, EFI_STATUS_CODE_VALUE, uint, EFI_GUID*, EFI_STATUS_CODE_DATA*, EFI_STATUS> /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_REGISTER*/ Register;
+  //public readonly delegate* unmanaged</* IN */delegate* unmanaged<EFI_STATUS_CODE_TYPE, EFI_STATUS_CODE_VALUE, uint, EFI_GUID*, EFI_STATUS_CODE_DATA*, EFI_STATUS> /*Callback*/, EFI_STATUS> /*EFI_MM_RSC_HANDLER_UNREGISTER*/ Unregister;
 }
 
 // extern EFI_GUID  gEfiMmRscHandlerProtocolGuid;

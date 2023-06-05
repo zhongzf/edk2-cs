@@ -19,7 +19,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the Timer Architectural Protocol
   ///
-  public static EFI_GUID EFI_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x26baccb3, 0x6f42, 0x11d4, new byte[] { 0xbc, 0xe7, 0x0, 0x80, 0xc7, 0x3c, 0x88, 0x81 });
+  public static EFI_GUID EFI_TIMER_ARCH_PROTOCOL_GUID = new GUID(0x26baccb3, 0x6f42, 0x11d4, 0xbc, 0xe7, 0x0, 0x80, 0xc7, 0x3c, 0x88, 0x81);
 
   ///
   /// Declare forward reference for the Timer Architectural Protocol
@@ -169,7 +169,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TIMER_ARCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */EFI_TIMER_NOTIFY /*NotifyFunction*/, EFI_STATUS> /*EFI_TIMER_REGISTER_HANDLER*/ RegisterHandler;
+  public readonly delegate* unmanaged</* IN */EFI_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */ulong /*Time*/, void> /*NotifyFunction*/, EFI_STATUS> /*EFI_TIMER_REGISTER_HANDLER*/ RegisterHandler;
   public readonly delegate* unmanaged</* IN */EFI_TIMER_ARCH_PROTOCOL* /*This*/,/* IN */ulong /*TimerPeriod*/, EFI_STATUS> /*EFI_TIMER_SET_TIMER_PERIOD*/ SetTimerPeriod;
   public readonly delegate* unmanaged</* IN */EFI_TIMER_ARCH_PROTOCOL* /*This*/,/* OUT */ulong* /*TimerPeriod*/, EFI_STATUS> /*EFI_TIMER_GET_TIMER_PERIOD*/ GetTimerPeriod;
   public readonly delegate* unmanaged</* IN */EFI_TIMER_ARCH_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_TIMER_GENERATE_SOFT_INTERRUPT*/ GenerateSoftInterrupt;

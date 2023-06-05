@@ -21,7 +21,7 @@ public unsafe partial class EFI
   /// The global ID for the ControllerHandle Driver Protocol.
   ///
   public static EFI_GUID EFI_DRIVER_BINDING_PROTOCOL_GUID = new GUID(
-      0x18a031ab, 0xb443, 0x4d1a, new byte[] { 0xa5, 0xc0, 0xc, 0x9, 0x26, 0x1e, 0x9f, 0x71 });
+      0x18a031ab, 0xb443, 0x4d1a, 0xa5, 0xc0, 0xc, 0x9, 0x26, 0x1e, 0x9f, 0x71);
 
   // typedef struct _EFI_DRIVER_BINDING_PROTOCOL EFI_DRIVER_BINDING_PROTOCOL;
 

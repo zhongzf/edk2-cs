@@ -22,7 +22,7 @@ public unsafe partial class EFI
   /// The EFI Configuration protocol provides a way to set and get TLS configuration.
   ///
   public static EFI_GUID EFI_TLS_CONFIGURATION_PROTOCOL_GUID = new GUID(
-      0x1682fe44, 0xbd7a, 0x4407, new byte[] { 0xb7, 0xc7, 0xdc, 0xa3, 0x7c, 0xa3, 0x92, 0x2d });
+      0x1682fe44, 0xbd7a, 0x4407, 0xb7, 0xc7, 0xdc, 0xa3, 0x7c, 0xa3, 0x92, 0x2d);
 
   // typedef struct _EFI_TLS_CONFIGURATION_PROTOCOL EFI_TLS_CONFIGURATION_PROTOCOL;
 }

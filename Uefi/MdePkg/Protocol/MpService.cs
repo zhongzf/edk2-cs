@@ -48,7 +48,7 @@ public unsafe partial class EFI
   /// Global ID for the EFI_MP_SERVICES_PROTOCOL.
   ///
   public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID = new GUID(
-      0x3fdda605, 0xa76e, 0x4f46, new byte[] { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 });
+      0x3fdda605, 0xa76e, 0x4f46, 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08);
 
   ///
   /// Value used in the NumberProcessors parameter of the GetProcessorInfo function
@@ -676,8 +676,8 @@ public unsafe struct EFI_MP_SERVICES_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberOfProcessors*/,/* OUT */ulong* /*NumberOfEnabledProcessors*/, EFI_STATUS> /*EFI_MP_SERVICES_GET_NUMBER_OF_PROCESSORS*/ GetNumberOfProcessors;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorNumber*/,/* OUT */EFI_PROCESSOR_INFORMATION* /*ProcessorInfoBuffer*/, EFI_STATUS> /*EFI_MP_SERVICES_GET_PROCESSOR_INFO*/ GetProcessorInfo;
-  //public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */bool /*SingleThread*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroSeconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */ulong** /*FailedCpuList*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_ALL_APS*/ StartupAllAPs;
-  //public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */ulong /*ProcessorNumber*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */bool* /*Finished*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_THIS_AP*/ StartupThisAP;
+  public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */bool /*SingleThread*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroSeconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */ulong** /*FailedCpuList*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_ALL_APS*/ StartupAllAPs;
+  public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */ulong /*ProcessorNumber*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */bool* /*Finished*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_THIS_AP*/ StartupThisAP;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorNumber*/,/* IN */bool /*EnableOldBSP*/, EFI_STATUS> /*EFI_MP_SERVICES_SWITCH_BSP*/ SwitchBSP;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorNumber*/,/* IN */bool /*EnableAP*/,/* IN */uint* /*HealthFlag*/, EFI_STATUS> /*EFI_MP_SERVICES_ENABLEDISABLEAP*/ EnableDisableAP;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* OUT */ulong* /*ProcessorNumber*/, EFI_STATUS> /*EFI_MP_SERVICES_WHOAMI*/ WhoAmI;

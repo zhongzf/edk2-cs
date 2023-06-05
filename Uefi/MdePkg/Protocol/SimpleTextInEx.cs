@@ -20,7 +20,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID = new GUID(0xdd9e7534, 0x7762, 0x4698, new byte[] { 0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa });
+  public static EFI_GUID EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID = new GUID(0xdd9e7534, 0x7762, 0x4698, 0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa);
 
   // typedef struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
 
@@ -318,7 +318,7 @@ public unsafe struct EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL
   ///
   public EFI_EVENT WaitForKeyEx;
   public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_TOGGLE_STATE* /*KeyToggleState*/, EFI_STATUS> /*EFI_SET_STATE*/ SetState;
-  //public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_DATA* /*KeyData*/,/* IN */EFI_KEY_NOTIFY_FUNCTION /*KeyNotificationFunction*/,/* OUT */void** /*NotifyHandle*/, EFI_STATUS> /*EFI_REGISTER_KEYSTROKE_NOTIFY*/ RegisterKeyNotify;
+  public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */EFI_KEY_DATA* /*KeyData*/,/* IN */delegate* unmanaged<EFI_KEY_DATA*, EFI_STATUS> /*KeyNotificationFunction*/,/* OUT */void** /*NotifyHandle*/, EFI_STATUS> /*EFI_REGISTER_KEYSTROKE_NOTIFY*/ RegisterKeyNotify;
   public readonly delegate* unmanaged</* IN */EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* /*This*/,/* IN */void* /*NotificationHandle*/, EFI_STATUS> /*EFI_UNREGISTER_KEYSTROKE_NOTIFY*/ UnregisterKeyNotify;
 }
 

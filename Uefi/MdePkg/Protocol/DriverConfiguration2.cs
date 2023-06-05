@@ -18,7 +18,7 @@ public unsafe partial class EFI
   /// Global ID for the Driver Configuration Protocol defined in UEFI 2.0
   ///
   public static EFI_GUID EFI_DRIVER_CONFIGURATION2_PROTOCOL_GUID = new GUID(
-      0xbfd7dc1d, 0x24f1, 0x40d9, new byte[] { 0x82, 0xe7, 0x2e, 0x09, 0xbb, 0x6b, 0x4e, 0xbe });
+      0xbfd7dc1d, 0x24f1, 0x40d9, 0x82, 0xe7, 0x2e, 0x09, 0xbb, 0x6b, 0x4e, 0xbe);
 
   // typedef struct _EFI_DRIVER_CONFIGURATION2_PROTOCOL EFI_DRIVER_CONFIGURATION2_PROTOCOL;
 }

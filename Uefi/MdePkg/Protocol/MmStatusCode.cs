@@ -17,7 +17,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_STATUS_CODE_PROTOCOL_GUID = new GUID(
-      0x6afd2b77, 0x98c1, 0x4acd, new byte[] { 0xa6, 0xf9, 0x8a, 0x94, 0x39, 0xde, 0xf, 0xb1 });
+      0x6afd2b77, 0x98c1, 0x4acd, 0xa6, 0xf9, 0x8a, 0x94, 0x39, 0xde, 0xf, 0xb1);
 
   // typedef struct _EFI_MM_STATUS_CODE_PROTOCOL EFI_MM_STATUS_CODE_PROTOCOL;
 
@@ -55,7 +55,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_STATUS_CODE_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_STATUS_CODE_PROTOCOL* /*This*/,/* IN */EFI_STATUS_CODE_TYPE /*CodeType*/,/* IN */EFI_STATUS_CODE_VALUE /*Value*/,/* IN */uint /*Instance*/,/* IN CONST */EFI_GUID* /*CallerId*/,/* IN */EFI_STATUS_CODE_DATA* /*Data*/, EFI_STATUS> /*EFI_MM_REPORT_STATUS_CODE*/ ReportStatusCode;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_STATUS_CODE_PROTOCOL* /*This*/,/* IN */EFI_STATUS_CODE_TYPE /*CodeType*/,/* IN */EFI_STATUS_CODE_VALUE /*Value*/,/* IN */uint /*Instance*/,/* IN CONST */EFI_GUID* /*CallerId*/,/* IN */EFI_STATUS_CODE_DATA* /*Data*/, EFI_STATUS> /*EFI_MM_REPORT_STATUS_CODE*/ ReportStatusCode;
 }
 
 // extern EFI_GUID  gEfiMmStatusCodeProtocolGuid;

@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL_GUID = new GUID(0x55b71fb5, 0x17c6, 0x410e, new byte[] { 0xb5, 0xbd, 0x5f, 0xa2, 0xe3, 0xd4, 0x46, 0x6b });
+  public static EFI_GUID EFI_I2C_BUS_CONFIGURATION_MANAGEMENT_PROTOCOL_GUID = new GUID(0x55b71fb5, 0x17c6, 0x410e, 0xb5, 0xbd, 0x5f, 0xa2, 0xe3, 0xd4, 0x46, 0x6b);
 
   ///
   /// I2C bus configuration management protocol

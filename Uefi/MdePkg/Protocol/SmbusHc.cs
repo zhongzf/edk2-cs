@@ -20,7 +20,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SMBUS_HC_PROTOCOL_GUID = new GUID(0xe49d33ed, 0x513d, 0x4634, new byte[] { 0xb6, 0x98, 0x6f, 0x55, 0xaa, 0x75, 0x1c, 0x1b });
+  public static EFI_GUID EFI_SMBUS_HC_PROTOCOL_GUID = new GUID(0xe49d33ed, 0x513d, 0x4634, 0xb6, 0x98, 0x6f, 0x55, 0xaa, 0x75, 0x1c, 0x1b);
 
   // typedef struct _EFI_SMBUS_HC_PROTOCOL EFI_SMBUS_HC_PROTOCOL;
 
@@ -281,7 +281,7 @@ public unsafe struct EFI_SMBUS_HC_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */EFI_SMBUS_DEVICE_COMMAND /*Command*/,/* IN */EFI_SMBUS_OPERATION /*Operation*/,/* IN */bool /*PecCheck*/,/* IN OUT */ulong* /*Length*/,/* IN OUT */void* /*Buffer*/, EFI_STATUS> /*EFI_SMBUS_HC_EXECUTE_OPERATION*/ Execute;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */bool /*ArpAll*/,/* IN */EFI_SMBUS_UDID* /*SmbusUdid*/,/* IN OUT */EFI_SMBUS_DEVICE_ADDRESS* /*SlaveAddress*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_ARP_DEVICE*/ ArpDevice;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN OUT */ulong* /*Length*/,/* IN OUT */EFI_SMBUS_DEVICE_MAP** /*SmbusDeviceMap*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_GET_ARP_MAP*/ GetArpMap;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */ulong /*Data*/,/* IN */EFI_SMBUS_NOTIFY_FUNCTION /*NotifyFunction*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_NOTIFY*/ Notify;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SMBUS_HC_PROTOCOL* /*This*/,/* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */ulong /*Data*/,/* IN */delegate* unmanaged</* IN */EFI_SMBUS_DEVICE_ADDRESS /*SlaveAddress*/,/* IN */ulong /*Data*/, EFI_STATUS> /*NotifyFunction*/, EFI_STATUS> /*EFI_SMBUS_HC_PROTOCOL_NOTIFY*/ Notify;
 }
 
 // extern EFI_GUID  gEfiSmbusHcProtocolGuid;

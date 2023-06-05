@@ -38,7 +38,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_DRIVER_HEALTH_PROTOCOL_GUID = new GUID(
-      0x2a534210, 0x9280, 0x41d8, new byte[] { 0xae, 0x79, 0xca, 0xda, 0x1, 0xa2, 0xb1, 0x27 });
+      0x2a534210, 0x9280, 0x41d8, 0xae, 0x79, 0xca, 0xda, 0x1, 0xa2, 0xb1, 0x27);
 
   // typedef struct _EFI_DRIVER_HEALTH_PROTOCOL EFI_DRIVER_HEALTH_PROTOCOL;
 }
@@ -238,7 +238,7 @@ public unsafe struct EFI_DRIVER_HEALTH_HII_MESSAGE
 public unsafe struct EFI_DRIVER_HEALTH_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_DRIVER_HEALTH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */EFI_HANDLE /*ChildHandle*/,/* OUT */EFI_DRIVER_HEALTH_STATUS* /*HealthStatus*/,/* OUT */EFI_DRIVER_HEALTH_HII_MESSAGE** /*MessageList*/,/* OUT */EFI_HII_HANDLE* /*FormHiiHandle*/, EFI_STATUS> /*EFI_DRIVER_HEALTH_GET_HEALTH_STATUS*/ GetHealthStatus;
-  //public readonly delegate* unmanaged</* IN */EFI_DRIVER_HEALTH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */EFI_HANDLE /*ChildHandle*/,/* IN */EFI_DRIVER_HEALTH_REPAIR_NOTIFY /*RepairNotify*/, EFI_STATUS> /*EFI_DRIVER_HEALTH_REPAIR*/ Repair;
+  public readonly delegate* unmanaged</* IN */EFI_DRIVER_HEALTH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*ControllerHandle*/,/* IN */EFI_HANDLE /*ChildHandle*/,/* IN */delegate* unmanaged</* IN */ulong /*Value*/,/* IN */ulong /*Limit*/, EFI_STATUS> /*RepairNotify*/, EFI_STATUS> /*EFI_DRIVER_HEALTH_REPAIR*/ Repair;
 }
 
 // extern EFI_GUID  gEfiDriverHealthProtocolGuid;

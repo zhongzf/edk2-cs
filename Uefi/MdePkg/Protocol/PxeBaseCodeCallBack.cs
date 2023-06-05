@@ -22,7 +22,7 @@ public unsafe partial class EFI
   /// Call Back Definitions.
   ///
   public static EFI_GUID EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_GUID = new GUID(
-      0x245dca21, 0xfb7b, 0x11d3, new byte[] { 0x8f, 0x01, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b });
+      0x245dca21, 0xfb7b, 0x11d3, 0x8f, 0x01, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b);
 
   ///
   /// UEFI Revision Number Definition.
@@ -124,7 +124,7 @@ public unsafe struct EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL
   ///  it is not the same GUID.
   ///
   public ulong Revision;
-  //public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_FUNCTION /*Function*/,/* IN */bool /*Received*/,/* IN */uint /*PacketLen*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*Packet*/, EFI_STATUS> /*EFI_PXE_CALLBACK*/ Callback;
+  public readonly delegate* unmanaged</* IN */EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL* /*This*/,/* IN */EFI_PXE_BASE_CODE_FUNCTION /*Function*/,/* IN */bool /*Received*/,/* IN */uint /*PacketLen*/,/* IN */EFI_PXE_BASE_CODE_PACKET* /*Packet*/, EFI_STATUS> /*EFI_PXE_CALLBACK*/ Callback;
 }
 
 // extern EFI_GUID  gEfiPxeBaseCodeCallbackProtocolGuid;

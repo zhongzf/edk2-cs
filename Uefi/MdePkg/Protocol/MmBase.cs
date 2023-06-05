@@ -20,7 +20,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_BASE_PROTOCOL_GUID = new GUID(
-      0xf4ccbfb7, 0xf6e0, 0x47fd, new byte[] { 0x9d, 0xd4, 0x10, 0xa8, 0xf1, 0x50, 0xc1, 0x91 });
+      0xf4ccbfb7, 0xf6e0, 0x47fd, 0x9d, 0xd4, 0x10, 0xa8, 0xf1, 0x50, 0xc1, 0x91);
 
   // typedef struct _EFI_MM_BASE_PROTOCOL EFI_MM_BASE_PROTOCOL;
 
@@ -78,7 +78,7 @@ public unsafe partial class EFI
 public unsafe struct EFI_MM_BASE_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_BASE_PROTOCOL* /*This*/,/* OUT */bool* /*InMmram*/, EFI_STATUS> /*EFI_MM_INSIDE_OUT*/ InMm;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_BASE_PROTOCOL* /*This*/,/* IN OUT */EFI_MM_SYSTEM_TABLE** /*Mmst*/, EFI_STATUS> /*EFI_MM_GET_MMST_LOCATION*/ GetMmstLocation;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_BASE_PROTOCOL* /*This*/,/* IN OUT */EFI_MM_SYSTEM_TABLE** /*Mmst*/, EFI_STATUS> /*EFI_MM_GET_MMST_LOCATION*/ GetMmstLocation;
 }
 
 // extern EFI_GUID  gEfiMmBaseProtocolGuid;

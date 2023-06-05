@@ -20,7 +20,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_SW_DISPATCH_PROTOCOL_GUID = new GUID(
-      0x18a3c6dc, 0x5eea, 0x48c8, new byte[] { 0xa1, 0xc1, 0xb5, 0x33, 0x89, 0xf9, 0x89, 0x99 });
+      0x18a3c6dc, 0x5eea, 0x48c8, 0xa1, 0xc1, 0xb5, 0x33, 0x89, 0xf9, 0x89, 0x99);
 }
 
 ///
@@ -126,7 +126,7 @@ public unsafe struct EFI_MM_SW_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_SW_DISPATCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_SW_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN OUT */EFI_MM_SW_REGISTER_CONTEXT*,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SW_REGISTER*/ Register;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_SW_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */OUT /*EFI_MM_SW_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SW_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_SW_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SW_UNREGISTER*/ UnRegister;
   ///
   /// A read-only field that describes the maximum value that can be used in the

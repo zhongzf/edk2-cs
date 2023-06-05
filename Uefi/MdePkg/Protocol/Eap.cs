@@ -22,7 +22,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_EAP_PROTOCOL_GUID = new GUID(
-      0x5d9f96db, 0xe731, 0x4caa, new byte[] { 0xa0, 0xd, 0x72, 0xe1, 0x87, 0xcd, 0x77, 0x62 });
+      0x5d9f96db, 0xe731, 0x4caa, 0xa0, 0xd, 0x72, 0xe1, 0x87, 0xcd, 0x77, 0x62);
 
   // typedef struct _EFI_EAP_PROTOCOL EFI_EAP_PROTOCOL;
 }
@@ -156,7 +156,7 @@ public unsafe partial class EFI
 public unsafe struct EFI_EAP_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_EAP_PROTOCOL* /*This*/,/* IN */byte /*EapAuthType*/, EFI_STATUS> /*EFI_EAP_SET_DESIRED_AUTHENTICATION_METHOD*/ SetDesiredAuthMethod;
-  //public readonly delegate* unmanaged</* IN */EFI_EAP_PROTOCOL* /*This*/,/* IN */byte /*EapAuthType*/,/* IN */EFI_EAP_BUILD_RESPONSE_PACKET /*Handler*/, EFI_STATUS> /*EFI_EAP_REGISTER_AUTHENTICATION_METHOD*/ RegisterAuthMethod;
+  public readonly delegate* unmanaged</* IN */EFI_EAP_PROTOCOL* /*This*/,/* IN */byte /*EapAuthType*/,/* IN */delegate* unmanaged</* IN */EFI_PORT_HANDLE /*PortNumber*/,/* IN */byte* /*RequestBuffer*/,/* IN */ulong /*RequestSize*/,/* IN */byte* /*Buffer*/,/* IN OUT */ulong* /*BufferSize*/, EFI_STATUS> /*Handler*/, EFI_STATUS> /*EFI_EAP_REGISTER_AUTHENTICATION_METHOD*/ RegisterAuthMethod;
 }
 
 // extern EFI_GUID  gEfiEapProtocolGuid;

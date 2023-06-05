@@ -23,7 +23,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_USB_DISPATCH_PROTOCOL_GUID = new GUID(
-      0xee9b8d90, 0xc5a6, 0x40a2, new byte[] { 0xbd, 0xe2, 0x52, 0x55, 0x8d, 0x33, 0xcc, 0xa1 });
+      0xee9b8d90, 0xc5a6, 0x40a2, 0xbd, 0xe2, 0x52, 0x55, 0x8d, 0x33, 0xcc, 0xa1);
 }
 
 ///
@@ -123,7 +123,7 @@ public unsafe struct EFI_MM_USB_REGISTER_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_USB_DISPATCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_USB_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN CONST */EFI_MM_USB_REGISTER_CONTEXT*,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_USB_REGISTER*/ Register;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_USB_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */CONST /*EFI_MM_USB_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_USB_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_USB_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_USB_UNREGISTER*/ UnRegister;
 }
 

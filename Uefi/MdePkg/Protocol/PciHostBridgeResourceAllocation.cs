@@ -30,7 +30,7 @@ public unsafe partial class EFI
   /// Global ID for the EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.
   ///
   public static EFI_GUID EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL_GUID = new GUID(
-      0xCF8034BE, 0x6768, 0x4d8b, new byte[] { 0xB7, 0x39, 0x7C, 0xCE, 0x68, 0x3A, 0x9F, 0xBE });
+      0xCF8034BE, 0x6768, 0x4d8b, 0xB7, 0x39, 0x7C, 0xCE, 0x68, 0x3A, 0x9F, 0xBE);
 
   ///
   /// Forward declaration for EFI_PCI_HOST_BRIDGE_RESOURCE_ALLOCATION_PROTOCOL.

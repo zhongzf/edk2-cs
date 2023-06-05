@@ -20,7 +20,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_GET_PCD_INFO_PROTOCOL_GUID = new GUID(0xfd0f4478, 0xefd, 0x461d, new byte[] { 0xba, 0x2d, 0xe5, 0x8c, 0x45, 0xfd, 0x5f, 0x5e });
+  public static EFI_GUID EFI_GET_PCD_INFO_PROTOCOL_GUID = new GUID(0xfd0f4478, 0xefd, 0x461d, 0xba, 0x2d, 0xe5, 0x8c, 0x45, 0xfd, 0x5f, 0x5e);
 
   ///
   /// The forward declaration for EFI_GET_PCD_INFO_PROTOCOL.
@@ -73,7 +73,7 @@ public unsafe struct EFI_GET_PCD_INFO_PROTOCOL
   ///
   /// Retrieve additional information associated with a PCD.
   ///
-  //public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* OUT */EFI_PCD_INFO* /*PcdInfo*/, EFI_STATUS> /*EFI_GET_PCD_INFO_PROTOCOL_GET_INFO*/ GetInfo;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* OUT */EFI_PCD_INFO* /*PcdInfo*/, EFI_STATUS> /*EFI_GET_PCD_INFO_PROTOCOL_GET_INFO*/ GetInfo;
   ///
   /// Retrieve the currently set SKU Id.
   ///

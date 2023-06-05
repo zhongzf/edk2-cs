@@ -15,7 +15,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID MEMORY_OVERWRITE_REQUEST_CONTROL_LOCK_GUID = new GUID(
-      0xBB983CCF, 0x151D, 0x40E1, new byte[] { 0xA0, 0x7B, 0x4A, 0x17, 0xBE, 0x16, 0x82, 0x92 });
+      0xBB983CCF, 0x151D, 0x40E1, 0xA0, 0x7B, 0x4A, 0x17, 0xBE, 0x16, 0x82, 0x92);
 
   public const string MEMORY_OVERWRITE_REQUEST_CONTROL_LOCK_NAME = "MemoryOverwriteRequestControlLock";
 

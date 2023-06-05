@@ -23,7 +23,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL_GUID = new GUID(
-      0x4cec368e, 0x8e8e, 0x4d71, new byte[] { 0x8b, 0xe1, 0x95, 0x8c, 0x45, 0xfc, 0x8a, 0x53 });
+      0x4cec368e, 0x8e8e, 0x4d71, 0x8b, 0xe1, 0x95, 0x8c, 0x45, 0xfc, 0x8a, 0x53);
 }
 
 ///
@@ -163,7 +163,7 @@ public unsafe struct EFI_MM_PERIODIC_TIMER_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN CONST */EFI_MM_PERIODIC_TIMER_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_REGISTER*/ Register;
+  public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN CONST */EFI_MM_PERIODIC_TIMER_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_REGISTER*/ Register;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_UNREGISTER*/ UnRegister;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN OUT */ulong** /*MmiTickInterval*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_INTERVAL*/ GetNextShorterInterval;
 }
