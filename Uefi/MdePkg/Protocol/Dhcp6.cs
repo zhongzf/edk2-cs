@@ -19,10 +19,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_DHCP6_PROTOCOL_GUID = new GUID(
-      0x87c8bad7, 0x595, 0x4053, new byte[] { 0x82, 0x97, 0xde, 0xde, 0x39, 0x5f, 0x5d, 0x5b });
+      0x87c8bad7, 0x595, 0x4053, 0x82, 0x97, 0xde, 0xde, 0x39, 0x5f, 0x5d, 0x5b);
 
   public static EFI_GUID EFI_DHCP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x9fb9a8a1, 0x2f4a, 0x43a6, new byte[] { 0x88, 0x9c, 0xd0, 0xf7, 0xb6, 0xc4, 0x7a, 0xd5 });
+      0x9fb9a8a1, 0x2f4a, 0x43a6, 0x88, 0x9c, 0xd0, 0xf7, 0xb6, 0xc4, 0x7a, 0xd5);
 
   // typedef struct _EFI_DHCP6_PROTOCOL EFI_DHCP6_PROTOCOL;
 }
@@ -201,17 +201,17 @@ public unsafe struct EFI_DHCP6_PACKET
   /// byte of the Option[] field.
   ///
   public uint Length;
-  //  struct {
-  //    ///
-  //    /// The DHCPv6 packet header.
-  //    ///
-  //    public EFI_DHCP6_HEADER Header;
-  //  ///
-  //  /// Start of the DHCPv6 packed option data.
-  //  ///
-  //  public fixed byte Option[1];
-  //}
-}
+  //struct {
+    ///
+    /// The DHCPv6 packet header.
+    ///
+    public EFI_DHCP6_HEADER Header;
+  ///
+  /// Start of the DHCPv6 packed option data.
+  ///
+  public fixed byte Option[1];
+//}
+} 
 
 // #pragma pack()
 
@@ -315,7 +315,7 @@ public unsafe struct EFI_DHCP6_MODE_DATA
   /// Pointer to the configured IA of current instance. The caller can free this buffer after
   /// using it.
   ///
-  public EFI_DHCP6_IA[] Ia;
+  public EFI_DHCP6_IA* Ia;
 }
 
 // /**
@@ -792,10 +792,10 @@ public unsafe struct EFI_DHCP6_CONFIG_DATA
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_DHCP6_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* OUT */EFI_DHCP6_MODE_DATA* /*Dhcp6ModeData*/,/* OUT */EFI_DHCP6_CONFIG_DATA* /*Dhcp6ConfigData*/, EFI_STATUS> /*EFI_DHCP6_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* OUT */EFI_DHCP6_MODE_DATA* /*Dhcp6ModeData*/,/* OUT */EFI_DHCP6_CONFIG_DATA* /*Dhcp6ConfigData*/, EFI_STATUS> /*EFI_DHCP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */EFI_DHCP6_CONFIG_DATA* /*Dhcp6CfgData*/, EFI_STATUS> /*EFI_DHCP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_DHCP6_START*/ Start;
-  //public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */bool /*SendClientId*/,/* IN */EFI_DHCP6_PACKET_OPTION* /*OptionRequest*/,/* IN */uint /*OptionCount*/,/* IN */EFI_DHCP6_PACKET_OPTION* /*OptionList*/,/* IN */EFI_DHCP6_RETRANSMISSION* /*Retransmission*/,/* IN */EFI_EVENT /*TimeoutEvent*/,/* IN */EFI_DHCP6_INFO_CALLBACK /*ReplyCallback*/,/* IN */void* /*CallbackContext*/, EFI_STATUS> /*EFI_DHCP6_INFO_REQUEST*/ InfoRequest;
+  public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */bool /*SendClientId*/,/* IN */EFI_DHCP6_PACKET_OPTION* /*OptionRequest*/,/* IN */uint /*OptionCount*/,/* IN */EFI_DHCP6_PACKET_OPTION* /*OptionList*/,/* IN */EFI_DHCP6_RETRANSMISSION* /*Retransmission*/,/* IN */EFI_EVENT /*TimeoutEvent*/,/* IN */delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */EFI_DHCP6_PACKET* /*Packet*/, EFI_STATUS> /*ReplyCallback*/,/* IN */void* /*CallbackContext*/, EFI_STATUS> /*EFI_DHCP6_INFO_REQUEST*/ InfoRequest;
   public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */bool /*RebindRequest*/, EFI_STATUS> /*EFI_DHCP6_RENEW_REBIND*/ RenewRebind;
   public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */uint /*AddressCount*/,/* IN */EFI_IPv6_ADDRESS* /*Addresses*/, EFI_STATUS> /*EFI_DHCP6_DECLINE*/ Decline;
   public readonly delegate* unmanaged</* IN */EFI_DHCP6_PROTOCOL* /*This*/,/* IN */uint /*AddressCount*/,/* IN */EFI_IPv6_ADDRESS* /*Addresses*/, EFI_STATUS> /*EFI_DHCP6_RELEASE*/ Release;

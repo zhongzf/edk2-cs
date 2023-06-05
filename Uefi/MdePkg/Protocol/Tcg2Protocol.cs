@@ -18,9 +18,9 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_TCG2_PROTOCOL_GUID = new GUID(0x607f766c, 0x7455, 0x42be, new byte[] { 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f });
+  public static EFI_GUID EFI_TCG2_PROTOCOL_GUID = new GUID(0x607f766c, 0x7455, 0x42be, 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f);
 
-  //typedef struct tdEFI_TCG2_PROTOCOL EFI_TCG2_PROTOCOL;
+  typedef struct tdEFI_TCG2_PROTOCOL EFI_TCG2_PROTOCOL;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -336,7 +336,7 @@ public unsafe struct TCG2_PROTOCOL
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_TCG2_FINAL_EVENTS_TABLE_GUID = new GUID(0x1e2ed096, 0x30e2, 0x4254, new byte[] { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 });
+  public static EFI_GUID EFI_TCG2_FINAL_EVENTS_TABLE_GUID = new GUID(0x1e2ed096, 0x30e2, 0x4254, 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25);
 
   // extern EFI_GUID  gEfiTcg2FinalEventsTableGuid;
 }

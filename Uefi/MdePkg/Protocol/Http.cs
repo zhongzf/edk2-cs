@@ -22,10 +22,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0xbdc8e6af, 0xd9bc, 0x4379, new byte[] { 0xa7, 0x2a, 0xe0, 0xc4, 0xe7, 0x5d, 0xae, 0x1c });
+      0xbdc8e6af, 0xd9bc, 0x4379, 0xa7, 0x2a, 0xe0, 0xc4, 0xe7, 0x5d, 0xae, 0x1c);
 
   public static EFI_GUID EFI_HTTP_PROTOCOL_GUID = new GUID(
-      0x7a59b29b, 0x910b, 0x4171, new byte[] { 0x82, 0x42, 0xa8, 0x5a, 0x0d, 0xf2, 0x5b, 0x5b });
+      0x7a59b29b, 0x910b, 0x4171, 0x82, 0x42, 0xa8, 0x5a, 0x0d, 0xf2, 0x5b, 0x5b);
 
   // typedef struct _EFI_HTTP_PROTOCOL EFI_HTTP_PROTOCOL;
 }
@@ -173,12 +173,12 @@ public unsafe struct EFI_HTTP_CONFIG_DATA
   ///
   public bool LocalAddressIsIPv6;
 
-//  union {
-//    ///
-//    /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
-//    /// port used by the underlying TCP protocol.
-//    ///
-//    public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
+  //union {
+    ///
+    /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
+    /// port used by the underlying TCP protocol.
+    ///
+    public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
 //  ///
 //  /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
 //  /// used by the underlying TCP protocol.
@@ -245,23 +245,23 @@ public unsafe struct EFI_HTTP_MESSAGE
   ///
   /// HTTP message data.
   ///
-//  union {
-//    ///
-//    /// When the token is used to send a HTTP request, Request is a pointer to storage that
-//    /// contains such data as URL and HTTP method.
-//    ///
-//    public EFI_HTTP_REQUEST_DATA* Request;
-//  ///
-//  /// When used to await a response, Response points to storage containing HTTP response
-//  /// status code.
-//  ///
-//  public EFI_HTTP_RESPONSE_DATA* Response;
-//}
-///
-/// Number of HTTP header structures in Headers list. On request, this count is
-/// provided by the caller. On response, this count is provided by the HTTP driver.
-///
-public ulong HeaderCount;
+  //union {
+    ///
+    /// When the token is used to send a HTTP request, Request is a pointer to storage that
+    /// contains such data as URL and HTTP method.
+    ///
+    public EFI_HTTP_REQUEST_DATA* Request;
+  //  ///
+  //  /// When used to await a response, Response points to storage containing HTTP response
+  //  /// status code.
+  //  ///
+  //  public EFI_HTTP_RESPONSE_DATA* Response;
+  //}
+  ///
+  /// Number of HTTP header structures in Headers list. On request, this count is
+  /// provided by the caller. On response, this count is provided by the HTTP driver.
+  ///
+  public ulong HeaderCount;
   ///
   /// Array containing list of HTTP headers. On request, this array is populated by the
   /// caller. On response, this array is allocated and populated by the HTTP driver. It

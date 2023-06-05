@@ -78,7 +78,9 @@ public unsafe partial class EFI
 public unsafe struct EFI_MM_BASE_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_BASE_PROTOCOL* /*This*/,/* OUT */bool* /*InMmram*/, EFI_STATUS> /*EFI_MM_INSIDE_OUT*/ InMm;
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_BASE_PROTOCOL* /*This*/,/* IN OUT */EFI_MM_SYSTEM_TABLE** /*Mmst*/, EFI_STATUS> /*EFI_MM_GET_MMST_LOCATION*/ GetMmstLocation;
+
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_BASE_PROTOCOL* /*This*/,/* IN OUT */EFI_MM_SYSTEM_TABLE** /*Mmst*/, EFI_STATUS> /*EFI_MM_GET_MMST_LOCATION*/ GetMmstLocation;
+  public void* GetMmstLocation;
 }
 
 // extern EFI_GUID  gEfiMmBaseProtocolGuid;

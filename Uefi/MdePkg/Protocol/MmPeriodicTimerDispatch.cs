@@ -163,7 +163,9 @@ public unsafe struct EFI_MM_PERIODIC_TIMER_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN CONST */EFI_MM_PERIODIC_TIMER_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_REGISTER*/ Register;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN CONST */EFI_MM_PERIODIC_TIMER_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_REGISTER*/ Register;
+  public void* Register;
+
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_UNREGISTER*/ UnRegister;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_PERIODIC_TIMER_DISPATCH_PROTOCOL* /*This*/,/* IN OUT */ulong** /*MmiTickInterval*/, EFI_STATUS> /*EFI_MM_PERIODIC_TIMER_INTERVAL*/ GetNextShorterInterval;
 }

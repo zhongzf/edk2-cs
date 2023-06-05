@@ -24,9 +24,9 @@ public unsafe partial class EFI
   /// Global ID for the Legacy SPI Controller Protocol
   ///
   public static EFI_GUID EFI_LEGACY_SPI_CONTROLLER_GUID = new GUID(0x39136fc7, 0x1a11, 0x49de,
-      { 0xbf, 0x35, 0x0e, 0x78, 0xdd, 0xb5, 0x24, 0xfc });
+      { 0xbf, 0x35, 0x0e, 0x78, 0xdd, 0xb5, 0x24, 0xfc);
 
-typedef
+  typedef
   struct _EFI_LEGACY_SPI_CONTROLLER_PROTOCOL
 EFI_LEGACY_SPI_CONTROLLER_PROTOCOL;
 

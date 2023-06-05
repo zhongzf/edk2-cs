@@ -14,12 +14,14 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 // #include <IndustryStandard/UefiTcgPlatform.h>
 // #include <IndustryStandard/Tpm20.h>
+
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_TREE_PROTOCOL_GUID = new GUID(0x607f766c, 0x7455, 0x42be, new byte[] { 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f });
-}
+  public static EFI_GUID EFI_TREE_PROTOCOL_GUID = new GUID(
+  0x607f766c, 0x7455, 0x42be, 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f);
 
 // typedef struct _EFI_TREE_PROTOCOL EFI_TREE_PROTOCOL;
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct TREE_VERSION
@@ -101,7 +103,7 @@ public unsafe partial class EFI
   //
   // This bit shall be set when the intent is to measure a PE/COFF image.
   //
-  //public const ulong PE_COFF_IMAGE = 0x0000000000000010;
+  public const ulong PE_COFF_IMAGE = 0x0000000000000010;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -111,7 +113,7 @@ public unsafe struct TrEE_EVENTTYPE { uint Value; public static implicit operato
 
 public unsafe partial class EFI
 {
-  //public const ulong MAX_PCR_INDEX = 23;
+  public const ulong MAX_PCR_INDEX = 23;
   public const ulong TREE_EVENT_HEADER_VERSION = 1;
 
   // #pragma pack(1)

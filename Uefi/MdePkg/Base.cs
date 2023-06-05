@@ -276,20 +276,20 @@ public unsafe struct IPv6_ADDRESS
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct PHYSICAL_ADDRESS { ulong Value; public static implicit operator PHYSICAL_ADDRESS(ulong value) => new PHYSICAL_ADDRESS() { Value = value }; public static implicit operator ulong(PHYSICAL_ADDRESS value) => value.Value; }
 
-/////
-///// LIST_ENTRY structure definition.
-/////
-//// typedef struct _LIST_ENTRY LIST_ENTRY;
+///
+/// LIST_ENTRY structure definition.
+///
+// typedef struct _LIST_ENTRY LIST_ENTRY;
 
-/////
-///// _LIST_ENTRY structure definition.
-/////
-//[StructLayout(LayoutKind.Sequential)]
-//public unsafe struct LIST_ENTRY
-//{
-//  public LIST_ENTRY* ForwardLink;
-//  public LIST_ENTRY* BackLink;
-//}
+///
+/// _LIST_ENTRY structure definition.
+///
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct LIST_ENTRY
+{
+  public LIST_ENTRY* ForwardLink;
+  public LIST_ENTRY* BackLink;
+}
 
 ////
 //// Modifiers to abstract standard types to aid in debug of problems

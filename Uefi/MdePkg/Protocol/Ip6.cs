@@ -29,10 +29,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_IP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0xec835dd3, 0xfe0f, 0x617b, new byte[] { 0xa6, 0x21, 0xb3, 0x50, 0xc3, 0xe1, 0x33, 0x88 });
+      0xec835dd3, 0xfe0f, 0x617b, 0xa6, 0x21, 0xb3, 0x50, 0xc3, 0xe1, 0x33, 0x88);
 
   public static EFI_GUID EFI_IP6_PROTOCOL_GUID = new GUID(
-      0x2c8759d5, 0x5c2d, 0x66ef, new byte[] { 0x92, 0x5f, 0xb6, 0x6c, 0x10, 0x19, 0x57, 0xe2 });
+      0x2c8759d5, 0x5c2d, 0x66ef, 0x92, 0x5f, 0xb6, 0x6c, 0x10, 0x19, 0x57, 0xe2);
 
   // typedef struct _EFI_IP6_PROTOCOL EFI_IP6_PROTOCOL;
 }
@@ -568,11 +568,11 @@ public unsafe struct EFI_IP6_COMPLETION_TOKEN
   /// - EFI_NO_MEDIA: There was a media error.
   ///
   public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
-//    ///
-//    public EFI_IP6_RECEIVE_DATA* RxData;
+  //union {
+    ///
+    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
+    ///
+    public EFI_IP6_RECEIVE_DATA* RxData;
 //  ///
 //  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
 //  ///
@@ -965,7 +965,7 @@ public unsafe struct EFI_IP6_COMPLETION_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IP6_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP6_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* IN */EFI_IP6_CONFIG_DATA* /*Ip6ConfigData*/, EFI_STATUS> /*EFI_IP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*GroupAddress*/, EFI_STATUS> /*EFI_IP6_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_IP6_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv6_ADDRESS* /*Destination*/,/* IN */byte /*PrefixLength*/,/* IN */EFI_IPv6_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_IP6_ROUTES*/ Routes;

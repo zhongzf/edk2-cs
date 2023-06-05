@@ -126,7 +126,9 @@ public unsafe struct EFI_MM_SW_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_MM_SW_DISPATCH_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_SW_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN */OUT /*EFI_MM_SW_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SW_REGISTER*/ Register;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_SW_DISPATCH_PROTOCOL*,/* IN */EFI_MM_HANDLER_ENTRY_POINT /*DispatchFunction*/,/* IN OUT */EFI_MM_SW_REGISTER_CONTEXT*,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SW_REGISTER*/ Register;
+  public void* Register;
+
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_SW_DISPATCH_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_MM_SW_UNREGISTER*/ UnRegister;
   ///
   /// A read-only field that describes the maximum value that can be used in the

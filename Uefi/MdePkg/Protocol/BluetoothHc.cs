@@ -19,7 +19,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_BLUETOOTH_HC_PROTOCOL_GUID = new GUID(
-      0xb3930571, 0xbeba, 0x4fc5, new byte[] { 0x92, 0x3, 0x94, 0x27, 0x24, 0x2e, 0x6a, 0x43 });
+      0xb3930571, 0xbeba, 0x4fc5, 0x92, 0x3, 0x94, 0x27, 0x24, 0x2e, 0x6a, 0x43);
 
   // typedef struct _EFI_BLUETOOTH_HC_PROTOCOL EFI_BLUETOOTH_HC_PROTOCOL;
 
@@ -391,7 +391,7 @@ public unsafe struct EFI_BLUETOOTH_HC_PROTOCOL
   //
   // Non-blocking receive HCI event packets.
   //
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_HC_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_HC_ASYNC_RECEIVE_EVENT*/ AsyncReceiveEvent;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_HC_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_HC_ASYNC_RECEIVE_EVENT*/ AsyncReceiveEvent;
   //
   // Send HCI ACL (asynchronous connection-oriented) data packets.
   //
@@ -403,7 +403,7 @@ public unsafe struct EFI_BLUETOOTH_HC_PROTOCOL
   //
   // Non-blocking receive HCI ACL data packets.
   //
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_HC_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_HC_ASYNC_RECEIVE_ACL_DATA*/ AsyncReceiveACLData;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_HC_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_HC_ASYNC_RECEIVE_ACL_DATA*/ AsyncReceiveACLData;
   //
   // Send HCI synchronous (SCO and eSCO) data packets.
   //
@@ -415,7 +415,7 @@ public unsafe struct EFI_BLUETOOTH_HC_PROTOCOL
   //
   // Non-blocking receive HCI synchronous data packets.
   //
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_HC_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_HC_ASYNC_FUNC_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_HC_ASYNC_RECEIVE_SCO_DATA*/ AsyncReceiveSCOData;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_HC_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_HC_ASYNC_RECEIVE_SCO_DATA*/ AsyncReceiveSCOData;
 }
 
 // extern EFI_GUID  gEfiBluetoothHcProtocolGuid;

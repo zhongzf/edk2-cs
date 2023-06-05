@@ -326,9 +326,16 @@ public unsafe struct EFI_MM_MP_PROTOCOL
   public uint Revision;
   public uint Attributes;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberOfProcessors*/, EFI_STATUS> /*EFI_MM_GET_NUMBER_OF_PROCESSORS*/ GetNumberOfProcessors;
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*CpuNumber*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_DISPATCH_PROCEDURE*/ DispatchProcedure;
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_BROADCAST_PROCEDURE*/ BroadcastProcedure;
-  public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN OUT */void* /*ProcedureArguments*/, EFI_STATUS> /*EFI_MM_SET_STARTUP_PROCEDURE*/ SetStartupProcedure;
+
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*CpuNumber*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_DISPATCH_PROCEDURE*/ DispatchProcedure;
+  public void* DispatchProcedure;
+
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE2 /*Procedure*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN OUT */void* /*ProcedureArguments*/,/* IN OUT */MM_COMPLETION* /*Token*/,/* IN OUT */EFI_STATUS* /*CPUStatus*/, EFI_STATUS> /*EFI_MM_BROADCAST_PROCEDURE*/ BroadcastProcedure;
+  public void* BroadcastProcedure;
+
+  //public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN OUT */void* /*ProcedureArguments*/, EFI_STATUS> /*EFI_MM_SET_STARTUP_PROCEDURE*/ SetStartupProcedure;
+  public void* SetStartupProcedure;
+
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */MM_COMPLETION /*Token*/, EFI_STATUS> /*EFI_CHECK_FOR_PROCEDURE*/ CheckForProcedure;
   public readonly delegate* unmanaged</* IN CONST */EFI_MM_MP_PROTOCOL* /*This*/,/* IN */MM_COMPLETION /*Token*/, EFI_STATUS> /*EFI_WAIT_FOR_PROCEDURE*/ WaitForProcedure;
 }

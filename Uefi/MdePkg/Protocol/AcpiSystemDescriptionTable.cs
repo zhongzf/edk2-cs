@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_ACPI_SDT_PROTOCOL_GUID = new GUID(0xeb97088e, 0xcfdf, 0x49c6, new byte[] { 0xbe, 0x4b, 0xd9, 0x6, 0xa5, 0xb2, 0xe, 0x86 });
+  public static EFI_GUID EFI_ACPI_SDT_PROTOCOL_GUID = new GUID(0xeb97088e, 0xcfdf, 0x49c6, 0xbe, 0x4b, 0xd9, 0x6, 0xa5, 0xb2, 0xe, 0x86);
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -266,15 +266,12 @@ public unsafe struct EFI_ACPI_SDT_PROTOCOL
   ///
   public EFI_ACPI_TABLE_VERSION AcpiVersion;
   public readonly delegate* unmanaged</* IN */ulong /*Index*/,/* OUT */EFI_ACPI_SDT_HEADER** /*Table*/,/* OUT */EFI_ACPI_TABLE_VERSION* /*Version*/,/* OUT */ulong* /*TableKey*/, EFI_STATUS> /*EFI_ACPI_GET_ACPI_TABLE2*/ GetAcpiTable;
-  
-  //public readonly delegate* unmanaged</* IN */bool /*Register*/,/* IN */EFI_ACPI_NOTIFICATION_FN /*Notification*/, EFI_STATUS> /*EFI_ACPI_REGISTER_NOTIFY*/ RegisterNotify;
-  public void* RegisterNotify;
-
+  public readonly delegate* unmanaged</* IN */bool /*Register*/,/* IN */delegate* unmanaged<EFI_ACPI_SDT_HEADER, EFI_ACPI_TABLE_VERSION, ulong, EFI_STATUS> /*Notification*/, EFI_STATUS> /*EFI_ACPI_REGISTER_NOTIFY*/ RegisterNotify;
   public readonly delegate* unmanaged</* IN */void* /*Buffer*/,/* OUT */EFI_ACPI_HANDLE* /*Handle*/, EFI_STATUS> /*EFI_ACPI_OPEN*/ Open;
   public readonly delegate* unmanaged</* IN */ulong /*TableKey*/,/* OUT */EFI_ACPI_HANDLE* /*Handle*/, EFI_STATUS> /*EFI_ACPI_OPEN_SDT*/ OpenSdt;
   public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*Handle*/, EFI_STATUS> /*EFI_ACPI_CLOSE*/ Close;
   public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*ParentHandle*/,/* IN OUT */EFI_ACPI_HANDLE* /*Handle*/, EFI_STATUS> /*EFI_ACPI_GET_CHILD*/ GetChild;
-  public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*Handle*/,/* IN */ulong /*Index*/,/* OUT */EFI_ACPI_DATA_TYPE* /*DataType*/,/* OUTCONST */ void*,/* OUT */ulong* /*DataSize*/, EFI_STATUS> /*EFI_ACPI_GET_OPTION*/ GetOption;
+  public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*Handle*/,/* IN */ulong /*Index*/,/* OUT */EFI_ACPI_DATA_TYPE* /*DataType*/,/* OUT CONST */void*,/* OUT */ulong* /*DataSize*/, EFI_STATUS> /*EFI_ACPI_GET_OPTION*/ GetOption;
   public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*Handle*/,/* IN */ulong /*Index*/,/* IN CONST */void* /*Data*/,/* IN */ulong /*DataSize*/, EFI_STATUS> /*EFI_ACPI_SET_OPTION*/ SetOption;
   public readonly delegate* unmanaged</* IN */EFI_ACPI_HANDLE /*HandleIn*/,/* IN */void* /*AcpiPath*/,/* OUT */EFI_ACPI_HANDLE* /*HandleOut*/, EFI_STATUS> /*EFI_ACPI_FIND_PATH*/ FindPath;
 }

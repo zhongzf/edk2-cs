@@ -676,8 +676,13 @@ public unsafe struct EFI_MP_SERVICES_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberOfProcessors*/,/* OUT */ulong* /*NumberOfEnabledProcessors*/, EFI_STATUS> /*EFI_MP_SERVICES_GET_NUMBER_OF_PROCESSORS*/ GetNumberOfProcessors;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorNumber*/,/* OUT */EFI_PROCESSOR_INFORMATION* /*ProcessorInfoBuffer*/, EFI_STATUS> /*EFI_MP_SERVICES_GET_PROCESSOR_INFO*/ GetProcessorInfo;
-  public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */bool /*SingleThread*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroSeconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */ulong** /*FailedCpuList*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_ALL_APS*/ StartupAllAPs;
-  public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */ulong /*ProcessorNumber*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */bool* /*Finished*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_THIS_AP*/ StartupThisAP;
+
+  //public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */bool /*SingleThread*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroSeconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */ulong** /*FailedCpuList*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_ALL_APS*/ StartupAllAPs;
+  public void* StartupAllAPs;
+
+  //public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */EFI_AP_PROCEDURE /*Procedure*/,/* IN */ulong /*ProcessorNumber*/,/* IN */EFI_EVENT /*WaitEvent*/,/* IN */ulong /*TimeoutInMicroseconds*/,/* IN */void* /*ProcedureArgument*/,/* OUT */bool* /*Finished*/, EFI_STATUS> /*EFI_MP_SERVICES_STARTUP_THIS_AP*/ StartupThisAP;
+  public void* StartupThisAP;
+
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorNumber*/,/* IN */bool /*EnableOldBSP*/, EFI_STATUS> /*EFI_MP_SERVICES_SWITCH_BSP*/ SwitchBSP;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* IN */ulong /*ProcessorNumber*/,/* IN */bool /*EnableAP*/,/* IN */uint* /*HealthFlag*/, EFI_STATUS> /*EFI_MP_SERVICES_ENABLEDISABLEAP*/ EnableDisableAP;
   public readonly delegate* unmanaged</* IN */EFI_MP_SERVICES_PROTOCOL* /*This*/,/* OUT */ulong* /*ProcessorNumber*/, EFI_STATUS> /*EFI_MP_SERVICES_WHOAMI*/ WhoAmI;

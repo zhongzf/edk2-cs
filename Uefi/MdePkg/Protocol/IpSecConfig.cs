@@ -20,7 +20,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_IPSEC_CONFIG_PROTOCOL_GUID = new GUID(
-      0xce5e5929, 0xc7a3, 0x4602, new byte[] { 0xad, 0x9e, 0xc9, 0xda, 0xf9, 0x4e, 0xbf, 0xcf });
+      0xce5e5929, 0xc7a3, 0x4602, 0xad, 0x9e, 0xc9, 0xda, 0xf9, 0x4e, 0xbf, 0xcf);
 
   // typedef struct _EFI_IPSEC_CONFIG_PROTOCOL EFI_IPSEC_CONFIG_PROTOCOL;
 }
@@ -545,11 +545,11 @@ public unsafe struct EFI_IPSEC_PAD_ID
   /// Flag to identify which type of PAD Id is used.
   ///
   public bool PeerIdValid;
-//  union {
-//    ///
-//    /// Pointer to the IPv4 or IPv6 address range.
-//    ///
-//    public EFI_IP_ADDRESS_INFO IpAddress;
+  //union {
+    ///
+    /// Pointer to the IPv4 or IPv6 address range.
+    ///
+    public EFI_IP_ADDRESS_INFO IpAddress;
 //  ///
 //  /// Pointer to a null terminated ASCII string
 //  /// representing the symbolic names. A PeerId can be a DNS

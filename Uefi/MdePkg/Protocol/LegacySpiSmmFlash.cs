@@ -21,9 +21,9 @@ public unsafe partial class EFI
   /// Global ID for the Legacy SPI SMM Flash Protocol
   ///
   public static EFI_GUID EFI_LEGACY_SPI_SMM_FLASH_PROTOCOL_GUID = new GUID(0x5e3848d4, 0x0db5, 0x4fc0,
-      { 0x97, 0x29, 0x3f, 0x35, 0x3d, 0x4f, 0x87, 0x9f });
+      { 0x97, 0x29, 0x3f, 0x35, 0x3d, 0x4f, 0x87, 0x9f);
 
-typedef
+  typedef
   struct _EFI_LEGACY_SPI_FLASH_PROTOCOL
 EFI_LEGACY_SPI_SMM_FLASH_PROTOCOL;
 

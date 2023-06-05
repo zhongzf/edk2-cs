@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_I2C_MASTER_PROTOCOL_GUID = new GUID( 0xcd72881f, 0x45b5, 0x4feb, new byte[] { 0x98, 0xc8, 0x31, 0x3d, 0xa8, 0x11, 0x74, 0x62 } );
+  public static EFI_GUID EFI_I2C_MASTER_PROTOCOL_GUID = new GUID( 0xcd72881f, 0x45b5, 0x4feb,  0x98, 0xc8, 0x31, 0x3d, 0xa8, 0x11, 0x74, 0x62 );
 
   // typedef struct _EFI_I2C_MASTER_PROTOCOL EFI_I2C_MASTER_PROTOCOL;
 
@@ -181,6 +181,7 @@ public unsafe struct EFI_I2C_MASTER_PROTOCOL
   /// Start an I2C transaction in master mode on the host controller.
   ///
   //public readonly delegate* unmanaged</* IN CONST */EFI_I2C_MASTER_PROTOCOL* /*This*/,/* IN */ulong /*SlaveAddress*/,/* IN */EFI_I2C_REQUEST_PACKET* /*RequestPacket*/,/* IN */EFI_EVENT /*Event*/,/* OUT */EFI_STATUS* /*I2cStatus*/, EFI_STATUS> /*EFI_I2C_MASTER_PROTOCOL_START_REQUEST*/ StartRequest;
+  public void* StartRequest;
 
   ///
   /// Pointer to an EFI_I2C_CONTROLLER_CAPABILITIES data structure containing

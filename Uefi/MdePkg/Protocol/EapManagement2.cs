@@ -25,7 +25,7 @@ public unsafe partial class EFI
   /// EAPOL state machine.
   ///
   public static EFI_GUID EFI_EAP_MANAGEMENT2_PROTOCOL_GUID = new GUID(
-      0x5e93c847, 0x456d, 0x40b3, new byte[] { 0xa6, 0xb4, 0x78, 0xb0, 0xc9, 0xcf, 0x7f, 0x20 });
+      0x5e93c847, 0x456d, 0x40b3, 0xa6, 0xb4, 0x78, 0xb0, 0xc9, 0xcf, 0x7f, 0x20);
 
   // typedef struct _EFI_EAP_MANAGEMENT2_PROTOCOL EFI_EAP_MANAGEMENT2_PROTOCOL;
 
@@ -71,14 +71,14 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_EAP_MANAGEMENT2_PROTOCOL
 {
-  //public EFI_EAP_GET_SYSTEM_CONFIGURATION GetSystemConfiguration;
-  //public EFI_EAP_SET_SYSTEM_CONFIGURATION SetSystemConfiguration;
-  //public EFI_EAP_INITIALIZE_PORT InitializePort;
-  //public EFI_EAP_USER_LOGON UserLogon;
-  //public EFI_EAP_USER_LOGOFF UserLogoff;
-  //public EFI_EAP_GET_SUPPLICANT_STATUS GetSupplicantStatus;
-  //public EFI_EAP_SET_SUPPLICANT_CONFIGURATION SetSupplicantConfiguration;
-  //public EFI_EAP_GET_SUPPLICANT_STATISTICS GetSupplicantStatistics;
+  public void* /*EFI_EAP_GET_SYSTEM_CONFIGURATION*/ GetSystemConfiguration;
+  public void* /*EFI_EAP_SET_SYSTEM_CONFIGURATION*/ SetSystemConfiguration;
+  public void* /*EFI_EAP_INITIALIZE_PORT*/ InitializePort;
+  public void* /*EFI_EAP_USER_LOGON*/ UserLogon;
+  public void* /*EFI_EAP_USER_LOGOFF*/ UserLogoff;
+  public void* /*EFI_EAP_GET_SUPPLICANT_STATUS*/ GetSupplicantStatus;
+  public void* /*EFI_EAP_SET_SUPPLICANT_CONFIGURATION*/ SetSupplicantConfiguration;
+  public void* /*EFI_EAP_GET_SUPPLICANT_STATISTICS*/ GetSupplicantStatistics;
   public readonly delegate* unmanaged</* IN */EFI_EAP_MANAGEMENT2_PROTOCOL* /*This*/,/* IN OUT */byte* /*Msk*/,/* IN OUT */ulong* /*MskSize*/,/* IN OUT */byte* /*Emsk*/,/* IN OUT */byte* /*EmskSize*/, EFI_STATUS> /*EFI_EAP_GET_KEY*/ GetKey;
 }
 

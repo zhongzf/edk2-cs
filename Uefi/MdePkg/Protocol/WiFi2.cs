@@ -18,7 +18,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL_GUID = new GUID(
-      0x1b0fb9bf, 0x699d, 0x4fdd, new byte[] { 0xa7, 0xc3, 0x25, 0x46, 0x68, 0x1b, 0xf6, 0x3b });
+      0x1b0fb9bf, 0x699d, 0x4fdd, 0xa7, 0xc3, 0x25, 0x46, 0x68, 0x1b, 0xf6, 0x3b);
 
   // typedef struct _EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL;
 }
@@ -184,11 +184,11 @@ public unsafe struct EFI_80211_NETWORK
   //
   // Pointer to the AKM suites supported in the wireless network.
   //
-  public EFI_80211_AKM_SUITE_SELECTOR[] AKMSuite;
+  public EFI_80211_AKM_SUITE_SELECTOR* AKMSuite;
   //
   // Pointer to the cipher suites supported in the wireless network.
   //
-  public EFI_80211_CIPHER_SUITE_SELECTOR[] CipherSuite;
+  public EFI_80211_CIPHER_SUITE_SELECTOR* CipherSuite;
 }
 
 ///
@@ -252,12 +252,12 @@ public unsafe struct EFI_80211_GET_NETWORKS_TOKEN
   //
   // Pointer to the input data for getting networks.
   //
-  public EFI_80211_GET_NETWORKS_DATA[] Data;
+  public EFI_80211_GET_NETWORKS_DATA* Data;
   //
   // Indicates the scan result. It is caller's responsibility to free this
   // buffer.
   //
-  public EFI_80211_GET_NETWORKS_RESULT[] Result;
+  public EFI_80211_GET_NETWORKS_RESULT* Result;
 }
 
 ///
@@ -269,7 +269,7 @@ public unsafe struct EFI_80211_CONNECT_NETWORK_DATA
   //
   // Specifies the wireless network to connect to.
   //
-  public EFI_80211_NETWORK[] Network;
+  public EFI_80211_NETWORK* Network;
   //
   // Specifies a time limit in seconds that is optionally present, after which
   // the connection establishment procedure is terminated by the UNDI driver.
@@ -304,7 +304,7 @@ public unsafe struct EFI_80211_CONNECT_NETWORK_TOKEN
   //
   // Pointer to the connection data.
   //
-  public EFI_80211_CONNECT_NETWORK_DATA[] Data;
+  public EFI_80211_CONNECT_NETWORK_DATA* Data;
   //
   // Indicates the connection state.
   //
@@ -434,8 +434,8 @@ public unsafe struct EFI_80211_DISCONNECT_NETWORK_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_GET_NETWORKS_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_GET_NETWORKS*/ GetNetworks;
-  //public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_CONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_CONNECT_NETWORK*/ ConnectNetwork;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_GET_NETWORKS_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_GET_NETWORKS*/ GetNetworks;
+  public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_CONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_CONNECT_NETWORK*/ ConnectNetwork;
   public readonly delegate* unmanaged</* IN */EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL* /*This*/,/* IN */EFI_80211_DISCONNECT_NETWORK_TOKEN* /*Token*/, EFI_STATUS> /*EFI_WIRELESS_MAC_CONNECTION_II_DISCONNECT_NETWORK*/ DisconnectNetwork;
 }
 

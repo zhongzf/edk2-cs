@@ -21,10 +21,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_DNS6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x7f1647c8, 0xb76e, 0x44b2, new byte[] { 0xa5, 0x65, 0xf7, 0xf, 0xf1, 0x9c, 0xd1, 0x9e });
+      0x7f1647c8, 0xb76e, 0x44b2, 0xa5, 0x65, 0xf7, 0xf, 0xf1, 0x9c, 0xd1, 0x9e);
 
   public static EFI_GUID EFI_DNS6_PROTOCOL_GUID = new GUID(
-      0xca37bc1f, 0xa327, 0x4ae9, new byte[] { 0x82, 0x8a, 0x8c, 0x40, 0xd8, 0x50, 0x6a, 0x17 });
+      0xca37bc1f, 0xa327, 0x4ae9, 0x82, 0x8a, 0x8c, 0x40, 0xd8, 0x50, 0x6a, 0x17);
 
   // typedef struct _EFI_DNS6_PROTOCOL EFI_DNS6_PROTOCOL;
 }
@@ -259,24 +259,24 @@ public unsafe struct EFI_DNS6_COMPLETION_TOKEN
   ///
   /// DNSv6 completion token data
   ///
-//  union {
-//    ///
-//    /// When the Token is used for host name to address translation, H2AData is a pointer
-//    /// to the DNS6_HOST_TO_ADDR_DATA.
-//    ///
-//    public DNS6_HOST_TO_ADDR_DATA* H2AData;
-//  ///
-//  /// When the Token is used for host address to host name translation, A2HData is a
-//  /// pointer to the DNS6_ADDR_TO_HOST_DATA.
-//  ///
-//  public DNS6_ADDR_TO_HOST_DATA* A2HData;
-//  ///
-//  /// When the Token is used for a general lookup function, GLookupDATA is a pointer to
-//  /// the DNS6_GENERAL_LOOKUP_DATA.
-//  ///
-//  public DNS6_GENERAL_LOOKUP_DATA* GLookupData;
-//}
-} 
+  //union {
+  ///
+  /// When the Token is used for host name to address translation, H2AData is a pointer
+  /// to the DNS6_HOST_TO_ADDR_DATA.
+  ///
+  public DNS6_HOST_TO_ADDR_DATA* H2AData;
+  //  ///
+  //  /// When the Token is used for host address to host name translation, A2HData is a
+  //  /// pointer to the DNS6_ADDR_TO_HOST_DATA.
+  //  ///
+  //  public DNS6_ADDR_TO_HOST_DATA* A2HData;
+  //  ///
+  //  /// When the Token is used for a general lookup function, GLookupDATA is a pointer to
+  //  /// the DNS6_GENERAL_LOOKUP_DATA.
+  //  ///
+  //  public DNS6_GENERAL_LOOKUP_DATA* GLookupData;
+  //}
+}
 
 // /**
 //   Retrieve mode data of this DNS instance.

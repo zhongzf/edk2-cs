@@ -36,7 +36,7 @@ public unsafe partial class EFI
   /// Global ID for the EFI_IDE_CONTROLLER_INIT_PROTOCOL.
   ///
   public static EFI_GUID EFI_IDE_CONTROLLER_INIT_PROTOCOL_GUID = new GUID(
-      0xa1e37052, 0x80d9, 0x4e65, new byte[] { 0xa3, 0x17, 0x3e, 0x9a, 0x55, 0xc4, 0x3e, 0xc9 });
+      0xa1e37052, 0x80d9, 0x4e65, 0xa3, 0x17, 0x3e, 0x9a, 0x55, 0xc4, 0x3e, 0xc9);
 
   ///
   /// Forward declaration for EFI_IDE_CONTROLLER_INIT_PROTOCOL.
@@ -548,18 +548,18 @@ public unsafe struct EFI_IDE_CONTROLLER_INIT_PROTOCOL
   /// IDE device does not support these modes and these modes should not be
   /// returned by EFI_IDE_CONTROLLER_INIT_PROTOCOL.CalculateMode()
   ///
-  //public readonly delegate* unmanaged</* IN */EFI_IDE_CONTROLLER_INIT_PROTOCOL* /*This*/,/* IN */byte /*Channel*/,/* IN */byte /*Device*/,/* IN */EFI_ATA_COLLECTIVE_MODE* /*BadModes*/, EFI_STATUS> /*EFI_IDE_CONTROLLER_DISQUALIFY_MODE*/ DisqualifyMode;
+  public readonly delegate* unmanaged</* IN */EFI_IDE_CONTROLLER_INIT_PROTOCOL* /*This*/,/* IN */byte /*Channel*/,/* IN */byte /*Device*/,/* IN */EFI_ATA_COLLECTIVE_MODE* /*BadModes*/, EFI_STATUS> /*EFI_IDE_CONTROLLER_DISQUALIFY_MODE*/ DisqualifyMode;
 
   ///
   /// Calculates and returns the optimum mode for a particular IDE device.
   ///
-  //public readonly delegate* unmanaged</* IN */EFI_IDE_CONTROLLER_INIT_PROTOCOL* /*This*/,/* IN */byte /*Channel*/,/* IN */byte /*Device*/,/* OUT */EFI_ATA_COLLECTIVE_MODE** /*SupportedModes*/, EFI_STATUS> /*EFI_IDE_CONTROLLER_CALCULATE_MODE*/ CalculateMode;
+  public readonly delegate* unmanaged</* IN */EFI_IDE_CONTROLLER_INIT_PROTOCOL* /*This*/,/* IN */byte /*Channel*/,/* IN */byte /*Device*/,/* OUT */EFI_ATA_COLLECTIVE_MODE** /*SupportedModes*/, EFI_STATUS> /*EFI_IDE_CONTROLLER_CALCULATE_MODE*/ CalculateMode;
 
   ///
   /// Programs the IDE controller hardware to the default timing or per the modes
   /// that were returned by the last call to EFI_IDE_CONTROLLER_INIT_PROTOCOL.CalculateMode().
   ///
-  //public readonly delegate* unmanaged</* IN */EFI_IDE_CONTROLLER_INIT_PROTOCOL* /*This*/,/* IN */byte /*Channel*/,/* IN */byte /*Device*/,/* IN */EFI_ATA_COLLECTIVE_MODE* /*Modes*/, EFI_STATUS> /*EFI_IDE_CONTROLLER_SET_TIMING*/ SetTiming;
+  public readonly delegate* unmanaged</* IN */EFI_IDE_CONTROLLER_INIT_PROTOCOL* /*This*/,/* IN */byte /*Channel*/,/* IN */byte /*Device*/,/* IN */EFI_ATA_COLLECTIVE_MODE* /*Modes*/, EFI_STATUS> /*EFI_IDE_CONTROLLER_SET_TIMING*/ SetTiming;
 
   ///
   /// Set to TRUE if the enumeration group includes all the channels that are

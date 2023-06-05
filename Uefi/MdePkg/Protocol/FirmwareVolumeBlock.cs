@@ -343,8 +343,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* OUT */EFI_FVB_ATTRIBUTES_2* /*Attributes*/, EFI_STATUS> /*EFI_FVB_GET_ATTRIBUTES*/ GetAttributes;
-  public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* IN OUT */EFI_FVB_ATTRIBUTES_2* /*Attributes*/, EFI_STATUS> /*EFI_FVB_SET_ATTRIBUTES*/ SetAttributes;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* OUT */EFI_FVB_ATTRIBUTES_2* /*Attributes*/, EFI_STATUS> /*EFI_FVB_GET_ATTRIBUTES*/ GetAttributes;
+  public void* GetAttributes;
+
+  //public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* IN OUT */EFI_FVB_ATTRIBUTES_2* /*Attributes*/, EFI_STATUS> /*EFI_FVB_SET_ATTRIBUTES*/ SetAttributes;
+  public void* SetAttributes;
+
   public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* OUT */EFI_PHYSICAL_ADDRESS* /*Address*/, EFI_STATUS> /*EFI_FVB_GET_PHYSICAL_ADDRESS*/ GetPhysicalAddress;
   public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* IN */EFI_LBA /*Lba*/,/* OUT */ulong* /*BlockSize*/,/* OUT */ulong* /*NumberOfBlocks*/, EFI_STATUS> /*EFI_FVB_GET_BLOCK_SIZE*/ GetBlockSize;
   public readonly delegate* unmanaged</* IN CONST */EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL* /*This*/,/* IN */EFI_LBA /*Lba*/,/* IN */ulong /*Offset*/,/* IN OUT */ulong* /*NumBytes*/,/* IN OUT */byte* /*Buffer*/, EFI_STATUS> /*EFI_FVB_READ*/ Read;

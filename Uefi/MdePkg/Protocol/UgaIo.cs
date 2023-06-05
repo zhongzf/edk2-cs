@@ -16,7 +16,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_UGA_IO_PROTOCOL_GUID = new GUID(0x61a4d49e, 0x6f68, 0x4f1b, new byte[] { 0xb9, 0x22, 0xa8, 0x6e, 0xed, 0xb, 0x7, 0xa2 });
+  public static EFI_GUID EFI_UGA_IO_PROTOCOL_GUID = new GUID(0x61a4d49e, 0x6f68, 0x4f1b, 0xb9, 0x22, 0xa8, 0x6e, 0xed, 0xb, 0x7, 0xa2);
 
   // typedef struct _EFI_UGA_IO_PROTOCOL EFI_UGA_IO_PROTOCOL;
 }
@@ -33,7 +33,7 @@ public enum UGA_DEVICE_TYPE
   UgaDtOther
 }
 
-//typedef uint UGA_DEVICE_ID, * PUGA_DEVICE_ID;
+typedef uint UGA_DEVICE_ID, * PUGA_DEVICE_ID;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct UGA_DEVICE_DATA

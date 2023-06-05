@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_I2C_IO_PROTOCOL_GUID = new GUID( 0xb60a3e6b, 0x18c4, 0x46e5, new byte[] { 0xa2, 0x9a, 0xc9, 0xa1, 0x06, 0x65, 0xa2, 0x8e } );
+  public static EFI_GUID EFI_I2C_IO_PROTOCOL_GUID = new GUID( 0xb60a3e6b, 0x18c4, 0x46e5,  0xa2, 0x9a, 0xc9, 0xa1, 0x06, 0x65, 0xa2, 0x8e );
 
   ///
   /// I2C I/O protocol
@@ -137,6 +137,7 @@ public unsafe struct EFI_I2C_IO_PROTOCOL
   /// Queue an I2C transaction for execution on the I2C device.
   ///
   //public readonly delegate* unmanaged</* IN CONST */EFI_I2C_IO_PROTOCOL* /*This*/,/* IN */ulong /*SlaveAddressIndex*/,/* IN */EFI_EVENT /*Event*/,/* IN */EFI_I2C_REQUEST_PACKET* /*RequestPacket*/,/* OUT */EFI_STATUS* /*I2cStatus*/, EFI_STATUS> /*EFI_I2C_IO_PROTOCOL_QUEUE_REQUEST*/ QueueRequest;
+  public void* QueueRequest;
 
   ///
   /// Unique value assigned by the silicon manufacture or the third

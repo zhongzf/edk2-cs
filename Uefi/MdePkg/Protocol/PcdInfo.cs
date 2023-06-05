@@ -97,8 +97,12 @@ public unsafe struct GET_PCD_INFO_PROTOCOL
   ///
   /// Retrieve additional information associated with a PCD.
   ///
-  public readonly delegate* unmanaged</* IN */ulong /*TokenNumber*/,/* OUT */EFI_PCD_INFO* /*PcdInfo*/, EFI_STATUS> /*GET_PCD_INFO_PROTOCOL_GET_INFO*/ GetInfo;
-  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* OUT */EFI_PCD_INFO* /*PcdInfo*/, EFI_STATUS> /*GET_PCD_INFO_PROTOCOL_GET_INFO_EX*/ GetInfoEx;
+  //public readonly delegate* unmanaged</* IN */ulong /*TokenNumber*/,/* OUT */EFI_PCD_INFO* /*PcdInfo*/, EFI_STATUS> /*GET_PCD_INFO_PROTOCOL_GET_INFO*/ GetInfo;
+  public void* GetInfo;
+
+  //public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* OUT */EFI_PCD_INFO* /*PcdInfo*/, EFI_STATUS> /*GET_PCD_INFO_PROTOCOL_GET_INFO_EX*/ GetInfoEx;
+  public void* GetInfoEx;
+
   ///
   /// Retrieve the currently set SKU Id.
   ///

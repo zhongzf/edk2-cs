@@ -219,8 +219,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_PKCS7_VERIFY_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_PKCS7_VERIFY_PROTOCOL* /*This*/,/* IN */void* /*SignedData*/,/* IN */ulong /*SignedDataSize*/,/* IN */void* /*InData*/,/* IN */ulong /*InDataSize*/,/* IN */EFI_SIGNATURE_LIST** /*AllowedDb*/,/* IN */EFI_SIGNATURE_LIST** /*RevokedDb*/,/* IN */EFI_SIGNATURE_LIST** /*TimeStampDb*/,/* OUT */void* /*Content*/,/* IN OUT */ulong* /*ContentSize*/, EFI_STATUS> /*EFI_PKCS7_VERIFY_BUFFER*/ VerifyBuffer;
-  public readonly delegate* unmanaged</* IN */EFI_PKCS7_VERIFY_PROTOCOL* /*This*/,/* IN */void* /*Signature*/,/* IN */ulong /*SignatureSize*/,/* IN */void* /*InHash*/,/* IN */ulong /*InHashSize*/,/* IN */EFI_SIGNATURE_LIST** /*AllowedDb*/,/* IN */EFI_SIGNATURE_LIST** /*RevokedDb*/,/* IN */EFI_SIGNATURE_LIST** /*TimeStampDb*/, EFI_STATUS> /*EFI_PKCS7_VERIFY_SIGNATURE*/ VerifySignature;
+  //public readonly delegate* unmanaged</* IN */EFI_PKCS7_VERIFY_PROTOCOL* /*This*/,/* IN */void* /*SignedData*/,/* IN */ulong /*SignedDataSize*/,/* IN */void* /*InData*/,/* IN */ulong /*InDataSize*/,/* IN */EFI_SIGNATURE_LIST** /*AllowedDb*/,/* IN */EFI_SIGNATURE_LIST** /*RevokedDb*/,/* IN */EFI_SIGNATURE_LIST** /*TimeStampDb*/,/* OUT */void* /*Content*/,/* IN OUT */ulong* /*ContentSize*/, EFI_STATUS> /*EFI_PKCS7_VERIFY_BUFFER*/ VerifyBuffer;
+  //public readonly delegate* unmanaged</* IN */EFI_PKCS7_VERIFY_PROTOCOL* /*This*/,/* IN */void* /*Signature*/,/* IN */ulong /*SignatureSize*/,/* IN */void* /*InHash*/,/* IN */ulong /*InHashSize*/,/* IN */EFI_SIGNATURE_LIST** /*AllowedDb*/,/* IN */EFI_SIGNATURE_LIST** /*RevokedDb*/,/* IN */EFI_SIGNATURE_LIST** /*TimeStampDb*/, EFI_STATUS> /*EFI_PKCS7_VERIFY_SIGNATURE*/ VerifySignature;
 }
 
 // extern EFI_GUID  gEfiPkcs7VerifyProtocolGuid;

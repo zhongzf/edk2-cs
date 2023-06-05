@@ -21,13 +21,13 @@ public unsafe partial class EFI
   // GUID retired from UEFI Specification 2.1b
   //
   public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
-      0xE18541CD, 0xF755, 0x4f73, new byte[] { 0x92, 0x8D, 0x64, 0x3C, 0x8A, 0x79, 0xB2, 0x29 });
+      0xE18541CD, 0xF755, 0x4f73, 0x92, 0x8D, 0x64, 0x3C, 0x8A, 0x79, 0xB2, 0x29);
 
   //
   // GUID intruduced in UEFI Specification 2.1b
   //
   //public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
-  //    0x1ACED566, 0x76ED, 0x4218, new byte[] { 0xBC, 0x81, 0x76, 0x7F, 0x1F, 0x97, 0x7A, 0x89 });
+  //    0x1ACED566, 0x76ED, 0x4218, 0xBC, 0x81, 0x76, 0x7F, 0x1F, 0x97, 0x7A, 0x89);
 
   //
   // Revision defined in UEFI Specification 2.4
@@ -101,16 +101,16 @@ public unsafe struct NII_entry
   public uint NumberOfInterfaces;  ///< The number of NIC devices
                                    ///< that this UNDI controls.
   public uint reserved;
-  //public UNDI_CONFIG_TABLE* nextlink;           ///< A pointer to the next UNDI
+  public void* /* UNDI_CONFIG_TABLE* */ nextlink;           ///< A pointer to the next UNDI
                                                 ///< configuration table.
                                                 ///
                                                 /// The length of this array is given in the NumberOfInterfaces field.
                                                 ///
-//  struct {
-//    public void* NII_InterfacePointer;          ///< Pointer to the NII interface structure.
-//  public void* DevicePathPointer;             ///< Pointer to the device path for this NIC.
+  //struct {
+    public void* NII_InterfacePointer;          ///< Pointer to the NII interface structure.
+  public void* DevicePathPointer;             ///< Pointer to the device path for this NIC.
 //}
-}
+};
 
 // extern EFI_GUID  gEfiNetworkInterfaceIdentifierProtocolGuid;
 // extern EFI_GUID  gEfiNetworkInterfaceIdentifierProtocolGuid_31;

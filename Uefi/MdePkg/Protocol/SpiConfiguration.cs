@@ -21,78 +21,78 @@ public unsafe partial class EFI
   /// Global ID for the SPI Configuration Protocol
   ///
   public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
-    new byte[] { 0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8 });
+       0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8);
 
-///
-/// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
-///
-//public const ulong Hz = (Frequency)(Frequency);
-//public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
-//public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
+  ///
+  /// Macros to easily specify frequencies in hertz, kilohertz and megahertz.
+  ///
+  //public const ulong Hz = (Frequency)(Frequency);
+  //public const ulong KHz = (Frequency)(1000 * Hz(Frequency));
+  //public const ulong MHz = (Frequency)(1000 * KHz(Frequency));
 
-// typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
+  // typedef struct _EFI_SPI_PERIPHERAL EFI_SPI_PERIPHERAL;
 
-// /**
-//   Manipulate the chip select for a SPI device.
-// 
-//   This routine must be called at or below TPL_NOTIFY.
-//   Update the value of the chip select line for a SPI peripheral.
-//   The SPI bus layer calls this routine either in the board layer or in the SPI
-//   controller to manipulate the chip select pin at the start and end of a SPI
-//   transaction.
-// 
-//   @param[in] SpiPeripheral  The address of an EFI_SPI_PERIPHERAL data structure
-//                             describing the SPI peripheral whose chip select pin
-//                             is to be manipulated. The routine may access the
-//                             ChipSelectParameter field to gain sufficient
-//                             context to complete the operation.
-//   @param[in] PinValue       The value to be applied to the chip select line of
-//                             the SPI peripheral.
-// 
-//   @retval EFI_SUCCESS            The chip select was set successfully
-//   @retval EFI_NOT_READY          Support for the chip select is not properly
-//                                  initialized
-//   @retval EFI_INVALID_PARAMETER  The SpiPeripheral->ChipSelectParameter value
-//                                  is invalid
-// 
-// **/
-// typedef
-// EFI_STATUS
-// (EFIAPI *EFI_SPI_CHIP_SELECT)(
-//   IN CONST EFI_SPI_PERIPHERAL  *SpiPeripheral,
-//   IN bool                   PinValue
-//   );
+  // /**
+  //   Manipulate the chip select for a SPI device.
+  // 
+  //   This routine must be called at or below TPL_NOTIFY.
+  //   Update the value of the chip select line for a SPI peripheral.
+  //   The SPI bus layer calls this routine either in the board layer or in the SPI
+  //   controller to manipulate the chip select pin at the start and end of a SPI
+  //   transaction.
+  // 
+  //   @param[in] SpiPeripheral  The address of an EFI_SPI_PERIPHERAL data structure
+  //                             describing the SPI peripheral whose chip select pin
+  //                             is to be manipulated. The routine may access the
+  //                             ChipSelectParameter field to gain sufficient
+  //                             context to complete the operation.
+  //   @param[in] PinValue       The value to be applied to the chip select line of
+  //                             the SPI peripheral.
+  // 
+  //   @retval EFI_SUCCESS            The chip select was set successfully
+  //   @retval EFI_NOT_READY          Support for the chip select is not properly
+  //                                  initialized
+  //   @retval EFI_INVALID_PARAMETER  The SpiPeripheral->ChipSelectParameter value
+  //                                  is invalid
+  // 
+  // **/
+  // typedef
+  // EFI_STATUS
+  // (EFIAPI *EFI_SPI_CHIP_SELECT)(
+  //   IN CONST EFI_SPI_PERIPHERAL  *SpiPeripheral,
+  //   IN bool                   PinValue
+  //   );
 
-// /**
-//   Set up the clock generator to produce the correct clock frequency, phase and
-//   polarity for a SPI chip.
-// 
-//   This routine must be called at or below TPL_NOTIFY.
-//   This routine updates the clock generator to generate the correct frequency
-//   and polarity for the SPI clock.
-// 
-//   @param[in] SpiPeripheral  Pointer to a EFI_SPI_PERIPHERAL data structure from
-//                             which the routine can access the ClockParameter,
-//                             ClockPhase and ClockPolarity fields. The routine
-//                             also has access to the names for the SPI bus and
-//                             chip which can be used during debugging.
-//   @param[in] ClockHz        Pointer to the requested clock frequency. The clock
-//                             generator will choose a supported clock frequency
-//                             which is less then or equal to this value.
-//                             Specify zero to turn the clock generator off.
-//                             The actual clock frequency supported by the clock
-//                             generator will be returned.
-// 
-//   @retval EFI_SUCCESS      The clock was set up successfully
-//   @retval EFI_UNSUPPORTED  The SPI controller was not able to support the
-//                            frequency requested by CLockHz
-// 
-// **/
-// typedef EFI_STATUS
-// (EFIAPI *EFI_SPI_CLOCK)(
-//   IN CONST EFI_SPI_PERIPHERAL  *SpiPeripheral,
-//   IN uint                    *ClockHz
-//   );
+  // /**
+  //   Set up the clock generator to produce the correct clock frequency, phase and
+  //   polarity for a SPI chip.
+  // 
+  //   This routine must be called at or below TPL_NOTIFY.
+  //   This routine updates the clock generator to generate the correct frequency
+  //   and polarity for the SPI clock.
+  // 
+  //   @param[in] SpiPeripheral  Pointer to a EFI_SPI_PERIPHERAL data structure from
+  //                             which the routine can access the ClockParameter,
+  //                             ClockPhase and ClockPolarity fields. The routine
+  //                             also has access to the names for the SPI bus and
+  //                             chip which can be used during debugging.
+  //   @param[in] ClockHz        Pointer to the requested clock frequency. The clock
+  //                             generator will choose a supported clock frequency
+  //                             which is less then or equal to this value.
+  //                             Specify zero to turn the clock generator off.
+  //                             The actual clock frequency supported by the clock
+  //                             generator will be returned.
+  // 
+  //   @retval EFI_SUCCESS      The clock was set up successfully
+  //   @retval EFI_UNSUPPORTED  The SPI controller was not able to support the
+  //                            frequency requested by CLockHz
+  // 
+  // **/
+  // typedef EFI_STATUS
+  // (EFIAPI *EFI_SPI_CLOCK)(
+  //   IN CONST EFI_SPI_PERIPHERAL  *SpiPeripheral,
+  //   IN uint                    *ClockHz
+  //   );
 }
 
 ///

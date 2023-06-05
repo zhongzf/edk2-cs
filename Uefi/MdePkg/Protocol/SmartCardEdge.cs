@@ -23,7 +23,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_SMART_CARD_EDGE_PROTOCOL_GUID = new GUID(
-        0xd317f29b, 0xa325, 0x4712, new byte[] { 0x9b, 0xf1, 0xc6, 0x19, 0x54, 0xdc, 0x19, 0x8c });
+        0xd317f29b, 0xa325, 0x4712, 0x9b, 0xf1, 0xc6, 0x19, 0x54, 0xdc, 0x19, 0x8c);
 
   // typedef struct _EFI_SMART_CARD_EDGE_PROTOCOL EFI_SMART_CARD_EDGE_PROTOCOL;
 
@@ -154,7 +154,7 @@ public unsafe partial class EFI
   // RSASSA- PKCS#1-V1.5 padding method, for signature
   //
   public static EFI_GUID EFI_PADDING_RSASSA_PKCS1V1P5_GUID = new GUID(
-      0x9317ec24, 0x7cb0, 0x4d0e, new byte[] { 0x8b, 0x32, 0x2e, 0xd9, 0x20, 0x9c, 0xd8, 0xaf });
+      0x9317ec24, 0x7cb0, 0x4d0e, 0x8b, 0x32, 0x2e, 0xd9, 0x20, 0x9c, 0xd8, 0xaf);
 
   // extern EFI_GUID  gEfiPaddingRsassaPkcs1V1P5Guid;
 
@@ -162,7 +162,7 @@ public unsafe partial class EFI
   // RSASSA-PSS padding method, for signature
   //
   public static EFI_GUID EFI_PADDING_RSASSA_PSS_GUID = new GUID(
-      0x7b2349e0, 0x522d, 0x4f8e, new byte[] { 0xb9, 0x27, 0x69, 0xd9, 0x7c, 0x9e, 0x79, 0x5f });
+      0x7b2349e0, 0x522d, 0x4f8e, 0xb9, 0x27, 0x69, 0xd9, 0x7c, 0x9e, 0x79, 0x5f);
 
   // extern EFI_GUID  gEfiPaddingRsassaPssGuid;
 
@@ -173,7 +173,7 @@ public unsafe partial class EFI
   // No padding, for decryption
   //
   public static EFI_GUID EFI_PADDING_NONE_GUID = new GUID(
-      0x3629ddb1, 0x228c, 0x452e, new byte[] { 0xb6, 0x16, 0x09, 0xed, 0x31, 0x6a, 0x97, 0x00 });
+      0x3629ddb1, 0x228c, 0x452e, 0xb6, 0x16, 0x09, 0xed, 0x31, 0x6a, 0x97, 0x00);
 
   // extern EFI_GUID  gEfiPaddingNoneGuid;
 
@@ -181,7 +181,7 @@ public unsafe partial class EFI
   // RSAES-PKCS#1-V1.5 padding, for decryption
   //
   public static EFI_GUID EFI_PADDING_RSAES_PKCS1V1P5_GUID = new GUID(
-      0xe1c1d0a9, 0x40b1, 0x4632, new byte[] { 0xbd, 0xcc, 0xd9, 0xd6, 0xe5, 0x29, 0x56, 0x31 });
+      0xe1c1d0a9, 0x40b1, 0x4632, 0xbd, 0xcc, 0xd9, 0xd6, 0xe5, 0x29, 0x56, 0x31);
 
   // extern EFI_GUID  gEfiPaddingRsaesPkcs1V1P5Guid;
 
@@ -189,7 +189,7 @@ public unsafe partial class EFI
   // RSAES-OAEP padding, for decryption
   //
   public static EFI_GUID EFI_PADDING_RSAES_OAEP_GUID = new GUID(
-      0xc1e63ac4, 0xd0cf, 0x4ce6, new byte[] { 0x83, 0x5b, 0xee, 0xd0, 0xe6, 0xa8, 0xa4, 0x5b });
+      0xc1e63ac4, 0xd0cf, 0x4ce6, 0x83, 0x5b, 0xee, 0xd0, 0xe6, 0xa8, 0xa4, 0x5b);
 
   // extern EFI_GUID  gEfiPaddingRsaesOaepGuid;
 
@@ -713,6 +713,8 @@ public unsafe partial class EFI
 public unsafe struct EFI_SMART_CARD_EDGE_PROTOCOL
 {
   //public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* OUT */ulong* /*NumberAidSupported*/,/* IN OUT */ulong* /*AidTableSize*/,/* OUT */SMART_CARD_AID* /*AidTable*/,/* OUT */ulong* /*NumberSCPresent*/,/* IN OUT */ulong* /*CsnTableSize*/,/* OUT */SMART_CARD_CSN* /*CsnTable*/,/* OUT */uint* /*VersionScEdgeProtocol*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_GET_CONTEXT*/ GetContext;
+  public void* GetContext;
+
   public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* OUT */EFI_HANDLE* /*SCardHandle*/,/* IN */byte* /*ScardCsn*/,/* OUT */byte* /*ScardAid*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_CONNECT*/ Connect;
   public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*SCardHandle*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_DISCONNECT*/ Disconnect;
   public readonly delegate* unmanaged</* IN */EFI_SMART_CARD_EDGE_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*SCardHandle*/,/* OUT */byte /*Csn*/, EFI_STATUS> /*EFI_SMART_CARD_EDGE_GET_CSN*/ GetCsn;

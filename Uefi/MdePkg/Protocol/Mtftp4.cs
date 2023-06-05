@@ -18,10 +18,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_MTFTP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x2FE800BE, 0x8F01, 0x4aa6, new byte[] { 0x94, 0x6B, 0xD7, 0x13, 0x88, 0xE1, 0x83, 0x3F });
+      0x2FE800BE, 0x8F01, 0x4aa6, 0x94, 0x6B, 0xD7, 0x13, 0x88, 0xE1, 0x83, 0x3F);
 
   public static EFI_GUID EFI_MTFTP4_PROTOCOL_GUID = new GUID(
-      0x78247c57, 0x63db, 0x4708, new byte[] { 0x99, 0xc2, 0xa8, 0xb4, 0xa9, 0xa6, 0x1f, 0x6b });
+      0x78247c57, 0x63db, 0x4708, 0x99, 0xc2, 0xa8, 0xb4, 0xa9, 0xa6, 0x1f, 0x6b);
 
 //  typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
 //typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
@@ -597,7 +597,7 @@ public unsafe struct EFI_MTFTP4_TOKEN
   ///
   /// The pointer to the function to provide the needed packet contents.
   ///
-  public readonly delegate* unmanaged</* IN */EFI_MTFTP4_PROTOCOL* /*This*/,/* IN */EFI_MTFTP4_TOKEN* /*Token*/,/* IN OUT*/ushort*,/* OUT */void** /*Buffer*/, EFI_STATUS> /*EFI_MTFTP4_PACKET_NEEDED*/ PacketNeeded;
+  public readonly delegate* unmanaged</* IN */EFI_MTFTP4_PROTOCOL* /*This*/,/* IN */EFI_MTFTP4_TOKEN* /*Token*/,/* IN OUT */ushort*,/* OUT */void** /*Buffer*/, EFI_STATUS> /*EFI_MTFTP4_PACKET_NEEDED*/ PacketNeeded;
 }
 
 // extern EFI_GUID  gEfiMtftp4ServiceBindingProtocolGuid;

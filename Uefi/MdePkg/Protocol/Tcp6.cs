@@ -24,10 +24,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_TCP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0xec20eb79, 0x6c1a, 0x4664, new byte[] { 0x9a, 0x0d, 0xd2, 0xe4, 0xcc, 0x16, 0xd6, 0x64 });
+      0xec20eb79, 0x6c1a, 0x4664, 0x9a, 0x0d, 0xd2, 0xe4, 0xcc, 0x16, 0xd6, 0x64);
 
   public static EFI_GUID EFI_TCP6_PROTOCOL_GUID = new GUID(
-      0x46e44855, 0xbd60, 0x4ab7, new byte[] { 0xab, 0x0d, 0xa6, 0x79, 0xb9, 0x44, 0x7d, 0x77 });
+      0x46e44855, 0xbd60, 0x4ab7, 0xab, 0x0d, 0xa6, 0x79, 0xb9, 0x44, 0x7d, 0x77);
 
   // typedef struct _EFI_TCP6_PROTOCOL EFI_TCP6_PROTOCOL;
 }
@@ -459,12 +459,12 @@ public unsafe struct EFI_TCP6_IO_TOKEN
   /// EFI_NO_MEDIA:             There was a media error.
   ///
   public EFI_TCP6_COMPLETION_TOKEN CompletionToken;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to
-//    /// EFI_TCP6_RECEIVE_DATA.
-//    ///
-//    public EFI_TCP6_RECEIVE_DATA* RxData;
+  //union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to
+    /// EFI_TCP6_RECEIVE_DATA.
+    ///
+    public EFI_TCP6_RECEIVE_DATA* RxData;
 //  ///
 //  /// When this token is used for transmitting, TxData is a pointer to
 //  /// EFI_TCP6_TRANSMIT_DATA.
@@ -870,7 +870,7 @@ public unsafe struct EFI_TCP6_CLOSE_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCP6_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* OUT */EFI_TCP6_CONNECTION_STATE* /*Tcp6State*/,/* OUT */EFI_TCP6_CONFIG_DATA* /*Tcp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP6_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* OUT */EFI_TCP6_CONNECTION_STATE* /*Tcp6State*/,/* OUT */EFI_TCP6_CONFIG_DATA* /*Tcp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* IN */EFI_TCP6_CONFIG_DATA* /*Tcp6ConfigData*/, EFI_STATUS> /*EFI_TCP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* IN */EFI_TCP6_CONNECTION_TOKEN* /*ConnectionToken*/, EFI_STATUS> /*EFI_TCP6_CONNECT*/ Connect;
   public readonly delegate* unmanaged</* IN */EFI_TCP6_PROTOCOL* /*This*/,/* IN */EFI_TCP6_LISTEN_TOKEN* /*ListenToken*/, EFI_STATUS> /*EFI_TCP6_ACCEPT*/ Accept;

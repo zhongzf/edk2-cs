@@ -18,10 +18,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_LOADED_IMAGE_PROTOCOL_GUID = new GUID(
-      0x5B1B31A1, 0x9562, 0x11d2, new byte[] { 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B });
+      0x5B1B31A1, 0x9562, 0x11d2, 0x8E, 0x3F, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B);
 
   public static EFI_GUID EFI_LOADED_IMAGE_DEVICE_PATH_PROTOCOL_GUID = new GUID(
-      0xbc62157e, 0x3e33, 0x4fec, new byte[] { 0x99, 0x20, 0x2d, 0x3b, 0x36, 0xd7, 0x50, 0xdf });
+      0xbc62157e, 0x3e33, 0x4fec, 0x99, 0x20, 0x2d, 0x3b, 0x36, 0xd7, 0x50, 0xdf);
 
   ///
   /// Protocol GUID defined in EFI1.1.
@@ -72,7 +72,7 @@ public unsafe struct EFI_LOADED_IMAGE_PROTOCOL
   public ulong ImageSize;     ///< The size in bytes of the loaded image.
   public EFI_MEMORY_TYPE ImageCodeType; ///< The memory type that the code sections were loaded as.
   public EFI_MEMORY_TYPE ImageDataType; ///< The memory type that the data sections were loaded as.
-  //public EFI_IMAGE_UNLOAD Unload;
+  public void* /*EFI_IMAGE_UNLOAD*/ Unload;
 }
 
 //

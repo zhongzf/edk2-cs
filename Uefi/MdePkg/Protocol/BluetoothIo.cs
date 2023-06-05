@@ -23,10 +23,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_BLUETOOTH_IO_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x388278d3, 0x7b85, 0x42f0, new byte[] { 0xab, 0xa9, 0xfb, 0x4b, 0xfd, 0x69, 0xf5, 0xab });
+      0x388278d3, 0x7b85, 0x42f0, 0xab, 0xa9, 0xfb, 0x4b, 0xfd, 0x69, 0xf5, 0xab);
 
   public static EFI_GUID EFI_BLUETOOTH_IO_PROTOCOL_GUID = new GUID(
-      0x467313de, 0x4e30, 0x43f1, new byte[] { 0x94, 0x3e, 0x32, 0x3f, 0x89, 0x84, 0x5d, 0xb5 });
+      0x467313de, 0x4e30, 0x43f1, 0x94, 0x3e, 0x32, 0x3f, 0x89, 0x84, 0x5d, 0xb5);
 
   // typedef struct _EFI_BLUETOOTH_IO_PROTOCOL EFI_BLUETOOTH_IO_PROTOCOL;
 }
@@ -402,13 +402,13 @@ public unsafe struct EFI_BLUETOOTH_IO_PROTOCOL
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* OUT */ulong* /*SdpInfoSize*/,/* OUT */void** /*SdpInfo*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_GET_SDP_INFO*/ GetSdpInfo;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*Buffer*/,/* IN */ulong /*Timeout*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_RAW_SEND*/ L2CapRawSend;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN OUT */ulong* /*BufferSize*/,/* OUT */void* /*Buffer*/,/* IN */ulong /*Timeout*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_RAW_RECEIVE*/ L2CapRawReceive;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */EFI_BLUETOOTH_IO_ASYNC_FUNC_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_RAW_ASYNC_RECEIVE*/ L2CapRawAsyncReceive;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */delegate* unmanaged</* IN */ushort /*ChannelID*/,/* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_RAW_ASYNC_RECEIVE*/ L2CapRawAsyncReceive;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*Handle*/,/* IN OUT */ulong* /*BufferSize*/,/* IN */void* /*Buffer*/,/* IN */ulong /*Timeout*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_SEND*/ L2CapSend;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*Handle*/,/* OUT */ulong* /*BufferSize*/,/* OUT */void** /*Buffer*/,/* IN */ulong /*Timeout*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_RECEIVE*/ L2CapReceive;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*Handle*/,/* IN */EFI_BLUETOOTH_IO_CHANNEL_SERVICE_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_ASYNC_RECEIVE*/ L2CapAsyncReceive;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* OUT */EFI_HANDLE* /*Handle*/,/* IN */ushort /*Psm*/,/* IN */ushort /*Mtu*/,/* IN */EFI_BLUETOOTH_IO_CHANNEL_SERVICE_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_CONNECT*/ L2CapConnect;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*Handle*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_ASYNC_RECEIVE*/ L2CapAsyncReceive;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* OUT */EFI_HANDLE* /*Handle*/,/* IN */ushort /*Psm*/,/* IN */ushort /*Mtu*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_CONNECT*/ L2CapConnect;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*Handle*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_DISCONNECT*/ L2CapDisconnect;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* OUT */EFI_HANDLE* /*Handle*/,/* IN */ushort /*Psm*/,/* IN */ushort /*Mtu*/,/* IN */EFI_BLUETOOTH_IO_CHANNEL_SERVICE_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_REGISTER_SERVICE*/ L2CapRegisterService;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_IO_PROTOCOL* /*This*/,/* OUT */EFI_HANDLE* /*Handle*/,/* IN */ushort /*Psm*/,/* IN */ushort /*Mtu*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_IO_L2CAP_REGISTER_SERVICE*/ L2CapRegisterService;
 }
 
 // extern EFI_GUID  gEfiBluetoothIoServiceBindingProtocolGuid;

@@ -24,7 +24,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID PCD_PROTOCOL_GUID = new GUID(0x11b34006, 0xd85b, 0x4d0a, new byte[] { 0xa2, 0x90, 0xd5, 0xa5, 0x71, 0x31, 0xe, 0xf7 });
+  public static EFI_GUID PCD_PROTOCOL_GUID = new GUID(0x11b34006, 0xd85b, 0x4d0a, 0xa2, 0x90, 0xd5, 0xa5, 0x71, 0x31, 0xe, 0xf7);
 
   public const ulong PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
 
@@ -796,10 +796,10 @@ public unsafe struct PCD_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN OUT */ulong* /*SizeOfBuffer*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*PCD_PROTOCOL_SET_EX_POINTER*/ SetPtrEx;
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */bool /*Value*/, EFI_STATUS> /*PCD_PROTOCOL_SET_EX_BOOLEAN*/ SetBoolEx;
 
-  //public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CALLBACK_ONSET*/ CallbackOnSet;
-  //public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CANCEL_CALLBACK*/ CancelCallback;
-  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN OUT */ulong* /*TokenNumber*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKEN*/ GetNextToken;
-  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKENSPACE*/ GetNextTokenSpace;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID*,/* IN */ulong /*TokenNumber*/,/* IN */delegate* unmanaged</* IN CONST */EFI_GUID* /*CallBackGuid*/,/* IN */ulong /*CallBackToken*/,/* IN OUT */void* /*TokenData*/,/* IN */ulong /*TokenDataSize*/, void> /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CALLBACK_ONSET*/ CallbackOnSet;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID*,/* IN */ulong /*TokenNumber*/,/* IN */delegate* unmanaged</* IN CONST */EFI_GUID* /*CallBackGuid*/,/* IN */ulong /*CallBackToken*/,/* IN OUT */void* /*TokenData*/,/* IN */ulong /*TokenDataSize*/, void> /*CallBackFunction*/, EFI_STATUS> /*PCD_PROTOCOL_CANCEL_CALLBACK*/ CancelCallback;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID*,/* IN OUT */ulong* /*TokenNumber*/, EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKEN*/ GetNextToken;
+  public readonly delegate* unmanaged</* IN OUT CONST*//**/EFI_STATUS> /*PCD_PROTOCOL_GET_NEXT_TOKENSPACE*/ GetNextTokenSpace;
 }
 
 // #endif

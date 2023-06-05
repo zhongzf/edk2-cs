@@ -21,10 +21,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_DHCP4_PROTOCOL_GUID = new GUID(
-      0x8a219718, 0x4ef5, 0x4761, new byte[] { 0x91, 0xc8, 0xc0, 0xf0, 0x4b, 0xda, 0x9e, 0x56 });
+      0x8a219718, 0x4ef5, 0x4761, 0x91, 0xc8, 0xc0, 0xf0, 0x4b, 0xda, 0x9e, 0x56);
 
   public static EFI_GUID EFI_DHCP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x9d9a39d8, 0xbd42, 0x4a73, new byte[] { 0xa4, 0xd5, 0x8e, 0xe9, 0x4b, 0xe1, 0x13, 0x80 });
+      0x9d9a39d8, 0xbd42, 0x4a73, 0xa4, 0xd5, 0x8e, 0xe9, 0x4b, 0xe1, 0x13, 0x80);
 
   // typedef struct _EFI_DHCP4_PROTOCOL EFI_DHCP4_PROTOCOL;
 }
@@ -86,19 +86,19 @@ public unsafe struct EFI_DHCP4_PACKET
   ///
   public uint Length;
 
-//  struct {
-//    ///
-//    /// DHCP packet header.
-//    ///
-//    public EFI_DHCP4_HEADER Header;
-//  ///
-//  /// DHCP magik cookie in network byte order.
-//  ///
-//  public uint Magik;
-//  ///
-//  /// Start of the DHCP packed option data.
-//  ///
-//  public fixed byte Option[1];
+  //struct {
+    ///
+    /// DHCP packet header.
+    ///
+    public EFI_DHCP4_HEADER Header;
+  ///
+  /// DHCP magik cookie in network byte order.
+  ///
+  public uint Magik;
+  ///
+  /// Start of the DHCP packed option data.
+  ///
+  public fixed byte Option[1];
 //}
 } 
 // #pragma pack()

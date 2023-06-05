@@ -22,7 +22,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_NVDIMM_LABEL_PROTOCOL_GUID = new GUID(
-      0xd40b6b80, 0x97d5, 0x4282, new byte[] { 0xbb, 0x1d, 0x22, 0x3a, 0x16, 0x91, 0x80, 0x58 });
+      0xd40b6b80, 0x97d5, 0x4282, 0xbb, 0x1d, 0x22, 0x3a, 0x16, 0x91, 0x80, 0x58);
 
   // typedef struct _EFI_NVDIMM_LABEL_PROTOCOL EFI_NVDIMM_LABEL_PROTOCOL;
 public const ulong EFI_NVDIMM_LABEL_INDEX_SIG_LEN = 16;
@@ -101,7 +101,7 @@ public unsafe struct EFI_NVDIMM_LABEL_INDEX_BLOCK
   /// padded with additional zero bytes to make the Index Block size a multiple of EFI_NVDIMM_LABEL_INDEX_ALIGN.
   /// Any bits allocated beyond NSlot bits must be zero.
   ///
-  //public fixed byte Free[];
+  public byte[] Free;
 }
 
 public unsafe partial class EFI

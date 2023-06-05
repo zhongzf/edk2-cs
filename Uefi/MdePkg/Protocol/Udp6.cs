@@ -22,10 +22,10 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_UDP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x66ed4721, 0x3c98, 0x4d3e, new byte[] { 0x81, 0xe3, 0xd0, 0x3d, 0xd3, 0x9a, 0x72, 0x54 });
+      0x66ed4721, 0x3c98, 0x4d3e, 0x81, 0xe3, 0xd0, 0x3d, 0xd3, 0x9a, 0x72, 0x54);
 
   public static EFI_GUID EFI_UDP6_PROTOCOL_GUID = new GUID(
-      0x4f948815, 0xb4b9, 0x43cb, new byte[] { 0x8a, 0x33, 0x90, 0xe0, 0x60, 0xb3, 0x49, 0x55 });
+      0x4f948815, 0xb4b9, 0x43cb, 0x8a, 0x33, 0x90, 0xe0, 0x60, 0xb3, 0x49, 0x55);
 }
 
 ///
@@ -299,11 +299,11 @@ public unsafe struct EFI_UDP6_COMPLETION_TOKEN
   ///   - EFI_NO_MEDIA: There was a media error.
   ///
   public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
-//    ///
-//    public EFI_UDP6_RECEIVE_DATA* RxData;
+  //union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to EFI_UDP6_RECEIVE_DATA.
+    ///
+    public EFI_UDP6_RECEIVE_DATA* RxData;
 //  ///
 //  /// When this token is used for transmitting, TxData is a pointer to EFI_UDP6_TRANSMIT_DATA.
 //  ///
@@ -579,7 +579,7 @@ public unsafe struct EFI_UDP6_COMPLETION_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UDP6_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* OUT */EFI_UDP6_CONFIG_DATA* /*Udp6ConfigData*/,/* OUT */EFI_IP6_MODE_DATA* /*Ip6ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP6_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP6_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv6_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP6_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_UDP6_PROTOCOL* /*This*/,/* IN */EFI_UDP6_COMPLETION_TOKEN* /*Token*/, EFI_STATUS> /*EFI_UDP6_TRANSMIT*/ Transmit;

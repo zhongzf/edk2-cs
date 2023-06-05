@@ -156,7 +156,9 @@ public unsafe struct EFI_SMM_PERIODIC_TIMER_CONTEXT { EFI_MM_PERIODIC_TIMER_CONT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL* /*This*/,/* IN */EFI_SMM_HANDLER_ENTRY_POINT2 /*DispatchFunction*/,/* IN CONST */EFI_SMM_PERIODIC_TIMER_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_SMM_PERIODIC_TIMER_REGISTER2*/ Register;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL* /*This*/,/* IN */EFI_SMM_HANDLER_ENTRY_POINT2 /*DispatchFunction*/,/* IN CONST */EFI_SMM_PERIODIC_TIMER_REGISTER_CONTEXT* /*RegisterContext*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_SMM_PERIODIC_TIMER_REGISTER2*/ ;
+  public void* Register;
+
   public readonly delegate* unmanaged</* IN CONST */EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_SMM_PERIODIC_TIMER_UNREGISTER2*/ UnRegister;
   public readonly delegate* unmanaged</* IN CONST */EFI_SMM_PERIODIC_TIMER_DISPATCH2_PROTOCOL* /*This*/,/* IN OUT */ulong** /*SmiTickInterval*/, EFI_STATUS> /*EFI_SMM_PERIODIC_TIMER_INTERVAL2*/ GetNextShorterInterval;
 }

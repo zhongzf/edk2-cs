@@ -14,7 +14,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_STATUS_CODE_RUNTIME_PROTOCOL_GUID = new GUID(0xd2b2b828, 0x826, 0x48a7, new byte[] { 0xb3, 0xdf, 0x98, 0x3c, 0x0, 0x60, 0x24, 0xf0 });
+  public static EFI_GUID EFI_STATUS_CODE_RUNTIME_PROTOCOL_GUID = new GUID(0xd2b2b828, 0x826, 0x48a7, 0xb3, 0xdf, 0x98, 0x3c, 0x0, 0x60, 0x24, 0xf0);
 
   // /**
   //   Provides an interface that a software module can call to report a status code.

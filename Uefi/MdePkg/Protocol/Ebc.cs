@@ -121,7 +121,7 @@ public unsafe partial class EFI
   // For MOV instructions, need a mask for the opcode when immediate
   // data applies to R2.
   //
-  public const ulong OPCODE_M_IMMED_OP2 = 0x40;
+  //public const ulong OPCODE_M_IMMED_OP2 = 0x40;
 
   //
   // The MOVI/MOVIn instructions use bit 6 of operands byte to indicate

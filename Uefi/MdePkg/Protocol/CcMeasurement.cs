@@ -24,7 +24,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_CC_MEASUREMENT_PROTOCOL_GUID = new GUID(0x96751a3d, 0x72f4, 0x41a6, new byte[] { 0xa7, 0x94, 0xed, 0x5d, 0x0e, 0x67, 0xae, 0x6b });
+  public static EFI_GUID EFI_CC_MEASUREMENT_PROTOCOL_GUID = new GUID(0x96751a3d, 0x72f4, 0x41a6, 0xa7, 0x94, 0xed, 0x5d, 0x0e, 0x67, 0xae, 0x6b);
   // extern EFI_GUID  gEfiCcMeasurementProtocolGuid;
 
   // typedef struct _EFI_CC_MEASUREMENT_PROTOCOL EFI_CC_MEASUREMENT_PROTOCOL;
@@ -332,7 +332,7 @@ public unsafe struct EFI_CC_FINAL_EVENTS_TABLE
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_CC_FINAL_EVENTS_TABLE_GUID = new GUID(0xdd4a4648, 0x2de7, 0x4665, new byte[] { 0x96, 0x4d, 0x21, 0xd9, 0xef, 0x5f, 0xb4, 0x46 });
+  public static EFI_GUID EFI_CC_FINAL_EVENTS_TABLE_GUID = new GUID(0xdd4a4648, 0x2de7, 0x4665, 0x96, 0x4d, 0x21, 0xd9, 0xef, 0x5f, 0xb4, 0x46);
 
   // extern EFI_GUID  gEfiCcFinalEventsTableGuid;
 
@@ -359,7 +359,7 @@ public unsafe partial class EFI
   //
   // Define the signature and revision of CC Measurement EventLog ACPI Table
   //
-  //public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
+  public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_SIGNATURE = SIGNATURE_32('C', 'C', 'E', 'L');
   public const ulong EFI_CC_EVENTLOG_ACPI_TABLE_REVISION = 1;
 }
 

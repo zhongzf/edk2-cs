@@ -24,7 +24,7 @@ public unsafe partial class EFI
   // Global ID for the USB I/O Protocol
   //
   public static EFI_GUID EFI_USB_IO_PROTOCOL_GUID = new GUID(
-      0x2B2F68D6, 0x0CD2, 0x44cf, new byte[] { 0x8E, 0x8B, 0xBB, 0xA2, 0x0B, 0x1B, 0x5B, 0x75 });
+      0x2B2F68D6, 0x0CD2, 0x44cf, 0x8E, 0x8B, 0xBB, 0xA2, 0x0B, 0x1B, 0x5B, 0x75);
 
   // typedef struct _EFI_USB_IO_PROTOCOL EFI_USB_IO_PROTOCOL;
 
@@ -494,10 +494,10 @@ public unsafe struct EFI_USB_IO_PROTOCOL
   //
   public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */EFI_USB_DEVICE_REQUEST* /*Request*/,/* IN */EFI_USB_DATA_DIRECTION /*Direction*/,/* IN */uint /*Timeout*/,/* IN OUT */void* /*Data*/,/* IN */ulong /*DataLength*/,/* OUT */uint* /*Status*/, EFI_STATUS> /*EFI_USB_IO_CONTROL_TRANSFER*/ UsbControlTransfer;
   public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN OUT */void* /*Data*/,/* IN OUT */ulong* /*DataLength*/,/* IN */ulong /*Timeout*/,/* OUT */uint* /*Status*/, EFI_STATUS> /*EFI_USB_IO_BULK_TRANSFER*/ UsbBulkTransfer;
-  //public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */EFI_ASYNC_USB_TRANSFER_CALLBACK /*InterruptCallBack*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_USB_IO_ASYNC_INTERRUPT_TRANSFER*/ UsbAsyncInterruptTransfer;
+  public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN */bool /*IsNewTransfer*/,/* IN */ulong /*PollingInterval*/,/* IN */ulong /*DataLength*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/,/* IN */uint /*Status*/, EFI_STATUS> /*InterruptCallBack*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_USB_IO_ASYNC_INTERRUPT_TRANSFER*/ UsbAsyncInterruptTransfer;
   public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN OUT */void* /*Data*/,/* IN OUT */ulong* /*DataLength*/,/* IN */ulong /*Timeout*/,/* OUT */uint* /*Status*/, EFI_STATUS> /*EFI_USB_IO_SYNC_INTERRUPT_TRANSFER*/ UsbSyncInterruptTransfer;
   public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN OUT */void* /*Data*/,/* IN */ulong /*DataLength*/,/* OUT */uint* /*Status*/, EFI_STATUS> /*EFI_USB_IO_ISOCHRONOUS_TRANSFER*/ UsbIsochronousTransfer;
-  //public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN OUT */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */EFI_ASYNC_USB_TRANSFER_CALLBACK /*IsochronousCallBack*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_USB_IO_ASYNC_ISOCHRONOUS_TRANSFER*/ UsbAsyncIsochronousTransfer;
+  public readonly delegate* unmanaged</* IN */EFI_USB_IO_PROTOCOL* /*This*/,/* IN */byte /*DeviceEndpoint*/,/* IN OUT */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */delegate* unmanaged</* IN */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */void* /*Context*/,/* IN */uint /*Status*/, EFI_STATUS> /*IsochronousCallBack*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_USB_IO_ASYNC_ISOCHRONOUS_TRANSFER*/ UsbAsyncIsochronousTransfer;
 
   //
   // Common device request

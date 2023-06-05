@@ -29,10 +29,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_IP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0xc51711e7, 0xb4bf, 0x404a, new byte[] { 0xbf, 0xb8, 0x0a, 0x04, 0x8e, 0xf1, 0xff, 0xe4 });
+      0xc51711e7, 0xb4bf, 0x404a, 0xbf, 0xb8, 0x0a, 0x04, 0x8e, 0xf1, 0xff, 0xe4);
 
   public static EFI_GUID EFI_IP4_PROTOCOL_GUID = new GUID(
-      0x41d94cd2, 0x35b6, 0x455a, new byte[] { 0x82, 0x58, 0xd4, 0xe5, 0x13, 0x34, 0xaa, 0xdd });
+      0x41d94cd2, 0x35b6, 0x455a, 0x82, 0x58, 0xd4, 0xe5, 0x13, 0x34, 0xaa, 0xdd);
 
   // typedef struct _EFI_IP4_PROTOCOL EFI_IP4_PROTOCOL;
 }
@@ -273,11 +273,11 @@ public unsafe struct EFI_IP4_COMPLETION_TOKEN
   /// to indicate whether this operation completed successfully.
   ///
   public EFI_STATUS Status;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to the EFI_IP4_RECEIVE_DATA.
-//    ///
-//    public EFI_IP4_RECEIVE_DATA* RxData;
+  //union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to the EFI_IP4_RECEIVE_DATA.
+    ///
+    public EFI_IP4_RECEIVE_DATA* RxData;
 //  ///
 //  /// When this token is used for transmitting, TxData is a pointer to the EFI_IP4_TRANSMIT_DATA.
 //  ///
@@ -614,7 +614,7 @@ public unsafe struct EFI_IP4_COMPLETION_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IP4_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN CONST */EFI_IP4_PROTOCOL* /*This*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP4_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN CONST */EFI_IP4_PROTOCOL* /*This*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_IP4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_IP4_PROTOCOL* /*This*/,/* IN */EFI_IP4_CONFIG_DATA* /*IpConfigData*/, EFI_STATUS> /*EFI_IP4_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_IP4_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv4_ADDRESS* /*GroupAddress*/, EFI_STATUS> /*EFI_IP4_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_IP4_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetAddress*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetMask*/,/* IN */EFI_IPv4_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_IP4_ROUTES*/ Routes;

@@ -23,10 +23,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_TCP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x00720665, 0x67EB, 0x4a99, new byte[] { 0xBA, 0xF7, 0xD3, 0xC3, 0x3A, 0x1C, 0x7C, 0xC9 });
+      0x00720665, 0x67EB, 0x4a99, 0xBA, 0xF7, 0xD3, 0xC3, 0x3A, 0x1C, 0x7C, 0xC9);
 
   public static EFI_GUID EFI_TCP4_PROTOCOL_GUID = new GUID(
-      0x65530BC7, 0xA359, 0x410f, new byte[] { 0xB0, 0x10, 0x5A, 0xAD, 0xC7, 0xEC, 0x2B, 0x62 });
+      0x65530BC7, 0xA359, 0x410f, 0xB0, 0x10, 0x5A, 0xAD, 0xC7, 0xEC, 0x2B, 0x62);
 
   // typedef struct _EFI_TCP4_PROTOCOL EFI_TCP4_PROTOCOL;
 }
@@ -230,11 +230,11 @@ public unsafe struct EFI_TCP4_IO_TOKEN
   /// EFI_NO_MEDIA:             There was a media error.
   ///
   public EFI_TCP4_COMPLETION_TOKEN CompletionToken;
-//  union {
-//    ///
-//    /// When this token is used for receiving, RxData is a pointer to EFI_TCP4_RECEIVE_DATA.
-//    ///
-//    public EFI_TCP4_RECEIVE_DATA* RxData;
+  //union {
+    ///
+    /// When this token is used for receiving, RxData is a pointer to EFI_TCP4_RECEIVE_DATA.
+    ///
+    public EFI_TCP4_RECEIVE_DATA* RxData;
 //  ///
 //  /// When this token is used for transmitting, TxData is a pointer to EFI_TCP4_TRANSMIT_DATA.
 //  ///
@@ -580,7 +580,7 @@ public unsafe struct EFI_TCP4_CLOSE_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCP4_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* OUT */EFI_TCP4_CONNECTION_STATE* /*Tcp4State*/,/* OUT */EFI_TCP4_CONFIG_DATA* /*Tcp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP4_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* OUT */EFI_TCP4_CONNECTION_STATE* /*Tcp4State*/,/* OUT */EFI_TCP4_CONFIG_DATA* /*Tcp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_TCP4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* IN */EFI_TCP4_CONFIG_DATA* /*TcpConfigData*/, EFI_STATUS> /*EFI_TCP4_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetAddress*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetMask*/,/* IN */EFI_IPv4_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_TCP4_ROUTES*/ Routes;
   public readonly delegate* unmanaged</* IN */EFI_TCP4_PROTOCOL* /*This*/,/* IN */EFI_TCP4_CONNECTION_TOKEN* /*ConnectionToken*/, EFI_STATUS> /*EFI_TCP4_CONNECT*/ Connect;

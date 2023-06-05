@@ -76,8 +76,8 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_RESET_NOTIFICATION_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN */EFI_RESET_NOTIFICATION_PROTOCOL* /*This*/,/* IN */EFI_RESET_SYSTEM /*ResetFunction*/, EFI_STATUS> /*EFI_REGISTER_RESET_NOTIFY*/ RegisterResetNotify;
-  public readonly delegate* unmanaged</* IN */EFI_RESET_NOTIFICATION_PROTOCOL* /*This*/,/* IN */EFI_RESET_SYSTEM /*ResetFunction*/, EFI_STATUS> /*EFI_UNREGISTER_RESET_NOTIFY*/ UnregisterResetNotify;
+  //public readonly delegate* unmanaged</* IN */EFI_RESET_NOTIFICATION_PROTOCOL* /*This*/,/* IN */EFI_RESET_SYSTEM /*ResetFunction*/, EFI_STATUS> /*EFI_REGISTER_RESET_NOTIFY*/ RegisterResetNotify;
+  //public readonly delegate* unmanaged</* IN */EFI_RESET_NOTIFICATION_PROTOCOL* /*This*/,/* IN */EFI_RESET_SYSTEM /*ResetFunction*/, EFI_STATUS> /*EFI_UNREGISTER_RESET_NOTIFY*/ UnregisterResetNotify;
 }
 
 // extern EFI_GUID  gEfiResetNotificationProtocolGuid;

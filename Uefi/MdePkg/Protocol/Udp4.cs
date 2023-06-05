@@ -25,10 +25,10 @@ public unsafe partial class EFI
   // GUID definitions
   //
   public static EFI_GUID EFI_UDP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
-      0x83f01464, 0x99bd, 0x45e5, new byte[] { 0xb3, 0x83, 0xaf, 0x63, 0x05, 0xd8, 0xe9, 0xe6 });
+      0x83f01464, 0x99bd, 0x45e5, 0xb3, 0x83, 0xaf, 0x63, 0x05, 0xd8, 0xe9, 0xe6);
 
   public static EFI_GUID EFI_UDP4_PROTOCOL_GUID = new GUID(
-      0x3ad9df29, 0x4501, 0x478d, new byte[] { 0xb1, 0xf8, 0x7f, 0x7f, 0xe7, 0x0e, 0x50, 0xf3 });
+      0x3ad9df29, 0x4501, 0x478d, 0xb1, 0xf8, 0x7f, 0x7f, 0xe7, 0x0e, 0x50, 0xf3);
 
   // typedef struct _EFI_UDP4_PROTOCOL EFI_UDP4_PROTOCOL;
 }
@@ -129,8 +129,8 @@ public unsafe struct EFI_UDP4_COMPLETION_TOKEN
 {
   public EFI_EVENT Event;
   public EFI_STATUS Status;
-//  union {
-//    public EFI_UDP4_RECEIVE_DATA* RxData;
+  //union {
+    public EFI_UDP4_RECEIVE_DATA* RxData;
 //  public EFI_UDP4_TRANSMIT_DATA* TxData;
 //}
 } 
@@ -441,7 +441,7 @@ public unsafe struct EFI_UDP4_COMPLETION_TOKEN
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_UDP4_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* OUT */EFI_UDP4_CONFIG_DATA* /*Udp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP4_GET_MODE_DATA*/ GetModeData;
+  public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* OUT */EFI_UDP4_CONFIG_DATA* /*Udp4ConfigData*/,/* OUT */EFI_IP4_MODE_DATA* /*Ip4ModeData*/,/* OUT */EFI_MANAGED_NETWORK_CONFIG_DATA* /*MnpConfigData*/,/* OUT */EFI_SIMPLE_NETWORK_MODE* /*SnpModeData*/, EFI_STATUS> /*EFI_UDP4_GET_MODE_DATA*/ GetModeData;
   public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* IN */EFI_UDP4_CONFIG_DATA* /*UdpConfigData*/, EFI_STATUS> /*EFI_UDP4_CONFIGURE*/ Configure;
   public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* IN */bool /*JoinFlag*/,/* IN */EFI_IPv4_ADDRESS* /*MulticastAddress*/, EFI_STATUS> /*EFI_UDP4_GROUPS*/ Groups;
   public readonly delegate* unmanaged</* IN */EFI_UDP4_PROTOCOL* /*This*/,/* IN */bool /*DeleteRoute*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetAddress*/,/* IN */EFI_IPv4_ADDRESS* /*SubnetMask*/,/* IN */EFI_IPv4_ADDRESS* /*GatewayAddress*/, EFI_STATUS> /*EFI_UDP4_ROUTES*/ Routes;

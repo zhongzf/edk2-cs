@@ -22,7 +22,7 @@ namespace Uefi;
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_BLUETOOTH_LE_CONFIG_PROTOCOL_GUID = new GUID(
-      0x8f76da58, 0x1f99, 0x4275, new byte[] { 0xa4, 0xec, 0x47, 0x56, 0x51, 0x5b, 0x1c, 0xe8 });
+      0x8f76da58, 0x1f99, 0x4275, 0xa4, 0xec, 0x47, 0x56, 0x51, 0x5b, 0x1c, 0xe8);
 
   // typedef struct _EFI_BLUETOOTH_LE_CONFIG_PROTOCOL EFI_BLUETOOTH_LE_CONFIG_PROTOCOL;
 
@@ -625,17 +625,17 @@ public enum EFI_BLUETOOTH_LE_SMP_DATA_TYPE
 public unsafe struct EFI_BLUETOOTH_LE_CONFIG_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_INIT*/ Init;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */bool /*ReScan*/,/* IN */uint /*Timeout*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_SCAN_PARAMETER* /*ScanParameter*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_SCAN_CALLBACK_FUNCTION /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_SCAN*/ Scan;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */bool /*ReScan*/,/* IN */uint /*Timeout*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_SCAN_PARAMETER* /*ScanParameter*/,/* IN */delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */EFI_BLUETOOTH_LE_SCAN_CALLBACK_INFORMATION* /*CallbackInfo*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_SCAN*/ Scan;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */bool /*AutoReconnect*/,/* IN */bool /*DoBonding*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_CONNECT_PARAMETER* /*ConnectParameter*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BD_ADDR*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_CONNECT*/ Connect;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BD_ADDR*/,/* IN */byte /*Reason*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_DISCONNECT*/ Disconnect;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_CONFIG_DATA_TYPE /*DataType*/,/* IN OUT */ulong* /*DataSize*/,/* IN OUT */void* /*Data*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_GET_DATA*/ GetData;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_CONFIG_DATA_TYPE /*DataType*/,/* IN */ulong /*DataSize*/,/* IN */void* /*Data*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_SET_DATA*/ SetData;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_CONFIG_DATA_TYPE /*DataType*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BDAddr*/,/* IN OUT */ulong* /*DataSize*/,/* IN OUT */void* /*Data*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_GET_REMOTE_DATA*/ GetRemoteData;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_LE_SMP_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_REGISTER_SMP_AUTH_CALLBACK*/ RegisterSmpAuthCallback;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BDAddr*/,/* IN */EFI_BLUETOOTH_LE_SMP_EVENT_DATA_TYPE /*EventDataType*/,/* IN */ulong /*DataSize*/,/* IN */void* /*Data*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_REGISTER_SMP_AUTH_CALLBACK*/ RegisterSmpAuthCallback;
   public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BDAddr*/,/* IN */EFI_BLUETOOTH_LE_SMP_EVENT_DATA_TYPE /*EventDataType*/,/* IN */ulong /*DataSize*/,/* IN */void* /*Data*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_SEND_SMP_AUTH_DATA*/ SendSmpAuthData;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_SMP_GET_DATA_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_REGISTER_SMP_GET_DATA_CALLBACK*/ RegisterSmpGetDataCallback;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_SMP_SET_DATA_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_REGISTER_SMP_SET_DATA_CALLBACK*/ RegisterSmpSetDataCallback;
-  //public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */EFI_BLUETOOTH_LE_CONFIG_CONNECT_COMPLETE_CALLBACK /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_REGISTER_CONNECT_COMPLETE_CALLBACK*/ RegisterLinkConnectCompleteCallback;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BDAddr*/,/* IN */EFI_BLUETOOTH_LE_SMP_DATA_TYPE /*DataType*/,/* IN OUT */ulong* /*DataSize*/,/* OUT */void* /*Data*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_REGISTER_SMP_GET_DATA_CALLBACK*/ RegisterSmpGetDataCallback;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BDAddr*/,/* IN */EFI_BLUETOOTH_LE_SMP_DATA_TYPE /*Type*/,/* IN */ulong /*DataSize*/,/* IN */void* /*Data*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_REGISTER_SMP_SET_DATA_CALLBACK*/ RegisterSmpSetDataCallback;
+  public readonly delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */delegate* unmanaged</* IN */EFI_BLUETOOTH_LE_CONFIG_PROTOCOL* /*This*/,/* IN */void* /*Context*/,/* IN */EFI_BLUETOOTH_CONNECT_COMPLETE_CALLBACK_TYPE /*CallbackType*/,/* IN */BLUETOOTH_LE_ADDRESS* /*BDAddr*/,/* IN */void* /*InputBuffer*/,/* IN */ulong /*InputBufferSize*/, EFI_STATUS> /*Callback*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_BLUETOOTH_LE_CONFIG_REGISTER_CONNECT_COMPLETE_CALLBACK*/ RegisterLinkConnectCompleteCallback;
 }
 
 // extern EFI_GUID  gEfiBluetoothLeConfigProtocolGuid;

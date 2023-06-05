@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_I2C_HOST_PROTOCOL_GUID = new GUID( 0xa5aab9e3, 0xc727, 0x48cd, new byte[]{ 0x8b, 0xbf, 0x42, 0x72, 0x33, 0x85, 0x49, 0x48 } );
+  public static EFI_GUID EFI_I2C_HOST_PROTOCOL_GUID = new GUID( 0xa5aab9e3, 0xc727, 0x48cd, 0x8b, 0xbf, 0x42, 0x72, 0x33, 0x85, 0x49, 0x48 );
 
   ///
   /// I2C Host Protocol
@@ -137,6 +137,7 @@ public unsafe struct EFI_I2C_HOST_PROTOCOL
   /// Queue an I2C transaction for execution on the I2C bus
   ///
   //public readonly delegate* unmanaged</* IN CONST */EFI_I2C_HOST_PROTOCOL* /*This*/,/* IN */ulong /*I2cBusConfiguration*/,/* IN */ulong /*SlaveAddress*/,/* IN */EFI_EVENT /*Event*/,/* IN */EFI_I2C_REQUEST_PACKET* /*RequestPacket*/,/* OUT */EFI_STATUS* /*I2cStatus*/, EFI_STATUS> /*EFI_I2C_HOST_PROTOCOL_QUEUE_REQUEST*/ QueueRequest;
+  public void* QueueRequest;
 
   ///
   /// Pointer to an EFI_I2C_CONTROLLER_CAPABILITIES data structure
