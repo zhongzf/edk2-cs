@@ -174,18 +174,18 @@ public unsafe struct EFI_HTTP_CONFIG_DATA
   public bool LocalAddressIsIPv6;
 
   //union {
-    ///
-    /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
-    /// port used by the underlying TCP protocol.
-    ///
-    public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
-//  ///
-//  /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
-//  /// used by the underlying TCP protocol.
-//  ///
-//  public EFI_HTTPv6_ACCESS_POINT* IPv6Node;
-//}
-} 
+  ///
+  /// When LocalAddressIsIPv6 is FALSE, this points to the local address, subnet, and
+  /// port used by the underlying TCP protocol.
+  ///
+  public EFI_HTTPv4_ACCESS_POINT* IPv4Node;
+  //  ///
+  //  /// When LocalAddressIsIPv6 is TRUE, this points to the local IPv6 address and port
+  //  /// used by the underlying TCP protocol.
+  //  ///
+  //  public EFI_HTTPv6_ACCESS_POINT* IPv6Node;
+  //}
+}
 
 ///
 /// EFI_HTTP_REQUEST_DATA
@@ -246,11 +246,11 @@ public unsafe struct EFI_HTTP_MESSAGE
   /// HTTP message data.
   ///
   //union {
-    ///
-    /// When the token is used to send a HTTP request, Request is a pointer to storage that
-    /// contains such data as URL and HTTP method.
-    ///
-    public EFI_HTTP_REQUEST_DATA* Request;
+  ///
+  /// When the token is used to send a HTTP request, Request is a pointer to storage that
+  /// contains such data as URL and HTTP method.
+  ///
+  public EFI_HTTP_REQUEST_DATA* Request;
   //  ///
   //  /// When used to await a response, Response points to storage containing HTTP response
   //  /// status code.
@@ -278,7 +278,7 @@ public unsafe struct EFI_HTTP_MESSAGE
   /// the HttpMethod type.
   ///
   public void* Body;
-} 
+}
 
 ///
 /// EFI_HTTP_TOKEN

@@ -659,7 +659,7 @@ public unsafe struct EFI_USB2_HC_PROTOCOL
 
   public readonly delegate* unmanaged</* IN */EFI_USB2_HC_PROTOCOL* /*This*/,/* IN */byte /*DeviceAddress*/,/* IN */byte /*EndPointAddress*/,/* IN */byte /*DeviceSpeed*/,/* IN */ulong /*MaximumPacketLength*/,/* IN OUT */void* /*Data*/,/* IN OUT */ulong* /*DataLength*/,/* IN OUT */byte* /*DataToggle*/,/* IN */ulong /*TimeOut*/,/* IN */EFI_USB2_HC_TRANSACTION_TRANSLATOR* /*Translator*/,/* OUT */uint* /*TransferResult*/, EFI_STATUS> /*EFI_USB2_HC_PROTOCOL_SYNC_INTERRUPT_TRANSFER*/ SyncInterruptTransfer;
   public readonly delegate* unmanaged</* IN */EFI_USB2_HC_PROTOCOL* /*This*/,/* IN */byte /*DeviceAddress*/,/* IN */byte /*EndPointAddress*/,/* IN */byte /*DeviceSpeed*/,/* IN */ulong /*MaximumPacketLength*/,/* IN */byte /*DataBuffersNumber*/,/* IN OUT */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */EFI_USB2_HC_TRANSACTION_TRANSLATOR* /*Translator*/,/* OUT */uint* /*TransferResult*/, EFI_STATUS> /*EFI_USB2_HC_PROTOCOL_ISOCHRONOUS_TRANSFER*/ IsochronousTransfer;
-  
+
   //public readonly delegate* unmanaged</* IN */EFI_USB2_HC_PROTOCOL* /*This*/,/* IN */byte /*DeviceAddress*/,/* IN */byte /*EndPointAddress*/,/* IN */byte /*DeviceSpeed*/,/* IN */ulong /*MaximumPacketLength*/,/* IN */byte /*DataBuffersNumber*/,/* IN OUT */void* /*Data*/,/* IN */ulong /*DataLength*/,/* IN */EFI_USB2_HC_TRANSACTION_TRANSLATOR* /*Translator*/,/* IN */EFI_ASYNC_USB_TRANSFER_CALLBACK /*IsochronousCallBack*/,/* IN */void* /*Context*/, EFI_STATUS> /*EFI_USB2_HC_PROTOCOL_ASYNC_ISOCHRONOUS_TRANSFER*/ AsyncIsochronousTransfer;
   public void* AsyncIsochronousTransfer;
 

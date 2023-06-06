@@ -287,7 +287,7 @@ public unsafe struct EFI_SPI_IO_PROTOCOL
   ///
   /// Initiate a SPI transaction between the host and a SPI peripheral.
   ///
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_SPI_IO_PROTOCOL*/,/* IN */EFI_SPI_TRANSACTION_TYPE /*TransactionType*/,/* IN */bool /*DebugTransaction*/,/* IN */uint /*ClockHz*/,/* IN */uint /*BusWidth*/,/* IN */uint /*FrameSize*/,/* IN */uint /*WriteBytes*/,/* IN */byte* /*WriteBuffer*/,/* IN */uint /*ReadBytes*/,/* OUT */byte* /*ReadBuffer*/, EFI_STATUS> /*EFI_SPI_IO_PROTOCOL_TRANSACTION*/ Transaction;
+  public readonly delegate* unmanaged</* IN CONST */EFI_SPI_IO_PROTOCOL*,/* IN */EFI_SPI_TRANSACTION_TYPE /*TransactionType*/,/* IN */bool /*DebugTransaction*/,/* IN */uint /*ClockHz*/,/* IN */uint /*BusWidth*/,/* IN */uint /*FrameSize*/,/* IN */uint /*WriteBytes*/,/* IN */byte* /*WriteBuffer*/,/* IN */uint /*ReadBytes*/,/* OUT */byte* /*ReadBuffer*/, EFI_STATUS> /*EFI_SPI_IO_PROTOCOL_TRANSACTION*/ Transaction;
 
   ///
   /// Update the SPI peripheral associated with this SPI 10 instance.

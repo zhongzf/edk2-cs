@@ -202,16 +202,16 @@ public unsafe struct EFI_DHCP6_PACKET
   ///
   public uint Length;
   //struct {
-    ///
-    /// The DHCPv6 packet header.
-    ///
-    public EFI_DHCP6_HEADER Header;
+  ///
+  /// The DHCPv6 packet header.
+  ///
+  public EFI_DHCP6_HEADER Header;
   ///
   /// Start of the DHCPv6 packed option data.
   ///
   public fixed byte Option[1];
-//}
-} 
+  //}
+}
 
 // #pragma pack()
 
@@ -315,7 +315,7 @@ public unsafe struct EFI_DHCP6_MODE_DATA
   /// Pointer to the configured IA of current instance. The caller can free this buffer after
   /// using it.
   ///
-  public EFI_DHCP6_IA* Ia;
+  public EFI_DHCP6_IA[] Ia;
 }
 
 // /**

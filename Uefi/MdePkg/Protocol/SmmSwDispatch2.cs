@@ -126,7 +126,7 @@ public unsafe struct EFI_SMM_SW_CONTEXT
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_SMM_SW_DISPATCH2_PROTOCOL
 {
-  //public readonly delegate* unmanaged</* IN */CONST /*EFI_SMM_SW_DISPATCH2_PROTOCOL*/,/* IN */EFI_SMM_HANDLER_ENTRY_POINT2 /*DispatchFunction*/,/* IN */OUT /*EFI_SMM_SW_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_SMM_SW_REGISTER2*/ Register;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_SMM_SW_DISPATCH2_PROTOCOL*/,/* IN */EFI_SMM_HANDLER_ENTRY_POINT2 /*DispatchFunction*/,/* IN */OUT /*EFI_SMM_SW_REGISTER_CONTEXT*/,/* OUT */EFI_HANDLE* /*DispatchHandle*/, EFI_STATUS> /*EFI_SMM_SW_REGISTER2*/ Register;
   public void* Register;
 
   public readonly delegate* unmanaged</* IN CONST */EFI_SMM_SW_DISPATCH2_PROTOCOL* /*This*/,/* IN */EFI_HANDLE /*DispatchHandle*/, EFI_STATUS> /*EFI_SMM_SW_UNREGISTER2*/ UnRegister;

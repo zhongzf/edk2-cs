@@ -293,57 +293,57 @@ public unsafe struct EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL
 public unsafe partial class EFI
 {
   public static EFI_GUID EFI_PLATFORM_TO_DRIVER_CONFIGURATION_CLP_GUID = new GUID(0x345ecc0e, 0xcb6, 0x4b75, 0xbb, 0x57, 0x1b, 0x12, 0x9c, 0x47, 0x33, 0x3e);
-
-  /**
 }
 
-    ParameterTypeGuid provides the support for parameters
-    communicated through the DMTF SM CLP Specification 1.0 Final
-    Standard to be used to configure the UEFI driver. In this
-    section the producer of the
-    EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL is platform
-    firmware and the consumer is the UEFI driver. Note: if future
-    versions of the DMTF SM CLP Specification require changes to the
-    parameter block definition, a newer ParameterTypeGuid will be
-    used.
-  **/
-  [StructLayout(LayoutKind.Sequential)]
-  public unsafe struct EFI_CONFIGURE_CLP_PARAMETER_BLK
-  {
-    public byte* CLPCommand;           ///<  A pointer to the null-terminated UTF-8 string that specifies the DMTF SM CLP command
-                                       ///<  line that the driver is required to parse and process when this function is called.
-                                       ///<  See the DMTF SM CLP Specification 1.0 Final Standard for details on the
-                                       ///<  format and syntax of the CLP command line string. CLPCommand buffer
-                                       ///<  is allocated by the producer of the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOOL.
-    public uint CLPCommandLength;      ///< The length of the CLP Command in bytes.
-    public byte* CLPReturnString;      ///<  A pointer to the null-terminated UTF-8 string that indicates the CLP return status
-                                       ///<  that the driver is required to provide to the calling agent.
-                                       ///<  The calling agent may parse and/ or pass
-                                       ///<  this for processing and user feedback. The SM CLP Command Response string
-                                       ///<  buffer is filled in by the UEFI driver in the "keyword=value" format
-                                       ///<  described in the SM CLP Specification, unless otherwise requested via the SM
-                                       ///<  CLP Coutput option in the Command Line string buffer. UEFI driver's support
-                                       ///<  for this default "keyword=value" output format is required if the UEFI
-                                       ///<  driver supports this protocol, while support for other SM CLP output
-                                       ///<  formats is optional (the UEFI Driver should return an EFI_UNSUPPORTED if
-                                       ///<  the SM CLP Coutput option requested by the caller is not supported by the
-                                       ///<  UEFI Driver). CLPReturnString buffer is allocated by the consumer of the
-                                       ///<  EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOC OL and undefined prior to the call to
+/**
+
+  ParameterTypeGuid provides the support for parameters
+  communicated through the DMTF SM CLP Specification 1.0 Final
+  Standard to be used to configure the UEFI driver. In this
+  section the producer of the
+  EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL is platform
+  firmware and the consumer is the UEFI driver. Note: if future
+  versions of the DMTF SM CLP Specification require changes to the
+  parameter block definition, a newer ParameterTypeGuid will be
+  used.
+**/
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct EFI_CONFIGURE_CLP_PARAMETER_BLK
+{
+  public byte* CLPCommand;           ///<  A pointer to the null-terminated UTF-8 string that specifies the DMTF SM CLP command
+                                     ///<  line that the driver is required to parse and process when this function is called.
+                                     ///<  See the DMTF SM CLP Specification 1.0 Final Standard for details on the
+                                     ///<  format and syntax of the CLP command line string. CLPCommand buffer
+                                     ///<  is allocated by the producer of the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOOL.
+  public uint CLPCommandLength;      ///< The length of the CLP Command in bytes.
+  public byte* CLPReturnString;      ///<  A pointer to the null-terminated UTF-8 string that indicates the CLP return status
+                                     ///<  that the driver is required to provide to the calling agent.
+                                     ///<  The calling agent may parse and/ or pass
+                                     ///<  this for processing and user feedback. The SM CLP Command Response string
+                                     ///<  buffer is filled in by the UEFI driver in the "keyword=value" format
+                                     ///<  described in the SM CLP Specification, unless otherwise requested via the SM
+                                     ///<  CLP Coutput option in the Command Line string buffer. UEFI driver's support
+                                     ///<  for this default "keyword=value" output format is required if the UEFI
+                                     ///<  driver supports this protocol, while support for other SM CLP output
+                                     ///<  formats is optional (the UEFI Driver should return an EFI_UNSUPPORTED if
+                                     ///<  the SM CLP Coutput option requested by the caller is not supported by the
+                                     ///<  UEFI Driver). CLPReturnString buffer is allocated by the consumer of the
+                                     ///<  EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOC OL and undefined prior to the call to
+                                     ///<  Response().
+  public uint CLPReturnStringLength; ///< The length of the CLP return status string in bytes.
+  public byte CLPCmdStatus;          ///<  SM CLP Command Status (see DMTF SM CLP Specification 1.0 Final Standard -
+                                     ///<  Table 4) CLPErrorValue SM CLP Processing Error Value (see DMTF SM
+                                     ///<  CLP Specification 1.0 Final Standard - Table 6). This field is filled in by
+                                     ///<  the consumer of the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOC
+                                     ///<  OL and undefined prior to the call to Response().
+  public byte CLPErrorValue;         ///<  SM CLP Processing Error Value (see DMTF SM CLP Specification 1.0 Final Standard - Table 6).
+                                     ///<  This field is filled in by the consumer of the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL and undefined prior to the call to Response().
+  public ushort CLPMsgCode;            ///<  Bit 15: OEM Message Code Flag 0 = Message Code is an SM CLP Probable
+                                       ///<  Cause Value. (see SM CLP Specification Table 11) 1 = Message Code is OEM
+                                       ///<  Specific Bits 14-0: Message Code This field is filled in by the consumer of
+                                       ///<  the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOC OL and undefined prior to the call to
                                        ///<  Response().
-    public uint CLPReturnStringLength; ///< The length of the CLP return status string in bytes.
-    public byte CLPCmdStatus;          ///<  SM CLP Command Status (see DMTF SM CLP Specification 1.0 Final Standard -
-                                       ///<  Table 4) CLPErrorValue SM CLP Processing Error Value (see DMTF SM
-                                       ///<  CLP Specification 1.0 Final Standard - Table 6). This field is filled in by
-                                       ///<  the consumer of the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOC
-                                       ///<  OL and undefined prior to the call to Response().
-    public byte CLPErrorValue;         ///<  SM CLP Processing Error Value (see DMTF SM CLP Specification 1.0 Final Standard - Table 6).
-                                       ///<  This field is filled in by the consumer of the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOCOL and undefined prior to the call to Response().
-    public ushort CLPMsgCode;            ///<  Bit 15: OEM Message Code Flag 0 = Message Code is an SM CLP Probable
-                                         ///<  Cause Value. (see SM CLP Specification Table 11) 1 = Message Code is OEM
-                                         ///<  Specific Bits 14-0: Message Code This field is filled in by the consumer of
-                                         ///<  the EFI_PLATFORM_TO_DRIVER_CONFIGURATION_PROTOC OL and undefined prior to the call to
-                                         ///<  Response().
-  }
+}
 
 // extern EFI_GUID  gEfiPlatformToDriverConfigurationClpGuid;
 

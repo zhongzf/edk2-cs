@@ -231,16 +231,16 @@ public unsafe struct EFI_TCP4_IO_TOKEN
   ///
   public EFI_TCP4_COMPLETION_TOKEN CompletionToken;
   //union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to EFI_TCP4_RECEIVE_DATA.
-    ///
-    public EFI_TCP4_RECEIVE_DATA* RxData;
-//  ///
-//  /// When this token is used for transmitting, TxData is a pointer to EFI_TCP4_TRANSMIT_DATA.
-//  ///
-//  public EFI_TCP4_TRANSMIT_DATA* TxData;
-//}
-} 
+  ///
+  /// When this token is used for receiving, RxData is a pointer to EFI_TCP4_RECEIVE_DATA.
+  ///
+  public EFI_TCP4_RECEIVE_DATA* RxData;
+  //  ///
+  //  /// When this token is used for transmitting, TxData is a pointer to EFI_TCP4_TRANSMIT_DATA.
+  //  ///
+  //  public EFI_TCP4_TRANSMIT_DATA* TxData;
+  //}
+}
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_TCP4_CLOSE_TOKEN

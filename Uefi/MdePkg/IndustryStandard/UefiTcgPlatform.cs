@@ -317,7 +317,7 @@ public unsafe struct UEFI_GPT_DATA
 
 public unsafe partial class EFI
 {
-  public const ulong TCG_DEVICE_SECURITY_EVENT_DATA_SIGNATURE = "SPDM Device Sec";
+  public const string TCG_DEVICE_SECURITY_EVENT_DATA_SIGNATURE = "SPDM Device Sec";
   public const ulong TCG_DEVICE_SECURITY_EVENT_DATA_VERSION = 1;
 
   public const ulong TCG_DEVICE_SECURITY_EVENT_DATA_DEVICE_TYPE_NULL = 0;
@@ -428,8 +428,8 @@ public unsafe struct TCG_EfiSpecIdEventAlgorithmSize
 
 public unsafe partial class EFI
 {
-  public const ulong TCG_EfiSpecIDEventStruct_SIGNATURE_02 = "Spec ID Event02";
-  public const ulong TCG_EfiSpecIDEventStruct_SIGNATURE_03 = "Spec ID Event03";
+  public const string TCG_EfiSpecIDEventStruct_SIGNATURE_02 = "Spec ID Event02";
+  public const string TCG_EfiSpecIDEventStruct_SIGNATURE_03 = "Spec ID Event03";
 
   public const ulong TCG_EfiSpecIDEventStruct_SPEC_VERSION_MAJOR_TPM12 = 1;
   public const ulong TCG_EfiSpecIDEventStruct_SPEC_VERSION_MINOR_TPM12 = 2;
@@ -508,8 +508,8 @@ public unsafe struct TCG_PCClientTaggedEvent
 
 public unsafe partial class EFI
 {
-  public const ulong TCG_Sp800_155_PlatformId_Event_SIGNATURE = "SP800-155 Event";
-  public const ulong TCG_Sp800_155_PlatformId_Event2_SIGNATURE = "SP800-155 Event2";
+  public const string TCG_Sp800_155_PlatformId_Event_SIGNATURE = "SP800-155 Event";
+  public const string TCG_Sp800_155_PlatformId_Event2_SIGNATURE = "SP800-155 Event2";
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -545,7 +545,7 @@ public unsafe struct TCG_Sp800_155_PlatformId_Event2
 
 public unsafe partial class EFI
 {
-  public const ulong TCG_EfiStartupLocalityEvent_SIGNATURE = "StartupLocality";
+  public const string TCG_EfiStartupLocalityEvent_SIGNATURE = "StartupLocality";
 
   //
   // The Locality Indicator which sent the TPM2_Startup command

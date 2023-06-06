@@ -1478,7 +1478,7 @@ public unsafe partial class EFI
   ///
   /// FPDT Firmware Basic Boot Performance Table signature
   ///
-  public const ulong EFI_ACPI_6_3_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
+  //public const ulong EFI_ACPI_6_3_FPDT_BOOT_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('F', 'B', 'P', 'T');
 }
 
 //
@@ -1498,7 +1498,7 @@ public unsafe partial class EFI
   ///
   /// FPDT "S3PT" S3 Performance Table
   ///
-  public const ulong EFI_ACPI_6_3_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
+  //public const ulong EFI_ACPI_6_3_FPDT_S3_PERFORMANCE_TABLE_SIGNATURE = SIGNATURE_32('S', '3', 'P', 'T');
 }
 
 //
@@ -1729,15 +1729,17 @@ public unsafe partial class EFI
   //
   public const ulong EFI_ACPI_6_3_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_CONTROL_REGION_FOR_MANAGEMENT = BIT0;
   public const ulong EFI_ACPI_6_3_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_FLAGS_PROXIMITY_DOMAIN_VALID = BIT1;
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_VOLATILE_MEMORY_REGION = { 0x7305944F, 0xFDDA, 0x44E3, { 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0 } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_REGION = { 0x66F0D379, 0xB4F3, 0x4074, { 0xAC, 0x43, 0x0D, 0x33, 0x18, 0xB7, 0x8C, 0xDB } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_NVDIMM_CONTROL_REGION = { 0x92F701F6, 0x13B4, 0x405D, { 0x91, 0x0B, 0x29, 0x93, 0x67, 0xE8, 0x23, 0x4C } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_NVDIMM_BLOCK_DATA_WINDOW_REGION = { 0x91AF0530, 0x5D86, 0x470E, { 0xA6, 0xB0, 0x0A, 0x2D, 0xB9, 0x40, 0x82, 0x49 } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE = { 0x77AB535A, 0x45FC, 0x624B, { 0x55, 0x60, 0xF7, 0xB2, 0x81, 0xD1, 0xF9, 0x6E } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE = { 0x3D5ABD30, 0x4175, 0x87CE, { 0x6D, 0x64, 0xD2, 0xAD, 0xE5, 0x23, 0xC4, 0xBB } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT = { 0x5CEA02C9, 0x4D07, 0x69D3, { 0x26, 0x9F, 0x44, 0x96, 0xFB, 0xE0, 0x96, 0xF9 } };
-  public const ulong EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT = { 0x08018188, 0x42CD, 0xBB48, { 0x10, 0x0F, 0x53, 0x87, 0xD5, 0x3D, 0xED, 0x3D } };
+
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_VOLATILE_MEMORY_REGION => new GUID(0x7305944F, 0xFDDA, 0x44E3, 0xB1, 0x6C, 0x3F, 0x22, 0xD2, 0x52, 0xE5, 0xD0);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_BYTE_ADDRESSABLE_PERSISTENT_MEMORY_REGION => new GUID(0x66F0D379, 0xB4F3, 0x4074, 0xAC, 0x43, 0x0D, 0x33, 0x18, 0xB7, 0x8C, 0xDB);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_NVDIMM_CONTROL_REGION => new GUID(0x92F701F6, 0x13B4, 0x405D, 0x91, 0x0B, 0x29, 0x93, 0x67, 0xE8, 0x23, 0x4C);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_NVDIMM_BLOCK_DATA_WINDOW_REGION => new GUID(0x91AF0530, 0x5D86, 0x470E, 0xA6, 0xB0, 0x0A, 0x2D, 0xB9, 0x40, 0x82, 0x49);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_VOLATILE => new GUID(0x77AB535A, 0x45FC, 0x624B, 0x55, 0x60, 0xF7, 0xB2, 0x81, 0xD1, 0xF9, 0x6E);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_VOLATILE => new GUID(0x3D5ABD30, 0x4175, 0x87CE, 0x6D, 0x64, 0xD2, 0xAD, 0xE5, 0x23, 0xC4, 0xBB);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_DISK_REGION_PERSISTENT => new GUID(0x5CEA02C9, 0x4D07, 0x69D3, 0x26, 0x9F, 0x44, 0x96, 0xFB, 0xE0, 0x96, 0xF9);
+  public static EFI_GUID EFI_ACPI_6_3_NFIT_GUID_RAM_DISK_SUPPORTING_VIRTUAL_CD_REGION_PERSISTENT => new GUID(0x08018188, 0x42CD, 0xBB48, 0x10, 0x0F, 0x53, 0x87, 0xD5, 0x3D, 0xED, 0x3D);
 }
+
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_NFIT_SYSTEM_PHYSICAL_ADDRESS_RANGE_STRUCTURE
 {
@@ -1829,9 +1831,9 @@ public unsafe partial class EFI
   // Definition for NVDIMM Control Region Structure
   //
   public const ulong EFI_ACPI_6_3_NFIT_NVDIMM_CONTROL_REGION_VALID_FIELDS_MANUFACTURING = BIT0;
+  public const ulong EFI_ACPI_6_3_NFIT_NVDIMM_CONTROL_REGION_FLAGS_BLOCK_DATA_WINDOWS_BUFFERED = BIT0;
 }
 
-public const ulong EFI_ACPI_6_3_NFIT_NVDIMM_CONTROL_REGION_FLAGS_BLOCK_DATA_WINDOWS_BUFFERED = BIT0;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_ACPI_6_3_NFIT_NVDIMM_CONTROL_REGION_STRUCTURE
 {
@@ -3123,320 +3125,320 @@ public unsafe struct EFI_ACPI_6_3_PPTT_STRUCTURE_ID
 
 public unsafe partial class EFI
 {
-  ///
-  /// "RSD PTR " Root System Description Pointer
-  ///
-  public const ulong EFI_ACPI_6_3_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
+  /////
+  ///// "RSD PTR " Root System Description Pointer
+  /////
+  //public const ulong EFI_ACPI_6_3_ROOT_SYSTEM_DESCRIPTION_POINTER_SIGNATURE = SIGNATURE_64('R', 'S', 'D', ' ', 'P', 'T', 'R', ' ');
 
-  ///
-  /// "APIC" Multiple APIC Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_MULTIPLE_APIC_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'P', 'I', 'C');
+  /////
+  ///// "APIC" Multiple APIC Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_MULTIPLE_APIC_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('A', 'P', 'I', 'C');
 
-  ///
-  /// "BERT" Boot Error Record Table
-  ///
-  public const ulong EFI_ACPI_6_3_BOOT_ERROR_RECORD_TABLE_SIGNATURE = SIGNATURE_32('B', 'E', 'R', 'T');
+  /////
+  ///// "BERT" Boot Error Record Table
+  /////
+  //public const ulong EFI_ACPI_6_3_BOOT_ERROR_RECORD_TABLE_SIGNATURE = SIGNATURE_32('B', 'E', 'R', 'T');
 
-  ///
-  /// "BGRT" Boot Graphics Resource Table
-  ///
-  public const ulong EFI_ACPI_6_3_BOOT_GRAPHICS_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('B', 'G', 'R', 'T');
+  /////
+  ///// "BGRT" Boot Graphics Resource Table
+  /////
+  //public const ulong EFI_ACPI_6_3_BOOT_GRAPHICS_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('B', 'G', 'R', 'T');
 
-  ///
-  /// "CDIT" Component Distance Information Table
-  ///
-  public const ulong EFI_ACPI_6_3_COMPONENT_DISTANCE_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('C', 'D', 'I', 'T');
+  /////
+  ///// "CDIT" Component Distance Information Table
+  /////
+  //public const ulong EFI_ACPI_6_3_COMPONENT_DISTANCE_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('C', 'D', 'I', 'T');
 
-  ///
-  /// "CPEP" Corrected Platform Error Polling Table
-  ///
-  public const ulong EFI_ACPI_6_3_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_SIGNATURE = SIGNATURE_32('C', 'P', 'E', 'P');
+  /////
+  ///// "CPEP" Corrected Platform Error Polling Table
+  /////
+  //public const ulong EFI_ACPI_6_3_CORRECTED_PLATFORM_ERROR_POLLING_TABLE_SIGNATURE = SIGNATURE_32('C', 'P', 'E', 'P');
 
-  ///
-  /// "CRAT" Component Resource Attribute Table
-  ///
-  public const ulong EFI_ACPI_6_3_COMPONENT_RESOURCE_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('C', 'R', 'A', 'T');
+  /////
+  ///// "CRAT" Component Resource Attribute Table
+  /////
+  //public const ulong EFI_ACPI_6_3_COMPONENT_RESOURCE_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('C', 'R', 'A', 'T');
 
-  ///
-  /// "DSDT" Differentiated System Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('D', 'S', 'D', 'T');
+  /////
+  ///// "DSDT" Differentiated System Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_DIFFERENTIATED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('D', 'S', 'D', 'T');
 
-  ///
-  /// "ECDT" Embedded Controller Boot Resources Table
-  ///
-  public const ulong EFI_ACPI_6_3_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_SIGNATURE = SIGNATURE_32('E', 'C', 'D', 'T');
+  /////
+  ///// "ECDT" Embedded Controller Boot Resources Table
+  /////
+  //public const ulong EFI_ACPI_6_3_EMBEDDED_CONTROLLER_BOOT_RESOURCES_TABLE_SIGNATURE = SIGNATURE_32('E', 'C', 'D', 'T');
 
-  ///
-  /// "EINJ" Error Injection Table
-  ///
-  public const ulong EFI_ACPI_6_3_ERROR_INJECTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'I', 'N', 'J');
+  /////
+  ///// "EINJ" Error Injection Table
+  /////
+  //public const ulong EFI_ACPI_6_3_ERROR_INJECTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'I', 'N', 'J');
 
-  ///
-  /// "ERST" Error Record Serialization Table
-  ///
-  public const ulong EFI_ACPI_6_3_ERROR_RECORD_SERIALIZATION_TABLE_SIGNATURE = SIGNATURE_32('E', 'R', 'S', 'T');
+  /////
+  ///// "ERST" Error Record Serialization Table
+  /////
+  //public const ulong EFI_ACPI_6_3_ERROR_RECORD_SERIALIZATION_TABLE_SIGNATURE = SIGNATURE_32('E', 'R', 'S', 'T');
 
-  ///
-  /// "FACP" Fixed ACPI Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'P');
+  /////
+  ///// "FACP" Fixed ACPI Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'P');
 
-  ///
-  /// "FACS" Firmware ACPI Control Structure
-  ///
-  public const ulong EFI_ACPI_6_3_FIRMWARE_ACPI_CONTROL_STRUCTURE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'S');
+  /////
+  ///// "FACS" Firmware ACPI Control Structure
+  /////
+  //public const ulong EFI_ACPI_6_3_FIRMWARE_ACPI_CONTROL_STRUCTURE_SIGNATURE = SIGNATURE_32('F', 'A', 'C', 'S');
 
-  ///
-  /// "FPDT" Firmware Performance Data Table
-  ///
-  public const ulong EFI_ACPI_6_3_FIRMWARE_PERFORMANCE_DATA_TABLE_SIGNATURE = SIGNATURE_32('F', 'P', 'D', 'T');
+  /////
+  ///// "FPDT" Firmware Performance Data Table
+  /////
+  //public const ulong EFI_ACPI_6_3_FIRMWARE_PERFORMANCE_DATA_TABLE_SIGNATURE = SIGNATURE_32('F', 'P', 'D', 'T');
 
-  ///
-  /// "GTDT" Generic Timer Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('G', 'T', 'D', 'T');
+  /////
+  ///// "GTDT" Generic Timer Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('G', 'T', 'D', 'T');
 
-  ///
-  /// "HEST" Hardware Error Source Table
-  ///
-  public const ulong EFI_ACPI_6_3_HARDWARE_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('H', 'E', 'S', 'T');
+  /////
+  ///// "HEST" Hardware Error Source Table
+  /////
+  //public const ulong EFI_ACPI_6_3_HARDWARE_ERROR_SOURCE_TABLE_SIGNATURE = SIGNATURE_32('H', 'E', 'S', 'T');
 
-  ///
-  /// "HMAT" Heterogeneous Memory Attribute Table
-  ///
-  public const ulong EFI_ACPI_6_3_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('H', 'M', 'A', 'T');
+  /////
+  ///// "HMAT" Heterogeneous Memory Attribute Table
+  /////
+  //public const ulong EFI_ACPI_6_3_HETEROGENEOUS_MEMORY_ATTRIBUTE_TABLE_SIGNATURE = SIGNATURE_32('H', 'M', 'A', 'T');
 
-  ///
-  /// "MPST" Memory Power State Table
-  ///
-  public const ulong EFI_ACPI_6_3_MEMORY_POWER_STATE_TABLE_SIGNATURE = SIGNATURE_32('M', 'P', 'S', 'T');
+  /////
+  ///// "MPST" Memory Power State Table
+  /////
+  //public const ulong EFI_ACPI_6_3_MEMORY_POWER_STATE_TABLE_SIGNATURE = SIGNATURE_32('M', 'P', 'S', 'T');
 
-  ///
-  /// "MSCT" Maximum System Characteristics Table
-  ///
-  public const ulong EFI_ACPI_6_3_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'C', 'T');
+  /////
+  ///// "MSCT" Maximum System Characteristics Table
+  /////
+  //public const ulong EFI_ACPI_6_3_MAXIMUM_SYSTEM_CHARACTERISTICS_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'C', 'T');
 
-  ///
-  /// "NFIT" NVDIMM Firmware Interface Table
-  ///
-  public const ulong EFI_ACPI_6_3_NVDIMM_FIRMWARE_INTERFACE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('N', 'F', 'I', 'T');
+  /////
+  ///// "NFIT" NVDIMM Firmware Interface Table
+  /////
+  //public const ulong EFI_ACPI_6_3_NVDIMM_FIRMWARE_INTERFACE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('N', 'F', 'I', 'T');
 
-  ///
-  /// "PDTT" Platform Debug Trigger Table
-  ///
-  public const ulong EFI_ACPI_6_3_PLATFORM_DEBUG_TRIGGER_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'D', 'T', 'T');
+  /////
+  ///// "PDTT" Platform Debug Trigger Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PLATFORM_DEBUG_TRIGGER_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'D', 'T', 'T');
 
-  ///
-  /// "PMTT" Platform Memory Topology Table
-  ///
-  public const ulong EFI_ACPI_6_3_PLATFORM_MEMORY_TOPOLOGY_TABLE_SIGNATURE = SIGNATURE_32('P', 'M', 'T', 'T');
+  /////
+  ///// "PMTT" Platform Memory Topology Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PLATFORM_MEMORY_TOPOLOGY_TABLE_SIGNATURE = SIGNATURE_32('P', 'M', 'T', 'T');
 
-  ///
-  /// "PPTT" Processor Properties Topology Table
-  ///
-  public const ulong EFI_ACPI_6_3_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'P', 'T', 'T');
+  /////
+  ///// "PPTT" Processor Properties Topology Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PROCESSOR_PROPERTIES_TOPOLOGY_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('P', 'P', 'T', 'T');
 
-  ///
-  /// "PSDT" Persistent System Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_PERSISTENT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('P', 'S', 'D', 'T');
+  /////
+  ///// "PSDT" Persistent System Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PERSISTENT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('P', 'S', 'D', 'T');
 
-  ///
-  /// "RASF" ACPI RAS Feature Table
-  ///
-  public const ulong EFI_ACPI_6_3_ACPI_RAS_FEATURE_TABLE_SIGNATURE = SIGNATURE_32('R', 'A', 'S', 'F');
+  /////
+  ///// "RASF" ACPI RAS Feature Table
+  /////
+  //public const ulong EFI_ACPI_6_3_ACPI_RAS_FEATURE_TABLE_SIGNATURE = SIGNATURE_32('R', 'A', 'S', 'F');
 
-  ///
-  /// "RSDT" Root System Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_ROOT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('R', 'S', 'D', 'T');
+  /////
+  ///// "RSDT" Root System Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_ROOT_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('R', 'S', 'D', 'T');
 
-  ///
-  /// "SBST" Smart Battery Specification Table
-  ///
-  public const ulong EFI_ACPI_6_3_SMART_BATTERY_SPECIFICATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'B', 'S', 'T');
+  /////
+  ///// "SBST" Smart Battery Specification Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SMART_BATTERY_SPECIFICATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'B', 'S', 'T');
 
-  ///
-  /// "SDEV" Secure DEVices Table
-  ///
-  public const ulong EFI_ACPI_6_3_SECURE_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'V');
+  /////
+  ///// "SDEV" Secure DEVices Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SECURE_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'V');
 
-  ///
-  /// "SLIT" System Locality Information Table
-  ///
-  public const ulong EFI_ACPI_6_3_SYSTEM_LOCALITY_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'T');
+  /////
+  ///// "SLIT" System Locality Information Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SYSTEM_LOCALITY_INFORMATION_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'T');
 
-  ///
-  /// "SRAT" System Resource Affinity Table
-  ///
-  public const ulong EFI_ACPI_6_3_SYSTEM_RESOURCE_AFFINITY_TABLE_SIGNATURE = SIGNATURE_32('S', 'R', 'A', 'T');
+  /////
+  ///// "SRAT" System Resource Affinity Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SYSTEM_RESOURCE_AFFINITY_TABLE_SIGNATURE = SIGNATURE_32('S', 'R', 'A', 'T');
 
-  ///
-  /// "SSDT" Secondary System Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_SECONDARY_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'S', 'D', 'T');
+  /////
+  ///// "SSDT" Secondary System Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SECONDARY_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'S', 'D', 'T');
 
-  ///
-  /// "XSDT" Extended System Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_EXTENDED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('X', 'S', 'D', 'T');
+  /////
+  ///// "XSDT" Extended System Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_EXTENDED_SYSTEM_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('X', 'S', 'D', 'T');
 
-  ///
-  /// "BOOT" MS Simple Boot Spec
-  ///
-  public const ulong EFI_ACPI_6_3_SIMPLE_BOOT_FLAG_TABLE_SIGNATURE = SIGNATURE_32('B', 'O', 'O', 'T');
+  /////
+  ///// "BOOT" MS Simple Boot Spec
+  /////
+  //public const ulong EFI_ACPI_6_3_SIMPLE_BOOT_FLAG_TABLE_SIGNATURE = SIGNATURE_32('B', 'O', 'O', 'T');
 
-  ///
-  /// "CSRT" MS Core System Resource Table
-  ///
-  public const ulong EFI_ACPI_6_3_CORE_SYSTEM_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('C', 'S', 'R', 'T');
+  /////
+  ///// "CSRT" MS Core System Resource Table
+  /////
+  //public const ulong EFI_ACPI_6_3_CORE_SYSTEM_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('C', 'S', 'R', 'T');
 
-  ///
-  /// "DBG2" MS Debug Port 2 Spec
-  ///
-  public const ulong EFI_ACPI_6_3_DEBUG_PORT_2_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', '2');
+  /////
+  ///// "DBG2" MS Debug Port 2 Spec
+  /////
+  //public const ulong EFI_ACPI_6_3_DEBUG_PORT_2_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', '2');
 
-  ///
-  /// "DBGP" MS Debug Port Spec
-  ///
-  public const ulong EFI_ACPI_6_3_DEBUG_PORT_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', 'P');
+  /////
+  ///// "DBGP" MS Debug Port Spec
+  /////
+  //public const ulong EFI_ACPI_6_3_DEBUG_PORT_TABLE_SIGNATURE = SIGNATURE_32('D', 'B', 'G', 'P');
 
-  ///
-  /// "DMAR" DMA Remapping Table
-  ///
-  public const ulong EFI_ACPI_6_3_DMA_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('D', 'M', 'A', 'R');
+  /////
+  ///// "DMAR" DMA Remapping Table
+  /////
+  //public const ulong EFI_ACPI_6_3_DMA_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('D', 'M', 'A', 'R');
 
-  ///
-  /// "DPPT" DMA Protection Policy Table
-  ///
-  public const ulong EFI_ACPI_6_3_DMA_PROTECTION_POLICY_TABLE_SIGNATURE = SIGNATURE_32('D', 'P', 'P', 'T');
+  /////
+  ///// "DPPT" DMA Protection Policy Table
+  /////
+  //public const ulong EFI_ACPI_6_3_DMA_PROTECTION_POLICY_TABLE_SIGNATURE = SIGNATURE_32('D', 'P', 'P', 'T');
 
-  ///
-  /// "DRTM" Dynamic Root of Trust for Measurement Table
-  ///
-  public const ulong EFI_ACPI_6_3_DYNAMIC_ROOT_OF_TRUST_FOR_MEASUREMENT_TABLE_SIGNATURE = SIGNATURE_32('D', 'R', 'T', 'M');
+  /////
+  ///// "DRTM" Dynamic Root of Trust for Measurement Table
+  /////
+  //public const ulong EFI_ACPI_6_3_DYNAMIC_ROOT_OF_TRUST_FOR_MEASUREMENT_TABLE_SIGNATURE = SIGNATURE_32('D', 'R', 'T', 'M');
 
-  ///
-  /// "ETDT" Event Timer Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_EVENT_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'T', 'D', 'T');
+  /////
+  ///// "ETDT" Event Timer Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_EVENT_TIMER_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('E', 'T', 'D', 'T');
 
-  ///
-  /// "HPET" IA-PC High Precision Event Timer Table
-  ///
-  public const ulong EFI_ACPI_6_3_HIGH_PRECISION_EVENT_TIMER_TABLE_SIGNATURE = SIGNATURE_32('H', 'P', 'E', 'T');
+  /////
+  ///// "HPET" IA-PC High Precision Event Timer Table
+  /////
+  //public const ulong EFI_ACPI_6_3_HIGH_PRECISION_EVENT_TIMER_TABLE_SIGNATURE = SIGNATURE_32('H', 'P', 'E', 'T');
 
-  ///
-  /// "iBFT" iSCSI Boot Firmware Table
-  ///
-  public const ulong EFI_ACPI_6_3_ISCSI_BOOT_FIRMWARE_TABLE_SIGNATURE = SIGNATURE_32('i', 'B', 'F', 'T');
+  /////
+  ///// "iBFT" iSCSI Boot Firmware Table
+  /////
+  //public const ulong EFI_ACPI_6_3_ISCSI_BOOT_FIRMWARE_TABLE_SIGNATURE = SIGNATURE_32('i', 'B', 'F', 'T');
 
-  ///
-  /// "IORT" I/O Remapping Table
-  ///
-  public const ulong EFI_ACPI_6_3_IO_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('I', 'O', 'R', 'T');
+  /////
+  ///// "IORT" I/O Remapping Table
+  /////
+  //public const ulong EFI_ACPI_6_3_IO_REMAPPING_TABLE_SIGNATURE = SIGNATURE_32('I', 'O', 'R', 'T');
 
-  ///
-  /// "IVRS" I/O Virtualization Reporting Structure
-  ///
-  public const ulong EFI_ACPI_6_3_IO_VIRTUALIZATION_REPORTING_STRUCTURE_SIGNATURE = SIGNATURE_32('I', 'V', 'R', 'S');
+  /////
+  ///// "IVRS" I/O Virtualization Reporting Structure
+  /////
+  //public const ulong EFI_ACPI_6_3_IO_VIRTUALIZATION_REPORTING_STRUCTURE_SIGNATURE = SIGNATURE_32('I', 'V', 'R', 'S');
 
-  ///
-  /// "LPIT" Low Power Idle Table
-  ///
-  public const ulong EFI_ACPI_6_3_LOW_POWER_IDLE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('L', 'P', 'I', 'T');
+  /////
+  ///// "LPIT" Low Power Idle Table
+  /////
+  //public const ulong EFI_ACPI_6_3_LOW_POWER_IDLE_TABLE_STRUCTURE_SIGNATURE = SIGNATURE_32('L', 'P', 'I', 'T');
 
-  ///
-  /// "MCFG" PCI Express Memory Mapped Configuration Space Base Address Description Table
-  ///
-  public const ulong EFI_ACPI_6_3_PCI_EXPRESS_MEMORY_MAPPED_CONFIGURATION_SPACE_BASE_ADDRESS_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'F', 'G');
+  /////
+  ///// "MCFG" PCI Express Memory Mapped Configuration Space Base Address Description Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PCI_EXPRESS_MEMORY_MAPPED_CONFIGURATION_SPACE_BASE_ADDRESS_DESCRIPTION_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'F', 'G');
 
-  ///
-  /// "MCHI" Management Controller Host Interface Table
-  ///
-  public const ulong EFI_ACPI_6_3_MANAGEMENT_CONTROLLER_HOST_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'H', 'I');
+  /////
+  ///// "MCHI" Management Controller Host Interface Table
+  /////
+  //public const ulong EFI_ACPI_6_3_MANAGEMENT_CONTROLLER_HOST_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('M', 'C', 'H', 'I');
 
-  ///
-  /// "MSDM" MS Data Management Table
-  ///
-  public const ulong EFI_ACPI_6_3_DATA_MANAGEMENT_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'D', 'M');
+  /////
+  ///// "MSDM" MS Data Management Table
+  /////
+  //public const ulong EFI_ACPI_6_3_DATA_MANAGEMENT_TABLE_SIGNATURE = SIGNATURE_32('M', 'S', 'D', 'M');
 
-  ///
-  /// "PCCT" Platform Communications Channel Table
-  ///
-  public const ulong EFI_ACPI_6_3_PLATFORM_COMMUNICATIONS_CHANNEL_TABLE_SIGNATURE = SIGNATURE_32('P', 'C', 'C', 'T');
+  /////
+  ///// "PCCT" Platform Communications Channel Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PLATFORM_COMMUNICATIONS_CHANNEL_TABLE_SIGNATURE = SIGNATURE_32('P', 'C', 'C', 'T');
 
-  ///
-  /// "SDEI" Software Delegated Exceptions Interface Table
-  ///
-  public const ulong EFI_ACPI_6_3_SOFTWARE_DELEGATED_EXCEPTIONS_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'I');
+  /////
+  ///// "SDEI" Software Delegated Exceptions Interface Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SOFTWARE_DELEGATED_EXCEPTIONS_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'D', 'E', 'I');
 
-  ///
-  /// "SLIC" MS Software Licensing Table Specification
-  ///
-  public const ulong EFI_ACPI_6_3_SOFTWARE_LICENSING_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'C');
+  /////
+  ///// "SLIC" MS Software Licensing Table Specification
+  /////
+  //public const ulong EFI_ACPI_6_3_SOFTWARE_LICENSING_TABLE_SIGNATURE = SIGNATURE_32('S', 'L', 'I', 'C');
 
-  ///
-  /// "SPCR" Serial Port Concole Redirection Table
-  ///
-  public const ulong EFI_ACPI_6_3_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'C', 'R');
+  /////
+  ///// "SPCR" Serial Port Concole Redirection Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'C', 'R');
 
-  ///
-  /// "SPMI" Server Platform Management Interface Table
-  ///
-  public const ulong EFI_ACPI_6_3_SERVER_PLATFORM_MANAGEMENT_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'M', 'I');
+  /////
+  ///// "SPMI" Server Platform Management Interface Table
+  /////
+  //public const ulong EFI_ACPI_6_3_SERVER_PLATFORM_MANAGEMENT_INTERFACE_TABLE_SIGNATURE = SIGNATURE_32('S', 'P', 'M', 'I');
 
-  ///
-  /// "STAO" _STA Override Table
-  ///
-  public const ulong EFI_ACPI_6_3_STA_OVERRIDE_TABLE_SIGNATURE = SIGNATURE_32('S', 'T', 'A', 'O');
+  /////
+  ///// "STAO" _STA Override Table
+  /////
+  //public const ulong EFI_ACPI_6_3_STA_OVERRIDE_TABLE_SIGNATURE = SIGNATURE_32('S', 'T', 'A', 'O');
 
-  ///
-  /// "TCPA" Trusted Computing Platform Alliance Capabilities Table
-  ///
-  public const ulong EFI_ACPI_6_3_TRUSTED_COMPUTING_PLATFORM_ALLIANCE_CAPABILITIES_TABLE_SIGNATURE = SIGNATURE_32('T', 'C', 'P', 'A');
+  /////
+  ///// "TCPA" Trusted Computing Platform Alliance Capabilities Table
+  /////
+  //public const ulong EFI_ACPI_6_3_TRUSTED_COMPUTING_PLATFORM_ALLIANCE_CAPABILITIES_TABLE_SIGNATURE = SIGNATURE_32('T', 'C', 'P', 'A');
 
-  ///
-  /// "TPM2" Trusted Computing Platform 1 Table
-  ///
-  public const ulong EFI_ACPI_6_3_TRUSTED_COMPUTING_PLATFORM_2_TABLE_SIGNATURE = SIGNATURE_32('T', 'P', 'M', '2');
+  /////
+  ///// "TPM2" Trusted Computing Platform 1 Table
+  /////
+  //public const ulong EFI_ACPI_6_3_TRUSTED_COMPUTING_PLATFORM_2_TABLE_SIGNATURE = SIGNATURE_32('T', 'P', 'M', '2');
 
-  ///
-  /// "UEFI" UEFI ACPI Data Table
-  ///
-  public const ulong EFI_ACPI_6_3_UEFI_ACPI_DATA_TABLE_SIGNATURE = SIGNATURE_32('U', 'E', 'F', 'I');
+  /////
+  ///// "UEFI" UEFI ACPI Data Table
+  /////
+  //public const ulong EFI_ACPI_6_3_UEFI_ACPI_DATA_TABLE_SIGNATURE = SIGNATURE_32('U', 'E', 'F', 'I');
 
-  ///
-  /// "WAET" Windows ACPI Emulated Devices Table
-  ///
-  public const ulong EFI_ACPI_6_3_WINDOWS_ACPI_EMULATED_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('W', 'A', 'E', 'T');
+  /////
+  ///// "WAET" Windows ACPI Emulated Devices Table
+  /////
+  //public const ulong EFI_ACPI_6_3_WINDOWS_ACPI_EMULATED_DEVICES_TABLE_SIGNATURE = SIGNATURE_32('W', 'A', 'E', 'T');
 
-  ///
-  /// "WDAT" Watchdog Action Table
-  ///
-  public const ulong EFI_ACPI_6_3_WATCHDOG_ACTION_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'A', 'T');
+  /////
+  ///// "WDAT" Watchdog Action Table
+  /////
+  //public const ulong EFI_ACPI_6_3_WATCHDOG_ACTION_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'A', 'T');
 
-  ///
-  /// "WDRT" Watchdog Resource Table
-  ///
-  public const ulong EFI_ACPI_6_3_WATCHDOG_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'R', 'T');
+  /////
+  ///// "WDRT" Watchdog Resource Table
+  /////
+  //public const ulong EFI_ACPI_6_3_WATCHDOG_RESOURCE_TABLE_SIGNATURE = SIGNATURE_32('W', 'D', 'R', 'T');
 
-  ///
-  /// "WPBT" MS Platform Binary Table
-  ///
-  public const ulong EFI_ACPI_6_3_PLATFORM_BINARY_TABLE_SIGNATURE = SIGNATURE_32('W', 'P', 'B', 'T');
+  /////
+  ///// "WPBT" MS Platform Binary Table
+  /////
+  //public const ulong EFI_ACPI_6_3_PLATFORM_BINARY_TABLE_SIGNATURE = SIGNATURE_32('W', 'P', 'B', 'T');
 
-  ///
-  /// "WSMT" Windows SMM Security Mitigation Table
-  ///
-  public const ulong EFI_ACPI_6_3_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
+  /////
+  ///// "WSMT" Windows SMM Security Mitigation Table
+  /////
+  //public const ulong EFI_ACPI_6_3_WINDOWS_SMM_SECURITY_MITIGATION_TABLE_SIGNATURE = SIGNATURE_32('W', 'S', 'M', 'T');
 
-  ///
-  /// "XENV" Xen Project Table
-  ///
-  public const ulong EFI_ACPI_6_3_XEN_PROJECT_TABLE_SIGNATURE = SIGNATURE_32('X', 'E', 'N', 'V');
+  /////
+  ///// "XENV" Xen Project Table
+  /////
+  //public const ulong EFI_ACPI_6_3_XEN_PROJECT_TABLE_SIGNATURE = SIGNATURE_32('X', 'E', 'N', 'V');
 
   // #pragma pack()
 }

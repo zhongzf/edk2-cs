@@ -158,10 +158,10 @@ public unsafe struct ACPI_LARGE_RESOURCE_HEADER
   //PACKED struct {
   [FieldOffset(0)] public byte Name; // = 7;
   [FieldOffset(2)] public byte Type; // = 1;
-   //}
-  //} Header;
+                                     //}
+                                     //} Header;
   [FieldOffset(0)] ushort Length;
-} 
+}
 
 ///
 /// IRQ Descriptor.

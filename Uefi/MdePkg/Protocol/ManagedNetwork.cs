@@ -141,16 +141,16 @@ public unsafe struct EFI_MANAGED_NETWORK_COMPLETION_TOKEN
   ///
   public EFI_STATUS Status;
   //union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to the EFI_MANAGED_NETWORK_RECEIVE_DATA.
-    ///
-    public EFI_MANAGED_NETWORK_RECEIVE_DATA* RxData;
-//  ///
-//  /// When this token is used for transmitting, TxData is a pointer to the EFI_MANAGED_NETWORK_TRANSMIT_DATA.
-//  ///
-//  public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
-//}
-} 
+  ///
+  /// When this token is used for receiving, RxData is a pointer to the EFI_MANAGED_NETWORK_RECEIVE_DATA.
+  ///
+  public EFI_MANAGED_NETWORK_RECEIVE_DATA* RxData;
+  //  ///
+  //  /// When this token is used for transmitting, TxData is a pointer to the EFI_MANAGED_NETWORK_TRANSMIT_DATA.
+  //  ///
+  //  public EFI_MANAGED_NETWORK_TRANSMIT_DATA* TxData;
+  //}
+}
 
 // /**
 //   Returns the operational parameters for the current MNP child driver.

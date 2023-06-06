@@ -25,8 +25,8 @@ public unsafe partial class EFI
       0xd40b6b80, 0x97d5, 0x4282, 0xbb, 0x1d, 0x22, 0x3a, 0x16, 0x91, 0x80, 0x58);
 
   // typedef struct _EFI_NVDIMM_LABEL_PROTOCOL EFI_NVDIMM_LABEL_PROTOCOL;
-public const ulong EFI_NVDIMM_LABEL_INDEX_SIG_LEN = 16;
-public const ulong EFI_NVDIMM_LABEL_INDEX_ALIGN = 256;
+  public const ulong EFI_NVDIMM_LABEL_INDEX_SIG_LEN = 16;
+  public const ulong EFI_NVDIMM_LABEL_INDEX_ALIGN = 256;
 }
 
 [StructLayout(LayoutKind.Sequential)]

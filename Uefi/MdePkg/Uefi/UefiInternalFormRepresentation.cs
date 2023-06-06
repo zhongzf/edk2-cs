@@ -127,7 +127,7 @@ public unsafe struct EFI_NARROW_GLYPH
   /// with values of one indicate that the corresponding pixel is to be
   /// on when normally displayed; those with zero are off.
   ///
-  public fixed byte GlyphCol1[EFI_GLYPH_HEIGHT];
+  public byte[/*EFI_GLYPH_HEIGHT*/] GlyphCol1;
 }
 
 ///
@@ -151,13 +151,13 @@ public unsafe struct EFI_WIDE_GLYPH
   /// with values of one indicate that the corresponding pixel is to be
   /// on when normally displayed; those with zero are off.
   ///
-  public fixed byte GlyphCol1[EFI_GLYPH_HEIGHT];
+  public byte[/*EFI_GLYPH_HEIGHT*/] GlyphCol1;
   ///
   /// The column major glyph representation of the character. Bits
   /// with values of one indicate that the corresponding pixel is to be
   /// on when normally displayed; those with zero are off.
   ///
-  public fixed byte GlyphCol2[EFI_GLYPH_HEIGHT];
+  public byte[/*EFI_GLYPH_HEIGHT*/] GlyphCol2;
   ///
   /// Ensures that sizeof (EFI_WIDE_GLYPH) is twice the
   /// sizeof (EFI_NARROW_GLYPH). The contents of Pad must
@@ -395,8 +395,8 @@ public unsafe struct EFI_HII_GUID_PACKAGE_HDR
 
 public unsafe partial class EFI
 {
-  public const ulong UEFI_CONFIG_LANG = "x-UEFI";
-  public const ulong UEFI_CONFIG_LANG_2 = "x-i-UEFI";
+  public const string UEFI_CONFIG_LANG = "x-UEFI";
+  public const string UEFI_CONFIG_LANG_2 = "x-i-UEFI";
 }
 
 ///
@@ -686,7 +686,7 @@ public unsafe struct EFI_HII_IIBT_IMAGE_24BIT_BASE
 {
   public ushort Width;
   public ushort Height;
-  public fixed EFI_HII_RGB_PIXEL Bitmap[1];
+  public EFI_HII_RGB_PIXEL[/*1*/] Bitmap;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -802,7 +802,7 @@ public unsafe struct EFI_HII_IMAGE_PALETTE_INFO_HEADER
 public unsafe struct EFI_HII_IMAGE_PALETTE_INFO
 {
   public ushort PaletteSize;
-  public fixed EFI_HII_RGB_PIXEL PaletteValue[1];
+  public EFI_HII_RGB_PIXEL[/*1*/] PaletteValue;
 }
 
 //
@@ -989,17 +989,17 @@ public unsafe struct EFI_IFR_STATEMENT_HEADER
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct VarStoreInfo
+public unsafe struct EFI_IFR_QUESTION_HEADER
 {
   public EFI_IFR_STATEMENT_HEADER Header;
   public EFI_QUESTION_ID QuestionId;
   public EFI_VARSTORE_ID VarStoreId;
-  union {
-    public EFI_STRING_ID VarName;
-  public ushort VarOffset;
+  //union {
+  public EFI_STRING_ID VarName;
+  //  public ushort VarOffset;
+  //}
+  byte Flags;
 }
-byte Flags;
-} EFI_IFR_QUESTION_HEADER;
 
 public unsafe partial class EFI
 {
@@ -1275,24 +1275,24 @@ public unsafe partial class EFI
 public unsafe struct MINMAXSTEP_DATA
 {
   /*   struct { */
-  [FieldOffset(0)] public byte MinValue;
-  [FieldOffset(0)] public byte MaxValue;
-  [FieldOffset(0)] public byte Step;
+  //[FieldOffset(0)] public byte MinValue;
+  //[FieldOffset(0)] public byte MaxValue;
+  //[FieldOffset(0)] public byte Step;
   /*   } u8; */
   /*   struct { */
-  [FieldOffset(0)] public ushort MinValue;
-  [FieldOffset(0)] public ushort MaxValue;
-  [FieldOffset(0)] public ushort Step;
+  //[FieldOffset(0)] public ushort MinValue;
+  //[FieldOffset(0)] public ushort MaxValue;
+  //[FieldOffset(0)] public ushort Step;
   /*   } u16; */
   /*   struct { */
-  [FieldOffset(0)] public uint MinValue;
-  [FieldOffset(0)] public uint MaxValue;
-  [FieldOffset(0)] public uint Step;
+  //[FieldOffset(0)] public uint MinValue;
+  //[FieldOffset(0)] public uint MaxValue;
+  //[FieldOffset(0)] public uint Step;
   /*   } u32; */
   /*   struct { */
   [FieldOffset(0)] public ulong MinValue;
-  [FieldOffset(0)] public ulong MaxValue;
-  [FieldOffset(0)] public ulong Step;
+  [FieldOffset(8)] public ulong MaxValue;
+  [FieldOffset(16)] public ulong Step;
   /*   } u64; */
 }
 
@@ -1962,24 +1962,24 @@ public unsafe struct EFI_IFR_SET
   /// use when storing the question's value.
   ///
   public EFI_VARSTORE_ID VarStoreId;
-//  union {
-//    ///
-//    /// A 16-bit Buffer Storage offset.
-//    ///
-//    public EFI_STRING_ID VarName;
-//  ///
-//  /// A Name Value or EFI Variable name (VarName).
-//  ///
-//  public ushort VarOffset;
-//}
-///
-/// Specifies the type used for storage.
-///
-byte VarStoreType;
-} 
+  //  union {
+  //    ///
+  //    /// A 16-bit Buffer Storage offset.
+  //    ///
+  //    public EFI_STRING_ID VarName;
+  //  ///
+  //  /// A Name Value or EFI Variable name (VarName).
+  //  ///
+  //  public ushort VarOffset;
+  //}
+  ///
+  /// Specifies the type used for storage.
+  ///
+  byte VarStoreType;
+}
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct VarStoreInfo
+public unsafe struct EFI_IFR_GET
 {
   ///
   /// The sequence that defines the type of opcode as well as the length
@@ -1991,21 +1991,21 @@ public unsafe struct VarStoreInfo
   /// use when retrieving the value.
   ///
   public EFI_VARSTORE_ID VarStoreId;
-  union {
-    ///
-    /// A 16-bit Buffer Storage offset.
-    ///
-    public EFI_STRING_ID VarName;
+  //union {
   ///
-  /// A Name Value or EFI Variable name (VarName).
+  /// A 16-bit Buffer Storage offset.
   ///
-  public ushort VarOffset;
+  public EFI_STRING_ID VarName;
+  //  ///
+  //  /// A Name Value or EFI Variable name (VarName).
+  //  ///
+  //  public ushort VarOffset;
+  //}
+  ///
+  /// Specifies the type used for storage.
+  ///
+  byte VarStoreType;
 }
-///
-/// Specifies the type used for storage.
-///
-byte VarStoreType;
-} EFI_IFR_GET;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IFR_READ
@@ -2451,7 +2451,7 @@ public unsafe struct EFI_HII_AIBT_OVERLAY_IMAGES_BLOCK
   ///
   /// An array of CellCount animation cells.
   ///
-  public fixed EFI_HII_ANIMATION_CELL AnimationCell[1];
+  public EFI_HII_ANIMATION_CELL[/*1*/] AnimationCell;
 }
 
 ///
@@ -2492,7 +2492,7 @@ public unsafe struct EFI_HII_AIBT_CLEAR_IMAGES_BLOCK
   ///
   /// An array of CellCount animation cells.
   ///
-  public fixed EFI_HII_ANIMATION_CELL AnimationCell[1];
+  public EFI_HII_ANIMATION_CELL[/*1*/] AnimationCell;
 }
 
 ///
@@ -2528,7 +2528,7 @@ public unsafe struct EFI_HII_AIBT_RESTORE_SCRN_BLOCK
   ///
   /// An array of CellCount animation cells.
   ///
-  public fixed EFI_HII_ANIMATION_CELL AnimationCell[1];
+  public EFI_HII_ANIMATION_CELL[/*1*/] AnimationCell;
 }
 
 ///
@@ -2603,13 +2603,13 @@ public unsafe partial class EFI
   /// STRING_TOKEN is not defined in UEFI specification. But it is placed
   /// here for the easy access by C files and VFR source files.
   ///
-  public const ulong STRING_TOKEN = (t)t;
+  //public const ulong STRING_TOKEN = (t)t;
 
   ///
   /// IMAGE_TOKEN is not defined in UEFI specification. But it is placed
   /// here for the easy access by C files and VFR source files.
   ///
-  public const ulong IMAGE_TOKEN = (t)t;
+  //public const ulong IMAGE_TOKEN = (t)t;
 }
 
 // #endif

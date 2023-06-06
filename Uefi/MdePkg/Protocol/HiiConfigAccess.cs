@@ -219,7 +219,7 @@ public unsafe struct EFI_HII_CONFIG_ACCESS_PROTOCOL
 {
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ACCESS_PROTOCOL* /*This*/,/* IN CONST */EFI_STRING /*Request*/,/* OUT */EFI_STRING* /*Progress*/,/* OUT */EFI_STRING* /*Results*/, EFI_STATUS> /*EFI_HII_ACCESS_EXTRACT_CONFIG*/ ExtractConfig;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ACCESS_PROTOCOL* /*This*/,/* IN CONST */EFI_STRING /*Configuration*/,/* OUT */EFI_STRING* /*Progress*/, EFI_STATUS> /*EFI_HII_ACCESS_ROUTE_CONFIG*/ RouteConfig;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_HII_CONFIG_ACCESS_PROTOCOL*/,/* IN */EFI_BROWSER_ACTION /*Action*/,/* IN */EFI_QUESTION_ID /*QuestionId*/,/* IN */byte /*Type*/,/* IN OUT */EFI_IFR_TYPE_VALUE* /*Value*/,/* OUT */EFI_BROWSER_ACTION_REQUEST* /*ActionRequest*/, EFI_STATUS> /*EFI_HII_ACCESS_FORM_CALLBACK*/ Callback;
+  public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ACCESS_PROTOCOL*,/* IN */EFI_BROWSER_ACTION /*Action*/,/* IN */EFI_QUESTION_ID /*QuestionId*/,/* IN */byte /*Type*/,/* IN OUT */EFI_IFR_TYPE_VALUE* /*Value*/,/* OUT */EFI_BROWSER_ACTION_REQUEST* /*ActionRequest*/, EFI_STATUS> /*EFI_HII_ACCESS_FORM_CALLBACK*/ Callback;
 }
 
 // extern EFI_GUID  gEfiHiiConfigAccessProtocolGuid;

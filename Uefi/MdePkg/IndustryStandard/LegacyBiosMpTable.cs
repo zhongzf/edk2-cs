@@ -158,9 +158,9 @@ public unsafe partial class EFI
   public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_VL = "VL    "; //  VESA Local Bus
   public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_VME = "VME   "; //  VMEbus
   public const string EFI_LEGACY_MP_TABLE_ENTRY_BUS_STRING_XPRESS = "XPRESS"; //  Express System Bus
-                                                                             //
-                                                                             // Entry Type 2: I/O APIC.
-                                                                             //
+                                                                              //
+                                                                              // Entry Type 2: I/O APIC.
+                                                                              //
   public const ulong EFI_LEGACY_MP_TABLE_ENTRY_TYPE_IOAPIC = 0x02;
 }
 [StructLayout(LayoutKind.Sequential)]

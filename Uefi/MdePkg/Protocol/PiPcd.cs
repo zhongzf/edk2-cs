@@ -31,7 +31,7 @@ public unsafe partial class EFI
 {
   public static EFI_GUID EFI_PCD_PROTOCOL_GUID = new GUID(0x13a3f0f6, 0x264a, 0x3ef0, 0xf2, 0xe0, 0xde, 0xc5, 0x12, 0x34, 0x2f, 0x34);
 
-  public const ulong EFI_PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
+  //public const ulong EFI_PCD_INVALID_TOKEN_NUMBER = ((ulong)0);
 
   // /**
   //   SetSku() sets the SKU Id to be used for subsequent calls to set or get PCD values. SetSku() is
@@ -316,14 +316,14 @@ public unsafe partial class EFI
   //   IN        bool   Value
   //   );
 
-  typedef
-  VOID
-  (EFIAPI* EFI_PCD_PROTOCOL_CALLBACK)(
-    IN EFI_GUID * Guid           OPTIONAL,
-  IN ulong CallBackToken,
-  IN OUT void* TokenData,
-  IN     ulong TokenDataSize
-  );
+  //typedef
+  //VOID
+  //(EFIAPI* EFI_PCD_PROTOCOL_CALLBACK)(
+  //  IN EFI_GUID * Guid           OPTIONAL,
+  //IN ulong CallBackToken,
+  //IN OUT void* TokenData,
+  //IN     ulong TokenDataSize
+  //);
 
   // /**
   //   Specifies a function to be called anytime the value of a designated token is changed.
@@ -416,10 +416,12 @@ public unsafe struct EFI_PCD_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */ulong /*Value*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_SET_64*/ Set64;
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN OUT */ulong* /*SizeOfValue*/,/* IN */void* /*Buffer*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_SET_POINTER*/ SetPtr;
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*TokenNumber*/,/* IN */bool /*Value*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_SET_BOOLEAN*/ SetBool;
-  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*CallBackToken*/,/* IN */EFI_PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_CALLBACK_ON_SET*/ CallbackOnSet;
-  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*CallBackToken*/,/* IN */EFI_PCD_PROTOCOL_CALLBACK /*CallBackFunction*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_CANCEL_CALLBACK*/ CancelCallback;
+
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*CallBackToken*/,/* IN */delegate* unmanaged<EFI_GUID*, ulong, void*, ulong, void> /*CallBackFunction*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_CALLBACK_ON_SET*/ CallbackOnSet;
+  public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong /*CallBackToken*/,/* IN */delegate* unmanaged<EFI_GUID*, ulong, void*, ulong, void> /*CallBackFunction*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_CANCEL_CALLBACK*/ CancelCallback;
+
   public readonly delegate* unmanaged</* IN CONST */EFI_GUID* /*Guid*/,/* IN */ulong* /*TokenNumber*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_GET_NEXT_TOKEN*/ GetNextToken;
-  public readonly delegate* unmanaged</* IN OUT */CONST /*EFI_GUID*/, EFI_STATUS> /*EFI_PCD_PROTOCOL_GET_NEXT_TOKEN_SPACE*/ GetNextTokenSpace;
+  public readonly delegate* unmanaged</* IN OUT CONST */EFI_GUID*, EFI_STATUS> /*EFI_PCD_PROTOCOL_GET_NEXT_TOKEN_SPACE*/ GetNextTokenSpace;
 }
 
 // #endif

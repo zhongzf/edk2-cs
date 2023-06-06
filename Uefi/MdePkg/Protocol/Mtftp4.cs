@@ -23,13 +23,13 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_MTFTP4_PROTOCOL_GUID => new GUID(
       0x78247c57, 0x63db, 0x4708, 0x99, 0xc2, 0xa8, 0xb4, 0xa9, 0xa6, 0x1f, 0x6b);
 
-//  typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
-//typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
+  //  typedef struct _EFI_MTFTP4_PROTOCOL  EFI_MTFTP4_PROTOCOL;
+  //typedef struct _EFI_MTFTP4_TOKEN     EFI_MTFTP4_TOKEN;
 
-//
-// MTFTP4 packet opcode definition
-//
-public const ulong EFI_MTFTP4_OPCODE_RRQ = 1;
+  //
+  // MTFTP4 packet opcode definition
+  //
+  public const ulong EFI_MTFTP4_OPCODE_RRQ = 1;
   public const ulong EFI_MTFTP4_OPCODE_WRQ = 2;
   public const ulong EFI_MTFTP4_OPCODE_DATA = 3;
   public const ulong EFI_MTFTP4_OPCODE_ACK = 4;

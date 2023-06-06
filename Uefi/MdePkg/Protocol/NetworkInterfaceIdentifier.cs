@@ -102,12 +102,12 @@ public unsafe struct NII_entry
                                    ///< that this UNDI controls.
   public uint reserved;
   public void* /* UNDI_CONFIG_TABLE* */ nextlink;           ///< A pointer to the next UNDI
-                                                ///< configuration table.
-                                                ///
-                                                /// The length of this array is given in the NumberOfInterfaces field.
-                                                ///
+                                                            ///< configuration table.
+                                                            ///
+                                                            /// The length of this array is given in the NumberOfInterfaces field.
+                                                            ///
   //struct {
-    public void* NII_InterfacePointer;          ///< Pointer to the NII interface structure.
+  public void* NII_InterfacePointer;          ///< Pointer to the NII interface structure.
   public void* DevicePathPointer;             ///< Pointer to the device path for this NIC.
 //}
 };

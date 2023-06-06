@@ -1241,7 +1241,7 @@ public unsafe struct EFI_SHELL_PROTOCOL
   public readonly delegate* unmanaged</**/ EFI_STATUS> /*EFI_SHELL_GET_PAGE_BREAK*/ GetPageBreak;
   public readonly delegate* unmanaged</* IN */EFI_HANDLE /*DeviceHandle*/,/* IN */EFI_SHELL_DEVICE_NAME_FLAGS /*Flags*/,/* IN */byte* /*Language*/,/* OUT */char** /*BestDeviceName*/, EFI_STATUS> /*EFI_SHELL_GET_DEVICE_NAME*/ GetDeviceName;
   public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/, EFI_STATUS> /*EFI_SHELL_GET_FILE_INFO*/ GetFileInfo;
-  
+
   //public readonly delegate* unmanaged</* IN */SHELL_FILE_HANDLE /*FileHandle*/,/* IN CONST */EFI_FILE_INFO* /*FileInfo*/, EFI_STATUS> /*EFI_SHELL_SET_FILE_INFO*/ SetFileInfo;
   public void* SetFileInfo;
 

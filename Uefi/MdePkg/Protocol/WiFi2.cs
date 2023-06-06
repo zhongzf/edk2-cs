@@ -252,12 +252,12 @@ public unsafe struct EFI_80211_GET_NETWORKS_TOKEN
   //
   // Pointer to the input data for getting networks.
   //
-  public EFI_80211_GET_NETWORKS_DATA* Data;
+  public EFI_80211_GET_NETWORKS_DATA[] Data;
   //
   // Indicates the scan result. It is caller's responsibility to free this
   // buffer.
   //
-  public EFI_80211_GET_NETWORKS_RESULT* Result;
+  public EFI_80211_GET_NETWORKS_RESULT[] Result;
 }
 
 ///

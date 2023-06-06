@@ -112,14 +112,14 @@ public unsafe partial class EFI
   /// User information record types
   ///
 
-///
-/// No information.
-///
-public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
-///
-/// Provide the user's name for the enrolled user.
-///
-public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
+  ///
+  /// No information.
+  ///
+  public const ulong EFI_USER_INFO_EMPTY_RECORD = 0x00;
+  ///
+  /// Provide the user's name for the enrolled user.
+  ///
+  public const ulong EFI_USER_INFO_NAME_RECORD = 0x01;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -285,18 +285,18 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_NORMAL_GUID => new GUID(0x1db29ae0, 0x9dcb, 0x43bc, 0x8d, 0x87, 0x5d, 0xa1, 0x49, 0x64, 0xdd, 0xe2);
   public static EFI_GUID EFI_USER_INFO_ACCESS_SETUP_RESTRICTED_GUID => new GUID(0xbdb38125, 0x4d63, 0x49f4, 0x82, 0x12, 0x61, 0xcf, 0x5a, 0x19, 0xa, 0xf8);
 
-///
-/// Forbids UEFI drivers from being started from the specified device path(s) or any child device paths.
-///
-public const ulong EFI_USER_INFO_ACCESS_FORBID_CONNECT = 0x00000007;
-///
-/// Permits UEFI drivers to be started on the specified device path(s) or any child device paths.
-///
-public const ulong EFI_USER_INFO_ACCESS_PERMIT_CONNECT = 0x00000008;
-///
-/// Modifies the boot order.
-///
-public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER = 0x00000009;
+  ///
+  /// Forbids UEFI drivers from being started from the specified device path(s) or any child device paths.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_FORBID_CONNECT = 0x00000007;
+  ///
+  /// Permits UEFI drivers to be started on the specified device path(s) or any child device paths.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_PERMIT_CONNECT = 0x00000008;
+  ///
+  /// Modifies the boot order.
+  ///
+  public const ulong EFI_USER_INFO_ACCESS_BOOT_ORDER = 0x00000009;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -348,10 +348,10 @@ public unsafe partial class EFI
   public const ulong EFI_USER_INFO_IDENTITY_NOT = 0x10;
   public const ulong EFI_USER_INFO_IDENTITY_AND = 0x11;
   public const ulong EFI_USER_INFO_IDENTITY_OR = 0x12;
-///
-/// Provides placeholder for additional user profile information identified by a GUID.
-///
-public const ulong EFI_USER_INFO_GUID_RECORD = 0xFF;
+  ///
+  /// Provides placeholder for additional user profile information identified by a GUID.
+  ///
+  public const ulong EFI_USER_INFO_GUID_RECORD = 0xFF;
 }
 
 [StructLayout(LayoutKind.Sequential)]

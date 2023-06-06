@@ -21,69 +21,69 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public const ulong EFI_I2C_ENUMERATE_PROTOCOL_GUID = { 0xda8cd7c4, 0x1c00, 0x49e2, { 0x80, 0x3e, 0x52, 0x14, 0xe7, 0x01, 0x89, 0x4c } };
-
-  // typedef struct _EFI_I2C_ENUMERATE_PROTOCOL EFI_I2C_ENUMERATE_PROTOCOL;
-
-  // /**
-  //   Enumerate the I2C devices
-  // 
-  //   This function enables the caller to traverse the set of I2C devices
-  //   on an I2C bus.
-  // 
-  //   @param[in]  This              The platform data for the next device on
-  //                                 the I2C bus was returned successfully.
-  //   @param[in, out] Device        Pointer to a buffer containing an
-  //                                 EFI_I2C_DEVICE structure.  Enumeration is
-  //                                 started by setting the initial EFI_I2C_DEVICE
-  //                                 structure pointer to NULL.  The buffer
-  //                                 receives an EFI_I2C_DEVICE structure pointer
-  //                                 to the next I2C device.
-  // 
-  //   @retval EFI_SUCCESS           The platform data for the next device on
-  //                                 the I2C bus was returned successfully.
-  //   @retval EFI_INVALID_PARAMETER Device is NULL
-  //   @retval EFI_NO_MAPPING        *Device does not point to a valid
-  //                                 EFI_I2C_DEVICE structure returned in a
-  //                                 previous call Enumerate().
-  // 
-  // **/
-  // typedef
-  // EFI_STATUS
-  // (EFIAPI *EFI_I2C_ENUMERATE_PROTOCOL_ENUMERATE)(
-  //   IN CONST EFI_I2C_ENUMERATE_PROTOCOL *This,
-  //   IN OUT CONST EFI_I2C_DEVICE         **Device
-  //   );
-
-  // /**
-  //   Get the requested I2C bus frequency for a specified bus configuration.
-  // 
-  //   This function returns the requested I2C bus clock frequency for the
-  //   I2cBusConfiguration.  This routine is provided for diagnostic purposes
-  //   and is meant to be called after calling Enumerate to get the
-  //   I2cBusConfiguration value.
-  // 
-  //   @param[in] This                 Pointer to an EFI_I2C_ENUMERATE_PROTOCOL
-  //                                   structure.
-  //   @param[in] I2cBusConfiguration  I2C bus configuration to access the I2C
-  //                                   device
-  //   @param[out] *BusClockHertz      Pointer to a buffer to receive the I2C
-  //                                   bus clock frequency in Hertz
-  // 
-  //   @retval EFI_SUCCESS           The I2C bus frequency was returned
-  //                                 successfully.
-  //   @retval EFI_INVALID_PARAMETER BusClockHertz was NULL
-  //   @retval EFI_NO_MAPPING        Invalid I2cBusConfiguration value
-  // 
-  // **/
-  // typedef
-  // EFI_STATUS
-  // (EFIAPI *EFI_I2C_ENUMERATE_PROTOCOL_GET_BUS_FREQUENCY)(
-  //   IN CONST EFI_I2C_ENUMERATE_PROTOCOL *This,
-  //   IN ulong                            I2cBusConfiguration,
-  //   OUT ulong                           *BusClockHertz
-  //   );
+  public static EFI_GUID EFI_I2C_ENUMERATE_PROTOCOL_GUID => new GUID(0xda8cd7c4, 0x1c00, 0x49e2, 0x80, 0x3e, 0x52, 0x14, 0xe7, 0x01, 0x89, 0x4c);
 }
+
+// typedef struct _EFI_I2C_ENUMERATE_PROTOCOL EFI_I2C_ENUMERATE_PROTOCOL;
+
+// /**
+//   Enumerate the I2C devices
+// 
+//   This function enables the caller to traverse the set of I2C devices
+//   on an I2C bus.
+// 
+//   @param[in]  This              The platform data for the next device on
+//                                 the I2C bus was returned successfully.
+//   @param[in, out] Device        Pointer to a buffer containing an
+//                                 EFI_I2C_DEVICE structure.  Enumeration is
+//                                 started by setting the initial EFI_I2C_DEVICE
+//                                 structure pointer to NULL.  The buffer
+//                                 receives an EFI_I2C_DEVICE structure pointer
+//                                 to the next I2C device.
+// 
+//   @retval EFI_SUCCESS           The platform data for the next device on
+//                                 the I2C bus was returned successfully.
+//   @retval EFI_INVALID_PARAMETER Device is NULL
+//   @retval EFI_NO_MAPPING        *Device does not point to a valid
+//                                 EFI_I2C_DEVICE structure returned in a
+//                                 previous call Enumerate().
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_I2C_ENUMERATE_PROTOCOL_ENUMERATE)(
+//   IN CONST EFI_I2C_ENUMERATE_PROTOCOL *This,
+//   IN OUT CONST EFI_I2C_DEVICE         **Device
+//   );
+
+// /**
+//   Get the requested I2C bus frequency for a specified bus configuration.
+// 
+//   This function returns the requested I2C bus clock frequency for the
+//   I2cBusConfiguration.  This routine is provided for diagnostic purposes
+//   and is meant to be called after calling Enumerate to get the
+//   I2cBusConfiguration value.
+// 
+//   @param[in] This                 Pointer to an EFI_I2C_ENUMERATE_PROTOCOL
+//                                   structure.
+//   @param[in] I2cBusConfiguration  I2C bus configuration to access the I2C
+//                                   device
+//   @param[out] *BusClockHertz      Pointer to a buffer to receive the I2C
+//                                   bus clock frequency in Hertz
+// 
+//   @retval EFI_SUCCESS           The I2C bus frequency was returned
+//                                 successfully.
+//   @retval EFI_INVALID_PARAMETER BusClockHertz was NULL
+//   @retval EFI_NO_MAPPING        Invalid I2cBusConfiguration value
+// 
+// **/
+// typedef
+// EFI_STATUS
+// (EFIAPI *EFI_I2C_ENUMERATE_PROTOCOL_GET_BUS_FREQUENCY)(
+//   IN CONST EFI_I2C_ENUMERATE_PROTOCOL *This,
+//   IN ulong                            I2cBusConfiguration,
+//   OUT ulong                           *BusClockHertz
+//   );
 
 ///
 /// I2C Enumerate protocol

@@ -126,8 +126,8 @@ public unsafe partial class EFI
   ///
   /// Support an old name for backward compatibility.
   ///
-//#define BOOT_OBJECT_AUTHORIZATION_PARMSET_GUIDVALUE \
-//  BOOT_OBJECT_AUTHORIZATION_PARMSET_GUID
+  //#define BOOT_OBJECT_AUTHORIZATION_PARMSET_GUIDVALUE \
+  //  BOOT_OBJECT_AUTHORIZATION_PARMSET_GUID
 
   // /**
   //   Initializes the BIS service, checking that it is compatible with the version requested by the caller.

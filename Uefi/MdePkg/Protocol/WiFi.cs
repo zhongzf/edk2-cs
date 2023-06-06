@@ -720,7 +720,7 @@ public unsafe struct EFI_80211_ASSOCIATE_DATA
   ///
   /// Indicates a list of channels in which the STA is capable of operating.
   ///
-  public EFI_80211_ELEMENT_SUPP_CHANNEL* Channels;
+  public EFI_80211_ELEMENT_SUPP_CHANNEL[] Channels;
   ///
   /// The cipher suites and AKM suites selected by the STA.
   ///

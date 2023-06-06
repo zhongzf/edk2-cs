@@ -1639,20 +1639,20 @@ public unsafe struct EFI_CAPSULE_BLOCK_DESCRIPTOR
   ///
   public ulong Length;
   //union {
-    /////
-    ///// Physical address of the data block. This member of the union is
-    ///// used if Length is not equal to zero.
-    /////
-    //public EFI_PHYSICAL_ADDRESS DataBlock;
-//  ///
-//  /// Physical address of another block of
-//  /// EFI_CAPSULE_BLOCK_DESCRIPTOR structures. This
-//  /// member of the union is used if Length is equal to zero. If
-//  /// ContinuationPointer is zero this entry represents the end of the list.
-//  ///
-//  public EFI_PHYSICAL_ADDRESS ContinuationPointer;
-//}
-} 
+  /////
+  ///// Physical address of the data block. This member of the union is
+  ///// used if Length is not equal to zero.
+  /////
+  //public EFI_PHYSICAL_ADDRESS DataBlock;
+  //  ///
+  //  /// Physical address of another block of
+  //  /// EFI_CAPSULE_BLOCK_DESCRIPTOR structures. This
+  //  /// member of the union is used if Length is equal to zero. If
+  //  /// ContinuationPointer is zero this entry represents the end of the list.
+  //  ///
+  //  public EFI_PHYSICAL_ADDRESS ContinuationPointer;
+  //}
+}
 
 ///
 /// EFI Capsule Header.
@@ -2260,23 +2260,23 @@ public unsafe partial class EFI
   public const string EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64 = "\\EFI\\BOOT\\BOOTRISCV64.EFI";
   public const string EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64 = "\\EFI\\BOOT\\BOOTLOONGARCH64.EFI";
 
-//#if !defined (EFI_REMOVABLE_MEDIA_FILE_NAME)
-//#if defined (MDE_CPU_IA32)
-//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_IA32;
-//#elif defined (MDE_CPU_X64)
-//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_X64;
-//#elif defined (MDE_CPU_EBC)
-//#elif defined (MDE_CPU_ARM)
-//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_ARM;
-//#elif defined (MDE_CPU_AARCH64)
-//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_AARCH64;
-//#elif defined (MDE_CPU_RISCV64)
-//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64;
-//#elif defined (MDE_CPU_LOONGARCH64)
-//public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64;
-//#else
-//#error Unknown Processor Type
-//#endif
+  //#if !defined (EFI_REMOVABLE_MEDIA_FILE_NAME)
+  //#if defined (MDE_CPU_IA32)
+  //public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_IA32;
+  //#elif defined (MDE_CPU_X64)
+  //public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_X64;
+  //#elif defined (MDE_CPU_EBC)
+  //#elif defined (MDE_CPU_ARM)
+  //public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_ARM;
+  //#elif defined (MDE_CPU_AARCH64)
+  //public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_AARCH64;
+  //#elif defined (MDE_CPU_RISCV64)
+  //public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_RISCV64;
+  //#elif defined (MDE_CPU_LOONGARCH64)
+  //public const ulong EFI_REMOVABLE_MEDIA_FILE_NAME = EFI_REMOVABLE_MEDIA_FILE_NAME_LOONGARCH64;
+  //#else
+  //#error Unknown Processor Type
+  //#endif
   // #endif
 
   //

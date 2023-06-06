@@ -227,7 +227,7 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_HII_STRING_PROTOCOL
 {
-  public readonly delegate* unmanaged</* IN CONST */EFI_HII_STRING_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* OUT */EFI_STRING_ID* /*StringId*/,/* IN CONST */byte* /*Language*/,/* IN */CONST /*char*/,/* IN CONST */EFI_STRING /*String*/,/* IN CONST */EFI_FONT_INFO* /*StringFontInfo*/, EFI_STATUS> /*EFI_HII_NEW_STRING*/ NewString;
+  public readonly delegate* unmanaged</* IN CONST */EFI_HII_STRING_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* OUT */EFI_STRING_ID* /*StringId*/,/* IN CONST */byte* /*Language*/,/* IN CONST */char*,/* IN CONST */EFI_STRING /*String*/,/* IN CONST */EFI_FONT_INFO* /*StringFontInfo*/, EFI_STATUS> /*EFI_HII_NEW_STRING*/ NewString;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_STRING_PROTOCOL* /*This*/,/* IN CONST */byte* /*Language*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_STRING_ID /*StringId*/,/* OUT */EFI_STRING /*String*/,/* IN OUT */ulong* /*StringSize*/,/* OUT */EFI_FONT_INFO** /*StringFontInfo*/, EFI_STATUS> /*EFI_HII_GET_STRING*/ GetString;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_STRING_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN */EFI_STRING_ID /*StringId*/,/* IN CONST */byte* /*Language*/,/* IN */EFI_STRING /*String*/,/* IN CONST */EFI_FONT_INFO* /*StringFontInfo*/, EFI_STATUS> /*EFI_HII_SET_STRING*/ SetString;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_STRING_PROTOCOL* /*This*/,/* IN */EFI_HII_HANDLE /*PackageList*/,/* IN OUT */byte* /*Languages*/,/* IN OUT */ulong* /*LanguagesSize*/, EFI_STATUS> /*EFI_HII_GET_LANGUAGES*/ GetLanguages;

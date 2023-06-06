@@ -130,10 +130,10 @@ public unsafe struct EFI_UDP4_COMPLETION_TOKEN
   public EFI_EVENT Event;
   public EFI_STATUS Status;
   //union {
-    public EFI_UDP4_RECEIVE_DATA* RxData;
-//  public EFI_UDP4_TRANSMIT_DATA* TxData;
-//}
-} 
+  public EFI_UDP4_RECEIVE_DATA* RxData;
+  //  public EFI_UDP4_TRANSMIT_DATA* TxData;
+  //}
+}
 
 // /**
 //   Reads the current operational settings.

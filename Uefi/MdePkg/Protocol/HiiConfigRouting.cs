@@ -409,7 +409,7 @@ public unsafe struct EFI_HII_CONFIG_ROUTING_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ROUTING_PROTOCOL* /*This*/,/* IN CONST */EFI_STRING /*Configuration*/,/* OUT */EFI_STRING* /*Progress*/, EFI_STATUS> /*EFI_HII_ROUTE_CONFIG*/ RouteConfig;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ROUTING_PROTOCOL* /*This*/,/* IN CONST */EFI_STRING /*ConfigRequest*/,/* IN CONST */byte* /*Block*/,/* IN CONST */ulong /*BlockSize*/,/* OUT */EFI_STRING* /*Config*/,/* OUT */EFI_STRING* /*Progress*/, EFI_STATUS> /*EFI_HII_BLOCK_TO_CONFIG*/ BlockToConfig;
   public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ROUTING_PROTOCOL* /*This*/,/* IN CONST */EFI_STRING /*ConfigResp*/,/* IN OUT */byte* /*Block*/,/* IN OUT */ulong* /*BlockSize*/,/* OUT */EFI_STRING* /*Progress*/, EFI_STATUS> /*EFI_HII_CONFIG_TO_BLOCK*/ ConfigToBlock;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_HII_CONFIG_ROUTING_PROTOCOL*/,/* IN */CONST /*EFI_STRING*/,/* IN */CONST /*EFI_GUID*/,/* IN */CONST /*EFI_STRING*/,/* IN */CONST /*EFI_DEVICE_PATH_PROTOCOL*/,/* IN */CONST /*ushort*/,/* OUT */EFI_STRING* /*AltCfgResp*/, EFI_STATUS> /*EFI_HII_GET_ALT_CFG*/ GetAltConfig;
+  public readonly delegate* unmanaged</* IN CONST */EFI_HII_CONFIG_ROUTING_PROTOCOL*,/* IN CONST */EFI_STRING*,/* IN CONST */EFI_GUID*,/* IN CONST */EFI_STRING*,/* IN CONST */EFI_DEVICE_PATH_PROTOCOL*,/* IN CONST */ushort*,/* OUT */EFI_STRING* /*AltCfgResp*/, EFI_STATUS> /*EFI_HII_GET_ALT_CFG*/ GetAltConfig;
 }
 
 // extern EFI_GUID  gEfiHiiConfigRoutingProtocolGuid;

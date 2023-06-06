@@ -385,7 +385,7 @@ public unsafe struct EFI_TCP6_RECEIVE_DATA
   ///
   /// An array of fragment descriptors.
   ///
-  public  EFI_TCP6_FRAGMENT_DATA[/*1*/] FragmentTable;
+  public EFI_TCP6_FRAGMENT_DATA[/*1*/] FragmentTable;
 }
 
 ///
@@ -460,18 +460,18 @@ public unsafe struct EFI_TCP6_IO_TOKEN
   ///
   public EFI_TCP6_COMPLETION_TOKEN CompletionToken;
   //union {
-    ///
-    /// When this token is used for receiving, RxData is a pointer to
-    /// EFI_TCP6_RECEIVE_DATA.
-    ///
-    public EFI_TCP6_RECEIVE_DATA* RxData;
-//  ///
-//  /// When this token is used for transmitting, TxData is a pointer to
-//  /// EFI_TCP6_TRANSMIT_DATA.
-//  ///
-//  public EFI_TCP6_TRANSMIT_DATA* TxData;
-//}
-} 
+  ///
+  /// When this token is used for receiving, RxData is a pointer to
+  /// EFI_TCP6_RECEIVE_DATA.
+  ///
+  public EFI_TCP6_RECEIVE_DATA* RxData;
+  //  ///
+  //  /// When this token is used for transmitting, TxData is a pointer to
+  //  /// EFI_TCP6_TRANSMIT_DATA.
+  //  ///
+  //  public EFI_TCP6_TRANSMIT_DATA* TxData;
+  //}
+}
 
 ///
 /// EFI_TCP6_CLOSE_TOKEN

@@ -569,16 +569,16 @@ public unsafe struct EFI_IP6_COMPLETION_TOKEN
   ///
   public EFI_STATUS Status;
   //union {
-    ///
-    /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
-    ///
-    public EFI_IP6_RECEIVE_DATA* RxData;
-//  ///
-//  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
-//  ///
-//  public EFI_IP6_TRANSMIT_DATA* TxData;
-//}
-} 
+  ///
+  /// When the Token is used for receiving, RxData is a pointer to the EFI_IP6_RECEIVE_DATA.
+  ///
+  public EFI_IP6_RECEIVE_DATA* RxData;
+  //  ///
+  //  /// When the Token is used for transmitting, TxData is a pointer to the EFI_IP6_TRANSMIT_DATA.
+  //  ///
+  //  public EFI_IP6_TRANSMIT_DATA* TxData;
+  //}
+}
 
 // /**
 //   Gets the current operational settings for this instance of the EFI IPv6 Protocol driver.

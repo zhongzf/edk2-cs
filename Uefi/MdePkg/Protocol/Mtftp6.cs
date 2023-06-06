@@ -27,13 +27,13 @@ public unsafe partial class EFI
   public static EFI_GUID EFI_MTFTP6_PROTOCOL_GUID => new GUID(
       0xbf0a78ba, 0xec29, 0x49cf, 0xa1, 0xc9, 0x7a, 0xe5, 0x4e, 0xab, 0x6a, 0x51);
 
-//  typedef struct _EFI_MTFTP6_PROTOCOL  EFI_MTFTP6_PROTOCOL;
-//typedef struct _EFI_MTFTP6_TOKEN     EFI_MTFTP6_TOKEN;
+  //  typedef struct _EFI_MTFTP6_PROTOCOL  EFI_MTFTP6_PROTOCOL;
+  //typedef struct _EFI_MTFTP6_TOKEN     EFI_MTFTP6_TOKEN;
 
-///
-/// MTFTP Packet OpCodes
-///@{
-public const ulong EFI_MTFTP6_OPCODE_RRQ = 1; /// < The MTFTPv6 packet is a read request.
+  ///
+  /// MTFTP Packet OpCodes
+  ///@{
+  public const ulong EFI_MTFTP6_OPCODE_RRQ = 1; /// < The MTFTPv6 packet is a read request.
   public const ulong EFI_MTFTP6_OPCODE_WRQ = 2; /// < The MTFTPv6 packet is a write request.
   public const ulong EFI_MTFTP6_OPCODE_DATA = 3; /// < The MTFTPv6 packet is a data packet.
   public const ulong EFI_MTFTP6_OPCODE_ACK = 4; /// < The MTFTPv6 packet is an acknowledgement packet.

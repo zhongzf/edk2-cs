@@ -87,10 +87,10 @@ public unsafe struct EFI_DHCP4_PACKET
   public uint Length;
 
   //struct {
-    ///
-    /// DHCP packet header.
-    ///
-    public EFI_DHCP4_HEADER Header;
+  ///
+  /// DHCP packet header.
+  ///
+  public EFI_DHCP4_HEADER Header;
   ///
   /// DHCP magik cookie in network byte order.
   ///
@@ -99,8 +99,8 @@ public unsafe struct EFI_DHCP4_PACKET
   /// Start of the DHCP packed option data.
   ///
   public fixed byte Option[1];
-//}
-} 
+  //}
+}
 // #pragma pack()
 
 public enum EFI_DHCP4_STATE

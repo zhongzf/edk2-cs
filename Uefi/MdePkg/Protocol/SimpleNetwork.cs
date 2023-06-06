@@ -168,7 +168,7 @@ public unsafe partial class EFI
   public const ulong EFI_SIMPLE_NETWORK_COMMAND_INTERRUPT = 0x04;
   public const ulong EFI_SIMPLE_NETWORK_SOFTWARE_INTERRUPT = 0x08;
 
-public const ulong MAX_MCAST_FILTER_CNT = 16;
+  public const ulong MAX_MCAST_FILTER_CNT = 16;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -686,7 +686,7 @@ public unsafe struct EFI_SIMPLE_NETWORK_PROTOCOL
   ///
   /// Pointer to the EFI_SIMPLE_NETWORK_MODE data for the device.
   ///
-  public EFI_SIMPLE_NETWORK_MODE* Mode;
+  public EFI_SIMPLE_NETWORK_MODE[] Mode;
 }
 
 // extern EFI_GUID  gEfiSimpleNetworkProtocolGuid;

@@ -20,7 +20,7 @@ public unsafe partial class EFI
 {
   public static EFI_GUID EFI_TCG2_PROTOCOL_GUID = new GUID(0x607f766c, 0x7455, 0x42be, 0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f);
 
-  typedef struct tdEFI_TCG2_PROTOCOL EFI_TCG2_PROTOCOL;
+  //typedef struct tdEFI_TCG2_PROTOCOL EFI_TCG2_PROTOCOL;
 }
 
 [StructLayout(LayoutKind.Sequential)]

@@ -227,10 +227,10 @@ public unsafe partial class EFI
   /// ACPI Device Paths.
   ///
   public const ulong ACPI_DEVICE_PATH = 0x02;
-///
-/// ACPI Device Path SubType.
-///
-public const ulong ACPI_DP = 0x01;
+  ///
+  /// ACPI Device Path SubType.
+  ///
+  public const ulong ACPI_DP = 0x01;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -1136,10 +1136,10 @@ public unsafe partial class EFI
   public const ulong ISCSI_LOGIN_OPTION_AUTHMETHOD_NON = 0x1000;
   public const ulong ISCSI_LOGIN_OPTION_CHAP_BI = 0x0000;
   public const ulong ISCSI_LOGIN_OPTION_CHAP_UNI = 0x2000;
-///
-/// VLAN Device Path SubType.
-///
-public const ulong MSG_VLAN_DP = 0x14;
+  ///
+  /// VLAN Device Path SubType.
+  ///
+  public const ulong MSG_VLAN_DP = 0x14;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -1301,10 +1301,10 @@ public unsafe partial class EFI
   //
   public const ulong MEDIA_VENDOR_DP = 0x03; /// < Media vendor device path subtype.
 
-///
-/// File Path Media Device Path SubType
-///
-public const ulong MEDIA_FILEPATH_DP = 0x04;
+                                             ///
+                                             /// File Path Media Device Path SubType
+                                             ///
+  public const ulong MEDIA_FILEPATH_DP = 0x04;
 }
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct FILEPATH_DEVICE_PATH

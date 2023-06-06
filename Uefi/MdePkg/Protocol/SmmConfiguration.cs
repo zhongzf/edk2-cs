@@ -79,7 +79,7 @@ public unsafe struct EFI_SMM_CONFIGURATION_PROTOCOL
   /// A pointer to an array SMRAM ranges used by the initial SMM entry code.
   ///
   public EFI_SMM_RESERVED_SMRAM_REGION* SmramReservedRegions;
-  public readonly delegate* unmanaged</* IN CONST */EFI_SMM_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_SMM_ENTRY_POINT /*SmmEntryPoint*/, EFI_STATUS> /*EFI_SMM_REGISTER_SMM_ENTRY*/ RegisterSmmEntry;
+  //public readonly delegate* unmanaged</* IN CONST */EFI_SMM_CONFIGURATION_PROTOCOL* /*This*/,/* IN */EFI_SMM_ENTRY_POINT /*SmmEntryPoint*/, EFI_STATUS> /*EFI_SMM_REGISTER_SMM_ENTRY*/ RegisterSmmEntry;
 }
 
 // extern EFI_GUID  gEfiSmmConfigurationProtocolGuid;

@@ -314,20 +314,20 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_SECTION_HEADER
 {
-//  public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
-//  union {
-//    public uint PhysicalAddress;
-//  public uint VirtualSize;
-//}
-//uint VirtualAddress;
-//uint SizeOfRawData;
-//uint PointerToRawData;
-//uint PointerToRelocations;
-//uint PointerToLinenumbers;
-//ushort NumberOfRelocations;
-//ushort NumberOfLinenumbers;
-//uint Characteristics;
-} 
+  //  public fixed byte Name[EFI_IMAGE_SIZEOF_SHORT_NAME];
+  //  union {
+  //    public uint PhysicalAddress;
+  //  public uint VirtualSize;
+  //}
+  //uint VirtualAddress;
+  //uint SizeOfRawData;
+  //uint PointerToRawData;
+  //uint PointerToRelocations;
+  //uint PointerToLinenumbers;
+  //ushort NumberOfRelocations;
+  //ushort NumberOfLinenumbers;
+  //uint Characteristics;
+}
 
 public unsafe partial class EFI
 {
@@ -568,12 +568,12 @@ public unsafe partial class EFI
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_LINENUMBER
 {
-//  union {
-//    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
-//  public uint VirtualAddress;   ///< Virtual address of line number.
-//}
-//ushort Linenumber;       ///< Line number.
-} 
+  //  union {
+  //    public uint SymbolTableIndex; ///< Symbol table index of function name if Linenumber is 0.
+  //  public uint VirtualAddress;   ///< Virtual address of line number.
+  //}
+  //ushort Linenumber;       ///< Line number.
+}
 
 public unsafe partial class EFI
 {
@@ -590,7 +590,7 @@ public unsafe partial class EFI
   public const string EFI_IMAGE_ARCHIVE_END = "`\n";
   public const string EFI_IMAGE_ARCHIVE_PAD = "\n";
   public const string EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
-  public const string EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//               "; 
+  public const string EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//               ";
 }
 
 ///
@@ -655,12 +655,12 @@ public unsafe struct EFI_IMAGE_IMPORT_BY_NAME
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_THUNK_DATA
 {
-//  union {
-//    public uint Function;
-//  public uint Ordinal;
-//  public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
-//}
-} 
+  //  union {
+  //    public uint Function;
+  //  public uint Ordinal;
+  //  public EFI_IMAGE_IMPORT_BY_NAME* AddressOfData;
+  //}
+}
 
 public unsafe partial class EFI
 {
@@ -703,10 +703,10 @@ public unsafe partial class EFI
   public const ulong EFI_IMAGE_DEBUG_TYPE_CODEVIEW = 2; /// < The Visual C++ debug information.
   public const ulong EFI_IMAGE_DEBUG_TYPE_EX_DLLCHARACTERISTICS = 20;
 
-///
-/// Debug Data Structure defined in Microsoft C++.
-///
-//public const ulong CODEVIEW_SIGNATURE_NB10 = SIGNATURE_32('N', 'B', '1', '0');
+  ///
+  /// Debug Data Structure defined in Microsoft C++.
+  ///
+  //public const ulong CODEVIEW_SIGNATURE_NB10 = SIGNATURE_32('N', 'B', '1', '0');
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -799,21 +799,21 @@ public unsafe struct EFI_IMAGE_RESOURCE_DIRECTORY
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct EFI_IMAGE_RESOURCE_DIRECTORY_ENTRY
 {
-//  union {
-//    struct {
-//      public uint NameOffset; // = 31;
-//  public uint NameIsString; // = 1;
-//}
-//uint Id;
-//  } u1;
-//union {
-//    uint    OffsetToData;
-//struct {
-//      uint OffsetToDirectory : 31;
-//uint DataIsDirectory   : 1;
-//    } s;
-//  } u2;
-} 
+  //  union {
+  //    struct {
+  //      public uint NameOffset; // = 31;
+  //  public uint NameIsString; // = 1;
+  //}
+  //uint Id;
+  //  } u1;
+  //union {
+  //    uint    OffsetToData;
+  //struct {
+  //      uint OffsetToDirectory : 31;
+  //uint DataIsDirectory   : 1;
+  //    } s;
+  //  } u2;
+}
 
 ///
 /// Resource directory entry for string.

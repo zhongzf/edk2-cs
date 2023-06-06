@@ -302,7 +302,7 @@ public unsafe struct EFI_USER_CREDENTIAL2_PROTOCOL
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL2_PROTOCOL* /*This*/,/* IN */EFI_USER_PROFILE_HANDLE /*User*/,/* OUT */EFI_USER_INFO_IDENTIFIER* /*Identifier*/, EFI_STATUS> /*EFI_CREDENTIAL2_USER*/ User;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL2_PROTOCOL* /*This*/,/* OUT */EFI_CREDENTIAL_LOGON_FLAGS* /*AutoLogon*/, EFI_STATUS> /*EFI_CREDENTIAL2_SELECT*/ Select;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL2_PROTOCOL* /*This*/, EFI_STATUS> /*EFI_CREDENTIAL2_DESELECT*/ Deselect;
-  public readonly delegate* unmanaged</* IN */CONST /*EFI_USER_CREDENTIAL2_PROTOCOL*/,/* OUT */EFI_CREDENTIAL_LOGON_FLAGS* /*AutoLogon*/, EFI_STATUS> /*EFI_CREDENTIAL2_DEFAULT*/ Default;
+  public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL2_PROTOCOL*,/* OUT */EFI_CREDENTIAL_LOGON_FLAGS* /*AutoLogon*/, EFI_STATUS> /*EFI_CREDENTIAL2_DEFAULT*/ Default;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL2_PROTOCOL* /*This*/,/* IN */EFI_USER_INFO_HANDLE /*UserInfo*/,/* OUT */EFI_USER_INFO* /*Info*/,/* IN OUT */ulong* /*InfoSize*/, EFI_STATUS> /*EFI_CREDENTIAL2_GET_INFO*/ GetInfo;
   public readonly delegate* unmanaged</* IN CONST */EFI_USER_CREDENTIAL2_PROTOCOL* /*This*/,/* IN OUT */EFI_USER_INFO_HANDLE* /*UserInfo*/, EFI_STATUS> /*EFI_CREDENTIAL2_GET_NEXT_INFO*/ GetNextInfo;
   public EFI_CREDENTIAL_CAPABILITIES Capabilities;

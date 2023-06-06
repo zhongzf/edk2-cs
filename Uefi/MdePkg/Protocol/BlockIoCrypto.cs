@@ -131,7 +131,7 @@ public unsafe struct EFI_BLOCK_IO_CRYPTO_CAPABILITIES
   //
   // Array of supported capabilities.
   //
-  public  EFI_BLOCK_IO_CRYPTO_CAPABILITY[/*1*/] Capabilities;
+  public EFI_BLOCK_IO_CRYPTO_CAPABILITY[/*1*/] Capabilities;
 }
 
 [StructLayout(LayoutKind.Sequential)]
