@@ -26,7 +26,16 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 /// 128-bit buffer containing a unique identifier value.
 ///
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct EFI_GUID { GUID Value; public static implicit operator EFI_GUID(GUID value) => new EFI_GUID() { Value = value }; public static implicit operator GUID(EFI_GUID value) => value.Value; }
+public unsafe struct EFI_GUID
+{
+  GUID Value;
+
+  public static implicit operator EFI_GUID(GUID value) => new EFI_GUID() { Value = value };
+  public static implicit operator GUID(EFI_GUID value) => value.Value;
+
+  public static explicit operator EFI_GUID*(EFI_GUID value) => &value;
+}
+
 ///
 /// Function return status for EFI API.
 ///
