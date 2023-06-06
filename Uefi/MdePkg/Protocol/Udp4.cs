@@ -24,10 +24,10 @@ public unsafe partial class EFI
   //
   // GUID definitions
   //
-  public static EFI_GUID EFI_UDP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_UDP4_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x83f01464, 0x99bd, 0x45e5, 0xb3, 0x83, 0xaf, 0x63, 0x05, 0xd8, 0xe9, 0xe6);
 
-  public static EFI_GUID EFI_UDP4_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_UDP4_PROTOCOL_GUID => new GUID(
       0x3ad9df29, 0x4501, 0x478d, 0xb1, 0xf8, 0x7f, 0x7f, 0xe7, 0x0e, 0x50, 0xf3);
 
   // typedef struct _EFI_UDP4_PROTOCOL EFI_UDP4_PROTOCOL;

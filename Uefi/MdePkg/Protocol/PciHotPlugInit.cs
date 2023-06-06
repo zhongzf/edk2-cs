@@ -60,7 +60,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the EFI_PCI_HOT_PLUG_INIT_PROTOCOL
   ///
-  public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_PCI_HOT_PLUG_INIT_PROTOCOL_GUID => new GUID(
       0xaa0e8bc1, 0xdabc, 0x46b0, 0xa8, 0x44, 0x37, 0xb8, 0x16, 0x9b, 0x2b, 0xea);
 
   ///

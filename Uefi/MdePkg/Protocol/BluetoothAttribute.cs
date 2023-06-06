@@ -19,10 +19,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x5639867a, 0x8c8e, 0x408d, 0xac, 0x2f, 0x4b, 0x61, 0xbd, 0xc0, 0xbb, 0xbb);
 
-  public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL_GUID => new GUID(
       0x898890e9, 0x84b2, 0x4f3a, 0x8c, 0x58, 0xd8, 0x57, 0x78, 0x13, 0xe0, 0xac);
 
   // typedef struct _EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL EFI_BLUETOOTH_ATTRIBUTE_PROTOCOL;

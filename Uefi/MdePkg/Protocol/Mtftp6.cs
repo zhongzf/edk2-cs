@@ -21,10 +21,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MTFTP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MTFTP6_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0xd9760ff3, 0x3cca, 0x4267, 0x80, 0xf9, 0x75, 0x27, 0xfa, 0xfa, 0x42, 0x23);
 
-  public static EFI_GUID EFI_MTFTP6_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MTFTP6_PROTOCOL_GUID => new GUID(
       0xbf0a78ba, 0xec29, 0x49cf, 0xa1, 0xc9, 0x7a, 0xe5, 0x4e, 0xab, 0x6a, 0x51);
 
 //  typedef struct _EFI_MTFTP6_PROTOCOL  EFI_MTFTP6_PROTOCOL;

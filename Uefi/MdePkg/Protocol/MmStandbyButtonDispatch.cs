@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MM_STANDBY_BUTTON_DISPATCH_PROTOCOL_GUID => new GUID(
       0x7300c4a1, 0x43f2, 0x4017, 0xa5, 0x1b, 0xc8, 0x1a, 0x7f, 0x40, 0x58, 0x5b);
 }
 

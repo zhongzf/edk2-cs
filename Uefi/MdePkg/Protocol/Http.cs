@@ -21,10 +21,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0xbdc8e6af, 0xd9bc, 0x4379, 0xa7, 0x2a, 0xe0, 0xc4, 0xe7, 0x5d, 0xae, 0x1c);
 
-  public static EFI_GUID EFI_HTTP_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_HTTP_PROTOCOL_GUID => new GUID(
       0x7a59b29b, 0x910b, 0x4171, 0x82, 0x42, 0xa8, 0x5a, 0x0d, 0xf2, 0x5b, 0x5b);
 
   // typedef struct _EFI_HTTP_PROTOCOL EFI_HTTP_PROTOCOL;

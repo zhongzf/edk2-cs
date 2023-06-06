@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL_GUID => new GUID(
       0x1b0fb9bf, 0x699d, 0x4fdd, 0xa7, 0xc3, 0x25, 0x46, 0x68, 0x1b, 0xf6, 0x3b);
 
   // typedef struct _EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL EFI_WIRELESS_MAC_CONNECTION_II_PROTOCOL;

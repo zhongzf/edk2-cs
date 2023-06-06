@@ -21,7 +21,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_NVDIMM_LABEL_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_NVDIMM_LABEL_PROTOCOL_GUID => new GUID(
       0xd40b6b80, 0x97d5, 0x4282, 0xbb, 0x1d, 0x22, 0x3a, 0x16, 0x91, 0x80, 0x58);
 
   // typedef struct _EFI_NVDIMM_LABEL_PROTOCOL EFI_NVDIMM_LABEL_PROTOCOL;

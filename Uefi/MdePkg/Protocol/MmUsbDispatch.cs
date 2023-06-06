@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MM_USB_DISPATCH_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MM_USB_DISPATCH_PROTOCOL_GUID => new GUID(
       0xee9b8d90, 0xc5a6, 0x40a2, 0xbd, 0xe2, 0x52, 0x55, 0x8d, 0x33, 0xcc, 0xa1);
 }
 

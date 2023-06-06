@@ -18,7 +18,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the PCI I/O Protocol
   ///
-  public static EFI_GUID EFI_PCI_IO_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_PCI_IO_PROTOCOL_GUID => new GUID(
       0x4cf5b200, 0x68b8, 0x4ca5, 0x9e, 0xec, 0xb2, 0x3e, 0x3f, 0x50, 0x2, 0x9a);
 
   // typedef struct _EFI_PCI_IO_PROTOCOL EFI_PCI_IO_PROTOCOL;

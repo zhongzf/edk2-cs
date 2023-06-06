@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SHELL_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SHELL_PROTOCOL_GUID => new GUID(
     0x6302d008, 0x7f9b, 0x4f30, 0x87, 0xac, 0x60, 0xc9, 0xfe, 0xf5, 0xda, 0x4e);
 }
 [StructLayout(LayoutKind.Sequential)]

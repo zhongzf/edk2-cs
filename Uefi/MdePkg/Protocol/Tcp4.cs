@@ -22,10 +22,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_TCP4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_TCP4_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x00720665, 0x67EB, 0x4a99, 0xBA, 0xF7, 0xD3, 0xC3, 0x3A, 0x1C, 0x7C, 0xC9);
 
-  public static EFI_GUID EFI_TCP4_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_TCP4_PROTOCOL_GUID => new GUID(
       0x65530BC7, 0xA359, 0x410f, 0xB0, 0x10, 0x5A, 0xAD, 0xC7, 0xEC, 0x2B, 0x62);
 
   // typedef struct _EFI_TCP4_PROTOCOL EFI_TCP4_PROTOCOL;

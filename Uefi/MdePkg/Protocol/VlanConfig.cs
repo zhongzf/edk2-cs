@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_VLAN_CONFIG_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_VLAN_CONFIG_PROTOCOL_GUID => new GUID(
       0x9e23d768, 0xd2f3, 0x4366, 0x9f, 0xc3, 0x3a, 0x7a, 0xba, 0x86, 0x43, 0x74);
 
   // typedef struct _EFI_VLAN_CONFIG_PROTOCOL EFI_VLAN_CONFIG_PROTOCOL;

@@ -22,7 +22,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the SPI NOR Flash Protocol
   ///
-  public static EFI_GUID EFI_SPI_NOR_FLASH_PROTOCOL_GUID = new GUID(0xb57ec3fe, 0xf833, 0x4ba6,
+  public static EFI_GUID EFI_SPI_NOR_FLASH_PROTOCOL_GUID => new GUID(0xb57ec3fe, 0xf833, 0x4ba6,
        0x85, 0x78, 0x2a, 0x7d, 0x6a, 0x87, 0x44, 0x4b);
 
   // typedef struct _EFI_SPI_NOR_FLASH_PROTOCOL EFI_SPI_NOR_FLASH_PROTOCOL;

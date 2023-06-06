@@ -19,7 +19,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MM_BASE_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MM_BASE_PROTOCOL_GUID => new GUID(
       0xf4ccbfb7, 0xf6e0, 0x47fd, 0x9d, 0xd4, 0x10, 0xa8, 0xf1, 0x50, 0xc1, 0x91);
 
   // typedef struct _EFI_MM_BASE_PROTOCOL EFI_MM_BASE_PROTOCOL;

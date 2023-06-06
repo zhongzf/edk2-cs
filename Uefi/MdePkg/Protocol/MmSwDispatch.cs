@@ -19,7 +19,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MM_SW_DISPATCH_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MM_SW_DISPATCH_PROTOCOL_GUID => new GUID(
       0x18a3c6dc, 0x5eea, 0x48c8, 0xa1, 0xc1, 0xb5, 0x33, 0x89, 0xf9, 0x89, 0x99);
 }
 

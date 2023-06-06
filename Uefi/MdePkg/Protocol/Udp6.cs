@@ -21,10 +21,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_UDP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_UDP6_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x66ed4721, 0x3c98, 0x4d3e, 0x81, 0xe3, 0xd0, 0x3d, 0xd3, 0x9a, 0x72, 0x54);
 
-  public static EFI_GUID EFI_UDP6_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_UDP6_PROTOCOL_GUID => new GUID(
       0x4f948815, 0xb4b9, 0x43cb, 0x8a, 0x33, 0x90, 0xe0, 0x60, 0xb3, 0x49, 0x55);
 }
 

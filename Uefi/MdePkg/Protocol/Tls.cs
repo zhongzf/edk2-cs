@@ -27,13 +27,13 @@ public unsafe partial class EFI
   /// create and destroy child of the driver to communicate with other host using TLS
   /// protocol.
   ///
-  public static EFI_GUID EFI_TLS_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_TLS_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x952cb795, 0xff36, 0x48cf, 0xa2, 0x49, 0x4d, 0xf4, 0x86, 0xd6, 0xab, 0x8d);
 
   ///
   /// The EFI TLS protocol provides the ability to manage TLS session.
   ///
-  public static EFI_GUID EFI_TLS_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_TLS_PROTOCOL_GUID => new GUID(
       0xca959f, 0x6cfa, 0x4db1, 0x95, 0xbc, 0xe4, 0x6c, 0x47, 0x51, 0x43, 0x90);
 
   // typedef struct _EFI_TLS_PROTOCOL EFI_TLS_PROTOCOL;

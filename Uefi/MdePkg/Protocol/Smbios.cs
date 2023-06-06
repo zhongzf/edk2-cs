@@ -28,7 +28,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SMBIOS_PROTOCOL_GUID = new GUID(0x3583ff6, 0xcb36, 0x4940, 0x94, 0x7e, 0xb9, 0xb3, 0x9f, 0x4a, 0xfa, 0xf7);
+  public static EFI_GUID EFI_SMBIOS_PROTOCOL_GUID => new GUID(0x3583ff6, 0xcb36, 0x4940, 0x94, 0x7e, 0xb9, 0xb3, 0x9f, 0x4a, 0xfa, 0xf7);
 
   public const ulong EFI_SMBIOS_TYPE_BIOS_INFORMATION = SMBIOS_TYPE_BIOS_INFORMATION;
   public const ulong EFI_SMBIOS_TYPE_SYSTEM_INFORMATION = SMBIOS_TYPE_SYSTEM_INFORMATION;

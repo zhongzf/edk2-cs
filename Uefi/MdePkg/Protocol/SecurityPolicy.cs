@@ -15,7 +15,7 @@ public unsafe partial class EFI
   ///
   /// Security policy protocol GUID definition
   ///
-  public static EFI_GUID EFI_SECURITY_POLICY_PROTOCOL_GUID = new GUID(0x78E4D245, 0xCD4D, 0x4a05, 0xA2, 0xBA, 0x47, 0x43, 0xE8, 0x6C, 0xFC, 0xAB);
+  public static EFI_GUID EFI_SECURITY_POLICY_PROTOCOL_GUID => new GUID(0x78E4D245, 0xCD4D, 0x4a05, 0xA2, 0xBA, 0x47, 0x43, 0xE8, 0x6C, 0xFC, 0xAB);
 
   // extern EFI_GUID  gEfiSecurityPolicyProtocolGuid;
 }

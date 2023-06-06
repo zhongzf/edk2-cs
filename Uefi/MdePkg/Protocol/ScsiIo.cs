@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SCSI_IO_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SCSI_IO_PROTOCOL_GUID => new GUID(
       0x932f47e6, 0x2362, 0x4002, 0x80, 0x3e, 0x3c, 0xd5, 0x4b, 0x13, 0x8f, 0x85);
 
   ///

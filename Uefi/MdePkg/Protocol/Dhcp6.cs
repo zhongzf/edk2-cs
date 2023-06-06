@@ -18,10 +18,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_DHCP6_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_DHCP6_PROTOCOL_GUID => new GUID(
       0x87c8bad7, 0x595, 0x4053, 0x82, 0x97, 0xde, 0xde, 0x39, 0x5f, 0x5d, 0x5b);
 
-  public static EFI_GUID EFI_DHCP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_DHCP6_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x9fb9a8a1, 0x2f4a, 0x43a6, 0x88, 0x9c, 0xd0, 0xf7, 0xb6, 0xc4, 0x7a, 0xd5);
 
   // typedef struct _EFI_DHCP6_PROTOCOL EFI_DHCP6_PROTOCOL;

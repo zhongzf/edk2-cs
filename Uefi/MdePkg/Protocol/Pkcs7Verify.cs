@@ -24,7 +24,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the PKCS7 Verification Protocol
   ///
-  public static EFI_GUID EFI_PKCS7_VERIFY_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_PKCS7_VERIFY_PROTOCOL_GUID => new GUID(
       0x47889fb2, 0xd671, 0x4fab, 0xa0, 0xca, 0xdf, 0x0e, 0x44, 0xdf, 0x70, 0xd6);
 
   // typedef struct _EFI_PKCS7_VERIFY_PROTOCOL EFI_PKCS7_VERIFY_PROTOCOL;

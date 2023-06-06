@@ -25,7 +25,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SIMPLE_NETWORK_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SIMPLE_NETWORK_PROTOCOL_GUID => new GUID(
       0xA19832B9, 0xAC25, 0x11D3, 0x9A, 0x2D, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0x4D);
 
   // typedef struct _EFI_SIMPLE_NETWORK_PROTOCOL EFI_SIMPLE_NETWORK_PROTOCOL;

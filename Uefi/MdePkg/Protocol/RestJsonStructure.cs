@@ -21,7 +21,7 @@ public unsafe partial class EFI
   ///
   /// GUID definitions
   ///
-  public static EFI_GUID EFI_REST_JSON_STRUCTURE_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_REST_JSON_STRUCTURE_PROTOCOL_GUID => new GUID(
       0xa9a048f6, 0x48a0, 0x4714, 0xb7, 0xda, 0xa9, 0xad, 0x87, 0xd4, 0xda, 0xc9);
 }
 

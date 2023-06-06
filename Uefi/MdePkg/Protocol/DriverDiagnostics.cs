@@ -17,7 +17,7 @@ public unsafe partial class EFI
   ///
   /// The global ID for the Driver Diagnostics Protocol as defined in EFI 1.1.
   ///
-  public static EFI_GUID EFI_DRIVER_DIAGNOSTICS_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_DRIVER_DIAGNOSTICS_PROTOCOL_GUID => new GUID(
       0x0784924f, 0xe296, 0x11d4, 0x9a, 0x49, 0x0, 0x90, 0x27, 0x3f, 0xc1, 0x4d);
 
   // typedef struct _EFI_DRIVER_DIAGNOSTICS_PROTOCOL EFI_DRIVER_DIAGNOSTICS_PROTOCOL;

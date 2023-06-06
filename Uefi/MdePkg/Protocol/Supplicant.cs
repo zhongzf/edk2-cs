@@ -24,14 +24,14 @@ public unsafe partial class EFI
   /// Supplicant Protocol drivers to create and destroy child of the driver to
   /// communicate with other host using Supplicant protocol.
   ///
-  public static EFI_GUID EFI_SUPPLICANT_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SUPPLICANT_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0x45bcd98e, 0x59ad, 0x4174, 0x95, 0x46, 0x34, 0x4a, 0x7, 0x48, 0x58, 0x98);
 
   ///
   /// The EFI Supplicant protocol provides services to process authentication and
   /// data encryption/decryption for security management.
   ///
-  public static EFI_GUID EFI_SUPPLICANT_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SUPPLICANT_PROTOCOL_GUID => new GUID(
       0x54fcc43e, 0xaa89, 0x4333, 0x9a, 0x85, 0xcd, 0xea, 0x24, 0x5, 0x1e, 0x9e);
 
   // typedef struct _EFI_SUPPLICANT_PROTOCOL EFI_SUPPLICANT_PROTOCOL;

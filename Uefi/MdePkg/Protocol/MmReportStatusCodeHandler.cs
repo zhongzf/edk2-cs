@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MM_RSC_HANDLER_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MM_RSC_HANDLER_PROTOCOL_GUID => new GUID(
       0x2ff29fa7, 0x5e80, 0x4ed9, 0xb3, 0x80, 0x1, 0x7d, 0x3c, 0x55, 0x4f, 0xf4);
 
   //typedef

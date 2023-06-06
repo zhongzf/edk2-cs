@@ -20,7 +20,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the SPI Configuration Protocol
   ///
-  public static EFI_GUID EFI_SPI_CONFIGURATION_GUID = new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
+  public static EFI_GUID EFI_SPI_CONFIGURATION_GUID => new GUID(0x85a6d3e6, 0xb65b, 0x4afc,
        0xb3, 0x8f, 0xc6, 0xd5, 0x4a, 0xf6, 0xdd, 0xc8);
 
   ///

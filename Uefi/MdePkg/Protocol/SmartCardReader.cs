@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SMART_CARD_READER_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SMART_CARD_READER_PROTOCOL_GUID => new GUID(
         0x2a4d1adf, 0x21dc, 0x4b81, 0xa4, 0x2f, 0x8b, 0x8e, 0xe2, 0x38, 0x00, 0x60);
 
   // typedef struct _EFI_SMART_CARD_READER_PROTOCOL EFI_SMART_CARD_READER_PROTOCOL;

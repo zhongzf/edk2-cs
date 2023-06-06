@@ -21,7 +21,7 @@ public unsafe partial class EFI
   ///
   /// Call Back Definitions.
   ///
-  public static EFI_GUID EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_PXE_BASE_CODE_CALLBACK_PROTOCOL_GUID => new GUID(
       0x245dca21, 0xfb7b, 0x11d3, 0x8f, 0x01, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b);
 
   ///

@@ -42,7 +42,7 @@ public unsafe struct EFI_MM_COMMUNICATE_HEADER
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_MM_COMMUNICATION_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MM_COMMUNICATION_PROTOCOL_GUID => new GUID(
       0xc68ed8e2, 0x9dc6, 0x4cbd, 0x9d, 0x94, 0xdb, 0x65, 0xac, 0xc5, 0xc3, 0x32);
 
   // typedef struct _EFI_MM_COMMUNICATION_PROTOCOL EFI_MM_COMMUNICATION_PROTOCOL;

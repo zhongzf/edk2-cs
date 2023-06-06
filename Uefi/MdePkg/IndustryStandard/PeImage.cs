@@ -586,11 +586,11 @@ public unsafe partial class EFI
   // Archive format.
   //
   public const ulong EFI_IMAGE_ARCHIVE_START_SIZE = 8;
-  public static string EFI_IMAGE_ARCHIVE_START = "!<arch>\n";
-  public static string EFI_IMAGE_ARCHIVE_END = "`\n";
-  public static string EFI_IMAGE_ARCHIVE_PAD = "\n";
-  public static string EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
-  public static string EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//               "; 
+  public const string EFI_IMAGE_ARCHIVE_START = "!<arch>\n";
+  public const string EFI_IMAGE_ARCHIVE_END = "`\n";
+  public const string EFI_IMAGE_ARCHIVE_PAD = "\n";
+  public const string EFI_IMAGE_ARCHIVE_LINKER_MEMBER = "/               ";
+  public const string EFI_IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//               "; 
 }
 
 ///

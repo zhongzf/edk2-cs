@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_HTTP_BOOT_CALLBACK_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_HTTP_BOOT_CALLBACK_PROTOCOL_GUID => new GUID(
       0xba23b311, 0x343d, 0x11e6, 0x91, 0x85, 0x58, 0x20, 0xb1, 0xd6, 0x52, 0x99);
 
   // typedef struct _EFI_HTTP_BOOT_CALLBACK_PROTOCOL EFI_HTTP_BOOT_CALLBACK_PROTOCOL;

@@ -859,7 +859,7 @@ public unsafe partial class EFI
   ///
   /// EFI PCI Option ROM definitions
   ///
-  public static string EFI_ROOT_BRIDGE_LIST = "eprb";
+  public const string EFI_ROOT_BRIDGE_LIST = "eprb";
   public const ulong EFI_PCI_EXPANSION_ROM_HEADER_EFISIGNATURE = 0x0EF1; /// < defined in UEFI Spec.
 
   public const ulong PCI_EXPANSION_ROM_HEADER_SIGNATURE = 0xaa55;

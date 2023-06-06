@@ -22,7 +22,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SMART_CARD_EDGE_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SMART_CARD_EDGE_PROTOCOL_GUID => new GUID(
         0xd317f29b, 0xa325, 0x4712, 0x9b, 0xf1, 0xc6, 0x19, 0x54, 0xdc, 0x19, 0x8c);
 
   // typedef struct _EFI_SMART_CARD_EDGE_PROTOCOL EFI_SMART_CARD_EDGE_PROTOCOL;
@@ -153,7 +153,7 @@ public unsafe partial class EFI
   //
   // RSASSA- PKCS#1-V1.5 padding method, for signature
   //
-  public static EFI_GUID EFI_PADDING_RSASSA_PKCS1V1P5_GUID = new GUID(
+  public static EFI_GUID EFI_PADDING_RSASSA_PKCS1V1P5_GUID => new GUID(
       0x9317ec24, 0x7cb0, 0x4d0e, 0x8b, 0x32, 0x2e, 0xd9, 0x20, 0x9c, 0xd8, 0xaf);
 
   // extern EFI_GUID  gEfiPaddingRsassaPkcs1V1P5Guid;
@@ -161,7 +161,7 @@ public unsafe partial class EFI
   //
   // RSASSA-PSS padding method, for signature
   //
-  public static EFI_GUID EFI_PADDING_RSASSA_PSS_GUID = new GUID(
+  public static EFI_GUID EFI_PADDING_RSASSA_PSS_GUID => new GUID(
       0x7b2349e0, 0x522d, 0x4f8e, 0xb9, 0x27, 0x69, 0xd9, 0x7c, 0x9e, 0x79, 0x5f);
 
   // extern EFI_GUID  gEfiPaddingRsassaPssGuid;
@@ -172,7 +172,7 @@ public unsafe partial class EFI
   //
   // No padding, for decryption
   //
-  public static EFI_GUID EFI_PADDING_NONE_GUID = new GUID(
+  public static EFI_GUID EFI_PADDING_NONE_GUID => new GUID(
       0x3629ddb1, 0x228c, 0x452e, 0xb6, 0x16, 0x09, 0xed, 0x31, 0x6a, 0x97, 0x00);
 
   // extern EFI_GUID  gEfiPaddingNoneGuid;
@@ -180,7 +180,7 @@ public unsafe partial class EFI
   //
   // RSAES-PKCS#1-V1.5 padding, for decryption
   //
-  public static EFI_GUID EFI_PADDING_RSAES_PKCS1V1P5_GUID = new GUID(
+  public static EFI_GUID EFI_PADDING_RSAES_PKCS1V1P5_GUID => new GUID(
       0xe1c1d0a9, 0x40b1, 0x4632, 0xbd, 0xcc, 0xd9, 0xd6, 0xe5, 0x29, 0x56, 0x31);
 
   // extern EFI_GUID  gEfiPaddingRsaesPkcs1V1P5Guid;
@@ -188,7 +188,7 @@ public unsafe partial class EFI
   //
   // RSAES-OAEP padding, for decryption
   //
-  public static EFI_GUID EFI_PADDING_RSAES_OAEP_GUID = new GUID(
+  public static EFI_GUID EFI_PADDING_RSAES_OAEP_GUID => new GUID(
       0xc1e63ac4, 0xd0cf, 0x4ce6, 0x83, 0x5b, 0xee, 0xd0, 0xe6, 0xa8, 0xa4, 0x5b);
 
   // extern EFI_GUID  gEfiPaddingRsaesOaepGuid;

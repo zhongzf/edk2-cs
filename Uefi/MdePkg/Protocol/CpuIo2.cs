@@ -29,7 +29,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_CPU_IO2_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_CPU_IO2_PROTOCOL_GUID => new GUID(
       0xad61f191, 0xae5f, 0x4c0e, 0xb9, 0xfa, 0xe8, 0x69, 0xd2, 0x88, 0xc6, 0x4f);
 
   // typedef struct _EFI_CPU_IO2_PROTOCOL EFI_CPU_IO2_PROTOCOL;

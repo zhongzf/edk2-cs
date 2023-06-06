@@ -19,7 +19,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_FORM_BROWSER2_PROTOCOL_GUID = new GUID(0xb9d4c360, 0xbcfb, 0x4f9b, 0x92, 0x98, 0x53, 0xc1, 0x36, 0x98, 0x22, 0x58);
+  public static EFI_GUID EFI_FORM_BROWSER2_PROTOCOL_GUID => new GUID(0xb9d4c360, 0xbcfb, 0x4f9b, 0x92, 0x98, 0x53, 0xc1, 0x36, 0x98, 0x22, 0x58);
 
   // typedef struct _EFI_FORM_BROWSER2_PROTOCOL EFI_FORM_BROWSER2_PROTOCOL;
 }

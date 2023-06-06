@@ -33,7 +33,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the Security2 Code Architectural Protocol
   ///
-  public static EFI_GUID EFI_SECURITY2_ARCH_PROTOCOL_GUID = new GUID(0x94ab2f58, 0x1438, 0x4ef1, 0x91, 0x52, 0x18, 0x94, 0x1a, 0x3a, 0x0e, 0x68);
+  public static EFI_GUID EFI_SECURITY2_ARCH_PROTOCOL_GUID => new GUID(0x94ab2f58, 0x1438, 0x4ef1, 0x91, 0x52, 0x18, 0x94, 0x1a, 0x3a, 0x0e, 0x68);
 
   // typedef struct _EFI_SECURITY2_ARCH_PROTOCOL EFI_SECURITY2_ARCH_PROTOCOL;
 

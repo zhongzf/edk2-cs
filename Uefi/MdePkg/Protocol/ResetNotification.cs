@@ -18,7 +18,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID = new GUID(0x9da34ae0, 0xeaf9, 0x4bbf, 0x8e, 0xc3, 0xfd, 0x60, 0x22, 0x6c, 0x44, 0xbe);
+  public static EFI_GUID EFI_RESET_NOTIFICATION_PROTOCOL_GUID => new GUID(0x9da34ae0, 0xeaf9, 0x4bbf, 0x8e, 0xc3, 0xfd, 0x60, 0x22, 0x6c, 0x44, 0xbe);
 
   // typedef struct _EFI_RESET_NOTIFICATION_PROTOCOL EFI_RESET_NOTIFICATION_PROTOCOL;
 

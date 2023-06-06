@@ -17,7 +17,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_EDID_OVERRIDE_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_EDID_OVERRIDE_PROTOCOL_GUID => new GUID(
       0x48ecb431, 0xfb72, 0x45c0, 0xa9, 0x22, 0xf4, 0x58, 0xfe, 0x4, 0xb, 0xd5);
 
   // typedef struct _EFI_EDID_OVERRIDE_PROTOCOL EFI_EDID_OVERRIDE_PROTOCOL;

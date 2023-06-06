@@ -20,7 +20,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the SPI SMM NOR Flash Protocol
   ///
-  public static EFI_GUID EFI_SPI_SMM_NOR_FLASH_PROTOCOL_GUID = new GUID(0xaab18f19, 0xfe14, 0x4666,
+  public static EFI_GUID EFI_SPI_SMM_NOR_FLASH_PROTOCOL_GUID => new GUID(0xaab18f19, 0xfe14, 0x4666,
        0x86, 0x04, 0x87, 0xff, 0x6d, 0x66, 0x2c, 0x9a);
 
 //  typedef

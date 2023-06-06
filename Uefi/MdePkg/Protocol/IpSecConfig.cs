@@ -19,7 +19,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_IPSEC_CONFIG_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_IPSEC_CONFIG_PROTOCOL_GUID => new GUID(
       0xce5e5929, 0xc7a3, 0x4602, 0xad, 0x9e, 0xc9, 0xda, 0xf9, 0x4e, 0xbf, 0xcf);
 
   // typedef struct _EFI_IPSEC_CONFIG_PROTOCOL EFI_IPSEC_CONFIG_PROTOCOL;

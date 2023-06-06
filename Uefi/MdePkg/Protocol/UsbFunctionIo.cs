@@ -29,7 +29,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_USBFN_IO_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_USBFN_IO_PROTOCOL_GUID => new GUID(
         0x32d2963a, 0xfe5d, 0x4f30, 0xb6, 0x33, 0x6e, 0x5d, 0xc5, 0x58, 0x3, 0xcc);
 
   // typedef struct _EFI_USBFN_IO_PROTOCOL EFI_USBFN_IO_PROTOCOL;

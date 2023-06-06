@@ -20,7 +20,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL_GUID => new GUID(
       0x2f707ebb, 0x4a1a, 0x11d4, 0x9a, 0x38, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d);
 
   // typedef struct _EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL;

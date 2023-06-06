@@ -14,7 +14,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL_GUID => new GUID(
       0xb1ee129e, 0xda36, 0x4181, 0x91, 0xf8, 0x4, 0xa4, 0x92, 0x37, 0x66, 0xa7);
 
   // typedef struct _EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL EFI_DRIVER_FAMILY_OVERRIDE_PROTOCOL;

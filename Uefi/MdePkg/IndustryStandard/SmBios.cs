@@ -58,7 +58,7 @@ public unsafe partial class EFI
   /// Table 1 - SMBIOS 2.1 (32-bit) Entry Point structure, offset 00h
   /// _SM_, specified as four ASCII characters (5F 53 4D 5F).
   ///@{
-  public static string SMBIOS_ANCHOR_STRING = "_SM_";
+  public const string SMBIOS_ANCHOR_STRING = "_SM_";
   public const ulong SMBIOS_ANCHOR_STRING_LENGTH = 4;
   ///@}
 
@@ -67,7 +67,7 @@ public unsafe partial class EFI
   /// Table 2 - SMBIOS 3.0 (64-bit) Entry Point structure, offset 00h
   /// _SM3_, specified as five ASCII characters (5F 53 4D 33 5F).
   ///@{
-  public static string SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
+  public const string SMBIOS_3_0_ANCHOR_STRING = "_SM3_";
   public const ulong SMBIOS_3_0_ANCHOR_STRING_LENGTH = 5;
   ///@}
 

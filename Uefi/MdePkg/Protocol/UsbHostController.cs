@@ -20,7 +20,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_USB_HC_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_USB_HC_PROTOCOL_GUID => new GUID(
       0xf5089266, 0x1aa0, 0x4953, 0x97, 0xd8, 0x56, 0x2f, 0x8a, 0x73, 0xb5, 0x19);
 
   ///

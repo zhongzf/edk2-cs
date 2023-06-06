@@ -24,7 +24,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_EAP_MANAGEMENT_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_EAP_MANAGEMENT_PROTOCOL_GUID => new GUID(
       0xbb62e663, 0x625d, 0x40b2, 0xa0, 0x88, 0xbb, 0xe8, 0x36, 0x23, 0xa2, 0x45);
 
   // typedef struct _EFI_EAP_MANAGEMENT_PROTOCOL EFI_EAP_MANAGEMENT_PROTOCOL;

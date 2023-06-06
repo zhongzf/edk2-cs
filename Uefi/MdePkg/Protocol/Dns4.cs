@@ -20,10 +20,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_DNS4_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_DNS4_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0xb625b186, 0xe063, 0x44f7, 0x89, 0x5, 0x6a, 0x74, 0xdc, 0x6f, 0x52, 0xb4);
 
-  public static EFI_GUID EFI_DNS4_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_DNS4_PROTOCOL_GUID => new GUID(
       0xae3d28cc, 0xe05b, 0x4fa1, 0xa0, 0x11, 0x7e, 0xb5, 0x5a, 0x3f, 0x14, 0x1);
 
   // typedef struct _EFI_DNS4_PROTOCOL EFI_DNS4_PROTOCOL;

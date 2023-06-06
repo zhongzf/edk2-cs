@@ -35,7 +35,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the EFI_IDE_CONTROLLER_INIT_PROTOCOL.
   ///
-  public static EFI_GUID EFI_IDE_CONTROLLER_INIT_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_IDE_CONTROLLER_INIT_PROTOCOL_GUID => new GUID(
       0xa1e37052, 0x80d9, 0x4e65, 0xa3, 0x17, 0x3e, 0x9a, 0x55, 0xc4, 0x3e, 0xc9);
 
   ///

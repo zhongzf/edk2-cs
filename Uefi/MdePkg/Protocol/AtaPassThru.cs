@@ -19,7 +19,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_ATA_PASS_THRU_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_ATA_PASS_THRU_PROTOCOL_GUID => new GUID(
       0x1d3de7f0, 0x807, 0x424f, 0xaa, 0x69, 0x11, 0xa5, 0x4e, 0x19, 0xa4, 0x6f);
 
   // typedef struct _EFI_ATA_PASS_THRU_PROTOCOL EFI_ATA_PASS_THRU_PROTOCOL;

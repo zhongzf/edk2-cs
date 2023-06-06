@@ -22,9 +22,9 @@ public unsafe partial class EFI
   // is later updated to be the same as that of EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL
   // defined in PI 1.2 spec.
   //
-  public static EFI_GUID EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL_GUID = new GUID(0x8f644fa9, 0xe850, 0x4db1, 0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4);
+  public static EFI_GUID EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL_GUID => new GUID(0x8f644fa9, 0xe850, 0x4db1, 0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4);
 
-  public static EFI_GUID EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL_GUID = new GUID(0x8f644fa9, 0xe850, 0x4db1, 0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4);
+  public static EFI_GUID EFI_FIRMWARE_VOLUME_BLOCK2_PROTOCOL_GUID => new GUID(0x8f644fa9, 0xe850, 0x4db1, 0x9c, 0xe2, 0xb, 0x44, 0x69, 0x8e, 0x8d, 0xa4);
 
   // typedef struct _EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL EFI_FIRMWARE_VOLUME_BLOCK_PROTOCOL;
 }

@@ -28,10 +28,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_IP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_IP6_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0xec835dd3, 0xfe0f, 0x617b, 0xa6, 0x21, 0xb3, 0x50, 0xc3, 0xe1, 0x33, 0x88);
 
-  public static EFI_GUID EFI_IP6_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_IP6_PROTOCOL_GUID => new GUID(
       0x2c8759d5, 0x5c2d, 0x66ef, 0x92, 0x5f, 0xb6, 0x6c, 0x10, 0x19, 0x57, 0xe2);
 
   // typedef struct _EFI_IP6_PROTOCOL EFI_IP6_PROTOCOL;

@@ -16,7 +16,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_EXT_SCSI_PASS_THRU_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_EXT_SCSI_PASS_THRU_PROTOCOL_GUID => new GUID(
       0x143b7632, 0xb81b, 0x4cb7, 0xab, 0xd3, 0xb6, 0x25, 0xa5, 0xb9, 0xbf, 0xfe);
 
   // typedef struct _EFI_EXT_SCSI_PASS_THRU_PROTOCOL EFI_EXT_SCSI_PASS_THRU_PROTOCOL;

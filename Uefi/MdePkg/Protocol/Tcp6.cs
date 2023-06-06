@@ -23,10 +23,10 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_TCP6_SERVICE_BINDING_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_TCP6_SERVICE_BINDING_PROTOCOL_GUID => new GUID(
       0xec20eb79, 0x6c1a, 0x4664, 0x9a, 0x0d, 0xd2, 0xe4, 0xcc, 0x16, 0xd6, 0x64);
 
-  public static EFI_GUID EFI_TCP6_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_TCP6_PROTOCOL_GUID => new GUID(
       0x46e44855, 0xbd60, 0x4ab7, 0xab, 0x0d, 0xa6, 0x79, 0xb9, 0x44, 0x7d, 0x77);
 
   // typedef struct _EFI_TCP6_PROTOCOL EFI_TCP6_PROTOCOL;

@@ -16,7 +16,7 @@ namespace Uefi;
 
 public unsafe partial class EFI
 {
-  public static EFI_GUID EFI_SHELL_PARAMETERS_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_SHELL_PARAMETERS_PROTOCOL_GUID => new GUID(
     0x752f3136, 0x4e16, 0x4fdc, 0xa2, 0x2a, 0xe5, 0xf4, 0x68, 0x12, 0xf4, 0xca);
 }
 

@@ -23,7 +23,7 @@ public unsafe partial class EFI
   //
   // Global ID for the USB I/O Protocol
   //
-  public static EFI_GUID EFI_USB_IO_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_USB_IO_PROTOCOL_GUID => new GUID(
       0x2B2F68D6, 0x0CD2, 0x44cf, 0x8E, 0x8B, 0xBB, 0xA2, 0x0B, 0x1B, 0x5B, 0x75);
 
   // typedef struct _EFI_USB_IO_PROTOCOL EFI_USB_IO_PROTOCOL;

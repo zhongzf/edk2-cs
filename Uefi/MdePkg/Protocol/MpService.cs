@@ -47,7 +47,7 @@ public unsafe partial class EFI
   ///
   /// Global ID for the EFI_MP_SERVICES_PROTOCOL.
   ///
-  public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_MP_SERVICES_PROTOCOL_GUID => new GUID(
       0x3fdda605, 0xa76e, 0x4f46, 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08);
 
   ///

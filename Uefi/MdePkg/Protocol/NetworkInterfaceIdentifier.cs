@@ -20,13 +20,13 @@ public unsafe partial class EFI
   //
   // GUID retired from UEFI Specification 2.1b
   //
-  public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
+  public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID => new GUID(
       0xE18541CD, 0xF755, 0x4f73, 0x92, 0x8D, 0x64, 0x3C, 0x8A, 0x79, 0xB2, 0x29);
 
   //
   // GUID intruduced in UEFI Specification 2.1b
   //
-  //public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID = new GUID(
+  //public static EFI_GUID EFI_NETWORK_INTERFACE_IDENTIFIER_PROTOCOL_GUID => new GUID(
   //    0x1ACED566, 0x76ED, 0x4218, 0xBC, 0x81, 0x76, 0x7F, 0x1F, 0x97, 0x7A, 0x89);
 
   //
